@@ -1,0 +1,123 @@
+<app-header></app-header>
+ <!--================Home Banner Area =================-->
+ <section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+      <div class="container">
+        <div
+          class="banner_content d-md-flex justify-content-between align-items-center"
+        >
+          <div class="mb-3 mb-md-0">
+            <h2>Detail du produit</h2>
+            <p>Achetez votre produit </p>
+          </div>
+          <div class="page_link">
+            <a href="/">Accueil</a>
+            <a href="/detail-product/{{currentProduct.id}}">Detail du produit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Home Banner Area =================-->
+
+  <!--================Single Product Area =================-->
+  <div class="product_image_area">
+    <div class="container">
+      <div class="row s_product_inner">
+        <div class="col-lg-6">
+          <div class="s_product_img">
+            <div
+              id="carouselExampleIndicators"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="0"
+                  class="active"
+                >
+                  <img
+                    src="{{currentProduct.pictureUrl}}"
+                    alt="" style="height: 60px; width: 60px;"
+                  />
+                </li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="1"
+                >
+                  <img
+                    src="{{currentProduct.pictureUrl}}"
+                    alt="" style="height: 60px; width: 60px;"
+                  />
+                </li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="2"
+                >
+                  <img
+                    src="{{currentProduct.pictureUrl}}"
+                    alt="" style="height: 60px; width: 60px;"
+                  />
+                </li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    class="d-block w-100"
+                    src="{{currentProduct.pictureUrl}}"
+                    alt="First slide"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    class="d-block w-100"
+                    src="{{currentProduct.pictureUrl}}"
+                    alt="Second slide"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    class="d-block w-100"
+                    src="{{currentProduct.pictureUrl}}"
+                    alt="Third slide"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+          <div class="s_product_text">
+            <h3>{{productOrder[0].product.name}}</h3>
+            <h2>CDF {{productOrder[0].product.price}}</h2>
+            <ul class="list">
+              <li>
+                <a class="active" href="#">
+                  <span>Categorie</span> : {{productOrder[0].product.category}}</a
+                >
+              </li>
+              <li>
+                <a href="#"> <span>Disponibilite</span> : En Stock</a>
+              </li>
+            </ul>
+            <p>
+              Mill Oil is an innovative oil filled radiator with the most
+              modern technology. If you are looking for something that can
+              make your interior look awesome, and at the same time give you
+              the pleasant warm feeling during the winter.
+            </p>
+            <div class="card_area">
+              <a class="main_btn" type="button" (click)="addToCart(productOrder[0])">Ajouter dans mon panier</a>
+            </div>
+          </div>
+          <div class="my-2">
+            <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC
+                       [hidden]="orderFinished"></app-shopping-cart>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--================End Single Product Area =================-->
+  <app-footer></app-footer>

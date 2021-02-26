@@ -1,0 +1,9 @@
+export enum Category{
+  TSHIRT= 'T-SHIRT',
+  ROBE= 'ROBE',
+  COSTUME= 'COSTUME',
+  JEANS= 'JEANS',
+  CHAUSSURE= 'CHAUSSURE',
+  VESTE= 'VESTE',
+  ACCESSOIRE= 'ACCESSOIRE',
+}
