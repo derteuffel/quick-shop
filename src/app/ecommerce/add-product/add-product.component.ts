@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {EcommerceService} from '../services/ecommerce.service';
 import {Router} from '@angular/router';
 import {Quality} from '../models/quality';
+import { Colors } from '../models/colors';
 
 @Component({
   selector: 'app-add-product',
@@ -16,6 +17,7 @@ export class AddProductComponent implements OnInit {
   categories: any = {};
   types: any = {};
   qualities: any = {};
+  colors: any = {};
   message: string;
 
   form: any = {};
@@ -27,6 +29,7 @@ export class AddProductComponent implements OnInit {
     this.categories = Object.keys(Category);
     this.types = Object.keys(Type);
     this.qualities = Object.keys(Quality);
+    this.colors = Object.keys(Colors);
   }
 
 
@@ -34,9 +37,10 @@ export class AddProductComponent implements OnInit {
   onSubmit(): void{
 
 
-    console.log(this.form);
+    console.log(this.form.color);
     this.ecommerceService.saveProduct(this.form).subscribe(
       data => {
+        console.log(this.form.color);
         console.log(data);
         this.route.navigateByUrl('/administration');
       },

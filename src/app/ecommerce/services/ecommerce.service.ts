@@ -46,6 +46,18 @@ export class EcommerceService {
     return this.http.get(this.productsUrl + '/category/' + category);
   }
 
+  getProductCategoryAndGenre(category,genre): Observable<any> {
+    return this.http.get(this.productsUrl + '/sort/' + category + '/'+genre);
+  }
+
+  getProductMarqueAndGenre(marque,genre): Observable<any> {
+    return this.http.get(this.productsUrl + '/marque/' + marque + '/'+genre);
+  }
+
+  getProductColorAndGenre(color,genre): Observable<any> {
+    return this.http.get(this.productsUrl + '/colors/' + color + '/'+genre);
+  }
+
   getProductQuality(quality): Observable<any> {
     return this.http.get(this.productsUrl + '/quality/' + quality);
   }

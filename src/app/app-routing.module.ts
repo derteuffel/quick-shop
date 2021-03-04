@@ -7,6 +7,8 @@ import {DetailProductComponent} from './ecommerce/detail-product/detail-product.
 import {AdministrationDetailProductComponent} from './administration/administration-detail-product/administration-detail-product.component';
 import {AdministrationUpdateProductComponent} from './administration/administration-update-product/administration-update-product.component';
 import {CommandeComponent} from './administration/commande/commande.component';
+import { WomenProductsComponent } from './ecommerce/women-products/women-products.component';
+import { MenProductsComponent } from './ecommerce/men-products/men-products.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,12 @@ const routes: Routes = [
   },
   {
     path: 'administration-commandes', component: CommandeComponent
+  },
+  {
+    path: 'women-collection', component: WomenProductsComponent
+  },
+  {
+    path: 'men-collection', component: MenProductsComponent
   },
   {
     path: '', redirectTo: 'ecommerce', pathMatch: 'full'

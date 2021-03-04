@@ -36,6 +36,19 @@
         <td>{{currentProduct.quality}}</td>
       </tr>
       <tr>
+        <td>Marque</td>
+        <td>{{currentProduct.marque}}</td>
+      </tr>
+      <tr>
+        <td>Couleurs disponible</td>
+        <td>
+          <ul *ngFor="let item of currentProduct.colors">
+            <li>{{item}}&nbsp;
+              </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
         <td>Image</td>
         <td>
           <div class="px-4 row">
@@ -50,6 +63,10 @@
           </div>
           </div>
         </td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>{{currentProduct.description}}</td>
       </tr>
     </tbody>
   </table>

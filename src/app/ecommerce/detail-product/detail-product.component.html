@@ -100,12 +100,15 @@
               <li>
                 <a href="#"> <span>Disponibilite</span> : En Stock</a>
               </li>
+              <li>
+                <a href="#"> <span>Marque</span> : {{currentProduct.marque}}</a>
+              </li>
+              <li>
+                <a href="#"> <span>Couleures</span> : <span *ngFor="let item of currentProduct.colors" >{{item}}</span></a>
+              </li>
             </ul>
-            <p>
-              Mill Oil is an innovative oil filled radiator with the most
-              modern technology. If you are looking for something that can
-              make your interior look awesome, and at the same time give you
-              the pleasant warm feeling during the winter.
+            <p>Description: 
+              {{currentProduct.description}}
             </p>
             <div class="card_area">
               <a class="main_btn" type="button" (click)="addToCart(productOrder[0])">Ajouter dans mon panier</a>
