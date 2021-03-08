@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Subscription} from 'rxjs';
 import {EcommerceService} from '../services/ecommerce.service';
 import {ProductOrders} from '../models/product-orders.model';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-orders',
@@ -30,8 +31,14 @@ export class OrdersComponent implements OnInit {
 
   pay() {
     this.paid = true;
-    this.ecommerceService.saveOrder(this.orders).subscribe();
-    console.log(this.orders);
+    this.ecommerceService.saveOrder(this.orders).subscribe(
+      data => {
+        console.log('je contient :'+this.orders);
+      }, error => {
+        console.log(error);
+      }
+    );
+    //console.log(this.orders);
   }
 
   loadTotal() {

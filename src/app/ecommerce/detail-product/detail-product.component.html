@@ -1,5 +1,6 @@
 <app-header></app-header>
- <!--================Home Banner Area =================-->
+<div [hidden]="orderFinished"> 
+<!--================Home Banner Area =================-->
  <section class="banner_area">
     <div class="banner_inner d-flex align-items-center">
       <div class="container">
@@ -126,4 +127,8 @@
     </div>
   </div>
   <!--================End Single Product Area =================-->
+</div>
+<div [hidden]="!orderFinished">
+  <app-orders #ordersC ></app-orders>
+</div>
   <app-footer></app-footer>
