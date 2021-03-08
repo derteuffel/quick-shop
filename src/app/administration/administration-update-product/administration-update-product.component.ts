@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Quality} from '../../ecommerce/models/quality';
 import {Category} from '../../ecommerce/models/category';
 import {Type} from '../../ecommerce/models/type';
+import { Product } from 'src/app/ecommerce/models/product.model';
+import { Colors } from 'src/app/ecommerce/models/colors';
 
 @Component({
   selector: 'app-administration-update-product',
@@ -12,10 +14,12 @@ import {Type} from '../../ecommerce/models/type';
 })
 export class AdministrationUpdateProductComponent implements OnInit {
 
-  currentProduct: any;
+  currentProduct: Product;
   categories: any = {};
   types: any = {};
   qualities: any = {};
+  colors: any = {};
+  color: any;
 
   constructor(private productService: EcommerceService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -24,6 +28,8 @@ export class AdministrationUpdateProductComponent implements OnInit {
     this.categories = Object.keys(Category);
     this.types = Object.keys(Type);
     this.qualities = Object.keys(Quality);
+    this.colors = Object.keys(Colors);
+    this.color = [];
   }
 
   getCurrentProduct(id){
@@ -38,8 +44,9 @@ export class AdministrationUpdateProductComponent implements OnInit {
     );
   }
 
-  updateProduct(){
+  onSubmit(){
 
+    console.log(this.currentProduct);
     this.productService.updateProduct(this.currentProduct, this.currentProduct.id).subscribe(
       data => {
         console.log(data);

@@ -106,6 +106,9 @@
               <li>
                 <a href="#"> <span>Couleures</span> : <span *ngFor="let item of currentProduct.colors" >{{item}}</span></a>
               </li>
+              <li>
+                <a href="#"> <span>Autres images</span> : <span *ngFor="let item of currentProduct.pictures" ><img src="{{item}}" alt="" height="70" width="70"></span></a>
+              </li>
             </ul>
             <p>Description: 
               {{currentProduct.description}}

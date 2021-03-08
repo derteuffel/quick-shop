@@ -11,9 +11,10 @@ export class Product{
   marque: string;
   colors: string[];
   description: string;
+  pictures: string[];
 
   constructor(id: number, name: string, price: number, pictureUrl: string, category: string, 
-    genre: string, quality: string, marque: string, colors: string[], description:string) {
+    genre: string, quality: string, marque: string, colors: string[], description: string, pictures: string[]) {
     this.id = id;
     this.name = name;
     this.price = price;
@@ -24,6 +25,7 @@ export class Product{
     this.marque = marque;
     this.colors = colors;
     this.description = description;
+    this.pictures = pictures;
 
   }
 }

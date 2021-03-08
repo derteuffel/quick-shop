@@ -106,6 +106,9 @@ export class EcommerceService {
   updatePicture(imageForm, id): Observable<any> {
     return this.http.post(this.productsUrl + '/upload/' + id, imageForm);
   }
+  updatePictures(imageForm, id): Observable<any> {
+    return this.http.post(this.productsUrl + '/uploads/' + id, imageForm);
+  }
 
   updateProduct(currentProduct, id): Observable<any> {
     return this.http.put(this.productsUrl + '/' + id, currentProduct);

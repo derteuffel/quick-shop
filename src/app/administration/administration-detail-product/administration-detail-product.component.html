@@ -68,6 +68,20 @@
         <td>Description</td>
         <td>{{currentProduct.description}}</td>
       </tr>
+      <tr>
+        <td>Autres photos du produit</td>
+        <td >
+          <span class="m-2" *ngFor="let item of currentProduct.pictures">
+            <img  src="{{item}}" alt="" height="80" width="90"> &nbsp;
+          </span>
+          <div class="my-2">
+            <div>
+              <input type="file" multiple name="images" (change)="onFilesSelect($event)" >
+            </div>
+            <button (click)="uploadFiles()">Ajouter</button>
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
