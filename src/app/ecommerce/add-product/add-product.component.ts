@@ -3,9 +3,11 @@ import {Category} from '../models/category';
 import {Type} from '../models/type';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {EcommerceService} from '../services/ecommerce.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Quality} from '../models/quality';
 import { Colors } from '../models/colors';
+import { Boutique } from '../models/boutique';
+import { BoutiqueService } from '../services/boutique.service';
 
 @Component({
   selector: 'app-add-product',
@@ -19,10 +21,12 @@ export class AddProductComponent implements OnInit {
   qualities: any = {};
   colors: any = {};
   message: string;
+  boutique: Boutique;
 
   form: any = {};
 
-  constructor( private ecommerceService: EcommerceService, private route: Router) {
+  constructor( private ecommerceService: EcommerceService, private route: Router, 
+    private activatedRoute: ActivatedRoute, private boutiqueService: BoutiqueService) {
   }
 
   ngOnInit(): void {
@@ -30,6 +34,7 @@ export class AddProductComponent implements OnInit {
     this.types = Object.keys(Type);
     this.qualities = Object.keys(Quality);
     this.colors = Object.keys(Colors);
+    this.getBoutique(this.activatedRoute.snapshot.paramMap.get('id'));
   }
 
 
@@ -38,11 +43,24 @@ export class AddProductComponent implements OnInit {
 
 
     console.log(this.form.color);
-    this.ecommerceService.saveProduct(this.form).subscribe(
+    this.ecommerceService.saveProduct(this.form, this.boutique.id).subscribe(
       data => {
         console.log(this.form.color);
         console.log(data);
         this.route.navigateByUrl('/administration');
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getBoutique(id){
+
+    this.boutiqueService.getBoutique(id).subscribe(
+      data => {
+        this.boutique = data;
+        console.log(data);
       },
       error => {
         console.log(error);

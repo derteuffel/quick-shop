@@ -24,6 +24,10 @@ import { AdministrationUpdateProductComponent } from './administration/administr
 import { CommandeComponent } from './administration/commande/commande.component';
 import { WomenProductsComponent } from './ecommerce/women-products/women-products.component';
 import { MenProductsComponent } from './ecommerce/men-products/men-products.component';
+import { BoutiqueComponent } from './boutique/boutique.component';
+import { AddBoutiqueComponent } from './add-boutique/add-boutique.component';
+import { BoutiqueDetailComponent } from './boutique-detail/boutique-detail.component';
+import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.component';
 
 
 @NgModule({
@@ -43,7 +47,11 @@ import { MenProductsComponent } from './ecommerce/men-products/men-products.comp
     AdministrationUpdateProductComponent,
     CommandeComponent,
     WomenProductsComponent,
-    MenProductsComponent
+    MenProductsComponent,
+    BoutiqueComponent,
+    AddBoutiqueComponent,
+    BoutiqueDetailComponent,
+    UpdateBoutiqueComponent
   ],
   imports: [
     BrowserModule,

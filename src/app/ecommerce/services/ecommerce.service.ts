@@ -95,8 +95,8 @@ export class EcommerceService {
   }
 
 
-  saveProduct(form) {
-    return this.http.post(this.productsUrl, form);
+  saveProduct(form, id) {
+    return this.http.post(this.productsUrl + '/' + id, form);
   }
 
   getProduct(id): Observable<any> {
