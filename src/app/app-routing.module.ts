@@ -1,61 +1,101 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AdministrationComponent} from './administration/administration.component';
-import {EcommerceComponent} from './ecommerce/ecommerce.component';
-import {AddProductComponent} from './ecommerce/add-product/add-product.component';
-import {DetailProductComponent} from './ecommerce/detail-product/detail-product.component';
-import {AdministrationDetailProductComponent} from './administration/administration-detail-product/administration-detail-product.component';
-import {AdministrationUpdateProductComponent} from './administration/administration-update-product/administration-update-product.component';
-import {CommandeComponent} from './administration/commande/commande.component';
-import { WomenProductsComponent } from './ecommerce/women-products/women-products.component';
-import { MenProductsComponent } from './ecommerce/men-products/men-products.component';
-import { BoutiqueComponent } from './boutique/boutique.component';
-import { AddBoutiqueComponent } from './add-boutique/add-boutique.component';
-import { BoutiqueDetailComponent } from './boutique-detail/boutique-detail.component';
-import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.component';
+import {AdministrationComponent} from './admin/administration/administration.component';
+import {EcommerceComponent} from './eco/ecommerce/ecommerce.component';
+import {AddProductComponent} from './admin/product/add-product/add-product.component';
+import {DetailProductComponent} from './eco/product/detail-product/detail-product.component';
+import {AdministrationDetailProductComponent} from './admin/product/administration-detail-product/administration-detail-product.component';
+import {AdministrationUpdateProductComponent} from './admin/product/administration-update-product/administration-update-product.component';
+import {CommandeComponent} from './admin/commande/commande/commande.component';
+import { WomenProductsComponent } from './eco/product/women-products/women-products.component';
+import { MenProductsComponent } from './eco/product/men-products/men-products.component';
+import { BoutiqueComponent } from './admin/boutique/boutique/boutique.component';
+import { AddBoutiqueComponent } from './admin/boutique/add-boutique/add-boutique.component';
+import { BoutiqueDetailComponent } from './admin/boutique/boutique-detail/boutique-detail.component';
+import { UpdateBoutiqueComponent } from './admin/boutique/update-boutique/update-boutique.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { SellerUpdateProductComponent } from './seller/product/seller-update-product/seller-update-product.component';
+import { SellerUpdateBoutiqueComponent } from './seller/boutique/seller-update-boutique/seller-update-boutique.component';
+import { SellerBoutiqueDetailComponent } from './seller/boutique/seller-boutique-detail/seller-boutique-detail.component';
+import { SellerAddBoutiqueComponent } from './seller/boutique/seller-add-boutique/seller-add-boutique.component';
+import { SellerBoutiqueListComponent } from './seller/boutique/selle-boutique-list/seller-boutique-list.component';
+import { SellerCommandeComponent } from './seller/commande/seller-commande/seller-commande.component';
+import { SellerDetailProductComponent } from './seller/product/seller-detail-product/seller-detail-product.component';
+import { SellerAddProductComponent } from './seller/product/seller-add-product/seller-add-product.component';
 
 const routes: Routes = [
   {
-  path: 'administration', component: AdministrationComponent
+  path: 'admin/home', component: AdministrationComponent
 },
   {
-    path: 'ecommerce', component: EcommerceComponent
+    path: 'ecommerce/home', component: EcommerceComponent
   },
   {
-    path: 'add-product/:id', component: AddProductComponent
+    path: 'admin/product/add/:id', component: AddProductComponent
   },
   {
-    path: 'detail-product/:id', component: DetailProductComponent
+    path: 'ecommerce/product/detail/:id', component: DetailProductComponent
   },
   {
-    path: 'administration-detail-product/:id', component: AdministrationDetailProductComponent
+    path: 'admin/product/detail/:id', component: AdministrationDetailProductComponent
   },
   {
-    path: 'administration-update-product/:id', component: AdministrationUpdateProductComponent
+    path: 'admin/product/update/:id', component: AdministrationUpdateProductComponent
   },
   {
-    path: 'administration-commandes', component: CommandeComponent
+    path: 'admin/commandes', component: CommandeComponent
   },
   {
-    path: 'women-collection', component: WomenProductsComponent
+    path: 'seller/product/add/:id', component: SellerAddProductComponent
   },
   {
-    path: 'men-collection', component: MenProductsComponent
+    path: 'seller/product/detail/:id', component: SellerDetailProductComponent
   },
   {
-    path: 'boutiques', component: BoutiqueComponent
+    path: 'seller/product/update/:id', component: SellerUpdateProductComponent
   },
   {
-    path: 'add-boutique', component: AddBoutiqueComponent
+    path: 'seller/commandes', component: SellerCommandeComponent
   },
   {
-    path: 'boutique-detail/:id', component: BoutiqueDetailComponent
+    path: 'ecommerce/women/collection', component: WomenProductsComponent
   },
   {
-    path: 'boutique-update/:id', component: UpdateBoutiqueComponent
+    path: 'ecommerce/men/collection', component: MenProductsComponent
   },
   {
-    path: '', redirectTo: 'ecommerce', pathMatch: 'full'
+    path: 'admin/boutiques', component: BoutiqueComponent
+  },
+  {
+    path: 'admin/add/boutique', component: AddBoutiqueComponent
+  },
+  {
+    path: 'admin/detail/boutique/:id', component: BoutiqueDetailComponent
+  },
+  {
+    path: 'admin/update/boutique/:id', component: UpdateBoutiqueComponent
+  },
+  {
+    path: 'seller/boutiques', component: SellerBoutiqueListComponent
+  },
+  {
+    path: 'seller/add/boutique', component: SellerAddBoutiqueComponent
+  },
+  {
+    path: 'seller/detail/boutique/:id', component: SellerBoutiqueDetailComponent
+  },
+  {
+    path: 'seller/update/boutique/:id', component: SellerUpdateBoutiqueComponent
+  },
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: 'register', component: RegisterComponent
+  },
+  {
+    path: '', redirectTo: 'ecommerce/home', pathMatch: 'full'
   }];
 
 @NgModule({

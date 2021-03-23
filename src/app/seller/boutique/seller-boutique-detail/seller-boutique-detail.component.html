@@ -1,0 +1,67 @@
+<app-admin-header></app-admin-header>
+<div class=" my-2">
+    <div class="alert alert-info text-center">
+        <h3><span>Boutique: </span>{{currentBoutique.name}}    | Lieu: <span> {{currentBoutique.localisation}}</span> | Status : <span *ngIf="!currentBoutique.status" class="text-danger">Fermer</span><span *ngIf="currentBoutique.status" class="text-success">Ouverte</span></h3>
+    </div>
+    <div class="alert-info title card-header  text-center">
+      <h1>Mes articles</h1>
+    </div>
+  <div class="container-fluid my-2">
+    <div class="row">
+      <div class="col-md-4 py-3">
+        <a *ngIf="!currentBoutique.status" href="#" class="btn btn-warning btn-lg" style="cursor: not-allowed;">Impossible d'ajouter un nouveau produit</a>
+        <a *ngIf="currentBoutique.status" href="/seller/product/add/{{currentBoutique.id}}" class="btn btn-primary btn-lg">Nouveau produit</a>
+      </div>
+      <div class="col-md-4 py-3">
+        <form name="codeForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" >
+          <div class="form-group">
+            <label for="">Code d'activation</label>
+            <input type="text"  name="code" [(ngModel)]="form.code" #code="ngModel" placeholder="Entrer votre code d'activation">
+            <button type="submit" class="btn btn-success">Activer</button>
+            
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group pull-right" style="width: 50%">
+          <label >Recherche <i class="fa fa-search"></i></label>
+          <input type="text" class="form-control" [(ngModel)]="searchItem">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+    <hr>
+    <div class="card-text">
+      <table class="table table-responsive-md table-bordered">
+        <thead class="title">
+        <th></th>
+        <th>Nom</th>
+        <th>Categorie</th>
+        <th>Genre</th>
+        <th>Montant</th>
+        <th>Qualite</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+          <td><img src="{{item.pictureUrl}}" alt="" height="70" width="80">
+          </td>
+          <td>{{item.name}}</td>
+          <td>{{item.category}}</td>
+          <td>{{item.genre}} </td>
+          <td>{{item.price}} CDF</td>
+          <td>{{item.quality}} </td>
+          <td>
+            <a href="/seller/product/detail/{{item.id}}" class="btn btn-success m-1"><i class="fa fa-angle-double-right"></i></a>
+            <a href="/seller/product/update/{{item.id}}" class="btn btn-secondary m-1"><i class="fa fa-edit"></i></a>
+            <button  (click)="deleteProduct(item.id)" class="btn btn-danger m-1"><i class="fa fa-trash"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>

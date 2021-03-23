@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ProductsComponent} from '../../ecommerce/products/products.component';
-import {ShoppingCartComponent} from '../../ecommerce/shopping-cart/shopping-cart.component';
-import {OrdersComponent} from '../../ecommerce/orders/orders.component';
+import {ProductsComponent} from '../../eco/product/products/products.component';
+import {ShoppingCartComponent} from '../../eco/shopping-cart/shopping-cart.component';
+import {OrdersComponent} from '../../eco/orders/orders.component';
 
 @Component({
   selector: 'app-header',
