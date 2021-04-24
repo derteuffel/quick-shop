@@ -1,13 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Parametre } from '../models/parametre';
-import { JwtResponse } from './jwt-response';
+import { User } from '../models/user';
 import { AuthLoginInfo } from './requests/login-info';
 import { SignUpInfo } from './requests/signup-info';
-import { TokenStorageService } from './token-storage.service';
-
+import { map } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -18,24 +17,30 @@ const httpOptions = {
 export class AuthService {
 
 
-  private loginUrl = 'http://localhost:8080/api/auth/login';
-  private signupUrl = 'http://localhost:8080/api/auth/signup';
+  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<User>;
+
+  private authUrl = 'http://localhost:8080/api/auth';
 
   username: string;
 
   constructor(private http: HttpClient,
-    private tokenService: TokenStorageService,
-              private param: Parametre,
               private router: Router,) {
+                this.currentUserSubject = new BehaviorSubject<User> (JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  logout() {
-    this.username = 'undefined';
-    this.param.connecte = null;
-    this.param.username = null;
-    this.router.navigate(['/login']);
-    this.tokenService.signOut();
-    this.reloadPage();
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+  }
+
+  logout(): Observable<any> {
+    return this.http.post(this.authUrl+'/logout',{}).pipe(
+      map(response => {
+        localStorage.removeItem('currentUser');
+        this.currentUserSubject.next(null);
+      })
+    );
   }
 
   reloadPage() {
@@ -49,11 +54,23 @@ export class AuthService {
     }, httpOptions);
   } */
 
-  login(user): Observable<JwtResponse> {
-    return this.http.post<JwtResponse>(this.loginUrl, user, httpOptions);
+  login(user): Observable<any> {
+    const header = new HttpHeaders(user ? {
+      authorization: 'Basic ' + btoa(user.username + ':' + user.password)
+    }:{});
+    return this.http.get<any>(this.authUrl+'/login', {headers: header}).pipe(
+      map(response => {
+        if(response){
+          localStorage.setItem('currentUser', JSON.stringify(response));
+          this.currentUserSubject.next(response);
+        }
+
+        return response;
+      })
+    );
   }
 
   signUp(user): Observable<any> {
-    return this.http.post(this.signupUrl, user, httpOptions);
+    return this.http.post(this.authUrl+'/signup', JSON.stringify(user), {headers: {"Content-Type":"application/json; charset= UTF-8"}});
   }
 }

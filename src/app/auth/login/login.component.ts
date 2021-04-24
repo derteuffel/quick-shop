@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { AuthLoginInfo } from '../requests/login-info';
-import { TokenStorageService } from '../token-storage.service';
 import { Parametre } from '../../models/parametre';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +16,14 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
+  role: Role;
   private loginInfo: AuthLoginInfo;
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
-    private router: Router, private param: Parametre) { }
+  constructor(private authService: AuthService, 
+    private router: Router) { }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
+    if(this.authService.currentUserValue){
+      this.router.navigateByUrl('login/success');
     }
   }
   onSubmit() {
@@ -40,19 +40,17 @@ export class LoginComponent implements OnInit {
         console.log(data);
         const type = data.type;
         if(typeof type === 'undefined'){
-          this.param.connecte = true;
-          this.param.username = data.username;
-          this.tokenStorage.saveToken(data.accessToken);
-          this.tokenStorage.saveUser(data);
+          
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.roles = this.tokenStorage.getUser().roles;
-          if(this.roles.includes('ROLE_ROOT') || this.roles.includes('ROLE_SELLER')){
-            this.router.navigateByUrl('/admin/boutiques');
+          localStorage.setItem('id',this.authService.currentUserValue.id+'');
+          this.role = this.authService.currentUserValue.role;
+          if(this.role === Role.SELLER){
+            this.router.navigateByUrl('/seller/boutiques');
           } else{
-            this.router.navigateByUrl('/seller/boutiques')
+            this.router.navigateByUrl('/admin/boutiques')
           }
-          console.log(this.roles);
+          console.log(this.role);
         }
         
         //this.reloadPage();

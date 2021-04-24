@@ -30,9 +30,6 @@ import { BoutiqueDetailComponent } from './admin/boutique/boutique-detail/boutiq
 import { UpdateBoutiqueComponent } from './admin/boutique/update-boutique/update-boutique.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { AuthInterceptor } from './auth/auth-interceptor';
-import { AuthService } from './auth/auth.service';
-import { TokenStorageService } from './auth/token-storage.service';
 import { Parametre } from './models/parametre';
 import { SellerAddBoutiqueComponent } from './seller/boutique/seller-add-boutique/seller-add-boutique.component';
 import { SellerAddProductComponent } from './seller/product/seller-add-product/seller-add-product.component';
@@ -43,6 +40,9 @@ import { SellerDetailProductComponent } from './seller/product/seller-detail-pro
 import { SellerHeaderComponent } from './seller/seller-header/seller-header.component';
 import { SellerUpdateBoutiqueComponent } from './seller/boutique/seller-update-boutique/seller-update-boutique.component';
 import { SellerUpdateProductComponent } from './seller/product/seller-update-product/seller-update-product.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginSuccessComponent } from './auth/login-success/login-success.component';
 
 
 @NgModule({
@@ -77,7 +77,10 @@ import { SellerUpdateProductComponent } from './seller/product/seller-update-pro
     BoutiqueDetailComponent,
     UpdateBoutiqueComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UnauthorizedComponent,
+    NotFoundComponent,
+    LoginSuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -88,10 +91,7 @@ import { SellerUpdateProductComponent } from './seller/product/seller-update-pro
     NgxPaginationModule,
     Ng2SearchPipeModule
   ],
-  providers: [ Parametre,
-  {provide : HTTP_INTERCEPTORS,
-  useClass: AuthInterceptor,
-  multi: true}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

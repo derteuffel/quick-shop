@@ -9,10 +9,10 @@
         <a class="new-post"  href="/admin/commandes">Commandes</a>
         <!--<button class="logout btn btn-default" (click)="logout()">Logout</button>-->
       </div>
-      <div *ngIf="authority" class="col-md-3" >
+      <div *ngIf="isConnected" class="col-md-3" >
         <a (click)="logout()" class="register btn btn-default">Deconnexion</a>
       </div> 
-      <div *ngIf="!authority" class="col-md-3" >
+      <div *ngIf="!isConnected" class="col-md-3" >
         <a  href="/login" class="login btn btn-default">Connexion</a>
         <a href="/register" class="register btn btn-default">Inscription</a>
       </div> <!-- Login and Register -->

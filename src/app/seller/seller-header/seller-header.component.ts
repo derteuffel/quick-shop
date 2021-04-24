@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TokenStorageService } from 'src/app/auth/token-storage.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-seller-header',
@@ -10,19 +10,21 @@ import { TokenStorageService } from 'src/app/auth/token-storage.service';
 export class SellerHeaderComponent implements OnInit {
 
   roles: string[];
-  authority: string;
+  isConnected: boolean;
 
-  constructor(private tokenStorage: TokenStorageService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
-    if (this.tokenStorage.getToken()) {
-      this.authority = this.tokenStorage.getToken();
+    if(this.authService.currentUserValue.token){
+      this.isConnected = true;
+    }else{
+      this.isConnected = false;
     }
+  
   }
 
   logout() {
-    this.tokenStorage.signOut();
+    this.authService.logout;
     this.router.navigateByUrl('/login');
   }
 
