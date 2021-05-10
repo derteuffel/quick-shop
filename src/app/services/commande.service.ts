@@ -6,8 +6,8 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class CommandeService {
-  private productsUrl = 'http://localhost:8080/api/produits';
-  private ordersUrl = 'http://localhost:8080/api/commandes';
+  private productsUrl = 'http://localhost:8181/api/produits';
+  private ordersUrl = 'http://localhost:8181/api/commandes';
 
   constructor(private http: HttpClient) { }
 

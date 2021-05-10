@@ -11,8 +11,8 @@ import {Observable} from 'rxjs';
 })
 export class EcommerceService {
 
-  private productsUrl = 'http://localhost:8080/api/produits';
-  private ordersUrl = 'http://localhost:8080/api/commandes';
+  private productsUrl = 'http://localhost:8181/api/produits';
+  private ordersUrl = 'http://localhost:8181/api/commandes';
 
   private productOrder: ProductOrder;
   private orders: ProductOrders = new ProductOrders();
@@ -31,11 +31,15 @@ export class EcommerceService {
   }
 
   getAllProducts() {
-    return this.http.get(this.productsUrl);
+    return this.http.get(this.productsUrl + '/all');
   }
 
   getAllProductsAdmin() {
     return this.http.get(this.productsUrl + '/admin');
+  }
+
+  getAllMobile(){
+    return this.http.get(this.productsUrl + '/all/mobile');
   }
 
   getAllProductsBoutique(id) {
@@ -43,27 +47,27 @@ export class EcommerceService {
   }
 
   getProductGenre(genre): Observable<any> {
-    return this.http.get(this.productsUrl + '/genre/' + genre);
+    return this.http.get(this.productsUrl + '/all/genre/' + genre);
   }
 
   getProductCategories(category): Observable<any> {
-    return this.http.get(this.productsUrl + '/category/' + category);
+    return this.http.get(this.productsUrl + '/all/category/' + category);
   }
 
   getProductCategoryAndGenre(category,genre): Observable<any> {
-    return this.http.get(this.productsUrl + '/sort/' + category + '/'+genre);
+    return this.http.get(this.productsUrl + '/all/sort/' + category + '/'+genre);
   }
 
   getProductMarqueAndGenre(marque,genre): Observable<any> {
-    return this.http.get(this.productsUrl + '/marque/' + marque + '/'+genre);
+    return this.http.get(this.productsUrl + '/all/marque/' + marque + '/'+genre);
   }
 
   getProductColorAndGenre(color,genre): Observable<any> {
-    return this.http.get(this.productsUrl + '/colors/' + color + '/'+genre);
+    return this.http.get(this.productsUrl + '/all/colors/' + color + '/'+genre);
   }
 
   getProductQuality(quality): Observable<any> {
-    return this.http.get(this.productsUrl + '/quality/' + quality);
+    return this.http.get(this.productsUrl + '/all/quality/' + quality);
   }
 
   saveOrder(order: ProductOrders) {
@@ -108,17 +112,17 @@ export class EcommerceService {
   }
 
   updatePicture(imageForm, id): Observable<any> {
-    return this.http.post(this.productsUrl + '/upload/' + id, imageForm);
+    return this.http.post(this.productsUrl + '/admin/upload/' + id, imageForm);
   }
   updatePictures(imageForm, id): Observable<any> {
-    return this.http.post(this.productsUrl + '/uploads/' + id, imageForm);
+    return this.http.post(this.productsUrl + '/admin/uploads/' + id, imageForm);
   }
 
   updateProduct(currentProduct, id): Observable<any> {
-    return this.http.put(this.productsUrl + '/' + id, currentProduct);
+    return this.http.put(this.productsUrl + '/admin/' + id, currentProduct);
   }
 
   deleteProduct(id): Observable<any> {
-    return this.http.delete(this.productsUrl + '/' + id);
+    return this.http.delete(this.productsUrl + '/admin/' + id);
   }
 }

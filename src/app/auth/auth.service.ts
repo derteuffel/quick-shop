@@ -20,7 +20,7 @@ export class AuthService {
   public currentUser: Observable<User>;
   private currentUserSubject: BehaviorSubject<User>;
 
-  private authUrl = 'http://localhost:8080/api/auth';
+  private authUrl = 'http://localhost:8181/api/auth';
 
   username: string;
 
