@@ -43,6 +43,11 @@ import { SellerUpdateProductComponent } from './seller/product/seller-update-pro
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginSuccessComponent } from './auth/login-success/login-success.component';
+import {TableModule} from "primeng/table";
+import {ButtonModule} from "primeng/button";
+import {MessagesModule} from "primeng/messages";
+import {ToastrModule} from "ngx-toastr";
+import {ToastModule} from "primeng/toast";
 
 
 @NgModule({
@@ -89,7 +94,18 @@ import { LoginSuccessComponent } from './auth/login-success/login-success.compon
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    TableModule,
+    ButtonModule,
+    MessagesModule,
+    ToastModule,
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      progressAnimation: 'increasing',
+      preventDuplicates: true
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

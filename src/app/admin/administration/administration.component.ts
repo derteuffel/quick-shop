@@ -5,13 +5,15 @@ import {EcommerceService} from '../../services/ecommerce.service';
 @Component({
   selector: 'app-administration',
   templateUrl: './administration.component.html',
-  styleUrls: ['./administration.component.css']
+  styleUrls: ['./administration.component.sass']
 })
 export class AdministrationComponent implements OnInit {
 
   lists: any;
   p: number = 1;
   searchItem: string;
+  public submitted: boolean = false;
+  loading: boolean = true;
 
   constructor(private ecommerceService: EcommerceService) { }
 
