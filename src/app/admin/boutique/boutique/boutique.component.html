@@ -26,9 +26,8 @@
       <table class="table table-responsive-md table-bordered">
         <thead class="title">
         <th>Nom</th>
-        <th>Localisation</th>
-        <th>Telephones</th>
         <th>Region</th>
+        <th>Telephones</th>
         <th>Code d'activation</th>
         <th>Status</th>
         <th>Actions</th>
@@ -36,19 +35,17 @@
         <tbody>
         <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
           <td>{{item?.name}}</td>
-          <td>{{item?.localisation}}</td>
-          <td><ul>
-              <li>{{item?.phone}}</li>
-              <li>{{item?.cardNumber}}</li>
-              <li>{{item?.region}}</li>
-          </ul> </td>
+          <td>{{item?.region}}</td>
+          <td>{{item?.phone}} </td>
           <td>{{item?.activationCode}} <br>
           <a type="button" (click)="sendCode(item?.id)" class="btn btn-primary">Envoyer code</a>
           </td>
-          <td  >
-              <span *ngIf="!item?.status" class="badge badge-danger">Fermer</span>
-              <span *ngIf="item?.status" class="badge badge-success">Ouverte</span>
-        </td>
+          <td *ngIf="!item?.status" class="alert alert-danger" >
+              <span >Fermer</span>
+          </td>
+          <td *ngIf="item?.status" class="alert alert-success" >
+            <span >Ouverte</span>
+          </td>
           <td>
             <button href="/admin/detail/boutique/{{item.id}}" class="btn btn-success m-1"><i class="pi pi-eye"></i></button>
             <button (click)="setBoutique(contentUpdate, item)" class="btn btn-secondary m-1"><i class="pi pi-pencil"></i></button>

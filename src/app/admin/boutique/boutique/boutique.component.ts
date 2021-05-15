@@ -52,17 +52,11 @@ export class BoutiqueComponent implements OnInit {
 
   loadAll(){
     this.boutiqueService.getAllBoutiques().subscribe(
-/*      data => {
+     data => {
         this.lists = data;
         console.log(data);
       }, error => {
         console.log(error);
-      }*/
-
-      (res: any) => {
-        this.lists = res.body.data
-      }, error1 => {
-        console.log(error1);
       }
     );
   }
