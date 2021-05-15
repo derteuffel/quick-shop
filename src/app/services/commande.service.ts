@@ -11,7 +11,14 @@ export class CommandeService {
 
   constructor(private http: HttpClient) { }
 
+  // recupere toute les commandes
   getAll(): Observable<any> {
-    return this.http.get(this.ordersUrl);
+    return this.http.get(this.ordersUrl, {observe: "response"});
+  }
+
+  // enregistrer une commande
+
+  saveCmd(form): Observable<any> {
+    return this.http.post(this.ordersUrl, form, {observe: "response"});
   }
 }

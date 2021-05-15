@@ -15,10 +15,10 @@
       <div class="col-md-4 py-3">
         <form name="codeForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" >
         <div class="form-group">
-          <label for="">Code d'activation</label>
+          <label>Code d'activation</label>
           <input type="text"  name="code" [(ngModel)]="form.code" #code="ngModel" placeholder="Entrer votre code d'activation">
           <button type="submit" class="btn btn-success">Activer</button>
-          
+
         </div>
       </form>
       </div>

@@ -15,7 +15,7 @@
                   <p class="text-muted">Sign In to your account</p>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-user"></i></span>
+                      <span class="input-group-text"><i class="pi pi-user"></i></span>
                     </div>
                     <input type="text" class="form-control"  required [(ngModel)]="form.username"  placeholder="Nom d'utilidateur" name="username" #username="ngModel" />
                     <div *ngIf="f.submitted && username.invalid">
@@ -24,7 +24,7 @@
                   </div>
                   <div class="input-group mb-4">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                      <span class="input-group-text"><i class="pi pi-lock"></i></span>
                     </div>
                     <input type="password" class="form-control" required [(ngModel)]="form.password"  name="password" placeholder="Mot de passe" name="password" #password="ngModel" minlength="6" />
                     <div *ngIf="f.submitted && password.invalid">
@@ -34,7 +34,7 @@
                   </div>
                   <div class="row">
                     <div class="col-6">
-                      <button type="submit" class="btn btn-primary px-4">Login</button>
+                      <button type="submit" class="btn btn-primary px-4">Connexion</button>
                       <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
                         Echec connexion: {{errorMessage}}
                       </div>
@@ -58,4 +58,6 @@
     </div>
   </main>
 </div>
+
+
 

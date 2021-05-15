@@ -23,6 +23,7 @@ export class BoutiqueComponent implements OnInit {
   boutiqueRef;
   public submitted: boolean = false;
   public boutiqueFormGroup?: FormGroup;
+  public boutiqueUpdateFormGroup?: FormGroup;
   public currentBoutique;
 
   constructor(private boutiqueService: BoutiqueService,
@@ -41,26 +42,27 @@ export class BoutiqueComponent implements OnInit {
   initForm() {
     this.boutiqueFormGroup = new FormGroup({
       localisation: new FormControl(''),
-      id: new FormControl(''),
       name: new FormControl(''),
-      orangeNumber: new FormControl(''),
-      mtnNumber: new FormControl(''),
-      othernumber: new FormControl(''),
-      status: new FormControl(''),
-      activationCode: new FormControl(''),
-
-
+      phone: new FormControl(''),
+      region: new FormControl(''),
+      cardNumber: new FormControl(''),
     })
   }
 
 
   loadAll(){
     this.boutiqueService.getAllBoutiques().subscribe(
-      data => {
+/*      data => {
         this.lists = data;
         console.log(data);
       }, error => {
         console.log(error);
+      }*/
+
+      (res: any) => {
+        this.lists = res.body.data
+      }, error1 => {
+        console.log(error1);
       }
     );
   }
@@ -70,6 +72,7 @@ export class BoutiqueComponent implements OnInit {
     if (this.boutiqueFormGroup?.invalid) return;
     this.boutiqueService.saveBoutique(this.boutiqueFormGroup?.value).subscribe(
       (data: any) => {
+       // this.router.navigateByUrl('/admin/boutiques');
         this.boutiqueFormGroup.reset();
         this.messageService.add({severity:'success', summary:'Success', detail:'boutique submitted', sticky: true});
         this.loadAll();
@@ -86,13 +89,13 @@ export class BoutiqueComponent implements OnInit {
   setBoutique(contentUpdate, event) {
     this.modalService.open(contentUpdate, {size: "lg"});
     this.currentBoutique = event.name
-    this.boutiqueFormGroup.patchValue({
+    this.boutiqueUpdateFormGroup.patchValue({
       id: event.id,
       name: event.name,
       localisation: event.localisation,
-      orangeNumber: event.orangeNumber,
-      mtnNumber: event.mtnNumber,
-      othernumber: event.othernumber,
+      phone: event.phone,
+      region: event.region,
+      cardNumber: event.cardNumber,
       status: event.status,
       activationCode: event.activationCode
 
@@ -103,11 +106,12 @@ export class BoutiqueComponent implements OnInit {
 
   updateBoutique() {
     const CompanyData = {
-      id: this.boutiqueFormGroup.get('id').value,
+      id: this.boutiqueUpdateFormGroup.get('id').value,
       name: this.boutiqueFormGroup.get('name').value,
       localisation: this.boutiqueFormGroup.get('localisation').value,
-      orangeNumber: this.boutiqueFormGroup.get('orangeNumber').value,
-      mtnNumber: this.boutiqueFormGroup.get('mtnNumber').value,
+      phone: this.boutiqueFormGroup.get('phone').value,
+      region: this.boutiqueFormGroup.get('region').value,
+      cardNumber: this.boutiqueFormGroup.get('cardNumber').value,
       status: this.boutiqueFormGroup.get('status').value,
       activationCode: this.boutiqueFormGroup.get('activationCode').value,
     }
@@ -120,6 +124,28 @@ export class BoutiqueComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     )
+  }
+
+
+  showDetail(contentDetail, event){
+    console.log(event)
+    this.modalService.open(contentDetail, {size: "lg"});
+    this.boutiqueRef = event.id
+    console.log(this.boutiqueRef);
+
+  }
+
+  // detail d'une boutique
+  getBoutique(){
+    this.boutiqueService.getBoutique(this.boutiqueRef).subscribe(
+
+      data => {
+        this.currentBoutique = data;
+        console.log(data);
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
   // suppression d'une Boutique

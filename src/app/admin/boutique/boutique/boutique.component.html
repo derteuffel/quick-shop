@@ -28,30 +28,31 @@
         <th>Nom</th>
         <th>Localisation</th>
         <th>Telephones</th>
+        <th>Region</th>
         <th>Code d'activation</th>
         <th>Status</th>
         <th>Actions</th>
         </thead>
         <tbody>
         <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-          <td>{{item.name}}</td>
-          <td>{{item.localisation}}</td>
+          <td>{{item?.name}}</td>
+          <td>{{item?.localisation}}</td>
           <td><ul>
-              <li>{{item.orangeNumber}}</li>
-              <li>{{item.mtnNumber}}</li>
-              <li>{{item.othernumber}}</li>
+              <li>{{item?.phone}}</li>
+              <li>{{item?.cardNumber}}</li>
+              <li>{{item?.region}}</li>
           </ul> </td>
-          <td>{{item.activationCode}} <br>
-          <a type="button" (click)="sendCode(item.id)" class="btn btn-primary">Envoyer code</a>
+          <td>{{item?.activationCode}} <br>
+          <a type="button" (click)="sendCode(item?.id)" class="btn btn-primary">Envoyer code</a>
           </td>
           <td  >
-              <span *ngIf="!item.status" class="badge badge-danger">Fermer</span>
-              <span *ngIf="item.status" class="badge badge-success">Ouverte</span>
+              <span *ngIf="!item?.status" class="badge badge-danger">Fermer</span>
+              <span *ngIf="item?.status" class="badge badge-success">Ouverte</span>
         </td>
           <td>
-            <a href="/admin/detail/boutique/{{item.id}}" class="btn btn-success m-1"><i class="fa fa-angle-double-right"></i></a>
-            <a href="/admin/update/boutique/{{item.id}}" class="btn btn-secondary m-1"><i class="fa fa-edit"></i></a>
-            <button  (click)="deleteProduct(item.id)" class="btn btn-danger m-1"><i class="fa fa-trash"></i></button>
+            <button href="/admin/detail/boutique/{{item.id}}" class="btn btn-success m-1"><i class="pi pi-eye"></i></button>
+            <button (click)="setBoutique(contentUpdate, item)" class="btn btn-secondary m-1"><i class="pi pi-pencil"></i></button>
+            <button  (click)="deleteBoutique(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
           </td>
         </tr>
         </tbody>
@@ -61,9 +62,12 @@
   </div>
 
 
+
+
+
 <!-- TOAST MESSAGE TEMPLATE -->
 <p-toast position="top-right"></p-toast>
-<p-toast position="bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" >
   <ng-template let-message pTemplate="message">
     <div class="p-flex p-flex-column" style="flex: 1">
       <div class="p-text-center">
@@ -84,7 +88,9 @@
 </p-toast>
 
 
-<!-- MODAL  FORM FOR ADD COMPANY -->
+
+
+<!-- MODAL  FORM FOR ADD Boutique -->
 
 <ng-template #contentAdd let-modal>
   <div class="modal-header">
@@ -106,17 +112,17 @@
           <input type="text" class="form-control" id="montant" required formControlName="localisation" placeholder="Localisation de votre boutique">
         </div>
         <div class="form-group">
-          <label for="marque">Numero Orange</label>
-          <input type="text" class="form-control" id="marque" required formControlName="orangeNumber" placeholder="Entrer votre numero orange">
+          <label for="marque">Numero de téléphone</label>
+          <input type="text" class="form-control" id="marque" required formControlName="phone" placeholder="Entrer votre numero">
         </div>
 
         <div class="form-group">
-          <label for="marque">Numero Mtn</label>
-          <input type="text" class="form-control" required formControlName="mtnNumber" placeholder="Entrer votre numero Mtn">
+          <label for="marque">Numero Carte</label>
+          <input type="text" class="form-control" required formControlName="cardNumber" placeholder="Entrer votre numero de carte">
         </div>
         <div class="form-group">
-          <label for="marque">Autre Numero</label>
-          <input type="text" class="form-control"required formArrayName="othernumber" placeholder="Autre Numero">
+          <label for="marque">Region</label>
+          <input type="text" class="form-control"required formControlName="region" placeholder="Region">
         </div>
 
         <br>
@@ -134,3 +140,87 @@
     </p-card>
   </div>
 </ng-template>
+
+
+<!-- MODAL  FORM FOR UPDATE Boutique -->
+
+<ng-template #contentUpdate let-modal>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p-card header="Simple Card" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+      <form [formGroup]="boutiqueFormGroup" (submit)="updateBoutique()">
+        <h5>Boutique</h5>
+        <div class="form-group">
+          <label for="name">Nom de votre boutique</label>
+          <input type="text" class="form-control" id="name" required formControlName="name" placeholder="Nom de l'article" >
+        </div>
+
+        <div class="form-group">
+          <label for="montant">Localisation</label>
+          <input type="text" class="form-control" id="montant" required formControlName="localisation" placeholder="Localisation de votre boutique">
+        </div>
+        <div class="form-group">
+          <label for="marque">Numero de téléphone</label>
+          <input type="text" class="form-control" id="marque" required formControlName="phone" placeholder="Entrer votre numero">
+        </div>
+
+        <div class="form-group">
+          <label for="marque">Numero Carte</label>
+          <input type="text" class="form-control" required formControlName="cardNumber" placeholder="Entrer votre numero de carte">
+        </div>
+        <div class="form-group">
+          <label for="marque">Region</label>
+          <input type="text" class="form-control"required formControlName="region" placeholder="Region">
+        </div>
+
+        <br>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-6">
+              <a href="/admin/boutiques" class="btn btn-secondary" style="width: 100%"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour </a>
+            </div>
+            <div class="col-md-6">
+              <button type="submit" class="btn btn-success" style="width: 100%">Enregistrer <i class="fa fa-check"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</ng-template>
+
+
+<!-------------------------------------------------------DELETE Boutique START-------------------------------------------------------------->
+<ng-template #contentDelete let-modal>
+  <div class="modal-header dark-modal" style="background-color:#F5B669;">
+    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="color: red;">Voulez vous vraiment supprimer cette boutique??&hellip;</p>
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F5B669;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-danger"
+                (click)="onDelete() + modal.close('Close click')">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+<!-------------------------------------------------------DELETE Boutique END-------------------------------------------------------------->
+
+

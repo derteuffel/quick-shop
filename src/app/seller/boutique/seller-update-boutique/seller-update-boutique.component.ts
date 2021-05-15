@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { error } from 'protractor';
 import { Boutique } from '../../../models/boutique';
 import { BoutiqueService } from '../../../services/boutique.service';
 

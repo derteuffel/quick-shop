@@ -12,7 +12,6 @@ import { FooterComponent } from './footer/footer/footer.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AdministrationComponent } from './admin/administration/administration.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -30,7 +29,6 @@ import { BoutiqueDetailComponent } from './admin/boutique/boutique-detail/boutiq
 import { UpdateBoutiqueComponent } from './admin/boutique/update-boutique/update-boutique.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { Parametre } from './models/parametre';
 import { SellerAddBoutiqueComponent } from './seller/boutique/seller-add-boutique/seller-add-boutique.component';
 import { SellerAddProductComponent } from './seller/product/seller-add-product/seller-add-product.component';
 import { SellerBoutiqueDetailComponent } from './seller/boutique/seller-boutique-detail/seller-boutique-detail.component';
@@ -48,6 +46,7 @@ import {ButtonModule} from "primeng/button";
 import {MessagesModule} from "primeng/messages";
 import {ToastrModule} from "ngx-toastr";
 import {ToastModule} from "primeng/toast";
+import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 
 
 @NgModule({
@@ -99,6 +98,8 @@ import {ToastModule} from "primeng/toast";
     ButtonModule,
     MessagesModule,
     ToastModule,
+    IconModule,
+    IconSetModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 1500,
       positionClass: 'toast-top-right',
@@ -107,7 +108,7 @@ import {ToastModule} from "primeng/toast";
       preventDuplicates: true
     }),
   ],
-  providers: [],
+  providers: [IconSetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
