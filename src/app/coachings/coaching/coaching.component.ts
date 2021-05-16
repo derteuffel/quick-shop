@@ -71,7 +71,7 @@ export class CoachingComponent implements OnInit {
   }
 
 
-  setBoutique(contentUpdate, event) {
+  setCoaching(contentUpdate, event) {
     this.modalService.open(contentUpdate, {size: "lg"});
     this.currentCoaching = event.region
     this.coachingUpdateFormGroup.patchValue({
@@ -85,7 +85,7 @@ export class CoachingComponent implements OnInit {
 
   }
 
-  updateBoutique() {
+  updateCoaching() {
     const CompanyData = {
       id: this.coachingUpdateFormGroup.get('id').value,
       phone1: this.coachingUpdateFormGroup.get('phone1').value,
