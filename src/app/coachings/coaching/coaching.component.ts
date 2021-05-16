@@ -15,6 +15,8 @@ export class CoachingComponent implements OnInit {
 
   lists: any = {};
   boutiqueRef;
+  p: number = 1;
+  searchItem: string;
   public submitted: boolean = false;
   public coachingFormGroup?: FormGroup;
   public coachingUpdateFormGroup?: FormGroup;

@@ -14,6 +14,8 @@ import {SessionCoachingService} from "../../services/session-coaching.service";
 export class CoachingSessionComponent implements OnInit {
 
   lists: any = {};
+  p: number = 1;
+  searchItem: string;
   boutiqueRef;
   public submitted: boolean = false;
   public sessionFormGroup?: FormGroup;

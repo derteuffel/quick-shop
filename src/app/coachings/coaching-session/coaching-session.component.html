@@ -25,10 +25,10 @@
   <div class="card-text">
     <table class="table table-responsive-md table-bordered">
       <thead class="title">
-      <th>Label</th>
-      <th>Date de Debut</th>
-      <th>Date de fin</th>
-      <th>Actions</th>
+        <th>Label</th>
+        <th>Date de Debut</th>
+        <th>Date de fin</th>
+        <th>Actions</th>
       </thead>
       <tbody>
       <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
@@ -36,7 +36,6 @@
         <td>{{item?.region}}</td>
         <td>{{item?.startDate}} </td>
         <td>{{item?.endDate}}</td>
-        </td>
         <td>
           <button  class="btn btn-success m-1"><i class="pi pi-eye"></i></button>
           <button (click)="setCoaching(contentUpdate, item)" class="btn btn-secondary m-1"><i class="pi pi-pencil"></i></button>
