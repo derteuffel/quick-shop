@@ -47,13 +47,15 @@ import {MessagesModule} from "primeng/messages";
 import {ToastrModule} from "ngx-toastr";
 import {ToastModule} from "primeng/toast";
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
-import { LoadingComponent } from './components/loading/loading.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {ComponentsModule} from "./components/components.module";
 import { CoachingComponent } from './coachings/coaching/coaching.component';
 import { CoachingSessionComponent } from './coachings/coaching-session/coaching-session.component';
+import {RouterModule} from "@angular/router";
+import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
+import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
+import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
+
 
 
 @NgModule({
@@ -93,13 +95,17 @@ import { CoachingSessionComponent } from './coachings/coaching-session/coaching-
     NotFoundComponent,
     LoginSuccessComponent,
     CoachingComponent,
-    CoachingSessionComponent
+    CoachingSessionComponent,
+    AdminFooterComponent,
+    AdminSidebarComponent,
+    AdminNavbarComponent,
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
@@ -107,7 +113,6 @@ import { CoachingSessionComponent } from './coachings/coaching-session/coaching-
     TableModule,
     ButtonModule,
     MessagesModule,
-    ComponentsModule,
     NgbModule,
     ToastModule,
     IconModule,

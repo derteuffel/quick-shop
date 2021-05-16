@@ -8,7 +8,7 @@ import { Role } from 'src/app/models/role';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   role: Role;
   private loginInfo: AuthLoginInfo;
-  constructor(private authService: AuthService, 
+  constructor(private authService: AuthService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -34,13 +34,13 @@ export class LoginComponent implements OnInit {
       this.form.password);
 
     this.authService.login(this.loginInfo).subscribe(
-      
+
       data => {
         console.log(' login action');
         console.log(data);
         const type = data.type;
         if(typeof type === 'undefined'){
-          
+
           this.isLoginFailed = false;
           this.isLoggedIn = true;
           localStorage.setItem('id',this.authService.currentUserValue.id+'');
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
           }
           console.log(this.role);
         }
-        
+
         //this.reloadPage();
       },
       error => {

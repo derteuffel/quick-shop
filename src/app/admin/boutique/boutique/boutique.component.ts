@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { error } from 'protractor';
 import { BoutiqueService } from '../../../services/boutique.service';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -41,11 +40,14 @@ export class BoutiqueComponent implements OnInit {
 
   initForm() {
     this.boutiqueFormGroup = new FormGroup({
+      id: new FormControl(''),
       localisation: new FormControl(''),
       name: new FormControl(''),
       phone: new FormControl(''),
       region: new FormControl(''),
       cardNumber: new FormControl(''),
+      status: new FormControl(''),
+      activationCode: new FormControl(''),
     })
   }
 
@@ -83,7 +85,7 @@ export class BoutiqueComponent implements OnInit {
   setBoutique(contentUpdate, event) {
     this.modalService.open(contentUpdate, {size: "lg"});
     this.currentBoutique = event.name
-    this.boutiqueUpdateFormGroup.patchValue({
+    this.boutiqueFormGroup.patchValue({
       id: event.id,
       name: event.name,
       localisation: event.localisation,
@@ -100,7 +102,7 @@ export class BoutiqueComponent implements OnInit {
 
   updateBoutique() {
     const CompanyData = {
-      id: this.boutiqueUpdateFormGroup.get('id').value,
+      id: this.boutiqueFormGroup.get('id').value,
       name: this.boutiqueFormGroup.get('name').value,
       localisation: this.boutiqueFormGroup.get('localisation').value,
       phone: this.boutiqueFormGroup.get('phone').value,

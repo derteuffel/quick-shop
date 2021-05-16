@@ -1,62 +1,93 @@
-<app-admin-header></app-admin-header>
+<app-admin-sidebar></app-admin-sidebar>
+<div class="main-content">
+  <!-- Top navbar -->
+  <app-admin-navbar></app-admin-navbar>
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
 
-<div class=" my-2">
-    <div class="alert-info title card-header  text-center">
-      <h1>Mes boutiques</h1>
-    </div>
-  <div class="container-fluid my-2">
-    <div class="row">
-      <div class="col-md-6 py-3">
-
-        <button (click)="openModalAddCompany(contentAdd)"  class="btn btn-primary btn-lg">Nouvelle boutique</button>
       </div>
-      <div class="col-md-6">
-        <div class="form-group pull-right" style="width: 50%">
-          <label >Recherche <i class="fa fa-search"></i></label>
-          <input type="text" class="form-control" [(ngModel)]="searchItem">
+    </div>
+  </div>
+  <!-- Pages -->
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0" style="background-color:#F5B669;">
+            <div class="col-md-6">
+              <button (click)="openModalAddCompany(contentAdd)"  class="btn btn-primary btn-lg">Nouvelle boutique</button>
+            </div>
+            <div class="col-md-6 pull-right" style="width: 40%">
+                <label >Recherche <i class="fa fa-search"></i></label>
+                <input type="text" class="form-control" [(ngModel)]="searchItem">
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Region</th>
+                <th scope="col">Telephones</th>
+                <th scope="col">Code d'activation</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                <td>{{item?.name}}</td>
+                <td>
+                  {{item?.region}}
+                </td>
+                <td>{{item?.phone}} </td>
+                <td>{{item?.activationCode}} <br>
+                  <a type="button" (click)="sendCode(item?.id)" class="btn btn-primary">Envoyer code</a>
+                </td>
+                <td *ngIf="!item?.status">
+                  <span class="badge badge-dot mr-4"><i class="bg-warning"></i> Fermer</span>
+                </td>
+                <td *ngIf="item?.status">
+                  <span class="badge badge-dot mr-4"><i class="bg-success"></i> Ouverte</span>
+                </td>
+                <td class="text-right">
+                  <div ngbDropdown placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                      <a href="/admin/detail/boutique/{{item.id}}" class="btn btn-success m-1"><i class="pi pi-eye"></i></a>
+                      <button (click)="setBoutique(contentUpdate, item)" class="btn btn-primary m-1"><i class="pi pi-pencil"></i></button>
+                      <button  (click)="deleteBoutique(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
+
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer py-4">
+
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
-
-
-    <hr>
-    <div class="card-text">
-      <table class="table table-responsive-md table-bordered">
-        <thead class="title">
-        <th>Nom</th>
-        <th>Region</th>
-        <th>Telephones</th>
-        <th>Code d'activation</th>
-        <th>Status</th>
-        <th>Actions</th>
-        </thead>
-        <tbody>
-        <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-          <td>{{item?.name}}</td>
-          <td>{{item?.region}}</td>
-          <td>{{item?.phone}} </td>
-          <td>{{item?.activationCode}} <br>
-          <a type="button" (click)="sendCode(item?.id)" class="btn btn-primary">Envoyer code</a>
-          </td>
-          <td *ngIf="!item?.status" class="alert alert-danger" >
-              <span >Fermer</span>
-          </td>
-          <td *ngIf="item?.status" class="alert alert-success" >
-            <span >Ouverte</span>
-          </td>
-          <td>
-            <button href="/admin/detail/boutique/{{item.id}}" class="btn btn-success m-1"><i class="pi pi-eye"></i></button>
-            <button (click)="setBoutique(contentUpdate, item)" class="btn btn-secondary m-1"><i class="pi pi-pencil"></i></button>
-            <button  (click)="deleteBoutique(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
+  <div class="container-fluid">
+    <app-admin-footer></app-admin-footer>
   </div>
+</div>
 
 
 
@@ -149,7 +180,7 @@
   </div>
   <div class="modal-body">
     <p-card header="Simple Card" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
-      <form [formGroup]="boutiqueUpdateFormGroup" (submit)="updateBoutique()">
+      <form [formGroup]="boutiqueFormGroup" (submit)="updateBoutique()">
         <h5>Boutique</h5>
         <div class="form-group">
           <label >Nom de votre boutique</label>
@@ -177,10 +208,7 @@
         <br>
         <div class="card-footer">
           <div class="row">
-            <div class="col-md-6">
-              <a href="/admin/boutiques" class="btn btn-secondary" style="width: 100%"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour </a>
-            </div>
-            <div class="col-md-6">
+            <div class="col">
               <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%" (click)="modal.close('Close click')">Enregistrer <i class="fa fa-check"></i></button>
             </div>
           </div>
