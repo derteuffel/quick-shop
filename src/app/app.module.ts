@@ -47,6 +47,13 @@ import {MessagesModule} from "primeng/messages";
 import {ToastrModule} from "ngx-toastr";
 import {ToastModule} from "primeng/toast";
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
+import { LoadingComponent } from './components/loading/loading.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {ComponentsModule} from "./components/components.module";
+import { CoachingComponent } from './coachings/coaching/coaching.component';
+import { CoachingSessionComponent } from './coachings/coaching-session/coaching-session.component';
 
 
 @NgModule({
@@ -84,7 +91,10 @@ import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular
     RegisterComponent,
     UnauthorizedComponent,
     NotFoundComponent,
-    LoginSuccessComponent
+    LoginSuccessComponent,
+    CoachingComponent,
+    CoachingSessionComponent
+
   ],
   imports: [
     BrowserModule,
@@ -97,6 +107,8 @@ import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular
     TableModule,
     ButtonModule,
     MessagesModule,
+    ComponentsModule,
+    NgbModule,
     ToastModule,
     IconModule,
     IconSetModule.forRoot(),

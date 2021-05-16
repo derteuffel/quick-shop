@@ -90,7 +90,7 @@
 <!-- MODAL  FORM FOR ADD Boutique -->
 
 <ng-template #contentAdd let-modal>
-  <div class="modal-header">
+  <div class="modal-header" style="background-color:#F5B669;">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -129,7 +129,7 @@
               <a href="/admin/boutiques" class="btn btn-secondary" style="width: 100%"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour </a>
             </div>
             <div class="col-md-6">
-              <button type="submit" class="btn btn-success" style="width: 100%">Enregistrer <i class="fa fa-check"></i></button>
+              <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@
 <!-- MODAL  FORM FOR UPDATE Boutique -->
 
 <ng-template #contentUpdate let-modal>
-  <div class="modal-header">
+  <div class="modal-header" style="background-color:#F5B669;">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -181,7 +181,7 @@
               <a href="/admin/boutiques" class="btn btn-secondary" style="width: 100%"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour </a>
             </div>
             <div class="col-md-6">
-              <button type="submit" class="btn btn-success" style="width: 100%">Enregistrer <i class="fa fa-check"></i></button>
+              <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%" (click)="modal.close('Close click')">Enregistrer <i class="fa fa-check"></i></button>
             </div>
           </div>
         </div>
