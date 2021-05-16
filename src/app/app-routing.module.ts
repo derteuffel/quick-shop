@@ -1,29 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import {AdministrationComponent} from './admin/administration/administration.component';
-import {EcommerceComponent} from './eco/ecommerce/ecommerce.component';
 
-import { Role } from './models/role';
-import { AuthGuard } from './auth/auth.guard';
 import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
 import {AdminLayoutsComponent} from "./layouts/admin-layouts/admin-layouts.component";
+import {EcommerceComponent} from "./eco/ecommerce/ecommerce.component";
 
 const routes: Routes = [
   {
-  path: 'admin/home', component: AdministrationComponent,
-  canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
-}
-  , {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path: '',
     component: AdminLayoutsComponent,
-    canActivate: [AuthGuard],
     children: [
       {
         path: '',
-        loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+        loadChildren: './layouts/admin-layouts/admin-layouts.module#AdminLayoutsModule'
       }
     ]
-  }, {
+  },
+
+  {
     path: '',
     component: AuthLayoutComponent,
     children: [
@@ -33,20 +32,12 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: 'ecommerce/home', component: EcommerceComponent
-  },
-
-
-  {
-    path: '', redirectTo: 'ecommerce/home', pathMatch: 'full'
-  },
 
   {
     path: '**',
-    redirectTo: 'ecommerce/home'
+    redirectTo: 'home'
   }
-  ];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {

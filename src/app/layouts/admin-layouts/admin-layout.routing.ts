@@ -20,8 +20,13 @@ import {Role} from "../../models/role";
 import {UpdateBoutiqueComponent} from "../../admin/boutique/update-boutique/update-boutique.component";
 import {AuthGuard} from "../../auth/auth.guard";
 import {AddProductComponent} from "../../admin/product/add-product/add-product.component";
+import {EcommerceComponent} from "../../eco/ecommerce/ecommerce.component";
 
 export const AdminLayoutRoutes: Routes = [
+
+  {
+    path: 'home', component: EcommerceComponent
+  },
   {
     path: 'admin/product/add/:id', component: AddProductComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
