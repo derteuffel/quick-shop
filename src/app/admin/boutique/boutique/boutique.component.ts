@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {MessageService, PrimeNGConfig} from "primeng/api";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Boutique} from "../../../models/boutique";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-boutique',
@@ -22,16 +23,15 @@ export class BoutiqueComponent implements OnInit {
   boutiqueRef;
   public submitted: boolean = false;
   public boutiqueFormGroup?: FormGroup;
-  public boutiqueUpdateFormGroup?: FormGroup;
   public currentBoutique;
 
   constructor(private boutiqueService: BoutiqueService,
               private fb: FormBuilder,
               private router: Router,
+              private toastr: ToastrService,
               private primengConfig: PrimeNGConfig,
               private modalService: NgbModal,
               private messageService: MessageService) { }
-
   ngOnInit(): void {
     this.loadAll();
     this.primengConfig.ripple = true;
@@ -54,9 +54,10 @@ export class BoutiqueComponent implements OnInit {
 
   loadAll(){
     this.boutiqueService.getAllBoutiques().subscribe(
-     data => {
-        this.lists = data;
+      data => {
         console.log(data);
+        this.lists = data;
+        console.log(this.lists);
       }, error => {
         console.log(error);
       }
@@ -68,7 +69,6 @@ export class BoutiqueComponent implements OnInit {
     if (this.boutiqueFormGroup?.invalid) return;
     this.boutiqueService.saveBoutique(this.boutiqueFormGroup?.value).subscribe(
       (data: any) => {
-       // this.router.navigateByUrl('/admin/boutiques');
         this.boutiqueFormGroup.reset();
         this.messageService.add({severity:'success', summary:'Success', detail:'boutique submitted', sticky: true});
         this.loadAll();
@@ -84,7 +84,9 @@ export class BoutiqueComponent implements OnInit {
 
   setBoutique(contentUpdate, event) {
     this.modalService.open(contentUpdate, {size: "lg"});
-    this.currentBoutique = event.name
+    this.currentBoutique = event.name;
+    this.boutiqueRef = event.id;
+    console.log(event.id);
     this.boutiqueFormGroup.patchValue({
       id: event.id,
       name: event.name,
@@ -111,8 +113,9 @@ export class BoutiqueComponent implements OnInit {
       status: this.boutiqueFormGroup.get('status').value,
       activationCode: this.boutiqueFormGroup.get('activationCode').value,
     }
-    this.boutiqueService.updateBoutique(CompanyData, this.boutique.id).subscribe(
+    this.boutiqueService.updateBoutique(CompanyData, this.boutiqueRef).subscribe(
       (data: any) => {
+        console.log(this.boutiqueRef);
         this.boutiqueFormGroup.reset();
         this.messageService.add({severity:'success', summary: 'Record is updated successully', detail:'record updated'});
         this.loadAll();

@@ -15,7 +15,6 @@ export class AdminNavbarComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
     if (this.authService.currentUserValue.token) {
       this.isConnected = true;
     }else{
