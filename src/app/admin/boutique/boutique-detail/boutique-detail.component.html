@@ -5,29 +5,105 @@
   <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
       <div class="header-body">
-        <!-- Card stats -->
+
+<!--        <div style="padding: 5px; box-shadow:  0 0.125rem 0.8rem rgba(0, 0, 0, 0.1); background-color:#F5B669; !important;">
+          <h3 style="font-size: 1rem; font-weight: bold; color:#e48e66"> Détails d'une boutique</h3>
+          <div class="ui-g ui-fluid">
+            <div class="ui-sm-6 ui-md-6">
+              &lt;!&ndash; <div style="font-size: 1rem; font-weight: bold; color:#e48e66">  &ndash;&gt;
+              <div class="ui-sm-12 ui-md-12">
+                <div style="display: flex; flex-direction: column; border: 1px solid rgba(0, 0, 0, 0.1);; padding: 5px; box-shadow:  0 0.1rem 0.1rem rgba(0, 0, 0, 0.1);">
+                  <div class="header" style="display: flex;">
+                    <span class="pi pi-calendar" style="color: #34A835;">&nbsp;{{currentBoutique.name}}</span>&nbsp;
+                    <span style="font-weight: bold"></span>
+                  </div>
+                  <div class="body" style="display: flex; flex-direction: column; font-weight: bold; font-size: .7rem; opacity: .8; ">
+                    <span style=" text-transform:uppercase;"></span>
+                    <span style=" text-transform:uppercase;"> </span>
+                  </div>
+                </div>
+              </div>
+
+              <div  class="ui-sm-12 ui-md-12">
+                <div  style="display: flex; flex-direction: column; border: 1px solid rgba(0, 0, 0, 0.1); padding: 5px; box-shadow:  0 0.1rem 0.1rem rgba(0, 0, 0, 0.1);">
+                  <div class="header" style="display: flex;">
+                    <span class="pi pi-calendar" style="color: #34A835; opacity: .5;"></span>&nbsp;
+                    <span style="font-weight: bold"></span>
+                  </div>
+                  <div class="body" style="display: flex; flex-direction: column; font-weight: bold; font-size: .7rem; opacity: .8;">
+                    <span style=" text-transform:uppercase;"> </span>
+                    <span style=" text-transform:uppercase;"> </span>
+                  </div>
+                </div>
+              </div>
+              &lt;!&ndash; </div> &ndash;&gt;
+            </div>
+            <div class="ui-sm-6 ui-md-6 ">
+              <div class="ui-sm-12 ui-md-12">
+                <div style="display: flex; flex-direction: column; border: 1px solid rgba(0, 0, 0, 0.1); padding: 5px; box-shadow:  0 0.1rem 0.1rem rgba(0, 0, 0, 0.1);">
+                  <div class="header" style="display: flex;">
+                    <span class="pi pi-calendar" style="color: #e48e66"></span>&nbsp;
+                    <span style="font-weight: bold"></span>
+                  </div>
+                  <div class="body" style="display: flex; flex-direction: column; font-weight: bold; font-size: .7rem; opacity: .8;">
+                    <span style=" text-transform:uppercase;"> </span>
+                    <span style=" text-transform:uppercase;"> </span>
+                  </div>
+                </div>
+              </div>
+
+              &lt;!&ndash; Livraisons Annex &ndash;&gt;
+              <div  class="ui-sm-12 ui-md-12">
+                <div style="display: flex; flex-direction: column; border: 1px solid rgba(0, 0, 0, 0.1); padding: 5px; box-shadow:  0 0.1rem 0.1rem rgba(0, 0, 0, 0.1);">
+                  <div class="header" style="display: flex;">
+                    <span class="pi pi-calendar" style="color: #e48e66; opacity: .5;"></span>&nbsp;
+                    <span style="font-weight: bold"></span>
+                  </div>
+                  <div class="body" style="display: flex; flex-direction: column; font-weight: bold; font-size: .7rem; opacity: .8;">
+                    <span style=" text-transform:uppercase;"></span>
+                    <span style=" text-transform:uppercase;"> </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>-->
+
+
+      </div>
+      <div class="header-body">
         <div class="row">
           <div class="col-xl-3 col-lg-6">
             <div class="card card-stats mb-4 mb-xl-0">
               <div class="card-body">
                 <div class="row">
                   <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Boutique</h5>
-                    <span class="h2 font-weight-bold mb-0">{{currentBoutique.name}} </span>
+                    <h5 class="card-title text-uppercase text-muted mb-0">Boutique &nbsp; <span class="h2 font-weight-bold mb-0">{{currentBoutique.name}} </span></h5>
+
                   </div>
-                  <div class="col-auto">
+                  <!--<div class="col-auto">
                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
                       <i class="fas fa-chart-bar"></i>
                     </div>
-                  </div>
+                  </div>-->
                 </div>
                 <p class="mt-3 mb-0 text-muted text-sm">
-                  <span class="text-success mr-2"><i class="fa fa-map"></i> Lieu</span>
+                  <span class="text-success mr-2"><i class="fa fa-map"></i> Lieu:</span>
                   <span class="text-nowrap">{{currentBoutique.localisation}}</span>
                 </p>
                 <p class="mt-3 mb-0 text-muted text-sm">
-                <!--  <span *ngIf="!currentBoutique.status" class="text-danger">Fermer</span>
-                  <span *ngIf="currentBoutique.status" class="text-success">Ouverte</span>-->
+                  <span class="text-success mr-2"><i class="fa fa-phone"></i> Téléphone:</span>
+                  <span class="text-nowrap">{{currentBoutique.phone}}</span>
+                </p>
+
+                <p class="mt-3 mb-0 text-muted text-sm">
+                  <span class="text-success mr-2"><i class="fa fa-rebel"></i> Region:</span>
+                  <span class="text-nowrap">{{currentBoutique.region}}</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                  <span class="text-success mr-2"><i class="fa fa-credit-card"></i> Carte Number:</span>
+                  <span class="text-nowrap">{{currentBoutique.cardNumber}}</span>
                 </p>
               </div>
             </div>
@@ -44,11 +120,10 @@
       <div class="col">
         <div class="card shadow">
           <div class="card-header border-0" style="background-color:#F5B669;">
-
-            <div class="col-md-6 pull-right" style="width: 40%">
-              <label >Recherche <i class="fa fa-search"></i></label>
-              <input type="text" class="form-control" [(ngModel)]="searchItem">
+            <div class="col-md-6">
+              <button (click)="openModalWithComponent()" class="btn btn-primary btn-lg">Ajouter Article</button>
             </div>
+
           </div>
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
@@ -66,22 +141,21 @@
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                 <td>{{item?.name}}</td>
                 <td>
-                  {{item?.region}}
+                  {{item?.category}}
                 </td>
-                <td>{{item?.phone}} </td>
-                <td>{{item?.activationCode}} <br>
-                  <a type="button" (click)="sendCode(item?.id)" class="btn btn-primary">Envoyer code</a>
+                <td>
+                  {{item?.genre}}
                 </td>
-                <td *ngIf="!item?.status">
-                  <span class="badge badge-dot mr-4"><i class="bg-warning"></i> Fermer</span>
+                <td>{{item?.price}} </td>
+                <td>
+                  {{item?.marque}}
+
                 </td>
-                <td *ngIf="item?.status">
-                  <span class="badge badge-dot mr-4"><i class="bg-success"></i> Ouverte</span>
+                <td>
+                  {{item?.description}}
                 </td>
+
                 <td class="text-right">
-                  <a href="/admin/product/detail/{{item.id}}" class="btn btn-success m-1"><i class="fa fa-angle-double-right"></i></a>
-                  <a href="/admin/product/update/{{item.id}}" class="btn btn-secondary m-1"><i class="fa fa-edit"></i></a>
-                  <button  (click)="deleteProduct(item.id)" class="btn btn-danger m-1"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
 
@@ -95,6 +169,7 @@
               </ul>
             </nav>
           </div>
+
         </div>
       </div>
     </div>
@@ -104,5 +179,55 @@
   </div>
 </div>
 
+<!-- MODAL  FORM FOR ADD Boutique -->
 
+<ng-template #contentAdd let-modal>
+
+<!--  <div class="modal-header" style="background-color:#F5B669;">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p-card header="Simple Card" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+      <form >
+        <h5>Article</h5>
+        <div class="form-group">
+          <label ></label>
+          <input type="text" class="form-control"  placeholder="" >
+        </div>
+
+        <div class="form-group">
+          <label ></label>
+          <input type="text" class="form-control"  placeholder="" >
+        </div>
+        <div class="form-group">
+          <label></label>
+          <input type="text" class="form-control"  placeholder="" >
+        </div>
+
+        <div class="form-group">
+          <label></label>
+          <input type="text" class="form-control"  placeholder="" >
+        </div>
+        <div class="form-group">
+          <label></label>
+          <input type="text" class="form-control"  placeholder="" >
+        </div>
+
+        <br>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-6">
+              <button type="button" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
+            </div>
+            <div class="col-md-6">
+              <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%" (click)="modal.close('Close click')">Enregistrer <i class="fa fa-check"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </p-card>
+  </div>-->
+</ng-template>
 

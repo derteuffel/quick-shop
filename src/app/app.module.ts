@@ -21,8 +21,6 @@ import { DetailProductComponent } from './eco/product/detail-product/detail-prod
 import { AdministrationDetailProductComponent } from './admin/product/administration-detail-product/administration-detail-product.component';
 import { AdministrationUpdateProductComponent } from './admin/product/administration-update-product/administration-update-product.component';
 import { CommandeComponent } from './admin/commande/commande/commande.component';
-import { WomenProductsComponent } from './eco/product/women-products/women-products.component';
-import { MenProductsComponent } from './eco/product/men-products/men-products.component';
 import { BoutiqueComponent } from './admin/boutique/boutique/boutique.component';
 import { AddBoutiqueComponent } from './admin/boutique/add-boutique/add-boutique.component';
 import { BoutiqueDetailComponent } from './admin/boutique/boutique-detail/boutique-detail.component';
@@ -41,20 +39,23 @@ import { SellerUpdateProductComponent } from './seller/product/seller-update-pro
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginSuccessComponent } from './auth/login-success/login-success.component';
-import {TableModule} from "primeng/table";
-import {ButtonModule} from "primeng/button";
-import {MessagesModule} from "primeng/messages";
-import {ToastrModule} from "ngx-toastr";
-import {ToastModule} from "primeng/toast";
+import {TableModule} from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
+import {MessagesModule} from 'primeng/messages';
+import {ToastrModule} from 'ngx-toastr';
+import {ToastModule} from 'primeng/toast';
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CoachingComponent } from './coachings/coaching/coaching.component';
 import { CoachingSessionComponent } from './coachings/coaching-session/coaching-session.component';
-import {RouterModule} from "@angular/router";
+import {RouterModule} from '@angular/router';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
+import {CardModule} from 'primeng/card';
+import { ProductComponent } from './admin/boutique/product/product.component';
+import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 
@@ -83,8 +84,6 @@ import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.componen
     SellerUpdateBoutiqueComponent,
     SellerUpdateProductComponent,
     CommandeComponent,
-    WomenProductsComponent,
-    MenProductsComponent,
     BoutiqueComponent,
     AddBoutiqueComponent,
     BoutiqueDetailComponent,
@@ -99,6 +98,7 @@ import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.componen
     AdminFooterComponent,
     AdminSidebarComponent,
     AdminNavbarComponent,
+    ProductComponent,
 
   ],
   imports: [
@@ -114,8 +114,10 @@ import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.componen
     ButtonModule,
     MessagesModule,
     NgbModule,
+    CardModule,
     ToastModule,
     IconModule,
+    ModalModule.forRoot(),
     IconSetModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 1500,
