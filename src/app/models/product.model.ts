@@ -1,5 +1,5 @@
-import { Boutique } from "./boutique";
-import { Colors } from "./colors";
+import { Boutique } from './boutique';
+import { Colors } from './colors';
 
 export class Product{
   id: number;
@@ -15,8 +15,8 @@ export class Product{
   pictures: string[];
   boutique: Boutique;
 
-  constructor(id: number, name: string, price: number, pictureUrl: string, category: string, 
-    genre: string, quality: string, marque: string, colors: string[], description: string, pictures: string[]) {
+  constructor(id: number, name: string, price: number, pictureUrl: string, category: string,
+              genre: string, quality: string, marque: string, colors: string[], description: string, pictures: string[]) {
     this.id = id;
     this.name = name;
     this.price = price;

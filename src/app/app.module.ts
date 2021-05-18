@@ -41,20 +41,21 @@ import { SellerUpdateProductComponent } from './seller/product/seller-update-pro
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginSuccessComponent } from './auth/login-success/login-success.component';
-import {TableModule} from "primeng/table";
-import {ButtonModule} from "primeng/button";
-import {MessagesModule} from "primeng/messages";
-import {ToastrModule} from "ngx-toastr";
-import {ToastModule} from "primeng/toast";
+import {TableModule} from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
+import {MessagesModule} from 'primeng/messages';
+import {ToastrModule} from 'ngx-toastr';
+import {ToastModule} from 'primeng/toast';
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CoachingComponent } from './coachings/coaching/coaching.component';
 import { CoachingSessionComponent } from './coachings/coaching-session/coaching-session.component';
-import {RouterModule} from "@angular/router";
+import {RouterModule} from '@angular/router';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
+import {CardModule} from "primeng/card";
 
 
 
@@ -114,6 +115,7 @@ import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.componen
     ButtonModule,
     MessagesModule,
     NgbModule,
+    CardModule,
     ToastModule,
     IconModule,
     IconSetModule.forRoot(),

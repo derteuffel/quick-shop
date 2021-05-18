@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BoutiqueService } from '../../../services/boutique.service';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
-import {MessageService, PrimeNGConfig} from "primeng/api";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {Boutique} from "../../../models/boutique";
-import {ToastrService} from "ngx-toastr";
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
+import {MessageService, PrimeNGConfig} from 'primeng/api';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Boutique} from '../../../models/boutique';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-boutique',
@@ -16,12 +16,12 @@ import {ToastrService} from "ngx-toastr";
 export class BoutiqueComponent implements OnInit {
 
   lists: any = {};
-  p: number = 1;
+  p = 1;
   searchItem: string;
   boutique: Boutique;
-  loading: boolean = true;
+  loading = true;
   boutiqueRef;
-  public submitted: boolean = false;
+  public submitted = false;
   public boutiqueFormGroup?: FormGroup;
   public currentBoutique;
 
@@ -48,7 +48,7 @@ export class BoutiqueComponent implements OnInit {
       cardNumber: new FormControl(''),
       status: new FormControl(''),
       activationCode: new FormControl(''),
-    })
+    });
   }
 
 
@@ -66,14 +66,14 @@ export class BoutiqueComponent implements OnInit {
 
   onSaveBoutique() {
     this.submitted = true;
-    if (this.boutiqueFormGroup?.invalid) return;
+    if (this.boutiqueFormGroup?.invalid) { return; }
     this.boutiqueService.saveBoutique(this.boutiqueFormGroup?.value).subscribe(
       (data: any) => {
         this.boutiqueFormGroup.reset();
-        this.messageService.add({severity:'success', summary:'Success', detail:'boutique submitted', sticky: true});
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'boutique submitted', sticky: true});
         this.loadAll();
       }, error => {
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
     );
     this.submitted = false;
@@ -83,7 +83,7 @@ export class BoutiqueComponent implements OnInit {
   // mise à jour d'une Boutique
 
   setBoutique(contentUpdate, event) {
-    this.modalService.open(contentUpdate, {size: "lg"});
+    this.modalService.open(contentUpdate, {size: 'lg'});
     this.currentBoutique = event.name;
     this.boutiqueRef = event.id;
     console.log(event.id);
@@ -112,24 +112,24 @@ export class BoutiqueComponent implements OnInit {
       cardNumber: this.boutiqueFormGroup.get('cardNumber').value,
       status: this.boutiqueFormGroup.get('status').value,
       activationCode: this.boutiqueFormGroup.get('activationCode').value,
-    }
+    };
     this.boutiqueService.updateBoutique(CompanyData, this.boutiqueRef).subscribe(
       (data: any) => {
         console.log(this.boutiqueRef);
         this.boutiqueFormGroup.reset();
-        this.messageService.add({severity:'success', summary: 'Record is updated successully', detail:'record updated'});
+        this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
         this.loadAll();
       }, error => {
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
-    )
+    );
   }
 
 
   showDetail(contentDetail, event){
-    console.log(event)
-    this.modalService.open(contentDetail, {size: "lg"});
-    this.boutiqueRef = event.id
+    console.log(event);
+    this.modalService.open(contentDetail, {size: 'lg'});
+    this.boutiqueRef = event.id;
     console.log(this.boutiqueRef);
 
   }
@@ -150,20 +150,20 @@ export class BoutiqueComponent implements OnInit {
   // suppression d'une Boutique
 
   deleteBoutique(contentDelete, event) {
-    console.log(event)
-    this.modalService.open(contentDelete, {size: "lg"});
-    this.boutiqueRef = event.id
+    console.log(event);
+    this.modalService.open(contentDelete, {size: 'lg'});
+    this.boutiqueRef = event.id;
     console.log(this.boutiqueRef);
 
   }
 
   onDelete() {
     this.boutiqueService.deleteBoutique(this.boutiqueRef).subscribe(
-      (res : any) => {
-        this.messageService.add({severity:'success', summary: 'Record is deleted successully', detail:'record delete'});
+      (res: any) => {
+        this.messageService.add({severity: 'success', summary: 'Record is deleted successully', detail: 'record delete'});
         this.loadAll();
       }
-    )
+    );
   }
   sendCode(id){
     this.boutiqueService.sendCode(id).subscribe(

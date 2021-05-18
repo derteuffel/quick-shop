@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { error } from 'protractor';
 import { Boutique } from '../../../models/boutique';
 import { BoutiqueService } from '../../../services/boutique.service';
 import { EcommerceService } from '../../../services/ecommerce.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-boutique-detail',
@@ -12,18 +13,22 @@ import { EcommerceService } from '../../../services/ecommerce.service';
   styleUrls: ['./boutique-detail.component.css']
 })
 export class BoutiqueDetailComponent implements OnInit {
-
   lists: any;
-  p: number = 1;
+  p = 1;
   searchItem: string;
-  form: any ={};
+  form: any = {};
   submittedCode: string;
-
+  private bodyText: string;
   currentBoutique: Boutique;
-  constructor(private ecommerceService: EcommerceService, private activatedRoute: ActivatedRoute, 
-    private boutiqueService: BoutiqueService) { }
+
+  @Input('product') product;
+  constructor(private ecommerceService: EcommerceService,
+              private activatedRoute: ActivatedRoute,
+              private modalService: NgbModal,
+              private boutiqueService: BoutiqueService) { }
 
   ngOnInit(): void {
+
     this.getBoutique(this.activatedRoute.snapshot.paramMap.get('id'));
     this.loadList();
   }
@@ -79,4 +84,7 @@ export class BoutiqueDetailComponent implements OnInit {
     );
   }
 
+  openModalAddProduct(contentAdd: any) {
+    this.modalService.open(contentAdd, {size: 'lg'});
+  }
 }
