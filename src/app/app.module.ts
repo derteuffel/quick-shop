@@ -21,8 +21,6 @@ import { DetailProductComponent } from './eco/product/detail-product/detail-prod
 import { AdministrationDetailProductComponent } from './admin/product/administration-detail-product/administration-detail-product.component';
 import { AdministrationUpdateProductComponent } from './admin/product/administration-update-product/administration-update-product.component';
 import { CommandeComponent } from './admin/commande/commande/commande.component';
-import { WomenProductsComponent } from './eco/product/women-products/women-products.component';
-import { MenProductsComponent } from './eco/product/men-products/men-products.component';
 import { BoutiqueComponent } from './admin/boutique/boutique/boutique.component';
 import { AddBoutiqueComponent } from './admin/boutique/add-boutique/add-boutique.component';
 import { BoutiqueDetailComponent } from './admin/boutique/boutique-detail/boutique-detail.component';
@@ -55,7 +53,9 @@ import {RouterModule} from '@angular/router';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
-import {CardModule} from "primeng/card";
+import {CardModule} from 'primeng/card';
+import { ProductComponent } from './admin/boutique/product/product.component';
+import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 
@@ -84,8 +84,6 @@ import {CardModule} from "primeng/card";
     SellerUpdateBoutiqueComponent,
     SellerUpdateProductComponent,
     CommandeComponent,
-    WomenProductsComponent,
-    MenProductsComponent,
     BoutiqueComponent,
     AddBoutiqueComponent,
     BoutiqueDetailComponent,
@@ -100,6 +98,7 @@ import {CardModule} from "primeng/card";
     AdminFooterComponent,
     AdminSidebarComponent,
     AdminNavbarComponent,
+    ProductComponent,
 
   ],
   imports: [
@@ -118,6 +117,7 @@ import {CardModule} from "primeng/card";
     CardModule,
     ToastModule,
     IconModule,
+    ModalModule.forRoot(),
     IconSetModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 1500,

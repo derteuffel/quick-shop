@@ -121,12 +121,9 @@
         <div class="card shadow">
           <div class="card-header border-0" style="background-color:#F5B669;">
             <div class="col-md-6">
-              <button (click)="openModalAddProduct(contentAdd)"  class="btn btn-primary btn-lg">Ajouter Article</button>
+              <button (click)="openModalWithComponent()" class="btn btn-primary btn-lg">Ajouter Article</button>
             </div>
-            <div class="col-md-6 pull-right" style="width: 40%">
-              <label >Recherche <i class="fa fa-search"></i></label>
-              <input type="text" class="form-control" [(ngModel)]="searchItem">
-            </div>
+
           </div>
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
@@ -144,22 +141,21 @@
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                 <td>{{item?.name}}</td>
                 <td>
-                  {{item?.region}}
+                  {{item?.category}}
                 </td>
-                <td>{{item?.phone}} </td>
-                <td>{{item?.activationCode}} <br>
-                  <a type="button" (click)="sendCode(item?.id)" class="btn btn-primary">Envoyer code</a>
+                <td>
+                  {{item?.genre}}
                 </td>
-                <td *ngIf="!item?.status">
-                  <span class="badge badge-dot mr-4"><i class="bg-warning"></i> Fermer</span>
+                <td>{{item?.price}} </td>
+                <td>
+                  {{item?.marque}}
+
                 </td>
-                <td *ngIf="item?.status">
-                  <span class="badge badge-dot mr-4"><i class="bg-success"></i> Ouverte</span>
+                <td>
+                  {{item?.description}}
                 </td>
+
                 <td class="text-right">
-                  <a href="/admin/product/detail/{{item.id}}" class="btn btn-success m-1"><i class="fa fa-angle-double-right"></i></a>
-                  <a href="/admin/product/update/{{item.id}}" class="btn btn-secondary m-1"><i class="fa fa-edit"></i></a>
-                  <button  (click)="deleteProduct(item.id)" class="btn btn-danger m-1"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
 
@@ -173,6 +169,7 @@
               </ul>
             </nav>
           </div>
+
         </div>
       </div>
     </div>
@@ -185,7 +182,7 @@
 <!-- MODAL  FORM FOR ADD Boutique -->
 
 <ng-template #contentAdd let-modal>
-  <app-add-product></app-add-product>
+
 <!--  <div class="modal-header" style="background-color:#F5B669;">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>

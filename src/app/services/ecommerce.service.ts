@@ -30,20 +30,20 @@ export class EcommerceService {
   constructor(private http: HttpClient) {
   }
 
-  getAllProducts() {
+  getAllProducts(): Observable<any>  {
     return this.http.get(this.productsUrl + '/all');
   }
 
-  getAllProductsAdmin() {
+  getAllProductsAdmin(): Observable<any>  {
     return this.http.get(this.productsUrl + '/admin');
   }
 
-  getAllMobile(){
+  getAllMobile(): Observable<any> {
     return this.http.get(this.productsUrl + '/all/mobile');
   }
 
-  getAllProductsBoutique(id) {
-    return this.http.get(this.productsUrl + '/boutique/'+id);
+  getAllProductsBoutique(id): Observable<any> {
+    return this.http.get(this.productsUrl + '/boutique/' + id, {observe: 'response'});
   }
 
   getProductGenre(genre): Observable<any> {
@@ -54,28 +54,28 @@ export class EcommerceService {
     return this.http.get(this.productsUrl + '/all/category/' + category);
   }
 
-  getProductCategoryAndGenre(category,genre): Observable<any> {
-    return this.http.get(this.productsUrl + '/all/sort/' + category + '/'+genre);
+  getProductCategoryAndGenre(category, genre): Observable<any> {
+    return this.http.get(this.productsUrl + '/all/sort/' + category + '/' + genre);
   }
 
-  getProductMarqueAndGenre(marque,genre): Observable<any> {
-    return this.http.get(this.productsUrl + '/all/marque/' + marque + '/'+genre);
+  getProductMarqueAndGenre(marque, genre): Observable<any> {
+    return this.http.get(this.productsUrl + '/all/marque/' + marque + '/' + genre);
   }
 
-  getProductColorAndGenre(color,genre): Observable<any> {
-    return this.http.get(this.productsUrl + '/all/colors/' + color + '/'+genre);
+  getProductColorAndGenre(color, genre): Observable<any> {
+    return this.http.get(this.productsUrl + '/all/colors/' + color + '/' + genre);
   }
 
   getProductQuality(quality): Observable<any> {
     return this.http.get(this.productsUrl + '/all/quality/' + quality);
   }
 
-  saveOrder(order: ProductOrders) {
-    console.log('je suis dans le service '+order);
+  saveOrder(order: ProductOrders): Observable<any>  {
+    console.log('je suis dans le service ' + order);
     return this.http.post(this.ordersUrl, order);
   }
 
-  set SelectedProductOrder(value: ProductOrder) {
+  set SelectedProductOrder(value: ProductOrder){
     this.productOrder = value;
     this.productOrderSubject.next();
   }
@@ -89,7 +89,7 @@ export class EcommerceService {
     this.ordersSubject.next();
   }
 
-  get ProductOrders() {
+  get ProductOrders(){
     return this.orders;
   }
 
@@ -103,7 +103,7 @@ export class EcommerceService {
   }
 
 
-  saveProduct(form, id) {
+  saveProduct(form, id): Observable<any>  {
     return this.http.post(this.productsUrl + '/' + id, form);
   }
 

@@ -142,7 +142,6 @@
     </button>
   </div>
   <div class="modal-body">
-    <p-card header="Simple Card" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
       <form [formGroup]="boutiqueFormGroup" (submit)="onSaveBoutique()">
         <h5>Boutique</h5>
         <div class="form-group">
@@ -180,7 +179,6 @@
           </div>
         </div>
       </form>
-    </p-card>
   </div>
 </ng-template>
 
@@ -193,8 +191,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <p-card header="Simple Card" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+  <div class="modal-body" >
       <form [formGroup]="boutiqueFormGroup" (submit)="updateBoutique()">
         <h5>Boutique</h5>
         <div class="form-group">
@@ -233,7 +230,6 @@
           </div>
         </div>
       </form>
-    </p-card>
   </div>
 </ng-template>
 

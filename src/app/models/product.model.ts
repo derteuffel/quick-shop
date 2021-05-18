@@ -7,25 +7,23 @@ export class Product{
   price: number;
   pictureUrl: string;
   category: string;
-  genre: string;
-  quality: string;
+  type: string;
   marque: string;
-  colors: string[];
   description: string;
+  quantity: number;
   pictures: string[];
   boutique: Boutique;
 
   constructor(id: number, name: string, price: number, pictureUrl: string, category: string,
-              genre: string, quality: string, marque: string, colors: string[], description: string, pictures: string[]) {
+              type: string, quantity: number, marque: string, description: string, pictures: string[]) {
     this.id = id;
     this.name = name;
     this.price = price;
     this.pictureUrl = pictureUrl;
     this.category = category;
-    this.genre = genre;
-    this.quality = quality;
+    this.type = type;
+    this.quantity = quantity;
     this.marque = marque;
-    this.colors = colors;
     this.description = description;
     this.pictures = pictures;
 

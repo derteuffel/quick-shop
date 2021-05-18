@@ -26,13 +26,7 @@
         <label for="marque">Marque</label>
         <input type="text" class="form-control" id="marque" required [(ngModel)]="currentProduct.marque"  name="marque" placeholder="La marque de votre article">
       </div>
-      <div class="form-group">
-        <label for="colors">Couleures <span *ngFor="let item of currentProduct.colors">{{item}} </span></label>
-        <select  [(ngModel)] ="currentProduct.colors" multiple  name="colors"  id="colors" class="form-control">
-          <option value="" disabled>-- Choisir les couleurs disponible de votre article --</option>
-          <option value="{{item}}"  *ngFor="let item of colors">{{item}}</option>
-        </select>
-      </div>
+
       <div class="form-group">
         <label for="categorie">Categorie</label>
         <select  [(ngModel)] ="currentProduct.category"  name="category"  id="categorie" class="form-control">
@@ -41,18 +35,15 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="genre">Genre</label>
-        <select [(ngModel)]="currentProduct.genre"  name="genre"   id="genre" class="form-control">
+        <label for="genre">Type</label>
+        <select [(ngModel)]="currentProduct.type"  name="genre"   id="genre" class="form-control">
           <option value="" disabled>-- Choisir un genre pour votre article --</option>
           <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="quality">Qualite </label>
-        <select [(ngModel)]="currentProduct.quality"  name="quality"   id="quality" class="form-control">
-          <option value="" disabled>-- Choisir une qualite pour votre article --</option>
-          <option value="{{item}}" *ngFor="let item of qualities">{{item}}</option>
-        </select>
+        <label >Quantité </label>
+
       </div>
       <div class="form-group">
         <label >Description</label>

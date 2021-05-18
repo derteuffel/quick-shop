@@ -1,11 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { error } from 'protractor';
 import { Boutique } from '../../../models/boutique';
 import { BoutiqueService } from '../../../services/boutique.service';
 import { EcommerceService } from '../../../services/ecommerce.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Product} from '../../../models/product.model';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {initialState} from 'ngx-bootstrap/timepicker/reducer/timepicker.reducer';
+import {AddProductComponent} from '../../product/add-product/add-product.component';
+
 
 @Component({
   selector: 'app-boutique-detail',
@@ -13,36 +18,46 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./boutique-detail.component.css']
 })
 export class BoutiqueDetailComponent implements OnInit {
-  lists: any;
+  lists: any = [];
   p = 1;
   searchItem: string;
   form: any = {};
   submittedCode: string;
   private bodyText: string;
   currentBoutique: Boutique;
+  products: Product[];
+  bsModalRef: BsModalRef;
 
-  @Input('product') product;
+
   constructor(private ecommerceService: EcommerceService,
               private activatedRoute: ActivatedRoute,
               private modalService: NgbModal,
+              private modalService2: BsModalService,
+              private router: Router,
               private boutiqueService: BoutiqueService) { }
+
+
 
   ngOnInit(): void {
 
     this.getBoutique(this.activatedRoute.snapshot.paramMap.get('id'));
     this.loadList();
+
   }
 
 
-
+  /** lister les articles d'une boutique **/
   loadList(): void{
-    this.ecommerceService.getAllProductsBoutique(this.currentBoutique.id).subscribe(
-      data => {
-        this.lists = data;
-        console.log(data);
+
+    this.ecommerceService.getAllProductsBoutique(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.lists = res;
+
+        console.log(this.activatedRoute.snapshot.paramMap.get('id'));
       },
-      error => {
-        console.log(error);
+      error1 => {
+        console.log(error1);
       }
     );
   }
@@ -54,8 +69,8 @@ export class BoutiqueDetailComponent implements OnInit {
         console.log('Item deleted');
         window.location.reload();
       },
-      error => {
-        console.log(error);
+      error1 => {
+        console.log(error1);
       }
     );
   }
@@ -66,8 +81,8 @@ export class BoutiqueDetailComponent implements OnInit {
       data => {
         this.currentBoutique = data;
         console.log(data);
-      }, error => {
-        console.log(error);
+      }, error1 => {
+        console.log(error1);
       }
     );
   }
@@ -78,8 +93,8 @@ export class BoutiqueDetailComponent implements OnInit {
         console.log(this.form.code);
         console.log('you activated your item successfully');
       },
-      error => {
-        console.log(error);
+      error1 => {
+        console.log(error1);
       }
     );
   }
@@ -87,4 +102,19 @@ export class BoutiqueDetailComponent implements OnInit {
   openModalAddProduct(contentAdd: any) {
     this.modalService.open(contentAdd, {size: 'lg'});
   }
+
+
+  onCreate(p: Product) {
+    this.router.navigateByUrl('admin/product/add/' + p.id);
+  }
+
+  openModalWithComponent() {
+
+    this.bsModalRef = this.modalService2.show(AddProductComponent);
+    this.bsModalRef.content.closeBtnName = 'Close';
+    this.bsModalRef.content.event.subscribe(res => {
+      this.lists.push(res.data);
+    });
+  }
+
 }
