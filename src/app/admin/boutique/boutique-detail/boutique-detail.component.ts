@@ -53,7 +53,7 @@ export class BoutiqueDetailComponent implements OnInit {
       (res: any) => {
         console.log(res);
         this.lists = res;
-
+        console.log(res);
         console.log(this.activatedRoute.snapshot.paramMap.get('id'));
       },
       error1 => {
