@@ -58,6 +58,7 @@ import { ProductComponent } from './admin/boutique/product/product.component';
 import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AdministrationProductsComponent } from './admin/product/administration-products/administration-products.component';
 import {SidebarModule} from "primeng/sidebar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -106,6 +107,7 @@ import {SidebarModule} from "primeng/sidebar";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,

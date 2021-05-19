@@ -2,68 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin-sidebar/admin-sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/admin-sidebar/admin-sidebar.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/administration/administration.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/administration/administration.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/administration/administration.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/administration/administration.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/boutique/boutique.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/boutique/boutique.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/boutique/boutique.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/product/administration-detail-product/administration-detail-product.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/product/administration-detail-product/administration-detail-product.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/boutique.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/boutique.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/ecommerce.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/ecommerce.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/brand/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/brand/logo - Copie.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/brand/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/_DS_Store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/a2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/d.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/disabled-check.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/disabled-radio.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/f1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/f2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/f3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/f4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/f5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/f6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/f7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/f8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/g1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/g2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/g3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/g4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/g5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/g6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/g7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/g8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/primary-check.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/primary-radio.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/success-check.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/success-radio.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/user1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/elements/user2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/i1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/i2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/i3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/i4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/i5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/i6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/i7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/i8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/widget-i1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/widget-i2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/widget-i3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/widget-i4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/widget-i5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/instagram/widget-i6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/favicon.ico" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,7 +293,7 @@
       <workItem from="1620671830092" duration="21000" />
       <workItem from="1621320566902" duration="691000" />
       <workItem from="1621324366026" duration="23863000" />
-      <workItem from="1621403286352" duration="16006000" />
+      <workItem from="1621403286352" duration="18257000" />
     </task>
     <servers />
   </component>
