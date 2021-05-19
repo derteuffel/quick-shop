@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {any} from 'codelyzer/util/function';
+
 import {EcommerceService} from '../../services/ecommerce.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-administration',
@@ -10,12 +11,14 @@ import {EcommerceService} from '../../services/ecommerce.service';
 export class AdministrationComponent implements OnInit {
 
   lists: any;
-  p: number = 1;
+  p = 1;
   searchItem: string;
-  public submitted: boolean = false;
-  loading: boolean = true;
+  public submitted = false;
+  loading = true;
+  public productID;
 
-  constructor(private ecommerceService: EcommerceService) { }
+  constructor(private modalService: NgbModal,
+              private ecommerceService: EcommerceService) { }
 
   ngOnInit(): void {
     this.loadList();
@@ -33,17 +36,23 @@ export class AdministrationComponent implements OnInit {
     );
   }
 
-  deleteProduct(id){
 
-    this.ecommerceService.deleteProduct(id).subscribe(
-      data => {
-        console.log('Item deleted');
-        window.location.reload();
-      },
-      error => {
-        console.log(error);
+
+  onDelete(contentDelete, event) {
+    console.log(event);
+    this.modalService.open(contentDelete, {size: 'lg'});
+    this.productID = event.id;
+    console.log(this.productID);
+  }
+
+  deleteProduct() {
+    this.ecommerceService.deleteProduct(this.productID).subscribe(
+      (res: any) => {
+        this.loadList();
       }
     );
+
   }
+
 
 }

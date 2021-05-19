@@ -56,6 +56,8 @@ import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.componen
 import {CardModule} from 'primeng/card';
 import { ProductComponent } from './admin/boutique/product/product.component';
 import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AdministrationProductsComponent } from './admin/product/administration-products/administration-products.component';
+import {SidebarModule} from "primeng/sidebar";
 
 
 
@@ -99,6 +101,7 @@ import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     AdminSidebarComponent,
     AdminNavbarComponent,
     ProductComponent,
+    AdministrationProductsComponent,
 
   ],
   imports: [
@@ -117,6 +120,7 @@ import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     CardModule,
     ToastModule,
     IconModule,
+    SidebarModule,
     ModalModule.forRoot(),
     IconSetModule.forRoot(),
     ToastrModule.forRoot({

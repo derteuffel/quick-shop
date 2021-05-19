@@ -123,7 +123,10 @@
             <div class="col-md-6">
               <button (click)="openModalWithComponent()" class="btn btn-primary btn-lg">Ajouter Article</button>
             </div>
-
+            <div class="col-md-6 pull-right" style="width: 40%">
+              <label >Recherche <i class="fa fa-search"></i></label>
+              <input type="text" class="form-control" [(ngModel)]="searchItem">
+            </div>
           </div>
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
@@ -131,31 +134,49 @@
               <tr>
                 <th scope="col">Nom</th>
                 <th scope="col">Categorie</th>
-                <th scope="col">Genre</th>
+                <th scope="col">Type</th>
                 <th scope="col">Montant</th>
-                <th scope="col">Qualite</th>
+                <th scope="col">Marque</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Description</th>
                 <th scope="col">Actions</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-                <td>{{item?.name}}</td>
+              <tr *ngFor="let product of products | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                <td>{{product?.name}}</td>
                 <td>
-                  {{item?.category}}
+                  {{product?.category}}
                 </td>
                 <td>
-                  {{item?.genre}}
+                  {{product?.type}}
                 </td>
-                <td>{{item?.price}} </td>
                 <td>
-                  {{item?.marque}}
+                  {{product?.price}}
+                </td>
+                <td>
+                  {{product?.marque}}
+                </td>
+                <td>
+                  {{product?.quantity}}
 
                 </td>
                 <td>
-                  {{item?.description}}
+                  {{product?.description}}
                 </td>
 
-                <td class="text-right">
+                <td class="text-right" style="width:3 em; text-align:center; font-size: 0.65rem;">
+                  <div ngbDropdown placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                      <button (click)="visibleSidebar2 = true" class="btn btn-success ml-1"><i class="pi pi-eye"></i></button>
+                      <button (click)="setProduct(contentUpdate, product)" class="btn btn-primary "><i class="pi pi-pencil"></i></button>
+                    <button  (click)="onDelete(contentDelete, product)" class="btn btn-danger"><i class="pi pi-trash"></i></button>
+
+                    </div>
+                  </div>
                 </td>
               </tr>
 
@@ -179,55 +200,157 @@
   </div>
 </div>
 
-<!-- MODAL  FORM FOR ADD Boutique -->
+<p-sidebar [(visible)]="visibleSidebar2" position="right" [baseZIndex]="10000">
+  <h3>Right Sidebar</h3>
+</p-sidebar>
 
-<ng-template #contentAdd let-modal>
 
-<!--  <div class="modal-header" style="background-color:#F5B669;">
+<!-------------------------------------------------------UPDATED PRODUCT START-------------------------------------------------------------->
+<ng-template #contentUpdate let-modal>
+  <div class="modal-header" style="background-color:#F5B669;">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="productForm" (submit)="updateProduct()">
+      <h5>Article</h5>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>Nom de l'article</label>
+          <input type="text" class="form-control"  required  placeholder="Nom de l'article" formControlName="name">
+        </div>
+
+        <div class="form-group  col-md-6">
+          <label for="montant">Montant</label>
+          <input type="number" class="form-control" id="montant" required formControlName="price"  placeholder="Montant de votre article">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="categorie">Categorie</label>
+          <select  formControlName="category"  id="categorie" class="form-control">
+            <option value="" disabled>-- Choisir une category de votre article --</option>
+            <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label >type</label>
+          <select formControlName="type"  class="form-control">
+            <option value="" disabled>-- Choisir un genre pour votre article --</option>
+            <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
+          </select>
+
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="marque">Marque</label>
+          <input type="text" class="form-control" id="marque" required formControlName="marque"  placeholder="La marque de votre article">
+        </div>
+        <div class="form-group col-md-6">
+          <label>Quantity </label>
+          <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La marque de votre article">
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="marque">Image</label>
+          <input type="file" class="form-control" required formControlName="pictureUrl"  placeholder="Image">
+        </div>
+        <div class="form-group col-md-6">
+          <label >Description</label>
+          <textarea name="description" class="form-control"  formControlName="description" id="" rows="4"></textarea>
+        </div>
+      </div>
+      <br>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%"(click)="modal.close('Close click')" >Enregistrer <i class="fa fa-check"></i></button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</ng-template>
+<!-------------------------------------------------------UPDATED PRODUCT END-------------------------------------------------------------->
+
+<!-- MODAL SHOW DETAIL PRODUCT -->
+
+<ng-template #contentShow let-modal>
+
+  <div class="card card-stats mb-4 mb-xl-0">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title text-uppercase text-muted mb-0">Prouit &nbsp; <span class="h2 font-weight-bold mb-0">{{currentProduct.name}} </span></h5>
+
+        </div>
+        <!--<div class="col-auto">
+          <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+        </div>-->
+      </div>
+      <p class="mt-3 mb-0 text-muted text-sm">
+        <span class="text-success mr-2"><i class="fa fa-map"></i> Prix:</span>
+        <span class="text-nowrap">{{currentProduct.price}}</span>
+      </p>
+      <p class="mt-3 mb-0 text-muted text-sm">
+        <span class="text-success mr-2"><i class="fa fa-phone"></i> Quantité:</span>
+        <span class="text-nowrap">{{currentProduct.quantity}}</span>
+      </p>
+
+      <p class="mt-3 mb-0 text-muted text-sm">
+        <span class="text-success mr-2"><i class="fa fa-rebel"></i> Marque:</span>
+        <span class="text-nowrap">{{currentProduct.marque}}</span>
+      </p>
+      <p class="mt-3 mb-0 text-muted text-sm">
+        <span class="text-success mr-2"><i class="fa fa-credit-card"></i> Type:</span>
+        <span class="text-nowrap">{{currentProduct.type}}</span>
+      </p>
+    </div>
+  </div>
+
+</ng-template>
+
+<!-------------------------------------------------------DELETE PRODUCT START-------------------------------------------------------------->
+<ng-template #contentDelete let-modal>
+  <div class="modal-header dark-modal" style="background-color:#F5B669;">
+    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <p-card header="Simple Card" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
-      <form >
-        <h5>Article</h5>
-        <div class="form-group">
-          <label ></label>
-          <input type="text" class="form-control"  placeholder="" >
-        </div>
+    <p style="color: red;">Voulez vous vraiment supprimer ce produit??&hellip;</p>
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-        <div class="form-group">
-          <label ></label>
-          <input type="text" class="form-control"  placeholder="" >
-        </div>
-        <div class="form-group">
-          <label></label>
-          <input type="text" class="form-control"  placeholder="" >
-        </div>
+  <div class="modal-footer" style="background-color:#F5B669;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-danger"
+                (click)="deleteProduct() + modal.close('Close click')">Supprimer</button>
+      </div>
+    </div>
+  </div>
 
-        <div class="form-group">
-          <label></label>
-          <input type="text" class="form-control"  placeholder="" >
-        </div>
-        <div class="form-group">
-          <label></label>
-          <input type="text" class="form-control"  placeholder="" >
-        </div>
-
-        <br>
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-md-6">
-              <button type="button" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
-            </div>
-            <div class="col-md-6">
-              <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%" (click)="modal.close('Close click')">Enregistrer <i class="fa fa-check"></i></button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </p-card>
-  </div>-->
 </ng-template>
+<!-------------------------------------------------------DELETE PRODUCT END-------------------------------------------------------------->
 

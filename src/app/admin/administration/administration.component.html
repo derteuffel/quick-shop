@@ -29,7 +29,7 @@
               <tr>
                 <th scope="col">Nom</th>
                 <th scope="col">Categorie</th>
-                <th scope="col">Genre</th>
+                <th scope="col">type</th>
                 <th scope="col">Prix</th>
                 <th scope="col">Actions</th>
               </tr>
@@ -38,25 +38,25 @@
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                 <td>{{item?.name}}</td>
                 <td>{{item?.category}}</td>
-                <td>{{item?.genre}}</td>
+                <td>{{item?.type}}</td>
                 <td>{{item?.price}}CDF</td>
-                <td class="text-right">
+                <td class="text-right" style="width:3 em; text-align:center; font-size: 0.65rem;">
                   <div ngbDropdown placement="bottom-right">
                     <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <button class="btn btn-sm btn-success" >
+                      <button class="btn btn-sm btn-success ml-1" >
                         <span class="image-text">
                           <i class="fas fa-eye" ></i>
                         </span>
                       </button>&nbsp;
-                      <button class="btn btn-sm btn-success" >
+                      <button class="btn btn-sm btn-success " >
                         <span class="image-text">
                           <i class="fas fa-edit" ></i>
                         </span>
                       </button>&nbsp;
-                      <button class="btn btn-sm btn-danger" >
+                      <button class="btn btn-sm btn-danger " (click)="onDelete(contentDelete, item)">
                         <span class="image-text">
                           <i class="pi pi-trash" ></i>
                         </span>
@@ -88,4 +88,33 @@
 </div>
 
 
+
+<!-------------------------------------------------------DELETE PRODUCT START-------------------------------------------------------------->
+<ng-template #contentDelete let-modal>
+  <div class="modal-header dark-modal" style="background-color:#F5B669;">
+    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="color: red;">Voulez vous vraiment supprimer ce produit??&hellip;</p>
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F5B669;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-danger"
+                (click)="deleteProduct() + modal.close('Close click')">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+<!-------------------------------------------------------DELETE PRODUCT END-------------------------------------------------------------->
 
