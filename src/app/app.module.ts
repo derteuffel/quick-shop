@@ -59,6 +59,9 @@ import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AdministrationProductsComponent } from './admin/product/administration-products/administration-products.component';
 import {SidebarModule} from "primeng/sidebar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {DialogModule} from "primeng/dialog";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {ConfirmationService, SharedModule} from "primeng/api";
 
 
 
@@ -122,6 +125,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     CardModule,
     ToastModule,
     IconModule,
+    DialogModule,
+    ConfirmDialogModule,
+    SharedModule,
     SidebarModule,
     ModalModule.forRoot(),
     IconSetModule.forRoot(),
@@ -133,7 +139,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
       preventDuplicates: true
     }),
   ],
-  providers: [IconSetService],
+  providers: [IconSetService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

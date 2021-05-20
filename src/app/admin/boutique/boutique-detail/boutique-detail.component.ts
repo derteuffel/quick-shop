@@ -12,15 +12,21 @@ import {AddProductComponent} from '../../product/add-product/add-product.compone
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Category} from "../../../models/category";
 import {Type} from "../../../models/type";
+import {MessageService} from "primeng/api";
 
 
 
 @Component({
   selector: 'app-boutique-detail',
   templateUrl: './boutique-detail.component.html',
-  styleUrls: ['./boutique-detail.component.css']
+  styleUrls: ['./boutique-detail.component.css'],
+  providers: [MessageService],
 })
 export class BoutiqueDetailComponent implements OnInit {
+  message: string;
+  loading = true;
+  productRef;
+  public submitted = false;
   categories: any = {};
   types: any = {};
   p = 1;
@@ -32,8 +38,9 @@ export class BoutiqueDetailComponent implements OnInit {
   products: Product[];
   bsModalRef: BsModalRef;
   productID;
-  currentProduct: Product;
-  visibleSidebar2: any;
+  product: Product;
+  //details
+  public details: boolean = false;
 
   productForm: FormGroup;
 
@@ -44,6 +51,7 @@ export class BoutiqueDetailComponent implements OnInit {
               private modalService: NgbModal,
               private modalService2: BsModalService,
               private router: Router,
+              private messageService: MessageService,
               private boutiqueService: BoutiqueService) { }
 
 
@@ -88,6 +96,7 @@ export class BoutiqueDetailComponent implements OnInit {
     );
   }
 
+
   onSubmit(){
     this.boutiqueService.activateBoutique(this.currentBoutique.id, this.form.code).subscribe(
       data => {
@@ -119,13 +128,17 @@ export class BoutiqueDetailComponent implements OnInit {
   }
 
 
-  showDetailProduct(contentShow, event){
+  showDetailProduct(event){
     console.log(event);
-    this.modalService.open(contentShow, {size: 'lg'});
-    this.ecommerceService.getProduct(event.id).subscribe(
+
+    this.details = true;
+    this.productID = event.id
+    console.log(this.productID);
+   // this.modalService.open(contentShow, {size: 'lg'});
+    this.ecommerceService.getProduct(this.productID).subscribe(
       data => {
         console.log(data);
-        this.currentProduct = data;
+        this.product = data;
       }, error1 => {
         console.log(error1);
       }
@@ -156,16 +169,42 @@ export class BoutiqueDetailComponent implements OnInit {
       category: new FormControl(''),
       marque: new FormControl(''),
       description: new FormControl(''),
-      pictureUrl: new FormControl(''),
+     // pictures: new FormControl(''),
+     // pictureUrl: new FormControl(''),
     });
   }
 
+  openModalProduct(contentAdd){
+    this.modalService.open(contentAdd, {size: 'lg'});
+  }
+
+  // fonction d'ajout du produit
+  onSubmitProduct() {
+
+    this.submitted = true;
+    if (this.productForm?.invalid) { return; }
+    //console.log(this.productForm);
+    console.log(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.ecommerceService.saveProduct(this.productForm, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+      data => {
+        this.productForm.reset();
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
+        this.loadList();
+        console.log(this.productForm);
+        console.log(data);
+      },
+      error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        console.log(error);
+      }
+    );
+  }
 
   // mise à jour d'un Produit
 
   setProduct(contentUpdate, event) {
     this.modalService.open(contentUpdate, {size: 'lg'});
-    this.currentProduct = event.name;
+    this.product = event.name;
     this.productID = event.id;
     console.log(event.id);
     this.productForm.patchValue({
@@ -177,7 +216,8 @@ export class BoutiqueDetailComponent implements OnInit {
       price: event.price,
       description: event.description,
       marque: event.marque,
-      pictureUrl: event.pictureUrl
+      //pictureUrl: event.pictureUrl,
+      //pictures: event.pictures
 
 
     });
@@ -194,19 +234,57 @@ export class BoutiqueDetailComponent implements OnInit {
       price: this.productForm.get('price').value,
       description: this.productForm.get('description').value,
       marque: this.productForm.get('marque').value,
-      pictureUrl: this.productForm.get('pictureUrl').value,
+      //pictureUrl: this.productForm.get('pictureUrl').value,
+     // pictures: this.productForm.get('pictures').value,
     };
     this.ecommerceService.updateProduct(ProductData, this.productID).subscribe(
       (data: any) => {
         console.log(this.productID);
         this.productForm.reset();
-        //this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
+        this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
         this.loadList();
       }, error => {
-        //this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
     );
   }
 
+  /** toast message function primeng  **/
+  onConfirm() {
+    this.messageService.clear('c');
+  }
+
+  onReject() {
+    this.messageService.clear('c');
+  }
+
+  clear() {
+    this.messageService.clear();
+  }
+
+  saveProduct(produit: Product) {
+    const productFilterdList = this.products.filter(c => c.id === produit.id);
+    console.log(productFilterdList);
+    if ( productFilterdList.length === 0) {
+      this.products.push(produit);
+    } else {
+      productFilterdList[0].id = produit.id;
+      productFilterdList[0].name = produit.name;
+      productFilterdList[0].quantity = produit.quantity;
+      productFilterdList[0].type = produit.type;
+      productFilterdList[0].category = produit.category;
+      productFilterdList[0].price = produit.price;
+      productFilterdList[0].description = produit.description;
+      productFilterdList[0].marque = produit.marque;
+    }
+    this.product = null;
+  }
+  closeDialogForm() {
+    this.product = null;
+  }
+
+  addNewProduct() {
+    this.product = new Product();
+  }
 
 }

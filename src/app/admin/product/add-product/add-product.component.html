@@ -1,37 +1,33 @@
-<div class="modal-header" style="background-color:#F5B669;">
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
 
-<div class="modal-body">
-  <form [formGroup]="productFormGroup" (submit)="onSubmit()">
+<p-dialog header="Title" [(visible)]="display" modal="modal" [style]="{width: '60vw'}"
+          (onHide)="closeFormDialog()" [responsive]="true">
+  <form #productForm="ngForm">
     <h5>Article</h5>
     <div class="row">
       <div class="form-group col-md-6">
         <label>Nom de l'article</label>
-        <input type="text" class="form-control"  required  placeholder="Nom de l'article" formControlName="name">
+        <input type="text" class="form-control"[(ngModel)]="product.name" required  placeholder="Nom de l'article" name="name">
       </div>
 
       <div class="form-group  col-md-6">
-        <label for="montant">Montant</label>
-        <input type="number" class="form-control" id="montant" required formControlName="price"  placeholder="Montant de votre article">
+        <label>Montant</label>
+        <input type="number" class="form-control" [(ngModel)]="product.price"required name="price"  placeholder="Montant de votre article">
       </div>
     </div>
 
     <div class="row">
       <div class="form-group col-md-6">
         <label for="categorie">Categorie</label>
-        <select  formControlName="category"  id="categorie" class="form-control">
-          <option value="" disabled>-- Choisir une category de votre article --</option>
+        <select  [(ngModel)]="product.category" name="category"  id="categorie" class="form-control">
+          <option value="" disabled>&#45;&#45; Choisir une categorie de votre article &#45;&#45;</option>
           <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
         </select>
       </div>
 
       <div class="form-group col-md-6">
         <label >type</label>
-        <select formControlName="type"  class="form-control">
-          <option value="" disabled>-- Choisir un genre pour votre article --</option>
+        <select [(ngModel)]="product.type" name="type"  class="form-control">
+          <option value="" disabled>&#45;&#45; Choisir un genre pour votre article &#45;&#45;</option>
           <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
         </select>
 
@@ -41,11 +37,11 @@
     <div class="row">
       <div class="form-group col-md-6">
         <label for="marque">Marque</label>
-        <input type="text" class="form-control" id="marque" required formControlName="marque"  placeholder="La marque de votre article">
+        <input type="text" class="form-control" id="marque" [(ngModel)]="product.marque" required name="marque"  placeholder="La marque de votre article">
       </div>
       <div class="form-group col-md-6">
         <label>Quantity </label>
-        <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La marque de votre article">
+        <input type="number" class="form-control"  required [(ngModel)]="product.quantity" name="quantity">
 
       </div>
     </div>
@@ -53,24 +49,31 @@
     <div class="row">
       <div class="form-group col-md-6">
         <label for="marque">Image</label>
-        <input type="file" class="form-control" required formControlName="pictureUrl"  placeholder="Image">
+        <input type="file" class="form-control" [(ngModel)]="product.pictures" name="pictures"  placeholder="Image">
       </div>
       <div class="form-group col-md-6">
         <label >Description</label>
-        <textarea name="description" class="form-control"  formControlName="description" id="" rows="4"></textarea>
+        <textarea name="description" class="form-control" [(ngModel)]="product.description"  id="" rows="4"></textarea>
       </div>
     </div>
     <br>
-    <div class="card-footer">
+    <!--<div class="card-footer">
       <div class="row">
         <div class="col-md-6">
-          <a href="#" class="btn btn-secondary" style="width: 100%" ><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</a>
+          <button type="button" pButton icon="fa-close" label="Cancel"
+                  (click)="closeFormDialog()" class="ui-button-danger"></button>
         </div>
         <div class="col-md-6">
-          <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%" >Enregistrer <i class="fa fa-check"></i></button>
+          <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
         </div>
       </div>
-    </div>
+    </div>-->
   </form>
+  <p-footer>
+    <button type="button" pButton icon="fa fa-close" label="Cancel"
+            (click)="closeFormDialog()" class="btn btn-danger"></button>
+    <button type="button" pButton icon="fa fa-check" label="Enregistrer"
+            (click)="onSubmit()" [disabled]="!productForm.form.valid"></button>
 
-</div>
+  </p-footer>
+</p-dialog>

@@ -71,16 +71,20 @@ export class EcommerceService {
     return this.http.get(this.productsUrl + '/all/sort/' + category + '/' + type);
   }
 
-  getProductMarqueAndGenre(marque, type): Observable<any> {
-    return this.http.get(this.productsUrl + '/all/marque/' + marque + '/' + type);
+ getProductQuantity(quantity,id): Observable<any> {
+    return  this.http.get(this.productsUrl + '/add/quantity/' +id, {params: quantity});
+ }
+
+ countProduitByLocation(location, produitName): Observable<any> {
+    return this.http.get(this.productsUrl + '/quantity/byLocation/' +location, {params: produitName});
   }
 
-  getProductColorAndGenre(color, type): Observable<any> {
-    return this.http.get(this.productsUrl + '/all/colors/' + color + '/' + type);
+  removeProduitQuantity(quantity, id): Observable<any> {
+       return this.http.get(this.productsUrl + '/remove/quantity/' +id, {params: quantity});
   }
 
-  getProductQuality(quality): Observable<any> {
-    return this.http.get(this.productsUrl + '/all/quality/' + quality);
+  getProductType(type): Observable<any> {
+    return this.http.get(this.productsUrl + '/all/type/' + type);
   }
 
   saveOrder(order: ProductOrders): Observable<any>  {
@@ -117,7 +121,7 @@ export class EcommerceService {
 
 
   saveProduct(form, id): Observable<any>  {
-    return this.http.post(this.productsUrl + '/' + id, form, {headers: this.formHeaders});
+    return this.http.post(this.productsUrl + '/admin/' + id, form, {headers: this.formHeaders, observe: "response"});
   }
 
   getProduct(id): Observable<any> {

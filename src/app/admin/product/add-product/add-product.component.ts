@@ -1,24 +1,28 @@
-import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component,  EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Category} from '../../../models/category';
 import {Type} from '../../../models/type';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {EcommerceService} from '../../../services/ecommerce.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Quality} from '../../../models/quality';
-import { Colors } from '../../../models/colors';
 import { Boutique } from '../../../models/boutique';
 import { BoutiqueService } from '../../../services/boutique.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {BsModalRef} from "ngx-bootstrap/modal";
 import {Product} from "../../../models/product.model";
+import {MessageService} from "primeng/api";
 
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
+  providers: [MessageService],
 })
 export class AddProductComponent implements OnInit {
+
+  @Input() product: Product;
+  @Output() saveProductEvent = new EventEmitter<Product>();
+  @Output() closeDialogEvent = new EventEmitter();
+
+  display: boolean;
   currentProduct: Product;
   categories: any = {};
   types: any = {};
@@ -29,20 +33,22 @@ export class AddProductComponent implements OnInit {
   public productFormGroup?: FormGroup;
   form: any = {};
   boutique: Boutique;
-  public event: EventEmitter<any> = new EventEmitter();
+
   constructor( private ecommerceService: EcommerceService,
                private route: Router,
                private activatedRoute: ActivatedRoute,
-               private bsModalRef: BsModalRef,
+               private messageService: MessageService,
                private boutiqueService: BoutiqueService) {
 
 
   }
 
   ngOnInit(): void {
+
+    this.display = true;
     this.categories = Object.keys(Category);
     this.types = Object.keys(Type);
-    this.initForm();
+    //this.initForm();
     this.getBoutique();
   }
 
@@ -64,17 +70,20 @@ export class AddProductComponent implements OnInit {
 
   onSubmit(): void{
 
-    this.submitted = true;
-    if (this.productFormGroup?.invalid) { return; }
-    console.log(this.productFormGroup);
-    this.ecommerceService.saveProduct(this.productFormGroup, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+   // this.submitted = true;
+    //if (this.productFormGroup?.invalid) { return; }
+    //console.log(this.productFormGroup);
+    this.ecommerceService.saveProduct(this.product, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
-        console.log(this.productFormGroup);
-        console.log(data);
-        this.bsModalRef.hide();
-        this.route.navigateByUrl('/admin/detail/boutique/' + this.activatedRoute.snapshot.paramMap.get('id'));
+        if (data.success) {
+          this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
+          this.display = false;
+          this.product.id = data.id;
+          this.saveProductEvent.emit(this.product);
+        }
       },
       error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
         console.log(error);
       }
     );
@@ -96,7 +105,23 @@ export class AddProductComponent implements OnInit {
 
 
 
+  closeFormDialog() {
+    this.display = false;
+    this.closeDialogEvent.emit();
+  }
 
+  /** toast message function primeng  **/
+  onConfirm() {
+    this.messageService.clear('c');
+  }
+
+  onReject() {
+    this.messageService.clear('c');
+  }
+
+  clear() {
+    this.messageService.clear();
+  }
 
 
 }
