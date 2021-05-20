@@ -43,6 +43,8 @@ export class BoutiqueDetailComponent implements OnInit {
   public details: boolean = false;
 
   productForm: FormGroup;
+  public imagePath;
+  imgURL: any;
 
 
   constructor(private ecommerceService: EcommerceService,

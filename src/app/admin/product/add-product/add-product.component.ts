@@ -8,6 +8,7 @@ import { Boutique } from '../../../models/boutique';
 import { BoutiqueService } from '../../../services/boutique.service';
 import {Product} from "../../../models/product.model";
 import {MessageService} from "primeng/api";
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -33,12 +34,16 @@ export class AddProductComponent implements OnInit {
   public productFormGroup?: FormGroup;
   form: any = {};
   boutique: Boutique;
+  public imagePath;
+  imgURL: any;
+  userFile;
 
   constructor( private ecommerceService: EcommerceService,
                private route: Router,
                private activatedRoute: ActivatedRoute,
                private messageService: MessageService,
-               private boutiqueService: BoutiqueService) {
+               private boutiqueService: BoutiqueService,
+               public toastr: ToastrService) {
 
 
   }
@@ -121,6 +126,28 @@ export class AddProductComponent implements OnInit {
 
   clear() {
     this.messageService.clear();
+  }
+
+
+  onSelectFile(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.userFile = file;
+      // this.f['profile'].setValue(file);
+
+      var mimeType = event.target.files[0].type;
+      if (mimeType.match(/image\/*/) == null) {
+        this.toastr.success('Only images are supported.');
+
+        return;
+      }
+      var reader = new FileReader();
+      this.imagePath = file;
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+      }
+    }
   }
 
 
