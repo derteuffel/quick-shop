@@ -56,6 +56,12 @@ import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.componen
 import {CardModule} from 'primeng/card';
 import { ProductComponent } from './admin/boutique/product/product.component';
 import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AdministrationProductsComponent } from './admin/product/administration-products/administration-products.component';
+import {SidebarModule} from "primeng/sidebar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {DialogModule} from "primeng/dialog";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {ConfirmationService, SharedModule} from "primeng/api";
 
 
 
@@ -99,10 +105,12 @@ import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     AdminSidebarComponent,
     AdminNavbarComponent,
     ProductComponent,
+    AdministrationProductsComponent,
 
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
@@ -117,6 +125,10 @@ import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     CardModule,
     ToastModule,
     IconModule,
+    DialogModule,
+    ConfirmDialogModule,
+    SharedModule,
+    SidebarModule,
     ModalModule.forRoot(),
     IconSetModule.forRoot(),
     ToastrModule.forRoot({
@@ -127,7 +139,7 @@ import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
       preventDuplicates: true
     }),
   ],
-  providers: [IconSetService],
+  providers: [IconSetService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

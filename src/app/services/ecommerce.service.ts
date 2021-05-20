@@ -4,12 +4,16 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProductOrder} from '../models/product-order.model';
 import {ProductOrders} from '../models/product-orders.model';
 import {Observable} from 'rxjs';
+import {User} from '../models/user';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EcommerceService {
+  currentUser: User;
+  headers: HttpHeaders;
+  formHeaders: HttpHeaders;
 
   private productsUrl = 'http://localhost:8181/api/produits';
   private ordersUrl = 'http://localhost:8181/api/commandes';
@@ -28,6 +32,15 @@ export class EcommerceService {
   TotalChanged = this.totalSubject.asObservable();
 
   constructor(private http: HttpClient) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.headers = new HttpHeaders({
+      authorization: 'Bearer ' + this.currentUser.token,
+      'Content-Type': 'application/json; charset=UTF-8'
+    });
+
+    this.formHeaders = new HttpHeaders({
+      authorization: 'Bearer ' + this.currentUser.token
+    });
   }
 
   getAllProducts(): Observable<any>  {
@@ -35,7 +48,7 @@ export class EcommerceService {
   }
 
   getAllProductsAdmin(): Observable<any>  {
-    return this.http.get(this.productsUrl + '/admin');
+    return this.http.get(this.productsUrl + '/admin',  {headers: this.headers});
   }
 
   getAllMobile(): Observable<any> {
@@ -43,7 +56,7 @@ export class EcommerceService {
   }
 
   getAllProductsBoutique(id): Observable<any> {
-    return this.http.get(this.productsUrl + '/boutique/' + id, {observe: 'response'});
+    return this.http.get(this.productsUrl + '/boutique/' + id, {headers: this.headers});
   }
 
   getProductGenre(genre): Observable<any> {
@@ -54,20 +67,24 @@ export class EcommerceService {
     return this.http.get(this.productsUrl + '/all/category/' + category);
   }
 
-  getProductCategoryAndGenre(category, genre): Observable<any> {
-    return this.http.get(this.productsUrl + '/all/sort/' + category + '/' + genre);
+  getProductCategoryAndGenre(category, type): Observable<any> {
+    return this.http.get(this.productsUrl + '/all/sort/' + category + '/' + type);
   }
 
-  getProductMarqueAndGenre(marque, genre): Observable<any> {
-    return this.http.get(this.productsUrl + '/all/marque/' + marque + '/' + genre);
+ getProductQuantity(quantity,id): Observable<any> {
+    return  this.http.get(this.productsUrl + '/add/quantity/' +id, {params: quantity});
+ }
+
+ countProduitByLocation(location, produitName): Observable<any> {
+    return this.http.get(this.productsUrl + '/quantity/byLocation/' +location, {params: produitName});
   }
 
-  getProductColorAndGenre(color, genre): Observable<any> {
-    return this.http.get(this.productsUrl + '/all/colors/' + color + '/' + genre);
+  removeProduitQuantity(quantity, id): Observable<any> {
+       return this.http.get(this.productsUrl + '/remove/quantity/' +id, {params: quantity});
   }
 
-  getProductQuality(quality): Observable<any> {
-    return this.http.get(this.productsUrl + '/all/quality/' + quality);
+  getProductType(type): Observable<any> {
+    return this.http.get(this.productsUrl + '/all/type/' + type);
   }
 
   saveOrder(order: ProductOrders): Observable<any>  {
@@ -104,7 +121,7 @@ export class EcommerceService {
 
 
   saveProduct(form, id): Observable<any>  {
-    return this.http.post(this.productsUrl + '/' + id, form);
+    return this.http.post(this.productsUrl + '/admin/' + id, form, {headers: this.formHeaders, observe: "response"});
   }
 
   getProduct(id): Observable<any> {
@@ -112,17 +129,17 @@ export class EcommerceService {
   }
 
   updatePicture(imageForm, id): Observable<any> {
-    return this.http.post(this.productsUrl + '/admin/upload/' + id, imageForm);
+    return this.http.post(this.productsUrl + '/admin/upload/' + id, imageForm, {headers: this.formHeaders});
   }
   updatePictures(imageForm, id): Observable<any> {
-    return this.http.post(this.productsUrl + '/admin/uploads/' + id, imageForm);
+    return this.http.post(this.productsUrl + '/admin/uploads/' + id, imageForm, {headers: this.formHeaders});
   }
 
   updateProduct(currentProduct, id): Observable<any> {
-    return this.http.put(this.productsUrl + '/admin/' + id, currentProduct);
+    return this.http.put(this.productsUrl + '/admin/' + id, currentProduct, {headers: this.formHeaders});
   }
 
   deleteProduct(id): Observable<any> {
-    return this.http.delete(this.productsUrl + '/admin/' + id);
+    return this.http.delete(this.productsUrl + '/admin/' + id, {headers: this.headers});
   }
 }

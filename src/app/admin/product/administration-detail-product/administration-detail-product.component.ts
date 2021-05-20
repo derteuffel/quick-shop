@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {EcommerceService} from '../../../services/ecommerce.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Product} from '../../../models/product.model';
 
 @Component({
   selector: 'app-administration-detail-product',
@@ -15,6 +16,7 @@ export class AdministrationDetailProductComponent implements OnInit {
   imageForm: FormGroup;
   imagesForm: FileList;
 
+
   constructor(private productService: EcommerceService, private activatedRoute: ActivatedRoute, private router: Router,
               private formBuilder: FormBuilder) { }
 
@@ -23,7 +25,7 @@ export class AdministrationDetailProductComponent implements OnInit {
     this.imageForm = this.formBuilder.group({
       picture: ['']
     });
-    
+
   }
 
   onFileSelect(event) {
@@ -41,9 +43,9 @@ export class AdministrationDetailProductComponent implements OnInit {
 
 
   upload( file) {
-  
+
     const formData = new FormData();
-    formData.append('file',file);
+    formData.append('file', file);
     this.productService.updatePictures(formData, this.currentProduct.id).subscribe(
       data => {
         console.log(data);
@@ -54,7 +56,7 @@ export class AdministrationDetailProductComponent implements OnInit {
   }
 
   uploadFiles() {
-  
+
     for (let i = 0; i < this.imagesForm.length; i++) {
       this.upload( this.imagesForm[i]);
     }
@@ -75,7 +77,7 @@ export class AdministrationDetailProductComponent implements OnInit {
     );
   }
 
-  
+
 
 
   getProduct(id){
@@ -95,7 +97,7 @@ export class AdministrationDetailProductComponent implements OnInit {
     this.productService.deleteProduct(id).subscribe(
       data => {
         console.log('Item deleted');
-        this.router.navigateByUrl('/admin/detail/boutique/'+this.currentProduct.boutique.id);
+        this.router.navigateByUrl('/admin/detail/boutique/' + this.currentProduct.boutique.id);
       },
       error => {
         console.log(error);

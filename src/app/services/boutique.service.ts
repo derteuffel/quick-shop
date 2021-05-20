@@ -13,15 +13,15 @@ export class BoutiqueService {
   formHeaders: HttpHeaders;
 
   private boutiqueUrl = 'http://localhost:8181/api/boutiques';
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.headers = new HttpHeaders({
-      authorization: 'Bearer '+ this.currentUser.token,
-      "Content-Type":"application/json; charset=UTF-8"
+      authorization: 'Bearer ' + this.currentUser.token,
+      'Content-Type': 'application/json; charset=UTF-8'
     });
 
     this.formHeaders = new HttpHeaders({
-      authorization: 'Bearer '+ this.currentUser.token
+      authorization: 'Bearer ' + this.currentUser.token
     });
   }
 
@@ -62,21 +62,21 @@ export class BoutiqueService {
   // activation du code boutique
   activateBoutique(id, code): Observable<any> {
     console.log(code);
-    return this.http.get(this.boutiqueUrl + '/activation/'+id+'/'+code, {observe: "response"});
+    return this.http.get(this.boutiqueUrl + '/activation/' + id + '/' + code, {observe: 'response'});
   }
 // envoi du code
   sendCode(id): Observable<any>{
-    return this.http.get(this.boutiqueUrl+ '/send/code/'+id,  {headers: this.headers});
+    return this.http.get(this.boutiqueUrl + '/send/code/' + id,  {headers: this.headers});
   }
 
   // activation boutique par l'ADMIN
 
   activationAdmin(id): Observable<any> {
-    return this.http.get(this.boutiqueUrl+ '/admin/activation'+id,  {headers: this.headers});
+    return this.http.get(this.boutiqueUrl + '/admin/activation' + id,  {headers: this.headers});
   }
 
   // desactivation de la boutique
   desactivation(id): Observable<any> {
-    return this.http.get(this.boutiqueUrl+ '/desactivation'+id ,  {headers: this.headers});
+    return this.http.get(this.boutiqueUrl + '/desactivation' + id ,  {headers: this.headers});
   }
 }

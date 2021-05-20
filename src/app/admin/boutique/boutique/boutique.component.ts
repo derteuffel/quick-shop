@@ -150,11 +150,8 @@ export class BoutiqueComponent implements OnInit {
   // suppression d'une Boutique
 
   deleteBoutique(contentDelete, event) {
-    console.log(event);
     this.modalService.open(contentDelete, {size: 'lg'});
     this.boutiqueRef = event.id;
-    console.log(this.boutiqueRef);
-
   }
 
   onDelete() {

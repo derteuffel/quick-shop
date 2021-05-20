@@ -25,9 +25,9 @@ export class AuthService {
   username: string;
 
   constructor(private http: HttpClient,
-              private router: Router,) {
+              private router: Router, ) {
                 this.currentUserSubject = new BehaviorSubject<User> (JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+                this.currentUser = this.currentUserSubject.asObservable();
   }
 
   public get currentUserValue(): User {
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(this.authUrl+'/logout',{}).pipe(
+    return this.http.post(this.authUrl + '/logout', {}).pipe(
       map(response => {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
@@ -57,10 +57,10 @@ export class AuthService {
   login(user): Observable<any> {
     const header = new HttpHeaders(user ? {
       authorization: 'Basic ' + btoa(user.username + ':' + user.password)
-    }:{});
-    return this.http.get<any>(this.authUrl+'/login', {headers: header}).pipe(
+    } : {});
+    return this.http.get<any>(this.authUrl + '/login', {headers: header}).pipe(
       map(response => {
-        if(response){
+        if (response){
           localStorage.setItem('currentUser', JSON.stringify(response));
           this.currentUserSubject.next(response);
         }
@@ -71,6 +71,6 @@ export class AuthService {
   }
 
   signUp(user): Observable<any> {
-    return this.http.post(this.authUrl+'/signup', JSON.stringify(user), {headers: {"Content-Type":"application/json; charset= UTF-8"}});
+    return this.http.post(this.authUrl + '/signup', JSON.stringify(user), {headers: {'Content-Type': 'application/json; charset= UTF-8'}});
   }
 }
