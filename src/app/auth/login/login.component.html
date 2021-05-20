@@ -26,7 +26,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="pi pi-lock"></i></span>
                     </div>
-                    <input type="password" class="form-control" required [(ngModel)]="form.password"  name="password" placeholder="Mot de passe" name="password" #password="ngModel" minlength="6" />
+                    <input type="password" class="form-control" required [(ngModel)]="form.password"  name="password" placeholder="Mot de passe" name="password" #password="ngModel" minlength="4" />
                     <div *ngIf="f.submitted && password.invalid">
                       <div *ngIf="password.errors.required">Vous devez entrer un mot de passe</div>
                       <div *ngIf="password.errors.minlength">Votre mot de passe doit contenir au moins 6 caracteres</div>

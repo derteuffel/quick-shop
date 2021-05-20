@@ -56,6 +56,8 @@ import { AdminFooterComponent } from './admin/admin-footer/admin-footer.componen
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
 import {CardModule} from "primeng/card";
+import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
+import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
 
 
 
@@ -100,6 +102,8 @@ import {CardModule} from "primeng/card";
     AdminFooterComponent,
     AdminSidebarComponent,
     AdminNavbarComponent,
+    AddCoachingComponent,
+    DetailsCoachingComponent,
 
   ],
   imports: [

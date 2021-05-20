@@ -25,6 +25,9 @@ import {SellerUpdateBoutiqueComponent} from "./seller/boutique/seller-update-bou
 import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./auth/register/register.component";
 import {SellerCommandeComponent} from "./seller/commande/seller-commande/seller-commande.component";
+import { CoachingComponent } from './coachings/coaching/coaching.component';
+import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
+import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
 
 
 
@@ -104,6 +107,22 @@ const routes: Routes = [
   },
   {
     path: 'admin/update/boutique/:id', component: UpdateBoutiqueComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/coachings', component: CoachingComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/coachings/add', component: AddCoachingComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/coachings/details/:id', component: DetailsCoachingComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/coachings/edit/:id', component: AddBoutiqueComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {

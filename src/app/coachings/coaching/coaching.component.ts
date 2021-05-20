@@ -13,7 +13,7 @@ import {CoachingService} from "../../services/coaching.service";
 })
 export class CoachingComponent implements OnInit {
 
-  lists: any = {};
+  lists: any = [];
   boutiqueRef;
   p: number = 1;
   searchItem: string;
@@ -41,19 +41,22 @@ export class CoachingComponent implements OnInit {
       phone1:  new FormControl(''),
       email:  new FormControl(''),
       region:  new FormControl(''),
+      title: new FormControl(''),
+      userEmail: new FormControl('')
     });
   }
 
   loadData() {
     this.coachingService.getAllCoaching().subscribe(
       data => {
-        this.lists = data;
-        console.log(data);
+        console.log('#################### Start loading datas ####################');
+        this.lists = data.body;
+        console.log(data.body);
+        console.log('##################### End loading datas #####################');
       }, error => {
         console.log(error);
-
       }
-    )
+    );
   }
 
   saveCoaching() {

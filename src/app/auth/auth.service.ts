@@ -73,4 +73,13 @@ export class AuthService {
   signUp(user): Observable<any> {
     return this.http.post(this.authUrl+'/signup', JSON.stringify(user), {headers: {"Content-Type":"application/json; charset= UTF-8"}});
   }
+
+  getUserToken():string{
+    let userCurrent:any;
+    if(localStorage.getItem('currentUser')!=null){
+      userCurrent = JSON.parse(localStorage.getItem('currentUser'));
+      return userCurrent.token;
+    }
+    return null;
+  }
 }
