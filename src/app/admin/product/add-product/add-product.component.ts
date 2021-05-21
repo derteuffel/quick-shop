@@ -36,7 +36,7 @@ export class AddProductComponent implements OnInit {
   boutique: Boutique;
   public imagePath;
   imgURL: any;
-  userFile;
+ public userFile: any = File;
 
   constructor( private ecommerceService: EcommerceService,
                private route: Router,
@@ -74,10 +74,6 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit(): void{
-
-   // this.submitted = true;
-    //if (this.productFormGroup?.invalid) { return; }
-    //console.log(this.productFormGroup);
     this.ecommerceService.saveProduct(this.product, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
         if (data.success) {
@@ -94,6 +90,8 @@ export class AddProductComponent implements OnInit {
     );
   }
 
+
+
   getBoutique(){
 
     this.boutiqueService.getBoutique(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
@@ -107,7 +105,27 @@ export class AddProductComponent implements OnInit {
     );
   }
 
+  /** fonction pour l'upload de fichier **/
+  onSelectFile(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.userFile = file;
+      console.log(file)
 
+      var mimeType = event.target.files[0].type;
+      if (mimeType.match(/image\/*/) == null) {
+        this.toastr.success('Only images are supported.');
+
+        return;
+      }
+      var reader = new FileReader();
+      this.imagePath = file;
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+      }
+    }
+  }
 
 
   closeFormDialog() {
@@ -129,26 +147,7 @@ export class AddProductComponent implements OnInit {
   }
 
 
-  onSelectFile(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.userFile = file;
-      // this.f['profile'].setValue(file);
 
-      var mimeType = event.target.files[0].type;
-      if (mimeType.match(/image\/*/) == null) {
-        this.toastr.success('Only images are supported.');
-
-        return;
-      }
-      var reader = new FileReader();
-      this.imagePath = file;
-      reader.readAsDataURL(file);
-      reader.onload = (_event) => {
-        this.imgURL = reader.result;
-      }
-    }
-  }
 
 
 }

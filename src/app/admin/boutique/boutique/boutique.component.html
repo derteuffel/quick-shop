@@ -19,7 +19,7 @@
         <div class="card shadow">
           <div class="card-header border-0" style="background-color:#F5B669;">
             <div class="col-md-6">
-              <button (click)="openModalAddCompany(contentAdd)"  class="btn btn-primary btn-lg">Nouvelle boutique</button>
+              <button (click)="openModalAddCompany(contentAdd)"  pButton icon="fa fa-plus" style="float:left" label="Nouvelle boutique"></button>
             </div>
             <div class="col-md-6 pull-right" style="width: 40%">
                 <label >Recherche <i class="fa fa-search"></i></label>
@@ -41,35 +41,35 @@
               </thead>
               <tbody>
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-                <td style="width:5 em; text-align:center; font-size: 0.75rem;">
+                <td style="width:5em; text-align:center; font-size: 0.75rem;">
                   {{item?.name}}
                 </td>
 
-                <td style="width:5 em; text-align:center; font-size: 0.75rem;">
+                <td style="width:5em; text-align:center; font-size: 0.75rem;">
                   {{item?.localisation}}
                 </td>
 
-                <td style="width:5 em; text-align:center; font-size: 0.75rem;">
+                <td style="width:5em; text-align:center; font-size: 0.75rem;">
                   {{item?.region}}
                 </td>
 
-                <td style="width:5 em; text-align:center; font-size: 0.75rem;">
+                <td style="width:5em; text-align:center; font-size: 0.75rem;">
                   {{item?.phone}}
                 </td>
 
-                <td style="width:5 em; text-align:center; font-size: 0.75rem;">{{item?.activationCode}} <br>
+                <td style="width:5em; text-align:center; font-size: 0.75rem;">{{item?.activationCode}} <br>
                   <a type="button" (click)="sendCode(item?.id)" class="btn btn-primary">Envoyer code</a>
                 </td>
 
-                <td *ngIf="!item?.status" style="width:5 em; text-align:center; font-size: 0.75rem;">
+                <td *ngIf="!item?.status" style="width:5em; text-align:center; font-size: 0.75rem;">
                   <span class="badge badge-dot mr-4"><i class="bg-warning"></i> Fermer</span>
                 </td>
 
-                <td *ngIf="item?.status" style="width:5 em; text-align:center; font-size: 0.75rem;">
+                <td *ngIf="item?.status" style="width:5em; text-align:center; font-size: 0.75rem;">
                   <span class="badge badge-dot mr-4"><i class="bg-success"></i> Ouverte</span>
                 </td>
 
-                <td class="text-right" style="width:5 em; text-align:center; font-size: 0.75rem;">
+                <td class="text-right" style="width:5em; text-align:center; font-size: 0.75rem;">
                   <div ngbDropdown placement="bottom-right">
                     <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                       <i class="fas fa-ellipsis-v"></i>

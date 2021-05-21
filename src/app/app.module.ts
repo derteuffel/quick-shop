@@ -21,8 +21,6 @@ import { DetailProductComponent } from './eco/product/detail-product/detail-prod
 import { AdministrationDetailProductComponent } from './admin/product/administration-detail-product/administration-detail-product.component';
 import { AdministrationUpdateProductComponent } from './admin/product/administration-update-product/administration-update-product.component';
 import { CommandeComponent } from './admin/commande/commande/commande.component';
-import { WomenProductsComponent } from './eco/product/women-products/women-products.component';
-import { MenProductsComponent } from './eco/product/men-products/men-products.component';
 import { BoutiqueComponent } from './admin/boutique/boutique/boutique.component';
 import { AddBoutiqueComponent } from './admin/boutique/add-boutique/add-boutique.component';
 import { BoutiqueDetailComponent } from './admin/boutique/boutique-detail/boutique-detail.component';
@@ -58,6 +56,12 @@ import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.componen
 import {CardModule} from "primeng/card";
 import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
 import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {DialogModule} from "primeng/dialog";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {ConfirmationService, SharedModule} from "primeng/api";
+import {SidebarModule} from "primeng/sidebar";
+import {ModalModule} from "ngx-bootstrap/modal";
 
 
 
@@ -86,8 +90,6 @@ import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/
     SellerUpdateBoutiqueComponent,
     SellerUpdateProductComponent,
     CommandeComponent,
-    WomenProductsComponent,
-    MenProductsComponent,
     BoutiqueComponent,
     AddBoutiqueComponent,
     BoutiqueDetailComponent,
@@ -108,6 +110,7 @@ import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
@@ -122,6 +125,11 @@ import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/
     CardModule,
     ToastModule,
     IconModule,
+    DialogModule,
+    ConfirmDialogModule,
+    SharedModule,
+    SidebarModule,
+    ModalModule.forRoot(),
     IconSetModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 1500,
@@ -131,7 +139,7 @@ import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/
       preventDuplicates: true
     }),
   ],
-  providers: [IconSetService],
+  providers: [IconSetService,ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

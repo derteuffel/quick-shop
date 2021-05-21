@@ -12,8 +12,6 @@ import {CommandeComponent} from "./admin/commande/commande/commande.component";
 import {SellerAddProductComponent} from "./seller/product/seller-add-product/seller-add-product.component";
 import {SellerDetailProductComponent} from "./seller/product/seller-detail-product/seller-detail-product.component";
 import {SellerUpdateProductComponent} from "./seller/product/seller-update-product/seller-update-product.component";
-import {WomenProductsComponent} from "./eco/product/women-products/women-products.component";
-import {MenProductsComponent} from "./eco/product/men-products/men-products.component";
 import {BoutiqueComponent} from "./admin/boutique/boutique/boutique.component";
 import {AddBoutiqueComponent} from "./admin/boutique/add-boutique/add-boutique.component";
 import {BoutiqueDetailComponent} from "./admin/boutique/boutique-detail/boutique-detail.component";
@@ -86,12 +84,6 @@ const routes: Routes = [
   {
     path: 'seller/commandes', component: SellerCommandeComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
-  },
-  {
-    path: 'ecommerce/women/collection', component: WomenProductsComponent
-  },
-  {
-    path: 'ecommerce/men/collection', component: MenProductsComponent
   },
  {
     path: 'admin/boutiques', component: BoutiqueComponent,
