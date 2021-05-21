@@ -21,6 +21,8 @@ import { DetailProductComponent } from './eco/product/detail-product/detail-prod
 import { AdministrationDetailProductComponent } from './admin/product/administration-detail-product/administration-detail-product.component';
 import { AdministrationUpdateProductComponent } from './admin/product/administration-update-product/administration-update-product.component';
 import { CommandeComponent } from './admin/commande/commande/commande.component';
+import { WomenProductsComponent } from './eco/product/women-products/women-products.component';
+import { MenProductsComponent } from './eco/product/men-products/men-products.component';
 import { BoutiqueComponent } from './admin/boutique/boutique/boutique.component';
 import { AddBoutiqueComponent } from './admin/boutique/add-boutique/add-boutique.component';
 import { BoutiqueDetailComponent } from './admin/boutique/boutique-detail/boutique-detail.component';
@@ -53,15 +55,9 @@ import {RouterModule} from '@angular/router';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
-import {CardModule} from 'primeng/card';
-import { ProductComponent } from './admin/boutique/product/product.component';
-import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { AdministrationProductsComponent } from './admin/product/administration-products/administration-products.component';
-import {SidebarModule} from "primeng/sidebar";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {DialogModule} from "primeng/dialog";
-import {ConfirmDialogModule} from "primeng/confirmdialog";
-import {ConfirmationService, SharedModule} from "primeng/api";
+import {CardModule} from "primeng/card";
+import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
+import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
 
 
 
@@ -90,6 +86,8 @@ import {ConfirmationService, SharedModule} from "primeng/api";
     SellerUpdateBoutiqueComponent,
     SellerUpdateProductComponent,
     CommandeComponent,
+    WomenProductsComponent,
+    MenProductsComponent,
     BoutiqueComponent,
     AddBoutiqueComponent,
     BoutiqueDetailComponent,
@@ -104,13 +102,12 @@ import {ConfirmationService, SharedModule} from "primeng/api";
     AdminFooterComponent,
     AdminSidebarComponent,
     AdminNavbarComponent,
-    ProductComponent,
-    AdministrationProductsComponent,
+    AddCoachingComponent,
+    DetailsCoachingComponent,
 
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
@@ -125,11 +122,6 @@ import {ConfirmationService, SharedModule} from "primeng/api";
     CardModule,
     ToastModule,
     IconModule,
-    DialogModule,
-    ConfirmDialogModule,
-    SharedModule,
-    SidebarModule,
-    ModalModule.forRoot(),
     IconSetModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 1500,
@@ -139,7 +131,7 @@ import {ConfirmationService, SharedModule} from "primeng/api";
       preventDuplicates: true
     }),
   ],
-  providers: [IconSetService, ConfirmationService],
+  providers: [IconSetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,13 +13,15 @@ import {CoachingService} from "../../services/coaching.service";
 })
 export class CoachingComponent implements OnInit {
 
-  lists: any = {};
+  lists: any = [];
   boutiqueRef;
   p: number = 1;
   searchItem: string;
   public submitted: boolean = false;
+  public sessionSubmitted: boolean = false;
   public coachingFormGroup?: FormGroup;
   public coachingUpdateFormGroup?: FormGroup;
+  public addCoachingSessionFurmGroup?: FormGroup;
   public currentCoaching;
   constructor(              private coachingService: CoachingService,
                             private fb: FormBuilder,
@@ -41,19 +43,29 @@ export class CoachingComponent implements OnInit {
       phone1:  new FormControl(''),
       email:  new FormControl(''),
       region:  new FormControl(''),
+      title: new FormControl(''),
+      userEmail: new FormControl('')
+    });
+
+    this.coachingUpdateFormGroup = new FormGroup({
+      description: new FormControl(''),
+      phone:  new FormControl(''),
+      phone1:  new FormControl(''),
+      email:  new FormControl(''),
+      region:  new FormControl(''),
+      title: new FormControl(''),
+      userEmail: new FormControl('')
     });
   }
 
   loadData() {
     this.coachingService.getAllCoaching().subscribe(
       data => {
-        this.lists = data;
-        console.log(data);
+        this.lists = data.body;
       }, error => {
         console.log(error);
-
       }
-    )
+    );
   }
 
   saveCoaching() {
@@ -74,17 +86,20 @@ export class CoachingComponent implements OnInit {
 
 
   setCoaching(contentUpdate, event) {
+
     this.modalService.open(contentUpdate, {size: "lg"});
     this.currentCoaching = event.region
+    
     this.coachingUpdateFormGroup.patchValue({
       id: event.id,
       phone1: event.phone1,
       description: event.description,
       phone: event.phone,
       region: event.region,
-
+      title: event.title,
+      email: event.email,
+      userEmail: event.userEmail
     });
-
   }
 
   updateCoaching() {
@@ -164,6 +179,26 @@ export class CoachingComponent implements OnInit {
   openModalAddCompany(contentAdd) {
     this.modalService.open(contentAdd, { size: 'lg' });
 
+  }
+
+  openAddCoachingSession(sessionAdd, currentCoaching){
+    this.modalService.open(sessionAdd, { size: 'sm' });
+  }
+
+  saveCoachingSession(){
+    this.sessionSubmitted = true;
+    if (this.addCoachingSessionFurmGroup?.invalid) return;
+    this.coachingService.saveCoaching(this.coachingFormGroup?.value).subscribe(
+      (data: any) => {
+        // this.router.navigateByUrl('/admin/boutiques');
+        this.coachingFormGroup.reset();
+        this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
+        this.loadData();
+      }, error => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
+    this.sessionSubmitted = false;
   }
 
 }
