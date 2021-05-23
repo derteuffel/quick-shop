@@ -26,6 +26,8 @@ import {SellerCommandeComponent} from "./seller/commande/seller-commande/seller-
 import { CoachingComponent } from './coachings/coaching/coaching.component';
 import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
 import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
+import {SingupComponent} from "./auth/singup/singup.component";
+import {SinginComponent} from "./auth/singin/singin.component";
 
 
 
@@ -35,18 +37,7 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
 
-/*  {
-    path: '',
-    component: AdminLayoutComponent,
-    data:{roles: [Role.ADMIN, Role.ROOT]},
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        loadChildren: './admin/admin-layout/admin-layout.module#AdminLayoutModule'
-      }
-    ]
-  },*/
+
   {
     path: 'ecommerce/home', component: EcommerceComponent
   },
@@ -138,6 +129,15 @@ const routes: Routes = [
   {
     path: 'register', component: RegisterComponent
   },
+
+  {
+    path: 'signup', component: SingupComponent
+  },
+
+  {
+    path: 'signin', component: SinginComponent
+  },
+
   {
     path: '', redirectTo: 'ecommerce/home', pathMatch: 'full'
   }];

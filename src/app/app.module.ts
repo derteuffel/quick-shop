@@ -62,6 +62,8 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService, SharedModule} from "primeng/api";
 import {SidebarModule} from "primeng/sidebar";
 import {ModalModule} from "ngx-bootstrap/modal";
+import { SinginComponent } from './auth/singin/singin.component';
+import { SingupComponent } from './auth/singup/singup.component';
 
 
 
@@ -106,6 +108,8 @@ import {ModalModule} from "ngx-bootstrap/modal";
     AdminNavbarComponent,
     AddCoachingComponent,
     DetailsCoachingComponent,
+    SinginComponent,
+    SingupComponent,
 
   ],
   imports: [

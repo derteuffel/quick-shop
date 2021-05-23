@@ -28,6 +28,13 @@ export class HeaderComponent implements OnInit {
   }
 
 
+  toggleCollapsed(): void {
+    this.collapsed = !this.collapsed;
+  }
+
+  finishOrder(orderFinished: boolean) {
+    this.orderFinished = orderFinished;
+  }
 
   reset() {
     this.orderFinished = false;

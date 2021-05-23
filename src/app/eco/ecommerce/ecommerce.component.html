@@ -1,13 +1,6 @@
-<!--<app-header></app-header>-->
-<div class="row" [hidden]="orderFinished">
-  <div class="col-md-9">
-    <app-products #productsC ></app-products>
-  </div>
-  <div class="col-md-3">
-    <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC
-                       ></app-shopping-cart>
-  </div>
-</div>
+<app-header></app-header>
+<app-products #productsC [hidden]="orderFinished"></app-products>
+
 <div [hidden]="!orderFinished">
   <app-orders #ordersC ></app-orders>
 </div>

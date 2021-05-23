@@ -80,28 +80,23 @@
                 <div class="row">
                   <div class="col">
                     <h5 class="card-title text-uppercase text-muted mb-0">Boutique &nbsp; <span class="h2 font-weight-bold mb-0">{{currentBoutique.name}} </span></h5>
-
                   </div>
-                  <!--<div class="col-auto">
-                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                      <i class="fas fa-chart-bar"></i>
-                    </div>
-                  </div>-->
+
                 </div>
-                <p class="mt-3 mb-0 text-muted text-sm">
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
                   <span class="text-success mr-2"><i class="fa fa-map"></i> Lieu:</span>
                   <span class="text-nowrap">{{currentBoutique.localisation}}</span>
                 </p>
-                <p class="mt-3 mb-0 text-muted text-sm">
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
                   <span class="text-success mr-2"><i class="fa fa-phone"></i> Téléphone:</span>
                   <span class="text-nowrap">{{currentBoutique.phone}}</span>
                 </p>
 
-                <p class="mt-3 mb-0 text-muted text-sm">
-                  <span class="text-success mr-2"><i class="fa fa-rebel"></i> Region:</span>
+                <p class="mt-3 mb-0 text-muted text-sm" style="color: #F45B3A !important;">
+                  <span class="text-success mr-2" ><i class="fa fa-rebel"></i> Region:</span>
                   <span class="text-nowrap">{{currentBoutique.region}}</span>
                 </p>
-                <p class="mt-3 mb-0 text-muted text-sm">
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
                   <span class="text-success mr-2"><i class="fa fa-credit-card"></i> Carte Number:</span>
                   <span class="text-nowrap">{{currentBoutique.cardNumber}}</span>
                 </p>
@@ -119,9 +114,9 @@
     <div class="row">
       <div class="col">
         <div class="card shadow">
-          <div class="card-header border-0" style="background-color:#F5B669;">
+          <div class="card-header border-0" style="background-color:#F45B3A;">
             <div class="col-md-6">
-              <button (click)="addNewProduct()" pButton icon="fa fa-plus" style="float:left" label="Ajouter Article"></button>
+              <button (click)="addNewProduct()" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D;" label="Ajouter Article"></button>
             </div>
             <div class="col-md-6 pull-right" style="width: 40%">
               <label >Recherche <i class="fa fa-search"></i></label>
@@ -266,7 +261,7 @@
 <!-------------------------------------------------------ADD PRODUCT START-------------------------------------------------------------->
 
 <ng-template #contentAdd let-modal>
-  <div class="modal-header" style="background-color:#F5B669;">
+  <div class="modal-header" style="background-color:#F45B3A;">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -351,7 +346,7 @@
 
 <!-------------------------------------------------------UPDATED PRODUCT START-------------------------------------------------------------->
 <ng-template #contentUpdate let-modal>
-  <div class="modal-header" style="background-color:#F5B669;">
+  <div class="modal-header" style="background-color:#F45B3A;">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -471,7 +466,7 @@
 
 <!-------------------------------------------------------DELETE PRODUCT START-------------------------------------------------------------->
 <ng-template #contentDelete let-modal>
-  <div class="modal-header dark-modal" style="background-color:#F5B669;">
+  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
     <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -482,7 +477,7 @@
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-  <div class="modal-footer" style="background-color:#F5B669;">
+  <div class="modal-footer" style="background-color:#F45B3A;">
     <div class="row">
       <!-- <div class="col-md-4 "></div> -->
       <div class="col-md-4 ">

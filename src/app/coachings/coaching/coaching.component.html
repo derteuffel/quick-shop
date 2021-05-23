@@ -15,9 +15,9 @@
     <div class="row">
       <div class="col">
         <div class="card shadow">
-          <div class="card-header border-0" style="background-color:#F5B669;">
+          <div class="card-header border-0" style="background-color:#F45B3A;">
             <div class="col-md-6">
-              <button (click)="openModalAddCompany(contentAdd)" pButton icon="fa fa-plus" style="float:left" label="Nouveau service de coaching"></button>
+              <button (click)="openModalAddCompany(contentAdd)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D !important;" label="Nouveau service de coaching"></button>
             </div>
             <div class="col-md-6 pull-right" style="width: 40%">
               <label >Recherche <i class="fa fa-search"></i></label>
@@ -108,7 +108,7 @@
 <!-- MODAL  FORM FOR ADD COACHING -->
 
 <ng-template #contentAdd let-modal>
-  <div class="modal-header" style="background-color:#F5B669;">
+  <div class="modal-header" style="background-color:#F45B3A;">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -172,7 +172,7 @@
 
 <!-- Modal FORM FOR ADD COACHING SESSION -->
 <ng-template #addSession let-modal>
-  <div class="modal-header" style="background-color:#F5B669;">
+  <div class="modal-header" style="background-color:#F45B3A;">
     Ajouter une session
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -203,7 +203,7 @@
 <!-- MODAL  FORM FOR UPDATE COACHING -->
 
 <ng-template #contentUpdate let-modal>
-  <div class="modal-header" style="background-color:#F5B669;">
+  <div class="modal-header" style="background-color:#F45B3A;">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -290,7 +290,7 @@
 
 <!-------------------------------------------------------DELETE COACHING START------------------------------------------------------------>
 <ng-template #contentDelete let-modal>
-  <div class="modal-header dark-modal" style="background-color:#F5B669;">
+  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
     <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -321,7 +321,7 @@
 
 <!-------------------------------------------------------DELETE SESSION COACHING START------------------------------------------------------------>
 <ng-template #contentDeleteSession let-modal>
-  <div class="modal-header dark-modal" style="background-color:#F5B669;">
+  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
     <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -332,7 +332,7 @@
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-  <div class="modal-footer" style="background-color:#F5B669;">
+  <div class="modal-footer" style="background-color:#F45B3A;">
     <div class="row">
       <!-- <div class="col-md-4 "></div> -->
       <div class="col-md-4 ">
