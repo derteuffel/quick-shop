@@ -83,13 +83,8 @@
                   </div>
 
                 </div>
-<<<<<<< HEAD
-                <p class="mt-3 mb-0 text-muted text-sm">
-                  <span class="text-success mr-2"><i class="fa fa-map"></i> Adresse physique:</span>
-=======
                 <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
                   <span class="text-success mr-2"><i class="fa fa-map"></i> Lieu:</span>
->>>>>>> 7ca5b0c354a1d131d4ed8c91b14440d02b66fea4
                   <span class="text-nowrap">{{currentBoutique.localisation}}</span>
                 </p>
                 <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
@@ -308,22 +303,18 @@
       </div>
       <div class="row">
         <div class="form-group col-md-6">
-          <label>Marque</label>
-          <input type="text" class="form-control"  required formControlName="marque"  placeholder="La marque de votre article">
-        </div>
-        <div class="form-group col-md-6">
           <label>Quantity </label>
           <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La marque de votre article">
-
+        </div>
+        <div class="form-group col-md-6">
+          <label>Image</label>
+          <input type="file" class="form-control" required formControlName="pictureUrl"  placeholder="Image">
         </div>
       </div>
 
       <div class="row">
-        <div class="form-group col-md-6">
-          <label>Image</label>
-         <!-- <input type="file" class="form-control" required formControlName="pictureUrl"  placeholder="Image">-->
-        </div>
-        <div class="form-group col-md-6">
+        
+        <div class="form-group col-md-12">
           <label >Description</label>
           <textarea name="description" class="form-control"  formControlName="description" rows="4"></textarea>
         </div>

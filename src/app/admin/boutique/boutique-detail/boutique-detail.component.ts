@@ -38,6 +38,7 @@ export class BoutiqueDetailComponent implements OnInit {
   products: Product[];
   boutiqueId: number;
   bsModalRef: BsModalRef;
+  selectedFile: ImageSnippet;
   productID;
   product: Product;
   //details
@@ -175,7 +176,7 @@ export class BoutiqueDetailComponent implements OnInit {
       category: new FormControl(''),
       marque: new FormControl(''),
       description: new FormControl(''),
-     // pictures: new FormControl(''),
+      picture: new FormControl(null),
      // pictureUrl: new FormControl(''),
     });
   }
@@ -184,12 +185,25 @@ export class BoutiqueDetailComponent implements OnInit {
     this.modalService.open(contentAdd, {size: 'lg'});
   }
 
+  onFilesSelect(event) {
+    const file: File = event.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) =>{
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+    });
+
+    reader.readAsDataURL(file);
+  }
+  
+
   // fonction d'ajout du produit
   onSubmitProduct() {
 
     this.submitted = true;
     if (this.productForm?.invalid) { return; }
     //console.log(this.productForm);
+
     console.log(this.activatedRoute.snapshot.paramMap.get('id'));
     this.ecommerceService.saveProduct(this.productForm, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
@@ -293,4 +307,8 @@ export class BoutiqueDetailComponent implements OnInit {
     this.product = new Product();
   }
 
+}
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
 }
