@@ -122,7 +122,7 @@ export class EcommerceService {
 
 
   saveProduct(form, id): Observable<any>  {
-    return this.http.post(this.productsUrl + '/admin/' + id, form, {headers: this.formHeaders, observe: "response"});
+    return this.http.post(this.productsUrl + '/admin/' + id, form, {headers: this.formHeaders});
   }
 
   getProduct(id): Observable<any> {

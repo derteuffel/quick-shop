@@ -64,6 +64,8 @@ import {SidebarModule} from "primeng/sidebar";
 import {ModalModule} from "ngx-bootstrap/modal";
 import { SinginComponent } from './auth/singin/singin.component';
 import { SingupComponent } from './auth/singup/singup.component';
+import { CustomerUpComponent } from './auth/customer-up/customer-up.component';
+import { CustomerInComponent } from './auth/customer-in/customer-in.component';
 
 
 
@@ -110,6 +112,8 @@ import { SingupComponent } from './auth/singup/singup.component';
     DetailsCoachingComponent,
     SinginComponent,
     SingupComponent,
+    CustomerUpComponent,
+    CustomerInComponent,
 
   ],
   imports: [

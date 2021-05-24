@@ -38,7 +38,6 @@ export class BoutiqueDetailComponent implements OnInit {
   products: Product[];
   boutiqueId: number;
   bsModalRef: BsModalRef;
-  selectedFile: ImageSnippet;
   productID;
   product: Product;
   //details
@@ -174,9 +173,8 @@ export class BoutiqueDetailComponent implements OnInit {
       price: new FormControl(''),
       type: new FormControl(''),
       category: new FormControl(''),
-      marque: new FormControl(''),
       description: new FormControl(''),
-      picture: new FormControl(null),
+      pictureUrl: new FormControl(null),
      // pictureUrl: new FormControl(''),
     });
   }
@@ -186,14 +184,10 @@ export class BoutiqueDetailComponent implements OnInit {
   }
 
   onFilesSelect(event) {
-    const file: File = event.files[0];
-    const reader = new FileReader();
-
-    reader.addEventListener('load', (event: any) =>{
-      this.selectedFile = new ImageSnippet(event.target.result, file);
-    });
-
-    reader.readAsDataURL(file);
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.productForm.get('pictureUrl').setValue(file);
+    }
   }
   
 
@@ -202,10 +196,18 @@ export class BoutiqueDetailComponent implements OnInit {
 
     this.submitted = true;
     if (this.productForm?.invalid) { return; }
-    //console.log(this.productForm);
-
+     console.log(this.productForm);
     console.log(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.ecommerceService.saveProduct(this.productForm, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+    const formData = new FormData();
+    formData.append('file',this.productForm.get('pictureUrl').value);
+    formData.append('name', this.productForm.get('name').value);
+    formData.append('price', this.productForm.get('price').value);
+    formData.append('category', this.productForm.get('category').value);
+    formData.append('type', this.productForm.get('type').value);
+    formData.append('quantity', this.productForm.get('quantity').value);
+    formData.append('description', this.productForm.get('description').value);
+    console.log(formData);
+    this.ecommerceService.saveProduct(formData, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
         this.productForm.reset();
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
@@ -289,13 +291,13 @@ export class BoutiqueDetailComponent implements OnInit {
       this.products.push(produit);
     } else {
       productFilterdList[0].id = produit.id;
-      productFilterdList[0].name = produit.name;
-      productFilterdList[0].quantity = produit.quantity;
-      productFilterdList[0].type = produit.type;
-      productFilterdList[0].category = produit.category;
-      productFilterdList[0].price = produit.price;
-      productFilterdList[0].description = produit.description;
-      productFilterdList[0].marque = produit.marque;
+      productFilterdList[1].name = produit.name;
+      productFilterdList[2].quantity = produit.quantity;
+      productFilterdList[3].type = produit.type;
+      productFilterdList[4].category = produit.category;
+      productFilterdList[5].price = produit.price;
+      productFilterdList[6].description = produit.description;
+      productFilterdList[7].marque = produit.marque;
     }
     this.product = null;
   }
