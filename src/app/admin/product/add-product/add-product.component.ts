@@ -1,24 +1,29 @@
-import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component,  EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Category} from '../../../models/category';
 import {Type} from '../../../models/type';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {EcommerceService} from '../../../services/ecommerce.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Quality} from '../../../models/quality';
-import { Colors } from '../../../models/colors';
 import { Boutique } from '../../../models/boutique';
 import { BoutiqueService } from '../../../services/boutique.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {BsModalRef} from "ngx-bootstrap/modal";
 import {Product} from "../../../models/product.model";
+import {MessageService} from "primeng/api";
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
+  providers: [MessageService],
 })
 export class AddProductComponent implements OnInit {
+
+  @Input() product: Product;
+  @Output() saveProductEvent = new EventEmitter<Product>();
+  @Output() closeDialogEvent = new EventEmitter();
+
+  display: boolean;
   currentProduct: Product;
   types: string [];
   categories: string [];
@@ -30,23 +35,27 @@ export class AddProductComponent implements OnInit {
   form: any = {};
   selectedFiles: File[] = [];
   boutique: Boutique;
+  public imagePath;
+  imgURL: any;
+ public userFile: any = File;
 
-  public event: EventEmitter<any> = new EventEmitter();
   constructor( private ecommerceService: EcommerceService,
                private route: Router,
                private activatedRoute: ActivatedRoute,
-               private bsModalRef: BsModalRef,
                private formBuilder: FormBuilder,
-               private boutiqueService: BoutiqueService) {
+               private messageService: MessageService,
+               private boutiqueService: BoutiqueService,
+               public toastr: ToastrService) {
 
 
   }
 
   ngOnInit(): void {
-    this.categories = ['Produit de culture Vegetale', 'Produit elevage'];
-    this.types = ['Cuir','Foie gras', 'Fromage fermier','Graisse animale','Laine', 'Lait', 'Oeuf par animal', 'Produit agriculture','Produit elevage equin','Produit origine animale AOP','Rejet elevage', 'Viande',
-    'Bois', 'Cereale', 'Derive de cereale', 'Epice ou aromate','Fruit alimentaire', 'Fruits, legumes et cereales AOP', 'Huile essentiel', 'Legumes', 'Plante a fibre', 'Lait', 'Laine', 'Fromage fermier', 'Produit apiculture',
-    'Rejet elevage', 'Viande'];
+
+    this.display = true;
+    this.categories = Object.keys(Category);
+    this.types = Object.keys(Type);
+    //this.initForm();
     this.getBoutique();
     this.productFormGroup = this.formBuilder.group({
       name: [''],
@@ -75,35 +84,23 @@ export class AddProductComponent implements OnInit {
  
 
   onSubmit(): void{
-
-    const formData = new FormData();
-    this.submitted = true;
-    if (this.productFormGroup?.invalid) { return; }
-    console.log(this.productFormGroup);
-    formData.append('name', this.productFormGroup.value.name);
-    formData.append('category', this.productFormGroup.value.category);
-    formData.append('type', this.productFormGroup.value.type);
-    formData.append('price', this.productFormGroup.value.price);
-    formData.append('quantity', this.productFormGroup.value.quantity);
-    formData.append('description', this.productFormGroup.value.description);
-    if(this.selectedFiles.length){
-      for(let i=0; i<this.selectedFiles.length; i++){
-        formData.append('files[]', this.selectedFiles[i], this.selectedFiles[i].name);
-      }
-    }
-    this.ecommerceService.saveProduct(this.productFormGroup, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+    this.ecommerceService.saveProduct(this.product, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
-        console.log(this.productFormGroup);
-        console.log('je suis id : '+this.activatedRoute.snapshot.paramMap.get('id'));
-        console.log(data);
-        this.bsModalRef.hide();
-        this.route.navigateByUrl('/admin/detail/boutique/' + this.activatedRoute.snapshot.paramMap.get('id'));
+        if (data.success) {
+          this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
+          this.display = false;
+          this.product.id = data.id;
+          this.saveProductEvent.emit(this.product);
+        }
       },
       error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
         console.log(error);
       }
     );
   }
+
+
 
   getBoutique(){
 
@@ -118,7 +115,46 @@ export class AddProductComponent implements OnInit {
     );
   }
 
+  /** fonction pour l'upload de fichier **/
+  onSelectFile(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.userFile = file;
+      console.log(file)
 
+      var mimeType = event.target.files[0].type;
+      if (mimeType.match(/image\/*/) == null) {
+        this.toastr.success('Only images are supported.');
+
+        return;
+      }
+      var reader = new FileReader();
+      this.imagePath = file;
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+      }
+    }
+  }
+
+
+  closeFormDialog() {
+    this.display = false;
+    this.closeDialogEvent.emit();
+  }
+
+  /** toast message function primeng  **/
+  onConfirm() {
+    this.messageService.clear('c');
+  }
+
+  onReject() {
+    this.messageService.clear('c');
+  }
+
+  clear() {
+    this.messageService.clear();
+  }
 
 
 

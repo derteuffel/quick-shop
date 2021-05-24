@@ -53,9 +53,17 @@ import {RouterModule} from '@angular/router';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
-import {CardModule} from 'primeng/card';
-import { ProductComponent } from './admin/boutique/product/product.component';
-import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import {CardModule} from "primeng/card";
+import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
+import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {DialogModule} from "primeng/dialog";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {ConfirmationService, SharedModule} from "primeng/api";
+import {SidebarModule} from "primeng/sidebar";
+import {ModalModule} from "ngx-bootstrap/modal";
+import { SinginComponent } from './auth/singin/singin.component';
+import { SingupComponent } from './auth/singup/singup.component';
 
 
 
@@ -98,11 +106,15 @@ import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     AdminFooterComponent,
     AdminSidebarComponent,
     AdminNavbarComponent,
-    ProductComponent,
+    AddCoachingComponent,
+    DetailsCoachingComponent,
+    SinginComponent,
+    SingupComponent,
 
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
@@ -117,6 +129,10 @@ import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     CardModule,
     ToastModule,
     IconModule,
+    DialogModule,
+    ConfirmDialogModule,
+    SharedModule,
+    SidebarModule,
     ModalModule.forRoot(),
     IconSetModule.forRoot(),
     ToastrModule.forRoot({
@@ -127,7 +143,7 @@ import { ModalModule, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
       preventDuplicates: true
     }),
   ],
-  providers: [IconSetService],
+  providers: [IconSetService,ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

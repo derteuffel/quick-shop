@@ -35,7 +35,6 @@ export class ProductsComponent implements OnInit {
     this.loadProducts();
     this.loadOrders();
     this.loadAccessoriesProduct();
-    this.loadHightProduct();
   }
 
   addToCart(order: ProductOrder) {
@@ -123,7 +122,7 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
-
+/*
   loadHightProduct(){
     this.ecommerceService.getProductQuality('SUPERIEUR').subscribe(
       (hights: any[]) => {
@@ -137,7 +136,7 @@ export class ProductsComponent implements OnInit {
         console.log(error);
       }
     );
-  }
+  }*/
 
   loadOrders() {
     this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {

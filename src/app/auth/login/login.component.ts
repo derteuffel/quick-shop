@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit {
   role: Role;
   private loginInfo: AuthLoginInfo;
   constructor(private authService: AuthService,
-    private router: Router) { }
+              private router: Router) { }
 
   ngOnInit(): void {
-    if(this.authService.currentUserValue){
+    if (this.authService.currentUserValue){
       this.router.navigateByUrl('login/success');
     }
   }
@@ -39,21 +39,21 @@ export class LoginComponent implements OnInit {
         console.log(' login action');
         console.log(data);
         const type = data.type;
-        if(typeof type === 'undefined'){
+        if (typeof type === 'undefined'){
 
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          localStorage.setItem('id',this.authService.currentUserValue.id+'');
+          localStorage.setItem('id', this.authService.currentUserValue.id + '');
           this.role = this.authService.currentUserValue.role;
-          if(this.role === Role.SELLER){
+          if (this.role === Role.SELLER){
             this.router.navigateByUrl('/seller/boutiques');
           } else{
-            this.router.navigateByUrl('/admin/boutiques')
+            this.router.navigateByUrl('/admin/boutiques');
           }
           console.log(this.role);
         }
 
-        //this.reloadPage();
+        // this.reloadPage();
       },
       error => {
         console.log(error);
