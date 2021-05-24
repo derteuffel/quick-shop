@@ -25,14 +25,15 @@ export class AddProductComponent implements OnInit {
 
   display: boolean;
   currentProduct: Product;
-  categories: any = {};
-  types: any = {};
+  types: string [];
+  categories: string [];
   message: string;
   loading = true;
   productRef;
   public submitted = false;
   public productFormGroup?: FormGroup;
   form: any = {};
+  selectedFiles: File[] = [];
   boutique: Boutique;
   public imagePath;
   imgURL: any;
@@ -41,6 +42,7 @@ export class AddProductComponent implements OnInit {
   constructor( private ecommerceService: EcommerceService,
                private route: Router,
                private activatedRoute: ActivatedRoute,
+               private formBuilder: FormBuilder,
                private messageService: MessageService,
                private boutiqueService: BoutiqueService,
                public toastr: ToastrService) {
@@ -55,23 +57,31 @@ export class AddProductComponent implements OnInit {
     this.types = Object.keys(Type);
     //this.initForm();
     this.getBoutique();
-  }
-
-  initForm() {
-    this.productFormGroup = new FormGroup({
-      id: new FormControl(''),
-      pictureUrl: new FormControl(''),
-      name: new FormControl(''),
-      price: new FormControl(''),
-      category: new FormControl(''),
-      type: new FormControl(''),
-      quantity: new FormControl(''),
-      marque: new FormControl(''),
-      description: new FormControl(''),
-      pictures: new FormControl(''),
-      boutique: new FormControl(''),
+    this.productFormGroup = this.formBuilder.group({
+      name: [''],
+      boutiqueId: [''],
+      price: [''],
+      category: [''],
+      type: [''],
+      quantity: [''],
+      marque: [''],
+      description: [''],
+      pictures: [null]
     });
   }
+
+
+  onFilesSelect(event) {
+    if (event.target.files.length > 0) {
+      for(let i=0; i < event.target.files.length; i++){
+        this.selectedFiles.push(<File>event.target.files[i]);
+      }
+      console.log(this.selectedFiles.toString)
+    }
+  }
+
+
+ 
 
   onSubmit(): void{
     this.ecommerceService.saveProduct(this.product, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(

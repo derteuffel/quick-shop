@@ -36,6 +36,7 @@ export class BoutiqueDetailComponent implements OnInit {
   private bodyText: string;
   currentBoutique: Boutique;
   products: Product[];
+  boutiqueId: number;
   bsModalRef: BsModalRef;
   productID;
   product: Product;
@@ -120,8 +121,11 @@ export class BoutiqueDetailComponent implements OnInit {
     this.router.navigateByUrl('admin/product/add/' + p.id);
   }
 
-  openModalWithComponent() {
+  openModalWithComponent(id) {
 
+
+    console.log('je contient : '+this.currentBoutique.id);
+    this.boutiqueId = this.currentBoutique.id;
     this.bsModalRef = this.modalService2.show(AddProductComponent);
     this.bsModalRef.content.closeBtnName = 'Close';
     this.bsModalRef.content.event.subscribe(res => {

@@ -27,6 +27,7 @@ export class EcommerceService {
 
   private total: number;
 
+  
   ProductOrderChanged = this.productOrderSubject.asObservable();
   OrdersChanged = this.ordersSubject.asObservable();
   TotalChanged = this.totalSubject.asObservable();
