@@ -28,6 +28,8 @@ import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coac
 import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
 import {SingupComponent} from "./auth/singup/singup.component";
 import {SinginComponent} from "./auth/singin/singin.component";
+import {CustomerUpComponent} from "./auth/customer-up/customer-up.component";
+import {CustomerInComponent} from "./auth/customer-in/customer-in.component";
 
 
 
@@ -136,6 +138,14 @@ const routes: Routes = [
 
   {
     path: 'signin', component: SinginComponent
+  },
+
+  {
+    path: 'customer-up', component: CustomerUpComponent
+  },
+
+  {
+    path: 'customer-in', component: CustomerInComponent
   },
 
   {

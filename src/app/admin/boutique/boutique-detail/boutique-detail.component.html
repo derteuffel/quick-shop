@@ -116,7 +116,7 @@
         <div class="card shadow">
           <div class="card-header border-0" style="background-color:#F45B3A;">
             <div class="col-md-6">
-              <button (click)="addNewProduct()" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D;" label="Ajouter Article"></button>
+              <button (click)="openModalProduct(contentAdd)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D;" label="Ajouter Article"></button>
             </div>
             <div class="col-md-6 pull-right" style="width: 40%">
               <label >Recherche <i class="fa fa-search"></i></label>
@@ -195,10 +195,10 @@
   </div>
 </div>
 
-<div *ngIf="product">
+<!--<div *ngIf="product">
   <app-add-product [product]="product"  (saveProductEvent)="saveProduct($event)"
                         (closeDialogEvent)="closeDialogForm()" ></app-add-product>
-</div>
+</div>-->
 
 <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
 
@@ -340,6 +340,8 @@
 </ng-template>
 
 <!-------------------------------------------------------ADD PRODUCT END-------------------------------------------------------------->
+
+
 
 
 

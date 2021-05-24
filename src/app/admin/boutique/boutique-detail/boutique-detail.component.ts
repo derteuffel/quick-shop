@@ -185,9 +185,9 @@ export class BoutiqueDetailComponent implements OnInit {
 
     this.submitted = true;
     if (this.productForm?.invalid) { return; }
-    //console.log(this.productForm);
+     console.log(this.productForm);
     console.log(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.ecommerceService.saveProduct(this.productForm, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+    this.ecommerceService.saveProduct(this.productForm?.value, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
         this.productForm.reset();
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
@@ -271,13 +271,13 @@ export class BoutiqueDetailComponent implements OnInit {
       this.products.push(produit);
     } else {
       productFilterdList[0].id = produit.id;
-      productFilterdList[0].name = produit.name;
-      productFilterdList[0].quantity = produit.quantity;
-      productFilterdList[0].type = produit.type;
-      productFilterdList[0].category = produit.category;
-      productFilterdList[0].price = produit.price;
-      productFilterdList[0].description = produit.description;
-      productFilterdList[0].marque = produit.marque;
+      productFilterdList[1].name = produit.name;
+      productFilterdList[2].quantity = produit.quantity;
+      productFilterdList[3].type = produit.type;
+      productFilterdList[4].category = produit.category;
+      productFilterdList[5].price = produit.price;
+      productFilterdList[6].description = produit.description;
+      productFilterdList[7].marque = produit.marque;
     }
     this.product = null;
   }

@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
-import { AuthLoginInfo } from '../requests/login-info';
-import { Parametre } from '../../models/parametre';
-import { Role } from 'src/app/models/role';
+import {AuthService} from "../auth.service";
+import {AuthLoginInfo} from "../requests/login-info";
+import {Router} from "@angular/router";
+import {Role} from "../../models/role";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-customer-in',
+  templateUrl: './customer-in.component.html',
+  styleUrls: ['./customer-in.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class CustomerInComponent implements OnInit {
 
   form: any = {};
   isLoggedIn = false;
@@ -45,10 +44,10 @@ export class LoginComponent implements OnInit {
           this.isLoggedIn = true;
           localStorage.setItem('id', this.authService.currentUserValue.id + '');
           this.role = this.authService.currentUserValue.role;
-          if (this.role === Role.ADMIN){
-            this.router.navigateByUrl('/admin/boutiques');
+          if (this.role === Role.CUSTOMER){
+            this.router.navigateByUrl('/ecommerce/home');
           } else{
-            this.router.navigateByUrl('/admin/boutiques');
+            this.router.navigateByUrl('ecommerce/home');
           }
           console.log(this.role);
         }
@@ -64,7 +63,7 @@ export class LoginComponent implements OnInit {
   }
 
   reloadPage() {
-    this.router.navigateByUrl('/boutiques');
+    this.router.navigateByUrl('/ecommerce/home');
   }
 
 }

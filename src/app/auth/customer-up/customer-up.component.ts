@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import {RegisterInfo} from "../requests/register-info";
+import {AuthService} from "../auth.service";
+import {CustomerInfo} from "../requests/customer-info";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-customer-up',
+  templateUrl: './customer-up.component.html',
+  styleUrls: ['./customer-up.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class CustomerUpComponent implements OnInit {
 
   form: any = {};
-  registerInfo: RegisterInfo;
+  customerInfo: CustomerInfo;
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -23,13 +23,13 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     console.log(this.form);
 
-    this.registerInfo = new RegisterInfo(
+    this.customerInfo = new CustomerInfo(
       this.form.name,
       this.form.username,
       this.form.email,
       this.form.password);
 
-    this.authService.signUp(this.registerInfo).subscribe(
+    this.authService.signUp(this.customerInfo).subscribe(
       data => {
         console.log(data);
         //this.isSignedUp = true;
