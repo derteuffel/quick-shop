@@ -173,9 +173,8 @@ export class BoutiqueDetailComponent implements OnInit {
       price: new FormControl(''),
       type: new FormControl(''),
       category: new FormControl(''),
-      marque: new FormControl(''),
       description: new FormControl(''),
-     // pictures: new FormControl(''),
+      pictureUrl: new FormControl(null),
      // pictureUrl: new FormControl(''),
     });
   }
@@ -184,6 +183,14 @@ export class BoutiqueDetailComponent implements OnInit {
     this.modalService.open(contentAdd, {size: 'lg'});
   }
 
+  onFilesSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.productForm.get('pictureUrl').setValue(file);
+    }
+  }
+  
+
   // fonction d'ajout du produit
   onSubmitProduct() {
 
@@ -191,7 +198,16 @@ export class BoutiqueDetailComponent implements OnInit {
     if (this.productForm?.invalid) { return; }
      console.log(this.productForm);
     console.log(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.ecommerceService.saveProduct(this.productForm?.value, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+    const formData = new FormData();
+    formData.append('file',this.productForm.get('pictureUrl').value);
+    formData.append('name', this.productForm.get('name').value);
+    formData.append('price', this.productForm.get('price').value);
+    formData.append('category', this.productForm.get('category').value);
+    formData.append('type', this.productForm.get('type').value);
+    formData.append('quantity', this.productForm.get('quantity').value);
+    formData.append('description', this.productForm.get('description').value);
+    console.log(formData);
+    this.ecommerceService.saveProduct(formData, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
         this.productForm.reset();
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
@@ -293,4 +309,8 @@ export class BoutiqueDetailComponent implements OnInit {
     this.product = new Product();
   }
 
+}
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
 }

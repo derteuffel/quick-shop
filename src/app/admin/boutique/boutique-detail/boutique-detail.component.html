@@ -83,10 +83,8 @@
                   </div>
 
                 </div>
-
                 <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
                   <span class="text-success mr-2"><i class="fa fa-map"></i> Lieu:</span>
-
                   <span class="text-nowrap">{{currentBoutique.localisation}}</span>
                 </p>
                 <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
@@ -271,7 +269,7 @@
 
   <div class="modal-body">
     <form [formGroup]="productForm" (submit)="onSubmitProduct()">
-      <h5>Article</h5>
+      <h2>Formulaire d'ajout d'un nouveau produit</h2>
       <div class="row">
         <div class="form-group col-md-6">
           <label>Nom de l'article</label>
@@ -305,22 +303,18 @@
       </div>
       <div class="row">
         <div class="form-group col-md-6">
-          <label>Marque</label>
-          <input type="text" class="form-control"  required formControlName="marque"  placeholder="La marque de votre article">
-        </div>
-        <div class="form-group col-md-6">
           <label>Quantity </label>
           <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La marque de votre article">
-
+        </div>
+        <div class="form-group col-md-6">
+          <label>Image</label>
+          <input type="file" class="form-control" required name="pictureUrl" (change)="onFilesSelect($event)" placeholder="Image">
         </div>
       </div>
 
       <div class="row">
-        <div class="form-group col-md-6">
-          <label>Image</label>
-         <!-- <input type="file" class="form-control" required formControlName="pictureUrl"  placeholder="Image">-->
-        </div>
-        <div class="form-group col-md-6">
+        
+        <div class="form-group col-md-12">
           <label >Description</label>
           <textarea name="description" class="form-control"  formControlName="description" rows="4"></textarea>
         </div>
