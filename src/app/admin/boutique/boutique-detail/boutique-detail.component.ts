@@ -26,6 +26,7 @@ export class BoutiqueDetailComponent implements OnInit {
   private bodyText: string;
   currentBoutique: Boutique;
   products: Product[];
+  boutiqueId: number;
   bsModalRef: BsModalRef;
 
 
@@ -34,6 +35,7 @@ export class BoutiqueDetailComponent implements OnInit {
               private modalService: NgbModal,
               private modalService2: BsModalService,
               private router: Router,
+              private formBuilder: FormBuilder,
               private boutiqueService: BoutiqueService) { }
 
 
@@ -42,6 +44,9 @@ export class BoutiqueDetailComponent implements OnInit {
 
     this.getBoutique(this.activatedRoute.snapshot.paramMap.get('id'));
     this.loadList();
+    this.form = this.formBuilder.group({
+      pictures: ['']
+    });
 
   }
 
@@ -108,12 +113,16 @@ export class BoutiqueDetailComponent implements OnInit {
     this.router.navigateByUrl('admin/product/add/' + p.id);
   }
 
-  openModalWithComponent() {
+  openModalWithComponent(id) {
 
+
+    console.log('je contient : '+this.currentBoutique.id);
+    this.boutiqueId = this.currentBoutique.id;
     this.bsModalRef = this.modalService2.show(AddProductComponent);
     this.bsModalRef.content.closeBtnName = 'Close';
     this.bsModalRef.content.event.subscribe(res => {
       this.lists.push(res.data);
+      console.log(res.data);
     });
   }
 

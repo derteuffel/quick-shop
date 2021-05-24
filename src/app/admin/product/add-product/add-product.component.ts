@@ -20,56 +20,81 @@ import {Product} from "../../../models/product.model";
 })
 export class AddProductComponent implements OnInit {
   currentProduct: Product;
-  categories: any = {};
-  types: any = {};
+  types: string [];
+  categories: string [];
   message: string;
   loading = true;
   productRef;
   public submitted = false;
   public productFormGroup?: FormGroup;
   form: any = {};
+  selectedFiles: File[] = [];
   boutique: Boutique;
+
   public event: EventEmitter<any> = new EventEmitter();
   constructor( private ecommerceService: EcommerceService,
                private route: Router,
                private activatedRoute: ActivatedRoute,
                private bsModalRef: BsModalRef,
+               private formBuilder: FormBuilder,
                private boutiqueService: BoutiqueService) {
 
 
   }
 
   ngOnInit(): void {
-    this.categories = Object.keys(Category);
-    this.types = Object.keys(Type);
-    this.initForm();
+    this.categories = ['Produit de culture Vegetale', 'Produit elevage'];
+    this.types = ['Cuir','Foie gras', 'Fromage fermier','Graisse animale','Laine', 'Lait', 'Oeuf par animal', 'Produit agriculture','Produit elevage equin','Produit origine animale AOP','Rejet elevage', 'Viande',
+    'Bois', 'Cereale', 'Derive de cereale', 'Epice ou aromate','Fruit alimentaire', 'Fruits, legumes et cereales AOP', 'Huile essentiel', 'Legumes', 'Plante a fibre', 'Lait', 'Laine', 'Fromage fermier', 'Produit apiculture',
+    'Rejet elevage', 'Viande'];
     this.getBoutique();
-  }
-
-  initForm() {
-    this.productFormGroup = new FormGroup({
-      id: new FormControl(''),
-      pictureUrl: new FormControl(''),
-      name: new FormControl(''),
-      price: new FormControl(''),
-      category: new FormControl(''),
-      type: new FormControl(''),
-      quantity: new FormControl(''),
-      marque: new FormControl(''),
-      description: new FormControl(''),
-      pictures: new FormControl(''),
-      boutique: new FormControl(''),
+    this.productFormGroup = this.formBuilder.group({
+      name: [''],
+      boutiqueId: [''],
+      price: [''],
+      category: [''],
+      type: [''],
+      quantity: [''],
+      marque: [''],
+      description: [''],
+      pictures: [null]
     });
   }
 
+
+  onFilesSelect(event) {
+    if (event.target.files.length > 0) {
+      for(let i=0; i < event.target.files.length; i++){
+        this.selectedFiles.push(<File>event.target.files[i]);
+      }
+      console.log(this.selectedFiles.toString)
+    }
+  }
+
+
+ 
+
   onSubmit(): void{
 
+    const formData = new FormData();
     this.submitted = true;
     if (this.productFormGroup?.invalid) { return; }
     console.log(this.productFormGroup);
+    formData.append('name', this.productFormGroup.value.name);
+    formData.append('category', this.productFormGroup.value.category);
+    formData.append('type', this.productFormGroup.value.type);
+    formData.append('price', this.productFormGroup.value.price);
+    formData.append('quantity', this.productFormGroup.value.quantity);
+    formData.append('description', this.productFormGroup.value.description);
+    if(this.selectedFiles.length){
+      for(let i=0; i<this.selectedFiles.length; i++){
+        formData.append('files[]', this.selectedFiles[i], this.selectedFiles[i].name);
+      }
+    }
     this.ecommerceService.saveProduct(this.productFormGroup, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
         console.log(this.productFormGroup);
+        console.log('je suis id : '+this.activatedRoute.snapshot.paramMap.get('id'));
         console.log(data);
         this.bsModalRef.hide();
         this.route.navigateByUrl('/admin/detail/boutique/' + this.activatedRoute.snapshot.paramMap.get('id'));

@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProductOrder} from '../models/product-order.model';
 import {ProductOrders} from '../models/product-orders.model';
 import {Observable} from 'rxjs';
+import { User } from '../models/user';
 
 
 @Injectable({
@@ -23,11 +24,24 @@ export class EcommerceService {
 
   private total: number;
 
+  currentUser: User;
+  headers: HttpHeaders;
+  formHeaders: HttpHeaders;
+
   ProductOrderChanged = this.productOrderSubject.asObservable();
   OrdersChanged = this.ordersSubject.asObservable();
   TotalChanged = this.totalSubject.asObservable();
 
   constructor(private http: HttpClient) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.headers = new HttpHeaders({
+      authorization: 'Bearer '+ this.currentUser.token,
+      "Content-Type":"application/json; charset=UTF-8"
+    });
+
+    this.formHeaders = new HttpHeaders({
+      authorization: 'Bearer '+ this.currentUser.token
+    });
   }
 
   getAllProducts(): Observable<any>  {
@@ -104,7 +118,8 @@ export class EcommerceService {
 
 
   saveProduct(form, id): Observable<any>  {
-    return this.http.post(this.productsUrl + '/' + id, form);
+    console.log(id);
+    return this.http.post(this.productsUrl + '/' + id, form, {headers: this.formHeaders});
   }
 
   getProduct(id): Observable<any> {
