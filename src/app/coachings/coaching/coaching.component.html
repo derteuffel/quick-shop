@@ -44,7 +44,7 @@
                 <td>{{item.phone1}}</td>
                 <td> {{item.description}} </td>
                 <td>
-                  <button  class="btn btn-success m-1"><i class="pi pi-eye"></i></button>
+                  <button  class="btn btn-success m-1" (click)="findOneCoaching(contentUpdate, item)"><i class="pi pi-eye"></i></button>
                   <button (click)="setCoaching(contentUpdate, item)" class="btn btn-secondary m-1"><i class="pi pi-pencil"></i></button>
                   <button  (click)="deleteCoaching(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
                 </td>

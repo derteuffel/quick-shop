@@ -201,4 +201,8 @@ export class CoachingComponent implements OnInit {
     this.sessionSubmitted = false;
   }
 
+  findOneCoaching(contentUpdate:any, item:any){
+    this.router.navigate(['/admin/coachings/details/'+item.id]);
+  }
+
 }

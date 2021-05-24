@@ -58,6 +58,8 @@ import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.componen
 import {CardModule} from "primeng/card";
 import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
 import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
+import { MicroFinancementListComponent } from './micro-financement/micro-financement-list/micro-financement-list.component';
+import { MicroFinancementDetailsComponent } from './micro-financement/micro-financement-details/micro-financement-details.component';
 
 
 
@@ -104,6 +106,8 @@ import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/
     AdminNavbarComponent,
     AddCoachingComponent,
     DetailsCoachingComponent,
+    MicroFinancementListComponent,
+    MicroFinancementDetailsComponent,
 
   ],
   imports: [
