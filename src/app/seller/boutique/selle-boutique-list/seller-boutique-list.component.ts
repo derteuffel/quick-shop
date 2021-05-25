@@ -1,20 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { error } from 'protractor';
 import { BoutiqueService } from '../../../services/boutique.service';
+import {MessageService, PrimeNGConfig} from "primeng/api";
+import {ToastrService} from "ngx-toastr";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {FormGroup} from "@angular/forms";
+import {Boutique} from "../../../models/boutique";
 
 @Component({
   selector: 'app-seller-boutique-list',
   templateUrl: './seller-boutique-list.component.html',
-  styleUrls: ['./seller-boutique-list.component.css']
+  styleUrls: ['./seller-boutique-list.component.css'],
+  providers: [MessageService],
 })
 export class SellerBoutiqueListComponent implements OnInit {
 
   lists: any = {};
   p: number = 1;
   searchItem: string;
-  constructor(private boutiqueService: BoutiqueService) { }
+  boutique: Boutique;
+  loading = true;
+  boutiqueRef;
+  public submitted = false;
+  public boutiqueFormGroup?: FormGroup;
+  public currentBoutique;
+  constructor(private boutiqueService: BoutiqueService,
+              private toastr: ToastrService,
+              private primengConfig: PrimeNGConfig,
+              private modalService: NgbModal,
+              private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
     this.loadAll();
   }
 
@@ -28,6 +45,134 @@ export class SellerBoutiqueListComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  onSaveBoutique() {
+    this.submitted = true;
+    if (this.boutiqueFormGroup?.invalid) { return; }
+    this.boutiqueService.saveBoutique(this.boutiqueFormGroup?.value).subscribe(
+      (data: any) => {
+        this.boutiqueFormGroup.reset();
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'boutique submitted', sticky: true});
+        this.loadAll();
+      }, error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
+    this.submitted = false;
+  }
+
+
+  // mise à jour d'une Boutique
+
+  setBoutique(contentUpdate, event) {
+    this.modalService.open(contentUpdate, {size: 'lg'});
+    this.currentBoutique = event.name;
+    this.boutiqueRef = event.id;
+    console.log(event.id);
+    this.boutiqueFormGroup.patchValue({
+      id: event.id,
+      name: event.name,
+      localisation: event.localisation,
+      phone: event.phone,
+      region: event.region,
+      cardNumber: event.cardNumber,
+      status: event.status,
+      activationCode: event.activationCode
+
+
+    });
+
+  }
+
+  updateBoutique() {
+    const CompanyData = {
+      id: this.boutiqueFormGroup.get('id').value,
+      name: this.boutiqueFormGroup.get('name').value,
+      localisation: this.boutiqueFormGroup.get('localisation').value,
+      phone: this.boutiqueFormGroup.get('phone').value,
+      region: this.boutiqueFormGroup.get('region').value,
+      cardNumber: this.boutiqueFormGroup.get('cardNumber').value,
+      status: this.boutiqueFormGroup.get('status').value,
+      activationCode: this.boutiqueFormGroup.get('activationCode').value,
+    };
+    this.boutiqueService.updateBoutique(CompanyData, this.boutiqueRef).subscribe(
+      (data: any) => {
+        console.log(this.boutiqueRef);
+        this.boutiqueFormGroup.reset();
+        this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
+        this.loadAll();
+      }, error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
+  }
+
+
+  showDetail(contentDetail, event){
+    console.log(event);
+    this.modalService.open(contentDetail, {size: 'lg'});
+    this.boutiqueRef = event.id;
+    console.log(this.boutiqueRef);
+
+  }
+
+  // detail d'une boutique
+  getBoutique(){
+    this.boutiqueService.getBoutique(this.boutiqueRef).subscribe(
+
+      data => {
+        this.currentBoutique = data;
+        console.log(data);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  // suppression d'une Boutique
+
+  deleteBoutique(contentDelete, event) {
+    this.modalService.open(contentDelete, {size: 'lg'});
+    this.boutiqueRef = event.id;
+  }
+
+  onDelete() {
+    this.boutiqueService.deleteBoutique(this.boutiqueRef).subscribe(
+      (res: any) => {
+        this.messageService.add({severity: 'success', summary: 'Record is deleted successully', detail: 'record delete'});
+        this.loadAll();
+      }
+    );
+  }
+  sendCode(id){
+    this.boutiqueService.sendCode(id).subscribe(
+      data => {
+        console.log('code has been to a seller');
+        window.location.reload();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  /** toast message function primeng  **/
+  onConfirm() {
+    this.messageService.clear('c');
+  }
+
+  onReject() {
+    this.messageService.clear('c');
+  }
+
+  clear() {
+    this.messageService.clear();
+  }
+
+  openModalAddCompany(contentAdd) {
+    this.modalService.open(contentAdd, { size: 'lg' });
+
   }
 
 }

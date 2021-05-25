@@ -48,7 +48,7 @@ export class SinginComponent implements OnInit {
           if (this.role === Role.SELLER){
             this.router.navigateByUrl('/seller/boutiques');
           } else{
-            this.router.navigateByUrl('/admin/boutiques');
+            this.router.navigateByUrl('/seller/boutiques');
           }
           console.log(this.role);
         }
