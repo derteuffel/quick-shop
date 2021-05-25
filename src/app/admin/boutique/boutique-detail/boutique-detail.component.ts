@@ -40,6 +40,7 @@ export class BoutiqueDetailComponent implements OnInit {
   bsModalRef: BsModalRef;
   productID;
   product: Product;
+  measures: string[];
   //details
   public details: boolean = false;
 
@@ -62,6 +63,7 @@ export class BoutiqueDetailComponent implements OnInit {
   ngOnInit(): void {
     this.categories = Object.keys(Category);
     this.types = Object.keys(Type);
+    this.measures = ['Kilogramme','Litre', 'Paire', 'Piece']
     this.getBoutique(this.activatedRoute.snapshot.paramMap.get('id'));
     this.loadList();
     this.initForm();
@@ -97,6 +99,11 @@ export class BoutiqueDetailComponent implements OnInit {
         console.log(error1);
       }
     );
+  }
+
+  detailProduct(id){
+    this.router.navigateByUrl('admin/product/detail/'+id);
+    console.log('detail pushed');
   }
 
 
@@ -172,6 +179,7 @@ export class BoutiqueDetailComponent implements OnInit {
       name: new FormControl(''),
       price: new FormControl(''),
       type: new FormControl(''),
+      measure: new FormControl(''),
       category: new FormControl(''),
       description: new FormControl(''),
       pictureUrl: new FormControl(null),
@@ -206,6 +214,7 @@ export class BoutiqueDetailComponent implements OnInit {
     formData.append('type', this.productForm.get('type').value);
     formData.append('quantity', this.productForm.get('quantity').value);
     formData.append('description', this.productForm.get('description').value);
+    formData.append('measure', this.productForm.get('measure').value);
     console.log(formData);
     this.ecommerceService.saveProduct(formData, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {

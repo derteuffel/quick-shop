@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+  import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import {AdministrationComponent} from "./admin/administration/administration.component";
 import {Role} from "./models/role";

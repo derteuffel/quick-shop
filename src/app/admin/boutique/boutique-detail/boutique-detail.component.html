@@ -116,7 +116,7 @@
         <div class="card shadow">
           <div class="card-header border-0" style="background-color:#F45B3A;">
             <div class="col-md-6">
-              <button (click)="openModalProduct(contentAdd)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D;" label="Ajouter Article"></button>
+              <button (click)="openModalProduct(contentAdd)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D;" label="Ajouter Produit"></button>
             </div>
             <div class="col-md-6 pull-right" style="width: 40%">
               <label >Recherche <i class="fa fa-search"></i></label>
@@ -127,17 +127,18 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
               <tr>
+                <th scope="col">Image</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Categorie</th>
                 <th scope="col">Type</th>
                 <th scope="col">Montant</th>
                 <th scope="col">Quantité</th>
-                <th scope="col">Description</th>
                 <th scope="col">Actions</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let product of products | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                <td><img src="{{product?.pictureUrl}}" alt="" height="80" width="80"></td>
                 <td>{{product?.name}}</td>
                 <td>
                   {{product?.category}}
@@ -152,9 +153,7 @@
                   {{product?.quantity}}
 
                 </td>
-                <td>
-                  {{product?.description}}
-                </td>
+              
 
                 <td class="text-right" style="width:3em; text-align:center; font-size: 0.65rem;">
                   <div ngbDropdown placement="bottom-right">
@@ -162,8 +161,8 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <button (click)="showDetailProduct(product)" class="btn btn-success ml-1"><i class="pi pi-eye"></i></button>
-                      <button (click)="setProduct(contentUpdate, product)" class="btn btn-primary "><i class="pi pi-pencil"></i></button>
+                      <button (click)="detailProduct(product.id)"  class="btn btn-success ml-1"><i class="pi pi-eye"></i></button>
+                      <button (click)="setUpdate(contentUpdate, product)" class="btn btn-primary "><i class="pi pi-pencil"></i></button>
                     <button  (click)="onDelete(contentDelete, product)" class="btn btn-danger"><i class="pi pi-trash"></i></button>
 
                     </div>
@@ -273,7 +272,7 @@
         </div>
 
         <div class="form-group  col-md-6">
-          <label >Montant</label>
+          <label >Montant par unite</label>
           <input type="number" class="form-control"  required formControlName="price"  placeholder="Montant de votre article">
         </div>
       </div>
@@ -299,8 +298,8 @@
       </div>
       <div class="row">
         <div class="form-group col-md-6">
-          <label>Quantity </label>
-          <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La marque de votre article">
+          <label>Quantity disponible en stock</label>
+          <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La Quantite disponible de votre produit">
         </div>
         <div class="form-group col-md-6">
           <label>Image</label>
@@ -309,8 +308,15 @@
       </div>
 
       <div class="row">
-        
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-6">
+          <label >Unite de mesure du produit</label>
+          <select formControlName="measure"  class="form-control">
+            <option value="" disabled>-- Choisir une unite pour votre produit --</option>
+            <option value="{{item}}" *ngFor="let item of measures">{{item}}</option>
+          </select>
+
+        </div>
+        <div class="form-group col-md-6">
           <label >Description</label>
           <textarea name="description" class="form-control"  formControlName="description" rows="4"></textarea>
         </div>

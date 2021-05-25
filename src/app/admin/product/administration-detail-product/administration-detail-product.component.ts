@@ -1,8 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {EcommerceService} from '../../../services/ecommerce.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {Product} from '../../../models/product.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { MessageService } from 'primeng/api';
+import { UpdateProduit } from 'src/app/models/update-product.model';
 
 @Component({
   selector: 'app-administration-detail-product',
@@ -12,69 +16,41 @@ import {Product} from '../../../models/product.model';
 export class AdministrationDetailProductComponent implements OnInit {
 
   currentProduct: any;
+  lists: any = {};
+  p = 1;
+  searchItem: string;
+  message: string;
+  loading = true;
+  submittedCode: string;
+  bsModalRef: BsModalRef;
+  updateID;
+  update: UpdateProduit;
 
-  imageForm: FormGroup;
-  imagesForm: FileList;
+  addingForm: FormGroup;
 
 
-  constructor(private productService: EcommerceService, private activatedRoute: ActivatedRoute, private router: Router,
-              private formBuilder: FormBuilder) { }
+
+  constructor(private productService: EcommerceService, 
+    private activatedRoute: ActivatedRoute, 
+    private router: Router,
+    private modalService: NgbModal,
+    private modalService2: BsModalService,
+    private messageService: MessageService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.imageForm = this.formBuilder.group({
-      picture: ['']
-    });
+    this.initForm;
 
   }
 
-  onFileSelect(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.imageForm.get('picture').setValue(file);
-    }
-  }
-
-  onFilesSelect(event) {
-    if (event.target.files.length > 0) {
-    this.imagesForm = event.target.files;
-    }
-  }
+  
 
 
-  upload( file) {
-
-    const formData = new FormData();
-    formData.append('file', file);
-    this.productService.updatePictures(formData, this.currentProduct.id).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });
-  }
-
-  uploadFiles() {
-
-    for (let i = 0; i < this.imagesForm.length; i++) {
-      this.upload( this.imagesForm[i]);
-    }
-    window.location.reload;
-  }
+ 
 
   onSubmit(){
-    const  formData = new FormData();
-    formData.append('file', this.imageForm.get('picture').value);
-    this.productService.updatePicture(formData, this.currentProduct.id).subscribe(
-      data => {
-        console.log(data);
-        window.location.reload;
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    
   }
 
 
@@ -92,17 +68,114 @@ export class AdministrationDetailProductComponent implements OnInit {
     );
   }
 
+  /** lister les articles d'une boutique **/
+  loadList(): void{
+
+    this.productService.getUpdateByProduct(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+      (res: any) => {
+
+        this.lists = res;
+        console.log(res);
+        console.log(this.activatedRoute.snapshot.paramMap.get('id'));
+      },
+      error1 => {
+        console.log(error1);
+      }
+    );
+  }
+
+  openModalProduct(contentAdd: any) {
+    this.modalService.open(contentAdd, {size: 'lg'});
+  }
+
+  onDelete(contentDelete, event) {
+    this.modalService.open(contentDelete, {size: 'lg'});
+    this.updateID = event.id;
+  }
+
+  deleteUpdate() {
+    this.productService.deleteUpdate(this.updateID).subscribe(
+      (res: any) => {
+        this.loadList();
+      }
+    );
+
+  }
+
+  initForm() {
+    this.addingForm = new FormGroup({
+      quantity: new FormControl(''),
+      motif: new FormControl(''),
+    });
+  }
+
+
+  // mise à jour d'un Produit
+
+  setUpdate(contentUpdate, event) {
+    this.modalService.open(contentUpdate, {size: 'lg'});
+    this.update = event.name;
+    this.updateID = event.id;
+    console.log(event.id);
+    this.addingForm.patchValue({
+      id: event.id,
+      motif: event.motif,
+      quantity: event.quantity,
+
+    });
+
+  }
+
+  updateUpdate() {
+    const updateData = {
+      id: this.addingForm.get('id').value,
+      name: this.addingForm.get('motif').value,
+      quantity: this.addingForm.get('quantity').value,
+    };
+    this.productService.updateUpdate(updateData, this.updateID).subscribe(
+      (data: any) => {
+        console.log(this.updateID);
+        this.addingForm.reset();
+        this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
+        this.loadList();
+      }, error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
+  }
+
+  /** toast message function primeng  **/
+  onConfirm() {
+    this.messageService.clear('c');
+  }
+
+  onReject() {
+    this.messageService.clear('c');
+  }
+
+  clear() {
+    this.messageService.clear();
+  }
+
   deleteProduct(id){
 
-    this.productService.deleteProduct(id).subscribe(
+    this.productService.deleteUpdate(id).subscribe(
       data => {
         console.log('Item deleted');
-        this.router.navigateByUrl('/admin/detail/boutique/' + this.currentProduct.boutique.id);
+        this.router.navigateByUrl('/admin/product/detail/' + this.currentProduct.id);
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  closeDialogForm() {
+    this.update = null;
+  }
+
+  addNewProduct() {
+    this.update = new UpdateProduit();
   }
 
 }
