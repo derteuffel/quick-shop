@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/singin/singin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/singin/singin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/seller/boutique/selle-boutique-list/seller-boutique-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/seller/boutique/selle-boutique-list/seller-boutique-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/seller/boutique/selle-boutique-list/seller-boutique-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/seller/boutique/selle-boutique-list/seller-boutique-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/seller/boutique/seller-boutique-detail/seller-boutique-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/seller/boutique/seller-boutique-detail/seller-boutique-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/seller/boutique/seller-boutique-detail/seller-boutique-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/seller/boutique/seller-boutique-detail/seller-boutique-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/seller/commande/seller-commande/seller-commande.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/seller/commande/seller-commande/seller-commande.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/administration/administration.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/administration/administration.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/administration/administration.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/administration/administration.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -21,13 +21,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/auth/login/login.component.ts">
+      <file leaf-file-name="product.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/product/product.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+            <state relative-caret-position="136">
+              <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#2;n#div#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/product/product.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="549">
+              <caret line="153" column="20" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="boutique-detail.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="112" column="18" selection-end-line="423" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="e#256#4120#0" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#2;n#div#0;n#!!top" />
+                <element signature="n#p-toast#1;n#!!top" />
+                <element signature="n#ng-template#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#ng-template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#4;n#form#0;n#div#1;n#ng-template#0;n#!!top" expanded="true" />
+                <element signature="n#ng-template#1;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#ng-template#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#4;n#form#0;n#div#1;n#ng-template#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,9 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/ecommerce/services/commande.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/administration/commande/commande.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/administration/admin-header/admin-header.component.html" />
         <option value="$PROJECT_DIR$/src/app/ecommerce/ecommerce.component.html" />
         <option value="$PROJECT_DIR$/src/app/administration/administration.component.ts" />
         <option value="$PROJECT_DIR$/src/app/ecommerce/services/ecommerce.service.ts" />
@@ -94,7 +132,6 @@
         <option value="$PROJECT_DIR$/src/app/eco/ecommerce/ecommerce.component.html" />
         <option value="$PROJECT_DIR$/src/app/footer/footer/footer.component.html" />
         <option value="$PROJECT_DIR$/src/assets/css/style.css" />
-        <option value="$PROJECT_DIR$/src/app/admin/administration/administration.component.html" />
         <option value="$PROJECT_DIR$/src/app/admin/boutique/boutique/boutique.component.html" />
         <option value="$PROJECT_DIR$/src/app/coachings/coaching/coaching.component.html" />
         <option value="$PROJECT_DIR$/src/app/auth/singup/singup.component.ts" />
@@ -113,9 +150,7 @@
         <option value="$PROJECT_DIR$/src/app/auth/customer-up/customer-up.component.html" />
         <option value="$PROJECT_DIR$/src/app/auth/customer-in/customer-in.component.html" />
         <option value="$PROJECT_DIR$/src/app/header/header/header.component.html" />
-        <option value="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts" />
         <option value="$PROJECT_DIR$/src/app/services/ecommerce.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html" />
         <option value="$PROJECT_DIR$/src/app/auth/singin/singin.component.ts" />
         <option value="$PROJECT_DIR$/src/app/seller/boutique/seller-boutique-detail/seller-boutique-detail.component.html" />
         <option value="$PROJECT_DIR$/src/app/seller/commande/seller-commande/seller-commande.component.html" />
@@ -123,6 +158,12 @@
         <option value="$PROJECT_DIR$/src/app/seller/boutique/selle-boutique-list/seller-boutique-list.component.html" />
         <option value="$PROJECT_DIR$/src/app/seller/boutique/seller-boutique-detail/seller-boutique-detail.component.ts" />
         <option value="$PROJECT_DIR$/src/app/auth/login/login.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/admin/administration/administration.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/admin/administration/administration.component.html" />
+        <option value="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.html" />
       </list>
     </option>
   </component>
@@ -212,22 +253,7 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="boutique" type="462c0819:PsiDirectoryNode" />
-              <item name="boutique-detail" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -372,42 +398,52 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119681000" />
+    <option name="totallyTimeSpent" value="124413000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23738451" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23738451" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3288889" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3288889" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958949" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.31851852" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31851852" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3288889" />
       <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.31851852" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23738451" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info id="Learn" order="3" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24958949" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,15 +475,19 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts</url>
+          <line>139</line>
+          <properties lambdaOrdinal="-1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/ecommerce/products/products.component.html" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/angular.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
@@ -483,9 +523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-682">
           <caret line="23" column="24" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#70#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -554,10 +591,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
           <caret line="53" column="104" selection-start-line="53" selection-start-column="104" selection-end-line="53" selection-end-column="104" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -614,9 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -645,11 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="53" column="27" lean-forward="true" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -664,15 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1226">
           <caret line="147" column="55" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/product/product.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -698,20 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/administration/administration.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="91" column="37" selection-start-line="91" selection-start-column="37" selection-end-line="91" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#ng-template#0;n#!!top" expanded="true" />
-            <element signature="n#ng-template#1;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/product/add-product/add-product.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-109">
@@ -730,9 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -740,9 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
           <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -750,9 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -760,38 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
           <caret line="89" column="4" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/boutique/boutique.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="20" selection-start-line="20" selection-end-line="25" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/boutique/boutique.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#p-toast#1;n#!!top" />
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#ng-template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#5;n#form#0;n#div#1;n#ng-template#0;n#!!top" expanded="true" />
-            <element signature="n#ng-template#1;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#ng-template#1;n#!!top" expanded="true" />
-            <element signature="n#ng-template#2;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#ng-template#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#ng-template#2;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#ng-template#2;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -835,21 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="293" column="3" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="293" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#67#0" expanded="true" />
-            <element signature="n#!!block;n#setProduct#0;n#BoutiqueDetailComponent#0" />
-            <element signature="n#!!block;n#updateProduct#0;n#BoutiqueDetailComponent#0" />
-            <element signature="n#!!block;n#saveProduct#0;n#BoutiqueDetailComponent#0" />
-            <element signature="n#!!block;n#closeDialogForm#0;n#BoutiqueDetailComponent#0" />
-            <element signature="n#!!block;n#addNewProduct#0;n#BoutiqueDetailComponent#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/seller/boutique/seller-boutique-detail/seller-boutique-detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="355">
@@ -890,12 +836,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/auth/login/login.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/boutique/boutique.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="54" selection-start-line="54" selection-end-line="64" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/boutique/boutique.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-267">
+          <caret line="46" column="78" lean-forward="true" selection-start-line="46" selection-start-column="78" selection-end-line="46" selection-end-column="78" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#p-toast#1;n#!!top" />
+            <element signature="n#ng-template#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#ng-template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#5;n#form#0;n#div#1;n#ng-template#0;n#!!top" expanded="true" />
+            <element signature="n#ng-template#1;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#ng-template#1;n#!!top" expanded="true" />
+            <element signature="n#ng-template#2;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#ng-template#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#ng-template#2;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#ng-template#2;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/administration/administration.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="143" column="52" selection-start-line="143" selection-start-column="52" selection-end-line="143" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+            <element signature="n#!!block;n#loadList#0;n#AdministrationComponent#0" />
+            <element signature="n#!!block;n#loadAll#0;n#AdministrationComponent#0" />
+            <element signature="n#!!block;n#onDelete#0;n#AdministrationComponent#0" />
+            <element signature="n#!!block;n#deleteProduct#0;n#AdministrationComponent#0" />
+            <element signature="n#!!block;n#initForm#0;n#AdministrationComponent#0" />
+            <element signature="n#!!block;n#setProduct#0;n#AdministrationComponent#0" />
+            <element signature="n#!!block;n#updateProduct#0;n#AdministrationComponent#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/administration/administration.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-905">
+          <caret line="21" column="36" selection-start-line="21" selection-end-line="22" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#ng-template#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#ng-template#0;n#!!top" expanded="true" />
+            <element signature="n#ng-template#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1933">
+          <caret line="9" column="63" selection-start-line="9" selection-start-column="63" selection-end-line="9" selection-end-column="63" />
+          <folding>
+            <element signature="n#!!block;n#ngOnInit#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#loadList#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#detailProduct#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#onSubmit#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#showDetailProduct#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#onDelete#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#deleteProduct#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#initForm#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#openModalProduct#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#onFilesSelect#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#onSubmitProduct#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#setProduct#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#updateProduct#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#onConfirm#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#onReject#0;n#BoutiqueDetailComponent#0" />
+            <element signature="n#!!block;n#clear#0;n#BoutiqueDetailComponent#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="136">
+          <caret line="112" column="18" selection-end-line="423" />
           <folding>
+            <element signature="n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="e#256#4120#0" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -903,26 +945,33 @@
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#2;n#div#0;n#!!top" />
             <element signature="n#p-toast#1;n#!!top" />
-            <element signature="n#p-sidebar#0;n#!!top" />
+            <element signature="n#ng-template#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#ng-template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#4;n#form#0;n#div#1;n#ng-template#0;n#!!top" expanded="true" />
             <element signature="n#ng-template#1;n#!!top" />
             <element signature="n#style#0;n#div#0;n#ng-template#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#4;n#form#0;n#div#1;n#ng-template#1;n#!!top" expanded="true" />
-            <element signature="n#ng-template#2;n#!!top" />
-            <element signature="n#ng-template#3;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#ng-template#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#ng-template#3;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/login/login.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/product/product.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+        <state relative-caret-position="549">
+          <caret line="153" column="20" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/product/product.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#0;n#!!top" />
           </folding>
         </state>
       </provider>

@@ -8,7 +8,6 @@ import { EcommerceService } from '../../../services/ecommerce.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Product} from '../../../models/product.model';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
-import {AddProductComponent} from '../../product/add-product/add-product.component';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Category} from "../../../models/category";
 import {Type} from "../../../models/type";
@@ -102,6 +101,16 @@ export class BoutiqueDetailComponent implements OnInit {
     );
   }
 
+  getProduit(id){
+    this.ecommerceService.getProduct(id).subscribe(
+      data => {
+        this.currentProduct = data;
+      }, error1 => {
+        console.log(error1);
+      }
+    );
+  }
+
   detailProduct(id){
     this.router.navigateByUrl('admin/product/detail/'+id);
     console.log('detail pushed');
@@ -125,21 +134,7 @@ export class BoutiqueDetailComponent implements OnInit {
   }
 
 
-  onCreate(p: Product) {
-    this.router.navigateByUrl('admin/product/add/' + p.id);
-  }
 
-  openModalWithComponent(id) {
-
-
-    console.log('je contient : '+this.currentBoutique.id);
-    this.boutiqueId = this.currentBoutique.id;
-    this.bsModalRef = this.modalService2.show(AddProductComponent);
-    this.bsModalRef.content.closeBtnName = 'Close';
-    this.bsModalRef.content.event.subscribe(res => {
-      this.products.push(res.data);
-    });
-  }
 
 
   showDetailProduct(contentShow, event){
@@ -198,7 +193,7 @@ export class BoutiqueDetailComponent implements OnInit {
       this.productForm.get('pictureUrl').setValue(file);
     }
   }
-  
+
 
   // fonction d'ajout du produit
   onSubmitProduct() {
@@ -247,9 +242,7 @@ export class BoutiqueDetailComponent implements OnInit {
       category: event.category,
       price: event.price,
       description: event.description,
-      marque: event.marque,
-      //pictureUrl: event.pictureUrl,
-      //pictures: event.pictures
+      measure: event.measure,
 
 
     });
@@ -265,7 +258,7 @@ export class BoutiqueDetailComponent implements OnInit {
       category: this.productForm.get('category').value,
       price: this.productForm.get('price').value,
       description: this.productForm.get('description').value,
-      marque: this.productForm.get('marque').value,
+      measure: this.productForm.get('measure').value,
       //pictureUrl: this.productForm.get('pictureUrl').value,
      // pictures: this.productForm.get('pictures').value,
     };
@@ -294,30 +287,6 @@ export class BoutiqueDetailComponent implements OnInit {
     this.messageService.clear();
   }
 
-  saveProduct(produit: Product) {
-    const productFilterdList = this.products.filter(c => c.id === produit.id);
-    console.log(productFilterdList);
-    if ( productFilterdList.length === 0) {
-      this.products.push(produit);
-    } else {
-      productFilterdList[0].id = produit.id;
-      productFilterdList[1].name = produit.name;
-      productFilterdList[2].quantity = produit.quantity;
-      productFilterdList[3].type = produit.type;
-      productFilterdList[4].category = produit.category;
-      productFilterdList[5].price = produit.price;
-      productFilterdList[6].description = produit.description;
-      productFilterdList[7].marque = produit.marque;
-    }
-    this.product = null;
-  }
-  closeDialogForm() {
-    this.product = null;
-  }
-
-  addNewProduct() {
-    this.product = new Product();
-  }
 
 }
 

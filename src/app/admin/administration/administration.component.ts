@@ -6,6 +6,7 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Product} from "../../models/product.model";
 import {Category} from "../../models/category";
 import {Type} from "../../models/type";
+import {BoutiqueService} from "../../services/boutique.service";
 
 @Component({
   selector: 'app-administration',
@@ -26,12 +27,13 @@ export class AdministrationComponent implements OnInit {
 
   constructor(private modalService: NgbModal,
               private fb: FormBuilder,
-              private ecommerceService: EcommerceService) { }
+              private ecommerceService: EcommerceService,
+              private boutiqueService: BoutiqueService) { }
 
   ngOnInit(): void {
     this.categories = Object.keys(Category);
     this.types = Object.keys(Type);
-    this.loadList();
+    this.loadAll();
     this.initForm();
   }
 
@@ -47,6 +49,18 @@ export class AdministrationComponent implements OnInit {
     );
   }
 
+
+  loadAll(){
+    this.boutiqueService.getAllBoutiques().subscribe(
+      data => {
+        console.log(data);
+        this.lists = data;
+        console.log(this.lists);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
 
 
   onDelete(contentDelete, event) {
@@ -124,6 +138,10 @@ export class AdministrationComponent implements OnInit {
         //this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
     );
+  }
+
+  openModalAddCompany(contentAdd){
+    this.modalService.open(contentAdd,{size: 'lg'});
   }
 
 }

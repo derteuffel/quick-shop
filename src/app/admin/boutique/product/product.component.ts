@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from '../../../models/product.model';
-import {Boutique} from '../../../models/boutique';
 import {EcommerceService} from '../../../services/ecommerce.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BoutiqueService} from '../../../services/boutique.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { UpdateProduit } from 'src/app/models/update-product.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -31,7 +28,7 @@ export class ProductComponent implements OnInit {
   addingForm: FormGroup;
 
   constructor(private productService: EcommerceService,
-    private activatedRoute: ActivatedRoute, 
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private modalService: NgbModal,
     private modalService2: BsModalService,
@@ -46,7 +43,7 @@ export class ProductComponent implements OnInit {
   }
 
   onSubmit(){
-    
+
   }
 
 
@@ -171,8 +168,6 @@ export class ProductComponent implements OnInit {
     this.update = null;
   }
 
-  addNewProduct() {
-    this.update = new UpdateProduit();
-  }
+
 
 }
