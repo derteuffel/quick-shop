@@ -12,8 +12,6 @@ import {CommandeComponent} from "./admin/commande/commande/commande.component";
 import {SellerAddProductComponent} from "./seller/product/seller-add-product/seller-add-product.component";
 import {SellerDetailProductComponent} from "./seller/product/seller-detail-product/seller-detail-product.component";
 import {SellerUpdateProductComponent} from "./seller/product/seller-update-product/seller-update-product.component";
-import {WomenProductsComponent} from "./eco/product/women-products/women-products.component";
-import {MenProductsComponent} from "./eco/product/men-products/men-products.component";
 import {BoutiqueComponent} from "./admin/boutique/boutique/boutique.component";
 import {AddBoutiqueComponent} from "./admin/boutique/add-boutique/add-boutique.component";
 import {BoutiqueDetailComponent} from "./admin/boutique/boutique-detail/boutique-detail.component";
@@ -27,7 +25,10 @@ import {RegisterComponent} from "./auth/register/register.component";
 import {SellerCommandeComponent} from "./seller/commande/seller-commande/seller-commande.component";
 import { CoachingComponent } from './coachings/coaching/coaching.component';
 import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
+import {SingupComponent} from "./auth/singup/singup.component";
+import {SinginComponent} from "./auth/singin/singin.component";
 import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
+import { MicroFinancementComponent } from './admin/microfinancement/micro-financement/micro-financement.component';
 
 
 
@@ -37,18 +38,7 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
 
-/*  {
-    path: '',
-    component: AdminLayoutComponent,
-    data:{roles: [Role.ADMIN, Role.ROOT]},
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        loadChildren: './admin/admin-layout/admin-layout.module#AdminLayoutModule'
-      }
-    ]
-  },*/
+
   {
     path: 'ecommerce/home', component: EcommerceComponent
   },
@@ -87,12 +77,6 @@ const routes: Routes = [
     path: 'seller/commandes', component: SellerCommandeComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
   },
-  {
-    path: 'ecommerce/women/collection', component: WomenProductsComponent
-  },
-  {
-    path: 'ecommerce/men/collection', component: MenProductsComponent
-  },
  {
     path: 'admin/boutiques', component: BoutiqueComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
@@ -118,11 +102,19 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
+    path: 'admin/coachings/edit/:id', component: DetailsCoachingComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
     path: 'admin/coachings/details/:id', component: DetailsCoachingComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
-    path: 'admin/coachings/edit/:id', component: AddBoutiqueComponent,
+    path: 'admin/micro-financment', component: MicroFinancementComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/micro-financment/:id', component: MicroFinancementComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
@@ -146,6 +138,15 @@ const routes: Routes = [
   {
     path: 'register', component: RegisterComponent
   },
+
+  {
+    path: 'signup', component: SingupComponent
+  },
+
+  {
+    path: 'signin', component: SinginComponent
+  },
+
   {
     path: '', redirectTo: 'ecommerce/home', pathMatch: 'full'
   }];

@@ -1,0 +1,46 @@
+<div class="table-responsive">
+  <table class="table align-items-center table-flush">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Categorie</th>
+      <th scope="col">Type</th>
+      <th scope="col">Montant</th>
+      <th scope="col">Marque</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{product?.name}}</td>
+      <td>
+        {{product?.category}}
+      </td>
+      <td>
+        {{product?.type}}
+      </td>
+      <td>{{product?.price}} </td>
+      <td>{{product?.marque}} </td>
+      <td>
+        {{product?.quantity}}
+
+      </td>
+      <td>
+        {{product?.description}}
+      </td>
+
+      <td class="text-right">
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+<div class="card-footer py-4">
+  <nav aria-label="...">
+    <ul class="pagination justify-content-end mb-0">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </ul>
+  </nav>
+</div>

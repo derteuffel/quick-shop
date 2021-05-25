@@ -17,9 +17,7 @@ export class SellerUpdateProductComponent implements OnInit {
   currentProduct: Product;
   categories: any = {};
   types: any = {};
-  qualities: any = {};
-  colors: any = {};
-  color: any;
+
 
   constructor(private productService: EcommerceService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -27,9 +25,6 @@ export class SellerUpdateProductComponent implements OnInit {
     this.getCurrentProduct(this.activatedRoute.snapshot.paramMap.get('id'));
     this.categories = Object.keys(Category);
     this.types = Object.keys(Type);
-    this.qualities = Object.keys(Quality);
-    this.colors = Object.keys(Colors);
-    this.color = [];
   }
 
   getCurrentProduct(id){

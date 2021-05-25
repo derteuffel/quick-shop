@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CoachingService } from 'src/app/services/coaching.service';
-import { SessionCoachingService } from 'src/app/services/session-coaching.service';
 
 @Component({
   selector: 'app-details-coaching',
@@ -13,51 +9,43 @@ import { SessionCoachingService } from 'src/app/services/session-coaching.servic
 })
 export class DetailsCoachingComponent implements OnInit {
 
-  public coaching:any = {
-    title:'titre',
-    description: 'Description',
-    phone: 'phone',
-    region: 'region',
+  public currentCoacing:any = {
+    title: 'Titre',
+    description: 'description',
+    email: 'Email',
     phone1: 'phone1',
-    email: 'email',
-    amount: 10000.0,
-    sessions: []
-  }
+    phone: 'phone',
+    amount: 100000.0,
+    logo: '',
+    region: 'Mokolo'
+  };
 
-  public addCoachingSessionFurmGroup?: FormGroup;
+  p = 1;
+
+  public searchItem:any = {
+
+  };
 
   constructor(private coachingService: CoachingService,
-    private sessionCoachingService: SessionCoachingService,
-    private fb: FormBuilder,
-    private router: Router,
-    private primengConfig: PrimeNGConfig,
-    private modalService: NgbModal,
-    private messageService: MessageService) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.initForms();
     this.loadDatas();
   }
 
-  private initForms(){
-    this.addCoachingSessionFurmGroup = new FormGroup({
-      label: new FormControl(''),
-      startDate: new FormControl(''),
-      endDate: new FormControl(''),
-      coachingId: new FormControl('')
-    })
-  }
-
   private loadDatas(){
+    this.coachingService.getCoachingById(this.activatedRoute.snapshot.paramMap.get('id'))
+    .subscribe(data=>{
+      this.currentCoacing = data;
+      console.log(data);
+    }, error => {
 
+    });
   }
 
-  openAddCoachingSession(addSession:any, currentCoaching:any){
-
-  }
-
-  back(){
-    this.router.navigate(['/admin/coachings']);
+  addNewSession(){
+    
   }
 
 }

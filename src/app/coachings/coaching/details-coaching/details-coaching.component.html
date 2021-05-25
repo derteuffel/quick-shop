@@ -1,408 +1,100 @@
 <app-admin-sidebar></app-admin-sidebar>
 <div class="main-content">
-  <app-admin-navbar></app-admin-navbar>
-  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <!-- Top navbar -->
+    <app-admin-navbar></app-admin-navbar>
+    <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+            <div class="header-body">
+
+            </div>
+            <div class="header-body">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                      <h5 class="card-title text-uppercase text-muted mb-0">Service de coaching &nbsp; <span class="h2 font-weight-bold mb-0">{{currentCoacing.title}} </span></h5>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Région:</span>
+                                    <span class="text-nowrap">{{currentCoacing.region}}</span>
+                                </p>
+                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Téléphone :</span>
+                                    <span class="text-nowrap">{{currentCoacing.phone}} / {{currentCoacing.phone1}}</span>
+                                </p>
+                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Email :</span>
+                                    <span class="text-nowrap">{{currentCoacing.email}} </span>
+                                </p>
+                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Description :</span>
+                                    <span class="text-nowrap">{{currentCoacing.description}} </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-fluid mt--7">
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0" style="background-color:#F45B3A;">
+                        <div class="col-md-6">
+                            <button (click)="addNewSession()" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D;" label="Ajouter une session"></button>
+                        </div>
+                        <div class="col-md-6 pull-right" style="width: 40%">
+                            <label >Recherche <i class="fa fa-search"></i></label>
+                            <input type="text" class="form-control" [(ngModel)]="searchItem">
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                  <th scope="col">Titre</th>
+                                  <th scope="col">Date de début</th>
+                                  <th scope="col">Date de fin</th>
+                                  <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let session of currentCoacing.sessions | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                                  <td>{{session?.label}}</td>
+                                  <td>
+                                    {{session?.startDate}}
+                                  </td>
+                                  <td>
+                                    {{session?.endDate}}
+                                  </td>
+                  
+                                  <td class="text-right" style="width:3em; text-align:center; font-size: 0.65rem;">
+                                    <div ngbDropdown placement="bottom-right">
+                                        <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <button (click)="setSession(contentUpdate, session)" class="btn btn-primary "><i class="pi pi-pencil"></i></button>
+                                            <button  (click)="onDelete(contentDelete, session)" class="btn btn-danger"><i class="pi pi-trash"></i></button>
+                                        </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                  
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
-      <div class="header-body">
-        <!-- Card stats -->
-
-        <!--<div class="alert-info title card-header  text-center">
-          <h1>Mes Coachings</h1>
-        </div>-->
-
+        <app-admin-footer></app-admin-footer>
       </div>
-    </div>
-  </div>
-  <div class="container-fluid mt--7">
-    <div class="row">
-      <div class="col">
-        <div class="card shadow">
-          <div class="card-header border-0" style="background-color:#F5B669;">
-            Détail d'un service de Coaching
-          </div>
-          <div class="card-text">
-            <div class="row">
-                <div class="col-md-1">
-
-                </div>
-                <div class="col-md-10">
-                    <br>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <h3>Titre</h3>  
-                        </div>
-                        <div class="col-md-10">
-                            : {{coaching.title}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <h3>Région</h3> 
-                        </div>
-                        <div class="col-md-10">
-                            : {{coaching.region}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <h3>Numéro de téléphone</h3> 
-                        </div>
-                        <div class="col-md-10">
-                            : {{coaching.phone}} / {{coaching.phone1}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <h3>Email</h3> 
-                        </div>
-                        <div class="col-md-10">
-                            : {{coaching.email}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <h3>Description</h3>
-                        </div>
-                        <div class="col-md-10">
-                            : {{coaching.description}}
-                        </div>
-                    </div>
-                    <br>
-                    <h2>Liste des sessions de coaching </h2>
-                    <table class="table table-responsive-md table-bordered">
-                        <thead class="title">
-                          <th>Label</th>
-                          <th>Période</th>
-                          <th>Actions</th>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor='let session of coaching.sessions'>
-                            <td>{{session.label}}</td>
-                            <td>Du {{session.startDate}} au {{session.endDate}}</td>
-                            <td>
-                                <button  (click)="deleteCoachingSession(contentDeleteSession, session)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
-                            </td>
-                          </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <div class="row" style="text-align: center;">
-                        <div class="col-md-6">
-                            <button (click)="back()" class="btn btn-danger m-1">Retour</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button  (click)="openAddCoachingSession(addSession, coaching)" class="btn btn-success m-1">Ajouter une session</button>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                </div>
-                <div class="col-md-1">
-
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-
-<!-- Modal FORM FOR ADD COACHING SESSION -->
-<ng-template #addSession let-modal>
-    <div class="modal-header" style="background-color:#F5B669;">
-      Ajouter une session
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form [formGroup]="addCoachingSessionFurmGroup" (submit)="saveCoachingSession()">
-        <div class="form-group">
-          <label>Titre</label>
-          <input type="text" class="form-control"required formControlName="label" placeholder="titre de la session" >
-        </div>
-        <div class="form-group">
-          <label>Date de début</label>
-          <input type="date" class="form-control"required formControlName="startDate" placeholder="titre du service" >
-        </div>
-        <div class="form-group">
-          <label>Date de fin</label>
-          <input type="date" class="form-control"required formControlName="endDate" placeholder="titre du service" >
-        </div>
-        <div>
-          <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
-        </div>
-      </form>
-    </div>
-  </ng-template>
-  <!-- END Modal FORM FOR ADD COACHING SESSION -->
-
-<!-------------------------------------------------------DELETE COACHING START-------------------------------------------------------------->
-<ng-template #contentDelete let-modal>
-    <div class="modal-header dark-modal" style="background-color:#F5B669;">
-      <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p style="color: red;">Voulez vous vraiment supprimer ce coaching??&hellip;</p>
-    </div>
-    <!--<hr class="my-4" style="background-color: salmon;" />-->
-  
-    <div class="modal-footer" style="background-color:#F5B669;">
-      <div class="row">
-        <!-- <div class="col-md-4 "></div> -->
-        <div class="col-md-4 ">
-          <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
-        </div> &nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="col-md-4 ">
-          <button type="button" class="btn btn-danger"
-                  (click)="onDelete() + modal.close('Close click')">Supprimer</button>
-        </div>
-      </div>
-    </div>
-  
-</ng-template>
-  <!-------------------------------------------------------DELETE COACHING END-------------------------------------------------------------->
-  
-
-
-<!-- TOAST MESSAGE TEMPLATE -->
-<!--<p-toast position="top-right"></p-toast>
-<p-toast position="bottom-center" key="c" (onClose)="onReject()" >
-  <ng-template let-message pTemplate="message">
-    <div class="p-flex p-flex-column" style="flex: 1">
-      <div class="p-text-center">
-        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
-        <h4>{{message.summary}}</h4>
-        <p>{{message.detail}}</p>
-      </div>
-      <div class="p-grid p-fluid">
-        <div class="p-col-6">
-          <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
-        </div>
-        <div class="p-col-6">
-          <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-</p-toast>-->
-
-
-
-
-<!-- MODAL  FORM FOR ADD COACHING -->
-
-<!--<ng-template #contentAdd let-modal>
-  <div class="modal-header" style="background-color:#F5B669;">
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p-card header="Nouveau service de coaching" [style]="{'margin-bottom': '2em'}">
-      <form [formGroup]="coachingFormGroup" (submit)="saveCoaching()">
-        <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Titre</label>
-                <input type="text" class="form-control"required formControlName="title" placeholder="titre du service" >
-              </div>
-      
-              <div class="form-group">
-                <label>Numéro téléphone</label>
-                <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
-              </div>
-      
-              <div class="form-group">
-                <label>Numéro téléphone</label>
-                <input type="text" class="form-control" required formControlName="phone1" placeholder="numéro de téléphone">
-              </div>
-              <div class="form-group">
-                <label>Region</label>
-                <input type="text" class="form-control"  required formControlName="region" placeholder="Entrer votre region">
-              </div>
-      
-              <div class="form-group">
-                <label>Email contact</label>
-                <input type="text" class="form-control"  required formControlName="email" placeholder="Entrer l'adresse email contact">
-              </div>
-      
-              <div class="form-group">
-                <label>Email de l'utilisateur</label>
-                <input type="text" class="form-control"  required formControlName="userEmail" placeholder="Entrer votre region">
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Description</label>
-                <textarea cols="0" rows="6" class="form-control" placeholder="description" formControlName="description"></textarea>
-              </div>
-            </div>
-        </div>
-
-        <br>
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-md-6">
-              <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </p-card>
-  </div>
-</ng-template>-->
-
-<!-- Modal FORM FOR ADD COACHING SESSION -->
-<!--<ng-template #addSession let-modal>
-  <div class="modal-header" style="background-color:#F5B669;">
-    Ajouter une session
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="addCoachingSessionFurmGroup" (submit)="saveCoachingSession()">
-      <div class="form-group">
-        <label>Titre</label>
-        <input type="text" class="form-control"required formControlName="label" placeholder="titre de la session" >
-      </div>
-      <div class="form-group">
-        <label>Date de début</label>
-        <input type="date" class="form-control"required formControlName="label" placeholder="titre du service" >
-      </div>
-      <div class="form-group">
-        <label>Date de fin</label>
-        <input type="date" class="form-control"required formControlName="label" placeholder="titre du service" >
-      </div>
-      <div>
-        <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
-      </div>
-    </form>
-  </div>
-</ng-template>-->
-<!-- END Modal FORM FOR ADD COACHING SESSION -->
-
-<!-- MODAL  FORM FOR UPDATE COACHING -->
-
-<!--<ng-template #contentUpdate let-modal>
-  <div class="modal-header" style="background-color:#F5B669;">
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p-card header="Modifier un service de coaching" [style]="{'margin-bottom': '2em'}">
-      <form [formGroup]="coachingUpdateFormGroup" (submit)="updateCoaching()">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Titre</label>
-              <input type="text" class="form-control"required formControlName="title" placeholder="titre du service" >
-            </div>
-    
-            <div class="form-group">
-              <label>Numéro téléphone</label>
-              <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
-            </div>
-    
-            <div class="form-group">
-              <label>Numéro téléphone</label>
-              <input type="text" class="form-control" required formControlName="phone1" placeholder="numéro de téléphone">
-            </div>
-            <div class="form-group">
-              <label>Region</label>
-              <input type="text" class="form-control"  required formControlName="region" placeholder="Entrer votre region">
-            </div>
-    
-            <div class="form-group">
-              <label>Email contact</label>
-              <input type="text" class="form-control"  required formControlName="email" placeholder="Entrer l'adresse email contact">
-            </div>
-    
-            <div class="form-group">
-              <label>Email de l'utilisateur</label>
-              <input type="text" class="form-control"  required formControlName="userEmail" placeholder="Entrer votre region">
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Description</label>
-              <textarea cols="0" rows="6" class="form-control" placeholder="description" formControlName="description"></textarea>
-            </div>
-            <div>
-              <h3>Liste des sessions de coaching</h3>
-              <table class="table table-responsive-md table-bordered">
-                <thead class="title">
-                  <th>Label</th>
-                  <th>Période</th>
-                  <th>Actions</th>
-                </thead>
-                <tbody>
-                  <tr *ngFor='let session of currentCoaching.sessions'>
-                    <td>{{session.label}}</td>
-                    <td>Du {{session.startDate}} au {{session.endDate}}</td>
-                    <td>
-                      <button  (click)="deleteCoachingSession(contentDeleteSession, session)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <button  (click)="openAddCoachingSession(addSession, currentCoaching)" class="btn btn-success m-1">Ajouter une session</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <br>
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-md-6">
-              <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </p-card>
-  </div>
-</ng-template>-->
-
-
-<!-------------------------------------------------------DELETE COACHING START-------------------------------------------------------------->
-<!--<ng-template #contentDelete let-modal>
-  <div class="modal-header dark-modal" style="background-color:#F5B669;">
-    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p style="color: red;">Voulez vous vraiment supprimer ce coaching??&hellip;</p>
-  </div>-->
-  <!--<hr class="my-4" style="background-color: salmon;" />-->
-
-  <!--<div class="modal-footer" style="background-color:#F5B669;">
-    <div class="row">-->
-      <!-- <div class="col-md-4 "></div> -->
-      <!--<div class="col-md-4 ">
-        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
-      </div> &nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="col-md-4 ">
-        <button type="button" class="btn btn-danger"
-                (click)="onDelete() + modal.close('Close click')">Supprimer</button>
-      </div>
-    </div>
-  </div>
-
-</ng-template>-->
-<!-------------------------------------------------------DELETE COACHING END-------------------------------------------------------------->
-
-
