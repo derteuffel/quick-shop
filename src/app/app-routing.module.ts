@@ -30,6 +30,8 @@ import {SingupComponent} from "./auth/singup/singup.component";
 import {SinginComponent} from "./auth/singin/singin.component";
 import {CustomerUpComponent} from "./auth/customer-up/customer-up.component";
 import {CustomerInComponent} from "./auth/customer-in/customer-in.component";
+import { TestComponent } from './test/test/test.component';
+import { ProductComponent } from './admin/boutique/product/product.component';
 
 
 
@@ -43,6 +45,7 @@ const routes: Routes = [
   {
     path: 'ecommerce/home', component: EcommerceComponent
   },
+
   {
     path: 'admin/product/add/:id', component: AddProductComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
@@ -51,7 +54,7 @@ const routes: Routes = [
     path: 'ecommerce/product/detail/:id', component: DetailProductComponent
   },
   {
-    path: 'admin/product/detail/:id', component: AdministrationDetailProductComponent,
+    path: 'admin/produit/detail/:id', component: ProductComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {

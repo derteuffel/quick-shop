@@ -66,6 +66,7 @@ import { SinginComponent } from './auth/singin/singin.component';
 import { SingupComponent } from './auth/singup/singup.component';
 import { CustomerUpComponent } from './auth/customer-up/customer-up.component';
 import { CustomerInComponent } from './auth/customer-in/customer-in.component';
+import { TestComponent } from './test/test/test.component';
 
 
 
@@ -114,6 +115,7 @@ import { CustomerInComponent } from './auth/customer-in/customer-in.component';
     SingupComponent,
     CustomerUpComponent,
     CustomerInComponent,
+    TestComponent,
 
   ],
   imports: [

@@ -39,6 +39,7 @@ export class BoutiqueDetailComponent implements OnInit {
   boutiqueId: number;
   bsModalRef: BsModalRef;
   productID;
+  currentProduct: Product;
   product: Product;
   measures: string[];
   //details
@@ -141,17 +142,17 @@ export class BoutiqueDetailComponent implements OnInit {
   }
 
 
-  showDetailProduct(event){
+  showDetailProduct(contentShow, event){
     console.log(event);
 
-    this.details = true;
+    //this.details = true;
     this.productID = event.id
     console.log(this.productID);
-   // this.modalService.open(contentShow, {size: 'lg'});
+    this.modalService.open(contentShow, {size: 'lg'});
     this.ecommerceService.getProduct(this.productID).subscribe(
       data => {
         console.log(data);
-        this.product = data;
+        this.currentProduct = data;
       }, error1 => {
         console.log(error1);
       }

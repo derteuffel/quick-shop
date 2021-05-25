@@ -39,8 +39,8 @@ export class AdministrationDetailProductComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.initForm;
+    //this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
+    //this.initForm;
 
   }
 
@@ -56,7 +56,7 @@ export class AdministrationDetailProductComponent implements OnInit {
 
 
 
-  getProduct(id){
+  /* getProduct(id){
     this.productService.getProduct(id).subscribe(
       data => {
         this.currentProduct = data;
@@ -66,10 +66,10 @@ export class AdministrationDetailProductComponent implements OnInit {
         console.log(error);
       }
     );
-  }
+  } */
 
   /** lister les articles d'une boutique **/
-  loadList(): void{
+  /* loadList(): void{
 
     this.productService.getUpdateByProduct(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       (res: any) => {
@@ -107,12 +107,12 @@ export class AdministrationDetailProductComponent implements OnInit {
       quantity: new FormControl(''),
       motif: new FormControl(''),
     });
-  }
+  } */
 
 
   // mise à jour d'un Produit
 
-  setUpdate(contentUpdate, event) {
+  /* setUpdate(contentUpdate, event) {
     this.modalService.open(contentUpdate, {size: 'lg'});
     this.update = event.name;
     this.updateID = event.id;
@@ -142,10 +142,10 @@ export class AdministrationDetailProductComponent implements OnInit {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
     );
-  }
+  } */
 
   /** toast message function primeng  **/
-  onConfirm() {
+  /* onConfirm() {
     this.messageService.clear('c');
   }
 
@@ -176,6 +176,6 @@ export class AdministrationDetailProductComponent implements OnInit {
 
   addNewProduct() {
     this.update = new UpdateProduit();
-  }
+  } */
 
 }

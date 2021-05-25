@@ -161,10 +161,10 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <button (click)="detailProduct(product.id)"  class="btn btn-success ml-1"><i class="pi pi-eye"></i></button>
-                      <button (click)="setUpdate(contentUpdate, product)" class="btn btn-primary "><i class="pi pi-pencil"></i></button>
+                      <button (click)="showDetailProduct(contentShow, product)"  class="btn btn-success ml-1"><i class="pi pi-eye"></i></button>
+                      <button (click)="setProduct(contentUpdate, product)" class="btn btn-primary "><i class="pi pi-pencil"></i></button>
                     <button  (click)="onDelete(contentDelete, product)" class="btn btn-danger"><i class="pi pi-trash"></i></button>
-
+                      <a href="/admin/produit/detail/{{product?.id}}" class="btn btn-secondary">test</a>
                     </div>
                   </div>
                 </td>
@@ -218,7 +218,6 @@
     </div>
   </ng-template>
 </p-toast>
-
 <p-sidebar [(visible)]="details" position="right" styleClass="ui-sidebar-lg" [baseZIndex]="10000">
   <div class="ui-sm-6 ui-md-6 ">
     <div class="ui-sm-12 ui-md-12">
@@ -433,26 +432,34 @@
     <div class="card-body">
       <div class="row">
         <div class="col">
-          <h5 class="card-title text-uppercase text-muted mb-0">Prouit &nbsp; <span class="h2 font-weight-bold mb-0">{{product.name}} </span></h5>
+          <h3 class="card-title text-uppercase text-muted mb-0">Prouit &nbsp; <span class="h2 font-weight-bold mb-0">{{currentProduct.name}} </span></h3>
 
         </div>
-        <!--<div class="col-auto">
-          <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-            <i class="fas fa-chart-bar"></i>
-          </div>
-        </div>-->
       </div>
-      <p class="mt-3 mb-0 text-muted text-sm">
-        <span class="text-success mr-2"><i class="fa fa-map"></i> Prix:</span>
-        <span class="text-nowrap">{{product.price}}</span>
+      <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+        <span class="text-success mr-2"><i class="fa fa-folder"></i> Categorie du produit:</span>
+        <span class="text-nowrap">{{currentProduct.category}}</span>
       </p>
-      <p class="mt-3 mb-0 text-muted text-sm">
-        <span class="text-success mr-2"><i class="fa fa-phone"></i> Quantité:</span>
-        <span class="text-nowrap">{{product.quantity}}</span>
+      <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+        <span class="text-success mr-2"><i class="fa fa-folder"></i> Type de produit:</span>
+        <span class="text-nowrap">{{currentProduct.type}}</span>
       </p>
-      <p class="mt-3 mb-0 text-muted text-sm">
-        <span class="text-success mr-2"><i class="fa fa-credit-card"></i> Type:</span>
-        <span class="text-nowrap">{{product.type}}</span>
+
+      <p class="mt-3 mb-0 text-muted text-sm" style="color: #F45B3A !important;">
+        <span class="text-success mr-2" ><i class="fa fa-dollar-sign"></i> Prix par unite:</span>
+        <span class="text-nowrap">{{currentProduct.price}} F</span>
+      </p>
+      <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+        <span class="text-success mr-2"><i class="fa fa-server"></i> Quantite en stock :</span>
+        <span class="text-nowrap">{{currentProduct.quantity}}</span>
+      </p>
+      <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+        <span class="text-success mr-2"><i class="fa fa-hashtag"></i> Unite de mesure :</span>
+        <span class="text-nowrap">{{currentProduct.measure}}</span>
+      </p>
+      <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+        <span class="text-success mr-2"><i class="fa fa-bars"></i> Unite de mesure :</span>
+        <span class="text-nowrap">{{currentProduct.description}}</span>
       </p>
     </div>
   </div>
