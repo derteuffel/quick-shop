@@ -44,7 +44,9 @@ export class CoachingComponent implements OnInit {
     this.coachingFormGroup = new FormGroup({
       description: new FormControl(''),
       phone:  new FormControl(''),
-      phone1:  new FormControl(''),
+      amount:  new FormControl(''),
+      startDate: new FormControl(null),
+      logo: new FormControl(null),
       email:  new FormControl(''),
       region:  new FormControl(''),
       title: new FormControl(''),
@@ -63,6 +65,13 @@ export class CoachingComponent implements OnInit {
     });
   }
 
+  onFilesSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.coachingFormGroup.get('logo').setValue(file);
+    }
+  }
+
   loadData() {
     this.coachingService.getAllCoaching().subscribe(
       data => {
@@ -74,9 +83,24 @@ export class CoachingComponent implements OnInit {
   }
 
   saveCoaching() {
-    this.submitted = true;
+
     if (this.coachingFormGroup?.invalid) return;
-    this.coachingService.saveCoaching(this.coachingFormGroup?.value).subscribe(
+
+    console.log(this.coachingFormGroup);
+    const formData = new FormData();
+    formData.append('title', this.coachingFormGroup.get('title').value);
+    formData.append('description', this.coachingFormGroup.get('description').value);
+    formData.append('amount', this.coachingFormGroup.get('amount').value);
+    formData.append('phone', this.coachingFormGroup.get('phone').value);
+    formData.append('email', this.coachingFormGroup.get('email').value);
+    formData.append('region', this.coachingFormGroup.get('region').value);
+    formData.append('startDate', this.coachingFormGroup.get('startDate').value);
+    formData.append('userEmail', this.coachingFormGroup.get('userEmail').value);
+    formData.append('file', this.coachingFormGroup.get('logo').value);
+    console.log(formData);
+    this.submitted = true;
+   
+    this.coachingService.saveCoaching(formData).subscribe(
       (data: any) => {
         // this.router.navigateByUrl('/admin/boutiques');
         this.coachingFormGroup.reset();

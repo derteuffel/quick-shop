@@ -9,12 +9,12 @@
       </div>
       <div class="header-body">
         <div class="row">
-          <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12">
+          <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12">
             <div class="card card-stats mb-4 mb-xl-0">
               <div class="card-body">
                 <div class="row">
                   <div class="col">
-                    <h5 class="card-title text-uppercase text-muted mb-0">Produit &nbsp; <span class="h2 font-weight-bold mb-0">{{currentProduct?.name}} </span></h5>
+                    <h5 class="card-title text-uppercase text-muted mb-0">Nom du produit &nbsp; <span class="h2 font-weight-bold mb-0">{{currentProduct?.name}} </span></h5>
                   </div>
 
                 </div>
@@ -23,18 +23,38 @@
                   <span class="text-nowrap">{{currentProduct?.type}}</span>
                 </p>
                 <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
-                  <span class="text-success mr-2">Quantity:</span>
+                  <span class="text-success mr-2">Categorie :</span>
+                  <span class="text-nowrap">{{currentProduct?.category}}</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                  <span class="text-success mr-2">Quantite en stock:</span>
                   <span class="text-nowrap">{{currentProduct?.quantity}}</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                  <span class="text-success mr-2"> Unite de mesure:</span>
+                  <span class="text-nowrap">{{currentProduct?.measure}}</span>
                 </p>
 
                 <p class="mt-3 mb-0 text-muted text-sm" style="color: #F45B3A !important;">
-                  <span class="text-success mr-2" > Prix:</span>
+                  <span class="text-success mr-2" > Prix unitaire:</span>
                   <span class="text-nowrap">{{currentProduct?.price}}</span>
                 </p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="card-image m-3">
+                  <img src="{{currentProduct?.pictureUrl}}" height="100" alt="" >
+                </div>
+                
                 <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
-                  <span class="text-success mr-2"> Marque:</span>
-                  <span class="text-nowrap">{{currentProduct?.marque}}</span>
+                  <span class="text-success mr-2">Description du produit:</span>
+                  <span class="text-nowrap">{{currentProduct?.description}}</span>
                 </p>
+                
               </div>
             </div>
           </div>
