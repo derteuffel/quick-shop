@@ -3,16 +3,17 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {MessageService, PrimeNGConfig} from "primeng/api";
-import {CoachingService} from "../../services/coaching.service";
-import {SessionCoachingService} from "../../services/session-coaching.service";
+import { MicrofinanceService } from 'src/app/services/microfinance.service';
+import {CoachingService} from "../../../services/coaching.service";
+import {SessionCoachingService} from "../../../services/session-coaching.service";
 
 @Component({
   selector: 'app-coaching',
-  templateUrl: './coaching.component.html',
-  styleUrls: ['./coaching.component.scss'],
+  templateUrl: './micro-financement-list.component.html',
+  styleUrls: ['./micro-financement-list.component.scss'],
   providers: [MessageService],
 })
-export class CoachingComponent implements OnInit {
+export class MicroFinancementListComponent implements OnInit {
 
   lists: any = [];
   boutiqueRef;
@@ -26,8 +27,9 @@ export class CoachingComponent implements OnInit {
   public addCoachingSessionFurmGroup?: FormGroup;
   public currentCoaching;
   public currentSession;
-  constructor(              private coachingService: CoachingService,
+  constructor(              //private coachingService: CoachingService,
                             private sessionService: SessionCoachingService,
+                            private microfinancementService: MicrofinanceService,
                             private fb: FormBuilder,
                             private router: Router,
                             private primengConfig: PrimeNGConfig,
@@ -42,29 +44,29 @@ export class CoachingComponent implements OnInit {
 
   initForm() {
     this.coachingFormGroup = new FormGroup({
-      description: new FormControl(''),
-      phone:  new FormControl(''),
-      phone1:  new FormControl(''),
-      email:  new FormControl(''),
-      region:  new FormControl(''),
-      title: new FormControl(''),
+      region: new FormControl(''),
+      amount:  new FormControl(''),
+      bankName:  new FormControl(''),
+      paymentMode:  new FormControl(''),
+      secteurActivite:  new FormControl(''),
+      intitule: new FormControl(''),
       userEmail: new FormControl('')
     });
 
     this.coachingUpdateFormGroup = new FormGroup({
       id: new FormControl(''),
-      description: new FormControl(''),
-      phone:  new FormControl(''),
-      phone1:  new FormControl(''),
-      email:  new FormControl(''),
-      region:  new FormControl(''),
-      title: new FormControl(''),
+      region: new FormControl(''),
+      amount:  new FormControl(''),
+      bankName:  new FormControl(''),
+      paymentMode:  new FormControl(''),
+      secteurActivite:  new FormControl(''),
+      intitule: new FormControl(''),
       userEmail: new FormControl('')
     });
   }
 
   loadData() {
-    this.coachingService.getAllCoaching().subscribe(
+    this.microfinancementService.getAllFinance().subscribe(
       data => {
         this.lists = data.body;
       }, error => {
@@ -76,7 +78,7 @@ export class CoachingComponent implements OnInit {
   saveCoaching() {
     this.submitted = true;
     if (this.coachingFormGroup?.invalid) return;
-    this.coachingService.saveCoaching(this.coachingFormGroup?.value).subscribe(
+    this.microfinancementService.saveFinance(this.coachingFormGroup?.value).subscribe(
       (data: any) => {
         // this.router.navigateByUrl('/admin/boutiques');
         this.coachingFormGroup.reset();
@@ -97,12 +99,12 @@ export class CoachingComponent implements OnInit {
 
     this.coachingUpdateFormGroup.patchValue({
       id: event.id,
-      phone1: event.phone1,
-      description: event.description,
-      phone: event.phone,
       region: event.region,
-      title: event.title,
-      email: event.email,
+      amount:  event.amount,
+      bankName:  event.bankName,
+      paymentMode:  event.paymentMode,
+      secteurActivite:  event.secteurActivite,
+      intitule: event.intitule,
       userEmail: event.userEmail
     });
   }
@@ -110,16 +112,16 @@ export class CoachingComponent implements OnInit {
   updateCoaching() {
     const CompanyData = {
       id: this.coachingUpdateFormGroup.get('id').value,
-      phone1: this.coachingUpdateFormGroup.get('phone1').value,
-      description: this.coachingUpdateFormGroup.get('description').value,
-      phone: this.coachingUpdateFormGroup.get('phone').value,
+      amount: this.coachingUpdateFormGroup.get('amount').value,
+      bankName: this.coachingUpdateFormGroup.get('bankName').value,
+      paymentMode: this.coachingUpdateFormGroup.get('paymentMode').value,
       region: this.coachingUpdateFormGroup.get('region').value,
-      title: this.coachingUpdateFormGroup.get('title').value,
-      email: this.coachingUpdateFormGroup.get('email').value,
+      secteurActivite: this.coachingUpdateFormGroup.get('secteurActivite').value,
+      intitule: this.coachingUpdateFormGroup.get('intitule').value,
       userEmail: this.coachingUpdateFormGroup.get('userEmail').value,
 
     }
-    this.coachingService.updateCoaching(CompanyData).subscribe(
+    this.microfinancementService.updateFinance(CompanyData).subscribe(
       (data: any) => {
         this.coachingUpdateFormGroup.reset();
         this.messageService.add({severity:'success', summary: 'Record is updated successully', detail:'record updated'});
@@ -141,7 +143,7 @@ export class CoachingComponent implements OnInit {
 
   // detail d'une coaching
   getCoaching(){
-    this.coachingService.getCoachingById(this.boutiqueRef).subscribe(
+    this.microfinancementService.getFinance(this.boutiqueRef).subscribe(
 
       data => {
         this.currentCoaching = data;
@@ -163,7 +165,7 @@ export class CoachingComponent implements OnInit {
   }
 
   onDelete() {
-    this.coachingService.deleteCoaching(this.boutiqueRef).subscribe(
+    this.microfinancementService.deleteFinance(this.boutiqueRef).subscribe(
       (res : any) => {
         this.messageService.add({severity:'success', summary: 'Record is deleted successully', detail:'record delete'});
         this.loadData();
@@ -174,7 +176,7 @@ export class CoachingComponent implements OnInit {
   saveCoachingSession(){
     this.sessionSubmitted = true;
     if (this.addCoachingSessionFurmGroup?.invalid) return;
-    this.coachingService.saveCoaching(this.coachingFormGroup?.value).subscribe(
+    this.microfinancementService.deleteFinance(this.coachingFormGroup?.value).subscribe(
       (data: any) => {
         this.coachingFormGroup.reset();
         this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
@@ -225,7 +227,7 @@ export class CoachingComponent implements OnInit {
 
 
   findOneCoaching(contentUpdate:any, item:any){
-    this.router.navigate(['/admin/coachings/details/'+item.id]);
+    this.router.navigate(['/admin/micro-financement/details/'+item.id]);
   }
 
 }

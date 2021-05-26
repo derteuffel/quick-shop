@@ -1,1 +1,100 @@
-<p>details-coaching works!</p>
+<app-admin-sidebar></app-admin-sidebar>
+<div class="main-content">
+    <!-- Top navbar -->
+    <app-admin-navbar></app-admin-navbar>
+    <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+            <div class="header-body">
+
+            </div>
+            <div class="header-body">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                      <h5 class="card-title text-uppercase text-muted mb-0">Service de coaching &nbsp; <span class="h2 font-weight-bold mb-0">{{currentCoacing.title}} </span></h5>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Région:</span>
+                                    <span class="text-nowrap">{{currentCoacing.region}}</span>
+                                </p>
+                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Téléphone :</span>
+                                    <span class="text-nowrap">{{currentCoacing.phone}} / {{currentCoacing.phone1}}</span>
+                                </p>
+                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Email :</span>
+                                    <span class="text-nowrap">{{currentCoacing.email}} </span>
+                                </p>
+                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Description :</span>
+                                    <span class="text-nowrap">{{currentCoacing.description}} </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-fluid mt--7">
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0" style="background-color:#F45B3A;">
+                        <div class="col-md-6">
+                            <button (click)="addNewSession()" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D;" label="Ajouter une session"></button>
+                        </div>
+                        <div class="col-md-6 pull-right" style="width: 40%">
+                            <label >Recherche <i class="fa fa-search"></i></label>
+                            <input type="text" class="form-control" [(ngModel)]="searchItem">
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                  <th scope="col">Titre</th>
+                                  <th scope="col">Date de début</th>
+                                  <th scope="col">Date de fin</th>
+                                  <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let session of currentCoacing.sessions | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                                  <td>{{session?.label}}</td>
+                                  <td>
+                                    {{session?.startDate}}
+                                  </td>
+                                  <td>
+                                    {{session?.endDate}}
+                                  </td>
+                  
+                                  <td class="text-right" style="width:3em; text-align:center; font-size: 0.65rem;">
+                                    <div ngbDropdown placement="bottom-right">
+                                        <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                            <button (click)="setSession(contentUpdate, session)" class="btn btn-primary "><i class="pi pi-pencil"></i></button>
+                                            <button  (click)="onDelete(contentDelete, session)" class="btn btn-danger"><i class="pi pi-trash"></i></button>
+                                        </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                  
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <app-admin-footer></app-admin-footer>
+      </div>
+</div>
