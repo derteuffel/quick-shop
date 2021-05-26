@@ -64,8 +64,8 @@ import {ModalModule} from "ngx-bootstrap/modal";
 import { SinginComponent } from './auth/singin/singin.component';
 import { SingupComponent } from './auth/singup/singup.component';
 import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
-import { MicroFinancementComponent } from './admin/microfinancement/micro-financement/micro-financement.component';
 import { MicroFinancementDetailsComponent } from './admin/microfinancement/micro-financement-details/micro-financement-details.component';
+import { MicroFinancementListComponent } from './admin/microfinancement/micro-financement-list/micro-financement-list.component';
 
 
 
@@ -112,9 +112,8 @@ import { MicroFinancementDetailsComponent } from './admin/microfinancement/micro
     SinginComponent,
     SingupComponent,
     DetailsCoachingComponent,
-    MicroFinancementComponent,
     MicroFinancementDetailsComponent,
-
+    MicroFinancementListComponent
   ],
   imports: [
     BrowserModule,

@@ -28,7 +28,8 @@ import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coac
 import {SingupComponent} from "./auth/singup/singup.component";
 import {SinginComponent} from "./auth/singin/singin.component";
 import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
-import { MicroFinancementComponent } from './admin/microfinancement/micro-financement/micro-financement.component';
+import { MicroFinancementListComponent } from './admin/microfinancement/micro-financement-list/micro-financement-list.component';
+import { MicroFinancementDetailsComponent } from './admin/microfinancement/micro-financement-details/micro-financement-details.component';
 
 
 
@@ -37,8 +38,6 @@ const routes: Routes = [
     path: 'admin/home', component: AdministrationComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
-
-
   {
     path: 'ecommerce/home', component: EcommerceComponent
   },
@@ -77,7 +76,7 @@ const routes: Routes = [
     path: 'seller/commandes', component: SellerCommandeComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
   },
- {
+  {
     path: 'admin/boutiques', component: BoutiqueComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
@@ -110,11 +109,11 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
-    path: 'admin/micro-financment', component: MicroFinancementComponent,
+    path: 'admin/micro-financement', component: MicroFinancementListComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
-    path: 'admin/micro-financment/:id', component: MicroFinancementComponent,
+    path: 'admin/micro-financement/details/:id', component: MicroFinancementDetailsComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
