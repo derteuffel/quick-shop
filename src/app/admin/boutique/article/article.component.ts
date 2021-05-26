@@ -6,6 +6,7 @@ import {UpdateProduit} from "../../../models/update-product.model";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {MessageService} from "primeng/api";
+import {Product} from "../../../models/product.model";
 
 @Component({
   selector: 'app-article',
@@ -14,7 +15,7 @@ import {MessageService} from "primeng/api";
   providers: [MessageService],
 })
 export class ArticleComponent implements OnInit {
-  currentProduct: any;
+  currentProduct: Product;
   lists: any = {};
   p = 1;
   searchItem: string;
