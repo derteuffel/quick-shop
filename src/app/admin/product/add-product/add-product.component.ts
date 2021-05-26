@@ -33,7 +33,7 @@ export class AddProductComponent implements OnInit {
   public submitted = false;
   public productFormGroup?: FormGroup;
   form: any = {};
-  selectedFiles: File[] = [];
+  selectedFile: ImageSnippet;
   boutique: Boutique;
   public imagePath;
   imgURL: any;
@@ -72,12 +72,14 @@ export class AddProductComponent implements OnInit {
 
 
   onFilesSelect(event) {
-    if (event.target.files.length > 0) {
-      for(let i=0; i < event.target.files.length; i++){
-        this.selectedFiles.push(<File>event.target.files[i]);
-      }
-      console.log(this.selectedFiles.toString)
-    }
+    const file: File = event.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) =>{
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+    });
+
+    reader.readAsDataURL(file);
   }
 
 
@@ -160,4 +162,8 @@ export class AddProductComponent implements OnInit {
 
 
 
+}
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
 }

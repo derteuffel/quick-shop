@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+  import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import {AdministrationComponent} from "./admin/administration/administration.component";
 import {Role} from "./models/role";
@@ -30,6 +30,10 @@ import {SinginComponent} from "./auth/singin/singin.component";
 import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
 import { MicroFinancementListComponent } from './admin/microfinancement/micro-financement-list/micro-financement-list.component';
 import { MicroFinancementDetailsComponent } from './admin/microfinancement/micro-financement-details/micro-financement-details.component';
+import {CustomerUpComponent} from "./auth/customer-up/customer-up.component";
+import {CustomerInComponent} from "./auth/customer-in/customer-in.component";
+import { TestComponent } from './test/test/test.component';
+import { ProductComponent } from './admin/boutique/product/product.component';
 
 
 
@@ -41,6 +45,7 @@ const routes: Routes = [
   {
     path: 'ecommerce/home', component: EcommerceComponent
   },
+
   {
     path: 'admin/product/add/:id', component: AddProductComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
@@ -49,7 +54,7 @@ const routes: Routes = [
     path: 'ecommerce/product/detail/:id', component: DetailProductComponent
   },
   {
-    path: 'admin/product/detail/:id', component: AdministrationDetailProductComponent,
+    path: 'admin/produit/detail/:id', component: ProductComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
@@ -144,6 +149,14 @@ const routes: Routes = [
 
   {
     path: 'signin', component: SinginComponent
+  },
+
+  {
+    path: 'customer-up', component: CustomerUpComponent
+  },
+
+  {
+    path: 'customer-in', component: CustomerInComponent
   },
 
   {

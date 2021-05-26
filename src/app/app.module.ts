@@ -66,6 +66,9 @@ import { SingupComponent } from './auth/singup/singup.component';
 import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
 import { MicroFinancementDetailsComponent } from './admin/microfinancement/micro-financement-details/micro-financement-details.component';
 import { MicroFinancementListComponent } from './admin/microfinancement/micro-financement-list/micro-financement-list.component';
+import { CustomerUpComponent } from './auth/customer-up/customer-up.component';
+import { CustomerInComponent } from './auth/customer-in/customer-in.component';
+import { TestComponent } from './test/test/test.component';
 
 
 
@@ -113,7 +116,11 @@ import { MicroFinancementListComponent } from './admin/microfinancement/micro-fi
     SingupComponent,
     DetailsCoachingComponent,
     MicroFinancementDetailsComponent,
-    MicroFinancementListComponent
+    MicroFinancementListComponent,
+    CustomerUpComponent,
+    CustomerInComponent,
+    TestComponent,
+
   ],
   imports: [
     BrowserModule,

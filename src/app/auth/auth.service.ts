@@ -2,10 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Parametre } from '../models/parametre';
 import { User } from '../models/user';
-import { AuthLoginInfo } from './requests/login-info';
-import { SignUpInfo } from './requests/signup-info';
 import { map } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

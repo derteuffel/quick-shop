@@ -8,7 +8,6 @@ import { EcommerceService } from '../../../services/ecommerce.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Product} from '../../../models/product.model';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
-import {AddProductComponent} from '../../product/add-product/add-product.component';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Category} from "../../../models/category";
 import {Type} from "../../../models/type";
@@ -39,7 +38,9 @@ export class BoutiqueDetailComponent implements OnInit {
   boutiqueId: number;
   bsModalRef: BsModalRef;
   productID;
+  currentProduct: Product;
   product: Product;
+  measures: string[];
   //details
   public details: boolean = false;
 
@@ -62,6 +63,7 @@ export class BoutiqueDetailComponent implements OnInit {
   ngOnInit(): void {
     this.categories = Object.keys(Category);
     this.types = Object.keys(Type);
+    this.measures = ['Kilogramme','Litre', 'Paire', 'Piece']
     this.getBoutique(this.activatedRoute.snapshot.paramMap.get('id'));
     this.loadList();
     this.initForm();
@@ -99,6 +101,21 @@ export class BoutiqueDetailComponent implements OnInit {
     );
   }
 
+  getProduit(id){
+    this.ecommerceService.getProduct(id).subscribe(
+      data => {
+        this.currentProduct = data;
+      }, error1 => {
+        console.log(error1);
+      }
+    );
+  }
+
+  detailProduct(id){
+    this.router.navigateByUrl('admin/product/detail/'+id);
+    console.log('detail pushed');
+  }
+
 
   onSubmit(){
     this.boutiqueService.activateBoutique(this.currentBoutique.id, this.form.code).subscribe(
@@ -117,34 +134,20 @@ export class BoutiqueDetailComponent implements OnInit {
   }
 
 
-  onCreate(p: Product) {
-    this.router.navigateByUrl('admin/product/add/' + p.id);
-  }
-
-  openModalWithComponent(id) {
 
 
-    console.log('je contient : '+this.currentBoutique.id);
-    this.boutiqueId = this.currentBoutique.id;
-    this.bsModalRef = this.modalService2.show(AddProductComponent);
-    this.bsModalRef.content.closeBtnName = 'Close';
-    this.bsModalRef.content.event.subscribe(res => {
-      this.products.push(res.data);
-    });
-  }
 
-
-  showDetailProduct(event){
+  showDetailProduct(contentShow, event){
     console.log(event);
 
-    this.details = true;
+    //this.details = true;
     this.productID = event.id
     console.log(this.productID);
-   // this.modalService.open(contentShow, {size: 'lg'});
+    this.modalService.open(contentShow, {size: 'lg'});
     this.ecommerceService.getProduct(this.productID).subscribe(
       data => {
         console.log(data);
-        this.product = data;
+        this.currentProduct = data;
       }, error1 => {
         console.log(error1);
       }
@@ -172,10 +175,10 @@ export class BoutiqueDetailComponent implements OnInit {
       name: new FormControl(''),
       price: new FormControl(''),
       type: new FormControl(''),
+      measure: new FormControl(''),
       category: new FormControl(''),
-      marque: new FormControl(''),
       description: new FormControl(''),
-     // pictures: new FormControl(''),
+      pictureUrl: new FormControl(null),
      // pictureUrl: new FormControl(''),
     });
   }
@@ -184,14 +187,32 @@ export class BoutiqueDetailComponent implements OnInit {
     this.modalService.open(contentAdd, {size: 'lg'});
   }
 
+  onFilesSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.productForm.get('pictureUrl').setValue(file);
+    }
+  }
+
+
   // fonction d'ajout du produit
   onSubmitProduct() {
 
     this.submitted = true;
     if (this.productForm?.invalid) { return; }
-    //console.log(this.productForm);
+     console.log(this.productForm);
     console.log(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.ecommerceService.saveProduct(this.productForm, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+    const formData = new FormData();
+    formData.append('file',this.productForm.get('pictureUrl').value);
+    formData.append('name', this.productForm.get('name').value);
+    formData.append('price', this.productForm.get('price').value);
+    formData.append('category', this.productForm.get('category').value);
+    formData.append('type', this.productForm.get('type').value);
+    formData.append('quantity', this.productForm.get('quantity').value);
+    formData.append('description', this.productForm.get('description').value);
+    formData.append('measure', this.productForm.get('measure').value);
+    console.log(formData);
+    this.ecommerceService.saveProduct(formData, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
         this.productForm.reset();
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
@@ -221,9 +242,7 @@ export class BoutiqueDetailComponent implements OnInit {
       category: event.category,
       price: event.price,
       description: event.description,
-      marque: event.marque,
-      //pictureUrl: event.pictureUrl,
-      //pictures: event.pictures
+      measure: event.measure,
 
 
     });
@@ -239,7 +258,7 @@ export class BoutiqueDetailComponent implements OnInit {
       category: this.productForm.get('category').value,
       price: this.productForm.get('price').value,
       description: this.productForm.get('description').value,
-      marque: this.productForm.get('marque').value,
+      measure: this.productForm.get('measure').value,
       //pictureUrl: this.productForm.get('pictureUrl').value,
      // pictures: this.productForm.get('pictures').value,
     };
@@ -268,29 +287,9 @@ export class BoutiqueDetailComponent implements OnInit {
     this.messageService.clear();
   }
 
-  saveProduct(produit: Product) {
-    const productFilterdList = this.products.filter(c => c.id === produit.id);
-    console.log(productFilterdList);
-    if ( productFilterdList.length === 0) {
-      this.products.push(produit);
-    } else {
-      productFilterdList[0].id = produit.id;
-      productFilterdList[0].name = produit.name;
-      productFilterdList[0].quantity = produit.quantity;
-      productFilterdList[0].type = produit.type;
-      productFilterdList[0].category = produit.category;
-      productFilterdList[0].price = produit.price;
-      productFilterdList[0].description = produit.description;
-      productFilterdList[0].marque = produit.marque;
-    }
-    this.product = null;
-  }
-  closeDialogForm() {
-    this.product = null;
-  }
 
-  addNewProduct() {
-    this.product = new Product();
-  }
+}
 
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
 }
