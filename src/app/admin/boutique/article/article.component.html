@@ -1,0 +1,85 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="main-content">
+  <!-- Top navbar -->
+  <app-admin-navbar></app-admin-navbar>
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+      </div>
+      <div class="header-body">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Produit &nbsp; <span class="h2 font-weight-bold mb-0">{{currentProduct?.name}} </span></h5>
+                  </div>
+
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                  <span class="text-success mr-2">Type:</span>
+                  <span class="text-nowrap">{{currentProduct?.type}}</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                  <span class="text-success mr-2">Quantity:</span>
+                  <span class="text-nowrap">{{currentProduct?.quantity}}</span>
+                </p>
+
+                <p class="mt-3 mb-0 text-muted text-sm" style="color: #F45B3A !important;">
+                  <span class="text-success mr-2" > Prix:</span>
+                  <span class="text-nowrap">{{currentProduct?.price}}</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                  <span class="text-success mr-2"> Marque:</span>
+                  <span class="text-nowrap">{{currentProduct?.marque}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0" style="background-color:#F45B3A;">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6 pull-right" style="width: 40%">
+              <label >Recherche <i class="fa fa-search"></i></label>
+              <input type="text" class="form-control" >
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer py-4">
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+
+              </ul>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Pages End -->
+  <div class="container-fluid">
+    <app-admin-footer></app-admin-footer>
+  </div>
+</div>
+

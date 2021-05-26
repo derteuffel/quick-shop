@@ -50,8 +50,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CoachingComponent } from './coachings/coaching/coaching.component';
 import { CoachingSessionComponent } from './coachings/coaching-session/coaching-session.component';
 import {RouterModule} from '@angular/router';
-import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
-import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
 import {CardModule} from "primeng/card";
 import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
@@ -67,6 +65,9 @@ import { SingupComponent } from './auth/singup/singup.component';
 import { CustomerUpComponent } from './auth/customer-up/customer-up.component';
 import { CustomerInComponent } from './auth/customer-in/customer-in.component';
 import { TestComponent } from './test/test/test.component';
+import {AdminFooterComponent} from "./admin/admin-footer/admin-footer.component";
+import {AdminSidebarComponent} from "./admin/admin-sidebar/admin-sidebar.component";
+import { ArticleComponent } from './admin/boutique/article/article.component';
 
 
 
@@ -106,8 +107,6 @@ import { TestComponent } from './test/test/test.component';
     LoginSuccessComponent,
     CoachingComponent,
     CoachingSessionComponent,
-    AdminFooterComponent,
-    AdminSidebarComponent,
     AdminNavbarComponent,
     AddCoachingComponent,
     DetailsCoachingComponent,
@@ -116,6 +115,9 @@ import { TestComponent } from './test/test/test.component';
     CustomerUpComponent,
     CustomerInComponent,
     TestComponent,
+    AdminFooterComponent,
+    AdminSidebarComponent,
+    ArticleComponent
 
   ],
   imports: [

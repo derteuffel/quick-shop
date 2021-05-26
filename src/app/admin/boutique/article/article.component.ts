@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {EcommerceService} from '../../../services/ecommerce.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { UpdateProduit } from 'src/app/models/update-product.model';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { MessageService } from 'primeng/api';
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {EcommerceService} from "../../../services/ecommerce.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {UpdateProduit} from "../../../models/update-product.model";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {MessageService} from "primeng/api";
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss'],
+  selector: 'app-article',
+  templateUrl: './article.component.html',
+  styleUrls: ['./article.component.scss'],
   providers: [MessageService],
 })
-export class ProductComponent implements OnInit {
+export class ArticleComponent implements OnInit {
   currentProduct: any;
   lists: any = {};
   p = 1;
@@ -28,12 +28,12 @@ export class ProductComponent implements OnInit {
   addingForm: FormGroup;
 
   constructor(private productService: EcommerceService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private modalService: NgbModal,
-    private modalService2: BsModalService,
-    private messageService: MessageService,
-    private formBuilder: FormBuilder) { }
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private modalService: NgbModal,
+              private modalService2: BsModalService,
+              private messageService: MessageService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -55,7 +55,7 @@ export class ProductComponent implements OnInit {
         this.currentProduct = data;
         console.log(data);
       },
-        error => {
+      error => {
         console.log(error);
       }
     );
@@ -167,7 +167,4 @@ export class ProductComponent implements OnInit {
   closeDialogForm() {
     this.update = null;
   }
-
-
-
 }
