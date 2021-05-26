@@ -24,19 +24,16 @@ import {MessageService} from "primeng/api";
 export class BoutiqueDetailComponent implements OnInit {
   message: string;
   loading = true;
-  productRef;
   public submitted = false;
   categories: any = {};
   types: any = {};
   p = 1;
   searchItem: string;
   form: any = {};
-  submittedCode: string;
   private bodyText: string;
   currentBoutique: Boutique;
   products: Product[];
-  boutiqueId: number;
-  bsModalRef: BsModalRef;
+
   productID;
   currentProduct: Product;
   product: Product;
@@ -170,7 +167,6 @@ export class BoutiqueDetailComponent implements OnInit {
 
     this.submitted = true;
     if (this.productForm?.invalid) { return; }
-     console.log(this.productForm);
     console.log(this.activatedRoute.snapshot.paramMap.get('id'));
     const formData = new FormData();
     formData.append('file',this.productForm.get('pictureUrl').value);
