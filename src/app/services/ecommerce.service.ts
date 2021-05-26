@@ -126,22 +126,22 @@ export class EcommerceService {
   }
 
   saveUpdate(form, id): Observable<any>  {
-    return this.http.post(this.productsUrl + '/update/quantity/' + id, form, {headers: this.formHeaders});
+    return this.http.post(this.productsUrl + '/admin/update/quantity/' + id, form, {headers: this.formHeaders});
   }
   updateUpdate(form, id): Observable<any>  {
-    return this.http.put(this.productsUrl + '/update/quantity/' + id, form, {headers: this.formHeaders});
+    return this.http.put(this.productsUrl + '/admin/update/quantity/' + id, form, {headers: this.formHeaders});
   }
 
   getUpdateByProduct(id): Observable<any> {
-    return this.http.get(this.productsUrl + '/find/update/' + id);
+    return this.http.get(this.productsUrl + '/admin/find/update/' + id);
   }
 
   deleteUpdate(id): Observable<any> {
-    return this.http.delete(this.productsUrl + '/delete/updateProduit/' + id, {headers: this.headers});
+    return this.http.delete(this.productsUrl + '/admin/delete/updateProduit/' + id, {headers: this.headers});
   }
 
   getProduct(id): Observable<any> {
-    return this.http.get(this.productsUrl + '/' + id);
+    return this.http.get(this.productsUrl + '/admin/' + id,{headers: this.headers});
   }
 
   updatePicture(imageForm, id): Observable<any> {
