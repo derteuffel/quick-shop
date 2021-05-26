@@ -4,77 +4,17 @@
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/administration/administration.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/administration/administration.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/administration/administration.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/administration/administration.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/boutique/product/product.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/dist/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="product.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/product/product.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="product.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/product/product.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="153" column="20" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="boutique-detail.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="112" column="18" selection-end-line="423" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="e#256#4120#0" />
-                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#0;n#!!top" />
-                <element signature="n#p-toast#1;n#!!top" />
-                <element signature="n#ng-template#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#ng-template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#4;n#form#0;n#div#1;n#ng-template#0;n#!!top" expanded="true" />
-                <element signature="n#ng-template#1;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#ng-template#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#4;n#form#0;n#div#1;n#ng-template#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -298,25 +238,7 @@
       <recent name="$PROJECT_DIR$/src/app/ecommerce/services" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
-    <configuration name="E2E Tests (my-adminlte3-demo-app)" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
-      <config-file value="$PROJECT_DIR$/e2e/protractor.conf.js" />
-      <node-interpreter value="project" />
-      <envs />
-    </configuration>
-    <configuration name="Angular Application" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost:4200" />
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -342,7 +264,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Angular CLI Server" type="js.build_tools.npm" factoryName="npm">
+    <configuration name="E2E Tests (my-adminlte3-demo-app)" type="JavaScriptTestRunnerProtractor">
+      <config-file value="$PROJECT_DIR$/e2e/protractor.conf.js" />
+      <node-interpreter value="project" />
+      <protractor-options value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -350,6 +283,7 @@
       </scripts>
       <node-interpreter value="project" />
       <envs />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="JavaScript Debug.Angular Application" />
@@ -357,7 +291,7 @@
       <item itemvalue="Protractor.E2E Tests (my-adminlte3-demo-app)" />
     </list>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -394,6 +328,7 @@
       <workItem from="1621788808529" duration="15523000" />
       <workItem from="1621846196590" duration="3583000" />
       <workItem from="1621863606645" duration="8000000" />
+      <workItem from="1622033450711" duration="3846000" />
     </task>
     <servers />
   </component>
@@ -447,44 +382,40 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/node_modules/karma/config.tpl.js" />
-      </list>
-    </option>
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/admin/boutique/boutique-detail/boutique-detail.component.ts</url>
-          <line>139</line>
+          <line>146</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/app-routing.module.ts</url>
+          <line>122</line>
           <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/admin/administration/administration.component.html</url>
+          <line>187</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">

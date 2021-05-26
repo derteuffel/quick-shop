@@ -1,12 +1,12 @@
-  import { NgModule } from '@angular/core';
-import { Router, RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Router, RouterModule, Routes} from '@angular/router';
 import {AdministrationComponent} from "./admin/administration/administration.component";
 import {Role} from "./models/role";
 import {AuthGuard} from "./auth/auth.guard";
 import {EcommerceComponent} from "./eco/ecommerce/ecommerce.component";
 import {AddProductComponent} from "./admin/product/add-product/add-product.component";
 import {DetailProductComponent} from "./eco/product/detail-product/detail-product.component";
-import {AdministrationDetailProductComponent} from "./admin/product/administration-detail-product/administration-detail-product.component";
+
 import {AdministrationUpdateProductComponent} from "./admin/product/administration-update-product/administration-update-product.component";
 import {CommandeComponent} from "./admin/commande/commande/commande.component";
 import {SellerAddProductComponent} from "./seller/product/seller-add-product/seller-add-product.component";
@@ -23,18 +23,14 @@ import {SellerUpdateBoutiqueComponent} from "./seller/boutique/seller-update-bou
 import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./auth/register/register.component";
 import {SellerCommandeComponent} from "./seller/commande/seller-commande/seller-commande.component";
-import { CoachingComponent } from './coachings/coaching/coaching.component';
-import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
+import {CoachingComponent} from './coachings/coaching/coaching.component';
+import {AddCoachingComponent} from './coachings/coaching/add-coaching/add-coaching.component';
+import {DetailsCoachingComponent} from './coachings/coaching/details-coaching/details-coaching.component';
 import {SingupComponent} from "./auth/singup/singup.component";
 import {SinginComponent} from "./auth/singin/singin.component";
-import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
-import { MicroFinancementListComponent } from './admin/microfinancement/micro-financement-list/micro-financement-list.component';
-import { MicroFinancementDetailsComponent } from './admin/microfinancement/micro-financement-details/micro-financement-details.component';
 import {CustomerUpComponent} from "./auth/customer-up/customer-up.component";
 import {CustomerInComponent} from "./auth/customer-in/customer-in.component";
-import { TestComponent } from './test/test/test.component';
-import { ProductComponent } from './admin/boutique/product/product.component';
-
+import {ArticleComponent} from "./admin/boutique/article/article.component";
 
 
 const routes: Routes = [
@@ -42,6 +38,8 @@ const routes: Routes = [
     path: 'admin/home', component: AdministrationComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
+
+
   {
     path: 'ecommerce/home', component: EcommerceComponent
   },
@@ -53,13 +51,14 @@ const routes: Routes = [
   {
     path: 'ecommerce/product/detail/:id', component: DetailProductComponent
   },
-  {
-    path: 'admin/produit/detail/:id', component: ProductComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
-  },
+
   {
     path: 'admin/product/update/:id', component: AdministrationUpdateProductComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/produit/detail/:id', component: ArticleComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
   },
  {
     path: 'admin/commandes', component: CommandeComponent,
@@ -81,7 +80,7 @@ const routes: Routes = [
     path: 'seller/commandes', component: SellerCommandeComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
   },
-  {
+ {
     path: 'admin/boutiques', component: BoutiqueComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
@@ -106,19 +105,11 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
-    path: 'admin/coachings/edit/:id', component: DetailsCoachingComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
-  },
-  {
     path: 'admin/coachings/details/:id', component: DetailsCoachingComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
-    path: 'admin/micro-financement', component: MicroFinancementListComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
-  },
-  {
-    path: 'admin/micro-financement/details/:id', component: MicroFinancementDetailsComponent,
+    path: 'admin/coachings/edit/:id', component: AddBoutiqueComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
