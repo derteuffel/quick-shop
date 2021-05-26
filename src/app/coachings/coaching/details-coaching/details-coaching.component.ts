@@ -16,7 +16,16 @@ import {Coaching} from "../../../models/coaching";
 })
 export class DetailsCoachingComponent implements OnInit {
 
-  currentCoacing: Coaching;
+  public currentCoacing:any = {
+    title: 'Titre',
+    description: 'description',
+    email: 'Email',
+    phone1: 'phone1',
+    phone: 'phone',
+    amount: 100000.0,
+    logo: '',
+    region: 'Mokolo'
+  };
   public submitted = false;
   sessions: SessionCoaching[];
   sessionID;
@@ -40,6 +49,7 @@ export class DetailsCoachingComponent implements OnInit {
   ngOnInit(): void {
     this.loadDatas();
     this.loadSession();
+    this.initForm();
   }
 
   private loadDatas(){
@@ -68,7 +78,8 @@ export class DetailsCoachingComponent implements OnInit {
       id: new FormControl(''),
       label: new FormControl(''),
       startDate: new FormControl(''),
-      endDate: new FormControl('')
+      endDate: new FormControl(''),
+      coaching: new FormControl('')
     })
   }
 
@@ -79,6 +90,31 @@ export class DetailsCoachingComponent implements OnInit {
   addNewSession(){
     this.submitted = true;
     if(this.sessionForm?.invalid) return;
+    console.log(this.activatedRoute.snapshot.paramMap.get('id'));
+
+    console.log(this.sessionForm);
+    this.sessionService.createSession(this.sessionForm.value, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+      data =>{
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
+        this.loadSession();
+        this.sessionForm.reset();
+
+      },
+      error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        console.log(error);
+      }
+    )
+
+  }
+
+  newSession(){
+
+    this.submitted = true;
+    if(this.sessionForm?.invalid) return;
+
+
+    console.log(this.sessionForm);
     this.sessionService.saveSessionCoaching(this.sessionForm.value).subscribe(
       data =>{
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});

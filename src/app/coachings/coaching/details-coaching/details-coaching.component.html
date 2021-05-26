@@ -65,7 +65,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let session of currentCoacing.sessions | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                                <tr *ngFor="let session of sessions | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                                   <td>{{session?.label}}</td>
                                   <td>
                                     {{session?.startDate}}
@@ -137,62 +137,22 @@
   <div class="modal-body">
     <form [formGroup]="productForm" (submit)="addNewSession()">
       <h2>Formulaire d'ajout d'une nouvelle session</h2>
-      <div class="row">
-        <div class="form-group col-md-6">
-          <label>Nom de l'article</label>
-          <input type="text" class="form-control"  required  placeholder="Nom de l'article" formControlName="name">
+
+        <div class="form-group">
+          <label>Label</label>
+          <input type="text" class="form-control"  required  placeholder="label" formControlName="label">
         </div>
 
-        <div class="form-group  col-md-6">
-          <label >Montant par unite</label>
-          <input type="number" class="form-control"  required formControlName="price"  placeholder="Montant de votre article">
+        <div class="form-group">
+          <label >Date de début</label>
+          <input type="date" class="form-control"  required formControlName="startDate">
         </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-md-6">
-          <label>Categorie</label>
-          <select  formControlName="category"  class="form-control">
-            <option value="" disabled>-- Choisir une category de votre article --</option>
-            <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
-          </select>
-        </div>
-
-        <div class="form-group col-md-6">
-          <label >type</label>
-          <select formControlName="type"  class="form-control">
-            <option value="" disabled>-- Choisir un genre pour votre article --</option>
-            <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
-          </select>
+        <div class="form-group">
+          <label>Date de fin</label>
+          <input type="date" class="form-control"  required formControlName="endDate">
 
         </div>
 
-      </div>
-      <div class="row">
-        <div class="form-group col-md-6">
-          <label>Quantity disponible en stock</label>
-          <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La Quantite disponible de votre produit">
-        </div>
-        <div class="form-group col-md-6">
-          <label>Image</label>
-          <input type="file" class="form-control" required name="pictureUrl" (change)="onFilesSelect($event)" placeholder="Image">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-md-6">
-          <label >Unite de mesure du produit</label>
-          <select formControlName="measure"  class="form-control">
-            <option value="" disabled>-- Choisir une unite pour votre produit --</option>
-            <option value="{{item}}" *ngFor="let item of measures">{{item}}</option>
-          </select>
-
-        </div>
-        <div class="form-group col-md-6">
-          <label >Description</label>
-          <textarea name="description" class="form-control"  formControlName="description" rows="4"></textarea>
-        </div>
-      </div>
       <br>
       <div class="card-footer">
         <div class="row">

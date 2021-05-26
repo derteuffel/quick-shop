@@ -169,7 +169,7 @@ export class SellerBoutiqueDetailComponent implements OnInit {
       price: new FormControl(''),
       type: new FormControl(''),
       category: new FormControl(''),
-      marque: new FormControl(''),
+      measure: new FormControl(''),
       description: new FormControl(''),
       // pictures: new FormControl(''),
       // pictureUrl: new FormControl(''),
@@ -277,7 +277,7 @@ export class SellerBoutiqueDetailComponent implements OnInit {
       productFilterdList[4].category = produit.category;
       productFilterdList[5].price = produit.price;
       productFilterdList[6].description = produit.description;
-      productFilterdList[7].marque = produit.marque;
+      productFilterdList[7].measure = produit.measure;
     }
     this.product = null;
   }
