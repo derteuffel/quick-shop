@@ -219,6 +219,7 @@ export class BoutiqueDetailComponent implements OnInit {
         this.loadList();
         console.log(this.productForm);
         console.log(data);
+        window.location.reload();
       },
       error => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});

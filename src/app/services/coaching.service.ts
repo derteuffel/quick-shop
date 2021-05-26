@@ -13,6 +13,9 @@ export class CoachingService {
                           .set('content-type', 'application/json')
                           .set('Authorization', 'Bearer ' + this.authService.getUserToken());
 
+  private formHeaders: any = new HttpHeaders()
+                                .set('Authorization', 'Bearer '+ this.authService.getUserToken);
+
   constructor(private http: HttpClient, private authService:AuthService) {
 
   }
@@ -30,7 +33,7 @@ export class CoachingService {
   }
 
   saveCoaching(form): Observable<any> {
-    return this.http.post(this.coachingUrl+'/', form, {observe: 'response', headers: this.headers});
+    return this.http.post(this.coachingUrl, form, {observe: 'response', headers: this.formHeaders});
   }
 
   updateCoaching(form): Observable<any> {
