@@ -126,14 +126,14 @@ export class EcommerceService {
   }
 
   saveUpdate(form, id): Observable<any>  {
-    return this.http.post(this.productsUrl + '/admin/update/quantity/' + id, form, {headers: this.formHeaders});
+    return this.http.post(this.productsUrl + '/admin/update/quantity/' + id, form, {headers: this.headers});
   }
   updateUpdate(form, id): Observable<any>  {
     return this.http.put(this.productsUrl + '/admin/update/quantity/' + id, form, {headers: this.formHeaders});
   }
 
   getUpdateByProduct(id): Observable<any> {
-    return this.http.get(this.productsUrl + '/admin/find/update/' + id);
+    return this.http.get(this.productsUrl + '/admin/find/update/' + id,{headers: this.headers});
   }
 
   deleteUpdate(id): Observable<any> {
@@ -152,6 +152,7 @@ export class EcommerceService {
   }
 
   updateProduct(currentProduct, id): Observable<any> {
+    console.log(currentProduct);
     return this.http.put(this.productsUrl + '/admin/' + id, currentProduct, {headers: this.formHeaders});
   }
 

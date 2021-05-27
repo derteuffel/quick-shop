@@ -162,6 +162,15 @@ export class BoutiqueComponent implements OnInit {
       }
     );
   }
+
+  actionBoutique(id){
+    this.boutiqueService.activationAdmin(id).subscribe(
+      (res: any) => {
+        this.messageService.add({severity: 'success', summary: 'Boutique has been setting offline successully', detail: 'Boutique Offline'});
+        this.loadAll();
+      }
+      );
+  }
   sendCode(id){
     this.boutiqueService.sendCode(id).subscribe(
       data => {

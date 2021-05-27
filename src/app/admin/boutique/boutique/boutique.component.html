@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <div class="header-body">
         <!-- Card stats -->
-
+          <h2>Mes Boutiques</h2>
       </div>
     </div>
   </div>
@@ -72,6 +72,10 @@
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                       <a href="/admin/detail/boutique/{{item.id}}" class="btn btn-success m-1"><i class="pi pi-eye"></i></a>
                       <button (click)="setBoutique(contentUpdate, item)" class="btn btn-primary m-1"><i class="pi pi-pencil"></i></button>
+                      <button  (click)="actionBoutique(item.id)" class="btn btn-secondary m-1">
+                        <i *ngIf="item.status" class="pi pi-check-square"></i>
+                        <i *ngIf="!item.status" class="pi pi-check"></i>
+                      </button>
                       <button  (click)="deleteBoutique(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
 
                     </div>
@@ -138,30 +142,28 @@
   </div>
   <div class="modal-body">
       <form [formGroup]="boutiqueFormGroup" (submit)="onSaveBoutique()">
-        <h5>Boutique</h5>
+        <h3>Formulaire d'ajout de votre espace/boutique</h3>
         <div class="form-group">
           <label for="name">Nom de votre boutique</label>
           <input type="text" class="form-control" id="name" required formControlName="name" placeholder="Nom de l'article" >
-        </div>
-
-        <div class="form-group">
-          <label for="montant">Localisation</label>
-          <input type="text" class="form-control" id="montant" required formControlName="localisation" placeholder="Localisation de votre boutique">
-        </div>
-        <div class="form-group">
-          <label for="marque">Numero de téléphone</label>
-          <input type="text" class="form-control" id="marque" required formControlName="phone" placeholder="Entrer votre numero">
-        </div>
-
-        <div class="form-group">
-          <label for="marque">Numero Carte</label>
-          <input type="text" class="form-control" required formControlName="cardNumber" placeholder="Entrer votre numero de carte">
         </div>
         <div class="form-group">
           <label for="marque">Region</label>
           <input type="text" class="form-control"required formControlName="region" placeholder="Region">
         </div>
+        <div class="form-group">
+          <label for="montant">Adresse physique</label>
+          <input type="text" class="form-control" id="montant" required formControlName="localisation" placeholder="Localisation de votre boutique">
+        </div>
+        <div class="form-group">
+          <label for="marque">Numero de téléphone</label>
+          <input type="text" class="form-control" id="marque" required formControlName="phone" placeholder="Entrer votre numero de Telephone (Ce numero pourrais vous servir pour des transactions monetaires mobile money)">
+        </div>
 
+        <div class="form-group">
+          <label for="marque">Numero Carte</label>
+          <input type="text" class="form-control" required formControlName="cardNumber" placeholder="Entrer votre numero de carte bancaire (ce numero pourrait vous servir pour des transactions bancaires)">
+        </div>
         <br>
         <div class="card-footer">
           <div class="row">

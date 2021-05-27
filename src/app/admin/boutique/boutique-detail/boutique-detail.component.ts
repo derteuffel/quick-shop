@@ -63,7 +63,7 @@ export class BoutiqueDetailComponent implements OnInit {
   ngOnInit(): void {
     this.categories = Object.keys(Category);
     this.types = Object.keys(Type);
-    this.measures = ['Kilogramme','Litre', 'Paire', 'Piece']
+    this.measures = ['Kilogramme','Litre', 'Paire', 'Piece','Sac','Prestation']
     this.getBoutique(this.activatedRoute.snapshot.paramMap.get('id'));
     this.loadList();
     this.initForm();
@@ -194,6 +194,9 @@ export class BoutiqueDetailComponent implements OnInit {
     }
   }
 
+  onBack(){
+    this.router.navigateByUrl('admin/boutiques');
+  }
 
   // fonction d'ajout du produit
   onSubmitProduct() {
@@ -236,7 +239,6 @@ export class BoutiqueDetailComponent implements OnInit {
     this.productID = event.id;
     console.log(event.id);
     this.productForm.patchValue({
-      id: event.id,
       name: event.name,
       quantity: event.quantity,
       type: event.type,
@@ -252,7 +254,6 @@ export class BoutiqueDetailComponent implements OnInit {
 
   updateProduct() {
     const ProductData = {
-      id: this.productForm.get('id').value,
       name: this.productForm.get('name').value,
       quantity: this.productForm.get('quantity').value,
       type: this.productForm.get('type').value,

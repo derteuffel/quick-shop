@@ -20,12 +20,13 @@ export class ArticleComponent implements OnInit {
   searchItem: string;
   message: string;
   loading = true;
+  public submitted = false;
   submittedCode: string;
   bsModalRef: BsModalRef;
   updateID;
   update: UpdateProduit;
+  updateForm: FormGroup;
 
-  addingForm: FormGroup;
 
   constructor(private productService: EcommerceService,
               private activatedRoute: ActivatedRoute,
@@ -38,12 +39,28 @@ export class ArticleComponent implements OnInit {
   ngOnInit(): void {
 
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.initForm;
     this.loadList();
   }
 
-  onSubmit(){
+  
 
+  onSubmit(data){
+
+    this.submitted = true;
+    console.log(data);
+  
+    this.productService.saveUpdate(data, this.currentProduct.id).subscribe(
+      data => {
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Update done', sticky: true});
+        this.loadList();
+        console.log(data);
+        window.location.reload();
+      },
+      error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        console.log(error);
+      }
+    );
   }
 
 
@@ -65,11 +82,11 @@ export class ArticleComponent implements OnInit {
   loadList(): void{
 
     this.productService.getUpdateByProduct(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
-      (res: any) => {
+      data => {
 
-        this.lists = res;
-        console.log(res);
-        console.log(this.activatedRoute.snapshot.paramMap.get('id'));
+        this.lists = data;
+        console.log(data);
+        //console.log(this.currentProduct.id);
       },
       error1 => {
         console.log(error1);
@@ -95,48 +112,10 @@ export class ArticleComponent implements OnInit {
 
   }
 
-  initForm() {
-    this.addingForm = new FormGroup({
-      quantity: new FormControl(''),
-      motif: new FormControl(''),
-    });
-  }
+  
 
 
-  // mise à jour d'un Produit
-
-  setUpdate(contentUpdate, event) {
-    this.modalService.open(contentUpdate, {size: 'lg'});
-    this.update = event.name;
-    this.updateID = event.id;
-    console.log(event.id);
-    this.addingForm.patchValue({
-      id: event.id,
-      motif: event.motif,
-      quantity: event.quantity,
-
-    });
-
-  }
-
-  updateUpdate() {
-    const updateData = {
-      id: this.addingForm.get('id').value,
-      name: this.addingForm.get('motif').value,
-      quantity: this.addingForm.get('quantity').value,
-      type: this.addingForm.get('type').value
-    };
-    this.productService.updateUpdate(updateData, this.updateID).subscribe(
-      (data: any) => {
-        console.log(this.updateID);
-        this.addingForm.reset();
-        this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
-        this.loadList();
-      }, error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
-      }
-    );
-  }
+  
 
   /** toast message function primeng  **/
   onConfirm() {
@@ -151,17 +130,8 @@ export class ArticleComponent implements OnInit {
     this.messageService.clear();
   }
 
-  deleteProduct(id){
-
-    this.productService.deleteUpdate(id).subscribe(
-      data => {
-        console.log('Item deleted');
-        this.router.navigateByUrl('/admin/product/detail/' + this.currentProduct.id);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  onBack(){
+    this.router.navigateByUrl('admin/detail/boutique/'+this.currentProduct.boutique.id);
   }
 
   closeDialogForm() {

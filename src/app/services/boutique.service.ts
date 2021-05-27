@@ -72,7 +72,7 @@ export class BoutiqueService {
   // activation boutique par l'ADMIN
 
   activationAdmin(id): Observable<any> {
-    return this.http.get(this.boutiqueUrl + '/admin/activation' + id,  {headers: this.headers});
+    return this.http.get(this.boutiqueUrl + '/admin/activation/' + id,  {headers: this.headers});
   }
 
   // desactivation de la boutique
