@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div [hidden]="orderFinished"> 
+<div [hidden]="orderFinished">
 <!--================Home Banner Area =================-->
  <section class="banner_area">
     <div class="banner_inner d-flex align-items-center">
@@ -91,34 +91,31 @@
         <div class="col-lg-5 offset-lg-1">
           <div class="s_product_text">
             <h3>{{productOrder[0].product.name}}</h3>
-            <h2>FCFA {{productOrder[0].product.price}}</h2>
+            <h2 class="colortext">FCFA {{productOrder[0].product.price}}</h2>
             <ul class="list">
               <li>
-                <a class="active" href="#">
+                <a  href="#">
                   <span>Categorie</span> : {{productOrder[0].product.category}}</a
                 >
               </li>
               <li>
-                <a href="#"> <span>Disponibilite</span> : En Stock</a>
+                <span>Disponibilite</span> : En Stock
               </li>
               <li>
-                <a href="#"> <span>Marque</span> : {{currentProduct.marque}}</a>
+                <span>Mesure</span> : {{currentProduct.measure}}
               </li>
               <li>
-                <a href="#"> <span>Couleures</span> : <span *ngFor="let item of currentProduct.colors" >{{item}}</span></a>
+                <span>Boutique</span> : <span  >{{currentProduct.boutique.name}}</span>
               </li>
               <li>
-                <a href="#"> <span>Boutique</span> : <span  >{{currentProduct.boutique.name}}</span></a>
-              </li>
-              <li>
-                <a href="#"> <span>Autres images</span> : <span *ngFor="let item of currentProduct.pictures" ><img src="{{item}}" alt="" height="70" width="70"></span></a>
+                <span>Autres images</span> : <span *ngFor="let item of currentProduct.pictures" ><img src="{{item}}" alt="" height="70" width="70"></span>
               </li>
             </ul>
-            <p>Description: 
+            <p>Description:
               {{currentProduct.description}}
             </p>
             <div class="card_area">
-              <a class="main_btn" type="button" (click)="addToCart(productOrder[0])">Ajouter dans mon panier</a>
+              <button class="btn" type="button" style="background-color:#F7941D;" (click)="addToCart(productOrder[0])">Ajouter dans mon panier</button>
             </div>
           </div>
           <div class="my-2">
