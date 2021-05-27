@@ -64,7 +64,7 @@ export class AddProductComponent implements OnInit {
       category: [''],
       type: [''],
       quantity: [''],
-      marque: [''],
+      measure: [''],
       description: [''],
       pictures: [null]
     });
@@ -83,7 +83,7 @@ export class AddProductComponent implements OnInit {
   }
 
 
- 
+
 
   onSubmit(): void{
     this.ecommerceService.saveProduct(this.product, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(

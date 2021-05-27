@@ -8,35 +8,37 @@
 
             </div>
             <div class="header-body">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                      <h5 class="card-title text-uppercase text-muted mb-0">Service de coaching &nbsp; <span class="h2 font-weight-bold mb-0">{{currentCoacing.title}} </span></h5>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
-                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Région:</span>
-                                    <span class="text-nowrap">{{currentCoacing.region}}</span>
-                                </p>
-                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
-                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Téléphone :</span>
-                                    <span class="text-nowrap">{{currentCoacing.phone}} / {{currentCoacing.phone1}}</span>
-                                </p>
-                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
-                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Email :</span>
-                                    <span class="text-nowrap">{{currentCoacing.email}} </span>
-                                </p>
-                                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
-                                    <span class="text-success mr-2"><i class="fa fa-map"></i> Description :</span>
-                                    <span class="text-nowrap">{{currentCoacing.description}} </span>
-                                </p>
-                            </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Coaching &nbsp; <span class="h2 font-weight-bold mb-0">{{currentCoaching?.title}} </span></h5>
                         </div>
+
+                      </div>
+                      <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                        <span class="text-success mr-2"> </span>
+                        <span class="text-nowrap"></span>
+                      </p>
+                      <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                        <span class="text-success mr-2"></span>
+                        <span class="text-nowrap"></span>
+                      </p>
+
+                      <p class="mt-3 mb-0 text-muted text-sm" style="color: #F45B3A !important;">
+                        <span class="text-success mr-2" ></span>
+                        <span class="text-nowrap"></span>
+                      </p>
+                      <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                        <span class="text-success mr-2"></span>
+                        <span class="text-nowrap"></span>
+                      </p>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
         </div>
 
@@ -47,7 +49,7 @@
                 <div class="card shadow">
                     <div class="card-header border-0" style="background-color:#F45B3A;">
                         <div class="col-md-6">
-                            <button (click)="addNewSession()" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D;" label="Ajouter une session"></button>
+                            <button (click)="openModalSession(contentAdd)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D;" label="Ajouter une session"></button>
                         </div>
                         <div class="col-md-6 pull-right" style="width: 40%">
                             <label >Recherche <i class="fa fa-search"></i></label>
@@ -65,7 +67,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let session of currentCoacing.sessions | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                                <tr *ngFor="let session of sessions | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                                   <td>{{session?.label}}</td>
                                   <td>
                                     {{session?.startDate}}
@@ -73,20 +75,20 @@
                                   <td>
                                     {{session?.endDate}}
                                   </td>
-                  
+
                                   <td class="text-right" style="width:3em; text-align:center; font-size: 0.65rem;">
                                     <div ngbDropdown placement="bottom-right">
                                         <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
                                         <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                            <button (click)="setSession(contentUpdate, session)" class="btn btn-primary "><i class="pi pi-pencil"></i></button>
-                                            <button  (click)="onDelete(contentDelete, session)" class="btn btn-danger"><i class="pi pi-trash"></i></button>
+<!--                                            <button (click)="setSession(contentUpdate, session)" class="btn btn-primary "><i class="pi pi-pencil"></i></button>-->
+<!--                                            <button  (click)="onDelete(contentDelete, session)" class="btn btn-danger"><i class="pi pi-trash"></i></button>-->
                                         </div>
                                     </div>
                                   </td>
                                 </tr>
-                  
+
                             </tbody>
                         </table>
                     </div>
@@ -96,5 +98,79 @@
     </div>
     <div class="container-fluid">
         <app-admin-footer></app-admin-footer>
-      </div>
+    </div>
 </div>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<!-- TOAST MESSAGE TEMPLATE -->
+<p-toast position="top-right"></p-toast>
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" >
+  <ng-template let-message pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1">
+      <div class="p-text-center">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h4>{{message.summary}}</h4>
+        <p>{{message.detail}}</p>
+      </div>
+      <div class="p-grid p-fluid">
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+        </div>
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
+
+
+
+<!-------------------------------------------------------ADD PRODUCT START-------------------------------------------------------------->
+
+<ng-template #contentAdd let-modal>
+  <div class="modal-header" style="background-color:#F45B3A;">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="sessionForm" (submit)="onSubmitSession()">
+      <h2>Formulaire d'ajout d'une nouvelle session</h2>
+
+        <div class="form-group">
+          <label>Label</label>
+          <input type="text" class="form-control"  required  placeholder="label" formControlName="label">
+        </div>
+
+        <div class="form-group">
+          <label >Date de début</label>
+          <input type="date" class="form-control"  required formControlName="startDate">
+        </div>
+        <div class="form-group">
+          <label>Date de fin</label>
+          <input type="date" class="form-control"  required formControlName="endDate">
+
+        </div>
+
+      <br>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <button href="#" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')" ><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%" (click)="modal.close('Close click')" >Enregistrer <i class="fa fa-check"></i></button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</ng-template>
+
+<!-------------------------------------------------------ADD PRODUCT END-------------------------------------------------------------->
+
+

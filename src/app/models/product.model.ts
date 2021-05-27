@@ -8,7 +8,7 @@ export class Product{
   pictureUrl?: string;
   category?: string;
   type?: string;
-  marque?: string;
+  measure?: string;
   description?: string;
   quantity?: number;
   pictures?: string[];

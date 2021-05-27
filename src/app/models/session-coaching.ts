@@ -4,7 +4,7 @@ export class SessionCoaching {
 
   id: number;
   label: string;
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   coaching: Coaching;
 }
