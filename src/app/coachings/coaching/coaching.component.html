@@ -39,12 +39,12 @@
               <tbody>
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                 <td>{{item.title}}</td>
-                <td>{{item.phone+', '+item.phone1}}</td>
+                <td>{{item.phone}}</td>
                 <td>{{item.region}}</td>
                 <td>{{item.startDate}}</td>
-                <td> {{item.amount}} </td>
+                <td> {{item.amount+' Fb'}} </td>
                 <td>
-                  <button  class="btn btn-success m-1" (click)="findOneCoaching(contentUpdate, item)"><i class="pi pi-eye"></i></button>
+                  <!-- <button  class="btn btn-success m-1" (click)="findOneCoaching(contentUpdate, item)"><i class="pi pi-eye"></i></button> -->
                   <button (click)="setCoaching(contentUpdate, item)" class="btn btn-secondary m-1"><i class="pi pi-pencil"></i></button>
                   <button  (click)="deleteCoaching(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
                 </td>
@@ -105,50 +105,51 @@
     </button>
   </div>
   <div class="modal-body">
-      <form [formGroup]="coachingFormGroup" (submit)="saveCoaching()">
+    <form #formCoaching="ngForm" (ngSubmit)="saveCoaching(formCoaching.value)">
+      <h2>Formulaire d'ajout d'un service de coaching/encadrement</h2>
         <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label>Titre</label>
-                <input type="text" class="form-control"required formControlName="title" placeholder="titre du service" >
+                <input type="text" class="form-control"required name="title" placeholder="titre du service" ngModel>
               </div>
 
               <div class="form-group">
                 <label>Numéro téléphone</label>
-                <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
+                <input type="text" class="form-control"required name="phone" placeholder="numéro de téléphone" ngModel>
               </div>
               <div class="form-group">
                 <label>Region</label>
-                <input type="text" class="form-control"  required formControlName="region" placeholder="Entrer votre region">
+                <input type="text" class="form-control"  required name="region" placeholder="Entrer votre region" ngModel>
               </div>
 
               <div class="form-group">
                 <label>Email contact</label>
-                <input type="email" class="form-control"  required formControlName="email" placeholder="Entrer l'adresse email contact">
+                <input type="email" class="form-control"  required name="email" placeholder="Entrer l'adresse email contact" ngModel>
               </div>
 
               <div class="form-group">
                 <label>Email de l'utilisateur qui enregistre</label>
-                <input type="email" class="form-control"  required formControlName="userEmail" placeholder="Entrer l'adresse email de l'utilisateur qui enregistre">
+                <input type="email" class="form-control"  required name="userEmail" placeholder="Entrer l'adresse email de l'utilisateur qui enregistre" ngModel>
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label>Montant du service</label>
-                <input type="number" class="form-control"  required formControlName="amount" placeholder="Entrer le montnant de cette prestation">
+                <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montnant de cette prestation" ngModel>
               </div>
               <div class="form-group">
                 <label>Date de deroulement</label>
-                <input type="datetime" class="form-control"  required formControlName="startDate" placeholder="Date de debut du service de coaching et/ou encadrement">
+                <input type="date" class="form-control"  required name="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" ngModel>
               </div>
               <div class="form-group">
                 <label>Description</label>
-                <textarea cols="0" rows="6" class="form-control" placeholder="description" formControlName="description"></textarea>
+                <textarea  rows="6" class="form-control" placeholder="description" name="description" ngModel></textarea>
               </div>
               <div class="form-group">
                 <label>Image de couverture</label>
-                <input type="file" class="form-control"  name="logo" (change)="onFilesSelect($event)"  placeholder="Image de profile">
+                <input type="file" class="form-control"  name="logo" (change)="onFilesSelect($event)"  placeholder="Image de profile" ngModel>
               </div>
             </div>
         </div>
@@ -207,80 +208,56 @@
     </button>
   </div>
   <div class="modal-body">
-      <form [formGroup]="coachingUpdateFormGroup" (submit)="updateCoaching()">
+      <form   (ngSubmit)="updateCoaching()">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label>Titre</label>
-              <input type="text" class="form-control"required formControlName="title" placeholder="titre du service" >
+              <input type="text" class="form-control"required name="title" placeholder="titre du service" [(ngModel)]="currentCoaching.title">
             </div>
 
             <div class="form-group">
               <label>Numéro téléphone</label>
-              <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
-            </div>
-
-            <div class="form-group">
-              <label>Numéro téléphone</label>
-              <input type="text" class="form-control" required formControlName="phone1" placeholder="numéro de téléphone">
+              <input type="text" class="form-control"required name="phone" placeholder="numéro de téléphone" [(ngModel)]="currentCoaching.phone">
             </div>
             <div class="form-group">
               <label>Region</label>
-              <input type="text" class="form-control"  required formControlName="region" placeholder="Entrer votre region">
+              <input type="text" class="form-control"  required name="region" placeholder="Entrer votre region" [(ngModel)]="currentCoaching.region">
             </div>
 
             <div class="form-group">
               <label>Email contact</label>
-              <input type="text" class="form-control"  required formControlName="email" placeholder="Entrer l'adresse email contact">
-            </div>
-
-            <div class="form-group">
-              <label>Email de l'utilisateur</label>
-              <input type="text" class="form-control"  required formControlName="userEmail" placeholder="Entrer votre region">
+              <input type="email" class="form-control"  required name="email" placeholder="Entrer l'adresse email contact" [(ngModel)]="currentCoaching.email">
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="form-group">
-              <label>Description</label>
-              <textarea cols="0" rows="6" class="form-control" placeholder="description" formControlName="description"></textarea>
+              <label>Montant du service</label>
+              <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montnant de cette prestation" [(ngModel)]="currentCoaching.amount">
             </div>
-            <div>
-              <h3>Liste des sessions de coaching</h3>
-              <table class="table table-responsive-md table-bordered">
-                <thead class="title">
-                  <th scope="col">Label</th>
-                  <th scope="col">Période</th>
-                  <th scope="col">Actions</th>
-                </thead>
-                <tbody>
-                  <tr *ngFor='let session of currentCoaching.sessions'>
-                    <td>{{session.label}}</td>
-                    <td>Du {{session.startDate}} au {{session.endDate}}</td>
-                    <td>
-                      <button  (click)="deleteCoachingSession(contentDeleteSession, session)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <button  (click)="openAddCoachingSession(addSession, currentCoaching)" class="btn btn-success m-1">Ajouter une session</button>
-              </div>
+            <div class="form-group">
+              <label>Date de deroulement</label>
+              <input type="date" class="form-control"  required name="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" [(ngModel)]="currentCoaching.startDate">
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea  rows="6" class="form-control" placeholder="description" name="description" [(ngModel)]="currentCoaching.description"></textarea>
             </div>
           </div>
         </div>
 
-        <br>
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-md-6">
-              <button type="button" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
-            </div>
-            <div class="col-md-6">
-              <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
-            </div>
+      <br>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
+          </div>
+          <div class="col-md-6">
+            <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
           </div>
         </div>
+      </div>
       </form>
   </div>
 </ng-template>

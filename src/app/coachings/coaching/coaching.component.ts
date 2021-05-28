@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {MessageService, PrimeNGConfig} from "primeng/api";
+import { Coaching } from 'src/app/models/coaching';
 import {CoachingService} from "../../services/coaching.service";
 import {SessionCoachingService} from "../../services/session-coaching.service";
 
@@ -19,12 +20,12 @@ export class CoachingComponent implements OnInit {
   sessionRef
   p: number = 1;
   searchItem: string;
+  uploadedFile: File = null;
   public submitted: boolean = false;
   public sessionSubmitted: boolean = false;
-  public coachingFormGroup?: FormGroup;
   public coachingUpdateFormGroup?: FormGroup;
   public addCoachingSessionFurmGroup?: FormGroup;
-  public currentCoaching;
+  public currentCoaching: Coaching;
   public currentSession;
   constructor(              private coachingService: CoachingService,
                             private sessionService: SessionCoachingService,
@@ -36,39 +37,15 @@ export class CoachingComponent implements OnInit {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-    this.initForm();
     this.loadData();
   }
 
-  initForm() {
-    this.coachingFormGroup = new FormGroup({
-      description: new FormControl(''),
-      phone:  new FormControl(''),
-      amount:  new FormControl(''),
-      startDate: new FormControl(null),
-      logo: new FormControl(null),
-      email:  new FormControl(''),
-      region:  new FormControl(''),
-      title: new FormControl(''),
-      userEmail: new FormControl('')
-    });
-
-    this.coachingUpdateFormGroup = new FormGroup({
-      id: new FormControl(''),
-      description: new FormControl(''),
-      phone:  new FormControl(''),
-      phone1:  new FormControl(''),
-      email:  new FormControl(''),
-      region:  new FormControl(''),
-      title: new FormControl(''),
-      userEmail: new FormControl('')
-    });
-  }
+  
 
   onFilesSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.coachingFormGroup.get('logo').setValue(file);
+      this.uploadedFile = file
     }
   }
 
@@ -82,76 +59,58 @@ export class CoachingComponent implements OnInit {
     );
   }
 
-  saveCoaching() {
+  saveCoaching(data) {
 
-    if (this.coachingFormGroup?.invalid) return;
-
-    console.log(this.coachingFormGroup);
+    console.log(data);
+    console.log(this.uploadedFile)
     const formData = new FormData();
-    formData.append('title', this.coachingFormGroup.get('title').value);
-    formData.append('description', this.coachingFormGroup.get('description').value);
-    formData.append('amount', this.coachingFormGroup.get('amount').value);
-    formData.append('phone', this.coachingFormGroup.get('phone').value);
-    formData.append('email', this.coachingFormGroup.get('email').value);
-    formData.append('region', this.coachingFormGroup.get('region').value);
-    formData.append('startDate', this.coachingFormGroup.get('startDate').value);
-    formData.append('userEmail', this.coachingFormGroup.get('userEmail').value);
-    formData.append('file', this.coachingFormGroup.get('logo').value);
+    formData.append('title', data.title);
+    formData.append('description', data.description);
+    formData.append('amount', data.amount);
+    formData.append('phone', data.phone);
+    formData.append('email', data.email);
+    formData.append('region', data.region);
+    formData.append('startDate', data.startDate);
+    formData.append('userEmail', data.userEmail);
+    formData.append('file', this.uploadedFile);
     console.log(formData);
+    
     this.submitted = true;
-   
-    this.coachingService.saveCoaching(formData).subscribe(
+     this.coachingService.saveCoaching(formData).subscribe(
       (data: any) => {
         // this.router.navigateByUrl('/admin/boutiques');
-        this.coachingFormGroup.reset();
+        console.log('je suis a interieur');
+        
         this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
         this.loadData();
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
-    this.submitted = false;
+    this.submitted = false; 
   }
 
 
   setCoaching(contentUpdate, event) {
 
     this.modalService.open(contentUpdate, {size: "lg"});
-    this.currentCoaching = event.region
-
-    this.coachingUpdateFormGroup.patchValue({
-      id: event.id,
-      phone1: event.phone1,
-      description: event.description,
-      phone: event.phone,
-      region: event.region,
-      title: event.title,
-      email: event.email,
-      userEmail: event.userEmail
-    });
+    this.currentCoaching = event;
   }
 
   updateCoaching() {
-    const CompanyData = {
-      id: this.coachingUpdateFormGroup.get('id').value,
-      phone1: this.coachingUpdateFormGroup.get('phone1').value,
-      description: this.coachingUpdateFormGroup.get('description').value,
-      phone: this.coachingUpdateFormGroup.get('phone').value,
-      region: this.coachingUpdateFormGroup.get('region').value,
-      title: this.coachingUpdateFormGroup.get('title').value,
-      email: this.coachingUpdateFormGroup.get('email').value,
-      userEmail: this.coachingUpdateFormGroup.get('userEmail').value,
 
-    }
-    this.coachingService.updateCoaching(CompanyData).subscribe(
+    console.log('je suis la');
+    console.log(this.currentCoaching);
+    
+    
+     this.coachingService.updateCoaching(this.currentCoaching).subscribe(
       (data: any) => {
-        this.coachingUpdateFormGroup.reset();
         this.messageService.add({severity:'success', summary: 'Record is updated successully', detail:'record updated'});
         this.loadData();
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
-    )
+    ) 
   }
 
 
@@ -195,7 +154,7 @@ export class CoachingComponent implements OnInit {
     )
   }
 
-  saveCoachingSession(){
+  /* saveCoachingSession(){
     this.sessionSubmitted = true;
     if (this.addCoachingSessionFurmGroup?.invalid) return;
     this.coachingService.saveCoaching(this.coachingFormGroup?.value).subscribe(
@@ -208,7 +167,7 @@ export class CoachingComponent implements OnInit {
       }
     );
     this.sessionSubmitted = false;
-  }
+  } */
 
   deleteCoachingSession(contentDeleteSession, event) {
     this.modalService.open(contentDeleteSession, {size: "lg"});

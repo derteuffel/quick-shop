@@ -7,10 +7,10 @@ export class Coaching {
   title: string
   description: string;
   phone: string;
-  phone1: string;
   email: string;
   region: string;
   amount: number;
+  logo: string;
   creationDate: Date;
   startDate: Date;
   user: User;
