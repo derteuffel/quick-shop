@@ -4,6 +4,8 @@ import {EcommerceService} from '../../../services/ecommerce.service';
 import {ProductOrder} from '../../../models/product-order.model';
 import {Product} from '../../../models/product.model';
 import {ProductOrders} from '../../../models/product-orders.model';
+import {CoachingService} from "../../../services/coaching.service";
+import {Coaching} from "../../../models/coaching";
 
 @Component({
   selector: 'app-products',
@@ -28,13 +30,18 @@ export class ProductsComponent implements OnInit {
   sub: Subscription;
   productSelected: boolean = false;
 
-  constructor(private ecommerceService: EcommerceService) { }
+  coachings: Coaching[];
+
+  constructor(
+              private ecommerceService: EcommerceService,
+              private coachingService: CoachingService) { }
 
   ngOnInit(): void {
     this.productOrders = [];
     this.loadProducts();
     this.loadOrders();
     this.loadAccessoriesProduct();
+    this.loadCoachings();
   }
 
   addToCart(order: ProductOrder) {
@@ -78,34 +85,12 @@ export class ProductsComponent implements OnInit {
       );
   }
 
-  loadWomenProduct(){
-    this.ecommerceService.getProductGenre('FEMME').subscribe(
-      (womens: any[]) => {
-        this.womens = womens;
-        this.womens.forEach(product => {
-          this.womenProduct.push(new ProductOrder(product, 1));
-        });
-        console.log(this.womens);
-      },
-      error => {
-        console.log(error);
+  loadCoachings() {
+    this.coachingService.getAllCoaching().subscribe(
+      (res: any) => {
+        this.coachings = res;
       }
-    );
-  }
-
-  loadMenProduct(){
-    this.ecommerceService.getProductGenre('HOMME').subscribe(
-      (mens: any[]) => {
-        this.mens = mens;
-        this.mens.forEach(product => {
-          this.menProduct.push(new ProductOrder(product, 1));
-        });
-        console.log(this.mens);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    )
   }
 
   loadAccessoriesProduct(){
@@ -122,21 +107,7 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
-/*
-  loadHightProduct(){
-    this.ecommerceService.getProductQuality('SUPERIEUR').subscribe(
-      (hights: any[]) => {
-        this.hights = hights;
-        this.hights.forEach(product => {
-          this.hightProduct.push(new ProductOrder(product, 1));
-        });
-        console.log(this.hights);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }*/
+
 
   loadOrders() {
     this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {

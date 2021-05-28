@@ -25,27 +25,27 @@ export class SessionCoachingService {
   }
 
   getAllSessionCoaching(): Observable<any> {
-    return this.http.get(this.sessionCoachingUrl, {observe: 'response'});
+    return this.http.get(this.sessionCoachingUrl);
   }
 
   getSessionCoachingById(id): Observable<any> {
-    return this.http.get(this.sessionCoachingUrl + '/' +id, {observe: 'response'});
+    return this.http.get(this.sessionCoachingUrl + '/' +id);
   }
 
   getSessionCoaching(id): Observable<any> {
-    return this.http.get(this.sessionCoachingUrl + '/coaching/' +id, {observe: 'response'});
+    return this.http.get(this.sessionCoachingUrl + '/coaching/' +id);
   }
 
   saveSessionCoaching(form): Observable<any> {
-    return this.http.post(this.sessionCoachingUrl, form, {observe: 'response'});
+    return this.http.post(this.sessionCoachingUrl, form);
   }
 
   updateSessionCoaching(form): Observable<any> {
-    return this.http.put(this.sessionCoachingUrl, form, {observe: 'response'});
+    return this.http.put(this.sessionCoachingUrl, form);
   }
 
   deleteSessionCoaching(id): Observable<any> {
-    return this.http.delete(this.sessionCoachingUrl + '/' +id, {observe: 'response'});
+    return this.http.delete(this.sessionCoachingUrl + '/' +id);
   }
 
   /**

@@ -201,14 +201,14 @@
                   <div class="col-xl-3 col-lg-4 col-md-4 col-12" *ngFor="let item of accessoriesProduct">
                     <div class="single-product">
                       <div class="product-img">
-                        <a href="#">
+                        <a href="/ecommerce/product/detail/{{item?.product.id}}">
                           <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
                           <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
                         </a>
                         <div class="button-head">
                           <div class="product-action">
-                            <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="/ecommerce/product/detail/{{item?.product.id}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                            <a type="button"  *ngIf="!isProductSelected(item?.product)" (click)="addToCart(item)" title="Add to cart" ><i class="fa fa-shopping-bag"></i><span>Add to cart</span></a>
+                            <a  title="Quick View" href="/ecommerce/product/detail/{{item?.product.id}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                            <a type="button"  *ngIf="!isProductSelected(item?.product)" (click)="addToCart(item)" title="Add to cart" ><i class="fa fa-shopping-bag"></i><span>Add to cart</span>&nbsp;</a>
 
                           </div>
                           <div class="product-action-2">
@@ -239,7 +239,33 @@
 
 
 
-
+<!-- Start Shop Blog  -->
+<section class="shop-blog section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h2 class="text-center">From Our Coaching Session</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings">
+        <!-- Start Single Blog  -->
+        <div class="shop-single-blog">
+          <img src="https://via.placeholder.com/370x300" alt="#">
+          <div class="content">
+            <p class="date">{{coaching?.startDate}}</p>
+            <a href="#" class="title">{{coaching?.title}}</a>
+            <a href="#" class="more-btn">{{coaching?.description}}</a>
+          </div>
+        </div>
+        <!-- End Single Blog  -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Shop Blog  -->
 
 
 

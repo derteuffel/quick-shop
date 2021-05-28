@@ -40,12 +40,16 @@ export class DetailsCoachingComponent implements OnInit {
     this.initForm();
   }
 
+  onBack(){
+    this.router.navigateByUrl('admin/coachings');
+  }
+
   /** Lister les sessions d'un coaching **/
 
   loadList(): void{
     this.sessionService.getAllSessionCoaching().subscribe(
       (res: any) => {
-        this.sessions = res;
+        this.sessions = res.body;
       },
       error1 => {
         console.log(error1);
@@ -81,10 +85,10 @@ initForm() {
   onSubmitSession() {
     this.submitted = true;
     if(this.sessionForm?.invalid){return;}
-    this.sessionService.createSession(this.sessionForm?.value, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+    this.sessionService.saveSessionCoaching(this.sessionForm?.value).subscribe(
       data => {
         this.sessionForm.reset();
-        this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'session submitted', sticky: true});
         this.loadList();
         window.location.reload();
       },

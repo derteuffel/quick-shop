@@ -13,6 +13,6 @@ export class AccountService {
 
 
   getAllAccount(): Observable<any> {
-    return this.http.get(this.accountUrl, {observe: "response"});
+    return this.http.get(this.accountUrl);
   }
 }

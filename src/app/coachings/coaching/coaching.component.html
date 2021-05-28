@@ -43,10 +43,19 @@
                 <td>{{item.region}}</td>
                 <td>{{item.startDate}}</td>
                 <td> {{item.amount+' Fb'}} </td>
-                <td>
-                  <!-- <button  class="btn btn-success m-1" (click)="findOneCoaching(contentUpdate, item)"><i class="pi pi-eye"></i></button> -->
-                  <button (click)="setCoaching(contentUpdate, item)" class="btn btn-secondary m-1"><i class="pi pi-pencil"></i></button>
-                  <button  (click)="deleteCoaching(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
+                <td class="text-right" style="width:5em; text-align:center; font-size: 0.75rem;">
+                  <div ngbDropdown placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                      <a href="/admin/coachings/details/{{item.id}}" class="btn btn-success m-1"><i class="pi pi-eye"></i></a>
+                      <button (click)="setCoaching(contentUpdate, item)"class="btn btn-primary m-1"><i class="pi pi-pencil"></i></button>
+
+                      <button  (click)="deleteCoaching(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
+
+                    </div>
+                  </div>
                 </td>
               </tr>
 
