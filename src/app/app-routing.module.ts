@@ -31,6 +31,7 @@ import {SinginComponent} from "./auth/singin/singin.component";
 import {CustomerUpComponent} from "./auth/customer-up/customer-up.component";
 import {CustomerInComponent} from "./auth/customer-in/customer-in.component";
 import {ArticleComponent} from "./admin/boutique/article/article.component";
+import {ArticlesComponent} from "./eco/articles/articles.component";
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
 
   {
     path: 'ecommerce/home', component: EcommerceComponent
+  },
+
+  {
+    path: 'ecommerce/produit', component: ArticlesComponent
   },
 
   {

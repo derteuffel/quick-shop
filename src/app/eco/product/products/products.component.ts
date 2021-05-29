@@ -17,14 +17,8 @@ export class ProductsComponent implements OnInit {
 
   productOrders: ProductOrder[] = [];
   products: Product[] = [];
-  womens: Product[] = [];
-  mens: Product[] = [];
   accessories: Product[] = [];
-  hights: Product[] = [];
-  womenProduct: ProductOrder[] = [];
-  menProduct: ProductOrder[] = [];
   accessoriesProduct: ProductOrder[] = [];
-  hightProduct: ProductOrder[] = [];
   selectedProductOrder: ProductOrder;
   private shoppingCartOrders: ProductOrders;
   sub: Subscription;
