@@ -50,9 +50,9 @@ export class CoachingComponent implements OnInit {
   }
 
   loadData() {
-    this.coachingService.getAllCoaching().subscribe(
+    this.coachingService.getAllCoachingByUser().subscribe(
       data => {
-        this.lists = data.body;
+        this.lists = data;
       }, error => {
         console.log(error);
       }
@@ -114,25 +114,10 @@ export class CoachingComponent implements OnInit {
   }
 
 
-  showDetail(contentDetail, event){
-    console.log(event)
-    this.modalService.open(contentDetail, {size: "lg"});
-    this.boutiqueRef = event.id
-    console.log(this.boutiqueRef);
-
-  }
 
   // detail d'une coaching
-  getCoaching(){
-    this.coachingService.getCoachingById(this.boutiqueRef).subscribe(
-
-      data => {
-        this.currentCoaching = data;
-        console.log(data);
-      }, error => {
-        console.log(error);
-      }
-    );
+  getCoaching(id){
+    this.router.navigateByUrl('admin/coachings/details/'+id);
   }
 
   // suppression d'une coaching

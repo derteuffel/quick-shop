@@ -45,10 +45,6 @@ const routes: Routes = [
   },
 
   {
-    path: 'admin/product/add/:id', component: AddProductComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
-  },
-  {
     path: 'ecommerce/product/detail/:id', component: DetailProductComponent
   },
 
@@ -84,10 +80,7 @@ const routes: Routes = [
     path: 'admin/boutiques', component: BoutiqueComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
-  {
-    path: 'admin/add/boutique', component: AddBoutiqueComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
-  },
+  
   {
     path: 'admin/detail/boutique/:id', component: BoutiqueDetailComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
@@ -100,10 +93,7 @@ const routes: Routes = [
     path: 'admin/coachings', component: CoachingComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
-  {
-    path: 'admin/coachings/add', component: AddCoachingComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
-  },
+  
   {
     path: 'admin/coachings/details/:id', component: DetailsCoachingComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
