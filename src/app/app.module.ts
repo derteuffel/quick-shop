@@ -70,6 +70,7 @@ import {AdminSidebarComponent} from "./admin/admin-sidebar/admin-sidebar.compone
 import { ArticleComponent } from './admin/boutique/article/article.component';
 import { ArticlesComponent } from './eco/articles/articles.component';
 import { CoachingsComponent } from './eco/coachings/coachings.component';
+import { CoachingDetailComponent } from './eco/coachings/coaching-detail/coaching-detail.component';
 
 
 
@@ -121,7 +122,8 @@ import { CoachingsComponent } from './eco/coachings/coachings.component';
     AdminSidebarComponent,
     ArticleComponent,
     ArticlesComponent,
-    CoachingsComponent
+    CoachingsComponent,
+    CoachingDetailComponent
 
   ],
   imports: [

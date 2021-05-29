@@ -33,6 +33,7 @@ import {CustomerInComponent} from "./auth/customer-in/customer-in.component";
 import {ArticleComponent} from "./admin/boutique/article/article.component";
 import {ArticlesComponent} from "./eco/articles/articles.component";
 import {CoachingsComponent} from "./eco/coachings/coachings.component";
+import {CoachingDetailComponent} from "./eco/coachings/coaching-detail/coaching-detail.component";
 
 
 const routes: Routes = [
@@ -60,6 +61,9 @@ const routes: Routes = [
   },
   {
     path: 'ecommerce/product/detail/:id', component: DetailProductComponent
+  },
+  {
+    path: 'ecommerce/coaching/detail/:id', component: CoachingDetailComponent
   },
 
   {

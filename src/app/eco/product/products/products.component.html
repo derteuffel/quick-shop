@@ -1,7 +1,7 @@
 
 <!-- Slider Area -->
-<section class="hero-slider">
-  <!-- Single Slider -->
+<!--<section class="hero-slider">
+
   <div class="single-slider">
     <div class="container">
       <div class="row no-gutters">
@@ -23,8 +23,8 @@
       </div>
     </div>
   </div>
-  <!--/ End Single Slider -->
-</section>
+
+</section>-->
 <!--/ End Slider Area -->
 
 
@@ -35,23 +35,21 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h2 class="text-center">Liste des produits</h2>
+          <h2 class="text-center">Liste de Produits</h2>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <div class="product-info">
-          <div class="nav-main">
 
-          </div>
           <div class="tab-content" id="myTabContent">
             <!-- Start Single Tab -->
             <div class="tab-pane fade show active" id="man" role="tabpanel">
               <div class="tab-single">
                 <div class="row">
                   <div class="col-xl-3 col-lg-4 col-md-4 col-12" *ngFor="let item of productOrders">
-                    <div class="single-product">
+                    <div class="single-product img-wrap">
                       <div class="product-img">
                         <a href="/ecommerce/product/detail/{{item?.product.id}}">
                           <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
@@ -68,7 +66,7 @@
                         </div>
                       </div>
                       <div class="product-content">
-                        <h4><a href="/ecommerce/product/detail/{{item?.product.id}}">{{item?.product.name}}</a></h4>
+                        <h4 class="title"><a href="/ecommerce/product/detail/{{item?.product.id}}">{{item?.product.name}}</a></h4>
                         <div class="product-price">
                           <p class="price with-discount">${{item?.product.price}}</p>
                           <span></span>
@@ -89,22 +87,7 @@
 </div>
 <!-- End Product Area -->
 
-<!-- ========================= SECTION CONTENT ========================= -->
-<div class="row-sm">
-  <div class="col-md-3 col-sm-6">
-    <figure class="card card-product">
-      <div class="img-wrap"> <img src="./assets/images/items/1.jpg"></div>
-      <figcaption class="info-wrap">
-        <a href="#" class="title">Good item name</a>
-        <div class="price-wrap">
-          <span class="price-new">$1280</span>
-          <del class="price-old">$1980</del>
-        </div> <!-- price-wrap.// -->
-      </figcaption>
-    </figure> <!-- card // -->
-  </div> <!-- col // -->
-</div>
-<!-- ========================= SECTION CONTENT .END// ========================= -->
+
 
 <!-- Start Shop Blog  -->
 <section class="shop-blog section">
@@ -123,8 +106,8 @@
           <img src="https://via.placeholder.com/370x300" alt="#">
           <div class="content">
             <p class="date">{{coaching?.startDate}}</p>
-            <a href="#" class="title">{{coaching?.title}}</a>
-            <a href="#" class="more-btn">{{coaching?.description}}</a>
+            <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="title">{{coaching?.title}}</a>
+            <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="more-btn">{{coaching?.description}}</a>
           </div>
         </div>
         <!-- End Single Blog  -->
