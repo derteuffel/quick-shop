@@ -31,6 +31,9 @@ import {SinginComponent} from "./auth/singin/singin.component";
 import {CustomerUpComponent} from "./auth/customer-up/customer-up.component";
 import {CustomerInComponent} from "./auth/customer-in/customer-in.component";
 import {ArticleComponent} from "./admin/boutique/article/article.component";
+import {ArticlesComponent} from "./eco/articles/articles.component";
+import {CoachingsComponent} from "./eco/coachings/coachings.component";
+import {CoachingDetailComponent} from "./eco/coachings/coaching-detail/coaching-detail.component";
 
 
 const routes: Routes = [
@@ -45,7 +48,22 @@ const routes: Routes = [
   },
 
   {
+    path: 'ecommerce/produit', component: ArticlesComponent
+  },
+
+  {
+    path: 'ecommerce/coachings', component: CoachingsComponent
+  },
+
+  {
+    path: 'admin/product/add/:id', component: AddProductComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
     path: 'ecommerce/product/detail/:id', component: DetailProductComponent
+  },
+  {
+    path: 'ecommerce/coaching/detail/:id', component: CoachingDetailComponent
   },
 
   {
@@ -80,7 +98,10 @@ const routes: Routes = [
     path: 'admin/boutiques', component: BoutiqueComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
-  
+  {
+    path: 'admin/add/boutique', component: AddBoutiqueComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
   {
     path: 'admin/detail/boutique/:id', component: BoutiqueDetailComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
@@ -93,7 +114,10 @@ const routes: Routes = [
     path: 'admin/coachings', component: CoachingComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
-  
+  {
+    path: 'admin/coachings/add', component: AddCoachingComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
   {
     path: 'admin/coachings/details/:id', component: DetailsCoachingComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}

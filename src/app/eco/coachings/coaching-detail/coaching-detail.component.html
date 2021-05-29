@@ -1,19 +1,20 @@
 <app-header></app-header>
-<div [hidden]="orderFinished">
-<!--================Home Banner Area =================-->
- <section class="banner_area">
+
+<div>
+  <!--================Home Banner Area =================-->
+  <section class="banner_area">
     <div class="banner_inner d-flex align-items-center">
       <div class="container">
         <div
           class="banner_content d-md-flex justify-content-between align-items-center"
         >
           <div class="mb-3 mb-md-0">
-            <h2>Detail du produit</h2>
-            <p>Achetez votre produit </p>
+            <h2>Detail du coaching</h2>
+            <p>Reserver votre place pour le coaching </p>
           </div>
           <div class="page_link">
             <a href="/">Accueil</a>
-            <a href="/ecommerce/product/detail/{{currentProduct.id}}">Detail du produit</a>
+            <a href="/ecommerce/coaching/detail/{{currentCoaching.id}}">Detail du coaching</a>
           </div>
         </div>
       </div>
@@ -22,9 +23,7 @@
   <!--================End Home Banner Area =================-->
 
 </div>
-<div [hidden]="!orderFinished">
-  <app-orders #ordersC ></app-orders>
-</div>
+
 
 <main class="card">
   <div class="row no-gutters">
@@ -44,27 +43,39 @@
     <aside class="col-sm-6">
       <article class="card-body">
         <!-- short-info-wrap -->
-        <h3 class="title mb-3">{{productOrder[0].product.name}}</h3>
+        <h3 class="title mb-3">{{currentCoaching?.title}}</h3>
 
         <div class="mb-3">
           <var class="price h3 text-price">
-            <span class="currency">FCFA </span><span class="num"> {{productOrder[0].product.price}}</span>
+            <span class="currency">FCFA </span><span class="num"> {{currentCoaching?.amount}}</span>
           </var>
           <!--<span>/per kg</span>-->
         </div> <!-- price-detail-wrap .// -->
         <dl>
           <dt>Description</dt>
-          <dd><p>{{currentProduct.description}} </p></dd>
+          <dd><p>{{currentCoaching?.description}} </p></dd>
         </dl>
         <dl class="row">
-          <dt class="col-sm-3">Mesure#</dt>
-          <dd class="col-sm-9">{{currentProduct.measure}}</dd>
+          <dt class="col-sm-3">Date de debut#</dt>
+          <dd class="col-sm-9">{{currentCoaching?.startDate}}</dd>
 
           <dt class="col-sm-3">Catégorie</dt>
-          <dd class="col-sm-9">{{productOrder[0].product.category}}</dd>
+          <dd class="col-sm-9">{{currentCoaching?.category}}</dd>
 
-          <dt class="col-sm-3">Disponibilité</dt>
-          <dd class="col-sm-9">En Stock</dd>
+          <dt class="col-sm-3">Region</dt>
+          <dd class="col-sm-9">{{currentCoaching?.region}}</dd>
+
+          <dt class="col-sm-3">Téléphone</dt>
+          <dd class="col-sm-9">{{currentCoaching?.phone}}</dd>
+
+
+          <dt class="col-sm-3">Sessions</dt>
+          <dd class="col-sm-9">
+            <ul *ngFor="let s of currentCoaching?.sessions">
+              <li class="badge badge-success">{{s?.label}} - Lacement: {{s?.startDate}} - Fin de Session {{s?.endDate}}</li>
+
+            </ul>
+          </dd>
         </dl>
         <hr>
         <div class="row">
@@ -85,14 +96,11 @@
           </div> <!-- col.// -->
         </div> <!-- row.// -->
         <hr>
-        <button  class="btn  btn-warning" style="background-color: #F7941D;" (click)="addToCart(productOrder[0])"> <i class="fa fa-shopping-cart"></i> Ajouter dans mon panier</button>
-        <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC
-                           [hidden]="orderFinished"></app-shopping-cart>
+        <button  class="btn  btn-warning" style="background-color: #F7941D;" > <i class="fa fa-shopping-cart"></i> Ajouter dans mon panier</button>
+
         <!-- short-info-wrap .// -->
       </article> <!-- card-body.// -->
     </aside> <!-- col.// -->
   </div> <!-- row.// -->
 </main> <!-- card.// -->
-
-
 <app-footer></app-footer>

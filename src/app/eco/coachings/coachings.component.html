@@ -1,0 +1,31 @@
+<app-header></app-header>
+
+
+<!-- Start Shop Blog  -->
+<section class="shop-blog section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h2 class="text-center">Liste de Coaching</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings">
+        <!-- Start Single Blog  -->
+        <div class="shop-single-blog">
+          <img src="https://via.placeholder.com/370x300" alt="#">
+          <div class="content">
+            <p class="date">{{coaching?.startDate}}</p>
+            <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="title">{{coaching?.title}}</a>
+            <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="more-btn">{{coaching?.description}}</a>
+          </div>
+        </div>
+        <!-- End Single Blog  -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Shop Blog  -->
+<app-footer></app-footer>

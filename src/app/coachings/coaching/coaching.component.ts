@@ -40,7 +40,7 @@ export class CoachingComponent implements OnInit {
     this.loadData();
   }
 
-  
+
 
   onFilesSelect(event) {
     if (event.target.files.length > 0) {
@@ -58,7 +58,7 @@ export class CoachingComponent implements OnInit {
       }
     );
   }
-
+  /** ajouter un coaching **/
   saveCoaching(data) {
 
     console.log(data);
@@ -74,20 +74,17 @@ export class CoachingComponent implements OnInit {
     formData.append('userEmail', data.userEmail);
     formData.append('file', this.uploadedFile);
     console.log(formData);
-    
+
     this.submitted = true;
      this.coachingService.saveCoaching(formData).subscribe(
       (data: any) => {
-        // this.router.navigateByUrl('/admin/boutiques');
-        console.log('je suis a interieur');
-        
         this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
         this.loadData();
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
-    this.submitted = false; 
+    this.submitted = false;
   }
 
 
@@ -101,8 +98,8 @@ export class CoachingComponent implements OnInit {
 
     console.log('je suis la');
     console.log(this.currentCoaching);
-    
-    
+
+
      this.coachingService.updateCoaching(this.currentCoaching).subscribe(
       (data: any) => {
         this.messageService.add({severity:'success', summary: 'Record is updated successully', detail:'record updated'});
@@ -110,7 +107,7 @@ export class CoachingComponent implements OnInit {
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
-    ) 
+    )
   }
 
 
@@ -139,20 +136,7 @@ export class CoachingComponent implements OnInit {
     )
   }
 
-  /* saveCoachingSession(){
-    this.sessionSubmitted = true;
-    if (this.addCoachingSessionFurmGroup?.invalid) return;
-    this.coachingService.saveCoaching(this.coachingFormGroup?.value).subscribe(
-      (data: any) => {
-        this.coachingFormGroup.reset();
-        this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
-        this.loadData();
-      }, error => {
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
-      }
-    );
-    this.sessionSubmitted = false;
-  } */
+
 
   deleteCoachingSession(contentDeleteSession, event) {
     this.modalService.open(contentDeleteSession, {size: "lg"});

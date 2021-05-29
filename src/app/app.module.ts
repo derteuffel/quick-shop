@@ -68,6 +68,9 @@ import { TestComponent } from './test/test/test.component';
 import {AdminFooterComponent} from "./admin/admin-footer/admin-footer.component";
 import {AdminSidebarComponent} from "./admin/admin-sidebar/admin-sidebar.component";
 import { ArticleComponent } from './admin/boutique/article/article.component';
+import { ArticlesComponent } from './eco/articles/articles.component';
+import { CoachingsComponent } from './eco/coachings/coachings.component';
+import { CoachingDetailComponent } from './eco/coachings/coaching-detail/coaching-detail.component';
 
 
 
@@ -117,7 +120,10 @@ import { ArticleComponent } from './admin/boutique/article/article.component';
     TestComponent,
     AdminFooterComponent,
     AdminSidebarComponent,
-    ArticleComponent
+    ArticleComponent,
+    ArticlesComponent,
+    CoachingsComponent,
+    CoachingDetailComponent
 
   ],
   imports: [

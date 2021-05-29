@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {Subscription} from 'rxjs';
-import {EcommerceService} from '../../../services/ecommerce.service';
-import {ProductOrder} from '../../../models/product-order.model';
-import {Product} from '../../../models/product.model';
-import {ProductOrders} from '../../../models/product-orders.model';
-import {CoachingService} from "../../../services/coaching.service";
-import {Coaching} from "../../../models/coaching";
+import {ProductOrder} from "../../models/product-order.model";
+import {Product} from "../../models/product.model";
+import {Subscription} from "rxjs/index";
+import {ProductOrders} from "../../models/product-orders.model";
+import {EcommerceService} from "../../services/ecommerce.service";
+import {CoachingService} from "../../services/coaching.service";
+import {Coaching} from "../../models/coaching";
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-articles',
+  templateUrl: './articles.component.html',
+  styleUrls: ['./articles.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ArticlesComponent implements OnInit {
 
 
   productOrders: ProductOrder[] = [];
@@ -24,18 +24,15 @@ export class ProductsComponent implements OnInit {
   sub: Subscription;
   productSelected: boolean = false;
 
-  coachings: Coaching[];
 
   constructor(
-              private ecommerceService: EcommerceService,
-              private coachingService: CoachingService) { }
+    private ecommerceService: EcommerceService) { }
 
   ngOnInit(): void {
     this.productOrders = [];
     this.loadProducts();
     this.loadOrders();
     this.loadAccessoriesProduct();
-    this.loadCoachings();
   }
 
   addToCart(order: ProductOrder) {
@@ -79,13 +76,6 @@ export class ProductsComponent implements OnInit {
       );
   }
 
-  loadCoachings() {
-    this.coachingService.getAllCoaching().subscribe(
-      (res: any) => {
-        this.coachings = res;
-      }
-    )
-  }
 
   loadAccessoriesProduct(){
     this.ecommerceService.getProductCategories('ACCESSOIRE').subscribe(
@@ -116,5 +106,4 @@ export class ProductsComponent implements OnInit {
     this.loadOrders();
     this.productSelected = false;
   }
-
 }
