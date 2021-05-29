@@ -21,114 +21,78 @@
   </section>
   <!--================End Home Banner Area =================-->
 
-  <!--================Single Product Area =================-->
-  <div class="product_image_area">
-    <div class="container">
-      <div class="row s_product_inner">
-        <div class="col-lg-6">
-          <div class="s_product_img">
-            <div
-              id="carouselExampleIndicators"
-              class="carousel slide"
-              data-ride="carousel"
-            >
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="0"
-                  class="active"
-                >
-                  <img
-                    src="{{currentProduct.pictureUrl}}"
-                    alt="" style="height: 60px; width: 60px;"
-                  />
-                </li>
-                <li
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="1"
-                >
-                  <img
-                    src="{{currentProduct.pictureUrl}}"
-                    alt="" style="height: 60px; width: 60px;"
-                  />
-                </li>
-                <li
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to="2"
-                >
-                  <img
-                    src="{{currentProduct.pictureUrl}}"
-                    alt="" style="height: 60px; width: 60px;"
-                  />
-                </li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img
-                    class="d-block w-100"
-                    src="{{currentProduct.pictureUrl}}"
-                    alt="First slide"
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    class="d-block w-100"
-                    src="{{currentProduct.pictureUrl}}"
-                    alt="Second slide"
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    class="d-block w-100"
-                    src="{{currentProduct.pictureUrl}}"
-                    alt="Third slide"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-5 offset-lg-1">
-          <div class="s_product_text">
-            <h3>{{productOrder[0].product.name}}</h3>
-            <h2 class="colortext">FCFA {{productOrder[0].product.price}}</h2>
-            <ul class="list">
-              <li>
-                <a  href="#">
-                  <span>Categorie</span> : {{productOrder[0].product.category}}</a
-                >
-              </li>
-              <li>
-                <span>Disponibilite</span> : En Stock
-              </li>
-              <li>
-                <span>Mesure</span> : {{currentProduct.measure}}
-              </li>
-              <li>
-                <span>Boutique</span> : <span  >{{currentProduct.boutique.name}}</span>
-              </li>
-              <li>
-                <span>Autres images</span> : <span *ngFor="let item of currentProduct.pictures" ><img src="{{item}}" alt="" height="70" width="70"></span>
-              </li>
-            </ul>
-            <p>Description:
-              {{currentProduct.description}}
-            </p>
-            <div class="card_area">
-              <button class="btn" type="button" style="background-color:#F7941D;" (click)="addToCart(productOrder[0])">Ajouter dans mon panier</button>
-            </div>
-          </div>
-          <div class="my-2">
-            <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC
-                       [hidden]="orderFinished"></app-shopping-cart>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--================End Single Product Area =================-->
 </div>
 <div [hidden]="!orderFinished">
   <app-orders #ordersC ></app-orders>
 </div>
-  <app-footer></app-footer>
+
+<main class="card">
+  <div class="row no-gutters">
+    <aside class="col-sm-6 border-right">
+      <article class="gallery-wrap">
+        <div class="img-big-wrap">
+          <div> <a href="./assets/images/items/1.jpg" data-fancybox=""><img src="./assets/images/items/1.jpg"></a></div>
+        </div> <!-- slider-product.// -->
+        <div class="img-small-wrap">
+          <div class="item-gallery"> <img src="./assets/images/items/1.jpg"></div>
+          <div class="item-gallery"> <img src="./assets/images/items/2.jpg"></div>
+          <div class="item-gallery"> <img src="./assets/images/items/3.jpg"></div>
+          <div class="item-gallery"> <img src="./assets/images/items/4.jpg"></div>
+        </div> <!-- slider-nav.// -->
+      </article> <!-- gallery-wrap .end// -->
+    </aside>
+    <aside class="col-sm-6">
+      <article class="card-body">
+        <!-- short-info-wrap -->
+        <h3 class="title mb-3">{{productOrder[0].product.name}}</h3>
+
+        <div class="mb-3">
+          <var class="price h3 text-price">
+            <span class="currency">FCFA </span><span class="num"> {{productOrder[0].product.price}}</span>
+          </var>
+          <!--<span>/per kg</span>-->
+        </div> <!-- price-detail-wrap .// -->
+        <dl>
+          <dt>Description</dt>
+          <dd><p>{{currentProduct.description}} </p></dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-sm-3">Mesure#</dt>
+          <dd class="col-sm-9">{{currentProduct.measure}}</dd>
+
+          <dt class="col-sm-3">Catégorie</dt>
+          <dd class="col-sm-9">{{productOrder[0].product.category}}</dd>
+
+          <dt class="col-sm-3">Disponibilité</dt>
+          <dd class="col-sm-9">En Stock</dd>
+        </dl>
+        <hr>
+        <div class="row">
+          <div class="col-sm-5">
+            <dl class="dlist-inline">
+              <dt>Quantity: </dt>
+              <dd>
+                <select class="form-control form-control-sm" style="width:70px;">
+                  <option> 1 </option>
+                  <option> 2 </option>
+                  <option> 3 </option>
+                </select>
+              </dd>
+            </dl>  <!-- item-property .// -->
+          </div> <!-- col.// -->
+          <div class="col-sm-7">
+
+          </div> <!-- col.// -->
+        </div> <!-- row.// -->
+        <hr>
+        <button  class="btn  btn-warning" style="background-color: #F7941D;" (click)="addToCart(productOrder[0])"> <i class="fa fa-shopping-cart"></i> Ajouter dans mon panier</button>
+        <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC
+                           [hidden]="orderFinished"></app-shopping-cart>
+        <!-- short-info-wrap .// -->
+      </article> <!-- card-body.// -->
+    </aside> <!-- col.// -->
+  </div> <!-- row.// -->
+</main> <!-- card.// -->
+
+
+<app-footer></app-footer>
