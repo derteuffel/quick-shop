@@ -1,41 +1,11 @@
 
-<!-- Slider Area -->
-<!--<section class="hero-slider">
-
-  <div class="single-slider">
-    <div class="container">
-      <div class="row no-gutters">
-        <div class="col-lg-9 offset-lg-3 col-12">
-          <div class="text-inner">
-            <div class="row">
-              <div class="col-lg-7 col-12">
-                <div class="hero-text">
-                  <h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
-                  <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
-                  <div class="button">
-                    <a href="#" class="btn">Shop Now!</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>-->
-<!--/ End Slider Area -->
-
-
-
 <!-- Start Product Area -->
 <div class="product-area section">
   <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h2 class="text-center">Liste de Produits</h2>
+          <h1 class="text-center">Liste de Produits</h1>
         </div>
       </div>
     </div>
@@ -68,7 +38,7 @@
                       <div class="product-content">
                         <h4 class="title"><a href="/ecommerce/product/detail/{{item?.product.id}}">{{item?.product.name}}</a></h4>
                         <div class="product-price">
-                          <p class="price with-discount">${{item?.product.price}}</p>
+                          <p class="price with-discount">FB {{item?.product.price}}</p>
                           <span></span>
                         </div>
                       </div>
@@ -95,7 +65,7 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h2 class="text-center">Liste de Coaching</h2>
+          <h1 class="text-center">Liste de Coaching</h1>
         </div>
       </div>
     </div>
@@ -103,7 +73,9 @@
       <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings">
         <!-- Start Single Blog  -->
         <div class="shop-single-blog">
-          <img src="https://via.placeholder.com/370x300" alt="#">
+          <a href="/ecommerce/coaching/detail/{{coaching?.id}}">
+              <img src="https://via.placeholder.com/370x300" alt="#">
+          </a>
           <div class="content">
             <p class="date">{{coaching?.startDate}}</p>
             <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="title">{{coaching?.title}}</a>
@@ -128,8 +100,8 @@
         <!-- Start Single Service -->
         <div class="single-service">
           <i class="ti-rocket"></i>
-          <h4>Free shiping</h4>
-          <p>Orders over $100</p>
+          <h4>Livraison gratuite</h4>
+          <p>Commandes de plus de 100 FB</p>
         </div>
         <!-- End Single Service -->
       </div>
@@ -137,8 +109,8 @@
         <!-- Start Single Service -->
         <div class="single-service">
           <i class="ti-reload"></i>
-          <h4>Free Return</h4>
-          <p>Within 30 days returns</p>
+          <h4>Retour gratuit</h4>
+          <p>Retours dans les 30 jours</p>
         </div>
         <!-- End Single Service -->
       </div>
@@ -146,8 +118,8 @@
         <!-- Start Single Service -->
         <div class="single-service">
           <i class="ti-lock"></i>
-          <h4>Sucure Payment</h4>
-          <p>100% secure payment</p>
+          <h4>Paiement sécurisé</h4>
+          <p>Paiement 100% sécurisé</p>
         </div>
         <!-- End Single Service -->
       </div>
@@ -155,8 +127,8 @@
         <!-- Start Single Service -->
         <div class="single-service">
           <i class="ti-tag"></i>
-          <h4>Best Peice</h4>
-          <p>Guaranteed price</p>
+          <h4>Meilleure pièce</h4>
+          <p>Prix garanti</p>
         </div>
         <!-- End Single Service -->
       </div>
@@ -164,7 +136,3 @@
   </div>
 </section>
 <!-- End Shop Services Area -->
-
-
-
-
