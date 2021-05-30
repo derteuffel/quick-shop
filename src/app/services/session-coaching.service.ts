@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import {User} from "../models/user";
+import {API} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -25,27 +26,27 @@ export class SessionCoachingService {
   }
 
   getAllSessionCoaching(): Observable<any> {
-    return this.http.get(this.sessionCoachingUrl);
+    return this.http.get(API.SESSIONS);
   }
 
   getSessionCoachingById(id): Observable<any> {
-    return this.http.get(this.sessionCoachingUrl + '/' +id);
+    return this.http.get(API.SESSIONS + '/' +id);
   }
 
   getSessionCoaching(id): Observable<any> {
-    return this.http.get(this.sessionCoachingUrl + '/coaching/' +id);
+    return this.http.get(`${API.SESSIONS}/coaching/${id}` );
   }
 
   saveSessionCoaching(form): Observable<any> {
-    return this.http.post(this.sessionCoachingUrl, form);
+    return this.http.post(`${API.SESSIONS}`, form);
   }
 
   updateSessionCoaching(form): Observable<any> {
-    return this.http.put(this.sessionCoachingUrl, form);
+    return this.http.put(`${API.SESSIONS}`, form);
   }
 
   deleteSessionCoaching(id): Observable<any> {
-    return this.http.delete(this.sessionCoachingUrl + '/' +id);
+    return this.http.delete(`${API.SESSIONS}/${id}`);
   }
 
   /**
@@ -54,7 +55,7 @@ export class SessionCoachingService {
    * */
 
   createSession(form, id): Observable<any> {
-    return this.http.post(this.sessionCoachingUrl + '/session/' +id, form, {headers: this.formHeaders});
+    return this.http.post(`${API.SESSIONS}/session/${id}`, form, {headers: this.formHeaders});
   }
 
 }

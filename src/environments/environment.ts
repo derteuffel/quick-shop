@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-const url = 'http://localhost:8081/';
+const url = 'http://localhost:8181/';
 
 export const API = {
 
@@ -14,36 +14,31 @@ export const API = {
   /** Produits **/
 
 
-  SAVE_PRODUIT:  `${url}api/produits/admin`,
+  PRODUITS:  `${url}api/produits`,
 
-  GET_ONE_PRODUIT: `${url}api/produits/all`,
+  /** Commandes **/
 
-  UPLOAD_FILES_PRODUIT: `${url}api/produits/admin/uploads`,
+  COMMANDES: `${url}api/commandes`,
 
-  UPLOAD_FILE_PRODUIT: `${url}api/produits/admin/upload`,
 
-  UPDATE_PRODUIT: `${url}api/produits/admin`,
+  /** Boutiques **/
 
-  DELETE_PRODUIT: `${url}api/produits/admin`,
+  BOUTIQUES: `${url}api/boutiques`,
 
-  GET_ALL_PRODUITS: `${url}api/produits/all`,
+  /** Coachings **/
 
-  FIND_ALL_BY_CATEGORY_AND_GENRE: `${url}api/produits/all/sort`,
+  COACHINGS: `${url}api/coachings`,
 
-  FIND_ALL_BY_MARQUE_AND_GENRE: `${url}api/produits/all/marque`,
+  /** Account **/
 
-  FIND_ALL_BY_COLOR_AND_GENRE: `${url}api/produits/all/colors`,
+  ACCOUNT: `${url}api/account`,
 
-  FIND_ALL_MOBILE: `${url}api/produits/all/mobile`,
+  /** Micro-finance **/
 
-  FIND_ALL_ADMIN: `${url}api/produits/admin`,
+  MICROFINANCES: `${url}api/microfinancements`,
 
-  FIND_ALL_BY_BOUTIQUE: `${url}api/produits/boutique`,
+  /** Session coaching**/
 
-  FIND_ALL_BY_CATEGORY: `${url}api/produits/all/category`,
-
-  FIND_ALL_BY_GENRE: `${url}api/produits/all/genre`,
-
-  FIND_ALL_BY_QUALITY: `${url}api/produits/all/quality`,
+  SESSIONS: `${url}api/sessioncoachings`,
 
 }
