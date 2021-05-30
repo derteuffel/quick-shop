@@ -71,6 +71,8 @@ import { ArticleComponent } from './admin/boutique/article/article.component';
 import { ArticlesComponent } from './eco/articles/articles.component';
 import { CoachingsComponent } from './eco/coachings/coachings.component';
 import { CoachingDetailComponent } from './eco/coachings/coaching-detail/coaching-detail.component';
+import { MicrofinanceComponent } from './eco/microfinance/microfinance.component';
+import { MicrofinanceDetailComponent } from './eco/microfinance/microfinance-detail/microfinance-detail.component';
 
 
 
@@ -123,7 +125,9 @@ import { CoachingDetailComponent } from './eco/coachings/coaching-detail/coachin
     ArticleComponent,
     ArticlesComponent,
     CoachingsComponent,
-    CoachingDetailComponent
+    CoachingDetailComponent,
+    MicrofinanceComponent,
+    MicrofinanceDetailComponent
 
   ],
   imports: [

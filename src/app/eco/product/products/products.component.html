@@ -59,7 +59,7 @@
 
 
 
-<!-- Start Shop Blog  -->
+<!-- Start Coaching  -->
 <section class="shop-blog section">
   <div class="container">
     <div class="row">
@@ -87,7 +87,39 @@
     </div>
   </div>
 </section>
-<!-- End Shop Blog  -->
+<!-- End Coaching  -->
+
+<!-- Start Microfinancement -->
+<section class="shop-blog section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h1 class="text-center">Liste de Micro-financement</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12" *ngFor="let m of microfinances">
+        <!-- Start Single Blog  -->
+        <div class="shop-single-blog">
+          <a href="#">
+            <img src="https://via.placeholder.com/370x300" alt="#">
+          </a>
+          <div class="content">
+            <a href="#" class="title">{{m?.intitule}}</a>
+            <a href="#" class="title">{{m?.secteurActivite}}</a>
+            <p class="price">{{m?.amount}}</p>
+            <a href="#" class="more-btn">{{m?.bankName}}</a>
+            <a href="#" class="more-btn">{{m?.region}}</a>
+          </div>
+        </div>
+        <!-- End Single Blog  -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Microfinancement  -->
 
 
 

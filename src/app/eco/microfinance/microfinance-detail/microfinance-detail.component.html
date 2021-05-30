@@ -9,12 +9,12 @@
           class="banner_content d-md-flex justify-content-between align-items-center"
         >
           <div class="mb-3 mb-md-0">
-            <h2>Detail du coaching</h2>
-            <p>Reserver votre place pour le coaching </p>
+            <h2>Detail du Microfinancement</h2>
+            <p>Soumissioner pour le micro-financement</p>
           </div>
           <div class="page_link">
             <a href="/">Accueil</a>
-            <a href="/ecommerce/coaching/detail/{{currentCoaching.id}}">Detail du coaching</a>
+            <a href="/ecommerce/microfinance/detail/{{currentMicroFinance.id}}">Detail du Microfinancement</a>
           </div>
         </div>
       </div>
@@ -43,56 +43,29 @@
     <aside class="col-sm-6">
       <article class="card-body">
         <!-- short-info-wrap -->
-        <h3 class="title mb-3">{{currentCoaching?.title}}</h3>
+        <h3 class="title mb-3">{{currentMicroFinance?.intitule}}</h3>
 
         <div class="mb-3">
           <var class="price h3 text-price">
-            <span class="currency">FB </span><span class="num"> {{currentCoaching?.amount}}</span>
+            <span class="currency">FB </span><span class="num"> {{currentMicroFinance?.amount}}</span>
           </var>
-          <!--<span>/per kg</span>-->
         </div> <!-- price-detail-wrap .// -->
         <dl>
-          <dt>Description</dt>
-          <dd><p>{{currentCoaching?.description}} </p></dd>
+          <dt>Secteur d'activité</dt>
+          <dd><p>{{currentMicroFinance?.secteurActivite}} </p></dd>
         </dl>
         <dl class="row">
-          <dt class="col-sm-3">Date de debut#</dt>
-          <dd class="col-sm-9">{{currentCoaching?.startDate}}</dd>
+          <dt class="col-sm-3">Mode paiement</dt>
+          <dd class="col-sm-9">{{currentMicroFinance?.paymentMode}}</dd>
 
           <dt class="col-sm-3">Region</dt>
-          <dd class="col-sm-9">{{currentCoaching?.region}}</dd>
+          <dd class="col-sm-9">{{currentMicroFinance?.region}}</dd>
 
-          <dt class="col-sm-3">Téléphone</dt>
-          <dd class="col-sm-9">{{currentCoaching?.phone}}</dd>
+          <dt class="col-sm-3">Nom de la banque financeur</dt>
+          <dd class="col-sm-9">{{currentMicroFinance?.bankName}}</dd>
 
-
-          <dt class="col-sm-3">Sessions</dt>
-          <dd class="col-sm-9">
-            <ul *ngFor="let s of currentCoaching?.sessions">
-              <li class="badge badge-success" *ngIf="s?.status == true">{{s?.label}} - Lacement: {{s?.startDate}} - Fin de Session {{s?.endDate}}</li>
-              <li class="badge badge-danger" *ngIf="s?.status == false">{{s?.label}} - Lacement: {{s?.startDate}} - Fin de Session {{s?.endDate}}</li>
-
-            </ul>
-          </dd>
         </dl>
         <hr>
-        <div class="row">
-          <div class="col-sm-5">
-            <dl class="dlist-inline">
-              <dt>Quantité: </dt>
-              <dd>
-                <select class="form-control form-control-sm" style="width:70px;">
-                  <option> 1 </option>
-                  <option> 2 </option>
-                  <option> 3 </option>
-                </select>
-              </dd>
-            </dl>  <!-- item-property .// -->
-          </div> <!-- col.// -->
-          <div class="col-sm-7">
-
-          </div> <!-- col.// -->
-        </div> <!-- row.// -->
         <hr>
         <button  class="btn  btn-warning" (click)="openModalFormulaire(contentAdd)" style="background-color: #F7941D;" >formulaire d'inscription</button>
 
@@ -117,29 +90,29 @@
     <form >
       <h2>Formulaire d'enregistrment au coaching</h2>
 
-          <div class="form-group">
-            <label>Nom</label>
-            <input type="text" class="form-control">
-          </div>
+      <div class="form-group">
+        <label>Nom</label>
+        <input type="text" class="form-control">
+      </div>
 
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control" placeholder="Entrer l'adresse email" >
-          </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" placeholder="Entrer l'adresse email" >
+      </div>
 
-          <div class="form-group">
-            <label>Numéro téléphone</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Region</label>
-            <input type="text" class="form-control">
-          </div>
+      <div class="form-group">
+        <label>Numéro téléphone</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Region</label>
+        <input type="text" class="form-control">
+      </div>
 
-        <div class="form-group">
-          <label>Mode de paiement</label>
-          <input type="text" class="form-control">
-        </div>
+      <div class="form-group">
+        <label>Fichier du projet</label>
+        <input type="file" class="form-control">
+      </div>
       <br>
       <div class="card-footer">
         <div class="row">
