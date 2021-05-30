@@ -33,6 +33,10 @@ export class CoachingService {
     return this.http.get(API.COACHINGS, {headers: this.headers});
   }
 
+  getAllCoachingByUser(): Observable<any> {
+    return this.http.get(this.coachingUrl+'/admin', {headers: this.headers});
+  }
+
   getCoachingById(id): Observable<any> {
     return this.http.get(`${API.COACHINGS}/${id}`, {headers: this.headers});
   }
