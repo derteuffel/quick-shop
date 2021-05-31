@@ -29,7 +29,7 @@
               <thead class="thead-light">
               <tr>
                 <th scope="col">Intitule</th>
-                <th  scope="col">SecteurActivite</th>
+                <th  scope="col">Secteurd'activite</th>
                 <th scope="col">Region</th>
                 <th scope="col">Montant</th>
                 <th scope="col">Banque</th>
@@ -42,11 +42,11 @@
                 <td>{{item.intitule}}</td>
                 <td>{{item.secteurActivite}}</td>
                 <td>{{item.region}}</td>
-                <td>{{item.amount}}</td>
+                <td>{{item.amount+' '+item.devise}}</td>
                 <td> {{item.bankName}} </td>
                 <td> {{item.paymentMode}} </td>
                 <td>
-                  <button  class="btn btn-success m-1" (click)="findOneCoaching(contentUpdate, item)"><i class="pi pi-eye"></i></button>
+                  <a href="/admin/loans/details/{{item.id}}"  class="btn btn-success m-1" ><i class="pi pi-eye"></i></a>
                   <button (click)="setCoaching(contentUpdate, item)" class="btn btn-secondary m-1"><i class="pi pi-pencil"></i></button>
                   <button  (click)="deleteCoaching(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
                 </td>
@@ -66,6 +66,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="container-fluid">
+    <app-admin-footer></app-admin-footer>
   </div>
 </div>
 
@@ -99,6 +102,7 @@
 
 <ng-template #contentAdd let-modal>
   <div class="modal-header" style="background-color:#F45B3A;">
+    <h3>Formulaire d'ajout d'un micros-finanacement</h3>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -108,44 +112,69 @@
         <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label>Intitule</label>
-                <input type="text" class="form-control"required formControlName="intitule" placeholder="intitule" >
+                <label>Motif</label>
+                <input type="text" class="form-control"required formControlName="intitule" placeholder="Motif de versement des fonds" >
               </div>
 
               <div class="form-group">
                 <label>Secteur d'activite</label>
-                <input type="text" class="form-control"required formControlName="secteurActivite" placeholder="Secteur d'activite" >
+                <select class="form-control" placeholder="Secteur d'activite vise" formControlName="secteurActivite">
+                    <option value="" disabled>-- Choisir un secteur d'activite --</option>
+                    <option value="Agriculture">Agriculture</option>
+                    <option value="Sante">Sante</option>
+                    <option value="Education">Education</option>
+                    <option value="Industrie">Industrie</option>
+                </select>
               </div>
-
-              <div class="form-group">
-                <label>Montant</label>
-                <input type="text" class="form-control" required formControlName="amount" placeholder="Montant">
-              </div>
-              <div class="form-group">
-                <label>Region</label>
-                <input type="text" class="form-control"  required formControlName="region" placeholder="Entrer votre region">
-              </div>
-
               <div class="form-group">
                 <label>Banque</label>
-                <input type="text" class="form-control"  required formControlName="bankName" placeholder="Banque">
+                <input type="text" class="form-control"  required formControlName="bankName" placeholder="Nom de la banque ou vous faite votre deposition">
               </div>
 
               <div class="form-group">
-                <label>Email de l'utilisateur</label>
-                <input type="text" class="form-control"  required formControlName="userEmail" placeholder="Entrer l'email de l'utilisateur">
+                <label>Devise</label>
+                <select class="form-control" placeholder="Devise de paiement" formControlName="devise">
+                    <option value="" disabled>-- Choisir une devise de paiement --</option>
+                    <option value="USD">USD</option>
+                    <option value="Francs Burundais">Francs burundais</option>
+                    <option value="Francs Congolais">Francs congolais</option>
+                    <option value="Francs CFA">Francs CFA</option>
+                </select>
               </div>
+              <div class="form-group">
+                <label>Montant verser</label>
+                <input type="number" class="form-control" required formControlName="amount" placeholder="Montant verser">
+              </div>
+              <div class="form-group">
+                <label>Mode de paiement</label>
+                <select class="form-control" placeholder="Mode de paiement" formControlName="paymentMode">
+                    <option value="" disabled>-- Choisir un mode de paiement --</option>
+                    <option value="CASH">Liquide</option>
+                <option value="BANK">Transaction bancaire</option>
+                <option value="MOBILE">Versement par Mobile money</option>
+                </select>
+            </div>
+              
             </div>
 
             <div class="col-md-6">
-              <div class="form-group">
-                <label>Mode de paiement</label>
-                <select cols="0" rows="6" class="form-control" placeholder="description" formControlName="paymentMode">
-                  <option value="CASH">Liquide</option>
-                  <option value="BANK">Banque</option>
-                  <option value="MOBILE_MONEY">Mobile</option>
-                </select>
-              </div>
+                <div class="form-group">
+                    <label>Region</label>
+                    <input type="text" class="form-control"  required formControlName="region" placeholder="Entrer la region concerner par ce financment">
+                  </div>
+                  <div class="form-group">
+                    <label>Nom du depositaire</label>
+                    <input type="text" class="form-control"  required formControlName="userName" placeholder="Entrer le nom du depositaire">
+                  </div>
+                  <div class="form-group">
+                    <label>Email du depositaire</label>
+                    <input type="text" class="form-control"  required formControlName="userEmail" placeholder="Entrer l'email du depositaire">
+                  </div>
+                  <div class="form-group">
+                    <label>Telephone du depositaire</label>
+                    <input type="text" class="form-control"  required formControlName="userPhone" placeholder="Entrer le telephone du depositaire">
+                  </div>
+                    
             </div>
         </div>
 
@@ -206,48 +235,73 @@
   <div class="modal-body">
       <form [formGroup]="coachingUpdateFormGroup" (submit)="updateCoaching()">
         <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Intitule</label>
-              <input type="text" class="form-control"required formControlName="intitule" placeholder="intitule" >
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Motif</label>
+                <input type="text" class="form-control"required formControlName="intitule" placeholder="Motif de versement des fonds" >
+              </div>
+
+              <div class="form-group">
+                <label>Secteur d'activite</label>
+                <select class="form-control" placeholder="Secteur d'activite vise" formControlName="secteurActivite">
+                    <option value="" disabled>-- Choisir un secteur d'activite --</option>
+                    <option value="Agriculture">Agriculture</option>
+                    <option value="Sante">Sante</option>
+                    <option value="Education">Education</option>
+                    <option value="Industrie">Industrie</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Banque</label>
+                <input type="text" class="form-control"  required formControlName="bankName" placeholder="Nom de la banque ou vous faite votre deposition">
+              </div>
+
+              <div class="form-group">
+                <label>Devise</label>
+                <select class="form-control" placeholder="Devise de paiement" formControlName="devise">
+                    <option value="" disabled>-- Choisir une devise de paiement --</option>
+                    <option value="USD">USD</option>
+                    <option value="Francs Burundais">Francs burundais</option>
+                    <option value="Francs Congolais">Francs congolais</option>
+                    <option value="Francs CFA">Francs CFA</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Montant verser</label>
+                <input type="number" class="form-control" required formControlName="amount" placeholder="Montant verser">
+              </div>
+              <div class="form-group">
+                <label>Mode de paiement</label>
+                <select class="form-control" placeholder="Mode de paiement" formControlName="paymentMode">
+                    <option value="" disabled>-- Choisir un mode de paiement --</option>
+                    <option value="CASH">Liquide</option>
+                <option value="BANK">Transaction bancaire</option>
+                <option value="MOBILE">Versement par Mobile money</option>
+                </select>
+            </div>
+              
             </div>
 
-            <div class="form-group">
-              <label>Secteur d'activite</label>
-              <input type="text" class="form-control"required formControlName="secteurActivite" placeholder="Secteur d'activite" >
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Region</label>
+                    <input type="text" class="form-control"  required formControlName="region" placeholder="Entrer la region concerner par ce financment">
+                  </div>
+                  <div class="form-group">
+                    <label>Nom du depositaire</label>
+                    <input type="text" class="form-control"  required formControlName="userName" placeholder="Entrer le nom du depositaire">
+                  </div>
+                  <div class="form-group">
+                    <label>Email du depositaire</label>
+                    <input type="text" class="form-control"  required formControlName="userEmail" placeholder="Entrer l'email du depositaire">
+                  </div>
+                  <div class="form-group">
+                    <label>Telephone du depositaire</label>
+                    <input type="text" class="form-control"  required formControlName="userPhone" placeholder="Entrer le telephone du depositaire">
+                  </div>
+                    
             </div>
-
-            <div class="form-group">
-              <label>Montant</label>
-              <input type="text" class="form-control" required formControlName="amount" placeholder="Montant">
-            </div>
-            <div class="form-group">
-              <label>Region</label>
-              <input type="text" class="form-control"  required formControlName="region" placeholder="Entrer votre region">
-            </div>
-
-            <div class="form-group">
-              <label>Banque</label>
-              <input type="text" class="form-control"  required formControlName="bankName" placeholder="Banque">
-            </div>
-
-            <div class="form-group">
-              <label>Email de l'utilisateur</label>
-              <input type="text" class="form-control"  required formControlName="userEmail" placeholder="Entrer l'email de l'utilisateur">
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Mode de paiement</label>
-              <select cols="0" rows="6" class="form-control" placeholder="description" formControlName="paymentMode">
-                <option value="CASH">Liquide</option>
-                <option value="BANK">Banque</option>
-                <option value="MOBILE_MONEY">Mobile</option>
-              </select>
-            </div>
-          </div>
-      </div>
+        </div>
 
         <br>
         <div class="card-footer">
@@ -324,3 +378,4 @@
 
 </ng-template>
 <!-------------------------------------------------------DELETE SESSION COACHING END-------------------------------------------------------------->
+

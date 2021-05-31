@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {MessageService, PrimeNGConfig} from "primeng/api";
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { MicrofinanceService } from 'src/app/services/microfinance.service';
-import {CoachingService} from "../../../services/coaching.service";
-import {SessionCoachingService} from "../../../services/session-coaching.service";
+import { SessionCoachingService } from 'src/app/services/session-coaching.service';
 
 @Component({
-  selector: 'app-coaching',
-  templateUrl: './micro-financement-list.component.html',
-  styleUrls: ['./micro-financement-list.component.scss'],
-  providers: [MessageService],
+  selector: 'app-loans',
+  templateUrl: './loans.component.html',
+  styleUrls: ['./loans.component.scss'],
+  providers: [MessageService]
 })
-export class MicroFinancementListComponent implements OnInit {
+export class LoansComponent implements OnInit {
 
-  lists: any = [];
-  boutiqueRef;
+  lists: any = {};
+  boutiqueRef
   sessionRef
   p: number = 1;
   searchItem: string;
@@ -50,7 +49,10 @@ export class MicroFinancementListComponent implements OnInit {
       paymentMode:  new FormControl(''),
       secteurActivite:  new FormControl(''),
       intitule: new FormControl(''),
-      userEmail: new FormControl('')
+      userEmail: new FormControl(''),
+      userName: new FormControl(''),
+      userPhone: new FormControl(''),
+      devise: new FormControl('')
     });
 
     this.coachingUpdateFormGroup = new FormGroup({
@@ -61,14 +63,18 @@ export class MicroFinancementListComponent implements OnInit {
       paymentMode:  new FormControl(''),
       secteurActivite:  new FormControl(''),
       intitule: new FormControl(''),
-      userEmail: new FormControl('')
+      userEmail: new FormControl(''),
+      userName: new FormControl(''),
+      userPhone: new FormControl(''),
+      devise: new FormControl('')
     });
   }
 
   loadData() {
     this.microfinancementService.getAllFinance().subscribe(
       data => {
-        this.lists = data.body;
+        this.lists = data;
+        console.log(data);
       }, error => {
         console.log(error);
       }
@@ -78,7 +84,8 @@ export class MicroFinancementListComponent implements OnInit {
   saveCoaching() {
     this.submitted = true;
     if (this.coachingFormGroup?.invalid) return;
-    this.microfinancementService.saveFinance(this.coachingFormGroup?.value).subscribe(
+    console.log(this.coachingFormGroup.value);
+     this.microfinancementService.saveFinance(this.coachingFormGroup?.value).subscribe(
       (data: any) => {
         // this.router.navigateByUrl('/admin/boutiques');
         this.coachingFormGroup.reset();
@@ -87,7 +94,7 @@ export class MicroFinancementListComponent implements OnInit {
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
-    );
+    ); 
     this.submitted = false;
   }
 
@@ -95,7 +102,7 @@ export class MicroFinancementListComponent implements OnInit {
   setCoaching(contentUpdate, event) {
 
     this.modalService.open(contentUpdate, {size: "lg"});
-    this.currentCoaching = event.region
+    this.currentCoaching = event;
 
     this.coachingUpdateFormGroup.patchValue({
       id: event.id,
@@ -105,12 +112,15 @@ export class MicroFinancementListComponent implements OnInit {
       paymentMode:  event.paymentMode,
       secteurActivite:  event.secteurActivite,
       intitule: event.intitule,
-      userEmail: event.userEmail
+      userEmail: event.userEmail,
+      userName: event.userName,
+      userPhone: event.userPhone,
+      devise: event.devise
     });
   }
 
   updateCoaching() {
-    const CompanyData = {
+    const updateData = {
       id: this.coachingUpdateFormGroup.get('id').value,
       amount: this.coachingUpdateFormGroup.get('amount').value,
       bankName: this.coachingUpdateFormGroup.get('bankName').value,
@@ -119,9 +129,14 @@ export class MicroFinancementListComponent implements OnInit {
       secteurActivite: this.coachingUpdateFormGroup.get('secteurActivite').value,
       intitule: this.coachingUpdateFormGroup.get('intitule').value,
       userEmail: this.coachingUpdateFormGroup.get('userEmail').value,
+      userName: this.coachingUpdateFormGroup.get('userName').value,
+      userPhone: this.coachingUpdateFormGroup.get('userPhone').value,
+      devise: this.coachingUpdateFormGroup.get('devise').value
 
     }
-    this.microfinancementService.updateFinance(CompanyData).subscribe(
+
+    console.log(updateData);
+    this.microfinancementService.updateFinance(updateData).subscribe(
       (data: any) => {
         this.coachingUpdateFormGroup.reset();
         this.messageService.add({severity:'success', summary: 'Record is updated successully', detail:'record updated'});
@@ -226,8 +241,8 @@ export class MicroFinancementListComponent implements OnInit {
   }
 
 
-  findOneCoaching(contentUpdate:any, item:any){
-    this.router.navigate(['/admin/micro-financement/details/'+item.id]);
+  findOneCoaching(item){
+    this.router.navigate(['/admin/loans/details /'+item.id]);
   }
 
 }

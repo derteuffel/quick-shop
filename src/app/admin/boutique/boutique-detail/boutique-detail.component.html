@@ -76,7 +76,7 @@
               </thead>
               <tbody>
               <tr *ngFor="let product of products | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-                <td><img src="{{product?.pictureUrl}}" alt="" height="80" width="80"></td>
+                <td><img [src]="product?.pictureUrl" alt="" height="80" width="80"></td>
                 <td>{{product?.name}}</td>
                 <td>
                   {{product?.category}}

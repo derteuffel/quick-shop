@@ -157,20 +157,29 @@ export class BoutiqueComponent implements OnInit {
   onDelete() {
     this.boutiqueService.deleteBoutique(this.boutiqueRef).subscribe(
       (res: any) => {
-        this.messageService.add({severity: 'success', summary: 'Record is deleted successully', detail: 'record delete'});
+        this.messageService.add({severity: 'success', summary: 'Boutique is deleted successully', detail: 'record delete'});
         this.loadAll();
       }
     );
   }
 
-  actionBoutique(id){
-    this.boutiqueService.activationAdmin(id).subscribe(
+  // Action d'activation ou desactivation d'une Boutique
+
+  actionBoutique(contentAction, event) {
+    this.modalService.open(contentAction, {size: 'lg'});
+    this.boutiqueRef = event.id;
+  }
+
+  onAction() {
+    this.boutiqueService.activationAdmin(this.boutiqueRef).subscribe(
       (res: any) => {
-        this.messageService.add({severity: 'success', summary: 'Boutique has been setting offline successully', detail: 'Boutique Offline'});
+        this.messageService.add({severity: 'success', summary: 'Boutique has change status successully', detail: 'Boutique Status changed'});
         this.loadAll();
       }
       );
   }
+
+  
   sendCode(id){
     this.boutiqueService.sendCode(id).subscribe(
       data => {

@@ -10,5 +10,10 @@ export class Microfinance {
   creationDate: string;
   secteurActivite: string;
   intitule: string;
+  devise: string;
+  userName: string;
+  userPhone: string;
+  userEmail: string;
+  status: boolean;
   user: User;
 }

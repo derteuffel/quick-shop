@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import { AuthService } from '../auth/auth.service';
+import { User } from '../models/user';
 
 
 @Injectable({
@@ -9,13 +10,24 @@ import { AuthService } from '../auth/auth.service';
 })
 export class MicrofinanceService {
 
-  private headers:any = new HttpHeaders()
-                          .set('content-type', 'application/json')
-                          .set('Authorization', 'Bearer ' + this.authService.getUserToken());
+  currentUser: User;
+  headers: HttpHeaders;
+  formHeaders: HttpHeaders;
 
   private microfinanceUrl = 'http://localhost:8181/api/microfinancements';
   constructor(private http: HttpClient,
-              private authService:AuthService) { }
+              private authService:AuthService) { 
+                this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.headers = new HttpHeaders({
+      authorization: 'Bearer ' + this.currentUser.token,
+      'Content-Type': 'application/json; charset=UTF-8'
+    });
+
+    this.formHeaders = new HttpHeaders({
+      authorization: 'Bearer ' + this.currentUser.token
+    });
+
+              }
 
 
   // recupère toute les microfinances

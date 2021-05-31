@@ -72,7 +72,7 @@
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
                       <a href="/admin/detail/boutique/{{item.id}}" class="btn btn-success m-1"><i class="pi pi-eye"></i></a>
                       <button (click)="setBoutique(contentUpdate, item)" class="btn btn-primary m-1"><i class="pi pi-pencil"></i></button>
-                      <button  (click)="actionBoutique(item.id)" class="btn btn-secondary m-1">
+                      <button  (click)="actionBoutique(contentAction, item)" class="btn btn-secondary m-1">
                         <i *ngIf="item.status" class="pi pi-check-square"></i>
                         <i *ngIf="!item.status" class="pi pi-check"></i>
                       </button>
@@ -259,5 +259,34 @@
 
 </ng-template>
 <!-------------------------------------------------------DELETE Boutique END-------------------------------------------------------------->
+
+<!-------------------------------------------------------ACTIVATE Boutique START-------------------------------------------------------------->
+<ng-template #contentAction let-modal>
+  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+    <h4 class="modal-title" style="color:whitesmoke">Confirmation pour activation!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="color: red;">Voulez vous vraiment effectuer l'operation  cette operation??&hellip;</p>
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F45B3A;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-danger"
+                (click)="onDelete() + modal.close('Close click')">Valide</button>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+<!-------------------------------------------------------ACTIVATE Boutique END-------------------------------------------------------------->
 
 

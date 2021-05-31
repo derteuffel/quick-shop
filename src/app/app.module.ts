@@ -71,6 +71,8 @@ import { ArticleComponent } from './admin/boutique/article/article.component';
 import { ArticlesComponent } from './eco/articles/articles.component';
 import { CoachingsComponent } from './eco/coachings/coachings.component';
 import { CoachingDetailComponent } from './eco/coachings/coaching-detail/coaching-detail.component';
+import { LoansComponent } from './loans/loans/loans.component';
+import { LoansDetailComponent } from './loans/loans-detail/loans-detail.component';
 
 
 
@@ -123,7 +125,9 @@ import { CoachingDetailComponent } from './eco/coachings/coaching-detail/coachin
     ArticleComponent,
     ArticlesComponent,
     CoachingsComponent,
-    CoachingDetailComponent
+    CoachingDetailComponent,
+    LoansComponent,
+    LoansDetailComponent
 
   ],
   imports: [
