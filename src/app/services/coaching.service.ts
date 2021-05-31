@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import { AuthService } from '../auth/auth.service';
 import { User } from '../models/user';
+import {API} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class CoachingService {
   currentUser: User;
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
-  
-                               
+
+
   constructor(private http: HttpClient, private authService:AuthService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.headers = new HttpHeaders({
@@ -29,7 +30,7 @@ export class CoachingService {
   }
 
   getAllCoaching(): Observable<any> {
-    return this.http.get(this.coachingUrl, {headers: this.headers});
+    return this.http.get(API.COACHINGS, {headers: this.headers});
   }
 
   getAllCoachingByUser(): Observable<any> {
@@ -37,23 +38,23 @@ export class CoachingService {
   }
 
   getCoachingById(id): Observable<any> {
-    return this.http.get(this.coachingUrl + '/' +id, {headers: this.headers});
+    return this.http.get(`${API.COACHINGS}/${id}`, {headers: this.headers});
   }
 
   getCoachingByRegion(region): Observable<any> {
-    return this.http.get(this.coachingUrl + '/' +region, {headers: this.headers});
+    return this.http.get(`${API.COACHINGS}/${region}`, {headers: this.headers});
   }
 
   saveCoaching(form): Observable<any> {
-    return this.http.post(this.coachingUrl, form, {headers: this.formHeaders});
+    return this.http.post(`${API.COACHINGS}`, form, {headers: this.formHeaders});
   }
 
   updateCoaching(form): Observable<any> {
-    return this.http.put(this.coachingUrl, form, { headers: this.headers});
+    return this.http.put(`${API.COACHINGS}`, form, { headers: this.headers});
   }
 
   deleteCoaching(id): Observable<any> {
-    return this.http.delete(this.coachingUrl + '/' +id, {headers: this.headers});
+    return this.http.delete(`${API.COACHINGS}/${id}`, {headers: this.headers});
   }
 
 }

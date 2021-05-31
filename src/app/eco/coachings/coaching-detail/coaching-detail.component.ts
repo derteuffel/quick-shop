@@ -4,6 +4,7 @@ import {CoachingService} from "../../../services/coaching.service";
 import {ProductOrder} from "../../../models/product-order.model";
 import {ShoppingCartComponent} from "../../shopping-cart/shopping-cart.component";
 import {Error} from "tslint/lib/error";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-coaching-detail',
@@ -19,6 +20,7 @@ export class CoachingDetailComponent implements OnInit {
   constructor(
               private activatedRoute: ActivatedRoute,
               private router:Router,
+              private modalService: NgbModal,
               private coachingService: CoachingService) { }
 
   ngOnInit(): void {
@@ -35,6 +37,10 @@ export class CoachingDetailComponent implements OnInit {
         console.log(Error);
       }
     );
+  }
+
+  openModalFormulaire(contentAdd)  {
+   this.modalService.open(contentAdd, {size: 'lg'});
   }
 
 }

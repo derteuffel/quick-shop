@@ -34,8 +34,8 @@ import {ArticleComponent} from "./admin/boutique/article/article.component";
 import {ArticlesComponent} from "./eco/articles/articles.component";
 import {CoachingsComponent} from "./eco/coachings/coachings.component";
 import {CoachingDetailComponent} from "./eco/coachings/coaching-detail/coaching-detail.component";
-import { LoansComponent } from './loans/loans/loans.component';
-import { LoansDetailComponent } from './loans/loans-detail/loans-detail.component';
+import {MicrofinanceComponent} from "./eco/microfinance/microfinance.component";
+import {MicrofinanceDetailComponent} from "./eco/microfinance/microfinance-detail/microfinance-detail.component";
 
 
 const routes: Routes = [
@@ -57,6 +57,11 @@ const routes: Routes = [
     path: 'ecommerce/coachings', component: CoachingsComponent
   },
 
+
+  {
+    path: 'ecommerce/microfinance', component: MicrofinanceComponent
+  },
+
   {
     path: 'admin/product/add/:id', component: AddProductComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
@@ -66,6 +71,10 @@ const routes: Routes = [
   },
   {
     path: 'ecommerce/coaching/detail/:id', component: CoachingDetailComponent
+  },
+
+  {
+    path: 'ecommerce/microfinance/detail/:id', component: MicrofinanceDetailComponent
   },
 
   {
@@ -126,14 +135,6 @@ const routes: Routes = [
   },
   {
     path: 'admin/coachings/edit/:id', component: AddBoutiqueComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
-  },
-  {
-    path: 'admin/loans', component: LoansComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
-  },
-  {
-    path: 'admin/loans/details/:id', component: LoansDetailComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {

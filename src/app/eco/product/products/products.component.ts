@@ -6,6 +6,8 @@ import {Product} from '../../../models/product.model';
 import {ProductOrders} from '../../../models/product-orders.model';
 import {CoachingService} from "../../../services/coaching.service";
 import {Coaching} from "../../../models/coaching";
+import {Microfinance} from "../../../models/microfinance";
+import {MicrofinanceService} from "../../../services/microfinance.service";
 
 @Component({
   selector: 'app-products',
@@ -26,9 +28,12 @@ export class ProductsComponent implements OnInit {
 
   coachings: Coaching[];
 
+  microfinances: Microfinance[];
+
   constructor(
               private ecommerceService: EcommerceService,
-              private coachingService: CoachingService) { }
+              private coachingService: CoachingService,
+              private microFinanceService: MicrofinanceService) { }
 
   ngOnInit(): void {
     this.productOrders = [];
@@ -36,6 +41,7 @@ export class ProductsComponent implements OnInit {
     this.loadOrders();
     this.loadAccessoriesProduct();
     this.loadCoachings();
+    this.loadMicroFinancements();
   }
 
   addToCart(order: ProductOrder) {
@@ -108,6 +114,15 @@ export class ProductsComponent implements OnInit {
       this.shoppingCartOrders = this.ecommerceService.ProductOrders;
     });
   }
+
+  loadMicroFinancements() {
+    this.microFinanceService.getAllFinance().subscribe(
+      (res: any) => {
+        this.microfinances = res;
+      }
+    )
+  }
+
 
   reset() {
     this.productOrders = [];
