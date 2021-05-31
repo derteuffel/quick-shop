@@ -36,6 +36,8 @@ import {CoachingsComponent} from "./eco/coachings/coachings.component";
 import {CoachingDetailComponent} from "./eco/coachings/coaching-detail/coaching-detail.component";
 import {MicrofinanceComponent} from "./eco/microfinance/microfinance.component";
 import {MicrofinanceDetailComponent} from "./eco/microfinance/microfinance-detail/microfinance-detail.component";
+import { LoansComponent } from './loans/loans/loans.component';
+import { LoansDetailComponent } from './loans/loans-detail/loans-detail.component';
 
 
 const routes: Routes = [
@@ -79,6 +81,14 @@ const routes: Routes = [
 
   {
     path: 'admin/product/update/:id', component: AdministrationUpdateProductComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/loans', component: LoansComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/loans/details/:id', component: LoansDetailComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
