@@ -5,6 +5,7 @@ import {ProductOrder} from '../models/product-order.model';
 import {ProductOrders} from '../models/product-orders.model';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -15,8 +16,8 @@ export class EcommerceService {
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
 
-  private productsUrl = 'http://localhost:8181/api/produits';
-  private ordersUrl = 'http://localhost:8181/api/commandes';
+  private productsUrl = environment.baseURL +  '/api/produits';
+  private ordersUrl = environment.baseURL + '/api/commandes';
 
   private productOrder: ProductOrder;
   private orders: ProductOrders = new ProductOrders();

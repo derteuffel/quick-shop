@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import {User} from "../models/user";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class SessionCoachingService {
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
 
-  private sessionCoachingUrl = 'http://localhost:8181/api/sessioncoachings';
+  private sessionCoachingUrl = environment.baseURL + '/api/sessioncoachings';
   constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.headers = new HttpHeaders({

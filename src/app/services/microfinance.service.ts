@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import { AuthService } from '../auth/auth.service';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class MicrofinanceService {
                           .set('content-type', 'application/json')
                           .set('Authorization', 'Bearer ' + this.authService.getUserToken());
 
-  private microfinanceUrl = 'http://localhost:8181/api/microfinancements';
+  private microfinanceUrl = environment.baseURL +  '/api/microfinancements';
   constructor(private http: HttpClient,
               private authService:AuthService) { }
 

@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import { AuthService } from '../auth/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoachingService {
-  private coachingUrl = 'http://localhost:8181/api/coachings';
+  private coachingUrl = environment.baseURL + '/api/coachings';
 
   private headers:any = new HttpHeaders()
                           .set('content-type', 'application/json')
