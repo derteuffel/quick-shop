@@ -28,8 +28,6 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
               <tr>
-                <th scope="col">Intitule</th>
-                <th  scope="col">Secteurd'activite</th>
                 <th scope="col">Region</th>
                 <th scope="col">Montant</th>
                 <th scope="col">Banque</th>
@@ -39,14 +37,13 @@
               </thead>
               <tbody>
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-                <td>{{item.intitule}}</td>
-                <td>{{item.secteurActivite}}</td>
+                
                 <td>{{item.region}}</td>
                 <td>{{item.amount+' '+item.devise}}</td>
                 <td> {{item.bankName}} </td>
                 <td> {{item.paymentMode}} </td>
                 <td>
-                  <a href="/admin/loans/details/{{item.id}}"  class="btn btn-success m-1" ><i class="pi pi-eye"></i></a>
+                  <button (click)="getLoans(contentDetails, item)"  class="btn btn-success m-1" ><i class="pi pi-eye"></i></button>
                   <button (click)="setCoaching(contentUpdate, item)" class="btn btn-secondary m-1"><i class="pi pi-pencil"></i></button>
                   <button  (click)="deleteCoaching(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
                 </td>
@@ -111,7 +108,7 @@
       <form [formGroup]="coachingFormGroup" (submit)="saveCoaching()">
         <div class="row">
             <div class="col-md-6">
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>Motif</label>
                 <input type="text" class="form-control"required formControlName="intitule" placeholder="Motif de versement des fonds" >
               </div>
@@ -125,7 +122,7 @@
                     <option value="Education">Education</option>
                     <option value="Industrie">Industrie</option>
                 </select>
-              </div>
+              </div> -->
               <div class="form-group">
                 <label>Banque</label>
                 <input type="text" class="form-control"  required formControlName="bankName" placeholder="Nom de la banque ou vous faite votre deposition">
@@ -193,36 +190,6 @@
   </div>
 </ng-template>
 
-<!-- Modal FORM FOR ADD COACHING SESSION -->
-
-<ng-template #addSession let-modal>
-  <div class="modal-header" style="background-color:#F45B3A;">
-    Ajouter une session
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="addCoachingSessionFurmGroup" (submit)="saveCoachingSession()">
-      <div class="form-group">
-        <label>Titre</label>
-        <input type="text" class="form-control"required formControlName="label" placeholder="titre de la session" >
-      </div>
-      <div class="form-group">
-        <label>Date de début</label>
-        <input type="date" class="form-control"required formControlName="label" placeholder="titre du service" >
-      </div>
-      <div class="form-group">
-        <label>Date de fin</label>
-        <input type="date" class="form-control"required formControlName="label" placeholder="titre du service" >
-      </div>
-      <div>
-        <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
-      </div>
-    </form>
-  </div>
-</ng-template>
-<!-- END Modal FORM FOR ADD COACHING SESSION -->
 
 <!-- MODAL  FORM FOR UPDATE COACHING -->
 
@@ -237,21 +204,6 @@
         <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label>Motif</label>
-                <input type="text" class="form-control"required formControlName="intitule" placeholder="Motif de versement des fonds" >
-              </div>
-
-              <div class="form-group">
-                <label>Secteur d'activite</label>
-                <select class="form-control" placeholder="Secteur d'activite vise" formControlName="secteurActivite">
-                    <option value="" disabled>-- Choisir un secteur d'activite --</option>
-                    <option value="Agriculture">Agriculture</option>
-                    <option value="Sante">Sante</option>
-                    <option value="Education">Education</option>
-                    <option value="Industrie">Industrie</option>
-                </select>
-              </div>
-              <div class="form-group">
                 <label>Banque</label>
                 <input type="text" class="form-control"  required formControlName="bankName" placeholder="Nom de la banque ou vous faite votre deposition">
               </div>
@@ -315,6 +267,72 @@
           </div>
         </div>
       </form>
+  </div>
+</ng-template>
+
+<!-- MODAL  DETAIL LOANS -->
+
+<ng-template #contentDetails let-modal>
+  <div class="modal-header" style="background-color:#F45B3A;">
+    <h3>Detail d'une entrer de financement</h3>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+        <div  class="card-body m-3">
+          <h5 class="card-title text-uppercase text-muted mb-0"> <span class="h2 font-weight-bold mb-0">Objet :   Entrer de fonds </span></h5>
+          <p class="mt-3 mb-0 text-muted text-xl" >
+              <span class="text-black mr-2" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp; Depositaire :</span>
+              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans.userName}}</span>
+            </p>
+            <hr>
+            <p class="mt-3 mb-0 text-muted text-xl"  >
+              <span class=" mr-2"><i class="fa fa-thumbtack"></i>&nbsp;&nbsp;&nbsp;&nbsp;Region :</span>
+              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans.region}}</span>
+            </p>
+            <hr>
+            <p class="mt-3 mb-0 text-muted text-xl"  >
+              <span class=" mr-2"><i class="fa fa-phone"></i> &nbsp;&nbsp;&nbsp;&nbsp;Téléphone depositaire :</span>
+              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans.userPhone}}</span>
+            </p>
+            <hr>
+            <p class="mt-3 mb-0 text-muted text-xl"  >
+              <span class=" mr-2"><i class="fa fa-envelop"></i> &nbsp;&nbsp;&nbsp;&nbsp;Email depositaire :</span>
+              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans.userEmail}}</span>
+            </p>
+            <hr>
+            <p class="mt-3 mb-0 text-muted text-xl"  >
+              <span class=" mr-2"><i class="fa fa-dollar-sign"></i> &nbsp;&nbsp;&nbsp;&nbsp;Montant :</span>
+              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans.amount+' '+currentLoans.devise}}</span>
+            </p> 
+            <hr>
+            <p class="mt-3 mb-0 text-muted text-xl" >
+              <span class=" mr-2" ><i class="fa fa-money-check"></i> &nbsp;&nbsp;&nbsp;&nbsp;Banque  :</span>
+              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans.bankName}}</span>
+            </p>
+            <hr>
+            <p class="mt-3 mb-0 text-muted text-xl"  >
+              <span class="mr-2"><i class="fa fa-file-invoice"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mode de paiement  :</span>
+              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans.paymentMode}}</span>
+            </p>
+            <hr>
+            <p class="mt-3 mb-0 text-muted text-xl"  >
+              <span class=" mr-2"><i class="fa fa-info"></i>&nbsp;&nbsp;&nbsp;&nbsp;Status  :</span>
+              <span *ngIf="currentLoans.status" class="badge badge-dot mr-4 text-nowrap" style="color: #F45B3A !important;"><i class="bg-success"></i> Effectuer</span>
+              <span *ngIf="!currentLoans.status" class="badge badge-dot mr-4 text-nowrap" style="color: #F45B3A !important;"><i class="bg-warning"></i> Suspendus</span>
+      
+            </p>
+        </div>
+
+        <br>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-6">
+              <button type="button" class="btn btn-warning" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
+            </div>
+          </div>
+        </div>
   </div>
 </ng-template>
 
@@ -350,32 +368,4 @@
 
 
 
-<!-------------------------------------------------------DELETE SESSION COACHING START------------------------------------------------------------>
-<ng-template #contentDeleteSession let-modal>
-  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p style="color: red;">Voulez vous vraiment supprimer cette session??&hellip;</p>
-  </div>
-  <!--<hr class="my-4" style="background-color: salmon;" />-->
-
-  <div class="modal-footer" style="background-color:#F45B3A;">
-    <div class="row">
-      <!-- <div class="col-md-4 "></div> -->
-      <div class="col-md-4 ">
-        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
-      </div> &nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="col-md-4 ">
-        <button type="button" class="btn btn-danger"
-                (click)="onDeleteSession() + modal.close('Close click')">Supprimer</button>
-      </div>
-    </div>
-  </div>
-
-</ng-template>
-<!-------------------------------------------------------DELETE SESSION COACHING END-------------------------------------------------------------->
 

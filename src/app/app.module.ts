@@ -72,7 +72,9 @@ import { ArticlesComponent } from './eco/articles/articles.component';
 import { CoachingsComponent } from './eco/coachings/coachings.component';
 import { CoachingDetailComponent } from './eco/coachings/coaching-detail/coaching-detail.component';
 import { LoansComponent } from './loans/loans/loans.component';
-import { LoansDetailComponent } from './loans/loans-detail/loans-detail.component';
+import { MicrofinanceDetailComponent } from './eco/microfinance/microfinance-detail/microfinance-detail.component';
+import { MicrofinanceComponent } from './eco/microfinance/microfinance.component';
+import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.component';
 
 
 
@@ -127,8 +129,9 @@ import { LoansDetailComponent } from './loans/loans-detail/loans-detail.componen
     CoachingsComponent,
     CoachingDetailComponent,
     LoansComponent,
-    LoansDetailComponent
-
+    MicrofinanceDetailComponent,
+    MicrofinanceComponent,
+    LoansSortantComponent
   ],
   imports: [
     BrowserModule,

@@ -37,7 +37,7 @@ import {CoachingDetailComponent} from "./eco/coachings/coaching-detail/coaching-
 import {MicrofinanceComponent} from "./eco/microfinance/microfinance.component";
 import {MicrofinanceDetailComponent} from "./eco/microfinance/microfinance-detail/microfinance-detail.component";
 import { LoansComponent } from './loans/loans/loans.component';
-import { LoansDetailComponent } from './loans/loans-detail/loans-detail.component';
+import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.component';
 
 
 const routes: Routes = [
@@ -88,7 +88,7 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
-    path: 'admin/loans/details/:id', component: LoansDetailComponent,
+    path: 'admin/loans/sortant', component: LoansSortantComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {

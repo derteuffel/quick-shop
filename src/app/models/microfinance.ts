@@ -8,8 +8,6 @@ export class Microfinance {
   amount: number;
   paymentMode: string;
   creationDate: string;
-  secteurActivite: string;
-  intitule: string;
   devise: string;
   userName: string;
   userPhone: string;

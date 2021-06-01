@@ -24,7 +24,7 @@ export class LoansComponent implements OnInit {
   public coachingFormGroup?: FormGroup;
   public coachingUpdateFormGroup?: FormGroup;
   public addCoachingSessionFurmGroup?: FormGroup;
-  public currentCoaching;
+  public currentLoans;
   public currentSession;
   constructor(              //private coachingService: CoachingService,
                             private sessionService: SessionCoachingService,
@@ -47,8 +47,6 @@ export class LoansComponent implements OnInit {
       amount:  new FormControl(''),
       bankName:  new FormControl(''),
       paymentMode:  new FormControl(''),
-      secteurActivite:  new FormControl(''),
-      intitule: new FormControl(''),
       userEmail: new FormControl(''),
       userName: new FormControl(''),
       userPhone: new FormControl(''),
@@ -61,8 +59,6 @@ export class LoansComponent implements OnInit {
       amount:  new FormControl(''),
       bankName:  new FormControl(''),
       paymentMode:  new FormControl(''),
-      secteurActivite:  new FormControl(''),
-      intitule: new FormControl(''),
       userEmail: new FormControl(''),
       userName: new FormControl(''),
       userPhone: new FormControl(''),
@@ -102,7 +98,7 @@ export class LoansComponent implements OnInit {
   setCoaching(contentUpdate, event) {
 
     this.modalService.open(contentUpdate, {size: "lg"});
-    this.currentCoaching = event;
+    this.currentLoans = event;
 
     this.coachingUpdateFormGroup.patchValue({
       id: event.id,
@@ -110,13 +106,17 @@ export class LoansComponent implements OnInit {
       amount:  event.amount,
       bankName:  event.bankName,
       paymentMode:  event.paymentMode,
-      secteurActivite:  event.secteurActivite,
-      intitule: event.intitule,
       userEmail: event.userEmail,
       userName: event.userName,
       userPhone: event.userPhone,
       devise: event.devise
     });
+  }
+
+  getLoans(contentDetails, event) {
+
+    this.modalService.open(contentDetails, {size: "lg"});
+    this.currentLoans = event;
   }
 
   updateCoaching() {
@@ -126,8 +126,6 @@ export class LoansComponent implements OnInit {
       bankName: this.coachingUpdateFormGroup.get('bankName').value,
       paymentMode: this.coachingUpdateFormGroup.get('paymentMode').value,
       region: this.coachingUpdateFormGroup.get('region').value,
-      secteurActivite: this.coachingUpdateFormGroup.get('secteurActivite').value,
-      intitule: this.coachingUpdateFormGroup.get('intitule').value,
       userEmail: this.coachingUpdateFormGroup.get('userEmail').value,
       userName: this.coachingUpdateFormGroup.get('userName').value,
       userPhone: this.coachingUpdateFormGroup.get('userPhone').value,
@@ -154,19 +152,6 @@ export class LoansComponent implements OnInit {
     this.boutiqueRef = event.id
     console.log(this.boutiqueRef);
 
-  }
-
-  // detail d'une coaching
-  getCoaching(){
-    this.microfinancementService.getFinance(this.boutiqueRef).subscribe(
-
-      data => {
-        this.currentCoaching = data;
-        console.log(data);
-      }, error => {
-        console.log(error);
-      }
-    );
   }
 
   // suppression d'une coaching
