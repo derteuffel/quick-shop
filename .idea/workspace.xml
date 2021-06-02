@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/product/products/products.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/product/products/products.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/boutique.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/boutique.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/session-coaching.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/session-coaching.service.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -24,35 +16,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="coaching-detail.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html">
+      <file leaf-file-name="products.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+            <state relative-caret-position="165">
+              <caret line="154" column="14" selection-start-line="154" selection-start-column="14" selection-end-line="154" selection-end-column="14" />
               <folding>
-                <element signature="n#style#0;n#button#0;n#article#0;n#aside#1;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="e#390#396#1" expanded="true" />
+                <element signature="e#2850#2856#1" expanded="true" />
+                <element signature="e#4924#4930#1" expanded="true" />
+                <element signature="e#5238#5244#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="microfinance-detail.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-36">
-              <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
-              <folding>
-                <element signature="n#style#0;n#button#0;n#article#0;n#aside#1;n#div#0;n#main#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="microfinance.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/models/microfinance.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="10" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -124,7 +98,6 @@
         <option value="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/articles/articles.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/articles/articles.component.scss" />
-        <option value="$PROJECT_DIR$/src/index.html" />
         <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.css" />
         <option value="$PROJECT_DIR$/src/app/eco/articles/articles.component.html" />
@@ -144,10 +117,11 @@
         <option value="$PROJECT_DIR$/src/app/header/header/header.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/product/products/products.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/index.html" />
+        <option value="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" />
       </list>
     </option>
   </component>
@@ -196,6 +170,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -226,8 +201,7 @@
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="boutique" type="462c0819:PsiDirectoryNode" />
+              <item name="eco" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
@@ -235,12 +209,21 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="eco" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="eco" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+              <item name="products" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -385,22 +368,22 @@
       <workItem from="1622268496768" duration="8530000" />
       <workItem from="1622293824538" duration="4719000" />
       <workItem from="1622364950551" duration="13386000" />
+      <workItem from="1622568880139" duration="2943000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170954000" />
+    <option name="totallyTimeSpent" value="173897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18763326" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3288889" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3288889" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958949" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3451852" />
@@ -505,11 +488,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/admin/product/administration-update-product/administration-update-product.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-761" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/product/administration-update-product/administration-update-product.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-211">
@@ -614,16 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-325">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-            <element signature="n#!!block;n#removeFromCart#0;n#ArticlesComponent#0" />
-            <element signature="n#!!block;n#getProductIndex#0;n#ArticlesComponent#0" />
-            <element signature="n#!!block;n#isProductSelected#0;n#ArticlesComponent#0" />
-            <element signature="n#!!block;n#loadProducts#0;n#ArticlesComponent#0" />
-            <element signature="n#!!block;n#loadAccessoriesProduct#0;n#ArticlesComponent#0" />
-            <element signature="n#!!block;n#loadOrders#0;n#ArticlesComponent#0" />
-            <element signature="n#!!block;n#reset#0;n#ArticlesComponent#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -631,13 +599,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="40" column="90" selection-start-line="40" selection-start-column="90" selection-end-line="40" selection-end-column="90" />
         </state>
       </provider>
     </entry>
@@ -659,9 +620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="63" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="n#div#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -669,10 +627,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" selection-start-line="28" selection-end-line="94" selection-end-column="24" />
-          <folding>
-            <element signature="n#main#0;n#!!top" />
-            <element signature="n#style#0;n#button#0;n#article#0;n#aside#1;n#div#0;n#main#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -701,13 +655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
           <caret line="107" selection-start-line="107" selection-end-line="178" selection-end-column="14" />
-          <folding>
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#ng-template#1;n#!!top" />
-            <element signature="n#ng-template#2;n#!!top" />
-            <element signature="n#ng-template#3;n#!!top" />
-            <element signature="n#ng-template#4;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -722,9 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="43" column="1" lean-forward="true" selection-start-line="8" selection-end-line="43" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -739,9 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
           <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -749,9 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="160" column="57" lean-forward="true" selection-start-line="160" selection-start-column="57" selection-end-line="160" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -790,13 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header/header.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="116" column="57" selection-start-line="116" selection-start-column="57" selection-end-line="116" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coachings.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -808,9 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -832,24 +760,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="91" selection-start-line="91" selection-end-line="121" selection-end-column="30" />
-          <folding>
-            <element signature="n#section#1;n#!!top" />
-            <element signature="n#section#2;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding>
-            <element signature="n#section#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -857,9 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -867,9 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
           <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,19 +785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#article#0;n#aside#1;n#div#0;n#main#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -927,10 +822,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+        <state relative-caret-position="186">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
           <folding>
             <element signature="n#style#0;n#button#0;n#article#0;n#aside#1;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="e#3170#3177#1" expanded="true" />
+            <element signature="e#4232#4238#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#article#0;n#aside#1;n#div#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/header/header/header.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1972">
+          <caret line="116" column="57" selection-start-line="116" selection-start-column="57" selection-end-line="116" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="154" column="14" selection-start-line="154" selection-start-column="14" selection-end-line="154" selection-end-column="14" />
+          <folding>
+            <element signature="e#390#396#1" expanded="true" />
+            <element signature="e#2850#2856#1" expanded="true" />
+            <element signature="e#4924#4930#1" expanded="true" />
+            <element signature="e#5238#5244#0" expanded="true" />
           </folding>
         </state>
       </provider>
