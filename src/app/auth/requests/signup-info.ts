@@ -1,15 +1,25 @@
 export class SignUpInfo{
-    name: string;
+    fullName: string;
+    location: string;
+    phone: string;
+    birthDate: Date;
+    secteurActivite: string;
     username: string;
     email: string;
     role: string;
     password: string;
 
-    constructor(name: string, username: string, email: string, password: string) {
-        this.name = name;
+    constructor(fullName: string, username: string, email: string,
+        location: string, phone: string, birthDate: Date, 
+        secteurActivite: string, password: string) {
+        this.fullName = fullName;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.role = 'SELLER';
+        this.location = location;
+        this.phone = phone;
+        this.birthDate = birthDate;
+        this.secteurActivite = secteurActivite;
+        this.role = 'ENTREPRENER';
     }
 }

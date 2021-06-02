@@ -163,7 +163,7 @@ const routes: Routes = [
     path: 'seller/update/boutique/:id', component: SellerUpdateBoutiqueComponent, canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'connexion', component: LoginComponent
   },
   {
     path: 'register', component: RegisterComponent
@@ -178,7 +178,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'customer-up', component: CustomerUpComponent
+    path: 'test-registration', component: CustomerUpComponent
   },
 
   {
