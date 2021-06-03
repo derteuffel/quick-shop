@@ -1,5 +1,5 @@
 <!-- Slider Area -->
-<section class="hero-slider">
+<section class="hero-slider px-2">
   <!-- Single Slider -->
   <div class="single-slider">
     <div class="container">
@@ -18,10 +18,35 @@
 <!-- Start Product Area -->
 <div class="product-area section">
   <div class="container">
+    <!-- Start Link to pages Area -->
+    <div class="row">
+      <a href="ecommerce/produits" class="btn btn-outline-warning col-12 col-lg-2 col-md-6">
+        <div class="section-title">
+          <h3 class="text-center">Tous les produits</h3>
+        </div>
+      </a>
+      <a href="ecommerce/services" class="btn btn-outline-warning col-12 col-lg-3 col-md-6">
+        <div class="section-title">
+          <h3 class="text-center">Tous les services et coachings</h3>
+        </div>
+      </a>
+      <a href="ecommerce/finances" class="btn btn-outline-warning col-12 col-lg-4 col-md-6">
+        <div class="section-title">
+          <h3 class="text-center">Trouvez vos micros-financements</h3>
+        </div>
+      </a>
+      <a href="signup" class="btn btn-outline-warning col-12 col-lg-2 col-md-6">
+        <div class="section-title">
+          <h3 class="text-center">Enregistrez-vous</h3>
+        </div>
+      </a>
+    </div>
+    <!-- End Link to pages Area -->
+    <br>&nbsp;
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h1 class="text-center">Liste de produits récents</h1>
+          <h1 class="text-center text-underline text-uppercase">Quelques produits récents</h1>
         </div>
       </div>
     </div>
@@ -34,17 +59,17 @@
             <div class="tab-pane fade show active" id="man" role="tabpanel">
               <div class="tab-single">
                 <div class="row">
-                  <div class="col-xl-3 col-lg-4 col-md-4 col-12" *ngFor="let item of productOrders">
+                  <div class="col-xl-3 col-lg-4 col-md-4 col-12" *ngFor="let item of products">
                     <div class="single-product img-wrap">
                       <div class="product-img">
-                        <a href="/ecommerce/product/detail/{{item?.product.id}}">
-                          <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                          <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                        <a href="/ecommerce/product/detail/{{item?.id}}">
+                          <img class="default-img" [src]="item.pictureUrl" alt="#">
+                          <img class="hover-img" [src]="item.pictureUrl" alt="#">
                         </a>
                         <div class="button-head">
                           <div class="product-action">
-                            <a  title="Quick View" href="/ecommerce/product/detail/{{item?.product.id}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                            <a type="button"  *ngIf="!isProductSelected(item?.product)" (click)="addToCart(item)" title="Add to cart" ><i class="fa fa-shopping-bag"></i><span>Add to cart</span>&nbsp;</a>
+                            <a  title="Quick View" href="/ecommerce/product/detail/{{item?.id}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                            <!-- <a type="button"  *ngIf="!isProductSelected(item)" (click)="addToCart(item)" title="Add to cart" ><i class="fa fa-shopping-bag"></i><span>Add to cart</span>&nbsp;</a> -->
 
                           </div>
                           <div class="product-action-2">
@@ -52,9 +77,9 @@
                         </div>
                       </div>
                       <div class="product-content">
-                        <h4 class="title"><a href="/ecommerce/product/detail/{{item?.product.id}}">{{item?.product.name}}</a></h4>
+                        <h3 class="title"><a href="/ecommerce/product/detail/{{item?.id}}">{{item?.name}}</a></h3>
                         <div class="product-price">
-                          <p class="price with-discount">FB {{item?.product.price}}</p>
+                          <p class="price with-discount">FB {{item?.price}}</p>
                           <span></span>
                         </div>
                       </div>
@@ -81,23 +106,22 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h1 class="text-center">Service d'encadrement et de coaching</h1>
+          <h1 class="text-center text-underline text-uppercase">Services d'encadrement et de Coaching</h1>
         </div>
       </div>
     </div>
+    <br>&nbsp;
     <div class="row">
       <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings">
         <!-- Start Single Blog  -->
-        <div class="shop-single-blog">
-          <a href="/ecommerce/coaching/detail/{{coaching?.id}}">
-              <img src="https://via.placeholder.com/370x300" alt="#">
-          </a>
+        <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="shop-single-blog">
+              <img [src]="coaching.logo" style="height: 300px;" alt="#">
           <div class="content">
             <p class="date">{{coaching?.startDate}}</p>
-            <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="title">{{coaching?.title}}</a>
-            <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="more-btn">{{coaching?.description}}</a>
+            <p class="title">{{coaching?.title}}</p>
+            <p class="more-btn">{{'FB '+coaching?.amount}}</p>
           </div>
-        </div>
+        </a>
         <!-- End Single Blog  -->
       </div>
     </div>
@@ -112,10 +136,11 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h1 class="text-center">Liste de Micro-financement</h1>
+          <h1 class="text-center text-underline text-uppercase">Accedez a des Micros-credits</h1>
         </div>
       </div>
     </div>
+    <br>&nbsp;
     <div class="row">
       <div class="col-lg-4 col-md-6 col-12" *ngFor="let m of microfinances">
         <!-- Start Single Blog  -->
@@ -148,7 +173,7 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h1 class="text-center">Temoignages</h1>
+          <h1 class="text-center text-underline text-uppercase">Temoignages</h1>
         </div>
       </div>
     </div>

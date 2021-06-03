@@ -30,7 +30,7 @@ export class CoachingService {
   }
 
   getAllCoaching(): Observable<any> {
-    return this.http.get(API.COACHINGS, {headers: this.headers});
+    return this.http.get(API.COACHINGS);
   }
 
   getAllCoachingByUser(): Observable<any> {
@@ -38,11 +38,11 @@ export class CoachingService {
   }
 
   getCoachingById(id): Observable<any> {
-    return this.http.get(`${API.COACHINGS}/${id}`, {headers: this.headers});
+    return this.http.get(this.coachingUrl+'/details/'+id);
   }
 
   getCoachingByRegion(region): Observable<any> {
-    return this.http.get(`${API.COACHINGS}/${region}`, {headers: this.headers});
+    return this.http.get(this.coachingUrl+'/region/'+region, {headers: this.headers});
   }
 
   saveCoaching(form): Observable<any> {

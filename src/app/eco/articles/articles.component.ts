@@ -6,6 +6,7 @@ import {ProductOrders} from "../../models/product-orders.model";
 import {EcommerceService} from "../../services/ecommerce.service";
 import {CoachingService} from "../../services/coaching.service";
 import {Coaching} from "../../models/coaching";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-articles',
@@ -24,11 +25,18 @@ export class ArticlesComponent implements OnInit {
   sub: Subscription;
   productSelected: boolean = false;
 
+  navigationParams: any = {};
+
 
   constructor(
-    private ecommerceService: EcommerceService) { }
+    private ecommerceService: EcommerceService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.navigationParams = JSON.parse(params['values']);
+    })
+    console.log(this.navigationParams);
     this.productOrders = [];
     this.loadProducts();
     this.loadOrders();

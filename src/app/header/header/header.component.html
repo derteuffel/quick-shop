@@ -30,103 +30,99 @@
   <!-- End Topbar -->
   <div class="middle-inner">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-2 col-md-2 col-12">
-          <!-- Logo -->
-          <div class="logo">
-            <a [routerLink]="['/ecommerce/home']"><img src="./assets/img/fevicon.png" alt="logo"><h3>YESB-INSPIRE</h3></a>
-          </div>
-          <!--/ End Logo -->
-          <!-- Search Form -->
-          <div class="search-top">
-            <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-            <!-- Search Form -->
-            <div class="search-top">
-              <form class="search-form">
-                <input type="text" placeholder="Rechercher ici..." name="recherche">
-                <button value="search" type="submit"><i class="ti-search"></i></button>
-              </form>
-            </div>
-            <!--/ End Search Form -->
-          </div>
-          <!--/ End Search Form -->
-          <div class="mobile-nav"></div>
-        </div>
-        <div class="col-lg-8 col-md-7 col-12">
-          <div class="search-bar-top">
-            <div class="search-bar">
-              <select>
-                <option selected="selected">Toute les catégories</option>
-                <option>watch</option>
-                <option>mobile</option>
-                <option>kid’s item</option>
-              </select>
-              <form>
-                <input name="search" placeholder="Rechercher les Produits ici....." type="search">
-                <button class="btnn"><i class="ti-search"></i></button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-12">
-          <div class="right-bar">
-            <!-- Search Form -->
-
-            <div class="sinlge-bar shopping">
-              <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
-              <!-- Shopping Item -->
-              <div class="shopping-item">
-                <div class="dropdown-cart-header">
-                  <span>2 Items</span>
-                  <a href="#">View Cart</a>
-                </div>
-
-                <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC
-                ></app-shopping-cart>
+        <div class="search-bar-top">
+            <div class="row">
+              <div class="col-md-4">
+                <button class="btn" (click)="produitFormSelected()"> <span class="badge badge-dot"><i class="bg-warning"></i>Produits</span> </button>
               </div>
-              <!--/ End Shopping Item -->
+              <div class="col-md-4">
+                <button class="btn" (click)="serviceFormSelected()"><span class="badge badge-dot"><i class="bg-warning"></i>Services/Coaching</span> </button>
+              </div>
+              <div class="col-md-4">
+                <button class="btn " (click)="financeFormSelected()"><span class="badge badge-dot"><i class="bg-warning"></i>Acces aux financements</span> </button>
+              </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+  </div>
+  <div class="middle-inner">
+    <div class="container">
+        <div class="search-bar-top">
+          <form [formGroup]="produitForm" (submit)="onProduitSearch()" *ngIf="produitSearch" class="card py-2 px-3">
+            <div class="row">
+              <div class="form-group col-md-6 col-xl-4">
+                <select formControlName="location" class="form-control" >
+                  <option value="" disabled>-- Choisir une province ou une commune --</option>
+                  <option value="">-- Listes des provinces --</option>
+                  <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+                  <option value="" disabled>-- Liste des communes --</option>
+                  <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
+                </select>
+              </div>
+              <div class="form-group col-xl-4 col-md-6">
+                <input type="text" placeholder="Nom du produit" class="form-control" formControlName="name">
+              </div>
+              <div class="form-group col-xl-1 col-md-6">
+                <input type="number" placeholder="minimum" class="form-control" formControlName="minPrice">
+              </div>
+              <div class="form-group col-xl-1 col-md-6">
+                <input type="number" placeholder="maximum" class="form-control" formControlName="maxPrice">
+              </div>
+              <div class="top-search col-xl-2 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i> </button></div>
+            </div>
+          </form>
+          <form [formGroup]="serviceForm" (submit)="onServiceSearch()" *ngIf="serviceSearch" class="card py-2 px-3">
+            <div class="row">
+              <div class="form-group col-md-6 col-xl-4">
+                <select formControlName="location" class="form-control" >
+                  <option value="" disabled>-- Choisir une province ou une commune --</option>
+                  <option value="">-- Listes des provinces --</option>
+                  <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+                  <option value="" disabled>-- Liste des communes --</option>
+                  <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
+                </select>
+              </div>
+              <div class="form-group col-xl-4 col-md-6">
+                <input type="text" placeholder="Secteur d'activite" class="form-control" formControlName="secteurActivite">
+              </div>
+              <div class="form-group col-xl-1 col-md-6">
+                <input type="number" placeholder="minimum" class="form-control" formControlName="minPrice">
+              </div>
+              <div class="form-group col-xl-1 col-md-6">
+                <input type="number" placeholder="maximum" class="form-control" formControlName="maxPrice">
+              </div>
+              <div class="top-search col-xl-2 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i> </button></div>
+            </div>
+          </form>
+          <form [formGroup]="serviceForm" (submit)="onFinanceSearch()" *ngIf="financeSearch" class="card py-2 px-3">
+            <div class="row">
+              <div class="form-group col-md-6 col-xl-4">
+                <select formControlName="location" class="form-control" >
+                  <option value="" disabled>-- Choisir une province ou une commune --</option>
+                  <option value="">-- Listes des provinces --</option>
+                  <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+                  <option value="" disabled>-- Liste des communes --</option>
+                  <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
+                </select>
+              </div>
+              <div class="form-group col-xl-4 col-md-6">
+                <input type="text" placeholder="Secteur d'activite" class="form-control" formControlName="secteurActivite">
+              </div>
+              <div class="top-search col-xl-2 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i> </button></div>
+            </div>
+          </form>
+        </div>
     </div>
   </div>
   <!-- Header Inner -->
-  <div class="header-inner">
-    <div class="container">
-      <div class="cat-nav-head">
-        <div class="row">
-          <div class="col-lg-3">
-            <div class="all-category">
-              <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
-              <ul class="main-category">
 
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-9 col-12">
-            <div class="menu-area">
-              <!-- Main Menu -->
-              <nav class="navbar navbar-expand-lg">
-                <div class="navbar-collapse">
-                  <div class="nav-inner">
-                    <ul class="nav main-menu menu navbar-nav">
-                      <li class="active"><a href="#">Accueil</a></li>
-                      <li><a  href="ecommerce/produit">Produit</a></li>
-                      <li><a href="ecommerce/coachings">Coaching</a></li>
-                      <li><a href="ecommerce/microfinance">Micro-financement</a></li>
-                      <li><a href="#">Contactez - Nous</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
-              <!--/ End Main Menu -->
-            </div>
-          </div>
+  <!-- End Topbar -->
+    <div class="container">
+        <!-- Search Form -->
+        <div class="search-top">
+          
         </div>
-      </div>
+        <!--/ End Search Form -->
     </div>
-  </div>
-  <!--/ End Header Inner -->
 </header>
 <!--/ End Header -->

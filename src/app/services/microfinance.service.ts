@@ -33,7 +33,7 @@ export class MicrofinanceService {
   // recupère toute les microfinances
 
   getAllFinance(): Observable<any> {
-    return this.http.get(this.microfinanceUrl, { headers: this.headers});
+    return this.http.get(this.microfinanceUrl);
   }
 
 
@@ -50,7 +50,7 @@ export class MicrofinanceService {
   //recupère une microfinances par son id
 
   getFinance(id): Observable<any> {
-    return this.http.get(this.microfinanceUrl + '/' + id, {headers: this.headers});
+    return this.http.get(this.microfinanceUrl + '/' + id);
   }
 
   //supprime une microfinances

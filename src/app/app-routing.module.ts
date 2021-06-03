@@ -52,11 +52,14 @@ const routes: Routes = [
   },
 
   {
-    path: 'ecommerce/produit', component: ArticlesComponent
+    path: 'ecommerce/produits', component: ArticlesComponent
+  },
+  {
+    path: 'ecommerce/produits', component: ArticlesComponent
   },
 
   {
-    path: 'ecommerce/coachings', component: CoachingsComponent
+    path: 'ecommerce/services', component: CoachingsComponent
   },
 
 

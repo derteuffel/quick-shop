@@ -26,9 +26,9 @@ export class ProductsComponent implements OnInit {
   sub: Subscription;
   productSelected: boolean = false;
 
-  coachings: Coaching[];
+  coachings: any = {};
 
-  microfinances: Microfinance[];
+  microfinances: any = {};
 
   constructor(
               private ecommerceService: EcommerceService,
@@ -38,8 +38,6 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.productOrders = [];
     this.loadProducts();
-    this.loadOrders();
-    this.loadAccessoriesProduct();
     this.loadCoachings();
     this.loadMicroFinancements();
   }
@@ -75,11 +73,9 @@ export class ProductsComponent implements OnInit {
   loadProducts() {
     this.ecommerceService.getAllProducts()
       .subscribe(
-        (products: any[]) => {
-          this.products = products;
-          this.products.forEach(product => {
-            this.productOrders.push(new ProductOrder(product, 1));
-          });
+        data => {
+          this.products = data;
+          console.log(data);
         },
         (error) => console.log(error)
       );
@@ -87,39 +83,23 @@ export class ProductsComponent implements OnInit {
 
   loadCoachings() {
     this.coachingService.getAllCoaching().subscribe(
-      (res: any) => {
-        this.coachings = res;
-      }
-    )
-  }
-
-  loadAccessoriesProduct(){
-    this.ecommerceService.getProductCategories('ACCESSOIRE').subscribe(
-      (accessories: any[]) => {
-        this.accessories = accessories;
-        this.accessories.forEach(product => {
-          this.accessoriesProduct.push(new ProductOrder(product, 1));
-        });
-        console.log(this.accessories);
+      data => {
+        this.coachings = data;
+        console.log(data);
       },
-      error => {
-        console.log(error);
-      }
+      (error) => console.log(error)
     );
   }
 
-
-  loadOrders() {
-    this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
-      this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-    });
-  }
+  
 
   loadMicroFinancements() {
     this.microFinanceService.getAllFinance().subscribe(
-      (res: any) => {
-        this.microfinances = res;
-      }
+      data => {
+        this.microfinances = data;
+        console.log(data);
+      },
+      (error) => console.log(error)
     )
   }
 
@@ -128,7 +108,6 @@ export class ProductsComponent implements OnInit {
     this.productOrders = [];
     this.loadProducts();
     this.ecommerceService.ProductOrders.productOrders = [];
-    this.loadOrders();
     this.productSelected = false;
   }
 
