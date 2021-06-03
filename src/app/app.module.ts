@@ -75,6 +75,9 @@ import { LoansComponent } from './loans/loans/loans.component';
 import { MicrofinanceDetailComponent } from './eco/microfinance/microfinance-detail/microfinance-detail.component';
 import { MicrofinanceComponent } from './eco/microfinance/microfinance.component';
 import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.component';
+import { HeaderProduitComponent } from './header/header-produit/header-produit.component';
+import { HeaderServiceComponent } from './header/header-service/header-service.component';
+import { HeaderFinanceComponent } from './header/header-finance/header-finance.component';
 
 
 
@@ -131,7 +134,10 @@ import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.compo
     LoansComponent,
     MicrofinanceDetailComponent,
     MicrofinanceComponent,
-    LoansSortantComponent
+    LoansSortantComponent,
+    HeaderProduitComponent,
+    HeaderServiceComponent,
+    HeaderFinanceComponent
   ],
   imports: [
     BrowserModule,

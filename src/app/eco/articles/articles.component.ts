@@ -37,13 +37,16 @@ export class ArticlesComponent implements OnInit {
       this.navigationParams = JSON.parse(params['values']);
     })
     console.log(this.navigationParams);
-    this.productOrders = [];
-    this.loadProducts();
-    this.loadOrders();
-    this.loadAccessoriesProduct();
+    if(this.navigationParams){
+      console.log('je suis plutot la');
+      this.loadSearchedProduit(this.navigationParams);
+    }else{
+      console.log('je suis la')
+      this.loadProducts();
+    }
   }
 
-  addToCart(order: ProductOrder) {
+  /* addToCart(order: ProductOrder) {
     this.ecommerceService.SelectedProductOrder = order;
     this.selectedProductOrder = this.ecommerceService.SelectedProductOrder;
     this.productSelected = true;
@@ -69,30 +72,24 @@ export class ArticlesComponent implements OnInit {
 
   isProductSelected(product: Product): boolean {
     return this.getProductIndex(product) > -1;
-  }
+  } */
 
   loadProducts() {
     this.ecommerceService.getAllProducts()
       .subscribe(
-        (products: any[]) => {
-          this.products = products;
-          this.products.forEach(product => {
-            this.productOrders.push(new ProductOrder(product, 1));
-          });
+        data => {
+          this.products = data;   
         },
         (error) => console.log(error)
       );
   }
 
 
-  loadAccessoriesProduct(){
-    this.ecommerceService.getProductCategories('ACCESSOIRE').subscribe(
-      (accessories: any[]) => {
-        this.accessories = accessories;
-        this.accessories.forEach(product => {
-          this.accessoriesProduct.push(new ProductOrder(product, 1));
-        });
-        console.log(this.accessories);
+  loadSearchedProduit(form){
+    this.ecommerceService.getAllProductsSearch(form).subscribe(
+      data => {
+        this.products = data;
+        console.log(data);
       },
       error => {
         console.log(error);

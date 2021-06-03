@@ -40,6 +40,8 @@ export class BoutiqueDetailComponent implements OnInit {
   measures: string[];
   //details
   public details: boolean = false;
+  provinces: string[];
+  communes: string[];
 
   productForm: FormGroup;
   public imagePath;
@@ -63,6 +65,16 @@ export class BoutiqueDetailComponent implements OnInit {
     this.measures = ['Kilogramme','Litre', 'Paire', 'Piece','Sac','Prestation']
     this.getBoutique(this.activatedRoute.snapshot.paramMap.get('id'));
     this.loadList();
+    this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bunjumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
+  'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
+    this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
+  'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
+'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
+'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
+'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
+'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
+'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
+'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
     this.initForm();
 
   }
@@ -142,6 +154,8 @@ export class BoutiqueDetailComponent implements OnInit {
       name: new FormControl(''),
       price: new FormControl(''),
       type: new FormControl(''),
+      province: new FormControl(''),
+      commune: new FormControl(''),
       measure: new FormControl(''),
       category: new FormControl(''),
       description: new FormControl(''),
@@ -177,6 +191,7 @@ export class BoutiqueDetailComponent implements OnInit {
     formData.append('price', this.productForm.get('price').value);
     formData.append('category', this.productForm.get('category').value);
     formData.append('type', this.productForm.get('type').value);
+    formData.append('localisation', this.productForm.get('province').value+', '+this.productForm.get('commune').value);
     formData.append('quantity', this.productForm.get('quantity').value);
     formData.append('description', this.productForm.get('description').value);
     formData.append('measure', this.productForm.get('measure').value);
@@ -210,6 +225,7 @@ export class BoutiqueDetailComponent implements OnInit {
       type: event.type,
       category: event.category,
       price: event.price,
+      location: event.location,
       description: event.description,
       measure: event.measure,
 
@@ -225,6 +241,7 @@ export class BoutiqueDetailComponent implements OnInit {
       type: this.productForm.get('type').value,
       category: this.productForm.get('category').value,
       price: this.productForm.get('price').value,
+      location: this.productForm.get('location').value,
       description: this.productForm.get('description').value,
       measure: this.productForm.get('measure').value,
       //pictureUrl: this.productForm.get('pictureUrl').value,
