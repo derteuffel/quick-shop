@@ -30,16 +30,19 @@
   <!-- End Topbar -->
   <div class="middle-inner">
     <div class="container">
-        <div class="search-bar-top">
-            <div class="row">
+        <div class="search-bar-top row">
+          <div class="col-md-6 col-lg-6">
+            <h1>YESB-INSPIRE</h1>
+          </div>
+            <div class="row col-md-6 col-lg-6" >
               <div class="col-md-4">
-                <button class="btn" (click)="produitFormSelected()"> <span class="badge badge-dot"><i class="bg-warning"></i>Produits</span> </button>
+                <button class="btn" (click)="produitFormSelected()"><input  type="checkbox" *ngIf="produitSearch" class="form-control-chek-box" checked id=""> <input  type="checkbox" *ngIf="!produitSearch" class="form-control-chek-box"  id=""> Produits</button>
               </div>
               <div class="col-md-4">
-                <button class="btn" (click)="serviceFormSelected()"><span class="badge badge-dot"><i class="bg-warning"></i>Services/Coaching</span> </button>
+                <button class="btn" (click)="serviceFormSelected()"><input  type="checkbox" *ngIf="serviceSearch" class="form-control-chek-box" checked id=""> <input  type="checkbox" *ngIf="!serviceSearch" class="form-control-chek-box"  id=""> Services/Coaching </button>
               </div>
               <div class="col-md-4">
-                <button class="btn " (click)="financeFormSelected()"><span class="badge badge-dot"><i class="bg-warning"></i>Acces aux financements</span> </button>
+                <button class="btn " (click)="financeFormSelected()"><input  type="checkbox" *ngIf="financeSearch" class="form-control-chek-box" checked id=""> <input  type="checkbox" *ngIf="!financeSearch" class="form-control-chek-box"  id=""> Acces aux financements </button>
               </div>
             </div>
         </div>
@@ -62,13 +65,7 @@
               <div class="form-group col-xl-4 col-md-6">
                 <input type="text" placeholder="Nom du produit" class="form-control" formControlName="name">
               </div>
-              <div class="form-group col-xl-1 col-md-6">
-                <input type="number" placeholder="minimum" class="form-control" formControlName="minPrice">
-              </div>
-              <div class="form-group col-xl-1 col-md-6">
-                <input type="number" placeholder="maximum" class="form-control" formControlName="maxPrice">
-              </div>
-              <div class="top-search col-xl-2 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i> </button></div>
+              <div class="top-search col-xl-2 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i> &nbsp; Rechercher</button></div>
             </div>
           </form>
           <form [formGroup]="serviceForm" (submit)="onServiceSearch()" *ngIf="serviceSearch" class="card py-2 px-3">
@@ -85,13 +82,7 @@
               <div class="form-group col-xl-4 col-md-6">
                 <input type="text" placeholder="Secteur d'activite" class="form-control" formControlName="secteurActivite">
               </div>
-              <div class="form-group col-xl-1 col-md-6">
-                <input type="number" placeholder="minimum" class="form-control" formControlName="minPrice">
-              </div>
-              <div class="form-group col-xl-1 col-md-6">
-                <input type="number" placeholder="maximum" class="form-control" formControlName="maxPrice">
-              </div>
-              <div class="top-search col-xl-2 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i> </button></div>
+              <div class="top-search col-xl-2 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i>&nbsp; Rechercher </button></div>
             </div>
           </form>
           <form [formGroup]="serviceForm" (submit)="onFinanceSearch()" *ngIf="financeSearch" class="card py-2 px-3">
@@ -108,7 +99,7 @@
               <div class="form-group col-xl-4 col-md-6">
                 <input type="text" placeholder="Secteur d'activite" class="form-control" formControlName="secteurActivite">
               </div>
-              <div class="top-search col-xl-2 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i> </button></div>
+              <div class="top-search col-xl-2 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i> &nbsp; Rechercher</button></div>
             </div>
           </form>
         </div>

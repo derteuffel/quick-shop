@@ -50,6 +50,7 @@ export class EcommerceService {
   }
 
   getAllProductsSearch(form): Observable<any>  {
+    console.log(form);
     return this.http.post(`${API.PRODUITS}/all`, form);
   }
 

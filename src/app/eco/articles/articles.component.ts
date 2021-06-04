@@ -37,14 +37,22 @@ export class ArticlesComponent implements OnInit {
       this.navigationParams = JSON.parse(params['values']);
     })
     console.log(this.navigationParams);
-    if(this.navigationParams){
-      console.log('je suis plutot la');
-      this.loadSearchedProduit(this.navigationParams);
-    }else{
+    if(this.isEmpty(this.navigationParams)){
       console.log('je suis la')
       this.loadProducts();
+    }else{ 
+      console.log('je suis plutot la');
+      this.loadSearchedProduit(this.navigationParams);
     }
   }
+
+ isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 
   /* addToCart(order: ProductOrder) {
     this.ecommerceService.SelectedProductOrder = order;
@@ -78,7 +86,8 @@ export class ArticlesComponent implements OnInit {
     this.ecommerceService.getAllProducts()
       .subscribe(
         data => {
-          this.products = data;   
+          this.products = data; 
+          console.log(data);  
         },
         (error) => console.log(error)
       );
