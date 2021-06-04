@@ -10,7 +10,7 @@
           <div class="card mx-4">
             <div class="card-body p-4">
               <form name="form" (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                <h1 class="text-center">Page d'inscription d'un entrepreneur</h1>
+                <h1 class="text-center">Page d'enregistrement d'un entrepreneur/fournisseur</h1>
                 <p class="text-muted">Créer votre compte</p>
                 <div class="form-group">
                   <label class="text-muted">Nom complet :</label>
@@ -34,6 +34,19 @@
                   <div *ngIf="f.submitted && email.invalid">
                     <div *ngIf="email.errors.required">Entrer une adresse email</div>
                     <div *ngIf="email.errors.email">Entrer une addresse email valide</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Mot de passe:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" placeholder="Votre Mot de passe" required  />
+                  <div *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors.required">Entrer un mote de passe</div>
+                    <div *ngIf="password.errors.password">Entrer un mot de passe valide</div>
                   </div>
                 </div>
               </div>
@@ -64,14 +77,17 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="text-muted">Representation :</label>
+                <label class="text-muted">Localisation (Selectionner votre province et votre commune en maintenant la touche ctrl appuyee) :</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
                   </div>
-                  <select name="location" class="form-control" [(ngModel)]="form.location" #location="ngModel" id="">
+                  <select name="location" multiple class="form-control" [(ngModel)]="form.location" #location="ngModel" id="">
                     <option value="" disabled>-- Choisissez une representation --</option>
-                    <option *ngFor="let item of locations" value="{{item}}">{{item}}</option>
+                    <option value="" disabled>-- Liste des Provinces --</option>
+                    <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
+                    <option value="" disabled>-- Liste des Communes --</option>
+                    <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
                   </select>
                   
                   <div *ngIf="f.submitted && secteurActivite.invalid">
@@ -86,7 +102,7 @@
                     <span class="input-group-text"><i class="fa fa-vector-square"></i></span>
                   </div>
                   <select name="secteurActivite" pla class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
-                    <option value="" disabled>-- Choisissez un secteur d'activite --</option>
+                    <option value="" disabled>-- Choisissez un type d'activite --</option>
                     <option *ngFor="let item of activites" value="{{item}}">{{item}}</option>
                   </select>
                   

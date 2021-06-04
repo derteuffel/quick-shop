@@ -40,6 +40,7 @@ import { LoansComponent } from './loans/loans/loans.component';
 import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.component';
 import { ArticlesSearchComponent } from './eco/articles-search/articles-search.component';
 import { CoachingsSearchComponent } from './eco/coachings-search/coachings-search.component';
+import { HomeComponent } from './auth/home/home.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,14 @@ const routes: Routes = [
   },
   {
     path: 'ecommerce/services/search', component: CoachingsSearchComponent
+  },
+
+  {
+    path: 'ecommerce/register/home', component: HomeComponent
+  },
+
+  {
+    path: 'ecommerce/register/entreprener', component: SingupComponent
   },
 
 

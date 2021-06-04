@@ -80,6 +80,7 @@ import { HeaderServiceComponent } from './header/header-service/header-service.c
 import { HeaderFinanceComponent } from './header/header-finance/header-finance.component';
 import { ArticlesSearchComponent } from './eco/articles-search/articles-search.component';
 import { CoachingsSearchComponent } from './eco/coachings-search/coachings-search.component';
+import { HomeComponent } from './auth/home/home.component';
 
 
 
@@ -141,7 +142,8 @@ import { CoachingsSearchComponent } from './eco/coachings-search/coachings-searc
     HeaderProduitComponent,
     HeaderServiceComponent,
     HeaderFinanceComponent,
-    ArticlesSearchComponent
+    ArticlesSearchComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
