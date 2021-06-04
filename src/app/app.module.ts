@@ -78,6 +78,8 @@ import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.compo
 import { HeaderProduitComponent } from './header/header-produit/header-produit.component';
 import { HeaderServiceComponent } from './header/header-service/header-service.component';
 import { HeaderFinanceComponent } from './header/header-finance/header-finance.component';
+import { ArticlesSearchComponent } from './eco/articles-search/articles-search.component';
+import { CoachingsSearchComponent } from './eco/coachings-search/coachings-search.component';
 
 
 
@@ -130,6 +132,7 @@ import { HeaderFinanceComponent } from './header/header-finance/header-finance.c
     ArticleComponent,
     ArticlesComponent,
     CoachingsComponent,
+    CoachingsSearchComponent,
     CoachingDetailComponent,
     LoansComponent,
     MicrofinanceDetailComponent,
@@ -137,7 +140,8 @@ import { HeaderFinanceComponent } from './header/header-finance/header-finance.c
     LoansSortantComponent,
     HeaderProduitComponent,
     HeaderServiceComponent,
-    HeaderFinanceComponent
+    HeaderFinanceComponent,
+    ArticlesSearchComponent
   ],
   imports: [
     BrowserModule,

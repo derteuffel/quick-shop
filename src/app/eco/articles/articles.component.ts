@@ -16,11 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ArticlesComponent implements OnInit {
 
 
-  productOrders: ProductOrder[] = [];
+  
   products: Product[] = [];
-  accessories: Product[] = [];
-  accessoriesProduct: ProductOrder[] = [];
-  selectedProductOrder: ProductOrder;
   private shoppingCartOrders: ProductOrders;
   sub: Subscription;
   productSelected: boolean = false;
@@ -33,17 +30,7 @@ export class ArticlesComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.navigationParams = JSON.parse(params['values']);
-    })
-    console.log(this.navigationParams);
-    if(this.isEmpty(this.navigationParams)){
-      console.log('je suis la')
-      this.loadProducts();
-    }else{ 
-      console.log('je suis plutot la');
-      this.loadSearchedProduit(this.navigationParams);
-    }
+    this.loadProducts();
   }
 
  isEmpty(obj) {
@@ -87,6 +74,7 @@ export class ArticlesComponent implements OnInit {
       .subscribe(
         data => {
           this.products = data; 
+        
           console.log(data);  
         },
         (error) => console.log(error)
@@ -94,30 +82,9 @@ export class ArticlesComponent implements OnInit {
   }
 
 
-  loadSearchedProduit(form){
-    this.ecommerceService.getAllProductsSearch(form).subscribe(
-      data => {
-        this.products = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
-
   loadOrders() {
     this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
       this.shoppingCartOrders = this.ecommerceService.ProductOrders;
     });
-  }
-
-  reset() {
-    this.productOrders = [];
-    this.loadProducts();
-    this.ecommerceService.ProductOrders.productOrders = [];
-    this.loadOrders();
-    this.productSelected = false;
   }
 }

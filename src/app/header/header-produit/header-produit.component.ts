@@ -1,3 +1,4 @@
+import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
@@ -34,39 +35,37 @@ this.init();
   init(){
     this.produitForm = new FormGroup({
       location: new FormControl(''),
-      name: new FormControl(''),
-      minPrice: new FormControl(''),
-      maxPrice: new FormControl('')
+      name: new FormControl('')
     });
   }
 
   clear(){
     this.produitForm = new FormGroup({
       location: new FormControl(''),
-      name: new FormControl(''),
-      minPrice: new FormControl(''),
-      maxPrice: new FormControl('')
+      name: new FormControl('')
     });
   }
 
   onProduitSearch(){
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.navigationParams = JSON.parse(params['values']);
-    });
+     
     const produitNavigationExtras: NavigationExtras = {
       queryParams: {
         'values':JSON.stringify(this.produitForm.value)
       }
     };
-    console.log(this.produitForm.value);
-    console.log(this.navigationParams.location+'je suis la');
-    if(this.navigationParams !== null){
+    
       
-      this.router.navigateByUrl('ecommerce/produits');
+      this.router.navigate(['/ecommerce/produits/search'], produitNavigationExtras );
       this.clear();
-      this.router.navigate(['/ecommerce/produits'], produitNavigationExtras);
-    }
-    window.location.reload();
+    
   }
+
+  isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 
 }

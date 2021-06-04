@@ -38,6 +38,8 @@ import {MicrofinanceComponent} from "./eco/microfinance/microfinance.component";
 import {MicrofinanceDetailComponent} from "./eco/microfinance/microfinance-detail/microfinance-detail.component";
 import { LoansComponent } from './loans/loans/loans.component';
 import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.component';
+import { ArticlesSearchComponent } from './eco/articles-search/articles-search.component';
+import { CoachingsSearchComponent } from './eco/coachings-search/coachings-search.component';
 
 
 const routes: Routes = [
@@ -55,11 +57,14 @@ const routes: Routes = [
     path: 'ecommerce/produits', component: ArticlesComponent
   },
   {
-    path: 'ecommerce/produits', component: ArticlesComponent
+    path: 'ecommerce/produits/search', component: ArticlesSearchComponent
   },
 
   {
     path: 'ecommerce/services', component: CoachingsComponent
+  },
+  {
+    path: 'ecommerce/services/search', component: CoachingsSearchComponent
   },
 
 

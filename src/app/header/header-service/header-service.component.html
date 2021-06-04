@@ -1,1 +1,72 @@
-<p>header-service works!</p>
+<!-- Header -->
+<header class="header shop">
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-md-12 col-12">
+            <!-- Top Left -->
+            <div class="top-left">
+              <ul class="list-main">
+                <li><i class="ti-headphone-alt"></i> +243 976940074/819472760</li>
+                <li><i class="ti-email"></i> support@yesbinspire.com</li>
+              </ul>
+            </div>
+            <!--/ End Top Left -->
+          </div>
+          <div class="col-lg-7 col-md-12 col-12">
+            <!-- Top Right -->
+            <div class="right-content">
+              <ul class="list-main">
+                <!-- <li><i class="ti-power-off"></i><a href="signup">Inscription</a></li> -->
+                <li><i class="ti-power-off"></i><a href="connexion">Connexion</a></li>
+              </ul>
+            </div>
+            <!-- End Top Right -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Topbar -->
+    <div class="middle-inner">
+      <div class="container">
+          <div class="search-bar-top row">
+              <div class="col-md-6 col-lg-3">
+                <a href="/" class="btn"> <h1>YESB-INSPIRE</h1> </a>
+                </div>
+            <form [formGroup]="serviceForm" (submit)="onServiceSearch()"  class="card py-2 px-3 col-md-6 col-lg-9">
+              <div class="row">
+                <div class="form-group col-md-6 col-xl-4">
+                  <select formControlName="location" class="form-control" >
+                    <option value="" disabled>-- Choisir une province ou une commune --</option>
+                    <option value="">-- Listes des provinces --</option>
+                    <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+                    <option value="" disabled>-- Liste des communes --</option>
+                    <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
+                  </select>
+                </div>
+                <div class="form-group col-xl-5 col-md-6">
+                    <select formControlName="name" class="form-control" >
+                        <option value="" disabled>-- Choisir un type de service --</option>
+                        <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
+                      </select>
+                </div>
+                <div class="top-search col-xl-3 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i>&nbsp; Rechercher </button></div>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+    <!-- Header Inner -->
+  
+    <!-- End Topbar -->
+      <div class="container">
+          <!-- Search Form -->
+          <div class="search-top">
+            
+          </div>
+          <!--/ End Search Form -->
+      </div>
+  </header>
+  <!--/ End Header -->
+  
