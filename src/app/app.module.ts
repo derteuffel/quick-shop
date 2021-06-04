@@ -60,10 +60,7 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {ConfirmationService, SharedModule} from "primeng/api";
 import {SidebarModule} from "primeng/sidebar";
 import {ModalModule} from "ngx-bootstrap/modal";
-import { SinginComponent } from './auth/singin/singin.component';
 import { SingupComponent } from './auth/singup/singup.component';
-import { CustomerUpComponent } from './auth/customer-up/customer-up.component';
-import { CustomerInComponent } from './auth/customer-in/customer-in.component';
 import { TestComponent } from './test/test/test.component';
 import {AdminFooterComponent} from "./admin/admin-footer/admin-footer.component";
 import {AdminSidebarComponent} from "./admin/admin-sidebar/admin-sidebar.component";
@@ -81,6 +78,9 @@ import { HeaderFinanceComponent } from './header/header-finance/header-finance.c
 import { ArticlesSearchComponent } from './eco/articles-search/articles-search.component';
 import { CoachingsSearchComponent } from './eco/coachings-search/coachings-search.component';
 import { HomeComponent } from './auth/home/home.component';
+import { SingupTrainnerComponent } from './auth/singup-trainner/singup-trainner.component';
+import { SingupClientComponent } from './auth/singup-client/singup-client.component';
+import { SingupInvesterComponent } from './auth/singup-invester/singup-invester.component';
 
 
 
@@ -123,10 +123,10 @@ import { HomeComponent } from './auth/home/home.component';
     AdminNavbarComponent,
     AddCoachingComponent,
     DetailsCoachingComponent,
-    SinginComponent,
+    SingupTrainnerComponent,
     SingupComponent,
-    CustomerUpComponent,
-    CustomerInComponent,
+    SingupClientComponent,
+    SingupInvesterComponent,
     TestComponent,
     AdminFooterComponent,
     AdminSidebarComponent,

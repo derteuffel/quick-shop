@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Role} from "../../models/role";
 import {AuthService} from "../auth.service";
-import {SignUpInfo} from "../requests/signup-info";
+import {Router} from "@angular/router";
+import {AuthLoginInfo} from "../requests/login-info";
+import { SignUpInfo } from '../requests/signup-info';
 
 @Component({
-  selector: 'app-singup',
-  templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.scss']
+  selector: 'app-singup-trainner',
+  templateUrl: './singup-trainner.component.html',
+  styleUrls: ['./singup-trainner.component.scss']
 })
-export class SingupComponent implements OnInit {
+export class SingupTrainnerComponent implements OnInit {
 
   form: any = {};
   signupInfo: SignUpInfo;
@@ -18,7 +20,8 @@ export class SingupComponent implements OnInit {
   provinces: string[];
   communes: string[];
   activites: string[];
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
@@ -34,7 +37,6 @@ export class SingupComponent implements OnInit {
 'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
   }
 
-
   onSubmit() {
     console.log(this.form);
 
@@ -47,7 +49,7 @@ export class SingupComponent implements OnInit {
       this.form.phone,
       this.form.birthDate,
       this.form.secteurActivite,
-      'ENTREPRENER');
+      'TRAINNER');
 
     this.authService.signUp(this.signupInfo).subscribe(
       data => {
@@ -63,5 +65,4 @@ export class SingupComponent implements OnInit {
       }
     );
   }
-
 }

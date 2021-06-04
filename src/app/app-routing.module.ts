@@ -27,9 +27,6 @@ import {CoachingComponent} from './coachings/coaching/coaching.component';
 import {AddCoachingComponent} from './coachings/coaching/add-coaching/add-coaching.component';
 import {DetailsCoachingComponent} from './coachings/coaching/details-coaching/details-coaching.component';
 import {SingupComponent} from "./auth/singup/singup.component";
-import {SinginComponent} from "./auth/singin/singin.component";
-import {CustomerUpComponent} from "./auth/customer-up/customer-up.component";
-import {CustomerInComponent} from "./auth/customer-in/customer-in.component";
 import {ArticleComponent} from "./admin/boutique/article/article.component";
 import {ArticlesComponent} from "./eco/articles/articles.component";
 import {CoachingsComponent} from "./eco/coachings/coachings.component";
@@ -41,6 +38,9 @@ import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.compo
 import { ArticlesSearchComponent } from './eco/articles-search/articles-search.component';
 import { CoachingsSearchComponent } from './eco/coachings-search/coachings-search.component';
 import { HomeComponent } from './auth/home/home.component';
+import { SingupTrainnerComponent } from './auth/singup-trainner/singup-trainner.component';
+import { SingupClientComponent } from './auth/singup-client/singup-client.component';
+import { SingupInvesterComponent } from './auth/singup-invester/singup-invester.component';
 
 
 const routes: Routes = [
@@ -74,6 +74,9 @@ const routes: Routes = [
 
   {
     path: 'ecommerce/register/entreprener', component: SingupComponent
+  },
+  {
+    path: 'ecommerce/register/coaching', component: SingupTrainnerComponent
   },
 
 
@@ -191,15 +194,10 @@ const routes: Routes = [
   },
 
   {
-    path: 'signin', component: SinginComponent
+    path: 'ecommerce/register/client', component: SingupClientComponent
   },
-
   {
-    path: 'test-registration', component: CustomerUpComponent
-  },
-
-  {
-    path: 'customer-in', component: CustomerInComponent
+    path: 'ecommerce/register/inveter', component: SingupInvesterComponent
   },
 
   {

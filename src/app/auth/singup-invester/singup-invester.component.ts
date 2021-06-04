@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import {AuthService} from "../auth.service";
-import {SignUpInfo} from "../requests/signup-info";
+import {AuthLoginInfo} from "../requests/login-info";
+import {Router} from "@angular/router";
+import {Role} from "../../models/role";
+import { SignUpInfo } from '../requests/signup-info';
 
 @Component({
-  selector: 'app-singup',
-  templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.scss']
+  selector: 'app-singup-invester',
+  templateUrl: './singup-invester.component.html',
+  styleUrls: ['./singup-invester.component.scss']
 })
-export class SingupComponent implements OnInit {
+export class SingupInvesterComponent implements OnInit {
 
   form: any = {};
   signupInfo: SignUpInfo;
@@ -18,7 +20,8 @@ export class SingupComponent implements OnInit {
   provinces: string[];
   communes: string[];
   activites: string[];
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
@@ -32,24 +35,13 @@ export class SingupComponent implements OnInit {
 'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
 'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
 'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
+ 
   }
-
-
+  
   onSubmit() {
     console.log(this.form);
 
-    this.signupInfo = new SignUpInfo(
-      this.form.fullName,
-      this.form.email,
-      this.form.email,
-      this.form.password,
-      this.form.location[0]+', '+this.form.location[1],
-      this.form.phone,
-      this.form.birthDate,
-      this.form.secteurActivite,
-      'ENTREPRENER');
-
-    this.authService.signUp(this.signupInfo).subscribe(
+    this.authService.signUp(this.form).subscribe(
       data => {
         console.log(data);
         //this.isSignedUp = true;
@@ -62,6 +54,10 @@ export class SingupComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+  }
+
+  reloadPage() {
+    this.router.navigateByUrl('/ecommerce/home');
   }
 
 }

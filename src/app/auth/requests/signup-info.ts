@@ -11,7 +11,7 @@ export class SignUpInfo{
 
     constructor(fullName: string, username: string, email: string,
         location: string, phone: string, birthDate: Date, 
-        secteurActivite: string, password: string) {
+        secteurActivite: string, password: string, role: string) {
         this.fullName = fullName;
         this.username = username;
         this.email = email;

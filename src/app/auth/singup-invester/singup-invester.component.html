@@ -13,7 +13,7 @@
           <div class="card mx-4">
             <div class="card-body p-4">
               <form name="form" (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                <h3 class="text-center">Page d'enregistrement d'un entrepreneur/fournisseur</h3>
+                <h3 class="text-center">Page d'enregistrement d'un Investisseur</h3>
                 <p class="text-muted"><a href="/ecommerce/register/home"><i class="fa fa-long-arrow-left"></i>&nbsp; Retour </a> &nbsp; ou Créer votre compte </p>
                 <div class="form-group">
                   <label class="text-muted">Nom complet :</label>
@@ -40,32 +40,8 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="text-muted">Mot de passe:</label>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                  </div>
-                  <input type="text" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" placeholder="Votre Mot de passe" required  />
-                  <div *ngIf="f.submitted && password.invalid">
-                    <div *ngIf="password.errors.required">Entrer un mote de passe</div>
-                    <div *ngIf="password.errors.password">Entrer un mot de passe valide</div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="text-muted">Date de naissance :</label>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                  </div>
-                  <input type="date" class="form-control" name="birthDay" [(ngModel)]="form.birthDay" placeholder="Date de naissance" #birthDay="ngModel"
-                         required minlength="6" />
-                  <div *ngIf="f.submitted && birthDay.invalid">
-                    <div *ngIf="birthDay.errors.required">Vous devez entrer une date de naissance</div>
-                  </div>
-                </div>
-              </div>
+            
+              
               <div class="form-group">
                 <label class="text-muted">Numero de telephone :</label>
                 <div class="input-group mb-3">
@@ -79,41 +55,32 @@
                   </div>
                 </div>
               </div>
+
               <div class="form-group">
-                <label class="text-muted">Localisation (Selectionner votre province et votre commune en maintenant la touche ctrl appuyee) :</label>
+                <label class="text-muted">Numero de la Carte Nationale d'Identite:</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
                   </div>
-                  <select name="location" multiple class="form-control" [(ngModel)]="form.location" #location="ngModel" id="">
-                    <option value="" disabled>-- Choisissez une representation --</option>
-                    <option value="" disabled>-- Liste des Provinces --</option>
-                    <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
-                    <option value="" disabled>-- Liste des Communes --</option>
-                    <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
-                  </select>
-                  
-                  <div *ngIf="f.submitted && secteurActivite.invalid">
-                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer un secteur d'activite</div>
+                  <input type="text" class="form-control" name="idNumber" [(ngModel)]="form.idNumber" placeholder="Numero de la carte nationale d'identite" #idNumber="ngModel"
+                         required minlength="6" />
+                  <div *ngIf="f.submitted && idNumber.invalid">
+                    <div *ngIf="idNumber.errors.required">Vous devez entrer un numero de votre CNI</div>
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="text-muted">Secteur d'activite :</label>
+
+              <!-- <div class="form-group">
+                <label class="text-muted">Contrat (Veuillez telecharger le contrat a la page d'accueil et le remplir):</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-vector-square"></i></span>
+                    <span class="input-group-text"><i class="fa fa-book"></i></span>
                   </div>
-                  <select name="secteurActivite" pla class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
-                    <option value="" disabled>-- Choisissez un type d'activite --</option>
-                    <option *ngFor="let item of activites" value="{{item}}">{{item}}</option>
-                  </select>
-                  
-                  <div *ngIf="f.submitted && secteurActivite.invalid">
-                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer un secteur d'activite</div>
-                  </div>
+                  <input type="file" class="form-control" name="contract" 
+                          />
                 </div>
-              </div>
+              </div> -->
+              
 
                 <button type="submit" class="btn btn-block btn-primary" style="background-color:#F7941D !important;">Enregistre</button>
                 <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
