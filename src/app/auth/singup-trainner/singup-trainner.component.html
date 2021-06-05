@@ -46,7 +46,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
                   </div>
-                  <input type="text" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" placeholder="Votre Mot de passe" required  />
+                  <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" placeholder="Votre Mot de passe" required  />
                   <div *ngIf="f.submitted && password.invalid">
                     <div *ngIf="password.errors.required">Entrer un mote de passe</div>
                     <div *ngIf="password.errors.password">Entrer un mot de passe valide</div>

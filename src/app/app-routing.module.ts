@@ -197,7 +197,7 @@ const routes: Routes = [
     path: 'ecommerce/register/client', component: SingupClientComponent
   },
   {
-    path: 'ecommerce/register/inveter', component: SingupInvesterComponent
+    path: 'ecommerce/register/invester', component: SingupInvesterComponent
   },
 
   {

@@ -48,13 +48,17 @@ export class SingupTrainnerComponent implements OnInit {
       this.form.location[0]+', '+this.form.location[1],
       this.form.phone,
       this.form.birthDate,
+      '',
       this.form.secteurActivite,
-      'TRAINNER');
+      'TRAINNER',
+      '');
 
     this.authService.signUp(this.signupInfo).subscribe(
       data => {
         console.log(data);
-        //this.isSignedUp = true;
+        this.isSignedUp = true;
+        this.errorMessage = "Enregistrement fait avec succes, vueillez-vous connecter";
+        window.location.reload();
         //this.isSignUpFailed = false;
         //this.router.navigateByUrl('login');
       },

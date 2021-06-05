@@ -46,13 +46,17 @@ export class SingupComponent implements OnInit {
       this.form.location[0]+', '+this.form.location[1],
       this.form.phone,
       this.form.birthDate,
+      '',
       this.form.secteurActivite,
-      'ENTREPRENER');
+      'ENTREPRENER',
+      '');
 
     this.authService.signUp(this.signupInfo).subscribe(
       data => {
         console.log(data);
-        //this.isSignedUp = true;
+        this.isSignedUp = true;
+        this.errorMessage = "Vous avez ete ajouter avec succes, vueillez vou connecter";
+        window.location.reload();
         //this.isSignUpFailed = false;
         //this.router.navigateByUrl('login');
       },

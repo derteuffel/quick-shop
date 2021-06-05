@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { any } from 'codelyzer/util/function';
 import { Subscription } from 'rxjs';
 import { ProductOrder } from '../../../models/product-order.model';
@@ -25,7 +27,10 @@ export class DetailProductComponent implements OnInit {
   private shoppingCartOrders: ProductOrders;
   orderFinished = false;
 
-  constructor(private ecommerceService: EcommerceService, private activatedRoute: ActivatedRoute, private router:Router) { }
+  orderForm: FormGroup;
+
+  constructor(private ecommerceService: EcommerceService, private activatedRoute: ActivatedRoute, 
+    private router:Router,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
@@ -38,11 +43,11 @@ export class DetailProductComponent implements OnInit {
     });
   }
   getProduct(id): void{
-    this.ecommerceService.getProduct(id).subscribe(
+    this.ecommerceService.getProductFree(id).subscribe(
         data => {
           this.currentProduct = data;
           console.log(data);
-          this.productOrder.push(new ProductOrder(this.currentProduct,1));
+          //this.productOrder.push(new ProductOrder(this.currentProduct,1));
         },
         error => {
           console.log(Error);
@@ -50,12 +55,22 @@ export class DetailProductComponent implements OnInit {
     );
   }
 
-  addToCart(order: ProductOrder) {
-    this.ecommerceService.SelectedProductOrder = order;
-    this.selectedProductOrder = this.ecommerceService.SelectedProductOrder;
-    this.productSelected = true;
-    console.log(this.selectedProductOrder);
-    console.log("i selected item");
+  initForm(){
+    this.orderForm = new FormGroup({
+      name: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+      quantity: new FormControl(''),
+      paymentMode: new FormControl('')
+    });
+  }
+  openModalFormulaire(contentAdd)  {
+    this.modalService.open(contentAdd, {size: 'lg'});
+   }
+
+  addToCart(contentAdd, event) {
+    this.modalService.open(contentAdd, {size: 'lg'});
+    this.currentProduct = event
   }
   removeFromCart(productOrder: ProductOrder) {
     let index = this.getProductIndex(productOrder.product);

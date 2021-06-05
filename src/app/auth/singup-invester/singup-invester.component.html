@@ -33,7 +33,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">@</span>
                   </div>
-                  <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" placeholder="Votre adresse email" required email />
+                  <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" placeholder="Votre adresse email" required  />
                   <div *ngIf="f.submitted && email.invalid">
                     <div *ngIf="email.errors.required">Entrer une adresse email</div>
                     <div *ngIf="email.errors.email">Entrer une addresse email valide</div>
@@ -70,24 +70,88 @@
                 </div>
               </div>
 
-              <!-- <div class="form-group">
-                <label class="text-muted">Contrat (Veuillez telecharger le contrat a la page d'accueil et le remplir):</label>
+              <div class="form-group">
+                <label class="text-muted">Montant de versement:</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-book"></i></span>
+                    <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
                   </div>
-                  <input type="file" class="form-control" name="contract" 
-                          />
+                  <input type="text" class="form-control" name="amount" [(ngModel)]="form.amount" placeholder="Montant de placement" #amount="ngModel"
+                         required  />
+                  <div *ngIf="f.submitted && amount.invalid">
+                    <div *ngIf="amount.errors.required">Vous devez entrer un montant</div>
+                  </div>
                 </div>
-              </div> -->
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Devise de versement:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
+                  </div>
+                  <select name="devise" class="form-control" required id="" [(ngModel)]="form.devise" #devise="ngModel">
+                    <option value="">-- Choisissez une devise --</option>
+                    <option value="US Dollars">US Dollars</option>
+                    <option value="Franc Burundais">Franc Burundais</option>
+                  </select>
+                  
+                  <div *ngIf="f.submitted && devise.invalid">
+                    <div *ngIf="devise.errors.required">Vous devez entrer une devise</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="text-muted">Methode de Paiement:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-money-bill"></i></span>
+                  </div>
+                  <select name="method" required class="form-control" id="" [(ngModel)]="form.method" #method="ngModel">
+                    <option value="">-- Choisissez une des methodes de Paiement --</option>
+                    <option value="VB">Virement bancaire</option>
+                    <option value="MM">Mobile money</option>
+                    <option value="CASH">Liquide(cash)</option>
+                  </select>
+                  
+                  <div *ngIf="f.submitted && method.invalid">
+                    <div *ngIf="method.errors.required">Vous devez entrer une method de Paiement</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="text-muted">Duree du placement:(NB: la durre du placement est definie en nombre de mois)</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-clock"></i></span>
+                  </div>
+                  <input type="number" class="form-control" name="duration" [(ngModel)]="form.duration" placeholder="Duree du placement" #duration="ngModel"
+                         required  />
+
+                      
+                  <div *ngIf="f.submitted && duration.invalid">
+                    <div *ngIf="duration.errors.required">Vous devez entrer une duree souhaite pour votre placement</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Conditions d'utilisation</label>
+                <div class="input-group mb-3">
+                  
+                         <input type="checkbox" class="form-control" name="terms" (click)="accept()"
+                         required  />
+                </div>
+              </div>
               
 
-                <button type="submit" class="btn btn-block btn-primary" style="background-color:#F7941D !important;">Enregistre</button>
-                <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                <button type="submit" class="btn btn-block btn-primary" style="background-color:#F7941D !important;" *ngIf="isChecked" >Enregistre</button>
+                <button type="submit" class="btn btn-block btn-primary" style="background-color:#F7941D !important;" *ngIf="!isChecked" disabled>Enregistre</button>
+                <!-- <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
                   Inscription echouer!<br/>{{errorMessage}}
                 </div>
                 <p>Deja un compte?</p>
-                <a href="login" class="btn btn-primary" style="background-color:#F7941D !important;">Connectez-vous</a>
+                <a href="login" class="btn btn-primary" style="background-color:#F7941D !important;">Connectez-vous</a> -->
               </form>
             </div>
 

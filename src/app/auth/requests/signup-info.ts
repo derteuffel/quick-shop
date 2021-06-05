@@ -8,10 +8,12 @@ export class SignUpInfo{
     email: string;
     role: string;
     password: string;
+    idNumber: string;
+    interest: string;
 
     constructor(fullName: string, username: string, email: string,
-        location: string, phone: string, birthDate: Date, 
-        secteurActivite: string, password: string, role: string) {
+        location: string, phone: string, birthDate: Date, idNumber: string,
+        secteurActivite: string, password: string, role: string, interest: string) {
         this.fullName = fullName;
         this.username = username;
         this.email = email;
@@ -20,6 +22,8 @@ export class SignUpInfo{
         this.phone = phone;
         this.birthDate = birthDate;
         this.secteurActivite = secteurActivite;
-        this.role = 'ENTREPRENER';
+        this.role = role;
+        this.idNumber = idNumber;
+        this.interest = interest;
     }
 }

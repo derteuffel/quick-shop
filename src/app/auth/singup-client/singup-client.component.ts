@@ -38,11 +38,24 @@ export class SingupClientComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form);
-
-    this.authService.signUp(this.form).subscribe(
+    this.signupInfo = new SignUpInfo(
+      this.form.fullName,
+      this.form.email,
+      this.form.email,
+      this.form.password,
+      this.form.location[0]+', '+this.form.location[1],
+      this.form.phone,
+      this.form.birthDate,
+      this.form.idNumber,
+      this.form.secteurActivite,
+      'CLIENT',
+      this.form.interest);
+    this.authService.signUp(this.signupInfo).subscribe(
       data => {
         console.log(data);
-        //this.isSignedUp = true;
+        this.isSignedUp = true;
+        this.errorMessage = 'Enregistrer avec succes, vueillez-vous connecter';
+        window.location.reload();
         //this.isSignUpFailed = false;
         //this.router.navigateByUrl('login');
       },

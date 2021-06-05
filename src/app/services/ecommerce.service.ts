@@ -150,6 +150,10 @@ export class EcommerceService {
     return this.http.get(`${API.PRODUITS}/admin/${id}`,{headers: this.headers});
   }
 
+  getProductFree(id): Observable<any> {
+    return this.http.get(`${API.PRODUITS}/all/${id}`);
+  }
+
   updatePicture(imageForm, id): Observable<any> {
     return this.http.post(`${API.PRODUITS}/admin/upload/${id}`, imageForm, {headers: this.formHeaders});
   }

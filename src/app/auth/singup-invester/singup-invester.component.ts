@@ -4,6 +4,8 @@ import {AuthLoginInfo} from "../requests/login-info";
 import {Router} from "@angular/router";
 import {Role} from "../../models/role";
 import { SignUpInfo } from '../requests/signup-info';
+import { CustomerInfo } from '../requests/customer-info';
+import { MicrofinanceService } from 'src/app/services/microfinance.service';
 
 @Component({
   selector: 'app-singup-invester',
@@ -13,14 +15,15 @@ import { SignUpInfo } from '../requests/signup-info';
 export class SingupInvesterComponent implements OnInit {
 
   form: any = {};
-  signupInfo: SignUpInfo;
+  signupInfo: CustomerInfo;
   isSignedUp = false;
   isSignUpFailed = false;
+  isChecked= false;
   errorMessage = '';
   provinces: string[];
   communes: string[];
   activites: string[];
-  constructor(private authService: AuthService,
+  constructor(private financeService: MicrofinanceService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -41,10 +44,28 @@ export class SingupInvesterComponent implements OnInit {
   onSubmit() {
     console.log(this.form);
 
-    this.authService.signUp(this.form).subscribe(
+    this.signupInfo = new CustomerInfo(
+      this.form.fullName,
+      this.form.email,
+      '',
+      this.form.phone,
+      this.form.devise,
+      this.form.idNumber,
+      this.form.amount,
+      this.form.method);
+    this.financeService.saveFinance(this.signupInfo).subscribe(
       data => {
         console.log(data);
-        //this.isSignedUp = true;
+        this.isSignedUp = true;
+        if(this.signupInfo.paymentMethod === 'VB'){
+          console.log('Vous serez rediriger vers votre espace de paiement bancaire');
+        }else if(this.signupInfo.paymentMethod === 'MM'){
+          console.log('vous serez rediriger vers votre espace de payement mobile');
+        }else{
+          console.log('faite un versement de la somme preciser contre un recue de verification');
+        }
+        this.errorMessage = 'Votre requete a ete soumise avec succes, vous serrez redirige vers votre page de paiement';
+        window.location.reload();
         //this.isSignUpFailed = false;
         //this.router.navigateByUrl('login');
       },
@@ -54,6 +75,15 @@ export class SingupInvesterComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+  }
+
+  accept(){
+    if(this.isChecked === false){
+      this.isChecked = true;
+    }else{
+      this.isChecked = false;
+    }
+    
   }
 
   reloadPage() {
