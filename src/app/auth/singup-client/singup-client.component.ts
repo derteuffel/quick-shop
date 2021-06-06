@@ -43,7 +43,7 @@ export class SingupClientComponent implements OnInit {
       this.form.email,
       this.form.email,
       this.form.password,
-      this.form.location[0]+', '+this.form.location[1],
+      this.form.province+', '+this.form.commune,
       this.form.phone,
       this.form.birthDate,
       this.form.idNumber,

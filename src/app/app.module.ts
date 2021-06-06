@@ -81,6 +81,7 @@ import { HomeComponent } from './auth/home/home.component';
 import { SingupTrainnerComponent } from './auth/singup-trainner/singup-trainner.component';
 import { SingupClientComponent } from './auth/singup-client/singup-client.component';
 import { SingupInvesterComponent } from './auth/singup-invester/singup-invester.component';
+import { SingupLoansComponent } from './auth/singup-loans/singup-loans.component';
 
 
 
@@ -143,7 +144,8 @@ import { SingupInvesterComponent } from './auth/singup-invester/singup-invester.
     HeaderServiceComponent,
     HeaderFinanceComponent,
     ArticlesSearchComponent,
-    HomeComponent
+    HomeComponent,
+    SingupLoansComponent
   ],
   imports: [
     BrowserModule,

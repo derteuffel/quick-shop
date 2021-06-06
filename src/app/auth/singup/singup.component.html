@@ -1,13 +1,9 @@
-<span></span><br>
-<span></span><br>
+<app-header></app-header>
 <span></span><br>
 <span></span><br>
 <div class="app-body card mx-5 py-5" >
   <main class="main d-flex align-items-center">
     <div class="container">
-      <div class="card-profile text-center">
-        <a href="/"><img src="assets/images/15.png" style="width: 300px;height: 100px;" alt=""></a>
-      </div>
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div class="card mx-4">
@@ -80,21 +76,36 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="text-muted">Localisation (Selectionner votre province et votre commune en maintenant la touche ctrl appuyee) :</label>
+                <label class="text-muted">Province :</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
                   </div>
-                  <select name="location" multiple class="form-control" [(ngModel)]="form.location" #location="ngModel" id="">
+                  <select name="province"  class="form-control" [(ngModel)]="form.province" #province="ngModel" id="">
                     <option value="" disabled>-- Choisissez une representation --</option>
                     <option value="" disabled>-- Liste des Provinces --</option>
                     <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
+                  </select>
+                  
+                  <div *ngIf="f.submitted && secteurActivite.invalid">
+                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer une province</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">communes :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                  </div>
+                  <select name="commune"  class="form-control" [(ngModel)]="form.commune" #commune="ngModel" id="">
+                    <option value="" disabled>-- Choisissez une representation --</option>
                     <option value="" disabled>-- Liste des Communes --</option>
                     <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
                   </select>
                   
                   <div *ngIf="f.submitted && secteurActivite.invalid">
-                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer un secteur d'activite</div>
+                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer une commune</div>
                   </div>
                 </div>
               </div>

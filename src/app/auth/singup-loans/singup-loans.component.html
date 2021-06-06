@@ -9,7 +9,7 @@
           <div class="card mx-4">
             <div class="card-body p-4">
               <form name="form" (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                <h3 class="text-center">Page d'enregistrement d'un Investisseur</h3>
+                <h3 class="text-center">Page d'enregistrement pour demandeur de Micros-credits</h3>
                 <p class="text-muted"><a href="/ecommerce/register/home"><i class="fa fa-long-arrow-left"></i>&nbsp; Retour </a> &nbsp; ou Créer votre compte </p>
                 <div class="form-group">
                   <label class="text-muted">Nom complet :</label>
@@ -29,15 +29,39 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">@</span>
                   </div>
-                  <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" placeholder="Votre adresse email" required  />
+                  <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" placeholder="Votre adresse email" required email />
                   <div *ngIf="f.submitted && email.invalid">
                     <div *ngIf="email.errors.required">Entrer une adresse email</div>
                     <div *ngIf="email.errors.email">Entrer une addresse email valide</div>
                   </div>
                 </div>
               </div>
-            
-              
+              <div class="form-group">
+                <label class="text-muted">Mot de passe:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" placeholder="Votre Mot de passe" required  />
+                  <div *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors.required">Entrer un mote de passe</div>
+                    <div *ngIf="password.errors.password">Entrer un mot de passe valide</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Date de naissance :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                  </div>
+                  <input type="date" class="form-control" name="birthDay" [(ngModel)]="form.birthDay" placeholder="Date de naissance" #birthDay="ngModel"
+                         required minlength="6" />
+                  <div *ngIf="f.submitted && birthDay.invalid">
+                    <div *ngIf="birthDay.errors.required">Vous devez entrer une date de naissance</div>
+                  </div>
+                </div>
+              </div>
               <div class="form-group">
                 <label class="text-muted">Numero de telephone :</label>
                 <div class="input-group mb-3">
@@ -51,7 +75,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-group">
                 <label class="text-muted">Numero de la Carte Nationale d'Identite:</label>
                 <div class="input-group mb-3">
@@ -65,96 +88,62 @@
                   </div>
                 </div>
               </div>
-
               <div class="form-group">
-                <label class="text-muted">Montant de versement:</label>
+                <label class="text-muted">Province  :</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
+                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
                   </div>
-                  <input type="text" class="form-control" name="amount" [(ngModel)]="form.amount" placeholder="Montant de placement" #amount="ngModel"
-                         required  />
-                  <div *ngIf="f.submitted && amount.invalid">
-                    <div *ngIf="amount.errors.required">Vous devez entrer un montant</div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="text-muted">Devise de versement:</label>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
-                  </div>
-                  <select name="devise" class="form-control" required id="" [(ngModel)]="form.devise" #devise="ngModel">
-                    <option value="">-- Choisissez une devise --</option>
-                    <option value="US Dollars">US Dollars</option>
-                    <option value="Franc Burundais">Franc Burundais</option>
+                  <select name="province" class="form-control" [(ngModel)]="form.province" #province="ngModel" id="">
+                    <option value="" disabled>-- Choisissez une representation --</option>
+                    <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
                   </select>
                   
-                  <div *ngIf="f.submitted && devise.invalid">
-                    <div *ngIf="devise.errors.required">Vous devez entrer une devise</div>
+                  <div *ngIf="f.submitted && province.invalid">
+                    <div *ngIf="province.errors.required">Vous devez entrer une province</div>
                   </div>
                 </div>
               </div>
-
               <div class="form-group">
-                <label class="text-muted">Methode de Paiement:</label>
+                <label class="text-muted">Commune  :</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-money-bill"></i></span>
+                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
                   </div>
-                  <select name="method" required class="form-control" id="" [(ngModel)]="form.method" #method="ngModel">
-                    <option value="">-- Choisissez une des methodes de Paiement --</option>
-                    <option value="VB">Virement bancaire</option>
-                    <option value="MM">Mobile money</option>
-                    <option value="CASH">Liquide(cash)</option>
+                  <select name="commune" class="form-control" [(ngModel)]="form.commune" #commune="ngModel" id="">
+                    <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
+                    <option value="" disabled>-- Liste des Communes --</option>
+                    <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
                   </select>
                   
-                  <div *ngIf="f.submitted && method.invalid">
-                    <div *ngIf="method.errors.required">Vous devez entrer une method de Paiement</div>
+                  <div *ngIf="f.submitted && commune.invalid">
+                    <div *ngIf="commune.errors.required">Vous devez entrer une commune</div>
                   </div>
                 </div>
               </div>
-
               <div class="form-group">
-                <label class="text-muted">Duree du placement:(NB: la durre du placement est definie en nombre de mois)</label>
+                <label class="text-muted">Secteur d'activite :</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-clock"></i></span>
+                    <span class="input-group-text"><i class="fa fa-vector-square"></i></span>
                   </div>
-                    <select name="duration" required class="form-control" id="" [(ngModel)]="form.duration" #duration="ngModel">
-                          <option value="">-- Choisissez une duree d'investissement --</option>
-                          <option value="3">3 mois</option>
-                          <option value="6">6 mois</option>
-                          <option value="9">9 mois</option>
-                          <option value="12">12 mois</option>
-                          <option value="15">15 mois</option>
-                          <option value="18">18 mois</option>
-                      </select>
-
-                      
-                  <div *ngIf="f.submitted && duration.invalid">
-                    <div *ngIf="duration.errors.required">Vous devez entrer une duree souhaite pour votre placement</div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="text-muted">Conditions d'utilisation</label>
-                <div class="input-group mb-3">
+                  <select name="secteurActivite" pla class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
+                    <option value="" disabled>-- Choisissez un type d'activite --</option>
+                    <option *ngFor="let item of activites" value="{{item}}">{{item}}</option>
+                  </select>
                   
-                         <input type="checkbox" class="form-control" name="terms" (click)="accept()"
-                         required  />
+                  <div *ngIf="f.submitted && secteurActivite.invalid">
+                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer un secteur d'activite</div>
+                  </div>
                 </div>
               </div>
-              
 
-                <button type="submit" class="btn btn-block btn-primary" style="background-color:#F7941D !important;" *ngIf="isChecked" >Enregistre</button>
-                <button type="submit" class="btn btn-block btn-primary" style="background-color:#F7941D !important;" *ngIf="!isChecked" disabled>Enregistre</button>
-                <!-- <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                <button type="submit" class="btn btn-block btn-primary" style="background-color:#F7941D !important;">Enregistre</button>
+                <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
                   Inscription echouer!<br/>{{errorMessage}}
                 </div>
                 <p>Deja un compte?</p>
-                <a href="login" class="btn btn-primary" style="background-color:#F7941D !important;">Connectez-vous</a> -->
+                <a href="connexion" class="btn btn-primary" style="background-color:#F7941D !important;">Connectez-vous</a>
               </form>
             </div>
 

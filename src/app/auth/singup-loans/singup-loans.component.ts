@@ -6,11 +6,11 @@ import {AuthLoginInfo} from "../requests/login-info";
 import { SignUpInfo } from '../requests/signup-info';
 
 @Component({
-  selector: 'app-singup-trainner',
-  templateUrl: './singup-trainner.component.html',
-  styleUrls: ['./singup-trainner.component.scss']
+  selector: 'app-singup-loans',
+  templateUrl: './singup-loans.component.html',
+  styleUrls: ['./singup-loans.component.scss']
 })
-export class SingupTrainnerComponent implements OnInit {
+export class SingupLoansComponent implements OnInit {
 
   form: any = {};
   signupInfo: SignUpInfo;
@@ -48,9 +48,9 @@ export class SingupTrainnerComponent implements OnInit {
       this.form.province+', '+this.form.commune,
       this.form.phone,
       this.form.birthDate,
-      '',
+      this.form.idNumber,
       this.form.secteurActivite,
-      'TRAINNER',
+      'LOANS',
       '');
 
     this.authService.signUp(this.signupInfo).subscribe(

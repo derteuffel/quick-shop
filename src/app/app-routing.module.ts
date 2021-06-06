@@ -41,6 +41,7 @@ import { HomeComponent } from './auth/home/home.component';
 import { SingupTrainnerComponent } from './auth/singup-trainner/singup-trainner.component';
 import { SingupClientComponent } from './auth/singup-client/singup-client.component';
 import { SingupInvesterComponent } from './auth/singup-invester/singup-invester.component';
+import { SingupLoansComponent } from './auth/singup-loans/singup-loans.component';
 
 
 const routes: Routes = [
@@ -77,6 +78,9 @@ const routes: Routes = [
   },
   {
     path: 'ecommerce/register/coaching', component: SingupTrainnerComponent
+  },
+  {
+    path: 'ecommerce/register/loans', component: SingupLoansComponent
   },
 
 
