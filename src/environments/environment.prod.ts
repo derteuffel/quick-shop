@@ -3,7 +3,7 @@ export const environment = {
 };
 
 
-const url = 'http://localhost:8181/';
+const url = 'http://144.91.75.89:8181/';
 
 export const API = {
 
