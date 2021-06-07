@@ -13,9 +13,6 @@ import {BoutiqueDetailComponent} from "./admin/boutique/boutique-detail/boutique
 import {UpdateBoutiqueComponent} from "./admin/boutique/update-boutique/update-boutique.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./auth/register/register.component";
-import {CoachingComponent} from './coachings/coaching/coaching.component';
-import {AddCoachingComponent} from './coachings/coaching/add-coaching/add-coaching.component';
-import {DetailsCoachingComponent} from './coachings/coaching/details-coaching/details-coaching.component';
 import {SingupComponent} from "./auth/singup/singup.component";
 import {ArticleComponent} from "./admin/boutique/article/article.component";
 import {ArticlesComponent} from "./eco/articles/articles.component";

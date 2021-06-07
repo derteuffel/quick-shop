@@ -33,13 +33,9 @@ import {ToastModule} from 'primeng/toast';
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { CoachingComponent } from './coachings/coaching/coaching.component';
-import { CoachingSessionComponent } from './coachings/coaching-session/coaching-session.component';
 import {RouterModule} from '@angular/router';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
 import {CardModule} from "primeng/card";
-import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
-import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DialogModule} from "primeng/dialog";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
@@ -95,11 +91,7 @@ import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-ro
     UnauthorizedComponent,
     NotFoundComponent,
     LoginSuccessComponent,
-    CoachingComponent,
-    CoachingSessionComponent,
     AdminNavbarComponent,
-    AddCoachingComponent,
-    DetailsCoachingComponent,
     SingupTrainnerComponent,
     SingupComponent,
     SingupClientComponent,
