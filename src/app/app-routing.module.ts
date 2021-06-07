@@ -34,6 +34,8 @@ import { SingupInvesterComponent } from './auth/singup-invester/singup-invester.
 import { SingupLoansComponent } from './auth/singup-loans/singup-loans.component';
 import { AdminRootHome } from './admin/admin-root-home/admin-root-home.component';
 import { AdminRootProductComponent } from './admin/admin-root-product/admin-root-product.component';
+import { AdminRootCoachingsComponent } from './admin/admin-root-coachings/coaching/admin-root-coachings.component';
+import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-root-coaching.component';
 
 
 const routes: Routes = [
@@ -138,13 +140,13 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },*/
   {
-    path: 'admin/coachings', component: CoachingComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+    path: 'admin/coachings', component: AdminRootCoachingsComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.TRAINNER]}
   },
   
   {
-    path: 'admin/coachings/details/:id', component: DetailsCoachingComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+    path: 'admin/coachings/details/:id', component: AdminRootCoachingComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER]}
   },
   /* 
   {

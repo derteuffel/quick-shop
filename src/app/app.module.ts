@@ -70,6 +70,8 @@ import { SingupInvesterComponent } from './auth/singup-invester/singup-invester.
 import { SingupLoansComponent } from './auth/singup-loans/singup-loans.component';
 import { AdminRootHome } from './admin/admin-root-home/admin-root-home.component';
 import { AdminRootProductComponent } from './admin/admin-root-product/admin-root-product.component';
+import { AdminRootCoachingsComponent } from './admin/admin-root-coachings/coaching/admin-root-coachings.component';
+import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-root-coaching.component';
 
 
 
@@ -121,7 +123,9 @@ import { AdminRootProductComponent } from './admin/admin-root-product/admin-root
     HomeComponent,
     SingupLoansComponent,
     AdminRootHome,
-    AdminRootProductComponent
+    AdminRootProductComponent,
+    AdminRootCoachingsComponent,
+    AdminRootCoachingComponent
   ],
   imports: [
     BrowserModule,
