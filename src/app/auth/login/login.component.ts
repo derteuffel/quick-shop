@@ -22,17 +22,14 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    if (this.authService.currentUserValue){
-      this.router.navigateByUrl('login/success');
-    }
+    
   }
   onSubmit() {
     console.log(this.form);
-
     this.loginInfo = new AuthLoginInfo(
       this.form.username,
-      this.form.password);
-
+      this.form.password
+    )
     this.authService.login(this.loginInfo).subscribe(
 
       data => {
@@ -40,16 +37,11 @@ export class LoginComponent implements OnInit {
         console.log(data);
         const type = data.type;
         if (typeof type === 'undefined'){
-
           this.isLoginFailed = false;
           this.isLoggedIn = true;
           localStorage.setItem('id', this.authService.currentUserValue.id + '');
           this.role = this.authService.currentUserValue.role;
-          if (this.role === Role.ADMIN){
-            this.router.navigateByUrl('/admin/boutiques');
-          } else{
-            this.router.navigateByUrl('/admin/home');
-          }
+          this.router.navigateByUrl('admin/home');
           console.log(this.role);
         }
 

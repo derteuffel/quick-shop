@@ -18,6 +18,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User>;
 
   private authUrl = 'http://localhost:8181/api/auth';
+  private testUrl = 'http://localhost:8181/api/account';
 
   username: string;
 
@@ -31,13 +32,15 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  logout(): Observable<any> {
-    return this.http.post(this.authUrl + '/logout', {}).pipe(
-      map(response => {
+  logout() {
+    console.log('je suis la');
+    //return this.http.post(this.authUrl + '/logout',{}).pipe(
+      //map(response => {
+        console.log('je suis aussi la');
         localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
-      })
-    );
+        //this.currentUserSubject.next(null);
+     // })
+   // );
   }
 
   reloadPage() {
@@ -51,11 +54,10 @@ export class AuthService {
     }, httpOptions);
   } */
 
-  login(user): Observable<any> {
-    const header = new HttpHeaders(user ? {
-      authorization: 'Basic ' + btoa(user.username + ':' + user.password)
-    } : {});
-    return this.http.get<any>(this.authUrl + '/login', {headers: header}).pipe(
+  login(form): Observable<any> {
+    
+    console.log(form);
+    return this.http.post<any>(this.authUrl + '/login', form).pipe(
       map(response => {
         if (response){
           localStorage.setItem('currentUser', JSON.stringify(response));

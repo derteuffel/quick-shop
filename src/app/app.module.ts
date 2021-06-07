@@ -82,6 +82,8 @@ import { SingupTrainnerComponent } from './auth/singup-trainner/singup-trainner.
 import { SingupClientComponent } from './auth/singup-client/singup-client.component';
 import { SingupInvesterComponent } from './auth/singup-invester/singup-invester.component';
 import { SingupLoansComponent } from './auth/singup-loans/singup-loans.component';
+import { AdminRootHome } from './admin/admin-root-home/admin-root-home.component';
+import { AdminRootProductComponent } from './admin/admin-root-product/admin-root-product.component';
 
 
 
@@ -145,7 +147,9 @@ import { SingupLoansComponent } from './auth/singup-loans/singup-loans.component
     HeaderFinanceComponent,
     ArticlesSearchComponent,
     HomeComponent,
-    SingupLoansComponent
+    SingupLoansComponent,
+    AdminRootHome,
+    AdminRootProductComponent
   ],
   imports: [
     BrowserModule,

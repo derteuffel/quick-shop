@@ -132,7 +132,7 @@ export class ArticleComponent implements OnInit {
   }
 
   onBack(){
-    this.router.navigateByUrl('admin/detail/boutique/'+this.currentProduct.boutique.id);
+    this.router.navigateByUrl('admin/home');
   }
 
   closeDialogForm() {

@@ -66,6 +66,10 @@ export class EcommerceService {
     return this.http.get(`${API.PRODUITS}/boutique/${id}`, {headers: this.headers});
   }
 
+  getAllProductsByUser(): Observable<any> {
+    return this.http.get(`${API.PRODUITS}/admin/user`, {headers: this.headers});
+  }
+
   getProductGenre(genre): Observable<any> {
     return this.http.get(`${API.PRODUITS}/all/${genre}`);
   }
@@ -127,8 +131,8 @@ export class EcommerceService {
   }
 
 
-  saveProduct(form, id): Observable<any>  {
-    return this.http.post(`${API.PRODUITS}/admin/${id}`, form, {headers: this.formHeaders});
+  saveProduct(form): Observable<any>  {
+    return this.http.post(`${API.PRODUITS}/admin`, form, {headers: this.formHeaders});
   }
 
   saveUpdate(form, id): Observable<any>  {
@@ -147,7 +151,7 @@ export class EcommerceService {
   }
 
   getProduct(id): Observable<any> {
-    return this.http.get(`${API.PRODUITS}/admin/${id}`,{headers: this.headers});
+    return this.http.get(`${API.PRODUITS}/all/${id}`);
   }
 
   getProductFree(id): Observable<any> {

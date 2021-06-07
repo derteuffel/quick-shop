@@ -24,16 +24,10 @@ export class AdminHeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout().subscribe(
-      data => {
+    this.authService.logout();
         
         console.log('you are now offline');
-        this.router.navigateByUrl('/login');
-      },
-      error => {
-        console.log(error);
-      }
-    );
+        this.router.navigateByUrl('/connexion');
     
   }
 
