@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CoachingService} from "../../../services/coaching.service";
 import {ProductOrder} from "../../../models/product-order.model";
-import {ShoppingCartComponent} from "../../shopping-cart/shopping-cart.component";
 import {Error} from "tslint/lib/error";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import { FormControl, FormGroup } from '@angular/forms';

@@ -1,7 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ProductsComponent} from '../../eco/product/products/products.component';
-import {ShoppingCartComponent} from '../../eco/shopping-cart/shopping-cart.component';
-import {OrdersComponent} from '../../eco/orders/orders.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 
@@ -20,13 +18,6 @@ export class HeaderComponent implements OnInit {
 
   provinces: string [];
   communes: string [];
-
-  @ViewChild('shoppingCartC')
-  shoppingCartC: ShoppingCartComponent;
-
-  @ViewChild('ordersC')
-  ordersC: OrdersComponent;
-
   produitForm: FormGroup;
   serviceForm: FormGroup;
   financeForm: FormGroup;
@@ -69,8 +60,6 @@ this.init();
   reset() {
     this.orderFinished = false;
     this.productsC.reset();
-    this.shoppingCartC.reset();
-    this.ordersC.paid = false;
   }
 
   init(){

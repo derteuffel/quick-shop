@@ -4,9 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EcommerceComponent } from './eco/ecommerce/ecommerce.component';
-import { OrdersComponent } from './eco/orders/orders.component';
 import { ProductsComponent } from './eco/product/products/products.component';
-import { ShoppingCartComponent } from './eco/shopping-cart/shopping-cart.component';
 import { HeaderComponent } from './header/header/header.component';
 import { FooterComponent } from './footer/footer/footer.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -27,15 +25,6 @@ import { BoutiqueDetailComponent } from './admin/boutique/boutique-detail/boutiq
 import { UpdateBoutiqueComponent } from './admin/boutique/update-boutique/update-boutique.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { SellerAddBoutiqueComponent } from './seller/boutique/seller-add-boutique/seller-add-boutique.component';
-import { SellerAddProductComponent } from './seller/product/seller-add-product/seller-add-product.component';
-import { SellerBoutiqueDetailComponent } from './seller/boutique/seller-boutique-detail/seller-boutique-detail.component';
-import { SellerBoutiqueListComponent } from './seller/boutique/selle-boutique-list/seller-boutique-list.component';
-import { SellerCommandeComponent } from './seller/commande/seller-commande/seller-commande.component';
-import { SellerDetailProductComponent } from './seller/product/seller-detail-product/seller-detail-product.component';
-import { SellerHeaderComponent } from './seller/seller-header/seller-header.component';
-import { SellerUpdateBoutiqueComponent } from './seller/boutique/seller-update-boutique/seller-update-boutique.component';
-import { SellerUpdateProductComponent } from './seller/product/seller-update-product/seller-update-product.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginSuccessComponent } from './auth/login-success/login-success.component';
@@ -91,9 +80,7 @@ import { AdminRootProductComponent } from './admin/admin-root-product/admin-root
   declarations: [
     AppComponent,
     EcommerceComponent,
-    OrdersComponent,
     ProductsComponent,
-    ShoppingCartComponent,
     HeaderComponent,
     FooterComponent,
     AdministrationComponent,
@@ -102,15 +89,6 @@ import { AdminRootProductComponent } from './admin/admin-root-product/admin-root
     DetailProductComponent,
     AdministrationDetailProductComponent,
     AdministrationUpdateProductComponent,
-    SellerAddBoutiqueComponent,
-    SellerAddProductComponent,
-    SellerBoutiqueDetailComponent,
-    SellerBoutiqueListComponent,
-    SellerCommandeComponent,
-    SellerDetailProductComponent,
-    SellerHeaderComponent,
-    SellerUpdateBoutiqueComponent,
-    SellerUpdateProductComponent,
     CommandeComponent,
     BoutiqueComponent,
     AddBoutiqueComponent,

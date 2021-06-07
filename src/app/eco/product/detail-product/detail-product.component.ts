@@ -8,7 +8,6 @@ import { ProductOrder } from '../../../models/product-order.model';
 import { ProductOrders } from '../../../models/product-orders.model';
 import { Product } from '../../../models/product.model';
 import { EcommerceService } from '../../../services/ecommerce.service';
-import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart.component';
 
 @Component({
   selector: 'app-detail-product',
@@ -17,8 +16,7 @@ import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart.compone
 })
 export class DetailProductComponent implements OnInit {
 
-  @ViewChild('shoppingCartC')
-  shoppingCartC: ShoppingCartComponent;
+  
   currentProduct: any;
   productOrder: ProductOrder[] = [] ;
   sub: Subscription;

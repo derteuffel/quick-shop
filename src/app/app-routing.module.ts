@@ -9,20 +9,12 @@ import {DetailProductComponent} from "./eco/product/detail-product/detail-produc
 
 import {AdministrationUpdateProductComponent} from "./admin/product/administration-update-product/administration-update-product.component";
 import {CommandeComponent} from "./admin/commande/commande/commande.component";
-import {SellerAddProductComponent} from "./seller/product/seller-add-product/seller-add-product.component";
-import {SellerDetailProductComponent} from "./seller/product/seller-detail-product/seller-detail-product.component";
-import {SellerUpdateProductComponent} from "./seller/product/seller-update-product/seller-update-product.component";
 import {BoutiqueComponent} from "./admin/boutique/boutique/boutique.component";
 import {AddBoutiqueComponent} from "./admin/boutique/add-boutique/add-boutique.component";
 import {BoutiqueDetailComponent} from "./admin/boutique/boutique-detail/boutique-detail.component";
 import {UpdateBoutiqueComponent} from "./admin/boutique/update-boutique/update-boutique.component";
-import {SellerBoutiqueListComponent} from "./seller/boutique/selle-boutique-list/seller-boutique-list.component";
-import {SellerAddBoutiqueComponent} from "./seller/boutique/seller-add-boutique/seller-add-boutique.component";
-import {SellerBoutiqueDetailComponent} from "./seller/boutique/seller-boutique-detail/seller-boutique-detail.component";
-import {SellerUpdateBoutiqueComponent} from "./seller/boutique/seller-update-boutique/seller-update-boutique.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./auth/register/register.component";
-import {SellerCommandeComponent} from "./seller/commande/seller-commande/seller-commande.component";
 import {CoachingComponent} from './coachings/coaching/coaching.component';
 import {AddCoachingComponent} from './coachings/coaching/add-coaching/add-coaching.component';
 import {DetailsCoachingComponent} from './coachings/coaching/details-coaching/details-coaching.component';
