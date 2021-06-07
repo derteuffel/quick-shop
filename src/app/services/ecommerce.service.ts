@@ -54,6 +54,10 @@ export class EcommerceService {
     return this.http.post(`${API.PRODUITS}/all`, form);
   }
 
+  getOrderByProduct(id): Observable<any> {
+    return this.http.get(this.ordersUrl+'/produits/'+id, {headers: this.headers});
+  }
+
   getAllProductsAdmin(): Observable<any>  {
     return this.http.get(`${API.PRODUITS}/admin`,  {headers: this.headers});
   }

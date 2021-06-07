@@ -13,11 +13,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AdministrationComponent } from './admin/administration/administration.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { AddProductComponent } from './admin/product/add-product/add-product.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { DetailProductComponent } from './eco/product/detail-product/detail-product.component';
-import { AdministrationDetailProductComponent } from './admin/product/administration-detail-product/administration-detail-product.component';
-import { AdministrationUpdateProductComponent } from './admin/product/administration-update-product/administration-update-product.component';
 import { CommandeComponent } from './admin/commande/commande/commande.component';
 import { BoutiqueComponent } from './admin/boutique/boutique/boutique.component';
 import { AddBoutiqueComponent } from './admin/boutique/add-boutique/add-boutique.component';
@@ -84,11 +81,8 @@ import { AdminRootProductComponent } from './admin/admin-root-product/admin-root
     HeaderComponent,
     FooterComponent,
     AdministrationComponent,
-    AddProductComponent,
     AdminHeaderComponent,
     DetailProductComponent,
-    AdministrationDetailProductComponent,
-    AdministrationUpdateProductComponent,
     CommandeComponent,
     BoutiqueComponent,
     AddBoutiqueComponent,

@@ -4,10 +4,8 @@ import {AdministrationComponent} from "./admin/administration/administration.com
 import {Role} from "./models/role";
 import {AuthGuard} from "./auth/auth.guard";
 import {EcommerceComponent} from "./eco/ecommerce/ecommerce.component";
-import {AddProductComponent} from "./admin/product/add-product/add-product.component";
 import {DetailProductComponent} from "./eco/product/detail-product/detail-product.component";
 
-import {AdministrationUpdateProductComponent} from "./admin/product/administration-update-product/administration-update-product.component";
 import {CommandeComponent} from "./admin/commande/commande/commande.component";
 import {BoutiqueComponent} from "./admin/boutique/boutique/boutique.component";
 import {AddBoutiqueComponent} from "./admin/boutique/add-boutique/add-boutique.component";
