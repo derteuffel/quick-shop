@@ -4,10 +4,8 @@ import {AdministrationComponent} from "./admin/administration/administration.com
 import {Role} from "./models/role";
 import {AuthGuard} from "./auth/auth.guard";
 import {EcommerceComponent} from "./eco/ecommerce/ecommerce.component";
-import {AddProductComponent} from "./admin/product/add-product/add-product.component";
 import {DetailProductComponent} from "./eco/product/detail-product/detail-product.component";
 
-import {AdministrationUpdateProductComponent} from "./admin/product/administration-update-product/administration-update-product.component";
 import {CommandeComponent} from "./admin/commande/commande/commande.component";
 import {BoutiqueComponent} from "./admin/boutique/boutique/boutique.component";
 import {AddBoutiqueComponent} from "./admin/boutique/add-boutique/add-boutique.component";
@@ -15,9 +13,6 @@ import {BoutiqueDetailComponent} from "./admin/boutique/boutique-detail/boutique
 import {UpdateBoutiqueComponent} from "./admin/boutique/update-boutique/update-boutique.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./auth/register/register.component";
-import {CoachingComponent} from './coachings/coaching/coaching.component';
-import {AddCoachingComponent} from './coachings/coaching/add-coaching/add-coaching.component';
-import {DetailsCoachingComponent} from './coachings/coaching/details-coaching/details-coaching.component';
 import {SingupComponent} from "./auth/singup/singup.component";
 import {ArticleComponent} from "./admin/boutique/article/article.component";
 import {ArticlesComponent} from "./eco/articles/articles.component";
@@ -36,6 +31,8 @@ import { SingupInvesterComponent } from './auth/singup-invester/singup-invester.
 import { SingupLoansComponent } from './auth/singup-loans/singup-loans.component';
 import { AdminRootHome } from './admin/admin-root-home/admin-root-home.component';
 import { AdminRootProductComponent } from './admin/admin-root-product/admin-root-product.component';
+import { AdminRootCoachingsComponent } from './admin/admin-root-coachings/coaching/admin-root-coachings.component';
+import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-root-coaching.component';
 
 
 const routes: Routes = [
@@ -140,13 +137,13 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },*/
   {
-    path: 'admin/coachings', component: CoachingComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+    path: 'admin/coachings', component: AdminRootCoachingsComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.TRAINNER]}
   },
   
   {
-    path: 'admin/coachings/details/:id', component: DetailsCoachingComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+    path: 'admin/coachings/details/:id', component: AdminRootCoachingComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER]}
   },
   /* 
   {

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
-import {API} from "../../environments/environment";
+import {API, BASE_URL} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class BoutiqueService {
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
 
-  private boutiqueUrl = 'http://localhost:8181/api/boutiques';
+  private boutiqueUrl = BASE_URL+'/api/boutiques';
   constructor(private http: HttpClient) { 
       this.currentUser = JSON.parse(''+localStorage.getItem('currentUser'));
 

@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoachingService } from 'src/app/services/coaching.service';
-import {SessionCoaching} from "../../../models/session-coaching";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {MessageService} from "primeng/api";
-import {SessionCoachingService} from "../../../services/session-coaching.service";
-import {Coaching} from "../../../models/coaching";
+import { Coaching } from 'src/app/models/coaching';
+import { SessionCoaching } from 'src/app/models/session-coaching';
+import { SessionCoachingService } from 'src/app/services/session-coaching.service';
+import { EcommerceService } from 'src/app/services/ecommerce.service';
+
 
 @Component({
-  selector: 'app-details-coaching',
-  templateUrl: './details-coaching.component.html',
-  styleUrls: ['./details-coaching.component.scss'],
+  selector: 'app-admin-root-coaching',
+  templateUrl: './admin-root-coaching.component.html',
+  styleUrls: ['./admin-root-coaching.component.scss'],
   providers: [MessageService],
 })
-export class DetailsCoachingComponent implements OnInit {
+export class AdminRootCoachingComponent implements OnInit {
   message: string;
   loading = true;
   public submitted = false;
@@ -22,6 +24,10 @@ export class DetailsCoachingComponent implements OnInit {
   searchItem: string;
   currentCoaching: Coaching;
   sessions: any = {};
+  isSession: boolean;
+  isOrder: boolean;
+  orders: any ={};
+  order: any = {};
   sessionRef;
   currentSession: SessionCoaching;
   session: SessionCoaching;
@@ -33,18 +39,19 @@ export class DetailsCoachingComponent implements OnInit {
               private modalService: NgbModal,
               private messageService: MessageService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private orderService: EcommerceService) { }
 
   ngOnInit(): void {
-    this.loadList(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.showSessions();
     this.getSession(this.activatedRoute.snapshot.paramMap.get('id'));
     this.initForm();
   }
 
   /** Lister les sessions d'un coaching **/
 
-  loadList(id): void{
-    this.sessionService.getSessionCoaching(id).subscribe(
+  loadList(): void{
+    this.sessionService.getSessionCoaching(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       res => {
         this.sessions = res;
         console.log(res);
@@ -53,6 +60,30 @@ export class DetailsCoachingComponent implements OnInit {
         console.log(error1);
       }
     );
+  }
+
+  loadListOrder(): void{
+    this.orderService.getCoachingOrders(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+      res => {
+        this.orders = res;
+        console.log(res);
+      },
+      error1 => {
+        console.log(error1);
+      }
+    );
+  }
+
+  showOrders(){
+    this.isOrder = true;
+    this.isSession = false;
+    this.loadListOrder()
+  }
+
+  showSessions(){
+    this.isOrder = false;
+    this.isSession = true;
+    this.loadList();
   }
   getSession(id){
     this.coachingService.getCoachingById(id).subscribe(
@@ -93,7 +124,7 @@ export class DetailsCoachingComponent implements OnInit {
         console.log(data);
         this.sessionForm.reset();
         this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
-        this.loadList(this.activatedRoute.snapshot.paramMap.get('id'));
+        this.loadList();
       }, error => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
@@ -110,7 +141,7 @@ export class DetailsCoachingComponent implements OnInit {
     this.sessionService.actionSession(this.sessionRef).subscribe(
       (res: any) => {
         this.messageService.add({severity: 'success', summary: 'Record is activated successully', detail: 'record delete'});
-        this.loadList(this.activatedRoute.snapshot.paramMap.get('id'));
+        this.loadList();
       }
     );
   }
@@ -126,7 +157,7 @@ export class DetailsCoachingComponent implements OnInit {
     this.sessionService.deleteSessionCoaching(this.sessionRef).subscribe(
       (res: any) => {
         this.messageService.add({severity: 'success', summary: 'Record is deleted successully', detail: 'record delete'});
-        this.loadList(this.activatedRoute.snapshot.paramMap.get('id'));
+        this.loadList();
       }
     );
   }
@@ -138,6 +169,11 @@ export class DetailsCoachingComponent implements OnInit {
 
   openModalSession(contentAdd){
     this.modalService.open(contentAdd, {size: 'lg'});
+  }
+
+  getOrder(contentOrder, event){
+    this.modalService.open(contentOrder, {size: 'lg'});
+    this.order = event;
   }
 
 initForm() {
@@ -158,7 +194,7 @@ initForm() {
       data => {
         this.sessionForm.reset();
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
-        this.loadList(this.activatedRoute.snapshot.paramMap.get('id'));
+        this.loadList();
       },
       error => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});

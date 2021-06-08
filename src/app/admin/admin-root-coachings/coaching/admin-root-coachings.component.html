@@ -118,8 +118,18 @@
                 <input type="text" class="form-control"required name="phone" placeholder="numéro de téléphone" ngModel>
               </div>
               <div class="form-group">
-                <label>Region</label>
-                <input type="text" class="form-control"  required name="region" placeholder="Entrer votre region" ngModel>
+                <label>Province</label>
+                <select name="province" class="form-control" required id="" ngModel>
+                  <option value="">-- Choisir une province --</option>
+                  <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Commune</label>
+                <select name="commune" class="form-control" required id="" ngModel>
+                  <option value="">-- Choisir une commune --</option>
+                  <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
+                </select>
               </div>
 
               <div class="form-group">

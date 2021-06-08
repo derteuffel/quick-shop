@@ -24,7 +24,7 @@ export class AdminHeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this.authService.logOut();
         
         console.log('you are now offline');
         this.router.navigateByUrl('/connexion');

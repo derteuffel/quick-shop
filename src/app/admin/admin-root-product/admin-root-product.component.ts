@@ -21,6 +21,10 @@ export class AdminRootProductComponent implements OnInit {
   p = 1;
   searchItem: string;
   message: string;
+  orders: any = {};
+  order: any = {};
+  isUpdate: boolean;
+  isOrder: boolean;
   loading = true;
   public submitted = false;
   submittedCode: string;
@@ -41,7 +45,8 @@ export class AdminRootProductComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.authService.currentUserValue.role);
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.loadList();
+    this.showOrders();
+    this.isOrder = true;
   }
 
   
@@ -96,6 +101,35 @@ export class AdminRootProductComponent implements OnInit {
     );
   }
 
+
+   /** lister les articles d'une boutique **/
+   loadListOrder(): void{
+
+    this.productService.getOrderByProduct(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+      data => {
+
+        this.orders = data;
+        console.log(data);
+        //console.log(this.currentProduct.id);
+      },
+      error1 => {
+        console.log(error1);
+      }
+    );
+  }
+
+  showUpdates(){
+    this.isUpdate = true;
+    this.isOrder = false;
+    this.loadList();
+  }
+
+  showOrders(){
+    this.isUpdate = false;
+    this.isOrder = true;
+    this.loadListOrder();
+  }
+
   openModalProduct(contentAdd: any) {
     this.modalService.open(contentAdd, {size: 'lg'});
   }
@@ -103,6 +137,11 @@ export class AdminRootProductComponent implements OnInit {
   onDelete(contentDelete, event) {
     this.modalService.open(contentDelete, {size: 'lg'});
     this.updateID = event.id;
+  }
+
+  getContent(contentOrder, event) {
+    this.modalService.open(contentOrder, {size: 'lg'});
+    this.order = event;
   }
 
   deleteUpdate() {

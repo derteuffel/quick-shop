@@ -5,7 +5,7 @@ import {ProductOrder} from '../models/product-order.model';
 import {ProductOrders} from '../models/product-orders.model';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
-import {API} from "../../environments/environment";
+import {API, BASE_URL} from "../../environments/environment";
 
 
 @Injectable({
@@ -16,8 +16,8 @@ export class EcommerceService {
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
 
-  private productsUrl = 'http://localhost:8181/api/produits';
-  private ordersUrl = 'http://localhost:8181/api/commandes';
+  private productsUrl = BASE_URL + '/api/produits';
+  private ordersUrl = BASE_URL + '/api/commandes';
 
   private productOrder: ProductOrder;
   private orders: ProductOrders = new ProductOrders();
@@ -54,6 +54,13 @@ export class EcommerceService {
   getAllProductsSearch(form): Observable<any>  {
     console.log(form);
     return this.http.post(`${API.PRODUITS}/all`, form);
+  }
+
+  getOrderByProduct(id): Observable<any> {
+    return this.http.get(this.ordersUrl+'/produits/'+id, {headers: this.headers});
+  }
+  getCoachingOrders(id): Observable<any> {
+    return this.http.get(this.ordersUrl+'/coachings/'+id, {headers: this.headers});
   }
 
   getAllProductsAdmin(): Observable<any>  {

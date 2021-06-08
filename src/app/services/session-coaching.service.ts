@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import {User} from "../models/user";
-import {API} from "../../environments/environment";
+import {API, BASE_URL} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class SessionCoachingService {
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
 
-  private sessionCoachingUrl = 'http://localhost:8181/api/sessioncoachings';
+  private sessionCoachingUrl = BASE_URL + '/api/sessioncoachings';
   constructor(private http: HttpClient) { 
       this.currentUser = JSON.parse(''+localStorage.getItem('currentUser'));
 

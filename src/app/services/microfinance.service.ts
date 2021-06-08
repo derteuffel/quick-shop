@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import { AuthService } from '../auth/auth.service';
 import { User } from '../models/user';
+import { BASE_URL } from 'src/environments/environment';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class MicrofinanceService {
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
 
-  private microfinanceUrl = 'http://localhost:8181/api/microfinancements';
+  private microfinanceUrl = BASE_URL + '/api/microfinancements';
   constructor(private http: HttpClient,
     private authService:AuthService) { 
       this.currentUser = JSON.parse(''+localStorage.getItem('currentUser'));

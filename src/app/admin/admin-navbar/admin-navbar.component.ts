@@ -26,7 +26,7 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this.authService.logOut();
     this.router.navigateByUrl('connexion')
   }
 

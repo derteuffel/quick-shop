@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {API} from "../../environments/environment";
+import {API, BASE_URL} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommandeService {
-  private productsUrl = 'http://localhost:8181/api/produits';
-  private ordersUrl = 'http://localhost:8181/api/commandes';
+  private productsUrl = BASE_URL + '/api/produits';
+  private ordersUrl = BASE_URL + '/api/commandes';
 
   constructor(private http: HttpClient) { }
 

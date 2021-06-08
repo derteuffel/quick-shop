@@ -3,13 +3,13 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import { AuthService } from '../auth/auth.service';
 import { User } from '../models/user';
-import {API} from "../../environments/environment";
+import {API, BASE_URL} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoachingService {
-  private coachingUrl = 'http://localhost:8181/api/coachings';
+  private coachingUrl = BASE_URL + '/api/coachings';
 
   currentUser: User;
   headers: HttpHeaders;

@@ -4,16 +4,17 @@ import {Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {MessageService, PrimeNGConfig} from "primeng/api";
 import { Coaching } from 'src/app/models/coaching';
-import {CoachingService} from "../../services/coaching.service";
-import {SessionCoachingService} from "../../services/session-coaching.service";
+import { CoachingService } from 'src/app/services/coaching.service';
+import { SessionCoachingService } from 'src/app/services/session-coaching.service';
+
 
 @Component({
-  selector: 'app-coaching',
-  templateUrl: './coaching.component.html',
-  styleUrls: ['./coaching.component.scss'],
+  selector: 'app-admin-root-coachings',
+  templateUrl: './admin-root-coachings.component.html',
+  styleUrls: ['./admin-root-coachings.component.scss'],
   providers: [MessageService],
 })
-export class CoachingComponent implements OnInit {
+export class AdminRootCoachingsComponent implements OnInit {
 
   lists: any = [];
   boutiqueRef;
@@ -27,6 +28,8 @@ export class CoachingComponent implements OnInit {
   public addCoachingSessionFurmGroup?: FormGroup;
   public currentCoaching: Coaching;
   public currentSession;
+  communes: string[];
+  provinces: string[];
   constructor(              private coachingService: CoachingService,
                             private sessionService: SessionCoachingService,
                             private fb: FormBuilder,
@@ -38,6 +41,16 @@ export class CoachingComponent implements OnInit {
   ngOnInit(): void {
     this.primengConfig.ripple = true;
     this.loadData();
+    this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
+  'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
+    this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
+  'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
+'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
+'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
+'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
+'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
+'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
+'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
   }
 
 
@@ -69,7 +82,7 @@ export class CoachingComponent implements OnInit {
     formData.append('amount', data.amount);
     formData.append('phone', data.phone);
     formData.append('email', data.email);
-    formData.append('region', data.region);
+    formData.append('region', data.province+', '+data.commune);
     formData.append('startDate', data.startDate);
     formData.append('userEmail', data.userEmail);
     formData.append('file', this.uploadedFile);

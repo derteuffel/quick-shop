@@ -13,11 +13,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AdministrationComponent } from './admin/administration/administration.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { AddProductComponent } from './admin/product/add-product/add-product.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { DetailProductComponent } from './eco/product/detail-product/detail-product.component';
-import { AdministrationDetailProductComponent } from './admin/product/administration-detail-product/administration-detail-product.component';
-import { AdministrationUpdateProductComponent } from './admin/product/administration-update-product/administration-update-product.component';
 import { CommandeComponent } from './admin/commande/commande/commande.component';
 import { BoutiqueComponent } from './admin/boutique/boutique/boutique.component';
 import { AddBoutiqueComponent } from './admin/boutique/add-boutique/add-boutique.component';
@@ -36,13 +33,9 @@ import {ToastModule} from 'primeng/toast';
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { CoachingComponent } from './coachings/coaching/coaching.component';
-import { CoachingSessionComponent } from './coachings/coaching-session/coaching-session.component';
 import {RouterModule} from '@angular/router';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
 import {CardModule} from "primeng/card";
-import { AddCoachingComponent } from './coachings/coaching/add-coaching/add-coaching.component';
-import { DetailsCoachingComponent } from './coachings/coaching/details-coaching/details-coaching.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DialogModule} from "primeng/dialog";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
@@ -73,6 +66,8 @@ import { SingupInvesterComponent } from './auth/singup-invester/singup-invester.
 import { SingupLoansComponent } from './auth/singup-loans/singup-loans.component';
 import { AdminRootHome } from './admin/admin-root-home/admin-root-home.component';
 import { AdminRootProductComponent } from './admin/admin-root-product/admin-root-product.component';
+import { AdminRootCoachingsComponent } from './admin/admin-root-coachings/coaching/admin-root-coachings.component';
+import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-root-coaching.component';
 
 
 
@@ -84,11 +79,8 @@ import { AdminRootProductComponent } from './admin/admin-root-product/admin-root
     HeaderComponent,
     FooterComponent,
     AdministrationComponent,
-    AddProductComponent,
     AdminHeaderComponent,
     DetailProductComponent,
-    AdministrationDetailProductComponent,
-    AdministrationUpdateProductComponent,
     CommandeComponent,
     BoutiqueComponent,
     AddBoutiqueComponent,
@@ -99,11 +91,7 @@ import { AdminRootProductComponent } from './admin/admin-root-product/admin-root
     UnauthorizedComponent,
     NotFoundComponent,
     LoginSuccessComponent,
-    CoachingComponent,
-    CoachingSessionComponent,
     AdminNavbarComponent,
-    AddCoachingComponent,
-    DetailsCoachingComponent,
     SingupTrainnerComponent,
     SingupComponent,
     SingupClientComponent,
@@ -127,7 +115,9 @@ import { AdminRootProductComponent } from './admin/admin-root-product/admin-root
     HomeComponent,
     SingupLoansComponent,
     AdminRootHome,
-    AdminRootProductComponent
+    AdminRootProductComponent,
+    AdminRootCoachingsComponent,
+    AdminRootCoachingComponent
   ],
   imports: [
     BrowserModule,
