@@ -33,6 +33,7 @@ import { AdminRootHome } from './admin/admin-root-home/admin-root-home.component
 import { AdminRootProductComponent } from './admin/admin-root-product/admin-root-product.component';
 import { AdminRootCoachingsComponent } from './admin/admin-root-coachings/coaching/admin-root-coachings.component';
 import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-root-coaching.component';
+import { AdminLoansInputsComponent } from './admin/loans/admin-loans-inputs/admin-loans-inputs.component';
 
 
 const routes: Routes = [
@@ -89,7 +90,7 @@ const routes: Routes = [
     path: 'ecommerce/microfinance/detail/:id', component: MicrofinanceDetailComponent
   },
   {
-    path: 'admin/loans', component: LoansComponent,
+    path: 'admin/loans/inputs', component: AdminLoansInputsComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {

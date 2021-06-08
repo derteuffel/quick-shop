@@ -88,7 +88,11 @@
                   <select name="devise" class="form-control" required id="" [(ngModel)]="form.devise" #devise="ngModel">
                     <option value="">-- Choisissez une devise --</option>
                     <option value="US Dollars">US Dollars</option>
+                    <option value="Euro">Euro</option>
                     <option value="Franc Burundais">Franc Burundais</option>
+                    <option value="Shilling">Shilling</option>
+                    <option value="Franc CFA">Franc CFA</option>
+                    <option value="Franc Congolais">Franc Congolais</option>
                   </select>
                   
                   <div *ngIf="f.submitted && devise.invalid">

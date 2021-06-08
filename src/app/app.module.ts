@@ -68,6 +68,7 @@ import { AdminRootHome } from './admin/admin-root-home/admin-root-home.component
 import { AdminRootProductComponent } from './admin/admin-root-product/admin-root-product.component';
 import { AdminRootCoachingsComponent } from './admin/admin-root-coachings/coaching/admin-root-coachings.component';
 import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-root-coaching.component';
+import { AdminLoansInputsComponent } from './admin/loans/admin-loans-inputs/admin-loans-inputs.component';
 
 
 
@@ -92,6 +93,7 @@ import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-ro
     NotFoundComponent,
     LoginSuccessComponent,
     AdminNavbarComponent,
+    AdminLoansInputsComponent,
     SingupTrainnerComponent,
     SingupComponent,
     SingupClientComponent,
