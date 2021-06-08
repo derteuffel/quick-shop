@@ -196,7 +196,8 @@ export class BoutiqueDetailComponent implements OnInit {
     formData.append('description', this.productForm.get('description').value);
     formData.append('measure', this.productForm.get('measure').value);
     console.log(formData);
-    this.ecommerceService.saveProduct(formData, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+    let idProduct = this.activatedRoute.snapshot.paramMap.get('id');
+    this.ecommerceService.saveProduct(formData).subscribe(
       data => {
         this.productForm.reset();
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});

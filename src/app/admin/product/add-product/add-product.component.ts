@@ -86,7 +86,8 @@ export class AddProductComponent implements OnInit {
 
 
   onSubmit(): void{
-    this.ecommerceService.saveProduct(this.product, this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+    let idProduct = this.activatedRoute.snapshot.paramMap.get('id')
+    this.ecommerceService.saveProduct(this.product).subscribe(
       data => {
         if (data.success) {
           this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});

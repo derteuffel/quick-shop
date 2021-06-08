@@ -14,16 +14,18 @@ export class BoutiqueService {
   formHeaders: HttpHeaders;
 
   private boutiqueUrl = 'http://localhost:8181/api/boutiques';
-  constructor(private http: HttpClient) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.headers = new HttpHeaders({
-      authorization: 'Bearer ' + this.currentUser.token,
-      'Content-Type': 'application/json; charset=UTF-8'
-    });
+  constructor(private http: HttpClient) { 
+      this.currentUser = JSON.parse(''+localStorage.getItem('currentUser'));
 
-    this.formHeaders = new HttpHeaders({
-      authorization: 'Bearer ' + this.currentUser.token
-    });
+  this.headers = (this.currentUser!=null) ? new HttpHeaders({
+  authorization: 'Bearer ' + this.currentUser.token,
+  'Content-Type': 'application/json; charset=UTF-8'
+  }) : new HttpHeaders({
+  'Content-Type': 'application/json; charset=UTF-8'
+  });
+
+  this.formHeaders = (this.currentUser!=null) ? new HttpHeaders({authorization: 'Bearer ' + this.currentUser.token}) : new HttpHeaders({'Content-Type': 'application/json; charset=UTF-8'});
+
   }
 
 

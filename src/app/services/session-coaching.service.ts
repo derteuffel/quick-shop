@@ -13,16 +13,18 @@ export class SessionCoachingService {
   formHeaders: HttpHeaders;
 
   private sessionCoachingUrl = 'http://localhost:8181/api/sessioncoachings';
-  constructor(private http: HttpClient) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.headers = new HttpHeaders({
-      authorization: 'Bearer ' + this.currentUser.token,
-      'Content-Type': 'application/json; charset=UTF-8'
+  constructor(private http: HttpClient) { 
+      this.currentUser = JSON.parse(''+localStorage.getItem('currentUser'));
+
+    this.headers = (this.currentUser!=null) ? new HttpHeaders({
+    authorization: 'Bearer ' + this.currentUser.token,
+    'Content-Type': 'application/json; charset=UTF-8'
+    }) : new HttpHeaders({
+    'Content-Type': 'application/json; charset=UTF-8'
     });
 
-    this.formHeaders = new HttpHeaders({
-      authorization: 'Bearer ' + this.currentUser.token
-    });
+    this.formHeaders = (this.currentUser!=null) ? new HttpHeaders({authorization: 'Bearer ' + this.currentUser.token}) : new HttpHeaders({'Content-Type': 'application/json; charset=UTF-8'});
+
   }
 
   getAllSessionCoaching(): Observable<any> {
