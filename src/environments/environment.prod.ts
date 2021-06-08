@@ -4,7 +4,7 @@ export const environment = {
 
 export const BASE_URL = 'http://204.93.157.42:8181';
 
-const url = 'http://204.93.157.42:8181/';
+const url = 'http://144.91.75.89:8181/';
 
 export const API = {
 

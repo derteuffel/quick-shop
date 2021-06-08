@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
 
   coachings: any = {};
 
-  microfinances: any = {};
+  microfinances: Array<any> = [];
 
   constructor(
               private ecommerceService: EcommerceService,

@@ -13,6 +13,6 @@ res.sendFile(path.join(__dirname+'/dist/my-adminlte3-demo-app/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(8282);
+app.listen(4200);
 
-console.log("Listen 8282 ...");
+console.log("Listening 4200 ...");
