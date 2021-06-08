@@ -41,4 +41,8 @@ export const API = {
 
   SESSIONS: `${url}api/sessioncoachings`,
 
+  /** Functionnalité **/
+
+  FUNCTIONALITY: `${url}api/functionalities`,
+
 }
