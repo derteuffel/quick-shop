@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   serviceForm: FormGroup;
   financeForm: FormGroup;
 
-  types: string[]
+  types: string[];
 
   produitSearch: boolean;
   serviceSearch: boolean;

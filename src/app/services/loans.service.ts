@@ -38,16 +38,20 @@ export class LoansService {
       return this.http.get(this.loansUrl+'/admin/users', {headers: this.headers})
     }
 
-    getAllbyRegion(): Observable<any>{
-      return this.http.get(this.loansUrl+'/admin/region', {headers: this.headers})
+    getAllbyRegion(region): Observable<any>{
+      return this.http.get(this.loansUrl+'/admin/region/'+region, {headers: this.headers})
     }
 
     getAllbyVisitor(): Observable<any>{
       return this.http.get(this.loansUrl+'/all', {headers: this.headers})
     }
 
-    getAllbySector(): Observable<any>{
-      return this.http.get(this.loansUrl+'/admin/sector', {headers: this.headers})
+    getAllbyStatus(value): Observable<any>{
+      return this.http.get(this.loansUrl+'/admin/status/'+value, {headers: this.headers})
+    }
+
+    getAllbySector(sector): Observable<any>{
+      return this.http.get(this.loansUrl+'/admin/sector/'+sector, {headers: this.headers})
     }
 
     getOne(id): Observable<any>{

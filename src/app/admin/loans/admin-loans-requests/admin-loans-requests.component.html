@@ -15,12 +15,26 @@
       <div class="col">
         <div class="card shadow">
           <div class="card-header border-0" style="background-color:#F45B3A;">
-            <div class="col-md-6 pull-right" style="width: 40%">
-              <label >Recherche <i class="fa fa-search"></i></label>
-              <input type="text" class="form-control" [(ngModel)]="searchItem">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 col-12">
+                  <button (click)="showProvinceSearch(contentProvinceSearch)" pButton  style="float:left;background-color:#F7941D;" label="Province"><i class="fa fa-search"></i>&nbsp;</button>
+                </div>
+                <div class="col-md-6 col-lg-3 col-12">
+                  <button (click)="showCommuneSearch(contentCommuneSearch)" pButton  style="float:left;background-color:#F7941D;" label="Commune"><i class="fa fa-search"></i>&nbsp;</button>
+                </div>
+                <div class="col-md-6 col-lg-3 col-12">
+                  <button (click)="showSectorSearch(contentSectorSearch)" pButton  style="float:left;background-color:#F7941D;" label="Type d'activite"><i class="fa fa-search"></i>&nbsp;</button>
+                </div>
+                <div class="col-md-6 col-lg-3 col-12">
+                  <button (click)="showStatusSearch(contentStatusSearch)" pButton  style="float:left;background-color:#F7941D;" label="Status"><i class="fa fa-search"></i>&nbsp;</button>
+                </div>
             </div>
           </div>
           <div class="table-responsive">
+            <div class="col-md-6 pull-right my-2" style="width: 40%">
+              <label >Recherche <i class="fa fa-search"></i></label>
+              <input type="text" class="form-control" [(ngModel)]="searchItem">
+            </div>
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
               <tr>
@@ -243,6 +257,159 @@
   </ng-template>
   <!-------------------------------------------------------ACTIVATE LOANS END-------------------------------------------------------------->
   
+
+  <!-------------------------------------------------------SEARCH BY PROVINCE LOANS START------------------------------------------------------------>
+<ng-template #contentProvinceSearch let-modal>
+  <form [formGroup]="provinceForm" (submit)="onProvinceSearch()" >
+  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+    <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a une province!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+      <div class="form-group">
+        <select formControlName="location" class="form-control" id="">
+          <option value="">-- Choisir une province --</option>
+          <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+        </select>
+      </div>
+    
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F5B669;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="submit" class="btn btn-success"
+                (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY PROVINCE LOANS END-------------------------------------------------------------->
+<!-------------------------------------------------------SEARCH BY COMMUNE LOANS START------------------------------------------------------------>
+<ng-template #contentCommuneSearch let-modal>
+  <form [formGroup]="communeForm" (submit)="onCommuneSearch()" >
+  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+    <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a une commune!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+      <div class="form-group">
+        <select formControlName="location" class="form-control" id="">
+          <option value="">-- Choisir une commune --</option>
+          <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
+        </select>
+      </div>
+    
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F5B669;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="submit" class="btn btn-success"
+                (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY COMMUNE LOANS END-------------------------------------------------------------->
+<!-------------------------------------------------------SEARCH BY SECTOR LOANS START------------------------------------------------------------>
+<ng-template #contentSectorSearch let-modal>
+  <form [formGroup]="sectorForm" (submit)="onSectorSearch()" >
+  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+    <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un type d'activite!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+      <div class="form-group">
+        <select formControlName="location" class="form-control" id="">
+          <option value="">-- Choisir un type d'activite --</option>
+          <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
+        </select>
+      </div>
+    
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F5B669;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="submit" class="btn btn-success"
+                (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY SECTOR LOANS END-------------------------------------------------------------->
+
+<!-------------------------------------------------------SEARCH BY STATUS LOANS START------------------------------------------------------------>
+<ng-template #contentStatusSearch let-modal>
+  <form [formGroup]="statusForm" (submit)="onStatusSearch()" >
+  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+    <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un etat!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+      <div class="form-group">
+        <select formControlName="name" class="form-control" id="">
+          <option value="">-- Choisir un Status --</option>
+          <option value="1">Accepter</option>
+          <option value="0">Suspendus</option>
+        </select>
+
+      </div>
+    
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F5B669;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="submit" class="btn btn-success"
+                (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY STATUS LOANS END-------------------------------------------------------------->
+
 
 
 
