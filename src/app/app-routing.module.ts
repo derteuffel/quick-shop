@@ -7,14 +7,9 @@ import {EcommerceComponent} from "./eco/ecommerce/ecommerce.component";
 import {DetailProductComponent} from "./eco/product/detail-product/detail-product.component";
 
 import {CommandeComponent} from "./admin/commande/commande/commande.component";
-import {BoutiqueComponent} from "./admin/boutique/boutique/boutique.component";
-import {AddBoutiqueComponent} from "./admin/boutique/add-boutique/add-boutique.component";
-import {BoutiqueDetailComponent} from "./admin/boutique/boutique-detail/boutique-detail.component";
-import {UpdateBoutiqueComponent} from "./admin/boutique/update-boutique/update-boutique.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./auth/register/register.component";
 import {SingupComponent} from "./auth/singup/singup.component";
-import {ArticleComponent} from "./admin/boutique/article/article.component";
 import {ArticlesComponent} from "./eco/articles/articles.component";
 import {CoachingsComponent} from "./eco/coachings/coachings.component";
 import {CoachingDetailComponent} from "./eco/coachings/coaching-detail/coaching-detail.component";
