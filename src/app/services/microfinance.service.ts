@@ -33,7 +33,7 @@ export class MicrofinanceService {
   // recupère toute les microfinances
 
   getAllFinance(): Observable<any> {
-    return this.http.get(this.microfinanceUrl);
+    return this.http.get(this.microfinanceUrl,{headers: this.headers});
   }
 
 
