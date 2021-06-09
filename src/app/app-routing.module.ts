@@ -28,8 +28,7 @@ import { AdminRootHome } from './admin/admin-root-home/admin-root-home.component
 import { AdminRootProductComponent } from './admin/admin-root-product/admin-root-product.component';
 import { AdminRootCoachingsComponent } from './admin/admin-root-coachings/coaching/admin-root-coachings.component';
 import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-root-coaching.component';
-import { AdminLoansInputsComponent } from './admin/loans/admin-loans-inputs/admin-loans-inputs.component';
-import { AdminLoansRequestComponent } from './admin/loans/admin-loans-requests/admin-loans-requests.component';
+import {AccountComponent} from "./account/account.component";
 
 
 const routes: Routes = [
@@ -86,11 +85,11 @@ const routes: Routes = [
     path: 'ecommerce/microfinance/detail/:id', component: MicrofinanceDetailComponent
   },
   {
-    path: 'admin/loans/inputs', component: AdminLoansInputsComponent,
+    path: 'admin/loans', component: LoansComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
-    path: 'admin/loans/entrants', component: AdminLoansRequestComponent,
+    path: 'admin/loans/entrant', component: LoansSortantComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
   },
   {
@@ -101,17 +100,63 @@ const routes: Routes = [
     path: 'admin/commandes', component: CommandeComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
-  
+  /* {
+    path: 'seller/product/add/:id', component: SellerAddProductComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
+  },
+  {
+    path: 'seller/product/detail/:id', component: SellerDetailProductComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
+  },
+  {
+    path: 'seller/product/update/:id', component: SellerUpdateProductComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
+  },
+  {
+    path: 'seller/commandes', component: SellerCommandeComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
+  },
+ {
+    path: 'admin/boutiques', component: BoutiqueComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/add/boutique', component: AddBoutiqueComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/detail/boutique/:id', component: BoutiqueDetailComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/update/boutique/:id', component: UpdateBoutiqueComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },*/
   {
     path: 'admin/coachings', component: AdminRootCoachingsComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.TRAINNER]}
   },
-  
+
   {
     path: 'admin/coachings/details/:id', component: AdminRootCoachingComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER]}
   },
-  
+  /*
+  {
+    path: 'seller/boutiques', component: SellerBoutiqueListComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
+  },
+  {
+    path: 'seller/add/boutique', component: SellerAddBoutiqueComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
+  },
+  {
+    path: 'seller/detail/boutique/:id', component: SellerBoutiqueDetailComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
+  },
+  {
+    path: 'seller/update/boutique/:id', component: SellerUpdateBoutiqueComponent, canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
+  }, */
   {
     path: 'connexion', component: LoginComponent
   },
@@ -128,6 +173,10 @@ const routes: Routes = [
   },
   {
     path: 'ecommerce/register/invester', component: SingupInvesterComponent
+  },
+
+  {
+    path: 'configurations', component: AccountComponent
   },
 
   {
