@@ -50,7 +50,15 @@ export class EcommerceService {
   }
 
   getAllProductsSearch(form): Observable<any>  {
+    console.log(form);
     return this.http.post(`${API.PRODUITS}/all`, form);
+  }
+
+  getOrderByProduct(id): Observable<any> {
+    return this.http.get(this.ordersUrl+'/produits/'+id, {headers: this.headers});
+  }
+  getCoachingOrders(id): Observable<any> {
+    return this.http.get(this.ordersUrl+'/coachings/'+id, {headers: this.headers});
   }
 
   getAllProductsAdmin(): Observable<any>  {
@@ -63,6 +71,10 @@ export class EcommerceService {
 
   getAllProductsBoutique(id): Observable<any> {
     return this.http.get(`${API.PRODUITS}/boutique/${id}`, {headers: this.headers});
+  }
+
+  getAllProductsByUser(): Observable<any> {
+    return this.http.get(`${API.PRODUITS}/admin/user`, {headers: this.headers});
   }
 
   getProductGenre(genre): Observable<any> {
@@ -126,8 +138,8 @@ export class EcommerceService {
   }
 
 
-  saveProduct(form, id): Observable<any>  {
-    return this.http.post(`${API.PRODUITS}/admin/${id}`, form, {headers: this.formHeaders});
+  saveProduct(form): Observable<any>  {
+    return this.http.post(`${API.PRODUITS}/admin`, form, {headers: this.formHeaders});
   }
 
   saveUpdate(form, id): Observable<any>  {
@@ -146,7 +158,11 @@ export class EcommerceService {
   }
 
   getProduct(id): Observable<any> {
-    return this.http.get(`${API.PRODUITS}/admin/${id}`,{headers: this.headers});
+    return this.http.get(`${API.PRODUITS}/all/${id}`);
+  }
+
+  getProductFree(id): Observable<any> {
+    return this.http.get(`${API.PRODUITS}/all/${id}`);
   }
 
   updatePicture(imageForm, id): Observable<any> {

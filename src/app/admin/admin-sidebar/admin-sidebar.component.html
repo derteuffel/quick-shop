@@ -7,8 +7,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/admin/boutiques']">
-      <img src="./assets/img/fevicon.png" class="navbar-brand-img" alt="...">
-      <h3>YESB-INSPIRE</h3>
+      <img src="./assets/images/15x25.png" class="navbar-brand-img" style="width: 150px;height: 150px ;" alt="...">
     </a>
     <!-- Collapse -->
     <div class="collapse navbar-collapse"  [ngbCollapse]="isCollapsed" id="sidenav-collapse-main">
@@ -18,31 +17,37 @@
       <!-- Navigation -->
       <ul class="navbar-nav mb-md-3">
         <li class="nav-item">
-          <a class="nav-link" href="/admin/boutiques">
-            <i class="ni ni-shop"></i> Boutiques
+          <a class="nav-link" href="/admin/home">
+            <i class="ni ni-shop"></i> Produits
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/admin/commandes">
-            <i class="ni ni-cart"></i> Commandes
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/admin/produits">
+            <i class="ni ni-cart"></i>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="/admin/coachings">
             <i class="ni ni-books"></i> Coaching et Encadrement
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin/loans">
-            <i class="ni ni-money-coins"></i> Micro-Financements entrants
+          <a class="nav-link" href="/admin/loans/inputs">
+            <i class="ni ni-money-coins"></i> Investissements
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/admin/loans/outlet">
-            <i class="ni ni-money-coins"></i> Micro-Financements sortants
+            <i class="ni ni-money-coins"></i> Demandes de micros-finanacements
           </a>
         </li>
-        
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/configurations']">
+            <i class="ni ni-money-coins"></i> Configurations
+          </a>
+        </li>
+
       </ul>
     </div>
   </div>

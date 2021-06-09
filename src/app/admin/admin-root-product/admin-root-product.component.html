@@ -1,0 +1,300 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="main-content">
+  <!-- Top navbar -->
+  <app-admin-navbar></app-admin-navbar>
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        <h1>Detail d'un produit</h1>
+      </div>
+      <div class="header-body">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Nom du produit &nbsp; <span class="h2 font-weight-bold mb-0">{{currentProduct?.name}} </span></h5>
+                  </div>
+
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                  <span class="text-success mr-2">Type:</span>
+                  <span class="text-nowrap">{{currentProduct?.type}}</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                  <span class="text-success mr-2">Categorie :</span>
+                  <span class="text-nowrap">{{currentProduct?.category}}</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                  <span class="text-success mr-2">Quantite en stock:</span>
+                  <span class="text-nowrap">{{currentProduct?.quantity+' '+currentProduct?.measure}}</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm" style="color: #F45B3A !important;">
+                  <span class="text-success mr-2" > Prix unitaire:</span>
+                  <span class="text-nowrap">{{currentProduct?.price+'/'+currentProduct?.measure}}</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm" style="color: #F45B3A !important;">
+                  <span class="text-success mr-2" > Localisation :</span>
+                  <span class="text-nowrap">{{currentProduct?.location}}</span>
+                </p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="card card-stats mb-4 mb-xl-0">
+              <div class="card-body">
+                <div class="card-image m-3">
+                  <img [src]="currentProduct?.pictureUrl" height="100" alt="" >
+                </div>
+                
+                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
+                  <span class="text-success mr-2">Description du produit:</span>
+                  <span class="text-nowrap">{{currentProduct?.description}}</span>
+                </p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0" style="background-color:#F45B3A;">
+            <div class="row">
+            <div class="col-md-6 col-lg-2">
+              <button (click)="onBack()" pButton icon="fa fa-long-arrow-left" style="float:left;background-color:#F7941D;" label="Retour"></button>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <button (click)="openModalProduct(contentAdd)" pButton icon="fa fa-pencil" style="float:left;background-color:#F7941D;" label="Mettre a jours Produit"></button>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <button (click)="showOrders()" pButton icon="fa fa-cart-arrow-down" style="float:left;background-color:#F7941D;" label="Les Commandes"></button>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <button (click)="showUpdates()" pButton icon="fa fa-list" style="float:left;background-color:#F7941D;" label="Les mises a jours"></button>
+            </div>
+            
+          </div>
+          </div>
+          <div *ngIf="isUpdate" class="table-responsive">
+            <div class="col-md-6 col-lg-6 pull-right my-2" >
+              <label >Recherche <i class="fa fa-search"></i></label>
+              <input type="text" class="form-control" >
+            </div>
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">Action mener</th>
+                <th scope="col">Quantite</th>
+                <th scope="col">Date </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                <td>{{item?.motif}}</td>
+                <td>
+                  {{item?.quantity}}
+                </td>
+                <td>
+                  {{item?.actionDate}}
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="isOrder" class="table-responsive">
+            <div class="col-md-6 col-lg-6 pull-right my-2" >
+              <label >Recherche <i class="fa fa-search"></i></label>
+              <input type="text" class="form-control" >
+            </div>
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">Nom Produit</th>
+                <th scope="col">Quantite</th>
+                <th scope="col">Prix unitaire </th>
+                <th scope="col">Prix total </th>
+                <th scope="col">Date </th>
+                <th scope="col">Actions </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of orders | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                <td>{{item?.produit.name}}</td>
+                <td>
+                  {{item?.quantity}}
+                </td>
+                <td>
+                  {{item?.produit.price+'/'+item?.produit.measure}}
+                </td>
+                <td>{{item?.amount}}</td>
+                <td>{{item?.orderDate}}</td>
+                <td><button (click)="getOrder(contentOrder, item)" class="btn btn-primary "><i class="pi pi-eye"></i></button></td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer py-4">
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </ul>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Pages End -->
+  <div class="container-fluid">
+    <app-admin-footer></app-admin-footer>
+  </div>
+</div>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<!-- TOAST MESSAGE TEMPLATE -->
+<p-toast position="top-right"></p-toast>
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" >
+  <ng-template let-message pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1">
+      <div class="p-text-center">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h4>{{message.summary}}</h4>
+        <p>{{message.detail}}</p>
+      </div>
+      <div class="p-grid p-fluid">
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+        </div>
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
+
+<!-------------------------------------------------------ADD MISE A JOUR START-------------------------------------------------------------->
+
+<ng-template #contentAdd let-modal>
+  <div class="modal-header" style="background-color:#F45B3A;">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form #addingForm="ngForm" (ngSubmit)="onSubmit(addingForm.value)">
+      <h2>Formulaire de mise a jour de la quantite en stock d'un produit</h2>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>Quantite </label>
+          <input type="number" class="form-control"  required  placeholder="Quantite a ajouter/enlever" name="quantity" ngModel>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label>Type d'action</label>
+          <select  name="motif"  class="form-control" ngModel>
+            <option value="" disabled>-- Choisir une action a mener votre article --</option>
+            <option value="AJOUT" >Ajouter</option>
+            <option value="RETRAIT" >Retirer</option>
+          </select>
+        </div>
+      </div>
+
+      
+      <br>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <button href="#" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')" ><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%" (click)="modal.close('Close click')" >Enregistrer <i class="fa fa-check"></i></button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</ng-template>
+
+<!-------------------------------------------------------ADD PRODUCT END-------------------------------------------------------------->
+
+<!-------------------------------------------------------DETAIL ORDER START-------------------------------------------------------------->
+
+<ng-template #contentOrder let-modal>
+  <div class="modal-header" style="background-color:#F45B3A;">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form >
+      <div class="card-body">
+        <div class="card-text">
+          <span>Numero : {{order.numero}}</span>
+        </div>
+        <hr>
+        <div class="card-text">
+          <span>Nom du produit : {{order.produit.name}}</span>
+        </div>
+        <hr>
+        <div class="card-text">
+          <span>Quantite : {{order.quantity}}</span>
+        </div>
+        <hr>
+        <div class="card-text">
+          <span>Prix Unitaire : {{order.produit.price}}</span>
+        </div>
+        <hr>
+        <div class="card-text">
+          <span>Prix total : {{order.amount}}</span>
+        </div>
+        <hr>
+        <div class="card-text">
+          <span>Status : {{order.statust}}</span>
+        </div>
+        <hr>
+        <div class="card-text">
+          <span>Nom du Client : {{order.clientName}}</span>
+        </div>
+        <hr>
+        <div class="card-text">
+          <span>Telephone cu Clientn: {{order.clientPhone}}</span>
+        </div>
+        <hr>
+        <div class="card-text">
+          <span>Date de la commande : {{order.orderDate}}</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <button href="#" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')" ><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</ng-template>
+
+<!-------------------------------------------------------DETAIL ORDER END-------------------------------------------------------------->
+
+

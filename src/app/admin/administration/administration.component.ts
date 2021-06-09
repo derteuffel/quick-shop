@@ -7,6 +7,9 @@ import {Product} from "../../models/product.model";
 import {Category} from "../../models/category";
 import {Type} from "../../models/type";
 import {BoutiqueService} from "../../services/boutique.service";
+import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/models/user';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-administration',
@@ -24,16 +27,22 @@ export class AdministrationComponent implements OnInit {
   public productID;
   currentProduct: Product;
   productForm: FormGroup;
+  role: any ={};
 
   constructor(private modalService: NgbModal,
               private fb: FormBuilder,
               private ecommerceService: EcommerceService,
-              private boutiqueService: BoutiqueService) { }
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.categories = Object.keys(Category);
     this.types = Object.keys(Type);
-    this.loadAll();
+    this.role = this.authService.currentUserValue.role;
+    if(this.role === Role.ENTERPRENER){
+      this.loadAllByUser();
+    }else{
+      this.loadList();
+    }
     this.initForm();
   }
 
@@ -50,13 +59,13 @@ export class AdministrationComponent implements OnInit {
   }
 
 
-  loadAll(){
-    this.boutiqueService.getAllBoutiques().subscribe(
+  loadAllByUser(){
+    this.ecommerceService.getAllProductsByUser().subscribe(
       data => {
-        console.log(data);
         this.lists = data;
-        console.log(this.lists);
-      }, error => {
+        console.log(data);
+      },
+      error => {
         console.log(error);
       }
     );

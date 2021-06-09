@@ -15,13 +15,23 @@ export class SingupComponent implements OnInit {
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
-  locations: string[];
+  provinces: string[];
+  communes: string[];
   activites: string[];
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.locations = ['Bujumbura Mairie','Bujumbura', 'Cibitoke', 'Kirundo', 'Rutana', 'Makamba'];
-    this.activites = ['Agriculture','Elevage','Peche','Education','Pisciculture','Agro-alimentaire','Industrie'];
+    this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+    this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
+  'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
+    this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
+  'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
+'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
+'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
+'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
+'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
+'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
+'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
   }
 
 
@@ -32,16 +42,21 @@ export class SingupComponent implements OnInit {
       this.form.fullName,
       this.form.email,
       this.form.email,
-      '1234567890',
-      this.form.location,
+      this.form.password,
+      this.form.province+', '+this.form.province,
       this.form.phone,
       this.form.birthDate,
-      this.form.secteurActivite);
+      '',
+      this.form.secteurActivite,
+      'ENTREPRENER',
+      '');
 
     this.authService.signUp(this.signupInfo).subscribe(
       data => {
         console.log(data);
-        //this.isSignedUp = true;
+        this.isSignedUp = true;
+        this.errorMessage = "Vous avez ete ajouter avec succes, vueillez vou connecter";
+        window.location.reload();
         //this.isSignUpFailed = false;
         //this.router.navigateByUrl('login');
       },

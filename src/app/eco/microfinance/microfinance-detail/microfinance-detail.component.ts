@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ShoppingCartComponent} from "../../shopping-cart/shopping-cart.component";
 import {Error} from "tslint/lib/error";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductOrder} from "../../../models/product-order.model";
@@ -14,8 +13,7 @@ import {MicrofinanceService} from "../../../services/microfinance.service";
 })
 export class MicrofinanceDetailComponent implements OnInit {
 
-  @ViewChild('shoppingCartC')
-  shoppingCartC: ShoppingCartComponent;
+
   currentMicroFinance: any;
   productOrder: ProductOrder[] = [] ;
 

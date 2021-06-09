@@ -1,6 +1,7 @@
+import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-produit',
@@ -13,8 +14,9 @@ export class HeaderProduitComponent implements OnInit {
 
   provinces: string[];
   communes: string[];
+  navigationParams: any = {};
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
@@ -33,30 +35,37 @@ this.init();
   init(){
     this.produitForm = new FormGroup({
       location: new FormControl(''),
-      name: new FormControl(''),
-      minPrice: new FormControl(''),
-      maxPrice: new FormControl('')
+      name: new FormControl('')
     });
   }
 
   clear(){
     this.produitForm = new FormGroup({
       location: new FormControl(''),
-      name: new FormControl(''),
-      minPrice: new FormControl(''),
-      maxPrice: new FormControl('')
+      name: new FormControl('')
     });
   }
 
   onProduitSearch(){
+     
     const produitNavigationExtras: NavigationExtras = {
       queryParams: {
         'values':JSON.stringify(this.produitForm.value)
       }
     };
-    this.clear();
- this.router.navigate(['/ecommerce/produits'], produitNavigationExtras);
- window.location.reload();
+    
+      
+      this.router.navigate(['/ecommerce/produits/search'], produitNavigationExtras );
+      this.clear();
+    
   }
+
+  isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 
 }

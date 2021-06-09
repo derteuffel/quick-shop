@@ -1,7 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ProductsComponent} from '../../eco/product/products/products.component';
-import {ShoppingCartComponent} from '../../eco/shopping-cart/shopping-cart.component';
-import {OrdersComponent} from '../../eco/orders/orders.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 
@@ -20,16 +18,11 @@ export class HeaderComponent implements OnInit {
 
   provinces: string [];
   communes: string [];
-
-  @ViewChild('shoppingCartC')
-  shoppingCartC: ShoppingCartComponent;
-
-  @ViewChild('ordersC')
-  ordersC: OrdersComponent;
-
   produitForm: FormGroup;
   serviceForm: FormGroup;
   financeForm: FormGroup;
+
+  types: string[]
 
   produitSearch: boolean;
   serviceSearch: boolean;
@@ -41,7 +34,8 @@ export class HeaderComponent implements OnInit {
     this.produitSearch = true;
     this.serviceSearch = false;
     this.financeSearch = false;
-    this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bunjumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
+    this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+    this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
     this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
   'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
@@ -66,23 +60,21 @@ this.init();
   reset() {
     this.orderFinished = false;
     this.productsC.reset();
-    this.shoppingCartC.reset();
-    this.ordersC.paid = false;
   }
 
   init(){
     this.produitForm = new FormGroup({
       location: new FormControl(''),
       name: new FormControl(''),
-      minPrice: new FormControl(''),
-      maxPrice: new FormControl('')
+      //minPrice: new FormControl(''),
+      //maxPrice: new FormControl('')
     });
 
     this.serviceForm = new FormGroup({
       location: new FormControl(''),
       secteurActivite: new FormControl(''),
-      minPrice: new FormControl(''),
-      maxPrice: new FormControl('')
+      //minPrice: new FormControl(''),
+      //maxPrice: new FormControl('')
     });
 
     this.financeForm = new FormGroup({
@@ -117,7 +109,7 @@ this.init();
         'values':JSON.stringify(this.produitForm.value)
       }
     };
- this.router.navigate(['/ecommerce/produits'], produitNavigationExtras);
+ this.router.navigate(['/ecommerce/produits/search'], produitNavigationExtras);
   }
 
   onServiceSearch(){
@@ -126,7 +118,7 @@ this.init();
         'values': JSON.stringify(this.serviceForm.value)
       }
     };
-    this.router.navigate(['/ecommerce/services'], serviceNavigationExtras);
+    this.router.navigate(['/ecommerce/services/search'], serviceNavigationExtras);
   }
 
   onFinanceSearch(){
@@ -135,7 +127,7 @@ this.init();
         'values': JSON.stringify(this.financeForm.value)
       }
     };
-    this.router.navigate(['/ecommerce/finances'], financeNavigationExtras);
+    this.router.navigate(['/ecommerce/finances/search'], financeNavigationExtras);
   }
 
 }

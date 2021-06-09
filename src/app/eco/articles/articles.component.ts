@@ -16,11 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ArticlesComponent implements OnInit {
 
 
-  productOrders: ProductOrder[] = [];
+  
   products: Product[] = [];
-  accessories: Product[] = [];
-  accessoriesProduct: ProductOrder[] = [];
-  selectedProductOrder: ProductOrder;
   private shoppingCartOrders: ProductOrders;
   sub: Subscription;
   productSelected: boolean = false;
@@ -33,18 +30,16 @@ export class ArticlesComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.navigationParams = JSON.parse(params['values']);
-    })
-    console.log(this.navigationParams);
-    if(this.navigationParams){
-      console.log('je suis plutot la');
-      this.loadSearchedProduit(this.navigationParams);
-    }else{
-      console.log('je suis la')
-      this.loadProducts();
-    }
+    this.loadProducts();
   }
+
+ isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 
   /* addToCart(order: ProductOrder) {
     this.ecommerceService.SelectedProductOrder = order;
@@ -78,23 +73,12 @@ export class ArticlesComponent implements OnInit {
     this.ecommerceService.getAllProducts()
       .subscribe(
         data => {
-          this.products = data;   
+          this.products = data; 
+        
+          console.log(data);  
         },
         (error) => console.log(error)
       );
-  }
-
-
-  loadSearchedProduit(form){
-    this.ecommerceService.getAllProductsSearch(form).subscribe(
-      data => {
-        this.products = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
   }
 
 
@@ -102,13 +86,5 @@ export class ArticlesComponent implements OnInit {
     this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
       this.shoppingCartOrders = this.ecommerceService.ProductOrders;
     });
-  }
-
-  reset() {
-    this.productOrders = [];
-    this.loadProducts();
-    this.ecommerceService.ProductOrders.productOrders = [];
-    this.loadOrders();
-    this.productSelected = false;
   }
 }

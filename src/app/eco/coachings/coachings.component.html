@@ -1,27 +1,30 @@
-<app-header></app-header>
+<app-header-service></app-header-service>
 
 
 <!-- Start Shop Blog  -->
 <section class="shop-blog section">
   <div class="container">
+    <br>&nbsp;
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h1 class="text-center">Liste de Coaching</h1>
+          <h1 class="text-center text-uppercase text-underline ">Services d'encadrement et de coachings</h1>
         </div>
       </div>
     </div>
+    <br>&nbsp;
     <div class="row">
       <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings">
         <!-- Start Single Blog  -->
         <div class="shop-single-blog">
           <a href="/ecommerce/coaching/detail/{{coaching?.id}}">
-            <img src="https://via.placeholder.com/370x300" alt="#">
+            <img *ngIf="!coaching.logo" src="https://via.placeholder.com/370x300" alt="#">
+            <img *ngIf="coaching.logo" [src]="coaching.logo" alt="#">
           </a>
           <div class="content">
             <p class="date">{{coaching?.startDate}}</p>
             <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="title">{{coaching?.title}}</a>
-            <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="more-btn">{{coaching?.description}}</a>
+            <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="more-btn">{{'FB '+coaching?.amount}}</a>
           </div>
         </div>
         <!-- End Single Blog  -->

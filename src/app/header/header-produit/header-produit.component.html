@@ -1,33 +1,6 @@
 <!-- Header -->
+<app-header></app-header>
 <header class="header shop">
-    <!-- Topbar -->
-    <div class="topbar">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-md-12 col-12">
-            <!-- Top Left -->
-            <div class="top-left">
-              <ul class="list-main">
-                <li><i class="ti-headphone-alt"></i> +243 976940074/819472760</li>
-                <li><i class="ti-email"></i> support@yesbinspire.com</li>
-              </ul>
-            </div>
-            <!--/ End Top Left -->
-          </div>
-          <div class="col-lg-7 col-md-12 col-12">
-            <!-- Top Right -->
-            <div class="right-content">
-              <ul class="list-main">
-                <!-- <li><i class="ti-power-off"></i><a href="signup">Inscription</a></li> -->
-                <li><i class="ti-power-off"></i><a href="connexion">Connexion</a></li>
-              </ul>
-            </div>
-            <!-- End Top Right -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Topbar -->
     <div class="middle-inner">
       <div class="container">
           <div class="search-bar-top">
@@ -42,16 +15,10 @@
                     <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
                   </select>
                 </div>
-                <div class="form-group col-xl-4 col-md-6">
+                <div class="form-group col-xl-5 col-md-6">
                   <input type="text" placeholder="Nom du produit" class="form-control" formControlName="name">
                 </div>
-                <div class="form-group col-xl-1 col-md-6">
-                  <input type="number" placeholder="minimum" class="form-control" formControlName="minPrice">
-                </div>
-                <div class="form-group col-xl-1 col-md-6">
-                  <input type="number" placeholder="maximum" class="form-control" formControlName="maxPrice">
-                </div>
-                <div class="top-search col-xl-2 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i> </button></div>
+                <div class="top-search col-xl-3 col-md-6"><button type="submit" class="btn btn-default text-white" > <i class="ti-search"></i>&nbsp; Rechercher </button></div>
               </div>
             </form>
           </div>

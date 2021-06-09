@@ -26,17 +26,8 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout().subscribe(
-      data => {
-
-        console.log('you are now offline');
-        this.router.navigateByUrl('/login');
-      },
-      error => {
-        console.log(error);
-      }
-    );
-
+    this.authService.logOut();
+    this.router.navigateByUrl('connexion')
   }
 
 }

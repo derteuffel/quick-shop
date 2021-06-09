@@ -33,13 +33,13 @@ export class MicrofinanceService {
   // recupère toute les microfinances
 
   getAllFinance(): Observable<any> {
-    return this.http.get(this.microfinanceUrl);
+    return this.http.get(this.microfinanceUrl,{headers: this.headers});
   }
 
 
   //enregister une microfinances
   saveFinance(form): Observable<any> {
-    return this.http.post(this.microfinanceUrl, form, { headers: this.headers});
+    return this.http.post(this.microfinanceUrl, form);
   }
 
   //mettre à jour une microfinances
