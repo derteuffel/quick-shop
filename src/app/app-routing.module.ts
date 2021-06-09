@@ -33,6 +33,7 @@ import { AdminRootHome } from './admin/admin-root-home/admin-root-home.component
 import { AdminRootProductComponent } from './admin/admin-root-product/admin-root-product.component';
 import { AdminRootCoachingsComponent } from './admin/admin-root-coachings/coaching/admin-root-coachings.component';
 import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-root-coaching.component';
+import {AccountComponent} from "./account/account.component";
 
 
 const routes: Routes = [
@@ -119,7 +120,7 @@ const routes: Routes = [
   {
     path: 'seller/commandes', component: SellerCommandeComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
-  }, 
+  },
  {
     path: 'admin/boutiques', component: BoutiqueComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
@@ -140,12 +141,12 @@ const routes: Routes = [
     path: 'admin/coachings', component: AdminRootCoachingsComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.TRAINNER]}
   },
-  
+
   {
     path: 'admin/coachings/details/:id', component: AdminRootCoachingComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER]}
   },
-  /* 
+  /*
   {
     path: 'seller/boutiques', component: SellerBoutiqueListComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.SELLER]}
@@ -177,6 +178,10 @@ const routes: Routes = [
   },
   {
     path: 'ecommerce/register/invester', component: SingupInvesterComponent
+  },
+
+  {
+    path: 'configurations', component: AccountComponent
   },
 
   {

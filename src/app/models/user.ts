@@ -5,8 +5,8 @@ export class User{
     username: string;
     email: string;
     password: string;
-    enable: boolean;
-    token: string;  
+    enabled: boolean;
+    token: string;
     createdDate: Date;
     role: Role;
 
