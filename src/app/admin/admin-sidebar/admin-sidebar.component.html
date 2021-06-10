@@ -6,7 +6,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
-    <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/admin/boutiques']">
+    <a class="navbar-brand pt-0" routerLinkActive="active"  href="/admin/boutiques">
       <img src="./assets/images/15x25.png" class="navbar-brand-img" style="width: 150px;height: 150px ;" alt="...">
     </a>
     <!-- Collapse -->
@@ -21,11 +21,6 @@
             <i class="ni ni-shop"></i> Produits
           </a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="/admin/produits">
-            <i class="ni ni-cart"></i>
-          </a>
-        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="/admin/coachings">
             <i class="ni ni-books"></i> Coaching et Encadrement
@@ -43,8 +38,8 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/configurations']">
-            <i class="ni ni-money-coins"></i> Configurations
+          <a class="nav-link"  href="/admin/configurations/account">
+            <i class="ni ni-settings"></i> Gestion Utilisateurs
           </a>
         </li>
 

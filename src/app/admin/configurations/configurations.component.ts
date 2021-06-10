@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {AccountService} from "../services/account.service";
 import {MessageService, PrimeNGConfig} from "primeng/api";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {Router} from "@angular/router";
+import {AccountService} from "../../services/account.service";
 
 @Component({
-  selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss'],
-  providers: [MessageService],
+  selector: 'app-configurations',
+  templateUrl: './configurations.component.html',
+  styleUrls: ['./configurations.component.scss']
 })
-export class AccountComponent implements OnInit {
+export class ConfigurationsComponent implements OnInit {
 
   users: any = [];
   userForm: FormGroup;
@@ -20,12 +19,12 @@ export class AccountComponent implements OnInit {
   currentEmail
   p = 1;
   constructor(
-              private route: Router,
-              private accountService: AccountService,
-              private fb: FormBuilder,
-              private messageService: MessageService,
-              private primengConfig: PrimeNGConfig,
-              private modalService: NgbModal
+    private route: Router,
+    private accountService: AccountService,
+    private fb: FormBuilder,
+    private messageService: MessageService,
+    private primengConfig: PrimeNGConfig,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -133,7 +132,7 @@ export class AccountComponent implements OnInit {
     this.accountService.lockAccount(this.currentEmail).subscribe(
       data => {
         this.messageService.add({severity: 'success', summary: 'Account is succeffuly locked', detail: 'record delete'});
-         this.loadata();
+        this.loadata();
       }, error => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
@@ -152,7 +151,14 @@ export class AccountComponent implements OnInit {
   }
 
 
+  showDetail(contentDetail, event){
+    console.log(event)
+    this.modalService.open(contentDetail, {size: "lg"});
+    this.accountID = event.id
+    this.currentUser = event;
+    console.log(this.accountID);
 
+  }
 
 
   /** toast message function primeng  **/
@@ -167,5 +173,6 @@ export class AccountComponent implements OnInit {
   clear() {
     this.messageService.clear();
   }
+
 
 }
