@@ -54,7 +54,7 @@ export class AdminAccountComponent implements OnInit {
   public loadata() {
     this.accountService.getAllAccount().subscribe(
       res => {
-        this.users = res.data;
+        this.users = res;
       }, error => {
         console.log(error);
       }
@@ -83,7 +83,7 @@ export class AdminAccountComponent implements OnInit {
     const AccountData = {
       id: this.userForm.get('id').value,
       email: this.userForm.get('email').value,
-      localisation: this.userForm.get('localisation').value,
+      location: this.userForm.get('location').value,
       phone: this.userForm.get('phone').value,
       username: this.userForm.get('username').value,
       fullName: this.userForm.get('fullName').value,
@@ -129,6 +129,11 @@ export class AdminAccountComponent implements OnInit {
     this.currentEmail = event.email;
   }
 
+  lock(contentLock, event){
+    this.modalService.open(contentLock, {size: "lg"});
+    this.currentEmail = event.email;
+  }
+
   lockAccount(){
     this.accountService.lockAccount(this.currentEmail).subscribe(
       data => {
@@ -140,6 +145,13 @@ export class AdminAccountComponent implements OnInit {
     )
   }
   /** débloquer un compte **/
+
+  getUnlock(contentUnLock, event) {
+
+    this.modalService.open(contentUnLock, {size: "lg"});
+    this.currentEmail = event.email;
+  }
+
   unlock(){
     this.accountService.unlockAccount(this.currentEmail).subscribe(
       data => {
@@ -159,6 +171,22 @@ export class AdminAccountComponent implements OnInit {
     this.currentUser = event;
     console.log(this.accountID);
 
+  }
+
+  onLocationSearch() {
+    this.accountService.findAccountByLocation(this.userForm.value).subscribe(
+      data => {
+        this.users = data;
+        console.log(data);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+
+  showLocationSearch(contentLocationSearch){
+    this.modalService.open(contentLocationSearch, {size: "md"});
   }
 
 

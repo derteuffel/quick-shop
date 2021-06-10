@@ -15,7 +15,7 @@ export class AccountService {
 
   //private accountUrl = 'http://localhost:8181/api/account';
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.headers = new HttpHeaders({
       authorization: 'Bearer ' + this.currentUser.token,
@@ -33,7 +33,7 @@ export class AccountService {
   }
 
   public updateAccount(form,id): Observable<any>{
-    return this.http.put( `${API.ACCOUNT}/${id}`, form,{headers: this.headers});
+    return this.http.put( `${API.ACCOUNT}/admin/${id}`, form,{headers: this.headers});
   }
 
   public deleteAccount(id): Observable<any> {

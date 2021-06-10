@@ -49,7 +49,7 @@
               </thead>
               <tbody>
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-                
+
                 <td>{{item.user.fullName}}</td>
                 <td>{{item.user.phone}}</td>
                 <td> {{item.user.email}} </td>
@@ -146,13 +146,13 @@
             <p class="mt-3 mb-0 text-muted text-xl"  >
               <span class=" mr-2"><i class="fa fa-dollar-sign"></i> &nbsp;&nbsp;&nbsp;&nbsp;Montant :</span>
               <span class="text-nowrap" style="color: #F45B3A !important;">{{loans?.amount+' '+loans?.devise}}</span>
-            </p> 
+            </p>
             <hr>
             <p class="mt-3 mb-0 text-muted text-xl"  >
               <span class=" mr-2"><i class="fa fa-info"></i>&nbsp;&nbsp;&nbsp;&nbsp;Status  :</span>
               <span *ngIf="loans?.status" class="badge badge-dot mr-4 text-nowrap" style="color: #F45B3A !important;"><i class="bg-success"></i> Accepter</span>
               <span *ngIf="!loans?.status" class="badge badge-dot mr-4 text-nowrap" style="color: #F45B3A !important;"><i class="bg-warning"></i> Suspendus</span>
-      
+
             </p>
             <hr>
             <p class="mt-3 mb-0 text-muted text-xl"  >
@@ -240,7 +240,7 @@
       <p style="color: red;">Voulez vous vraiment changer le status de cette demande ?&hellip;</p>
     </div>
     <!--<hr class="my-4" style="background-color: salmon;" />-->
-  
+
     <div class="modal-footer" style="background-color:#F5B669;">
       <div class="row">
         <!-- <div class="col-md-4 "></div> -->
@@ -253,10 +253,10 @@
         </div>
       </div>
     </div>
-  
+
   </ng-template>
   <!-------------------------------------------------------ACTIVATE LOANS END-------------------------------------------------------------->
-  
+
 
   <!-------------------------------------------------------SEARCH BY PROVINCE LOANS START------------------------------------------------------------>
 <ng-template #contentProvinceSearch let-modal>
@@ -268,14 +268,14 @@
     </button>
   </div>
   <div class="modal-body">
-    
+
       <div class="form-group">
-        <select formControlName="location" class="form-control" id="">
+        <select formControlName="location" class="form-control" >
           <option value="">-- Choisir une province --</option>
           <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
         </select>
       </div>
-    
+
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
@@ -305,14 +305,14 @@
     </button>
   </div>
   <div class="modal-body">
-    
+
       <div class="form-group">
-        <select formControlName="location" class="form-control" id="">
+        <select formControlName="location" class="form-control" >
           <option value="">-- Choisir une commune --</option>
           <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
         </select>
       </div>
-    
+
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
@@ -342,14 +342,14 @@
     </button>
   </div>
   <div class="modal-body">
-    
+
       <div class="form-group">
         <select formControlName="location" class="form-control" id="">
           <option value="">-- Choisir un type d'activite --</option>
           <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
         </select>
       </div>
-    
+
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
@@ -380,16 +380,16 @@
     </button>
   </div>
   <div class="modal-body">
-    
+
       <div class="form-group">
-        <select formControlName="name" class="form-control" id="">
+        <select formControlName="name" class="form-control" >
           <option value="">-- Choisir un Status --</option>
           <option value="1">Accepter</option>
           <option value="0">Suspendus</option>
         </select>
 
       </div>
-    
+
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
