@@ -96,7 +96,7 @@ const routes: Routes = [
 
   {
     path: 'admin/configurations/account', component: AdminAccountComponent,
-    //canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
 
   {

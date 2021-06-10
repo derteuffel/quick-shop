@@ -8,15 +8,17 @@ import {AccountService} from "../../../services/account.service";
 @Component({
   selector: 'app-admin-account',
   templateUrl: './admin-account.component.html',
-  styleUrls: ['./admin-account.component.scss']
+  styleUrls: ['./admin-account.component.scss'],
+  providers: [MessageService]
 })
 export class AdminAccountComponent implements OnInit {
-  users: any = [];
+  users: any = {};
   userForm: FormGroup;
   currentUser;
   accountID;
   currentEmail
   p = 1;
+  searchItem : string;
   constructor(
     private route: Router,
     private accountService: AccountService,
