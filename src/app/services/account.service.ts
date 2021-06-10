@@ -8,7 +8,7 @@ import {API} from "../../environments/environment";
 })
 export class AccountService {
 
-  private accountUrl = 'http://localhost:8181/api/account';
+  //private accountUrl = 'http://localhost:8181/api/account';
 
   constructor(private http: HttpClient) { }
 

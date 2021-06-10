@@ -15,7 +15,6 @@ import {CoachingsComponent} from "./eco/coachings/coachings.component";
 import {CoachingDetailComponent} from "./eco/coachings/coaching-detail/coaching-detail.component";
 import {MicrofinanceComponent} from "./eco/microfinance/microfinance.component";
 import {MicrofinanceDetailComponent} from "./eco/microfinance/microfinance-detail/microfinance-detail.component";
-import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.component';
 import { ArticlesSearchComponent } from './eco/articles-search/articles-search.component';
 import { CoachingsSearchComponent } from './eco/coachings-search/coachings-search.component';
 import { HomeComponent } from './auth/home/home.component';
@@ -29,7 +28,8 @@ import { AdminRootCoachingsComponent } from './admin/admin-root-coachings/coachi
 import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-root-coaching.component';
 import { AdminLoansInputsComponent } from './admin/loans/admin-loans-inputs/admin-loans-inputs.component';
 import { AdminLoansRequestComponent } from './admin/loans/admin-loans-requests/admin-loans-requests.component';
-import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
+import {AdminAccountComponent} from "./admin/configurations/admin-account/admin-account.component";
+
 
 
 const routes: Routes = [
@@ -93,10 +93,12 @@ const routes: Routes = [
     path: 'admin/loans/entrants', component: AdminLoansRequestComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
   },
+
   {
-    path: 'loans/requests', component: LoansRequestComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
+    path: 'admin/configurations/account', component: AdminAccountComponent,
+    //canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
+
   {
     path: 'admin/produit/detail/:id', component: AdminRootProductComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.ENTERPRENER]}
@@ -105,17 +107,17 @@ const routes: Routes = [
     path: 'admin/commandes', component: CommandeComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
-  
+
   {
     path: 'admin/coachings', component: AdminRootCoachingsComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.TRAINNER]}
   },
-  
+
   {
     path: 'admin/coachings/details/:id', component: AdminRootCoachingComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER]}
   },
-  
+
   {
     path: 'connexion', component: LoginComponent
   },
@@ -130,13 +132,17 @@ const routes: Routes = [
   {
     path: 'ecommerce/register/client', component: SingupClientComponent
   },
+
   {
     path: 'ecommerce/register/invester', component: SingupInvesterComponent
   },
 
+
+
   {
     path: '', redirectTo: 'ecommerce/home', pathMatch: 'full'
-  }];
+  }
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
