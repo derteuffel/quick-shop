@@ -184,7 +184,7 @@ this.init();
     )
   }
 
-  activate(contentActivation, event) {
+  activation(contentActivation, event) {
     console.log(event)
     this.modalService.open(contentActivation, {size: "lg"});
     this.loansRef = event.id;

@@ -45,7 +45,7 @@ import {AdminSidebarComponent} from "./admin/admin-sidebar/admin-sidebar.compone
 import { ArticlesComponent } from './eco/articles/articles.component';
 import { CoachingsComponent } from './eco/coachings/coachings.component';
 import { CoachingDetailComponent } from './eco/coachings/coaching-detail/coaching-detail.component';
-import { LoansComponent } from './loans/loans/loans.component';
+import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
 import { MicrofinanceDetailComponent } from './eco/microfinance/microfinance-detail/microfinance-detail.component';
 import { MicrofinanceComponent } from './eco/microfinance/microfinance.component';
 import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.component';
@@ -101,7 +101,7 @@ import { AdminAccountComponent } from './admin/configurations/admin-account/admi
     CoachingsComponent,
     CoachingsSearchComponent,
     CoachingDetailComponent,
-    LoansComponent,
+    LoansRequestComponent,
     MicrofinanceDetailComponent,
     MicrofinanceComponent,
     LoansSortantComponent,
