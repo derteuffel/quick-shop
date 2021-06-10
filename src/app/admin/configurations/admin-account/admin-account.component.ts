@@ -54,7 +54,7 @@ export class AdminAccountComponent implements OnInit {
   public loadata() {
     this.accountService.getAllAccount().subscribe(
       res => {
-        this.users = res;
+        this.users = res.data;
       }, error => {
         console.log(error);
       }
