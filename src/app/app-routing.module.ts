@@ -15,7 +15,7 @@ import {CoachingsComponent} from "./eco/coachings/coachings.component";
 import {CoachingDetailComponent} from "./eco/coachings/coaching-detail/coaching-detail.component";
 import {MicrofinanceComponent} from "./eco/microfinance/microfinance.component";
 import {MicrofinanceDetailComponent} from "./eco/microfinance/microfinance-detail/microfinance-detail.component";
-import { LoansComponent } from './loans/loans/loans.component';
+import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
 import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.component';
 import { ArticlesSearchComponent } from './eco/articles-search/articles-search.component';
 import { CoachingsSearchComponent } from './eco/coachings-search/coachings-search.component';
@@ -91,6 +91,10 @@ const routes: Routes = [
   },
   {
     path: 'admin/loans/entrants', component: AdminLoansRequestComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
+  },
+  {
+    path: 'loans/requests', component: LoansRequestComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
   },
   {
