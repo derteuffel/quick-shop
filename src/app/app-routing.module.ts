@@ -15,7 +15,6 @@ import {CoachingsComponent} from "./eco/coachings/coachings.component";
 import {CoachingDetailComponent} from "./eco/coachings/coaching-detail/coaching-detail.component";
 import {MicrofinanceComponent} from "./eco/microfinance/microfinance.component";
 import {MicrofinanceDetailComponent} from "./eco/microfinance/microfinance-detail/microfinance-detail.component";
-import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
 import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.component';
 import { ArticlesSearchComponent } from './eco/articles-search/articles-search.component';
 import { CoachingsSearchComponent } from './eco/coachings-search/coachings-search.component';
@@ -30,6 +29,7 @@ import { AdminRootCoachingsComponent } from './admin/admin-root-coachings/coachi
 import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-root-coaching.component';
 import { AdminLoansInputsComponent } from './admin/loans/admin-loans-inputs/admin-loans-inputs.component';
 import { AdminLoansRequestComponent } from './admin/loans/admin-loans-requests/admin-loans-requests.component';
+import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
 
 
 const routes: Routes = [
