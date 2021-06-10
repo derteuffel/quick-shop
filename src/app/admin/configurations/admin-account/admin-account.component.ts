@@ -90,7 +90,7 @@ export class AdminAccountComponent implements OnInit {
       birth_date: this.userForm.get('birth_date').value,
       secteur_activite: this.userForm.get('secteur_activite').value,
     };
-    this.accountService.updateAccount(AccountData, this.accountID).subscribe(
+    this.accountService.updateAccount(AccountData).subscribe(
       (data: any) => {
         this.userForm.reset();
         this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
