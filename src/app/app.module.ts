@@ -113,7 +113,7 @@ import { AdminLoansRequestComponent } from './admin/loans/admin-loans-requests/a
     AdminRootProductComponent,
     AdminRootCoachingsComponent,
     AdminRootCoachingComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
