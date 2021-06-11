@@ -14,7 +14,7 @@ export class LoansService {
   formHeaders: HttpHeaders;
 
 
-  private loansUrl = 'http://localhost:8181/api/loansRequest';
+  private loansUrl = 'http://localhost:8181/api/loans';
 
   constructor(private http: HttpClient,
     private authService:AuthService) { 
