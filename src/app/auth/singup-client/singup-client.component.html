@@ -36,6 +36,19 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label class="text-muted">Mot de passe:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" placeholder="Votre Mot de passe " required />
+                  <div *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors.required">Entrer un mot de passe</div>
+                    <div *ngIf="password.errors.password">Entrer un mot de passe valide</div>
+                  </div>
+                </div>
+              </div>
               
               <div class="form-group">
                 <label class="text-muted">Numero de telephone :</label>
@@ -76,8 +89,8 @@
                     <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
                   </select>
                   
-                  <div *ngIf="f.submitted && secteurActivite.invalid">
-                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer une province</div>
+                  <div *ngIf="f.submitted && province.invalid">
+                    <div *ngIf="province.errors.required">Vous devez entrer une province</div>
                   </div>
                 </div>
               </div>
@@ -93,8 +106,8 @@
                     <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
                   </select>
                   
-                  <div *ngIf="f.submitted && secteurActivite.invalid">
-                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer une commune</div>
+                  <div *ngIf="f.submitted && commune.invalid">
+                    <div *ngIf="commune.errors.required">Vous devez entrer une commune</div>
                   </div>
                 </div>
               </div>
@@ -104,14 +117,14 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-vector-square"></i></span>
                   </div>
-                  <select name="secteurActivite" pla class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
+                  <select name="interest" pla class="form-control" [(ngModel)]="form.interest" #interest="ngModel" id="">
                     <option value="" disabled>-- Choisissez un centre d'interet --</option>
                     <option  value="Acheter">Acheter(Acheter un produit et un service que vous desirez)</option>
                     <option  value="Coaching">Etre encadrer ou coacher</option>
                   </select>
                   
-                  <div *ngIf="f.submitted && secteurActivite.invalid">
-                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer un secteur d'activite</div>
+                  <div *ngIf="f.submitted && interest.invalid">
+                    <div *ngIf="interest.errors.required">Vous devez entrer un secteur d'activite</div>
                   </div>
                 </div>
               </div>

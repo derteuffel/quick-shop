@@ -30,6 +30,7 @@ import { AdminLoansInputsComponent } from './admin/loans/admin-loans-inputs/admi
 import { AdminLoansRequestComponent } from './admin/loans/admin-loans-requests/admin-loans-requests.component';
 import {AdminAccountComponent} from "./admin/configurations/admin-account/admin-account.component";
 import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
+import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
 
 
 
@@ -128,6 +129,9 @@ const routes: Routes = [
   },
   {
     path: 'register', component: RegisterComponent
+  },
+  {
+    path: 'register/success', component: RegisterSuccessComponent
   },
 
   {

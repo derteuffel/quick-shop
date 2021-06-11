@@ -56,7 +56,7 @@ export class SingupComponent implements OnInit {
         console.log(data);
         this.isSignedUp = true;
         this.errorMessage = "Vous avez ete ajouter avec succes, vueillez vou connecter";
-        window.location.reload();
+        this.router.navigateByUrl('register/success');
         //this.isSignUpFailed = false;
         //this.router.navigateByUrl('login');
       },

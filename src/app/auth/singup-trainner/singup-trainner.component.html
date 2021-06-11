@@ -87,8 +87,8 @@
                     <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
                   </select>
                   
-                  <div *ngIf="f.submitted && secteurActivite.invalid">
-                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer une province</div>
+                  <div *ngIf="f.submitted && commune.invalid">
+                    <div *ngIf="commune.errors.required">Vous devez entrer une province</div>
                   </div>
                 </div>
               </div>
@@ -104,8 +104,8 @@
                     <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
                   </select>
                   
-                  <div *ngIf="f.submitted && secteurActivite.invalid">
-                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer une commune</div>
+                  <div *ngIf="f.submitted && commune.invalid">
+                    <div *ngIf="commune.errors.required">Vous devez entrer une commune</div>
                   </div>
                 </div>
               </div>

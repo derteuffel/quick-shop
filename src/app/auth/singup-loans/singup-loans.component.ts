@@ -24,7 +24,7 @@ export class SingupLoansComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+    this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Education', 'Offre d\'emploi','Autres'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
     this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
@@ -44,21 +44,22 @@ export class SingupLoansComponent implements OnInit {
       this.form.fullName,
       this.form.email,
       this.form.email,
-      this.form.password,
       this.form.province+', '+this.form.commune,
       this.form.phone,
       this.form.birthDate,
       this.form.idNumber,
       this.form.secteurActivite,
+      this.form.password,
       'LOANS',
       '');
 
+      console.log(this.signupInfo);
     this.authService.signUp(this.signupInfo).subscribe(
       data => {
         console.log(data);
         this.isSignedUp = true;
         this.errorMessage = "Enregistrement fait avec succes, vueillez-vous connecter";
-        window.location.reload();
+        this.router.navigateByUrl('register/success');
         //this.isSignUpFailed = false;
         //this.router.navigateByUrl('login');
       },

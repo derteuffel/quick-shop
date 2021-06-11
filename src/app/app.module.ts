@@ -20,7 +20,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginSuccessComponent } from './auth/login-success/login-success.component';
+import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import {MessagesModule} from 'primeng/messages';
@@ -86,7 +86,7 @@ import { AdminAccountComponent } from './admin/configurations/admin-account/admi
     RegisterComponent,
     UnauthorizedComponent,
     NotFoundComponent,
-    LoginSuccessComponent,
+    RegisterSuccessComponent,
     AdminNavbarComponent,
     AdminLoansInputsComponent,
     AdminLoansRequestComponent,
