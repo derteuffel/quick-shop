@@ -64,7 +64,7 @@
 
                 <td class="text-right" style="width:5em; text-align:center; font-size: 0.75rem;">
                   <button (click)="showDetail(contentDetails, item)"  class="btn btn-success m-1" ><i class="pi pi-eye"></i></button>
-                  <button class="btn btn-primary m-1" (click)="  setAccount(contentUpdate, item)"><i class="pi pi-pencil"></i></button>
+                  <!--<button class="btn btn-primary m-1" (click)="  setAccount(contentUpdate, item)"><i class="pi pi-pencil"></i></button>-->
                   <button (click)="lock(contentLock, item)" *ngIf="!item.enabled"  class="btn btn-primary m-1" ><i class="pi pi-check"></i></button>
                   <button (click)="getUnlock(contentUnLock, item)" *ngIf="item.enabled"  class="btn btn-secondary m-1" ><i class="pi pi-check-square"></i></button>
                   <button  class="btn btn-danger m-1" (click)=" deleteAccount(contentDelete, item)"><i class="pi pi-trash"></i></button>
