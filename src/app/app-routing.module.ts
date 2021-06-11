@@ -29,6 +29,8 @@ import { AdminRootCoachingComponent } from './admin/admin-root-coaching/admin-ro
 import { AdminLoansInputsComponent } from './admin/loans/admin-loans-inputs/admin-loans-inputs.component';
 import { AdminLoansRequestComponent } from './admin/loans/admin-loans-requests/admin-loans-requests.component';
 import {AdminAccountComponent} from "./admin/configurations/admin-account/admin-account.component";
+import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
+import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
 
 
 
@@ -93,6 +95,10 @@ const routes: Routes = [
     path: 'admin/loans/entrants', component: AdminLoansRequestComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
   },
+  {
+    path: 'loans/requests', component: LoansRequestComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
+  },
 
   {
     path: 'admin/configurations/account', component: AdminAccountComponent,
@@ -123,6 +129,9 @@ const routes: Routes = [
   },
   {
     path: 'register', component: RegisterComponent
+  },
+  {
+    path: 'register/success', component: RegisterSuccessComponent
   },
 
   {

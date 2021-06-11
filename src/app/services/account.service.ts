@@ -40,14 +40,6 @@ export class AccountService {
     return this.http.delete(`${API.ACCOUNT}/${id}`,{headers: this.headers});
   }
 
-  public unlockAccount(email): Observable<any> {
-    return this.http.get(`${API.ACCOUNT}?email=${email}`,{headers: this.headers});
-  }
-
-  public lockAccount(email): Observable<any> {
-    return this.http.get(`${API.ACCOUNT}?email=${email}`,{headers: this.headers});
-  }
-
   public findAllAccountByLocationAndName(location, name): Observable<any> {
     return this.http.get(`${API.ACCOUNT}/bylocationandname/${location}/${name}`,{headers: this.headers});
   }
@@ -65,11 +57,11 @@ export class AccountService {
     return this.http.get(`${API.ACCOUNT}/quantity/byuser?mindate=${mindate}&maxdate=${maxdate}`,{headers: this.headers});
   }
 
-  public deactivateAccount(form, id): Observable<any>{
-     return this.http.post(`${API.ACCOUNT}/deactivation/${id}`, form,{headers: this.headers})
+  public deactivateAccount(id): Observable<any>{
+     return this.http.get(`${API.ACCOUNT}/deactivation/${id}`, {headers: this.headers})
   }
 
-  public activateAccount(form, id): Observable<any>{
-    return this.http.post(`${API.ACCOUNT}/activation/${id}`, form,{headers: this.headers})
+  public activateAccount(id): Observable<any>{
+    return this.http.get(`${API.ACCOUNT}/activation/${id}`,{headers: this.headers})
   }
 }

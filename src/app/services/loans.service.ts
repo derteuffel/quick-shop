@@ -14,7 +14,7 @@ export class LoansService {
   formHeaders: HttpHeaders;
 
 
-  private loansUrl = 'http://localhost:8181/api/loansRequest';
+  private loansUrl = 'http://localhost:8181/api/loans';
 
   constructor(private http: HttpClient,
     private authService:AuthService) { 
@@ -66,8 +66,9 @@ export class LoansService {
       return this.http.get(this.loansUrl+'/admin/delete/'+id, {headers: this.headers});
     }
 
-    update(form): Observable<any>{
-      return this.http.put(this.loansUrl,form, {headers: this.headers});
+    update(form, id): Observable<any>{
+      console.log(form);
+      return this.http.put(this.loansUrl+'/admin/'+id,form, {headers: this.headers});
     }
 
     save(form): Observable<any>{

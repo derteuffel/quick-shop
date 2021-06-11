@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {AuthService} from "../auth.service";
 import {CustomerInfo} from "../requests/customer-info";
 import { SignUpInfo } from '../requests/signup-info';
@@ -18,7 +19,7 @@ export class SingupClientComponent implements OnInit {
   provinces: string[];
   communes: string[];
   activites: string[];
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
@@ -42,20 +43,21 @@ export class SingupClientComponent implements OnInit {
       this.form.fullName,
       this.form.email,
       this.form.email,
-      this.form.password,
       this.form.province+', '+this.form.commune,
       this.form.phone,
       this.form.birthDate,
       this.form.idNumber,
       this.form.secteurActivite,
+      this.form.password,
       'CLIENT',
       this.form.interest);
+      console.log(this.signupInfo);
     this.authService.signUp(this.signupInfo).subscribe(
       data => {
         console.log(data);
         this.isSignedUp = true;
         this.errorMessage = 'Enregistrer avec succes, vueillez-vous connecter';
-        window.location.reload();
+        this.router.navigateByUrl('register/success');
         //this.isSignUpFailed = false;
         //this.router.navigateByUrl('login');
       },

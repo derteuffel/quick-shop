@@ -65,7 +65,7 @@ export class SingupInvesterComponent implements OnInit {
           console.log('faite un versement de la somme preciser contre un recue de verification');
         }
         this.errorMessage = 'Votre requete a ete soumise avec succes, vous serrez redirige vers votre page de paiement';
-        window.location.reload();
+        this.router.navigateByUrl('register/success');
         //this.isSignUpFailed = false;
         //this.router.navigateByUrl('login');
       },

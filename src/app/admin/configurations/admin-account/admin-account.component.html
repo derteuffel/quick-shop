@@ -20,7 +20,16 @@
           <div class="card-header border-0" style="background-color:#F45B3A;">
             <div class="row">
               <div class="col-md-6 col-lg-3 col-12">
-                <button (click)="showLocationSearch(contentLocationSearch)" pButton  style="float:left;background-color:#F7941D;" label="Location"><i class="fa fa-search"></i>&nbsp;</button>
+                <button (click)="showLocationSearch(contentLocationSearch)" pButton  style="float:left;background-color:#F7941D;" label="Entrepreneures"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-2 col-12">
+                <button (click)="showLocationSearch(contentLocationSearch)" pButton  style="float:left;background-color:#F7941D;" label="Clients"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-3 col-12">
+                <button (click)="showLocationSearch(contentLocationSearch)" pButton  style="float:left;background-color:#F7941D;" label="Encadrement/Coachings"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-4 col-12">
+                <button (click)="showLocationSearch(contentLocationSearch)" pButton  style="float:left;background-color:#F7941D;" label="Demandeur de Credits"><i class="fa fa-search"></i>&nbsp;</button>
               </div>
             </div>
           </div>
@@ -189,7 +198,7 @@
   </div>
   <div class="modal-body" >
     <form [formGroup]="userForm" (submit)="updateAccount()">
-      <h5>{{currentUser.username}}</h5>
+      <h5>{{currentUser.fullName}}</h5>
       <div class="form-group">
         <label >Email</label>
         <input type="email" class="form-control"  required formControlName="email" >
@@ -267,7 +276,7 @@
         <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
       </div> &nbsp;&nbsp;&nbsp;&nbsp;
       <div class="col-md-4 ">
-        <button type="button" class="btn btn-danger"
+        <button type="button" class="btn btn-success"
                 (click)="onDelete() + modal.close('Close click')">Supprimer</button>
       </div>
     </div>
@@ -297,7 +306,7 @@
         <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
       </div> &nbsp;&nbsp;&nbsp;&nbsp;
       <div class="col-md-4 ">
-        <button type="button" class="btn btn-danger"
+        <button type="button" class="btn btn-success"
                 (click)="lockAccount() + modal.close('Close click')">Valide</button>
       </div>
     </div>

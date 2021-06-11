@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-admin-account',
@@ -21,6 +22,7 @@ export class AdminAccountComponent implements OnInit {
   searchItem : string;
   constructor(
     private route: Router,
+    private authService: AuthService,
     private accountService: AccountService,
     private fb: FormBuilder,
     private messageService: MessageService,
@@ -29,6 +31,8 @@ export class AdminAccountComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.authService.currentUserValue);
+    console.log(this.authService.currentUser);
     this.primengConfig.ripple = true;
     this.initForm();
     this.loadata();
@@ -126,17 +130,18 @@ export class AdminAccountComponent implements OnInit {
 
   getLock(content,event){
     this.modalService.open(content, {size: "lg"});
-    this.currentEmail = event.email;
+    this.currentEmail = event.id;
   }
 
   lock(contentLock, event){
     this.modalService.open(contentLock, {size: "lg"});
-    this.currentEmail = event.email;
+    this.currentEmail = event.id;
   }
 
   lockAccount(){
-    this.accountService.lockAccount(this.currentEmail).subscribe(
+    this.accountService.activateAccount(this.currentEmail).subscribe(
       data => {
+        console.log(this.currentEmail);
         this.messageService.add({severity: 'success', summary: 'Account is succeffuly locked', detail: 'record delete'});
         this.loadata();
       }, error => {
@@ -149,11 +154,11 @@ export class AdminAccountComponent implements OnInit {
   getUnlock(contentUnLock, event) {
 
     this.modalService.open(contentUnLock, {size: "lg"});
-    this.currentEmail = event.email;
+    this.currentEmail = event.id;
   }
 
   unlock(){
-    this.accountService.unlockAccount(this.currentEmail).subscribe(
+    this.accountService.deactivateAccount(this.currentEmail).subscribe(
       data => {
         this.messageService.add({severity: 'success', summary: 'Account is succeffuly unlocked', detail: 'record delete'});
         this.loadata();

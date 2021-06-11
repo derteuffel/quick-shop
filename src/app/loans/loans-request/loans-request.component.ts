@@ -161,15 +161,16 @@ this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance 
       id: this.loansUpdateFormGroup.get('id').value,
       amount: this.loansUpdateFormGroup.get('amount').value,
       object: this.loansUpdateFormGroup.get('object').value,
-      sector: this.loans.get('sector').value,
+      sector: this.loansUpdateFormGroup.get('sector').value,
       region: this.loansUpdateFormGroup.get('province').value+', '+this.loansUpdateFormGroup.get('commune').value,
       devise: this.loansUpdateFormGroup.get('devise').value
 
     }
 
     console.log(updateData);
-    this.loansService.update(updateData).subscribe(
+    this.loansService.update(updateData, updateData.id).subscribe(
       (data: any) => {
+        console.log(data);
         this.loansUpdateFormGroup.reset();
         this.messageService.add({severity:'success', summary: 'Record is updated successully', detail:'record updated'});
         this.loadData();
