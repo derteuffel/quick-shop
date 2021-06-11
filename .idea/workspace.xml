@@ -44,8 +44,8 @@
       <file leaf-file-name="admin-account.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="66" column="53" selection-start-line="66" selection-end-line="67" />
+            <state relative-caret-position="684">
+              <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
               <folding>
                 <element signature="n#p-toast#1;n#!!top" />
                 <element signature="n#ng-template#0;n#!!top" />
@@ -392,12 +392,12 @@
       <workItem from="1622364950551" duration="13386000" />
       <workItem from="1622568880139" duration="2943000" />
       <workItem from="1622753440221" duration="1507000" />
-      <workItem from="1623400208854" duration="23000" />
+      <workItem from="1623400208854" duration="110000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187308000" />
+    <option name="totallyTimeSpent" value="187395000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
@@ -837,8 +837,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="66" column="53" selection-start-line="66" selection-end-line="67" />
+        <state relative-caret-position="684">
+          <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
           <folding>
             <element signature="n#p-toast#1;n#!!top" />
             <element signature="n#ng-template#0;n#!!top" />
