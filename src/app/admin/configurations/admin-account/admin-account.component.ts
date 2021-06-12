@@ -5,6 +5,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
 import {AccountService} from "../../../services/account.service";
 import { AuthService } from 'src/app/auth/auth.service';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-admin-account',
@@ -190,16 +191,52 @@ export class AdminAccountComponent implements OnInit {
     this.modalService.open(contentLocationSearch, {size: "md"});
   }
 
-  searchEntrepreneur(contentEntrepreneur) {
-    this.modalService.open(contentEntrepreneur, {size: "md"});
+  searchEntrepreneur() {
+    this.accountService.findAllAccountByRole(Role.ENTERPRENER).subscribe(
+      data => {
+        this.users = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
-  searchClient(contentClient) {
-    this.modalService.open(contentClient,{size: "md"});
+  searchClient() {
+    this.accountService.findAllAccountByRole(Role.CLIENT).subscribe(
+      data => {
+        this.users = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
-  searchCoaching(contentCoaching) {
-    this.modalService.open(contentCoaching,{size: "md"});
+  searchCoaching() {
+    this.accountService.findAllAccountByRole(Role.TRAINNER).subscribe(
+      data => {
+        this.users = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  searchLoans() {
+    this.accountService.findAllAccountByRole(Role.LOANS).subscribe(
+      data => {
+        this.users = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 

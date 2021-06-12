@@ -44,6 +44,10 @@ export class AccountService {
     return this.http.get(`${API.ACCOUNT}/bylocationandname/${location}/${name}`,{headers: this.headers});
   }
 
+  public findAllAccountByRole(role): Observable<any> {
+    return this.http.get(`${API.ACCOUNT}/role/${role}`,{headers: this.headers});
+  }
+
   public findAccountByLocation(location): Observable<any> {
     return this.http.get(`${API.ACCOUNT}/bylocation/${location}`,{headers: this.headers});
   }
