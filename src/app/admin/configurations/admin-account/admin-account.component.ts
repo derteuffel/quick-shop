@@ -186,9 +186,22 @@ export class AdminAccountComponent implements OnInit {
   }
 
 
-  showLocationSearch(contentLocationSearch){
+  showDemandeurSearch(contentLocationSearch){
     this.modalService.open(contentLocationSearch, {size: "md"});
   }
+
+  searchEntrepreneur(contentEntrepreneur) {
+    this.modalService.open(contentEntrepreneur, {size: "md"});
+  }
+
+  searchClient(contentClient) {
+    this.modalService.open(contentClient,{size: "md"});
+  }
+
+  searchCoaching(contentCoaching) {
+    this.modalService.open(contentCoaching,{size: "md"});
+  }
+
 
 
   /** toast message function primeng  **/
