@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -18,42 +17,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="admin-account.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.ts">
+      <file leaf-file-name="detail-product.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="188" column="2" selection-start-line="188" selection-start-column="2" selection-end-line="188" selection-end-column="44" />
+            <state relative-caret-position="171">
+              <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin-account.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html">
+      <file leaf-file-name="detail-product.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="379" column="45" selection-start-line="379" selection-start-column="45" selection-end-line="379" selection-end-column="45" />
+            <state relative-caret-position="183">
+              <caret line="100" column="10" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
               <folding>
                 <element signature="n#p-toast#1;n#!!top" />
-                <element signature="n#ng-template#0;n#!!top" />
-                <element signature="n#ng-template#1;n#!!top" />
-                <element signature="n#ng-template#2;n#!!top" />
-                <element signature="n#ng-template#3;n#!!top" />
-                <element signature="n#ng-template#4;n#!!top" />
-                <element signature="n#ng-template#5;n#!!top" />
-                <element signature="n#ng-template#6;n#!!top" />
-                <element signature="n#ng-template#7;n#!!top" />
-                <element signature="n#ng-template#8;n#!!top" />
-                <element signature="n#ng-template#9;n#!!top" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="account.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/services/account.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-269">
-              <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -100,7 +80,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/seller/boutique/seller-boutique-detail/seller-boutique-detail.component.ts" />
         <option value="$PROJECT_DIR$/src/app/seller/boutique/seller-boutique-detail/seller-boutique-detail.component.html" />
         <option value="$PROJECT_DIR$/src/app/seller/product/seller-update-product/seller-update-product.component.html" />
         <option value="$PROJECT_DIR$/src/app/admin/product/administration-update-product/administration-update-product.component.html" />
@@ -118,7 +97,6 @@
         <option value="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/articles/articles.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/articles/articles.component.scss" />
-        <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.css" />
         <option value="$PROJECT_DIR$/src/app/eco/articles/articles.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.html" />
@@ -151,6 +129,8 @@
         <option value="$PROJECT_DIR$/src/app/admin/configurations/configurations.component.ts" />
         <option value="$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.ts" />
         <option value="$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html" />
+        <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html" />
+        <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.ts" />
       </list>
     </option>
   </component>
@@ -224,6 +204,21 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="admin-root-coaching" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="eco" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -381,10 +376,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="192389000" />
+    <option name="totallyTimeSpent" value="193207000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18763326" />
@@ -507,46 +503,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coaching/admin-root-coaching.component.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="68" column="163" selection-start-line="68" selection-start-column="163" selection-end-line="68" selection-end-column="163" />
-          <folding>
-            <element signature="n#p-toast#1;n#!!top" />
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#ng-template#1;n#!!top" />
-            <element signature="n#ng-template#2;n#!!top" />
-            <element signature="n#ng-template#3;n#!!top" />
-            <element signature="n#ng-template#4;n#!!top" />
-            <element signature="n#ng-template#5;n#!!top" />
-            <element signature="n#ng-template#6;n#!!top" />
-            <element signature="n#ng-template#7;n#!!top" />
-            <element signature="n#ng-template#8;n#!!top" />
-            <element signature="n#ng-template#9;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/account.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="32" column="3" lean-forward="true" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/coachings/coaching/coaching.component.ts" />
     <entry file="file://$PROJECT_DIR$/src/app/coachings/coaching/coaching.component.html" />
     <entry file="file://$PROJECT_DIR$/src/app/admin/boutique/boutique/boutique.component.html" />
-    <entry file="file://$PROJECT_DIR$/src/app/services/commande.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/ecommerce.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -593,20 +552,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="43" column="33" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -704,13 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-inputs/admin-loans-inputs.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="50" column="3" lean-forward="true" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-sidebar/admin-sidebar.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -767,20 +705,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="149" selection-start-line="149" selection-end-line="153" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-product/admin-root-product.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2408" />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coaching/admin-root-coaching.component.ts">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/configurations/configurations.component.ts">
       <provider selected="true" editor-type-id="text-editor">
@@ -817,9 +745,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-inputs/admin-loans-inputs.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="50" column="3" lean-forward="true" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
+        <state relative-caret-position="70">
           <caret line="379" column="45" selection-start-line="379" selection-start-column="45" selection-end-line="379" selection-end-column="45" />
           <folding>
             <element signature="n#p-toast#1;n#!!top" />
@@ -834,6 +769,73 @@
             <element signature="n#ng-template#8;n#!!top" />
             <element signature="n#ng-template#9;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-897">
+          <caret line="149" selection-start-line="149" selection-end-line="153" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/commande.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-490">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/commande/commande/commande.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coaching/admin-root-coaching.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2940">
+          <caret line="202" column="6" lean-forward="true" selection-start-line="202" selection-start-column="6" selection-end-line="202" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coaching/admin-root-coaching.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="179" selection-start-line="179" selection-end-line="201" selection-end-column="10" />
+          <folding>
+            <element signature="n#p-toast#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="100" column="10" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
+          <folding>
+            <element signature="n#p-toast#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
         </state>
       </provider>
     </entry>

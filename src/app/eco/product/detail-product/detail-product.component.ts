@@ -8,18 +8,22 @@ import { ProductOrder } from '../../../models/product-order.model';
 import { ProductOrders } from '../../../models/product-orders.model';
 import { Product } from '../../../models/product.model';
 import { EcommerceService } from '../../../services/ecommerce.service';
+import {CommandeService} from "../../../services/commande.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-detail-product',
   templateUrl: './detail-product.component.html',
-  styleUrls: ['./detail-product.component.css']
+  styleUrls: ['./detail-product.component.css'],
+  providers: [MessageService],
 })
 export class DetailProductComponent implements OnInit {
 
-  
+
   currentProduct: any;
   productOrder: ProductOrder[] = [] ;
   sub: Subscription;
+  products: Product[] = [];
   productSelected: boolean = false;
   selectedProductOrder: ProductOrder;
   private shoppingCartOrders: ProductOrders;
@@ -27,12 +31,26 @@ export class DetailProductComponent implements OnInit {
 
   orderForm: FormGroup;
 
-  constructor(private ecommerceService: EcommerceService, private activatedRoute: ActivatedRoute, 
-    private router:Router,private modalService: NgbModal) { }
+  constructor(private ecommerceService: EcommerceService,
+              private activatedRoute: ActivatedRoute,
+              private router:Router,
+              private commandeService: CommandeService,
+              private messageService: MessageService,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
     this.productOrder = [];
+  }
+
+  loadProducts() {
+    this.ecommerceService.getAllProducts().subscribe(
+      data => {
+        this.products = data;
+      }, error1 => {
+        console.log(error1);
+      }
+    )
   }
 
   loadOrders() {
@@ -92,6 +110,33 @@ export class DetailProductComponent implements OnInit {
 
   finishOrder(orderFinished: boolean) {
     this.orderFinished = orderFinished;
+  }
+
+  onSaveSubscribe(){
+    this.commandeService.saveCmd(this.orderForm?.value).subscribe(
+      data => {
+        this.orderForm.reset();
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'commande submitted', sticky: true});
+        this.loadProducts();
+      },
+      error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        console.log(error);
+      }
+    )
+  }
+
+  /** toast message function primeng  **/
+  onConfirm() {
+    this.messageService.clear('c');
+  }
+
+  onReject() {
+    this.messageService.clear('c');
+  }
+
+  clear() {
+    this.messageService.clear();
   }
 
 }
