@@ -89,7 +89,7 @@ export class ConfigurationsComponent implements OnInit {
       birth_date: this.userForm.get('birth_date').value,
       secteur_activite: this.userForm.get('secteur_activite').value,
     };
-    this.accountService.updateAccount(AccountData, this.accountID).subscribe(
+    this.accountService.updateAccount(AccountData).subscribe(
       (data: any) => {
         this.userForm.reset();
         this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
@@ -123,32 +123,9 @@ export class ConfigurationsComponent implements OnInit {
 
   /** bloquer un compte **/
 
-  getLock(content,event){
-    this.modalService.open(content, {size: "lg"});
-    this.currentEmail = event.email;
-  }
 
-  lockAccount(){
-    this.accountService.lockAccount(this.currentEmail).subscribe(
-      data => {
-        this.messageService.add({severity: 'success', summary: 'Account is succeffuly locked', detail: 'record delete'});
-        this.loadata();
-      }, error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
-      }
-    )
-  }
   /** débloquer un compte **/
-  unlock(){
-    this.accountService.unlockAccount(this.currentEmail).subscribe(
-      data => {
-        this.messageService.add({severity: 'success', summary: 'Account is succeffuly unlocked', detail: 'record delete'});
-        this.loadata();
-      }, error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
-      }
-    )
-  }
+
 
 
   showDetail(contentDetail, event){

@@ -128,10 +128,6 @@ export class AdminAccountComponent implements OnInit {
 
   /** bloquer un compte **/
 
-  getLock(content,event){
-    this.modalService.open(content, {size: "lg"});
-    this.currentEmail = event.id;
-  }
 
   lock(contentLock, event){
     this.modalService.open(contentLock, {size: "lg"});
