@@ -41,7 +41,10 @@ export class DetailProductComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
     this.productOrder = [];
+    this.initForm();
   }
+
+
 
   loadProducts() {
     this.ecommerceService.getAllProducts().subscribe(

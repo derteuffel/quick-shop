@@ -20,6 +20,6 @@ export class CommandeService {
   // enregistrer une commande
 
   saveCmd(form): Observable<any> {
-    return this.http.post(`${API.COMMANDES}`, form, {observe: "response"});
+    return this.http.post(`${API.COMMANDES}/saveOrder`, form, {observe: "response"});
   }
 }

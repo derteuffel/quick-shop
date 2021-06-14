@@ -4,22 +4,32 @@ import {CoachingService} from "../../../services/coaching.service";
 import {ProductOrder} from "../../../models/product-order.model";
 import {Error} from "tslint/lib/error";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import { FormControl, FormGroup } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {MessageService} from "primeng/api";
+import {CommandeService} from "../../../services/commande.service";
+import {Product} from "../../../models/product.model";
+import {EcommerceService} from "../../../services/ecommerce.service";
 
 @Component({
   selector: 'app-coaching-detail',
   templateUrl: './coaching-detail.component.html',
-  styleUrls: ['./coaching-detail.component.scss']
+  styleUrls: ['./coaching-detail.component.scss'],
+  providers: [MessageService],
 })
 export class CoachingDetailComponent implements OnInit {
   currentCoaching: any;
   numbers: number[];
   productOrder: ProductOrder[] = [] ;
   subscribeForm: FormGroup;
-
+  orderForm: FormGroup;
+  products: Product[] = [];
   constructor(
               private activatedRoute: ActivatedRoute,
               private router:Router,
+              private fb: FormBuilder,
+              private ecommerceService: EcommerceService,
+              private commandeService: CommandeService,
+              private messageService: MessageService,
               private modalService: NgbModal,
               private coachingService: CoachingService) { }
 
@@ -53,14 +63,46 @@ export class CoachingDetailComponent implements OnInit {
     });
   }
 
+  loadProducts() {
+    this.ecommerceService.getAllProducts().subscribe(
+      data => {
+        this.products = data;
+      }, error1 => {
+        console.log(error1);
+      }
+    )
+  }
   onSaveSubscribe(){
-
+    this.commandeService.saveCmd(this.subscribeForm?.value).subscribe(
+      data => {
+        this.subscribeForm.reset();
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'commande submitted', sticky: true});
+        this.loadProducts();
+      },
+      error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        console.log(error);
+      }
+    )
   }
 
   setNumberList(){
     for(let i = 0; i < 1000; i++){
       this.numbers.push(i);
     }
+  }
+
+  /** toast message function primeng  **/
+  onConfirm() {
+    this.messageService.clear('c');
+  }
+
+  onReject() {
+    this.messageService.clear('c');
+  }
+
+  clear() {
+    this.messageService.clear();
   }
 
 }
