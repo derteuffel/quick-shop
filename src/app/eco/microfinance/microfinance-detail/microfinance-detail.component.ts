@@ -72,7 +72,7 @@ export class MicrofinanceDetailComponent implements OnInit {
       }
     )
   }
-  onSaveSubscribe(){
+  /* onSaveSubscribe(){
     this.commandeService.saveCmd(this.subscribeForm?.value).subscribe(
       data => {
         this.subscribeForm.reset();
@@ -84,7 +84,7 @@ export class MicrofinanceDetailComponent implements OnInit {
         console.log(error);
       }
     )
-  }
+  } */
 
 
 

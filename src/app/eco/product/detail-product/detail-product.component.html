@@ -1,4 +1,4 @@
-<div [hidden]="orderFinished">
+<app-header></app-header>
 <!--================Home Banner Area =================-->
  <section class="banner_area">
     <div class="banner_inner d-flex align-items-center">
@@ -21,7 +21,6 @@
   </section>
   <!--================End Home Banner Area =================-->
 
-</div>
 
 <main class="card">
   <div class="row no-gutters">
@@ -65,7 +64,7 @@
         <!-- row.// -->
         <p>Passez votre commande en remplissant le formulaire via le bouton ci-dessous</p>
         <hr>
-        <button  class="btn  btn-warning" style="background-color: #F7941D;" (click)="addToCart(contentAdd,currentProduct)"> <i class="fa fa-shopping-cart"></i> Passer ma commande</button>
+        <button  class="btn  btn-warning" style="background-color: #F7941D;" (click)="openModalFormulaire(contentAdd,currentProduct)"> <i class="fa fa-shopping-cart"></i> Passer ma commande</button>
 
         <!-- short-info-wrap .// -->
       </article> <!-- card-body.// -->

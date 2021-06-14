@@ -40,27 +40,14 @@ export class DetailProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.productOrder = [];
     this.initForm();
   }
 
 
 
-  loadProducts() {
-    this.ecommerceService.getAllProducts().subscribe(
-      data => {
-        this.products = data;
-      }, error1 => {
-        console.log(error1);
-      }
-    )
-  }
+  
 
-  loadOrders() {
-    this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
-      this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-    });
-  }
+  
   getProduct(id): void{
     this.ecommerceService.getProductFree(id).subscribe(
         data => {
@@ -83,40 +70,25 @@ export class DetailProductComponent implements OnInit {
       paymentMode: new FormControl('')
     });
   }
-  openModalFormulaire(contentAdd)  {
+  openModalFormulaire(contentAdd, event)  {
     this.modalService.open(contentAdd, {size: 'lg'});
+    this.currentProduct = event;
    }
 
-  addToCart(contentAdd, event) {
-    this.modalService.open(contentAdd, {size: 'lg'});
-    this.currentProduct = event
-  }
-  removeFromCart(productOrder: ProductOrder) {
-    let index = this.getProductIndex(productOrder.product);
-    if (index > -1) {
-      this.shoppingCartOrders.productOrders.splice(
-        this.getProductIndex(productOrder.product), 1);
-    }
-    this.ecommerceService.ProductOrders = this.shoppingCartOrders;
-    this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-    this.productSelected = false;
-  }
+  
 
-  getProductIndex(product: Product): number {
-    return this.ecommerceService.ProductOrders.productOrders.findIndex(
-      value => value.product === product);
-  }
-
-  isProductSelected(product: Product): boolean {
-    return this.getProductIndex(product) > -1;
-  }
-
-  finishOrder(orderFinished: boolean) {
-    this.orderFinished = orderFinished;
-  }
+  
 
   onSaveSubscribe(){
-    this.commandeService.saveCmd(this.orderForm?.value).subscribe(
+    const formData =  {
+      clientName: this.orderForm.get('name').value,
+      email: this.orderForm.get('email').value,
+      clientPhone: this.orderForm.get('phone').value,
+      quantity: this.orderForm.get('quantity').value,
+      paymentMode: this.orderForm.get('paymentMode').value,
+      isProduit: true
+    }
+    this.commandeService.saveCmd(formData, this.currentProduct.id).subscribe(
       data => {
         this.orderForm.reset();
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'commande submitted', sticky: true});

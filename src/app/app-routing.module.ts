@@ -75,7 +75,7 @@ const routes: Routes = [
 
 
   {
-    path: 'ecommerce/microfinance', component: MicrofinanceComponent
+    path: 'ecommerce/finances', component: MicrofinanceComponent
   },
   {
     path: 'ecommerce/product/detail/:id', component: DetailProductComponent

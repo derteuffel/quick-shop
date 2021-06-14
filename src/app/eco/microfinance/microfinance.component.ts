@@ -3,6 +3,7 @@ import {Coaching} from "../../models/coaching";
 import {CoachingService} from "../../services/coaching.service";
 import {Microfinance} from "../../models/microfinance";
 import {MicrofinanceService} from "../../services/microfinance.service";
+import { LoansService } from 'src/app/services/loans.service';
 
 @Component({
   selector: 'app-microfinance',
@@ -11,18 +12,21 @@ import {MicrofinanceService} from "../../services/microfinance.service";
 })
 export class MicrofinanceComponent implements OnInit {
 
-  microfinances: Microfinance[];
+  lists: any = {};
 
-  constructor(private microFinanceService: MicrofinanceService) { }
+  constructor(private loansService: LoansService) { }
 
   ngOnInit(): void {
     this.loadMicroFinancements();
   }
 
   loadMicroFinancements() {
-    this.microFinanceService.getAllFinance().subscribe(
+    this.loansService.getAllbyVisitor().subscribe(
       (res: any) => {
-        this.microfinances = res;
+        this.lists = res;
+      },
+      error => {
+        console.log(error);
       }
     )
   }

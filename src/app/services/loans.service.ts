@@ -43,7 +43,7 @@ export class LoansService {
     }
 
     getAllbyVisitor(): Observable<any>{
-      return this.http.get(this.loansUrl+'/all', {headers: this.headers})
+      return this.http.get(this.loansUrl+'/all')
     }
 
     getAllbyStatus(value): Observable<any>{
