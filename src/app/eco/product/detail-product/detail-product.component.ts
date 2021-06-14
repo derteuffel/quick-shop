@@ -120,7 +120,7 @@ export class DetailProductComponent implements OnInit {
       data => {
         this.orderForm.reset();
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'commande submitted', sticky: true});
-        this.loadProducts();
+        this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
       },
       error => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});

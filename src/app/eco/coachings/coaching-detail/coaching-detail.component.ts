@@ -77,7 +77,7 @@ export class CoachingDetailComponent implements OnInit {
       data => {
         this.subscribeForm.reset();
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'commande submitted', sticky: true});
-        this.loadProducts();
+        this.getCoaching(this.activatedRoute.snapshot.paramMap.get('id'));
       },
       error => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
