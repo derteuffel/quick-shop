@@ -1,6 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {OrdersComponent} from '../orders/orders.component';
-import {ShoppingCartComponent} from '../shopping-cart/shopping-cart.component';
 import {ProductsComponent} from '../product/products/products.component';
 
 @Component({
@@ -15,12 +13,6 @@ export class EcommerceComponent implements OnInit {
 
   @ViewChild('productsC')
   productsC: ProductsComponent;
-
-  @ViewChild('shoppingCartC')
-  shoppingCartC: ShoppingCartComponent;
-
-  @ViewChild('ordersC')
-  ordersC: OrdersComponent;
 
   constructor() { }
 

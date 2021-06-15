@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+
+<!-- Start Microfinancement -->
+<section class="shop-blog section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h1 class="text-center">Micro-Credits</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12" *ngFor="let m of lists">
+        <!-- Start Single Blog  -->
+        <div class="shop-single-blog">
+          <a href="#">
+            <img src="https://via.placeholder.com/170x100.png" alt="#">
+          </a>
+          <div class="content">
+            <p class="title">{{m?.object}}</p>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card-body">
+                  <p class="title">{{m?.sector}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card-body">
+                  <p class="title">{{m?.region}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Single Blog  -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Microfinancement  -->
+<app-footer></app-footer>

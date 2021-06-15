@@ -11,10 +11,11 @@
       </div>
       <div *ngIf="isConnected" class="col-md-3" >
         <a (click)="logout()" class="register btn btn-default">Deconnexion</a>
-      </div> 
+      </div>
       <div *ngIf="!isConnected" class="col-md-3" >
         <a  href="/login" class="login btn btn-default">Connexion</a>
         <a href="/register" class="register btn btn-default">Inscription</a>
       </div> <!-- Login and Register -->
     </div>
   </div>
+</div>

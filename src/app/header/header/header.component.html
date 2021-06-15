@@ -1,114 +1,62 @@
-<!--================Header Menu Area =================-->
-<header class="header_area">
-  <div class="top_menu">
+<!-- Header -->
+<header class="header shop">
+  <!-- Topbar -->
+  <div class="topbar">
     <div class="container">
       <div class="row">
-        <div class="col-lg-7">
-          <div class="float-left">
-            <p>Telephone: +237 694 12 61 58</p>
-            <p>Email: quick-shop@zigs-entreprises.org</p>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="float-right">
-            <ul class="right_side">
-              <li>
-                <a href="tracking.html">
-                  a propos de nous
-                </a>
-              </li>
-              <li>
-                <a href="contact.html">
-                  nous contacter
-                </a>
-              </li>
+        <div class="col-lg-5 col-md-12 col-12">
+          <!-- Top Left -->
+          <div class="top-left">
+            <ul class="list-main">
+              <li><i class="ti-email"></i> support@yesbinspire.com</li>
             </ul>
           </div>
+          <!--/ End Top Left -->
+        </div>
+        <div class="col-lg-7 col-md-12 col-12">
+          <!-- Top Right -->
+          <div class="right-content">
+            <ul class="list-main">
+              <!-- <li><i class="ti-power-off"></i><a href="signup">Inscription</a></li> -->
+              <li><i class="ti-power-off"></i><a href="connexion">Connexion</a></li>
+            </ul>
+          </div>
+          <!-- End Top Right -->
         </div>
       </div>
     </div>
   </div>
-  <div class="main_menu">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light w-100">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <a class="navbar-brand logo_h" type="button" (click)="reset()">
-          QUICK-SHOP
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
-          <div class="row w-100 mr-0">
-            <div class="col-lg-7 pr-0">
-              <ul class="nav navbar-nav center_nav pull-right">
-                <!--<li class="nav-item active">
-                  <a class="nav-link" (click)="reset()" >Accueil
-                  <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li class="nav-item submenu dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                     aria-expanded="false">Shop</a>
-                  <ul class="dropdown-menu">
-                    <li class="nav-item">
-                      <a class="nav-link" href="category.html">Shop Category</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="single-product.html">Product Details</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="checkout.html">Product Checkout</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="cart.html">Shopping Cart</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item submenu dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                     aria-expanded="false">Blog</a>
-                  <ul class="dropdown-menu">
-                    <li class="nav-item">
-                      <a class="nav-link" href="blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="single-blog.html">Blog Details</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item submenu dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                     aria-expanded="false">Pages</a>
-                  <ul class="dropdown-menu">
-                    <li class="nav-item">
-                      <a class="nav-link" href="tracking.html">Tracking</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="elements.html">Elements</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact</a>
-                </li>-->
-              </ul>
-            </div>
-
-            <div class="col-lg-5 pr-0">
-              <ul class="nav navbar-nav navbar-right right_nav pull-right">
-
-              </ul>
-            </div>
+  <!-- End Topbar -->
+  <div class="middle-inner">
+    <div class="search-bar-top row">
+          <div class="col-md-6 col-lg-3">
+            <a href="/"><img src="assets/images/15.png" style="width: 280px;height: 90px;" alt=""></a>
           </div>
-        </div>
-      </nav>
-    </div>
+            <div class="col-md-6 col-lg-9" >
+              <div class="row py-4 ">
+                <a href="ecommerce/produits" class="btn btn-outline-warning col-12 col-lg-3 col-md-6">
+                  <div class="section-title">
+                    <span class="text-center "><i class="fa fa-shopping-bag"></i>&nbsp; Produits/Services</span>
+                  </div>
+                </a>
+                <a href="ecommerce/services" class="btn btn-outline-warning col-12 col-lg-3 col-md-6">
+                  <div class="section-title">
+                    <span class="text-center"><i class="fa fa-tachometer"></i>&nbsp; Encadrements/Coachings</span>
+                  </div>
+                </a>
+                <a href="ecommerce/finances" class="btn btn-outline-warning col-12 col-lg-3 col-md-6">
+                  <div class="section-title">
+                    <span class="text-center"> <i class="fa fa-dollar-sign"></i>&nbsp; Acces aux Micros-credits</span>
+                  </div>
+                </a>
+                <a href="ecommerce/register/home" class="btn btn-outline-warning col-12 col-lg-2 col-md-6">
+                  <div class="section-title">
+                    <span class="text-center"><i class="fa fa-user-plus"></i> Enregistrez-vous</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+      </div>
   </div>
 </header>
-<!--================Header Menu Area =================-->
-
+<!--/ End Header -->

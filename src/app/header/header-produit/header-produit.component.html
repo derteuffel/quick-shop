@@ -1,0 +1,31 @@
+<!-- Header -->
+<app-header></app-header>
+<header class="header shop">
+    <div class="middle-inner">
+      <div class="container">
+          <div class="search-bar-top">
+            <form [formGroup]="produitForm" (submit)="onProduitSearch()"  class="card py-2 px-3">
+              <div class="row">
+                <div class="form-group col-md-6 col-xl-4">
+                  <select formControlName="location" class="form-control" >
+                    <option value="" disabled>-- Choisir une province ou une commune --</option>
+                    <option value="">-- Listes des provinces --</option>
+                    <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+                    <option value="" disabled>-- Liste des communes --</option>
+                    <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
+                  </select>
+                </div>
+                <div class="form-group col-xl-5 col-md-6">
+                  <input type="text" placeholder="Nom du produit" class="form-control" formControlName="name">
+                </div>
+                <div class="top-search col-xl-3 col-md-6"><button type="submit" class="btn btn-default text-white" > <i class="ti-search"></i>&nbsp; Rechercher </button></div>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+    <!-- Header Inner -->
+
+  </header>
+  <!--/ End Header -->
+  

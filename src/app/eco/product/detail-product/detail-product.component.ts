@@ -1,48 +1,59 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { any } from 'codelyzer/util/function';
 import { Subscription } from 'rxjs';
 import { ProductOrder } from '../../../models/product-order.model';
 import { ProductOrders } from '../../../models/product-orders.model';
 import { Product } from '../../../models/product.model';
 import { EcommerceService } from '../../../services/ecommerce.service';
-import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart.component';
+import {CommandeService} from "../../../services/commande.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-detail-product',
   templateUrl: './detail-product.component.html',
-  styleUrls: ['./detail-product.component.css']
+  styleUrls: ['./detail-product.component.css'],
+  providers: [MessageService],
 })
 export class DetailProductComponent implements OnInit {
 
-  @ViewChild('shoppingCartC')
-  shoppingCartC: ShoppingCartComponent;
+
   currentProduct: any;
   productOrder: ProductOrder[] = [] ;
   sub: Subscription;
+  products: Product[] = [];
   productSelected: boolean = false;
   selectedProductOrder: ProductOrder;
   private shoppingCartOrders: ProductOrders;
   orderFinished = false;
 
-  constructor(private ecommerceService: EcommerceService, private activatedRoute: ActivatedRoute, private router:Router) { }
+  orderForm: FormGroup;
+
+  constructor(private ecommerceService: EcommerceService,
+              private activatedRoute: ActivatedRoute,
+              private router:Router,
+              private commandeService: CommandeService,
+              private messageService: MessageService,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.productOrder = [];
+    this.initForm();
   }
 
-  loadOrders() {
-    this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
-      this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-    });
-  }
+
+
+  
+
+  
   getProduct(id): void{
-    this.ecommerceService.getProduct(id).subscribe(
+    this.ecommerceService.getProductFree(id).subscribe(
         data => {
           this.currentProduct = data;
           console.log(data);
-          this.productOrder.push(new ProductOrder(this.currentProduct,1));
+          //this.productOrder.push(new ProductOrder(this.currentProduct,1));
         },
         error => {
           console.log(Error);
@@ -50,35 +61,57 @@ export class DetailProductComponent implements OnInit {
     );
   }
 
-  addToCart(order: ProductOrder) {
-    this.ecommerceService.SelectedProductOrder = order;
-    this.selectedProductOrder = this.ecommerceService.SelectedProductOrder;
-    this.productSelected = true;
-    console.log(this.selectedProductOrder);
-    console.log("i selected item");
+  initForm(){
+    this.orderForm = new FormGroup({
+      name: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+      quantity: new FormControl(''),
+      paymentMode: new FormControl('')
+    });
   }
-  removeFromCart(productOrder: ProductOrder) {
-    let index = this.getProductIndex(productOrder.product);
-    if (index > -1) {
-      this.shoppingCartOrders.productOrders.splice(
-        this.getProductIndex(productOrder.product), 1);
+  openModalFormulaire(contentAdd, event)  {
+    this.modalService.open(contentAdd, {size: 'lg'});
+    this.currentProduct = event;
+   }
+
+  
+
+  
+
+  onSaveSubscribe(){
+    const formData =  {
+      clientName: this.orderForm.get('name').value,
+      email: this.orderForm.get('email').value,
+      clientPhone: this.orderForm.get('phone').value,
+      quantity: this.orderForm.get('quantity').value,
+      paymentMode: this.orderForm.get('paymentMode').value,
+      isProduit: true
     }
-    this.ecommerceService.ProductOrders = this.shoppingCartOrders;
-    this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-    this.productSelected = false;
+    this.commandeService.saveCmd(formData, this.currentProduct.id).subscribe(
+      data => {
+        this.orderForm.reset();
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'commande submitted', sticky: true});
+        this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
+      },
+      error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        console.log(error);
+      }
+    )
   }
 
-  getProductIndex(product: Product): number {
-    return this.ecommerceService.ProductOrders.productOrders.findIndex(
-      value => value.product === product);
+  /** toast message function primeng  **/
+  onConfirm() {
+    this.messageService.clear('c');
   }
 
-  isProductSelected(product: Product): boolean {
-    return this.getProductIndex(product) > -1;
+  onReject() {
+    this.messageService.clear('c');
   }
 
-  finishOrder(orderFinished: boolean) {
-    this.orderFinished = orderFinished;
+  clear() {
+    this.messageService.clear();
   }
 
 }

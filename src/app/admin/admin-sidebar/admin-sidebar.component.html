@@ -1,0 +1,54 @@
+<nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white" id="sidenav-main">
+  <div class="container-fluid">
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
+            aria-controls="sidenav-collapse-main">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Brand -->
+    <a class="navbar-brand pt-0" routerLinkActive="active"  href="/admin/home">
+      <img src="./assets/images/15x25.png" class="navbar-brand-img" style="width: 150px;height: 150px ;" alt="...">
+    </a>
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse"  [ngbCollapse]="isCollapsed" id="sidenav-collapse-main">
+      <!-- Divider -->
+      <hr class="my-3">
+      <!-- Heading -->
+      <!-- Navigation -->
+      <ul class="navbar-nav mb-md-3">
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/home">
+            <i class="ni ni-shop"></i> Produits
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/coachings">
+            <i class="ni ni-books"></i> Coaching et Encadrement
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/loans/inputs">
+            <i class="ni ni-money-coins"></i> Investissements
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/loans/entrants">
+            <i class="ni ni-money-coins"></i> Demandes de micros-financements
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/loans/requests">
+            <i class="fa fa-bars"></i> Mes demandes de financements
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"  href="/admin/configurations/account">
+            <i class="ni ni-settings"></i> Gestion Utilisateurs
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

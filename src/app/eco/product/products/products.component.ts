@@ -4,6 +4,10 @@ import {EcommerceService} from '../../../services/ecommerce.service';
 import {ProductOrder} from '../../../models/product-order.model';
 import {Product} from '../../../models/product.model';
 import {ProductOrders} from '../../../models/product-orders.model';
+import {CoachingService} from "../../../services/coaching.service";
+import {Coaching} from "../../../models/coaching";
+import {Microfinance} from "../../../models/microfinance";
+import {MicrofinanceService} from "../../../services/microfinance.service";
 
 @Component({
   selector: 'app-products',
@@ -15,27 +19,27 @@ export class ProductsComponent implements OnInit {
 
   productOrders: ProductOrder[] = [];
   products: Product[] = [];
-  womens: Product[] = [];
-  mens: Product[] = [];
   accessories: Product[] = [];
-  hights: Product[] = [];
-  womenProduct: ProductOrder[] = [];
-  menProduct: ProductOrder[] = [];
   accessoriesProduct: ProductOrder[] = [];
-  hightProduct: ProductOrder[] = [];
   selectedProductOrder: ProductOrder;
   private shoppingCartOrders: ProductOrders;
   sub: Subscription;
   productSelected: boolean = false;
 
-  constructor(private ecommerceService: EcommerceService) { }
+  coachings: any = {};
+
+  microfinances: any = {};
+
+  constructor(
+              private ecommerceService: EcommerceService,
+              private coachingService: CoachingService,
+              private microFinanceService: MicrofinanceService) { }
 
   ngOnInit(): void {
     this.productOrders = [];
     this.loadProducts();
-    this.loadOrders();
-    this.loadAccessoriesProduct();
-    this.loadHightProduct();
+    this.loadCoachings();
+    this.loadMicroFinancements();
   }
 
   addToCart(order: ProductOrder) {
@@ -69,87 +73,41 @@ export class ProductsComponent implements OnInit {
   loadProducts() {
     this.ecommerceService.getAllProducts()
       .subscribe(
-        (products: any[]) => {
-          this.products = products;
-          this.products.forEach(product => {
-            this.productOrders.push(new ProductOrder(product, 1));
-          });
+        data => {
+          this.products = data;
+          console.log(data);
         },
         (error) => console.log(error)
       );
   }
 
-  loadWomenProduct(){
-    this.ecommerceService.getProductGenre('FEMME').subscribe(
-      (womens: any[]) => {
-        this.womens = womens;
-        this.womens.forEach(product => {
-          this.womenProduct.push(new ProductOrder(product, 1));
-        });
-        console.log(this.womens);
+  loadCoachings() {
+    this.coachingService.getAllCoaching().subscribe(
+      data => {
+        this.coachings = data;
+        console.log(data);
       },
-      error => {
-        console.log(error);
-      }
+      (error) => console.log(error)
     );
   }
 
-  loadMenProduct(){
-    this.ecommerceService.getProductGenre('HOMME').subscribe(
-      (mens: any[]) => {
-        this.mens = mens;
-        this.mens.forEach(product => {
-          this.menProduct.push(new ProductOrder(product, 1));
-        });
-        console.log(this.mens);
+  
+
+  loadMicroFinancements() {
+    this.microFinanceService.getAllFinance().subscribe(
+      data => {
+        this.microfinances = data;
+        console.log(data);
       },
-      error => {
-        console.log(error);
-      }
-    );
+      (error) => console.log(error)
+    )
   }
 
-  loadAccessoriesProduct(){
-    this.ecommerceService.getProductCategories('ACCESSOIRE').subscribe(
-      (accessories: any[]) => {
-        this.accessories = accessories;
-        this.accessories.forEach(product => {
-          this.accessoriesProduct.push(new ProductOrder(product, 1));
-        });
-        console.log(this.accessories);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
-  loadHightProduct(){
-    this.ecommerceService.getProductQuality('SUPERIEUR').subscribe(
-      (hights: any[]) => {
-        this.hights = hights;
-        this.hights.forEach(product => {
-          this.hightProduct.push(new ProductOrder(product, 1));
-        });
-        console.log(this.hights);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
-  loadOrders() {
-    this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
-      this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-    });
-  }
 
   reset() {
     this.productOrders = [];
     this.loadProducts();
     this.ecommerceService.ProductOrders.productOrders = [];
-    this.loadOrders();
     this.productSelected = false;
   }
 

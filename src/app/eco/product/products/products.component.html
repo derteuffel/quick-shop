@@ -1,239 +1,221 @@
-<!--================Home Banner Area =================-->
-<section class="home_banner_area mb-40">
-  <div class="banner_inner d-flex align-items-center">
+<!-- Slider Area -->
+<section class="hero-slider px-2">
+  <!-- Single Slider -->
+  <div class="single-slider">
     <div class="container">
-      <div class="banner_content row">
-        <div class="col-lg-12">
-          <p class="sub text-uppercase">nouvelles Collections pour femmes</p>
-          <h3><span>choisissez</span> Votre <br />Style <span>Personnel</span></h3>
-          <h4>Montrez au monde votre tendance avec nos nouvelles collections.</h4>
-          <a class="main_btn mt-40" href="/ecommerce/women/collection">Voir les Collections</a>
+      <div class="row no-gutters">
+        <div class="col-lg-9 offset-lg-3 col-12">
+          <div class="text-inner">
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <!--/ End Single Slider -->
 </section>
-<!--================End Home Banner Area =================-->
-
-<!-- Start feature Area -->
-<section class="feature-area section_gap_bottom_custom">
+<!--/ End Slider Area -->
+<br>&nbsp;
+<!-- Start Product Area -->
+<div class="product-area section">
   <div class="container">
+    <!-- Start Link to pages Area -->
+    <!-- <div class="row">
+      <a href="ecommerce/produits" class="btn btn-outline-warning col-12 col-lg-2 col-md-6">
+        <div class="section-title">
+          <h3 class="text-center">Tous les produits</h3>
+        </div>
+      </a>
+      <a href="ecommerce/services" class="btn btn-outline-warning col-12 col-lg-3 col-md-6">
+        <div class="section-title">
+          <h3 class="text-center">Tous les services et coachings</h3>
+        </div>
+      </a>
+      <a href="ecommerce/finances" class="btn btn-outline-warning col-12 col-lg-4 col-md-6">
+        <div class="section-title">
+          <h3 class="text-center">Trouvez vos micros-financements</h3>
+        </div>
+      </a>
+      <a href="ecommerce/register/home" class="btn btn-outline-warning col-12 col-lg-2 col-md-6">
+        <div class="section-title">
+          <h3 class="text-center">Enregistrez-vous</h3>
+        </div>
+      </a>
+    </div> -->
+    <!-- End Link to pages Area -->
+    <br>&nbsp;
     <div class="row">
-      <div class="col-lg-3 col-md-6">
-        <div class="single-feature">
-          <a href="#" class="title">
-            <i class="flaticon-money"></i>
-            <h3>Remboursement guaranti</h3>
-          </a>
-          <p>Votre argent vous est rembourser en cas de non satsifaction</p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6">
-        <div class="single-feature">
-          <a href="#" class="title">
-            <i class="flaticon-truck"></i>
-            <h3>Livraison rapide</h3>
-          </a>
-          <p>Faite vous livrer partout ou vous etes en moins de 24h(service indisponible dans certaines zones)</p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6">
-        <div class="single-feature">
-          <a href="#" class="title">
-            <i class="flaticon-support"></i>
-            <h3>Service client </h3>
-          </a>
-          <p>Notre equipe est disponible 7j/7 et 24h/24 pour repondre a tous vos besoins</p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6">
-        <div class="single-feature">
-          <a href="#" class="title">
-            <i class="flaticon-blockchain"></i>
-            <h3>Paiement securise</h3>
-          </a>
-          <p>Effectuez vos paiements en ligne de maniere securise</p>
+      <div class="col-12">
+        <div class="section-title">
+          <h1 class="text-center text-underline text-uppercase">Quelques produits récents</h1>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- End feature Area -->
-
-<!--================ Feature Product Area =================-->
-<section class="feature_product_area section_gap_bottom_custom">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-12">
-        <div class="main_title">
-          <h2><span>Rayon Accessoires</span></h2>
-          <p>Trouver vos accessoires et completer votre style </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row" >
-      <div class="col-lg-4 col-md-6" *ngFor="let item of accessoriesProduct">
-        <div class="single-product">
-          <div class="product-img">
-            <img class="img-fluid w-100" src="{{item.product.pictureUrl}}" alt="" />
-            <div class="p_icon">
-              
-              <a href="/ecommerce/product/detail/{{item.product.id}}">
-                <i class="ti-eye"></i>
-              </a>
-              <a  type="button"  *ngIf="!isProductSelected(item.product)" (click)="addToCart(item)">
-                <i class="ti-shopping-cart"></i>
-              </a>
-              <a type="button"  class="badge badge-danger" *ngIf="isProductSelected(item.product)" (click)="removeFromCart(item)" >
-                <i class="ti-shopping-cart"></i>
-              </a>
-            </div>
-          </div>
-          <div class="product-btm">
-            <a href="#" class="d-block">
-              <h4>{{item.product.name}}</h4>
-            </a>
-            <div class="mt-3">
-              <span >FCFA {{item.product.price}}</span>
-              <del></del>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!--================ End Feature Product Area =================-->
-
-<!--================ Offer Area =================-->
-<section class="offer_area">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="offset-lg-4 col-lg-6 text-center">
-        <div class="offer_content">
-          <h3 class="text-uppercase mb-40" style="color: chartreuse;">tous sur la collection des hommes</h3>
-          <h2 class="text-uppercase"> - 30%</h2>
-          <a href="/ecommerce/men/collection" class="main_btn mb-20 mt-5">Decouvrir les offres </a>
-          <p style="color: black!important;">Vite il reste peu de temps pour les offres de reduction</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!--================ End Offer Area =================-->
-
-<!--================ New Product Area =================-->
-<section class="new_product_area section_gap_top section_gap_bottom_custom">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-12">
-        <div class="main_title">
-          <h2><span>nouveaux produits</span></h2>
-          <p>Trouver toutes les nouveautes dans le marche ici a un prix reduit</p>
-        </div>
-      </div>
-    </div>
-
     <div class="row">
-      <div class="col-lg-6">
-        <div class="new_product">
-          <h5 class="text-uppercase">collection de 2021</h5>
-          <h3 class="text-uppercase">{{productOrders[0].product.name}}</h3>
-          <div class="product-img">
-            <img class="img-fluid" src="{{productOrders[0].product.pictureUrl}}" alt="" />
-          </div>
-          <h4>FCFA {{productOrders[0].product.price}}</h4>
-          <a  type="button" class="main_btn"  *ngIf="!isProductSelected(productOrders[0].product)" (click)="addToCart(productOrders[0])">
-            Ajouter dans le panier
-          </a>
-          <a type="button"  class="badge badge-danger main_btn" *ngIf="isProductSelected(productOrders[0].product)" (click)="removeFromCart(productOrders[0])" >
-      Retirer du panier
-          </a>
-        </div>
-      </div>
+      <div class="col-12">
+        <div class="product-info">
 
-      <div class="col-lg-6 mt-5 mt-lg-0">
-        <div class="row">
-          <div class="col-lg-6 col-md-6" *ngFor="let item of productOrders">
-            <div class="single-product">
-              <div class="product-img">
-                <img class="img-fluid w-100" src="{{item.product.pictureUrl}}" style="height: 200px" alt="" />
-                <div class="p_icon">
-                  <a href="/ecommerce/product/detail/{{item.product.id}}">
-                    <i class="ti-eye"></i>
-                  </a>
-                  <a  type="button"  *ngIf="!isProductSelected(item.product)" (click)="addToCart(item)">
-                    <i class="ti-shopping-cart"></i>
-                  </a>
-                  <a type="button"  class="badge badge-danger" *ngIf="isProductSelected(item.product)" (click)="removeFromCart(item)" >
-                    <i class="ti-shopping-cart"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-btm">
-                <a href="#" class="d-block">
-                  <h4>{{item.product.name}}</h4>
-                </a>
-                <div class="mt-3">
-                  <span >FCFA {{item.product.price}}</span>
-                  <del></del>
+          <div class="tab-content" id="myTabContent">
+            <!-- Start Single Tab -->
+            <div class="tab-pane fade show active" id="man" role="tabpanel">
+              <div class="tab-single">
+                <div class="row">
+                  <div class="col-xl-3 col-lg-4 col-md-4 col-12" *ngFor="let item of products">
+                    <div class="single-product img-wrap">
+                      <div class="product-img">
+                        <a href="/ecommerce/product/detail/{{item?.id}}">
+                          <img class="default-img" [src]="item.pictureUrl" alt="#">
+                          <img class="hover-img" [src]="item.pictureUrl" alt="#">
+                        </a>
+                        <div class="button-head">
+                          <div class="product-action">
+                            <a  title="Quick View" href="/ecommerce/product/detail/{{item?.id}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                            <!-- <a type="button"  *ngIf="!isProductSelected(item)" (click)="addToCart(item)" title="Add to cart" ><i class="fa fa-shopping-bag"></i><span>Add to cart</span>&nbsp;</a> -->
+
+                          </div>
+                          <div class="product-action-2">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product-content">
+                        <h3 class="title"><a href="/ecommerce/product/detail/{{item?.id}}">{{item?.name}}</a></h3>
+                        <div class="product-price">
+                          <p class="price with-discount">FB {{item?.price}}</p>
+                          <span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <!--/ End Single Tab -->
+
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
-<!--================ End New Product Area =================-->
+</div>
+<!-- End Product Area -->
 
-<!--================ Inspired Product Area =================-->
-<section class="inspired_product_area section_gap_bottom_custom">
+<br>&nbsp;
+
+<!-- Start Coaching  -->
+<section class="shop-blog section">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-12">
-        <div class="main_title">
-          <h2><span>Produit Haut de Gamme</span></h2>
-          <p>Retrouver des produits hauts de gamme a des prix tres bas</p>
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h1 class="text-center text-underline text-uppercase">Services d'encadrement et de Coaching</h1>
         </div>
       </div>
     </div>
+    <br>&nbsp;
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings">
+        <!-- Start Single Blog  -->
+        <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="shop-single-blog">
+              <img [src]="coaching.logo" style="height: 300px;" alt="#">
+          <div class="content">
+            <p class="date">{{coaching?.startDate}}</p>
+            <p class="title">{{coaching?.title}}</p>
+            <p class="more-btn">{{'FB '+coaching?.amount}}</p>
+          </div>
+        </a>
+        <!-- End Single Blog  -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Coaching  -->
+
+<!-- Start Microfinancement -->
+<section class="shop-blog section">
+  <div class="container">
 
     <div class="row">
-      <div class="col-lg-3 col-md-6" *ngFor="let item of hightProduct">
-        <div class="single-product">
-          <div class="product-img">
-            <img class="img-fluid w-100" src="{{item.product.pictureUrl}}" style="height: 200px;max-width: 526px" alt="" />
-            <div class="p_icon">
-              <a href="/ecommerce/product/detail/{{item.product.id}}">
-                <i class="ti-eye"></i>
-              </a>
-            
-              <a  type="button"  *ngIf="!isProductSelected(item.product)" (click)="addToCart(item)">
-                <i class="ti-shopping-cart"></i>
-              </a>
-              <a type="button"  class="badge badge-danger" *ngIf="isProductSelected(item.product)" (click)="removeFromCart(item)" >
-                <i class="ti-shopping-cart"></i>
-              </a>
-            </div>
-          </div>
-          <div class="product-btm">
-            <a href="#" class="d-block">
-              <h4>{{item.product.name}}</h4>
-            </a>
-            <div class="mt-3">
-              <span >FCFA {{item.product.price}}</span>
-              <del></del>
-            </div>
+      <div class="col-12">
+        <div class="section-title">
+          <h1 class="text-center text-underline text-uppercase">Accedez a des Micros-credits</h1>
+        </div>
+      </div>
+    </div>
+    <br>&nbsp;
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12" *ngFor="let m of microfinances">
+        <!-- Start Single Blog  -->
+        <div class="shop-single-blog">
+          <a href="#">
+            <img src="https://via.placeholder.com/370x300" alt="#">
+          </a>
+          <div class="content">
+            <a href="#" class="title">{{m?.intitule}}</a>
+            <a href="#" class="title">{{m?.secteurActivite}}</a>
+            <p class="price">{{m?.amount}}</p>
+            <a href="#" class="more-btn">{{m?.bankName}}</a>
+            <a href="#" class="more-btn">{{m?.region}}</a>
           </div>
         </div>
+        <!-- End Single Blog  -->
       </div>
     </div>
   </div>
 </section>
-<!--================ End Inspired Product Area =================-->
+<!-- End Microfinancement  -->
+
+
+<br>&nbsp;
+
+<!-- Start Shop Services Area -->
+<section class="shop-services section home">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h1 class="text-center text-underline text-uppercase">Temoignages</h1>
+        </div>
+      </div>
+    </div>
+    <br>&nbsp;
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-rocket"></i>
+          <h4>Livraison gratuite</h4>
+          <p>Commandes de plus de 100 FB</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-reload"></i>
+          <h4>Retour gratuit</h4>
+          <p>Retours dans les 30 jours</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-lock"></i>
+          <h4>Paiement sécurisé</h4>
+          <p>Paiement 100% sécurisé</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-tag"></i>
+          <h4>Meilleure pièce</h4>
+          <p>Prix garanti</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Shop Services Area -->
