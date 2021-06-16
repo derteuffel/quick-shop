@@ -36,19 +36,19 @@ export class CoachingService {
   }
 
   getAllCoachingSearch(form): Observable<any> {
-    return this.http.post(this.coachingUrl+'/search', form);
+    return this.http.post(API.COACHINGS+'/search', form);
   }
 
   getAllCoachingByUser(): Observable<any> {
-    return this.http.get(this.coachingUrl+'/admin', {headers: this.headers});
+    return this.http.get(API.COACHINGS+'/admin', {headers: this.headers});
   }
 
   getCoachingById(id): Observable<any> {
-    return this.http.get(this.coachingUrl+'/details/'+id);
+    return this.http.get(API.COACHINGS+'/details/'+id);
   }
 
   getCoachingByRegion(region): Observable<any> {
-    return this.http.get(this.coachingUrl+'/region/'+region, {headers: this.headers});
+    return this.http.get(API.COACHINGS+'/region/'+region, {headers: this.headers});
   }
 
   saveCoaching(form): Observable<any> {

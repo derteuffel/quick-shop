@@ -6,6 +6,8 @@ export const environment = {
   production: false
 };
 
+export const BACK_BASE_URL = "http://localhost:8181";
+
 const url = 'http://localhost:8181/';
 
 export const API = {

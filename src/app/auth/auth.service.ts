@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user';
 import { map } from 'rxjs/operators';
+import { BACK_BASE_URL } from '../../environments/environment';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -17,7 +18,7 @@ export class AuthService {
   public currentUser: Observable<User>;
   private currentUserSubject: BehaviorSubject<User>;
 
-  private authUrl = 'http://localhost:8181/api/auth';
+  private authUrl =  BACK_BASE_URL + '/api/auth';
   private testUrl = 'http://localhost:8181/api/account';
 
   username: string;
