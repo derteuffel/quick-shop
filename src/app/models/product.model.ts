@@ -12,6 +12,7 @@ export class Product{
   description?: string;
   quantity?: number;
   location: string;
+  devise: string;
   pictures?: string[];
   boutique?: Boutique;
 

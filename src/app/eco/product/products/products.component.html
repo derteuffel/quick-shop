@@ -46,7 +46,7 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Quelques produits récents</h1>
+          <h1 class="text-center text-underline text-uppercase">Produits récents</h1>
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@
                       <div class="product-content">
                         <h3 class="title"><a href="/ecommerce/product/detail/{{item?.id}}">{{item?.name}}</a></h3>
                         <div class="product-price">
-                          <p class="price with-discount">FB {{item?.price}}</p>
+                          <p class="price with-discount">{{item?.price+' '+item?.devise}}</p>
                           <span></span>
                         </div>
                       </div>
@@ -106,7 +106,7 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Services d'encadrement et de Coaching</h1>
+          <h1 class="text-center text-underline text-uppercase">Encadrements et Coaching</h1>
         </div>
       </div>
     </div>
@@ -119,7 +119,7 @@
           <div class="content">
             <p class="date">{{coaching?.startDate}}</p>
             <p class="title">{{coaching?.title}}</p>
-            <p class="more-btn">{{'FB '+coaching?.amount}}</p>
+            <p class="more-btn">{{coaching?.amount+' '+item.devise}}</p>
           </div>
         </a>
         <!-- End Single Blog  -->
@@ -136,7 +136,7 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Accedez a des Micros-credits</h1>
+          <h1 class="text-center text-underline text-uppercase">Micros-credits</h1>
         </div>
       </div>
     </div>
@@ -146,14 +146,16 @@
         <!-- Start Single Blog  -->
         <div class="shop-single-blog">
           <a href="#">
-            <img src="https://via.placeholder.com/370x300" alt="#">
+            <img src="https://via.placeholder.com/170x100.png" alt="#">
           </a>
-          <div class="content">
-            <a href="#" class="title">{{m?.intitule}}</a>
-            <a href="#" class="title">{{m?.secteurActivite}}</a>
-            <p class="price">{{m?.amount}}</p>
-            <a href="#" class="more-btn">{{m?.bankName}}</a>
-            <a href="#" class="more-btn">{{m?.region}}</a>
+          <div class="card-body text-left">
+            <p class="title">{{m?.object}}</p>
+            <div class="card-text">
+              <p>Secteur d'activite: <span class="text-muted">{{m?.sector}}</span></p>
+            </div>
+            <div class="card-text">
+              <p>Localisation : <span class="text-muted">{{m?.region}}</span></p>
+            </div>
           </div>
         </div>
         <!-- End Single Blog  -->

@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <div class="header-body">
         <!-- Card stats -->
-
+          <h1>Gestion des commandes</h1>
       </div>
     </div>
   </div>
@@ -30,23 +30,23 @@
                 <th scope="col">Numero</th>
                 <th scope="col">Nom Produit</th>
                 <th scope="col">Quantite</th>
-                <th scope="col">Couleur</th>
-                <th scope="col">Taille</th>
-                <th scope="col">Date</th>
                 <th scope="col">Montant</th>
+                <th scope="col">Client</th>
+                <th scope="col">Date</th>
                 <th scope="col">Status</th>
+                              
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-                <td>{{item?.produit.name}}</td>
+                <td>{{item?.numero}}</td>
                 <td>
-                  {{item?.quantity}}
+                  {{item?.produit.name}}
                 </td>
-                <td>{{item?.color}}</td>
-                <td>{{item?.size}}</td>
-                <td>{{item?.orderDate}}</td>
-                <td>{{item?.amount}} </td>
+                <td>{{item?.quantity}}</td>
+                <td>{{item?.amount+' '+item.produit.devise}}</td>
+                <td>{{item?.clientName}}</td>
+                <td>{{item?.orderDate}} </td>
                 <td>{{item.status}} </td>
               </tr>
 

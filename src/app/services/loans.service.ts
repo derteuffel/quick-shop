@@ -50,6 +50,10 @@ export class LoansService {
       return this.http.get(this.loansUrl+'/admin/status/'+value, {headers: this.headers})
     }
 
+    getAllSearch(form): Observable<any>{
+      return this.http.post(this.loansUrl+'/search',form)
+    }
+
     getAllbySector(sector): Observable<any>{
       return this.http.get(this.loansUrl+'/admin/sector/'+sector, {headers: this.headers})
     }

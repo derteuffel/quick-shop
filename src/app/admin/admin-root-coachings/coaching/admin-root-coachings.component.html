@@ -41,7 +41,7 @@
                 <td>{{item.phone}}</td>
                 <td>{{item.region}}</td>
                 <td>{{item.startDate}}</td>
-                <td> {{item.amount+' Fb'}} </td>
+                <td> {{item.amount+' '+item.devise}} </td>
                 <td>
                  <button  class="btn btn-success m-1" (click)="getCoaching(item.id)"><i class="pi pi-eye"></i></button>
                   <button (click)="setCoaching(contentUpdate, item)" class="btn btn-secondary m-1"><i class="pi pi-pencil"></i></button>
@@ -147,6 +147,18 @@
               <div class="form-group">
                 <label>Montant du service</label>
                 <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montnant de cette prestation" ngModel>
+              </div>
+              <div class="form-group">
+                <label for="">Devise: </label>
+                <select name="devise" class="form-control" required id="" ngModel>
+                  <option value="">-- Choisissez une devise --</option>
+                  <option value="USD">US Dollars</option>
+                  <option value="Euro">Euro</option>
+                  <option value="Fb">Franc Burundais</option>
+                  <option value="Shilling">Shilling</option>
+                  <option value="FCFA">Franc CFA</option>
+                  <option value="Fc">Franc Congolais</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Date de deroulement</label>
