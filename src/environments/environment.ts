@@ -37,6 +37,10 @@ export const API = {
 
   MICROFINANCES: `${url}api/microfinancements`,
 
+  /** Loans  **/
+
+  LOANS: `${url}api/loans`,
+
   /** Session coaching**/
 
   SESSIONS: `${url}api/sessioncoachings`,

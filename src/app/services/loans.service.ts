@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { API } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 import { User } from '../models/user';
 
@@ -34,52 +35,52 @@ export class LoansService {
 
 
     getAllLoans(): Observable<any>{
-      return this.http.get(this.loansUrl+'/admin', {headers: this.headers})
+      return this.http.get(`${API.LOANS}/admin`, {headers: this.headers})
     }
 
     getAllbyUser(): Observable<any>{
-      return this.http.get(this.loansUrl+'/admin/users', {headers: this.headers})
+      return this.http.get(`${API.LOANS}/admin/users`, {headers: this.headers})
     }
 
     getAllbyRegion(region): Observable<any>{
-      return this.http.get(this.loansUrl+'/admin/region/'+region, {headers: this.headers})
+      return this.http.get(`${API.LOANS}/admin/region/${region}`, {headers: this.headers})
     }
 
     getAllbyVisitor(): Observable<any>{
-      return this.http.get(this.loansUrl+'/all')
+      return this.http.get(`${API.LOANS}/all`)
     }
 
     getAllbyStatus(value): Observable<any>{
-      return this.http.get(this.loansUrl+'/admin/status/'+value, {headers: this.headers})
+      return this.http.get(`${API.LOANS}/admin/status/${value}`, {headers: this.headers})
     }
 
     getAllSearch(form): Observable<any>{
-      return this.http.post(this.loansUrl+'/search',form)
+      return this.http.post(`${API.LOANS}/search`,form)
     }
 
     getAllbySector(sector): Observable<any>{
-      return this.http.get(this.loansUrl+'/admin/sector/'+sector, {headers: this.headers})
+      return this.http.get(`${API.LOANS}/admin/sector/${sector}`, {headers: this.headers})
     }
 
     getOne(id): Observable<any>{
-      return this.http.get(this.loansUrl+'/all/'+id);
+      return this.http.get(`${API.LOANS}/all/${id}`);
     }
 
     active(id): Observable<any>{
-      return this.http.get(this.loansUrl+'/admin/active/'+id,{headers:this.headers});
+      return this.http.get(`${API.LOANS}/admin/active/${id}`,{headers:this.headers});
     }
 
     delete(id): Observable<any>{
-      return this.http.get(this.loansUrl+'/admin/delete/'+id, {headers: this.headers});
+      return this.http.get(`${API.LOANS}/admin/delete/${id}`, {headers: this.headers});
     }
 
     update(form, id): Observable<any>{
       console.log(form);
-      return this.http.put(this.loansUrl+'/admin/'+id,form, {headers: this.headers});
+      return this.http.put(`${API.LOANS}/admin/${id}`,form, {headers: this.headers});
     }
 
     save(form): Observable<any>{
-      return this.http.post(this.loansUrl+'/admin',form, {headers: this.formHeaders});
+      return this.http.post(`${API.LOANS}/admin`,form, {headers: this.formHeaders});
     }
 
 

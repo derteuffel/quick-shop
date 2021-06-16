@@ -15,7 +15,10 @@ export const API = {
 
   /** Commandes **/
 
-  COMMANDES: `${url}api/commandes/admin`,
+  COMMANDES: `${url}api/commandes`,
+  /** Loans **/
+
+  LOANS: `${url}api/loans`,
 
 
   /** Boutiques **/
