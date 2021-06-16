@@ -14,18 +14,20 @@ export class MicrofinanceService {
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
 
-  private microfinanceUrl = 'http://localhost:8181/api/microfinancements';
+  private microfinanceUrl = 'http://204.93.157.42:8181/api/microfinancements';
   constructor(private http: HttpClient,
               private authService:AuthService) { 
                 this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.headers = new HttpHeaders({
-      authorization: 'Bearer ' + this.currentUser.token,
-      'Content-Type': 'application/json; charset=UTF-8'
-    });
-
-    this.formHeaders = new HttpHeaders({
-      authorization: 'Bearer ' + this.currentUser.token
-    });
+                this.headers = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({
+                  'Content-Type': 'application/json; charset=UTF-8'
+                }):new HttpHeaders({
+                  authorization: 'Bearer ' + this.currentUser.token,
+                  'Content-Type': 'application/json; charset=UTF-8'
+                });
+            
+                this.formHeaders = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({}):new HttpHeaders({
+                  authorization: 'Bearer ' + this.currentUser.token
+                });
 
               }
 
