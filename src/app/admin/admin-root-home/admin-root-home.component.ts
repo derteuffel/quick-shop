@@ -160,6 +160,7 @@ export class AdminRootHome implements OnInit {
     formData.append('type', this.productForm.get('type').value);
     formData.append('localisation', this.productForm.get('province').value+', '+this.productForm.get('commune').value);
     formData.append('quantity', this.productForm.get('quantity').value);
+    formData.append('devise', this.productForm.get('devise').value);
     formData.append('description', this.productForm.get('description').value);
     formData.append('measure', this.productForm.get('measure').value);
     console.log(formData);
