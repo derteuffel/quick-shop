@@ -18,7 +18,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ArticlesSearchComponent implements OnInit {
 
   products: Product[] = [];
-  private shoppingCartOrders: ProductOrders;
   sub: Subscription;
   productSelected: boolean = false;
 
@@ -55,7 +54,8 @@ this.init();
 
   init(){
     this.produitForm = new FormGroup({
-      location: new FormControl(''),
+      province: new FormControl(''),
+      commune: new FormControl(''),
       name: new FormControl('')
     });
   }
@@ -69,7 +69,12 @@ this.init();
 }
 
 onProduitSearch(){
-  this.loadSearchedProduit(this.produitForm.value);
+  const searchValue = {
+    location: this.produitForm.get('province').value+', '+this.produitForm.get('commune').value,
+    name: this.produitForm.get('name').value
+  }
+  console.log(searchValue);
+  this.loadSearchedProduit(searchValue);
   this.init();
 }
 
@@ -116,10 +121,4 @@ onProduitSearch(){
     );
   }
 
-
-  loadOrders() {
-    this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
-      this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-    });
-  }
 }

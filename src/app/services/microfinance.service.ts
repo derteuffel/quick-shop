@@ -14,7 +14,8 @@ export class MicrofinanceService {
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
 
-  private microfinanceUrl = 'http://204.93.157.42:8181/api/microfinancements';
+  //private microfinanceUrl = 'http://204.93.157.42:8181/api/microfinancements';
+  private microfinanceUrl = 'http://localhost:8181/api/microfinancements';
   constructor(private http: HttpClient,
               private authService:AuthService) { 
                 this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

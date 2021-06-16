@@ -34,14 +34,16 @@ this.init();
 
   init(){
     this.produitForm = new FormGroup({
-      location: new FormControl(''),
+      province: new FormControl(''),
+      commune: new FormControl(''),
       name: new FormControl('')
     });
   }
 
   clear(){
     this.produitForm = new FormGroup({
-      location: new FormControl(''),
+      province: new FormControl(''),
+      commune: new FormControl(''),
       name: new FormControl('')
     });
   }

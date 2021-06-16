@@ -10,6 +10,7 @@ export class Coaching {
   email: string;
   region: string;
   amount: number;
+  devise: string;
   logo: string;
   creationDate: Date;
   startDate: Date;

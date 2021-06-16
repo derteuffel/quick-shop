@@ -9,12 +9,12 @@
           class="banner_content d-md-flex justify-content-between align-items-center"
         >
           <div class="mb-3 mb-md-0">
-            <h2>Detail du Microfinancement</h2>
-            <p>Soumissioner pour le micro-financement</p>
+            <h2>Detail d'un projet demandeur de credit</h2>
+            <p>Vous pouvez financer ce projet</p>
           </div>
           <div class="page_link">
             <a href="/">Accueil</a>
-            <a href="/ecommerce/microfinance/detail/{{currentMicroFinance.id}}">Detail du Microfinancement</a>
+            <a href="/ecommerce/microfinance/detail/{{currentMicroFinance.id}}">Detail du projet</a>
           </div>
         </div>
       </div>
@@ -30,44 +30,36 @@
     <aside class="col-sm-6 border-right">
       <article class="gallery-wrap">
         <div class="img-big-wrap">
-          <div> <a href="./assets/images/items/1.jpg" data-fancybox=""><img src="./assets/images/items/1.jpg"></a></div>
+          <div> <a href="https://via.placeholder.com/300x350.png" data-fancybox=""><img src="https://via.placeholder.com/300x350.png"></a></div>
         </div> <!-- slider-product.// -->
-        <div class="img-small-wrap">
-          <div class="item-gallery"> <img src="./assets/images/items/1.jpg"></div>
-          <div class="item-gallery"> <img src="./assets/images/items/2.jpg"></div>
-          <div class="item-gallery"> <img src="./assets/images/items/3.jpg"></div>
-          <div class="item-gallery"> <img src="./assets/images/items/4.jpg"></div>
-        </div> <!-- slider-nav.// -->
+         <!-- slider-nav.// -->
       </article> <!-- gallery-wrap .end// -->
     </aside>
     <aside class="col-sm-6">
       <article class="card-body">
         <!-- short-info-wrap -->
-        <h3 class="title mb-3">{{currentMicroFinance?.intitule}}</h3>
+        <h3 class="title mb-3">{{currentMicroFinance?.object}}</h3>
 
         <div class="mb-3">
           <var class="price h3 text-price">
-            <span class="currency">FB </span><span class="num"> {{currentMicroFinance?.amount}}</span>
+            <span class="currency">{{currentMicroFinance?.devise}} </span><span class="num"> {{currentMicroFinance?.amount}}</span>
           </var>
         </div> <!-- price-detail-wrap .// -->
         <dl>
           <dt>Secteur d'activité</dt>
-          <dd><p>{{currentMicroFinance?.secteurActivite}} </p></dd>
+          <dd><p>{{currentMicroFinance?.sector}} </p></dd>
         </dl>
         <dl class="row">
-          <dt class="col-sm-3">Mode paiement</dt>
-          <dd class="col-sm-9">{{currentMicroFinance?.paymentMode}}</dd>
-
-          <dt class="col-sm-3">Region</dt>
+          <dt class="col-sm-3">Zone</dt>
           <dd class="col-sm-9">{{currentMicroFinance?.region}}</dd>
 
-          <dt class="col-sm-3">Nom de la banque financeur</dt>
-          <dd class="col-sm-9">{{currentMicroFinance?.bankName}}</dd>
+          <dt class="col-sm-3">Support du projet</dt>
+          <dd class="col-sm-9"><a href="{{currentMicroFinance?.projectSupport}}">Voir le support</a></dd>
 
         </dl>
         <hr>
         <hr>
-        <button  class="btn  btn-warning" (click)="openModalFormulaire(contentAdd)" style="background-color: #F7941D;" >formulaire d'inscription</button>
+        <a  class="btn  btn-primary"  href="/ecommerce/register/invester">Aller au formulaire de souscription</a>
 
         <!-- short-info-wrap .// -->
       </article> <!-- card-body.// -->
@@ -76,59 +68,3 @@
 </main> <!-- card.// -->
 <app-footer></app-footer>
 
-
-
-<!-- MODAL  FORM FOR FORM -->
-
-<ng-template #contentAdd let-modal>
-  <div class="modal-header" style="background-color:#F45B3A;">
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="subscribeForm" (submit)="onSaveSubscribe()">
-      <h2>Formulaire d'enregistrment d'une commande</h2>
-
-      <div class="form-group">
-        <label>Nom</label>
-        <input type="text" formControlName="name" class="form-control" placeholder="Votre nom d'utilisateur">
-      </div>
-
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" formControlName="email" class="form-control" placeholder="Entrer votre adresse email" >
-      </div>
-
-      <div class="form-group">
-        <label>Numéro téléphone</label>
-        <input type="text" formControlName="phone" class="form-control" placeholder="Entrer votre numero de telephone">
-      </div>
-      <div class="form-group">
-        <label>Quantite</label>
-        <input type="number" formControlName="quantity" class="form-control" placeholder="Quantite demande">
-      </div>
-
-      <div class="form-group">
-        <label>Mode de paiement</label>
-        <select formControlName="paymentMode" class="form-control"  id="">
-          <option value="">-- Choisir un mode paiement --</option>
-          <option value="CB">Carte bancaire</option>
-          <option value="MM">Mobile Money</option>
-          <option value="CASH">Paiement en liquidite</option>
-        </select>
-      </div>
-      <br>
-      <div class="card-footer">
-        <div class="row">
-          <div class="col-md-6">
-            <button type="button" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
-          </div>
-          <div class="col-md-6">
-            <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-</ng-template>

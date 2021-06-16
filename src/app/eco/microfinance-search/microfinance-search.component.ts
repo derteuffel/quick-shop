@@ -1,23 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import {CoachingService} from "../../services/coaching.service";
 import {Coaching} from "../../models/coaching";
-import { ActivatedRoute } from '@angular/router';
+import {CoachingService} from "../../services/coaching.service";
+import {Microfinance} from "../../models/microfinance";
+import {MicrofinanceService} from "../../services/microfinance.service";
+import { LoansService } from 'src/app/services/loans.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-coachings-search',
-  templateUrl: './coachings-search.component.html',
-  styleUrls: ['./coachings-search.component.scss']
+  selector: 'app-microfinance-search',
+  templateUrl: './microfinance-search.component.html',
+  styleUrls: ['./microfinance-search.component.scss']
 })
-export class CoachingsSearchComponent implements OnInit {
-  coachings: any = {};
+export class MicrofinanceSearchComponent implements OnInit {
+
+  lists: any = {};
   navigationParams: any = {};
   provinces: string[];
   communes: string[];
   types:string[];
-  serviceForm: FormGroup;
+  financeForm: FormGroup;
 
-  constructor(private coachingService: CoachingService, private activatedRoute: ActivatedRoute) { }
+  constructor(private loansService: LoansService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -26,7 +30,7 @@ export class CoachingsSearchComponent implements OnInit {
     console.log(this.navigationParams);
     
       console.log('je suis plutot la');
-      this.loadSearchedCoaching(this.navigationParams);
+      this.loadSearchedFinances(this.navigationParams);
       this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
       this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -38,46 +42,37 @@ export class CoachingsSearchComponent implements OnInit {
     'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
     'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
     'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
-    this.init(); 
+    this.init();
+    this.loadSearchedFinances(this.navigationParams);
   }
 
-
   init(){
-    this.serviceForm = new FormGroup({
+    this.financeForm = new FormGroup({
       province: new FormControl(''),
       commune: new FormControl(''),
       name: new FormControl('')
     });
   }
 
-
-  onServiceSearch(){
+  onFinanceSearch(){
     const searchValue = {
-      location: this.serviceForm.get('province').value+', '+this.serviceForm.get('commune').value,
-      name: this.serviceForm.get('name').value
+      location: this.financeForm.get('province').value+', '+this.financeForm.get('commune').value,
+      name: this.financeForm.get('name').value
     }
-    this.loadSearchedCoaching(this.serviceForm.value);
+    this.loadSearchedFinances(this.financeForm.value);
     this.init();
   }
 
-  loadSearchedCoaching(form){
-    this.coachingService.getAllCoachingSearch(form).subscribe(
-      data => {
-        this.coachings = data;
-        console.log(data);
+  loadSearchedFinances(form) {
+    this.loansService.getAllSearch(form).subscribe(
+      (res: any) => {
+        this.lists = res;
+        console.log(res);
       },
       error => {
         console.log(error);
       }
-    );
+    )
   }
-
-  isEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
-    }
-    return true;
-}
 
 }

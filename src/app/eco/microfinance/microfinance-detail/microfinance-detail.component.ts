@@ -10,6 +10,7 @@ import {Product} from "../../../models/product.model";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {EcommerceService} from "../../../services/ecommerce.service";
 import {CommandeService} from "../../../services/commande.service";
+import { LoansService } from 'src/app/services/loans.service';
 
 @Component({
   selector: 'app-microfinance-detail',
@@ -20,27 +21,23 @@ import {CommandeService} from "../../../services/commande.service";
 export class MicrofinanceDetailComponent implements OnInit {
 
 
-  currentMicroFinance: any;
-  productOrder: ProductOrder[] = [] ;
-  products: Product[] = [];
+  currentMicroFinance: any={};
   subscribeForm: FormGroup;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router:Router,
     private fb: FormBuilder,
-    private ecommerceService: EcommerceService,
-    private commandeService: CommandeService,
     private messageService: MessageService,
     private modalService: NgbModal,
-    private microFinanceService: MicrofinanceService) { }
+    private loansService: LoansService) { }
 
   ngOnInit(): void {
     this.getMicroFinance(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.initForm();
+
   }
 
   getMicroFinance(id): void{
-    this.microFinanceService.getFinance(id).subscribe(
+    this.loansService.getOne(id).subscribe(
       data => {
         this.currentMicroFinance = data;
         console.log(data);
@@ -51,27 +48,6 @@ export class MicrofinanceDetailComponent implements OnInit {
     );
   }
 
-  openModalFormulaire(contentAdd)  {
-    this.modalService.open(contentAdd, {size: 'lg'});
-  }
-  initForm(){
-    this.subscribeForm = new FormGroup({
-      name: new FormControl(''),
-      email: new FormControl(''),
-      phone: new FormControl(''),
-      paymentMode: new FormControl('')
-    });
-  }
-
-  loadProducts() {
-    this.ecommerceService.getAllProducts().subscribe(
-      data => {
-        this.products = data;
-      }, error1 => {
-        console.log(error1);
-      }
-    )
-  }
   /* onSaveSubscribe(){
     this.commandeService.saveCmd(this.subscribeForm?.value).subscribe(
       data => {
