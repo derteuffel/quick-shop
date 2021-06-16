@@ -31,6 +31,7 @@ import { AdminLoansRequestComponent } from './admin/loans/admin-loans-requests/a
 import {AdminAccountComponent} from "./admin/configurations/admin-account/admin-account.component";
 import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
 import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
+import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfinance-search.component';
 
 
 
@@ -57,6 +58,9 @@ const routes: Routes = [
   },
   {
     path: 'ecommerce/services/search', component: CoachingsSearchComponent
+  },
+  {
+    path: 'ecommerce/finances/search', component: MicrofinanceSearchComponent
   },
 
   {
@@ -85,7 +89,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'ecommerce/microfinance/detail/:id', component: MicrofinanceDetailComponent
+    path: 'ecommerce/loans/detail/:id', component: MicrofinanceDetailComponent
   },
   {
     path: 'admin/loans/inputs', component: AdminLoansInputsComponent,

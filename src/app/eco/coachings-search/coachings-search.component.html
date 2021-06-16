@@ -8,7 +8,6 @@
           <!-- Top Left -->
           <div class="top-left">
             <ul class="list-main">
-              <li><i class="ti-headphone-alt"></i> +243 976940074/819472760</li>
               <li><i class="ti-email"></i> support@yesbinspire.com</li>
             </ul>
           </div>
@@ -36,16 +35,21 @@
               </div>
           <form [formGroup]="serviceForm" (submit)="onServiceSearch()"  class="card py-2 px-3 col-md-6 col-lg-9">
             <div class="row">
-              <div class="form-group col-md-6 col-xl-4">
-                <select formControlName="location" class="form-control" >
-                  <option value="" disabled>-- Choisir une province ou une commune --</option>
+              <div class="form-group col-md-6 col-xl-3">
+                <select formControlName="province" class="form-control" >
+                  <option value="" disabled>-- Choisir une province --</option>
                   <option value="">-- Listes des provinces --</option>
                   <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6 col-xl-3">
+                <select formControlName="commune" class="form-control" >
+                  <option value="" disabled>-- Choisir une commune --</option>
                   <option value="" disabled>-- Liste des communes --</option>
                   <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
                 </select>
               </div>
-              <div class="form-group col-xl-5 col-md-6">
+              <div class="form-group col-xl-3 col-md-6">
                 <select formControlName="name" class="form-control" >
                   <option value="" disabled>-- Choisir un type de service --</option>
                   <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
@@ -79,7 +83,7 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h1 class="text-center text-uppercase text-underline ">Services d'encadrement et de coachings</h1>
+          <h1 class="text-center text-uppercase text-underline ">Encadrements et Coachings</h1>
         </div>
       </div>
     </div>
@@ -95,7 +99,7 @@
           <div class="content">
             <p class="date">{{coaching?.startDate}}</p>
             <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="title">{{coaching?.title}}</a>
-            <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="more-btn">{{'FB '+coaching?.amount}}</a>
+            <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="more-btn">{{coaching?.amount+' '+coaching.devise}}</a>
           </div>
         </div>
         <!-- End Single Blog  -->

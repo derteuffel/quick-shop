@@ -14,7 +14,8 @@ export class LoansService {
   formHeaders: HttpHeaders;
 
 
-  private loansUrl = 'http://204.93.157.42:8181/api/loans';
+  //private loansUrl = 'http://204.93.157.42:8181/api/loans';
+  private loansUrl = 'http://localhost:8181/api/loans';
 
   constructor(private http: HttpClient,
     private authService:AuthService) { 
@@ -50,6 +51,10 @@ export class LoansService {
 
     getAllbyStatus(value): Observable<any>{
       return this.http.get(this.loansUrl+'/admin/status/'+value, {headers: this.headers})
+    }
+
+    getAllSearch(form): Observable<any>{
+      return this.http.post(this.loansUrl+'/search',form)
     }
 
     getAllbySector(sector): Observable<any>{

@@ -67,6 +67,7 @@ import { AdminLoansInputsComponent } from './admin/loans/admin-loans-inputs/admi
 import { AdminLoansRequestComponent } from './admin/loans/admin-loans-requests/admin-loans-requests.component';
 import { ConfigurationsComponent } from './admin/configurations/configurations.component';
 import { AdminAccountComponent } from './admin/configurations/admin-account/admin-account.component';
+import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfinance-search.component';
 
 
 
@@ -116,7 +117,8 @@ import { AdminAccountComponent } from './admin/configurations/admin-account/admi
     AdminRootCoachingsComponent,
     AdminRootCoachingComponent,
     ConfigurationsComponent,
-    AdminAccountComponent
+    AdminAccountComponent,
+    MicrofinanceSearchComponent
     ],
   imports: [
     BrowserModule,

@@ -31,7 +31,7 @@ export class CommandeService {
 
   // recupere toute les commandes
   getAll(): Observable<any> {
-    return this.http.get(API.COMMANDES, {headers: this.headers});
+    return this.http.get(`${API.COMMANDES}/admin`, {headers: this.headers});
   }
 
   // enregistrer une commande

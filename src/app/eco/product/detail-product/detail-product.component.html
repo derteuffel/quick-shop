@@ -44,7 +44,7 @@
 
         <div class="mb-3">
           <var class="price h3 text-price">
-            <span class="currency">FB </span><span class="num"> {{currentProduct.price+' / '+currentProduct.measure}}</span>
+            <span class="currency">{{currentProduct?.devise}}</span><span class="num"> {{currentProduct.price+' / '+currentProduct.measure}}</span>
           </var>
           <!--<span>/per kg</span>-->
         </div> <!-- price-detail-wrap .// -->
@@ -57,14 +57,14 @@
           <dd class="col-sm-9">{{currentProduct.category}}</dd>
 
           <dt class="col-sm-3">Disponibilité</dt>
-          <dd class="col-sm-9 text-success" *ngIf="currentProduct.status">En Stock</dd>
+          <dd class="col-sm-9 text-success" *ngIf="currentProduct.status">En Stock ( {{currentProduct.quantity+' '+currentProduct.measure}})</dd>
           <dd class="col-sm-9 text-warning" *ngIf="!currentProduct.status">Non disponible</dd>
         </dl>
         <hr>
         <!-- row.// -->
         <p>Passez votre commande en remplissant le formulaire via le bouton ci-dessous</p>
         <hr>
-        <button  class="btn  btn-warning" style="background-color: #F7941D;" (click)="openModalFormulaire(contentAdd,currentProduct)"> <i class="fa fa-shopping-cart"></i> Passer ma commande</button>
+        <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentProduct)"> <i class="fa fa-shopping-cart"></i> Passer ma commande</button>
 
         <!-- short-info-wrap .// -->
       </article> <!-- card-body.// -->
@@ -100,7 +100,7 @@
 </p-toast>
 
 <ng-template #contentAdd let-modal>
-  <div class="modal-header" style="background-color:#F45B3A;">
+  <div class="modal-header" style="background-color:#4051e9;">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -144,7 +144,7 @@
             <button type="button" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
           </div>
           <div class="col-md-6">
-            <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%">Enregistrer <i class="fa fa-check"></i></button>
+            <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="width: 100%">Enregistrer <i class="fa fa-check"></i></button>
           </div>
         </div>
       </div>
