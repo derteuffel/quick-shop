@@ -71,6 +71,12 @@ const routes: Routes = [
     path: 'ecommerce/register/entreprener', component: SingupComponent
   },
   {
+    path: 'ecommerce/register/client', component: SingupClientComponent
+  },
+  {
+    path: 'ecommerce/register/invester', component: SingupInvesterComponent
+  },
+  {
     path: 'ecommerce/register/coaching', component: SingupTrainnerComponent
   },
   {

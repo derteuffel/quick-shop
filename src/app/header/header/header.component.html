@@ -8,7 +8,7 @@
           <!-- Top Left -->
           <div class="top-left">
             <ul class="list-main">
-              <li><i class="ti-email"></i> support@yesbinspire.com</li>
+              <li ><i class="ti-email"></i>&nbsp;&nbsp; <span class="header">support@yesbinspire.com</span> </li>
             </ul>
           </div>
           <!--/ End Top Left -->
@@ -17,8 +17,11 @@
           <!-- Top Right -->
           <div class="right-content">
             <ul class="list-main">
-              <!-- <li><i class="ti-power-off"></i><a href="signup">Inscription</a></li> -->
-              <li><i class="ti-power-off"></i><a href="connexion">Connexion</a></li>
+              <li *ngIf="isClient"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;<a  href="ecommerce/register/client" class="header">Inscription</a></li>
+              <li *ngIf="isEntreprener"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;<a  href="ecommerce/register/entreprener" class="header">Inscription</a></li>
+              <li *ngIf="isTrainer"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;<a  href="ecommerce/register/coaching" class="header">Inscription</a></li>
+              <li *ngIf="isFinance"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;<a  href="ecommerce/register/home" class="header">Inscription</a></li>
+              <li><i class="ti-power-off"></i>&nbsp;&nbsp;<a href="connexion" class="header">Connexion</a></li>
             </ul>
           </div>
           <!-- End Top Right -->
@@ -30,33 +33,23 @@
   <div class="middle-inner">
     <div class="search-bar-top row">
           <div class="col-md-6 col-lg-3">
-            <a href="/" class="header"><img src="assets/images/15.png" style="width: 280px;height: 90px;" alt=""><i class="fa fa-home"></i>&nbsp;Accueil</a>
+            <a href="/" class="header"><img src="assets/images/15.png" style="width: 280px;height: 90px;" alt=""></a>
           </div>
-            <div class="col-md-6 col-lg-9" >
-              <div class="row py-4 ">
-                <a href="ecommerce/produits" class="btn btn-outline-primary col-12 col-lg-3 col-md-6">
-                  <div class="section-title">
-                    <span class="text-center header"><i class="fa fa-shopping-bag"></i>&nbsp; Produits/Services</span>
-                  </div>
+          <div class="col-md-6 col-lg-9" >
+                <a  (click)="getClientPage()" class="button">
+                  <span ><i class="fa fa-home"></i>&nbsp;Accueil</span>
                 </a>
-                <a href="ecommerce/services" class="btn btn-outline-primary col-12 col-lg-3 col-md-6">
-                  <div class="section-title">
-                    <span class="text-center header"><i class="fa fa-tachometer"></i>&nbsp; Encadrements/Coachings</span>
-                  </div>
-                </a>
-                <a href="ecommerce/finances" class="btn btn-outline-primary col-12 col-lg-3 col-md-6">
-                  <div class="section-title">
-                    <span class="text-center header"> <i class="fa fa-dollar-sign"></i>&nbsp; Acces aux Micros-credits</span>
-                  </div>
-                </a>
-                <a href="ecommerce/register/home" class="btn btn-outline-primary col-12 col-lg-2 col-md-6">
-                  <div class="section-title">
-                    <span class="text-center header"><i class="fa fa-user-plus"></i>Enregistrez-vous</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-      </div>
+                  <a (click)="getProduitPage()"   class="button">  
+                    <span ><i class="fa fa-shopping-bag"></i>&nbsp; Produits/Services</span>
+                  </a>
+                  <a (click)="getCoachingPage()"  class="button"> 
+                    <span><i class="fa fa-tachometer"></i>&nbsp; Encadrements/Coachings</span>
+                  </a>
+                  <a (click)="getFinancePage()"  class="button"> 
+                    <span > <i class="fa fa-dollar-sign"></i>&nbsp; Micro-credits</span>
+                  </a>
+          </div>
+    </div>
   </div>
 </header>
 <!--/ End Header -->

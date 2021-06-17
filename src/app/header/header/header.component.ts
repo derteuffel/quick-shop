@@ -11,7 +11,6 @@ import { NavigationExtras, Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   private collapsed = true;
-  orderFinished = false;
 
   @ViewChild('productsC')
   productsC: ProductsComponent;
@@ -24,16 +23,24 @@ export class HeaderComponent implements OnInit {
 
   types: string[];
 
-  produitSearch: boolean;
-  serviceSearch: boolean;
-  financeSearch: boolean;
+  isEntreprener: boolean;
+  isClient: boolean;
+  isFinance: boolean;
+  isTrainer: boolean;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.produitSearch = true;
-    this.serviceSearch = false;
-    this.financeSearch = false;
+    
+    if(this.isEntreprener !== true && this.isFinance !== true && this.isTrainer !== true){
+      this.isClient= true;
+    }
+
+    console.log(this.isFinance);
+    console.log(this.isTrainer);
+    console.log(this.isClient);
+    console.log(this.isEntreprener);
+ 
     this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -53,12 +60,39 @@ this.init();
     this.collapsed = !this.collapsed;
   }
 
-  finishOrder(orderFinished: boolean) {
-    this.orderFinished = orderFinished;
+  getProduitPage(){
+    this.isEntreprener = true;
+    this.isClient = false;
+    this.isTrainer = false;
+    this.isFinance = false;
+    this.router.navigateByUrl('ecommerce/produits');
+  }
+
+  getClientPage(){
+    this.isEntreprener = false;
+    this.isClient = true;
+    this.isTrainer = false;
+    this.isFinance = false;
+    this.router.navigateByUrl('');
+  }
+
+  getCoachingPage(){
+    this.isEntreprener = false;
+    this.isClient = false;
+    this.isTrainer = true;
+    this.isFinance = false;
+    this.router.navigateByUrl('ecommerce/services');
+  }
+
+  getFinancePage(){
+    this.isEntreprener = false;
+    this.isClient = false;
+    this.isTrainer = false;
+    this.isFinance = true;
+    this.router.navigateByUrl('ecommerce/finances');
   }
 
   reset() {
-    this.orderFinished = false;
     this.productsC.reset();
   }
 
@@ -85,49 +119,6 @@ this.init();
 
   }
 
-  produitFormSelected(){
-    this.produitSearch = true;
-    this.serviceSearch = false;
-    this.financeSearch = false;
-  }
-
-  serviceFormSelected(){
-    this.produitSearch = false;
-    this.serviceSearch = true;
-    this.financeSearch = false;
-  }
-
-  financeFormSelected(){
-    this.produitSearch = false;
-    this.serviceSearch = false;
-    this.financeSearch = true;
-  }
-
-  onProduitSearch(){
-    const produitNavigationExtras: NavigationExtras = {
-      queryParams: {
-        'values':JSON.stringify(this.produitForm.value)
-      }
-    };
- this.router.navigate(['/ecommerce/produits/search'], produitNavigationExtras);
-  }
-
-  onServiceSearch(){
-    const serviceNavigationExtras: NavigationExtras = {
-      queryParams: {
-        'values': JSON.stringify(this.serviceForm.value)
-      }
-    };
-    this.router.navigate(['/ecommerce/services/search'], serviceNavigationExtras);
-  }
-
-  onFinanceSearch(){
-    const financeNavigationExtras: NavigationExtras = {
-      queryParams: {
-        'values': JSON.stringify(this.financeForm.value)
-      }
-    };
-    this.router.navigate(['/ecommerce/finances/search'], financeNavigationExtras);
-  }
+  
 
 }
