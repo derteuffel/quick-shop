@@ -10,37 +10,71 @@
           <div class="card mx-4">
             <div class="card-body p-4">
               <form name="form" (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                <h1 class="text-center">Page d'enregistrement</h1>
+                <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement</h3>
                 <p class="text-muted">Créer votre compte</p>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="pi pi-user"></i></span>
                   </div>
-                  <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel"   autocomplete="name" required />
-                  <div *ngIf="f.submitted && name.invalid">
-                    <div *ngIf="name.errors.required">Vous devez entrer un nom</div>
+                  <input type="text" class="form-control" name="fullName" [(ngModel)]="form.fullName" #fullName="ngModel"  placeholder="Entrer votre nom complet"  autocomplete="fullName" required />
+                  <div *ngIf="f.submitted && fullName.invalid">
+                    <div *ngIf="fullName.errors.required">Vous devez entrer votre nom</div>
                   </div>
                 </div>
 
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="pi pi-user"></i></span>
-                  </div>
-                  <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
-                         required />
-                  <div *ngIf="f.submitted && username.invalid">
-                    <div *ngIf="username.errors.required">Vous devez entrer un nom d'utilidateur</div>
-                  </div>
-                </div>
 
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text">@</span>
                   </div>
-                  <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
+                  <input type="text" class="form-control" name="email" [(ngModel)]="form.email" placeholder="Entrer votre adresse email" #email="ngModel" required email />
                   <div *ngIf="f.submitted && email.invalid">
                     <div *ngIf="email.errors.required">Entrer une adresse email</div>
                     <div *ngIf="email.errors.email">Entrer une addresse email valide</div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="phone" [(ngModel)]="form.phone" #phone="ngModel"
+                         required />
+                  <div *ngIf="f.submitted && phone.invalid">
+                    <div *ngIf="phone.errors.required">Vous devez entrer un numero de telephone</div>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label class="text-muted">Province :</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                    </div>
+                    <select name="province"  class="form-control" [(ngModel)]="form.province" #province="ngModel" id="">
+                      <option value="" disabled>-- Choisissez une representation --</option>
+                      <option value="" disabled>-- Liste des Provinces --</option>
+                      <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
+                    </select>
+                    
+                    <div *ngIf="f.submitted && province.invalid">
+                      <div *ngIf="province.errors.required">Vous devez entrer une province</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label class="text-muted">communes :</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                    </div>
+                    <select name="commune"  class="form-control" [(ngModel)]="form.commune" #commune="ngModel" id="">
+                      <option value="" disabled>-- Choisissez une representation --</option>
+                      <option value="" disabled>-- Liste des Communes --</option>
+                      <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
+                    </select>
+                    
+                    <div *ngIf="f.submitted && commune.invalid">
+                      <div *ngIf="commune.errors.required">Vous devez entrer une commune</div>
+                    </div>
                   </div>
                 </div>
                 <div class="input-group mb-3">

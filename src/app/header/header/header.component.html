@@ -17,10 +17,16 @@
           <!-- Top Right -->
           <div class="right-content">
             <ul class="list-main">
-              <li *ngIf="isClient"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;<a  href="ecommerce/register/client" class="header">Inscription</a></li>
-              <li *ngIf="isEntreprener"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;<a  href="ecommerce/register/entreprener" class="header">Inscription</a></li>
-              <li *ngIf="isTrainer"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;<a  href="ecommerce/register/coaching" class="header">Inscription</a></li>
-              <li *ngIf="isFinance"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;<a  href="ecommerce/register/home" class="header">Inscription</a></li>
+              <li ngbDropdown><i class="fa fa-user-plus"></i>&nbsp;<button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Inscription</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <a ngbDropdownItem href="ecommerce/register/client" class="header">Client</a>
+                  <a ngbDropdownItem href="ecommerce/register/entreprener" class="header">Entrepreneur</a>
+                  <a ngbDropdownItem href="ecommerce/register/coaching" class="header">Encadrement/Coaching</a>
+                  <a ngbDropdownItem href="ecommerce/register/loans" class="header">Micro-Credits</a>
+                  <a ngbDropdownItem href="ecommerce/register/invester" class="header">Proceder a un investissement</a>
+                </div>
+              </li>
+              
               <li><i class="ti-power-off"></i>&nbsp;&nbsp;<a href="connexion" class="header">Connexion</a></li>
             </ul>
           </div>

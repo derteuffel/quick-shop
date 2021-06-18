@@ -31,11 +31,6 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    
-    if(this.isEntreprener !== true && this.isFinance !== true && this.isTrainer !== true){
-      this.isClient= true;
-    }
-
     console.log(this.isFinance);
     console.log(this.isTrainer);
     console.log(this.isClient);
