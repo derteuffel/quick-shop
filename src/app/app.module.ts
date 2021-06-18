@@ -68,6 +68,8 @@ import { AdminLoansRequestComponent } from './admin/loans/admin-loans-requests/a
 import { ConfigurationsComponent } from './admin/configurations/configurations.component';
 import { AdminAccountComponent } from './admin/configurations/admin-account/admin-account.component';
 import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfinance-search.component';
+import { CommandeEntreprenerComponent } from './admin/commande/commande-entreprener/commande-entreprener.component';
+import { CommandeClientComponent } from './admin/commande/commande-client/commande-client.component';
 
 
 
@@ -118,7 +120,9 @@ import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfina
     AdminRootCoachingComponent,
     ConfigurationsComponent,
     AdminAccountComponent,
-    MicrofinanceSearchComponent
+    MicrofinanceSearchComponent,
+    CommandeEntreprenerComponent,
+    CommandeClientComponent
     ],
   imports: [
     BrowserModule,

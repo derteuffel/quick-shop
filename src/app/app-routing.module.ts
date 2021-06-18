@@ -32,6 +32,8 @@ import {AdminAccountComponent} from "./admin/configurations/admin-account/admin-
 import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
 import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
 import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfinance-search.component';
+import { CommandeClientComponent } from './admin/commande/commande-client/commande-client.component';
+import { CommandeEntreprenerComponent } from './admin/commande/commande-entreprener/commande-entreprener.component';
 
 
 
@@ -122,6 +124,14 @@ const routes: Routes = [
  {
     path: 'admin/commandes', component: CommandeComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/commandes/users', component: CommandeClientComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.CLIENT]}
+  },
+  {
+    path: 'admin/commandes/allsbyusers', component: CommandeEntreprenerComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.ENTERPRENER]}
   },
 
   {

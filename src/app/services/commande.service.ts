@@ -34,6 +34,21 @@ export class CommandeService {
     return this.http.get(`${API.COMMANDES}/admin`, {headers: this.headers});
   }
 
+  // recupere toute les commandes d'un produit
+  getAllByProduit(id): Observable<any> {
+    return this.http.get(`${API.COMMANDES}/admin/produits/${id}`, {headers: this.headers});
+  }
+
+  // recupere toute les commandes d'un client
+  getAllByUserClient(): Observable<any> {
+    return this.http.get(`${API.COMMANDES}/admin/users`, {headers: this.headers});
+  }
+
+  // recupere toute les commandes d'un entreprener
+  getAllByUserEntreprener(): Observable<any> {
+    return this.http.get(`${API.COMMANDES}/admin/users/entreprener`, {headers: this.headers});
+  }
+
   // enregistrer une commande
 
   saveCmd(form,id): Observable<any> {

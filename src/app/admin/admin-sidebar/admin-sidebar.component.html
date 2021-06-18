@@ -16,40 +16,50 @@
       <!-- Heading -->
       <!-- Navigation -->
       <ul class="navbar-nav mb-md-3">
-        <li class="nav-item">
+        <li *ngIf="isAdmin || isEntreprener" class="nav-item">
           <a class="nav-link" href="/admin/home">
-            <i class="ni ni-shop"></i> Produits
+            <i class="ni ni-shop"></i> Produits/Services
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAdmin || isTrainer" class="nav-item">
           <a class="nav-link" href="/admin/coachings">
-            <i class="ni ni-books"></i> Coaching et Encadrement
+            <i class="ni ni-books"></i> Coachings et Encadrements
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link" href="/admin/loans/inputs">
             <i class="ni ni-money-coins"></i> Investissements
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link" href="/admin/loans/entrants">
             <i class="ni ni-money-coins"></i> Demandes de micros-financements
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isLoans" class="nav-item">
           <a class="nav-link" href="/loans/requests">
             <i class="fa fa-bars"></i> Mes demandes de financements
           </a>
         </li>
 
-        <li class="nav-item">
+        <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link"  href="/admin/configurations/account">
             <i class="ni ni-settings"></i> Gestion Utilisateurs
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link"  href="/admin/commandes">
             <i class="ni ni-settings"></i> Gestion des commandes
+          </a>
+        </li>
+        <li *ngIf="isClient" class="nav-item">
+          <a class="nav-link"  href="/admin/commandes/users">
+            <i class="ni ni-settings"></i> Mes commandes
+          </a>
+        </li>
+        <li *ngIf="isTrainer || isEntreprener" class="nav-item">
+          <a class="nav-link"  href="/admin/commandes/allsbyusers">
+            <i class="ni ni-settings"></i> Mes commandes
           </a>
         </li>
 
