@@ -2,9 +2,9 @@ export const environment = {
   production: true
 };
 
-export const BACK_BASE_URL = "http://204.93.157.42:8181";
+export const BACK_BASE_URL = "https://yesbinspire.com:8282";
 
-const url = 'http://204.93.157.42:8181/';
+const url = 'https://yesbinspire.com:8282/';
 
 export const API = {
 
