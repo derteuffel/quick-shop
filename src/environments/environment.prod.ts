@@ -2,7 +2,7 @@ export const environment = {
   production: true
 };
 
-export const BACK_BASE_URL = "http://localhost:8181";
+export const BACK_BASE_URL = "http://204.93.157.42:8181";
 
 const url = 'http://204.93.157.42:8181/';
 
