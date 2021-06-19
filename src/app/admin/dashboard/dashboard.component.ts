@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
      dataFilter: any = {
        location,
-        name
+        name,
      }
 
   provinces: string [];
@@ -37,12 +37,10 @@ export class DashboardComponent implements OnInit {
 
   init() {
     this.provinceForm = new FormGroup({
-      location: new FormControl(''),
+      region: new FormControl(''),
     });
 
-    this.nameForm = new FormGroup({
-      name: new FormControl(''),
-    })
+
 
   }
 
@@ -50,7 +48,7 @@ export class DashboardComponent implements OnInit {
     this.modalService.open(contentProvinceSearch, {size: "md"});
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-    //this.init();
+     this.init();
   }
 
 
@@ -62,6 +60,20 @@ export class DashboardComponent implements OnInit {
     this.init();
   }
 
+  showCommandProductSearch(contentCommandProductSearch2){
+    this.modalService.open(contentCommandProductSearch2, {size: "md"});
+    this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
+      'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
+    this.init();
+  }
+
+
+  showCommandCoachingSearch2(contentCommandCoachingSearch2){
+    this.modalService.open(contentCommandCoachingSearch2, {size: "md"});
+    this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
+      'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
+    this.init();
+  }
 
   onProvinceSearch() {
     this.ecommerceService.findAllQuantityOfProductAvailable(this.dataFilter.location,this.dataFilter.name).subscribe(
@@ -76,5 +88,37 @@ export class DashboardComponent implements OnInit {
 
 
 
-
+  onRegionSearch() {
+    this.coachingService.findAllQuantityOfCoahingAvailable(this.dataFilter.name,this.dataFilter.location).subscribe(
+      data => {
+        this.res = data;
+        console.log(data);
+      }, error => {
+        console.log(error);
+      }
+    );
   }
+
+  getQuantityCommandCoachingByRegion() {
+    this.commandeService.getQuantityCommandCoachingByRegion(this.dataFilter.location).subscribe(
+      data => {
+        this.res = data;
+        console.log(data);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getQuantityCommandProductByRegion(){
+    this.commandeService.getQuantityCommandProductByRegion(this.dataFilter.location).subscribe(
+      data => {
+        this.res = data;
+        console.log(data);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+}
