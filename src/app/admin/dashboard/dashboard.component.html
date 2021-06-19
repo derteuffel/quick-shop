@@ -20,10 +20,10 @@
           <div class="card-header border-0" style="background-color:#F45B3A;">
             <div class="row">
               <div class="col-md-6 col-lg-3 col-12">
-                <button  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Produits Disponible"><i class="fa fa-search"></i>&nbsp;</button>
+                <button (click)="showProvinceSearch(contentProvinceSearch)"  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Produits Disponible"><i class="fa fa-search"></i>&nbsp;</button>
               </div>
               <div class="col-md-6 col-lg-2 col-12">
-                <button  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Coaching Disponible"><i class="fa fa-search"></i>&nbsp;</button>
+                <button (click)="showProvinceSearch2(contentProvinceSearch2)"  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Coaching Disponible"><i class="fa fa-search"></i>&nbsp;</button>
               </div>
               <div class="col-md-6 col-lg-3 col-12">
                 <button  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Produit par region"><i class="fa fa-search"></i>&nbsp;</button>
@@ -50,11 +50,11 @@
 
 
 
-<!-------------------------------------------------------SEARCH BY DEMANDEUR DE CREDIT  START------------------------------------------------------------>
-<ng-template #contentLocationSearch let-modal>
+<!-------------------------------------------------------SEARCH BY Quantity product by region and name disponible START------------------------------------------------------------>
+<ng-template #contentProvinceSearch let-modal>
   <form  >
     <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un demandeur de credit!</h4>
+      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a une region et au nom du produit!</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -62,8 +62,16 @@
     <div class="modal-body">
 
       <div class="form-group">
-        <label >Demandeur de credit</label>
-        <input type="text" class="form-control"  >
+        <label >Region</label>
+        <select  class="form-control"  [value]=" dataFilter.location" name="location" [(ngModel)]="dataFilter.location" >
+          <option value="">-- Choisir une province --</option>
+          <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label >Nom du produit</label>
+        <input type="text" class="form-control"  [value]=" dataFilter.name" name="name" [(ngModel)]="dataFilter.name" >
       </div>
 
     </div>
@@ -77,20 +85,20 @@
         </div> &nbsp;&nbsp;&nbsp;&nbsp;
         <div class="col-md-4 ">
           <button type="submit" class="btn btn-success"
-                  (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+                  (click)="onProvinceSearch() + modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
         </div>
       </div>
     </div>
   </form>
 
 </ng-template>
-<!-------------------------------------------------------SEARCH BY DEMANDEUR DE CREDIT  LOANS END-------------------------------------------------------------->
+<!-------------------------------------------------------SEARCH BY Quantity product by region and name disponible  END-------------------------------------------------------------->
 
-<!-------------------------------------------------------SEARCH BY ENTREPRENEUR  START------------------------------------------------------------>
-<ng-template #contentEntrepreneur let-modal>
+<!-------------------------------------------------------SEARCH BY Quantity coaching by region and title  disponible START------------------------------------------------------------>
+<ng-template #contentProvinceSearch2 let-modal>
   <form >
     <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un(e) entrepreneur(se)!</h4>
+      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a une region et au titre du coaching!</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -98,7 +106,12 @@
     <div class="modal-body">
 
       <div class="form-group">
-        <label >Location</label>
+        <label >Region</label>
+        <input type="text" class="form-control"   >
+      </div>
+
+      <div class="form-group">
+        <label >Titre</label>
         <input type="text" class="form-control"   >
       </div>
 
@@ -120,7 +133,7 @@
   </form>
 
 </ng-template>
-<!-------------------------------------------------------SEARCH BY ENTREPRENEUR LOANS END-------------------------------------------------------------->
+<!-------------------------------------------------------SEARCH BY Quantity coaching by region and title  disponible  END-------------------------------------------------------------->
 
 
 <!-------------------------------------------------------SEARCH BY COACHING  START------------------------------------------------------------>
