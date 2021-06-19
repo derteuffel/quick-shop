@@ -51,6 +51,10 @@ export class CoachingService {
     return this.http.get(API.COACHINGS+'/region/'+region, {headers: this.headers});
   }
 
+  findAllQuantityOfCoahingAvailable(title,region): Observable<any> {
+    return this.http.get(API.COACHINGS+'/admin/quantity/dispo/'+title+'/'+region, {headers: this.headers});
+  }
+
   saveCoaching(form): Observable<any> {
     return this.http.post(`${API.COACHINGS}`, form, {headers: this.formHeaders});
   }

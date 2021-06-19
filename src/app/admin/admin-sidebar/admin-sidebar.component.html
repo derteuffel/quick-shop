@@ -47,6 +47,13 @@
             <i class="ni ni-settings"></i> Gestion Utilisateurs
           </a>
         </li>
+
+        <li *ngIf="isAdmin" class="nav-item">
+          <a class="nav-link"  href="/admin/dashboard">
+            <i class="ni ni-settings"></i> Dashboard
+          </a>
+        </li>
+
         <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link"  href="/admin/commandes">
             <i class="ni ni-settings"></i> Gestion des commandes

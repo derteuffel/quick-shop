@@ -34,6 +34,7 @@ import { RegisterSuccessComponent } from './auth/register-success/register-succe
 import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfinance-search.component';
 import { CommandeClientComponent } from './admin/commande/commande-client/commande-client.component';
 import { CommandeEntreprenerComponent } from './admin/commande/commande-entreprener/commande-entreprener.component';
+import {DashboardComponent} from "./admin/dashboard/dashboard.component";
 
 
 
@@ -120,6 +121,10 @@ const routes: Routes = [
   {
     path: 'admin/produit/detail/:id', component: AdminRootProductComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.ENTERPRENER]}
+  },
+  {
+    path: 'admin/dashboard', component: DashboardComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
  {
     path: 'admin/commandes', component: CommandeComponent,

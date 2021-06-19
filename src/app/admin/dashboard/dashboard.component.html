@@ -1,0 +1,197 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="main-content">
+  <!-- Top navbar -->
+  <app-admin-navbar></app-admin-navbar>
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        <h2>Dashboard</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0" style="background-color:#F45B3A;">
+            <div class="row">
+              <div class="col-md-6 col-lg-3 col-12">
+                <button  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Produits Disponible"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-2 col-12">
+                <button  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Coaching Disponible"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-3 col-12">
+                <button  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Produit par region"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-4 col-12">
+                <button  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Coaching par region"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <app-admin-footer></app-admin-footer>
+  </div>
+</div>
+
+
+
+
+<!-------------------------------------------------------SEARCH BY DEMANDEUR DE CREDIT  START------------------------------------------------------------>
+<ng-template #contentLocationSearch let-modal>
+  <form  >
+    <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un demandeur de credit!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label >Demandeur de credit</label>
+        <input type="text" class="form-control"  >
+      </div>
+
+    </div>
+    <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+    <div class="modal-footer" style="background-color:#F5B669;">
+      <div class="row">
+        <!-- <div class="col-md-4 "></div> -->
+        <div class="col-md-4 ">
+          <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+        </div> &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-md-4 ">
+          <button type="submit" class="btn btn-success"
+                  (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY DEMANDEUR DE CREDIT  LOANS END-------------------------------------------------------------->
+
+<!-------------------------------------------------------SEARCH BY ENTREPRENEUR  START------------------------------------------------------------>
+<ng-template #contentEntrepreneur let-modal>
+  <form >
+    <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un(e) entrepreneur(se)!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label >Location</label>
+        <input type="text" class="form-control"   >
+      </div>
+
+    </div>
+    <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+    <div class="modal-footer" style="background-color:#F5B669;">
+      <div class="row">
+        <!-- <div class="col-md-4 "></div> -->
+        <div class="col-md-4 ">
+          <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+        </div> &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-md-4 ">
+          <button type="submit" class="btn btn-success"
+                  (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY ENTREPRENEUR LOANS END-------------------------------------------------------------->
+
+
+<!-------------------------------------------------------SEARCH BY COACHING  START------------------------------------------------------------>
+<ng-template #contentCoaching let-modal>
+  <form >
+    <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un coach!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label >Coach</label>
+        <input type="text" class="form-control"   >
+      </div>
+
+    </div>
+    <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+    <div class="modal-footer" style="background-color:#F5B669;">
+      <div class="row">
+        <!-- <div class="col-md-4 "></div> -->
+        <div class="col-md-4 ">
+          <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+        </div> &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-md-4 ">
+          <button type="submit" class="btn btn-success"
+                  (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY COACHING LOANS END-------------------------------------------------------------->
+
+
+<!-------------------------------------------------------SEARCH BY CLIENT  START------------------------------------------------------------>
+<ng-template #contentClient let-modal>
+  <form >
+    <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un client!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label >Client</label>
+        <input type="text" class="form-control"   >
+      </div>
+
+    </div>
+    <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+    <div class="modal-footer" style="background-color:#F5B669;">
+      <div class="row">
+        <!-- <div class="col-md-4 "></div> -->
+        <div class="col-md-4 ">
+          <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+        </div> &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-md-4 ">
+          <button type="submit" class="btn btn-success"
+                  (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY CLIENT LOANS END-------------------------------------------------------------->
