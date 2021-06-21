@@ -34,6 +34,7 @@ import { RegisterSuccessComponent } from './auth/register-success/register-succe
 import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfinance-search.component';
 import { CommandeClientComponent } from './admin/commande/commande-client/commande-client.component';
 import { CommandeEntreprenerComponent } from './admin/commande/commande-entreprener/commande-entreprener.component';
+import { ActivationComponent } from './auth/activation/activation.component';
 
 
 
@@ -98,6 +99,9 @@ const routes: Routes = [
 
   {
     path: 'ecommerce/loans/detail/:id', component: MicrofinanceDetailComponent
+  },
+  {
+    path: 'activation', component: ActivationComponent
   },
   {
     path: 'admin/loans/inputs', component: AdminLoansInputsComponent,
