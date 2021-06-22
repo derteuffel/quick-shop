@@ -82,6 +82,7 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('amount', data.amount);
     formData.append('phone', data.phone);
     formData.append('email', data.email);
+    formData.append('devise',data.devise);
     formData.append('region', data.province+', '+data.commune);
     formData.append('startDate', data.startDate);
     formData.append('userEmail', data.userEmail);
