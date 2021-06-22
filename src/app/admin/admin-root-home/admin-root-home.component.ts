@@ -11,6 +11,8 @@ import { Product } from 'src/app/models/product.model';
 import { EcommerceService } from 'src/app/services/ecommerce.service';
 import { Category } from 'src/app/models/category';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Role } from 'src/app/models/role';
+import { User } from 'src/app/models/user';
 
 
 
@@ -41,9 +43,11 @@ export class AdminRootHome implements OnInit {
   provinces: string[];
   communes: string[];
 
+  isClient: boolean;
   productForm: FormGroup;
   public imagePath;
   imgURL: any;
+  user: User;
 
 
   constructor(private ecommerceService: EcommerceService,
@@ -76,6 +80,19 @@ export class AdminRootHome implements OnInit {
 'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
 'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
     this.initForm();
+
+    if (this.authService.currentUserValue.token) {
+      this.user = this.authService.currentUserValue;
+      switch(this.user.role){
+        case Role.CLIENT: {
+          this.isClient = true;
+          break;
+        }
+        default:{
+          break;
+        }
+      }
+    }
 
   }
 

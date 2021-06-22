@@ -74,13 +74,13 @@
             <div class="col-md-6 col-lg-2">
               <button (click)="onBack()" pButton icon="fa fa-long-arrow-left" style="float:left;background-color:#F7941D;" label="Retour"></button>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div *ngIf="!isClient" class="col-md-6 col-lg-4">
               <button (click)="openModalProduct(contentAdd)" pButton icon="fa fa-pencil" style="float:left;background-color:#F7941D;" label="Mettre a jours Produit"></button>
             </div>
-            <div class="col-md-6 col-lg-3">
+            <div *ngIf="!isClient" class="col-md-6 col-lg-3">
               <button (click)="showOrders()" pButton icon="fa fa-cart-arrow-down" style="float:left;background-color:#F7941D;" label="Les Commandes"></button>
             </div>
-            <div class="col-md-6 col-lg-3">
+            <div *ngIf="!isClient" class="col-md-6 col-lg-3">
               <button (click)="showUpdates()" pButton icon="fa fa-list" style="float:left;background-color:#F7941D;" label="Les mises a jours"></button>
             </div>
             
