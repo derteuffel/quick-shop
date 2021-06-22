@@ -72,6 +72,7 @@ import { CommandeEntreprenerComponent } from './admin/commande/commande-entrepre
 import { CommandeClientComponent } from './admin/commande/commande-client/commande-client.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
+import { ProfileComponent } from './admin/profile/profile.component';
 
 
 
@@ -126,7 +127,8 @@ import { AbonnementComponent } from './abonnement/abonnement.component';
     CommandeEntreprenerComponent,
     CommandeClientComponent,
     DashboardComponent,
-    AbonnementComponent
+    AbonnementComponent,
+    ProfileComponent
     ],
   imports: [
     BrowserModule,

@@ -70,4 +70,8 @@ export class AccountService {
   public activateAccount(id): Observable<any>{
     return this.http.get(`${API.ACCOUNT}/activation/${id}`,{headers: this.headers})
   }
+
+  getOne(id): Observable<any>{
+    return this.http.get(`${API.ACCOUNT}/view/${id}`,{headers: this.headers})
+  }
 }
