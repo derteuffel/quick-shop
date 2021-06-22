@@ -42,4 +42,12 @@ export const API = {
 
   SESSIONS: `${url}api/sessioncoachings`,
 
+  /** Functionnalities **/
+
+  FUNCTIONALITY: `${url}api/functionnalities`,
+
+  /** Abonnement **/
+
+  ABONNEMENT: `${url}api/abonnements`,
+
 }
