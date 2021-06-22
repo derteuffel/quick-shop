@@ -37,7 +37,7 @@
                 </div>
               </div>
 
-                <button type="submit" class="btn btn-block btn-success" >Valide</button>
+                <button (click)="onSubmit()" type="submit" class="btn btn-block btn-success" >Valide</button>
                 <div *ngIf="f.submitted && isLoginFailed" class="alert alert-warning">
                   Connexion echouer!<br/>{{errorMessage}}
                 </div>

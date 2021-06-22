@@ -36,7 +36,9 @@ import { CommandeClientComponent } from './admin/commande/commande-client/comman
 import { CommandeEntreprenerComponent } from './admin/commande/commande-entreprener/commande-entreprener.component';
 import {DashboardComponent} from "./admin/dashboard/dashboard.component";
 import {AbonnementComponent} from "./abonnement/abonnement.component";
+
 import { ActivationComponent } from './auth/activation/activation.component';
+import {ProfileComponent} from "./admin/profile/profile.component";
 
 
 
@@ -182,6 +184,10 @@ const routes: Routes = [
     path: 'ecommerce/register/invester', component: SingupInvesterComponent
   },
 
+
+  {
+    path: 'profile/:id', component: ProfileComponent
+  },
 
 
   {

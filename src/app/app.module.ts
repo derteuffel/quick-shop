@@ -73,6 +73,7 @@ import { CommandeClientComponent } from './admin/commande/commande-client/comman
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
 import { ActivationComponent } from './auth/activation/activation.component';
+import { ProfileComponent } from './admin/profile/profile.component';
 
 
 
@@ -128,7 +129,8 @@ import { ActivationComponent } from './auth/activation/activation.component';
     CommandeClientComponent,
     DashboardComponent,
     AbonnementComponent, 
-    ActivationComponent
+    ActivationComponent,
+    ProfileComponent
     ],
   imports: [
     BrowserModule,
