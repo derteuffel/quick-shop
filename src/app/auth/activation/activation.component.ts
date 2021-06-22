@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationExtras } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,24 +9,26 @@ import { AuthService } from '../auth.service';
 })
 export class ActivationComponent implements OnInit {
 
-  email: string;
+  code: string;
   navigationParams: any = {};
-  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService) { }
+  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.navigationParams = JSON.parse(params['values']);
-    }) 
-    this.authService.activate(this.navigationParams).subscribe(
+    this.activation(this.activatedRoute.snapshot.paramMap.get('code'));
+    
+  }
+
+  activation(activation){
+    this.authService.activate(activation).subscribe(
       data => {
-        if(data){
-          console.log('success');
-        }else{
-          console.log('error');
-        }
+          console.log(activation);
+          this.router.navigateByUrl('connexion');
+      },
+      error => {
+        console.log(error);
       }
     );
-    
   }
 
   isEmpty(obj) {

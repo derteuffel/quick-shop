@@ -42,15 +42,8 @@ export class AuthService {
     );
   }
 
-  activate(email): Observable<any> {
-    return this.http.get(this.authUrl + "/activation/"+email).pipe(
-      map(response => {
-        if(response){
-          this.router.navigateByUrl('connexion');
-        }
-        return response;
-      })
-    );
+  activate(code): Observable<any> {
+    return this.http.get(this.authUrl + "/activation/"+code);
   }
 
   reloadPage() {
