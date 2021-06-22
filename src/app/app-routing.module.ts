@@ -35,6 +35,7 @@ import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfina
 import { CommandeClientComponent } from './admin/commande/commande-client/commande-client.component';
 import { CommandeEntreprenerComponent } from './admin/commande/commande-entreprener/commande-entreprener.component';
 import {DashboardComponent} from "./admin/dashboard/dashboard.component";
+import {AbonnementComponent} from "./abonnement/abonnement.component";
 
 
 
@@ -151,6 +152,10 @@ const routes: Routes = [
 
   {
     path: 'connexion', component: LoginComponent
+  },
+
+  {
+    path: 'abonnement', component: AbonnementComponent
   },
   {
     path: 'register', component: RegisterComponent

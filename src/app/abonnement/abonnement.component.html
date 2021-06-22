@@ -1,0 +1,93 @@
+<app-header></app-header>
+<span></span><br>
+<span></span><br>
+<div class="app-body card mx-5 py-5" >
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form name="form" (ngSubmit) = "f.form.valid && saveAbonnement()" #f="ngForm" novalidate>
+                <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un abonnement</h3>
+                <p class="text-muted"><a href="/ecommerce/register/home"><i class="fa fa-long-arrow-left"></i>&nbsp; Retour </a> &nbsp; ou Créer votre abonnement </p>
+                <div class="form-group">
+                  <label class="text-muted">Date de votre abonnement :</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="pi pi-user"></i></span>
+                    </div>
+                    <input type="date" class="form-control" name="startDate" [(ngModel)]="form.startDate" #startDate="ngModel"   autocomplete="startDate" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="text-muted">Date de fin d'abonnement:</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">@</span>
+                    </div>
+                    <input type="date" class="form-control" name="endDate" [(ngModel)]="form.endDate" #endDate="ngModel"   autocomplete="endDate" />
+
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="text-muted">Type abonnement :</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                    </div>
+                    <select name="type"  class="form-control" [(ngModel)]="form.type" #type="ngModel" id="">
+                      <option value="" disabled>-- Choisissez un type --</option>
+                      <option value="" disabled>-- Liste des Type --</option>
+                      <option *ngFor="let item of type" value="{{item}}">{{item}}</option>
+                    </select>
+
+
+                  </div>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-block btn-success" >Enregistrer</button>
+                <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                  Abonnement echouer!<br/>{{errorMessage}}
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<span></span><br>
+<span></span><br>
+<app-footer></app-footer>
+
+
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<!-- TOAST MESSAGE TEMPLATE -->
+<p-toast position="top-right"></p-toast>
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" >
+  <ng-template let-message pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1">
+      <div class="p-text-center">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h4>{{message.summary}}</h4>
+        <p>{{message.detail}}</p>
+      </div>
+      <div class="p-grid p-fluid">
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+        </div>
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>

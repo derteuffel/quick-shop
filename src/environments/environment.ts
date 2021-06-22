@@ -49,9 +49,11 @@ export const API = {
 
   /** Functionnalities **/
 
-  FUNCTIONALITY: `${url}api/functionnalities`
+  FUNCTIONALITY: `${url}api/functionnalities`,
 
+  /** Abonnement **/
 
+  ABONNEMENT: `${url}api/abonnements`,
 
 }
 

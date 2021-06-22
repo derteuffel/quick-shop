@@ -71,6 +71,7 @@ import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfina
 import { CommandeEntreprenerComponent } from './admin/commande/commande-entreprener/commande-entreprener.component';
 import { CommandeClientComponent } from './admin/commande/commande-client/commande-client.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AbonnementComponent } from './abonnement/abonnement.component';
 
 
 
@@ -124,7 +125,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     MicrofinanceSearchComponent,
     CommandeEntreprenerComponent,
     CommandeClientComponent,
-    DashboardComponent
+    DashboardComponent,
+    AbonnementComponent
     ],
   imports: [
     BrowserModule,
