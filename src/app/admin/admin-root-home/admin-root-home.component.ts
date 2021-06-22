@@ -123,6 +123,7 @@ export class AdminRootHome implements OnInit {
       price: new FormControl(''),
       type: new FormControl(''),
       province: new FormControl(''),
+      devise: new FormControl(''),
       commune: new FormControl(''),
       measure: new FormControl(''),
       category: new FormControl(''),
