@@ -70,7 +70,8 @@ import { AdminAccountComponent } from './admin/configurations/admin-account/admi
 import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfinance-search.component';
 import { CommandeEntreprenerComponent } from './admin/commande/commande-entreprener/commande-entreprener.component';
 import { CommandeClientComponent } from './admin/commande/commande-client/commande-client.component';
-import { ActivationComponent } from './auth/activation/activation.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AbonnementComponent } from './abonnement/abonnement.component';
 
 
 
@@ -124,7 +125,8 @@ import { ActivationComponent } from './auth/activation/activation.component';
     MicrofinanceSearchComponent,
     CommandeEntreprenerComponent,
     CommandeClientComponent,
-    ActivationComponent
+    DashboardComponent,
+    AbonnementComponent
     ],
   imports: [
     BrowserModule,

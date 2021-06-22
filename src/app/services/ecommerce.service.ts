@@ -67,6 +67,10 @@ export class EcommerceService {
     return this.http.get(`${API.PRODUITS}/admin`,  {headers: this.headers});
   }
 
+  findAllQuantityOfProductAvailable(region, name): Observable<any> {
+    return this.http.get(API.PRODUITS+'/admin/quantity/dispo/'+region+'/'+name, {headers: this.headers});
+  }
+
   getAllMobile(): Observable<any> {
     return this.http.get(`${API.PRODUITS}/all/mobile`);
   }

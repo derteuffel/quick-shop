@@ -1,0 +1,219 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="main-content">
+  <!-- Top navbar -->
+  <app-admin-navbar></app-admin-navbar>
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        <h2>Dashboard</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0" style="background-color:#F45B3A;">
+            <div class="row">
+              <div class="col-md-6 col-lg-3 col-12">
+                <button (click)="showProvinceSearch(contentProvinceSearch)"  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Produits Disponible"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-2 col-12">
+                <button (click)="showProvinceSearch2(contentProvinceSearch2)"  pButton  style="float:left;background-color:#F7941D;" label="Quantité de Coaching Disponible"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-3 col-12">
+                <button (click)="showCommandProductSearch(contentCommandProductSearch2)" pButton  style="float:left;background-color:#F7941D;" label="Quantité de Produit par region"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-4 col-12">
+                <button (click)="showCommandCoachingSearch2(contentCommandCoachingSearch2)" pButton  style="float:left;background-color:#F7941D;" label="Quantité de Coaching par region"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <app-admin-footer></app-admin-footer>
+  </div>
+</div>
+
+
+
+
+<!-------------------------------------------------------SEARCH BY Quantity product by region and name disponible START------------------------------------------------------------>
+<ng-template #contentProvinceSearch let-modal>
+  <form  >
+    <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a une region et au nom du produit!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label >Region</label>
+        <select  class="form-control"  [value]=" dataFilter.location" name="location" [(ngModel)]="dataFilter.location" >
+          <option value="">-- Choisir une province --</option>
+          <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label >Nom du produit</label>
+        <input type="text" class="form-control"  [value]=" dataFilter.name" name="name" [(ngModel)]="dataFilter.name" >
+      </div>
+
+    </div>
+    <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+    <div class="modal-footer" style="background-color:#F5B669;">
+      <div class="row">
+        <!-- <div class="col-md-4 "></div> -->
+        <div class="col-md-4 ">
+          <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+        </div> &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-md-4 ">
+          <button type="submit" class="btn btn-success"
+                  (click)="onProvinceSearch() + modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY Quantity product by region and name disponible  END-------------------------------------------------------------->
+
+<!-------------------------------------------------------SEARCH BY Quantity coaching by region and title  disponible START------------------------------------------------------------>
+<ng-template #contentProvinceSearch2 let-modal>
+  <form >
+    <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a une region et au titre du coaching!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label >Titre</label>
+        <input type="text" class="form-control"  [value]=" dataFilter.name" name="name" [(ngModel)]="dataFilter.name" >
+      </div>
+
+      <div class="form-group">
+        <label >Region</label>
+        <select  class="form-control"  [value]=" dataFilter.location" name="location" [(ngModel)]="dataFilter.location" >
+          <option value="">-- Choisir une province --</option>
+          <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+        </select>
+      </div>
+
+
+    </div>
+    <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+    <div class="modal-footer" style="background-color:#F5B669;">
+      <div class="row">
+        <!-- <div class="col-md-4 "></div> -->
+        <div class="col-md-4 ">
+          <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+        </div> &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-md-4 ">
+          <button type="submit" class="btn btn-success"
+                  (click)="onRegionSearch() + modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY Quantity coaching by region and title  disponible  END-------------------------------------------------------------->
+
+
+<!-------------------------------------------------------SEARCH BY COACHING  START------------------------------------------------------------>
+<ng-template #contentCommandCoachingSearch2 let-modal>
+  <form >
+    <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+      <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un coach!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label >Region</label>
+        <select  class="form-control"  [value]=" dataFilter.location" name="location" [(ngModel)]="dataFilter.location" >
+          <option value="">-- Choisir une province --</option>
+          <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+    <div class="modal-footer" style="background-color:#F5B669;">
+      <div class="row">
+        <!-- <div class="col-md-4 "></div> -->
+        <div class="col-md-4 ">
+          <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+        </div> &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-md-4 ">
+          <button type="submit" class="btn btn-success"
+                  (click)="getQuantityCommandCoachingByRegion() + modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY COACHING END-------------------------------------------------------------->
+
+
+<!-------------------------------------------------------SEARCH BY Command Product quantity  START------------------------------------------------------------>
+<ng-template #contentCommandProductSearch2 let-modal>
+  <form >
+    <div class="modal-header dark-modal" style="background-color:#F45B3A;">
+      <h4 class="modal-title" style="color:whitesmoke">Recherche quantité commande de produit rapport a une region!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label >Region</label>
+        <select  class="form-control"  [value]=" dataFilter.location" name="location" [(ngModel)]="dataFilter.location" >
+          <option value="">-- Choisir une province --</option>
+          <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+        </select>
+      </div>
+
+    </div>
+    <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+    <div class="modal-footer" style="background-color:#F5B669;">
+      <div class="row">
+        <!-- <div class="col-md-4 "></div> -->
+        <div class="col-md-4 ">
+          <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+        </div> &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="col-md-4 ">
+          <button type="submit" class="btn btn-success"
+                  (click)="getQuantityCommandProductByRegion() + modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</ng-template>
+<!-------------------------------------------------------SEARCH BY Command Product quantity  END-------------------------------------------------------------->
