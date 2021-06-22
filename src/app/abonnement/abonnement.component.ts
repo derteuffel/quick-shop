@@ -5,6 +5,8 @@ import {BsModalService} from "ngx-bootstrap/modal";
 import {MessageService, PrimeNGConfig} from "primeng/api";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {SignUpInfo} from "../auth/requests/signup-info";
+import {Abonnement} from "../models/abonnement";
 
 @Component({
   selector: 'app-abonnement',
@@ -14,8 +16,10 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class AbonnementComponent implements OnInit {
   lists: any = [];
-  type: string[];
+  types: string[];
   abonForm: FormGroup;
+  form: any = {};
+  abonnement: Abonnement
   public submitted: boolean = false;
 
   constructor(private abonnementService: AbonnementService,
@@ -28,7 +32,7 @@ export class AbonnementComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.type = [
+    this.types = [
       'PRODUCTS_SELLING',
       'COACHING_AND_SUPERVISION_SERVICE',
       'MICRO_FINANCEMENT'
@@ -44,10 +48,29 @@ export class AbonnementComponent implements OnInit {
       }
     );
   }
+  /** ajouter un abonnement **/
+  saveAbonnement() {
+    console.log(this.form);
+    this.abonnement = new Abonnement(
+      this.form.startDate,
+      this.form.endDate,
+      this.form.type);
+    console.log(this.abonnement);
+    this.abonnementService.saveAbon(this.abonnement).subscribe(
+      (data: any) => {
+        //this.router.navigateByUrl('ecommerce/home');
+        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
+
+      }, error => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
+    this.submitted = false;
+  }
 
 
   /** ajouter un abonnement **/
-  saveAbonnement(data) {
+ /* saveAbonnement(data) {
 
     console.log(data);
     const formData = new FormData();
@@ -67,7 +90,7 @@ export class AbonnementComponent implements OnInit {
       }
     );
     this.submitted = false;
-  }
+  }*/
 
 
   onReject() {

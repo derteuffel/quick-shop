@@ -38,11 +38,9 @@
                       <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
                     </div>
                     <select name="type"  class="form-control" [(ngModel)]="form.type" #type="ngModel" id="">
-                      <option value="" disabled>-- Choisissez un type --</option>
-                      <option value="" disabled>-- Liste des Type --</option>
-                      <option *ngFor="let item of type" value="{{item}}">{{item}}</option>
+                      <option value="" disabled>-- Choisissez un type d'abonnement --</option>
+                      <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
                     </select>
-
 
                   </div>
                 </div>
@@ -70,7 +68,7 @@
 
 <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
 
-<!-- TOAST MESSAGE TEMPLATE -->
+
 <p-toast position="top-right"></p-toast>
 <p-toast position="bottom-center" key="c" (onClose)="onReject()" >
   <ng-template let-message pTemplate="message">
