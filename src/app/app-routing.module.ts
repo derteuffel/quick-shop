@@ -179,7 +179,7 @@ const routes: Routes = [
 
 
   {
-    path: 'admin/profile/:id', component: ProfileComponent
+    path: 'profile/:id', component: ProfileComponent
   },
 
 
