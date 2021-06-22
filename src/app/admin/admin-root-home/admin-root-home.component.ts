@@ -83,7 +83,7 @@ export class AdminRootHome implements OnInit {
   /** lister les articles d'une boutique **/
   loadList(): void{
 
-    this.ecommerceService.getAllProducts().subscribe(
+    this.ecommerceService.getAllProductsAdmin().subscribe(
       (res: any) => {
 
         this.products = res;
