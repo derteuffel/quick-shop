@@ -36,18 +36,19 @@
                   </div>
                 </div>
               </div>
-            
-              
+
+
               <div class="form-group">
                 <label class="text-muted">Numero de telephone :</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                   </div>
-                  <input type="text" class="form-control" name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
+                  <input type="text" class="form-control" pattern="^\\(?([0-9]{3})\\)?[-,]?([0-9]{3})[-,]?([0-9]{4})$" name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
                          required minlength="6" />
                   <div *ngIf="f.submitted && phone.invalid">
                     <div *ngIf="phone.errors.required">Vous devez entrer un numero de telephone</div>
+                    <div *ngIf="phone.errors?.pattern">phone is invalid</div>
                   </div>
                 </div>
               </div>
@@ -94,7 +95,7 @@
                     <option value="Franc CFA">Franc CFA</option>
                     <option value="Franc Congolais">Franc Congolais</option>
                   </select>
-                  
+
                   <div *ngIf="f.submitted && devise.invalid">
                     <div *ngIf="devise.errors.required">Vous devez entrer une devise</div>
                   </div>
@@ -113,7 +114,7 @@
                     <option value="MM">Mobile money</option>
                     <option value="CASH">Liquide(cash)</option>
                   </select>
-                  
+
                   <div *ngIf="f.submitted && method.invalid">
                     <div *ngIf="method.errors.required">Vous devez entrer une method de Paiement</div>
                   </div>
@@ -136,7 +137,7 @@
                           <option value="18">18 mois</option>
                       </select>
 
-                      
+
                   <div *ngIf="f.submitted && duration.invalid">
                     <div *ngIf="duration.errors.required">Vous devez entrer une duree souhaite pour votre placement</div>
                   </div>
@@ -145,12 +146,12 @@
               <div class="form-group">
                 <label class="text-muted">Conditions d'utilisation</label>
                 <div class="input-group mb-3">
-                  
+
                          <input type="checkbox" class="form-control" name="terms" (click)="accept()"
                          required  />
                 </div>
               </div>
-              
+
 
                 <button type="submit" class="btn btn-block btn-success"  *ngIf="isChecked" >Enregistrer</button>
                 <button type="submit" class="btn btn-block btn-success" *ngIf="!isChecked" disabled>Enregistrer</button>
