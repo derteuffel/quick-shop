@@ -98,7 +98,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
                   </div>
-                  <select name="commune"  class="form-control" [(ngModel)]="form.commune" #commune="ngModel" id="">
+                  <select name="commune" (click)="selector()"  class="form-control" [(ngModel)]="form.commune" #commune="ngModel" id="">
                     <option value="" disabled>-- Choisissez une representation --</option>
                     <option value="" disabled>-- Liste des Communes --</option>
                     <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
