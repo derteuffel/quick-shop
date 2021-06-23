@@ -51,6 +51,9 @@ export class LoginComponent implements OnInit {
             case Role.TRAINNER:
               this.router.navigate(["/admin/coachings"]);
               break;
+            case Role.LOANS:
+              this.router.navigate(["/loans/requests"]);
+              break;
             default: 
               this.router.navigate(["/admin/home"]);
           }
