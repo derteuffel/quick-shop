@@ -19,7 +19,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User>;
 
   private authUrl =  BACK_BASE_URL + '/api/auth';
-  private testUrl = 'http://localhost:8181/api/account';
+  //private testUrl = 'http://localhost:8181/api/account';
 
   username: string;
 
