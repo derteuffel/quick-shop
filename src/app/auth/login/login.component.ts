@@ -41,7 +41,22 @@ export class LoginComponent implements OnInit {
           this.isLoggedIn = true;
           localStorage.setItem('id', this.authService.currentUserValue.id + '');
           this.role = this.authService.currentUserValue.role;
-          this.router.navigateByUrl('admin/home');
+          switch(this.role){
+            case Role.CLIENT:
+              this.router.navigate(["/admin/commandes/users"]);
+              break;
+            case Role.ENTERPRENER:
+              this.router.navigate(["/admin/home"]);
+              break;
+            case Role.TRAINNER:
+              this.router.navigate(["/admin/coachings"]);
+              break;
+            case Role.LOANS:
+              this.router.navigate(["/loans/requests"]);
+              break;
+            default: 
+              this.router.navigate(["/admin/home"]);
+          }
           console.log(this.role);
         }
 

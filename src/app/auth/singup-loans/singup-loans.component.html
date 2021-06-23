@@ -68,10 +68,11 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                   </div>
-                  <input type="text" class="form-control" name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
+                  <input type="text" class="form-control" pattern="^\\(?([0-9]{3})\\)?[-,]?([0-9]{3})[-,]?([0-9]{4})$"  name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
                          required minlength="6" />
                   <div *ngIf="f.submitted && phone.invalid">
                     <div *ngIf="phone.errors.required">Vous devez entrer un numero de telephone</div>
+                    <div *ngIf="phone.errors?.pattern">phone is invalid</div>
                   </div>
                 </div>
               </div>
@@ -98,7 +99,7 @@
                     <option value="" disabled>-- Choisissez une representation --</option>
                     <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
                   </select>
-                  
+
                   <div *ngIf="f.submitted && province.invalid">
                     <div *ngIf="province.errors.required">Vous devez entrer une province</div>
                   </div>
@@ -114,7 +115,7 @@
                     <option value="" disabled>-- Liste des Communes --</option>
                     <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
                   </select>
-                  
+
                   <div *ngIf="f.submitted && commune.invalid">
                     <div *ngIf="commune.errors.required">Vous devez entrer une commune</div>
                   </div>
@@ -130,7 +131,7 @@
                     <option value="" disabled>-- Choisissez un type d'activite --</option>
                     <option *ngFor="let item of activites" value="{{item}}">{{item}}</option>
                   </select>
-                  
+
                   <div *ngIf="f.submitted && secteurActivite.invalid">
                     <div *ngIf="secteurActivite.errors.required">Vous devez entrer un secteur d'activite</div>
                   </div>

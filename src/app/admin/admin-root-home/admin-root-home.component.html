@@ -141,7 +141,7 @@
             <label>Nom du produit</label>
             <input type="text" class="form-control"  required  placeholder="Nom de l'article" formControlName="name">
           </div>
-  
+
           <div class="form-group  ">
             <label >Montant par unite</label>
             <input type="number" class="form-control"  required formControlName="price"  placeholder="Montant de votre article">
@@ -188,14 +188,14 @@
               <option value="" disabled>-- Choisir une unite pour votre produit --</option>
               <option value="{{item}}" *ngFor="let item of measures">{{item}}</option>
             </select>
-  
+
           </div>
           <div class="form-group">
             <label >Description</label>
             <textarea name="description" class="form-control"  formControlName="description" rows="4"></textarea>
           </div>
         </div>
-        
+
       </div>
       <br>
       <div class="card-footer">
@@ -233,62 +233,65 @@
       <h5>Formulaire de mise a jour d'un Produit</h5>
       <div class="row">
         <div class="col-md-6">
-        <div class="form-group ">
-          <label>Nom du produit</label>
-          <input type="text" class="form-control"  required  placeholder="Nom de l'article" formControlName="name">
+          <div class="form-group">
+            <label>Nom du produit</label>
+            <input type="text" class="form-control"  required  placeholder="Nom de l'article" formControlName="name">
+          </div>
+
+          <div class="form-group  ">
+            <label >Montant par unite</label>
+            <input type="number" class="form-control"  required formControlName="price"  placeholder="Montant de votre article">
+          </div>
+          <div class="form-group ">
+            <label for="">Devise: </label>
+            <select formControlName="devise" class="form-control" required >
+              <option value="">-- Choisissez une devise --</option>
+              <option value="USD">US Dollars</option>
+              <option value="Euro">Euro</option>
+              <option value="Fb">Franc Burundais</option>
+              <option value="Shilling">Shilling</option>
+              <option value="FCFA">Franc CFA</option>
+              <option value="Fc">Franc Congolais</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Categorie</label>
+            <select  formControlName="category"  class="form-control">
+              <option value="" disabled>-- Choisir une category de votre produit --</option>
+              <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label >type</label>
+            <select formControlName="type"  class="form-control">
+              <option value="" disabled>-- Choisir un genre pour votre produit --</option>
+              <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Quantity disponible en stock</label>
+            <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La Quantite disponible de votre produit">
+          </div>
+          <div class="form-group">
+            <label>Image</label>
+            <input type="file" class="form-control" required name="pictureUrl" (change)="onFilesSelect($event)" placeholder="Image">
+          </div>
+          <div class="form-group">
+            <label >Unite de mesure du produit</label>
+            <select formControlName="measure"  class="form-control">
+              <option value="" disabled>-- Choisir une unite pour votre produit --</option>
+              <option value="{{item}}" *ngFor="let item of measures">{{item}}</option>
+            </select>
+
+          </div>
+          <div class="form-group">
+            <label >Description</label>
+            <textarea name="description" class="form-control"  formControlName="description" rows="4"></textarea>
+          </div>
         </div>
 
-        <div class="form-group ">
-          <label for="montant">Montant</label>
-          <input type="number" class="form-control" id="montant" required formControlName="price"  placeholder="Montant de votre article">
-        </div>
-        <div class="form-group ">
-          <label for="">Devise: </label>
-          <select formControlName="devise" class="form-control" required id="">
-            <option value="">-- Choisissez une devise --</option>
-            <option value="USD">US Dollars</option>
-            <option value="Euro">Euro</option>
-            <option value="Fb">Franc Burundais</option>
-            <option value="Shilling">Shilling</option>
-            <option value="FCFA">Franc CFA</option>
-            <option value="Fc">Franc Congolais</option>
-          </select>
-        </div>
-        <div class="form-group ">
-          <label for="categorie">Categorie</label>
-          <select  formControlName="category"  id="categorie" class="form-control">
-            <option value="" disabled>-- Choisir une category de votre produit --</option>
-            <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-6">
-         <div class="form-group ">
-          <label >type</label>
-          <select formControlName="type"  class="form-control">
-            <option value="" disabled>-- Choisir un genre pour votre produit --</option>
-            <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
-          </select>
-
-        </div>
-        <div class="form-group ">
-          <label for="measure">Unite de mesure</label>
-          <input type="text" class="form-control" id="measure" required formControlName="measure"  placeholder="La mesure de votre article">
-        </div>
-        <div class="form-group ">
-          <label>Quantite en stock </label>
-          <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La marque de votre article">
-
-        </div>
-        <div class="form-group ">
-          <label>Image</label>
-          <input type="file" class="form-control" required formControlName="pictureUrl"  placeholder="Image">
-        </div>
-        <div class="form-group ">
-          <label >Description</label>
-          <textarea name="description" class="form-control"  formControlName="description" id="" rows="4"></textarea>
-        </div>
-      </div>
       </div>
       <br>
       <div class="card-footer">

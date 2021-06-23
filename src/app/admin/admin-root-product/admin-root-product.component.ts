@@ -54,13 +54,14 @@ export class AdminRootProductComponent implements OnInit {
     }
   }
 
-  
+
+
 
   onSubmit(data){
 
     this.submitted = true;
     console.log(data);
-  
+
     this.productService.saveUpdate(data, this.currentProduct.id).subscribe(
       data => {
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'Update done', sticky: true});
@@ -158,10 +159,10 @@ export class AdminRootProductComponent implements OnInit {
 
   }
 
-  
 
 
-  
+
+
 
   /** toast message function primeng  **/
   onConfirm() {

@@ -4,6 +4,7 @@ import {AccountService} from "../../services/account.service";
 import {Observable} from "rxjs/index";
 import {map, switchMap} from "rxjs/internal/operators";
 import {User} from "../../models/user";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-profile',
@@ -12,11 +13,13 @@ import {User} from "../../models/user";
 })
 export class ProfileComponent implements OnInit {
 
+  ProfileDetails: User;
   constructor(private router: Router,
+              private fb: FormBuilder,
               private accountService: AccountService,
               private activatedRoute: ActivatedRoute,) { }
 
-
+  updateProfileForm: FormGroup;
 
   private userId$: Observable<number> = this.activatedRoute.params.pipe(
     map((params: Params) => parseInt(params['id']))
@@ -28,6 +31,8 @@ export class ProfileComponent implements OnInit {
   user$: Observable<User> = this.userId$.pipe(
     switchMap((userId: number) => this.accountService.getOne(userId))
   )
+
+
 
 
 }
