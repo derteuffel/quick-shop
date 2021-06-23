@@ -14,11 +14,14 @@ export class HeaderProduitComponent implements OnInit {
 
   provinces: string[];
   communes: string[];
+  types: string[];
   navigationParams: any = {};
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
     this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
@@ -29,14 +32,15 @@ export class HeaderProduitComponent implements OnInit {
 'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
 'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
 'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
-this.init();  
+this.init();
 }
 
   init(){
     this.produitForm = new FormGroup({
       province: new FormControl(''),
       commune: new FormControl(''),
-      name: new FormControl('')
+      name: new FormControl(''),
+      secteurActivite: new FormControl('')
     });
   }
 
@@ -44,22 +48,23 @@ this.init();
     this.produitForm = new FormGroup({
       province: new FormControl(''),
       commune: new FormControl(''),
-      name: new FormControl('')
+      name: new FormControl(''),
+      secteurActivite: new FormControl('')
     });
   }
 
   onProduitSearch(){
-     
+
     const produitNavigationExtras: NavigationExtras = {
       queryParams: {
         'values':JSON.stringify(this.produitForm.value)
       }
     };
-    
-      
+
+
       this.router.navigate(['/ecommerce/produits/search'], produitNavigationExtras );
       this.clear();
-    
+
   }
 
   isEmpty(obj) {

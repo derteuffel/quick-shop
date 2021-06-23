@@ -18,7 +18,7 @@ export class MicrofinanceService {
   //private microfinanceUrl = 'http://204.93.157.42:8181/api/microfinancements';
   private microfinanceUrl = 'http://localhost:8181/api/microfinancements';
   constructor(private http: HttpClient,
-              private authService:AuthService) { 
+              private authService:AuthService) {
                 this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
                 this.headers = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({
                   'Content-Type': 'application/json; charset=UTF-8'
@@ -26,7 +26,7 @@ export class MicrofinanceService {
                   authorization: 'Bearer ' + this.currentUser.token,
                   'Content-Type': 'application/json; charset=UTF-8'
                 });
-            
+
                 this.formHeaders = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({}):new HttpHeaders({
                   authorization: 'Bearer ' + this.currentUser.token
                 });
@@ -72,6 +72,11 @@ export class MicrofinanceService {
 
   getFinanceByRegion(region): Observable<any>{
     return this.http.get(`${API.MICROFINANCES}/byRegion/${region}`,  { headers: this.headers});
+  }
+
+  getActivationMicrofinacement(id): Observable<any>{
+    return this.http.get(`${API.MICROFINANCES}/activer/${id}`,  { headers: this.headers});
+
   }
 
 }

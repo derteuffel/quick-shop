@@ -14,7 +14,7 @@
     <div class="row">
       <div class="col">
         <div class="card shadow">
-          <div class="card-header border-0" style="background-color:#4051e9;">
+          <div class="card-header border-0" style="background-color:#F45B3A !important;">
             <div class="col-md-6">
               <button (click)="openModalAddCompany(contentAdd)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D !important;" label="Nouveau service de coaching"></button>
             </div>
@@ -119,14 +119,14 @@
               </div>
               <div class="form-group">
                 <label>Province</label>
-                <select name="province" class="form-control" required id="" ngModel>
+                <select name="province" class="form-control" required  ngModel>
                   <option value="">-- Choisir une province --</option>
                   <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>Commune</label>
-                <select name="commune" class="form-control" required id="" ngModel>
+                <select name="commune" class="form-control" required  ngModel>
                   <option value="">-- Choisir une commune --</option>
                   <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
                 </select>
@@ -146,11 +146,11 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Montant du service</label>
-                <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montnant de cette prestation" ngModel>
+                <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montant de cette prestation" ngModel>
               </div>
               <div class="form-group">
-                <label for="">Devise: </label>
-                <select name="devise" class="form-control" required id="" ngModel>
+                <label >Devise: </label>
+                <select name="devise" class="form-control" required  ngModel>
                   <option value="">-- Choisissez une devise --</option>
                   <option value="USD">US Dollars</option>
                   <option value="Euro">Euro</option>
@@ -223,7 +223,7 @@
 <!-- MODAL  FORM FOR UPDATE COACHING -->
 
 <ng-template #contentUpdate let-modal>
-  <div class="modal-header" style="color:#F45B3A !important;">
+  <div class="modal-header" style="background-color:#F45B3A !important;">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -255,7 +255,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>Montant du service</label>
-              <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montnant de cette prestation" [(ngModel)]="currentCoaching.amount">
+              <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montant de cette prestation" [(ngModel)]="currentCoaching.amount">
             </div>
             <div class="form-group">
               <label>Date de deroulement</label>
