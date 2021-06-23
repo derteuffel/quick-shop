@@ -86,7 +86,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
                   </div>
-                  <select name="devise" class="form-control" required id="" [(ngModel)]="form.devise" #devise="ngModel">
+                  <select name="devise" class="form-control" required  [(ngModel)]="form.devise" #devise="ngModel">
                     <option value="">-- Choisissez une devise --</option>
                     <option value="US Dollars">US Dollars</option>
                     <option value="Euro">Euro</option>
@@ -108,7 +108,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-money-bill"></i></span>
                   </div>
-                  <select name="method" required class="form-control" id="" [(ngModel)]="form.method" #method="ngModel">
+                  <select name="method" required class="form-control"  [(ngModel)]="form.method" #method="ngModel">
                     <option value="">-- Choisissez une des methodes de Paiement --</option>
                     <option value="VB">Virement bancaire</option>
                     <option value="MM">Mobile money</option>
@@ -127,7 +127,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-clock"></i></span>
                   </div>
-                    <select name="duration" required class="form-control" id="" [(ngModel)]="form.duration" #duration="ngModel">
+                    <select name="duration" required class="form-control" [(ngModel)]="form.duration" #duration="ngModel">
                           <option value="">-- Choisissez une duree d'investissement --</option>
                           <option value="3">3 mois</option>
                           <option value="6">6 mois</option>
