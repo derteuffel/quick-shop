@@ -37,10 +37,11 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                   </div>
-                  <input type="text" class="form-control" name="phone" [(ngModel)]="form.phone" #phone="ngModel"
+                  <input type="text"  pattern="^\\(?([0-9]{3})\\)?[-,]?([0-9]{3})[-,]?([0-9]{4})$" class="form-control" name="phone" [(ngModel)]="form.phone" #phone="ngModel"
                          required />
                   <div *ngIf="f.submitted && phone.invalid">
                     <div *ngIf="phone.errors.required">Vous devez entrer un numero de telephone</div>
+                    <div *ngIf="phone.errors?.pattern">phone is invalid</div>
                   </div>
                 </div>
                 <div class="form-group mb-3">
@@ -54,7 +55,7 @@
                       <option value="" disabled>-- Liste des Provinces --</option>
                       <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
                     </select>
-                    
+
                     <div *ngIf="f.submitted && province.invalid">
                       <div *ngIf="province.errors.required">Vous devez entrer une province</div>
                     </div>
@@ -71,7 +72,7 @@
                       <option value="" disabled>-- Liste des Communes --</option>
                       <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
                     </select>
-                    
+
                     <div *ngIf="f.submitted && commune.invalid">
                       <div *ngIf="commune.errors.required">Vous devez entrer une commune</div>
                     </div>
