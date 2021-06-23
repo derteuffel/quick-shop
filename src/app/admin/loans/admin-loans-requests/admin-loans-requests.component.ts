@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { LoansService } from 'src/app/services/loans.service';
+import {MicrofinanceService} from "../../../services/microfinance.service";
 
 @Component({
   selector: 'app-admin-loans-requests',
@@ -15,7 +16,7 @@ export class AdminLoansRequestComponent implements OnInit {
   lists: any = {};
   loans: any = {};
   loansRef: number;
-
+  public submitted = false;
   provinces: string [];
   communes: string [];
   types: string[];
@@ -24,18 +25,20 @@ export class AdminLoansRequestComponent implements OnInit {
   communeForm: FormGroup;
   sectorForm: FormGroup;
   statusForm: FormGroup;
-
+  productForm: FormGroup;
   p: number = 1;
   searchItem: string;
 
   constructor(private loansService: LoansService,
     private primengConfig: PrimeNGConfig,
+                            private microService: MicrofinanceService,
                             private modalService: NgbModal,
                             private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
     this.loadData();
+    this.initForm();
   }
 
   loadData() {
@@ -103,7 +106,7 @@ export class AdminLoansRequestComponent implements OnInit {
         }
       );
     }
-    
+
   }
 
   init(){
@@ -161,9 +164,58 @@ this.init();
   showDetail(contentDetail, event){
     console.log(event)
     this.modalService.open(contentDetail, {size: "lg"});
-    
+
     this.loans = event;
 
+  }
+
+  initForm() {
+    this.productForm = new FormGroup({
+      id: new FormControl(''),
+      region: new FormControl(''),
+      name: new FormControl(''),
+      amount: new FormControl(''),
+      title: new FormControl(''),
+      province: new FormControl(''),
+      devise: new FormControl(''),
+      commune: new FormControl(''),
+      sector: new FormControl(''),
+      pictureUrl: new FormControl(null),
+      // pictureUrl: new FormControl(''),
+    });
+  }
+
+
+  // fonction d'ajout du loans
+
+  onSubmitLoans() {
+
+    this.submitted = true;
+    if (this.productForm?.invalid) { return; }
+    const formData = new FormData();
+    formData.append('file',this.productForm.get('file').value);
+    formData.append('title', this.productForm.get('title').value);
+    formData.append('region', this.productForm.get('region').value);
+    formData.append('devise', this.productForm.get('devise').value);
+    formData.append('amount', this.productForm.get('amount').value);
+    formData.append('localisation', this.productForm.get('province').value+', '+this.productForm.get('commune').value);
+    formData.append('file2', this.productForm.get('file2').value);
+    formData.append('sector', this.productForm.get('sector').value);
+    console.log(formData);
+    this.loansService.save(formData).subscribe(
+      data => {
+        this.productForm.reset();
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'loans submitted', sticky: true});
+        this.loadData();
+        console.log(this.productForm);
+        console.log(data);
+        window.location.reload();
+      },
+      error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        console.log(error);
+      }
+    );
   }
 
   // suppression d'une coaching
@@ -176,7 +228,7 @@ this.init();
   }
 
   onDelete() {
-    this.loansService.delete(this.loansRef).subscribe(
+    this.microService.deleteFinance(this.loansRef).subscribe(
       (res : any) => {
         this.messageService.add({severity:'success', summary: 'Record is deleted successully', detail:'record delete'});
         this.loadData();
@@ -200,7 +252,16 @@ this.init();
     )
   }
 
-  
+  OnActiver(){
+    this.microService.getActivationMicrofinacement(this.loansRef).subscribe(
+      (res : any) => {
+        this.messageService.add({severity:'success', summary: 'Record is activated successully', detail:'record action'});
+        this.loadData();
+      }
+    )
+  }
+
+
 
   /** toast message function primeng  **/
   onConfirm() {

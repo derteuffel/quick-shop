@@ -3,14 +3,18 @@ import { Role } from "./role";
 export class User{
     id: number;
     fullName: string;
-  location: string;
+   location: string;
     username: string;
     email: string;
     password: string;
     enabled: boolean;
     token: string;
     createdDate: Date;
+    birthDate: Date;
+    secteurActivite: any;
     role: Role;
+    idNumber: string;
+    interest: string;
 
     constructor(id: number, username:string, email: string, createdDate: Date, token: string, role: Role){
         this.id = id;

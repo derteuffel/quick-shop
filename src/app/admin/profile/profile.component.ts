@@ -4,12 +4,15 @@ import {AccountService} from "../../services/account.service";
 import {Observable} from "rxjs/index";
 import {map, switchMap} from "rxjs/internal/operators";
 import {User} from "../../models/user";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {MessageService, PrimeNGConfig} from "primeng/api";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
+  providers: [MessageService],
 })
 export class ProfileComponent implements OnInit {
 
@@ -17,9 +20,27 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router,
               private fb: FormBuilder,
               private accountService: AccountService,
-              private activatedRoute: ActivatedRoute,) { }
+              private activatedRoute: ActivatedRoute,
+              private primengConfig: PrimeNGConfig,
+              private modalService: NgbModal,
+              private messageService: MessageService) { }
+
+  /* Properties for the profile form */
 
   updateProfileForm: FormGroup;
+
+  id: FormControl;
+  email: FormControl;
+  username: FormControl;
+  phone: FormControl;
+  birthdate: FormControl;
+  fullName: FormControl;
+  password: FormControl;
+  role: FormControl;
+  secteurActivite: FormControl;
+  idNumber: FormControl;
+  interest: FormControl;
+  location: FormControl;
 
   private userId$: Observable<number> = this.activatedRoute.params.pipe(
     map((params: Params) => parseInt(params['id']))
@@ -34,5 +55,35 @@ export class ProfileComponent implements OnInit {
 
 
 
+  onSubmit() {
+    let userDetails = this.updateProfileForm.value;
+
+    this.accountService.updateAccount(userDetails).subscribe(
+      result=> {
+
+        this.messageService.add({severity:'success', summary: 'Profile is updated successully', detail:'profile updated'});
+      },error1 => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+      }
+    )
+  }
+
+  /** toast message function primeng  **/
+  onConfirm() {
+    this.messageService.clear('c');
+  }
+
+  onReject() {
+    this.messageService.clear('c');
+  }
+
+  clear() {
+    this.messageService.clear();
+  }
+
+  openModalAddCompany(contentAdd) {
+    this.modalService.open(contentAdd, { size: 'lg' });
+
+  }
 
 }
