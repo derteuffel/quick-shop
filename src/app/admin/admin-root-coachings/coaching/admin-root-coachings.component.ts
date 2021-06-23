@@ -106,6 +106,7 @@ export class AdminRootCoachingsComponent implements OnInit {
 
     this.modalService.open(contentUpdate, {size: "lg"});
     this.currentCoaching = event;
+
   }
 
   updateCoaching() {

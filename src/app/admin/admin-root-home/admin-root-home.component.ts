@@ -204,6 +204,7 @@ export class AdminRootHome implements OnInit {
     this.modalService.open(contentUpdate, {size: 'lg'});
     this.product = event.name;
     this.productID = event.id;
+    console.log(event);
     console.log(event.id);
     this.productForm.patchValue({
       name: event.name,
@@ -211,7 +212,7 @@ export class AdminRootHome implements OnInit {
       type: event.type,
       category: event.category,
       price: event.price,
-      location: event.location,
+      //localisation: event.localisation,
       description: event.description,
       measure: event.measure,
 
@@ -222,12 +223,13 @@ export class AdminRootHome implements OnInit {
 
   updateProduct() {
     const ProductData = {
+      id: this.productForm.get('id').value,
       name: this.productForm.get('name').value,
       quantity: this.productForm.get('quantity').value,
       type: this.productForm.get('type').value,
       category: this.productForm.get('category').value,
       price: this.productForm.get('price').value,
-      location: this.productForm.get('location').value,
+      //localisation: this.productForm.get('localisation').value,
       description: this.productForm.get('description').value,
       measure: this.productForm.get('measure').value,
       //pictureUrl: this.productForm.get('pictureUrl').value,
