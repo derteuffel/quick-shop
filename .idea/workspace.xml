@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin-navbar/admin-navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/admin-navbar/admin-navbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin-navbar/admin-navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/admin-navbar/admin-navbar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/profile/profile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/profile/profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/register/register.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/singup-invester/singup-invester.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/singup-invester/singup-invester.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/singup-loans/singup-loans.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/singup-loans/singup-loans.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/singup-trainner/singup-trainner.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/singup-trainner/singup-trainner.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/auth/singup/singup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/singup/singup.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -39,11 +29,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin-navbar.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin-navbar.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/admin/admin-navbar/admin-navbar.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="205">
               <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-root-home.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3455">
+              <folding>
+                <element signature="e#0#73#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-root-home.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="294" column="12" selection-start-line="294" selection-start-column="12" selection-end-line="294" selection-end-column="12" />
+              <folding>
+                <element signature="n#div#0;n#form#0;n#div#1;n#ng-template#0;n#!!top" />
+                <element signature="n#div#0;n#form#0;n#div#1;n#ng-template#1;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,7 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.html" />
         <option value="$PROJECT_DIR$/src/app/services/microfinance.service.ts" />
         <option value="$PROJECT_DIR$/src/environments/environment.prod.ts" />
         <option value="$PROJECT_DIR$/src/app/services/session-coaching.service.ts" />
@@ -174,6 +187,7 @@
         <option value="$PROJECT_DIR$/src/app/admin/admin-navbar/admin-navbar.component.ts" />
         <option value="$PROJECT_DIR$/src/app/admin/profile/profile.component.html" />
         <option value="$PROJECT_DIR$/src/app/admin/admin-navbar/admin-navbar.component.html" />
+        <option value="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.html" />
       </list>
     </option>
   </component>
@@ -254,7 +268,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="admin-navbar" type="462c0819:PsiDirectoryNode" />
+              <item name="admin-root-home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
@@ -262,16 +276,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="admin-root-coachings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="admin-root-coachings" type="462c0819:PsiDirectoryNode" />
-              <item name="coaching" type="462c0819:PsiDirectoryNode" />
+              <item name="admin-root-product" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
@@ -435,12 +440,12 @@
       <workItem from="1623438209573" duration="2937000" />
       <workItem from="1623649078663" duration="2091000" />
       <workItem from="1624341879438" duration="7046000" />
-      <workItem from="1624372861674" duration="12431000" />
+      <workItem from="1624372861674" duration="13434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229582000" />
+    <option name="totallyTimeSpent" value="230585000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
@@ -556,23 +561,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/services/commande.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="51" selection-start-line="51" selection-end-line="55" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/ecommerce.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-538">
-          <caret line="69" column="35" selection-start-line="69" selection-start-column="2" selection-end-line="69" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/abonnement.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -953,6 +941,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3455">
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="294" column="12" selection-start-line="294" selection-start-column="12" selection-end-line="294" selection-end-column="12" />
+          <folding>
+            <element signature="n#div#0;n#form#0;n#div#1;n#ng-template#0;n#!!top" />
+            <element signature="n#div#0;n#form#0;n#div#1;n#ng-template#1;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
