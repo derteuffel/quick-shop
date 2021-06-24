@@ -32,7 +32,7 @@ export class CoachingService {
   }
 
   getAllCoaching(): Observable<any> {
-    return this.http.get(API.COACHINGS, {headers: this.headers});
+    return this.http.get(API.COACHINGS+'/all');
   }
 
   getAllCoachingSearch(form): Observable<any> {

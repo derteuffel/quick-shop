@@ -1,58 +1,40 @@
+<app-header></app-header>
 <!-- Header -->
 <header class="header shop">
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 col-md-12 col-12">
-          <!-- Top Left -->
-          <div class="top-left">
-            <ul class="list-main">
-              <li><i class="ti-email"></i> support@yesbinspire.com</li>
-            </ul>
-          </div>
-          <!--/ End Top Left -->
-        </div>
-        <div class="col-lg-7 col-md-12 col-12">
-          <!-- Top Right -->
-          <div class="right-content">
-            <ul class="list-main">
-              <!-- <li><i class="ti-power-off"></i><a href="signup">Inscription</a></li> -->
-              <li><i class="ti-power-off"></i><a href="connexion">Connexion</a></li>
-            </ul>
-          </div>
-          <!-- End Top Right -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Topbar -->
   <div class="middle-inner">
     <div class="container">
-        <div class="search-bar-top row">
-            <div class="col-md-6 col-lg-3">
-                <a href="/" class="btn"> <h1>YESB-INSPIRE</h1> </a>
-            </div>
-          <form [formGroup]="produitForm" (submit)="onProduitSearch()"  class="card py-2 px-3 col-lg-9 col-md-6">
+        <div class="search-bar-top">
+          <form [formGroup]="produitForm" (submit)="onProduitSearch()"  >
             <div class="row">
-              <div class="form-group col-md-6 col-xl-3">
+              <div class="form-group col-xl-2 col-md-6">
+                <input type="text" placeholder="Nom du produit" class="form-control" formControlName="name">
+              </div>
+              <div class="form-group col-md-6 col-xl-2">
                 <select formControlName="province" class="form-control" >
                   <option value="" disabled>-- Choisir une province --</option>
                   <option value="">-- Listes des provinces --</option>
                   <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
                 </select>
               </div>
-              <div class="form-group col-md-6 col-xl-3">
-                <select formControlName="commune" class="form-control" >
-                  <option value="" disabled>-- Choisir une commune --</option>
+              <div class="form-group col-md-6 col-xl-2">
+                <select formControlName="commune" (click)="selector()" class="form-control" >
+                  <option value="" disabled>-- Choisir  une commune --</option>
                   <option value="" disabled>-- Liste des communes --</option>
                   <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
                 </select>
               </div>
+
               <div class="form-group col-xl-3 col-md-6">
-                <input type="text" placeholder="Nom du produit" class="form-control" formControlName="name">
+                <select formControlName="secteurActivite" class="form-control" >
+                  <option value="" disabled>-- Choisir un secteur d'activite --</option>
+                  <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
+                </select>
               </div>
-              <div class="top-search col-xl-3 col-md-6"><button type="submit" class="btn btn-default text-warning" > <i class="ti-search"></i>&nbsp; Rehercher </button></div>
+              <div class="top-search col-xl-3 col-md-6">
+                <button type="submit" class="btn btn-default text-white" >
+                  <i class="ti-search"></i>&nbsp; Rechercher
+                </button>
+              </div>
             </div>
           </form>
         </div>
@@ -71,7 +53,7 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h1 class="text-center text-uppercase text-underline ">Consultez tous vos produits</h1>
+          <h1 class="text-center text-uppercase text-underline ">Produit/Service</h1>
         </div>
       </div>
     </div>
