@@ -4,6 +4,8 @@ import { AuthService } from '../auth.service';
 import { AuthLoginInfo } from '../requests/login-info';
 import { Parametre } from '../../models/parametre';
 import { Role } from 'src/app/models/role';
+import { AppConstants } from '../app-composant';
+
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,11 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   role: Role;
+
+  googleURL = AppConstants.GOOGLE_AUTH_URL;
+  facebookURL = AppConstants.FACEBOOK_AUTH_URL;
+  githubURL = AppConstants.GITHUB_AUTH_URL;
+  linkedinURL = AppConstants.LINKEDIN_AUTH_URL;
   private loginInfo: AuthLoginInfo;
   constructor(private authService: AuthService,
               private router: Router) { }
