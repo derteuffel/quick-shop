@@ -27,6 +27,7 @@ export class ArticlesSearchComponent implements OnInit {
   provinces: string[];
   communes: string[];
   types: any ={};
+  p=1;
 
   constructor(
     private ecommerceService: EcommerceService,

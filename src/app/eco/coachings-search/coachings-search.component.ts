@@ -15,6 +15,7 @@ export class CoachingsSearchComponent implements OnInit {
   provinces: string[];
   communes: string[];
   types:string[];
+  p=1;
   serviceForm: FormGroup;
 
   constructor(private coachingService: CoachingService, private activatedRoute: ActivatedRoute) { }

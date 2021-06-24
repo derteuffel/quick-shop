@@ -13,6 +13,7 @@ import { LoansService } from 'src/app/services/loans.service';
 export class MicrofinanceComponent implements OnInit {
 
   lists: any = {};
+  p = 1;
 
   constructor(private loansService: LoansService) { }
 

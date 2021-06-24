@@ -23,6 +23,7 @@ export class ArticlesComponent implements OnInit {
   productSelected: boolean = false;
 
   navigationParams: any = {};
+  p=1;
 
 
   constructor(

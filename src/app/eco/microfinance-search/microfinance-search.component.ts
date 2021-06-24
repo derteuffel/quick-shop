@@ -16,6 +16,7 @@ export class MicrofinanceSearchComponent implements OnInit {
 
   lists: any = {};
   navigationParams: any = {};
+  p = 1;
   provinces: string[];
   communes: string[];
   types:string[];

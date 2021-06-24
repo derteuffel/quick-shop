@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CoachingsComponent implements OnInit {
   coachings: any = {};
   navigationParams: any = {};
+  p=1;
 
   constructor(private coachingService: CoachingService, private activatedRoute: ActivatedRoute) { }
 

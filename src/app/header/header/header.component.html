@@ -1,24 +1,22 @@
 <!-- Header -->
 <header class="header shop">
   <!-- Topbar -->
-  <div class="topbar">
+  <div class="topbar" style="background:lightskyblue;">
     <div class="container">
       <div class="row">
-        <div class="col-lg-5 col-md-12 col-12">
+        <div class="col-lg-6 col-md-12 col-12">
           <!-- Top Left -->
-          <div class="top-left">
-            <ul class="list-main">
-              <li ><i class="ti-email"></i>&nbsp;&nbsp; <span class="header">support@yesbinspire.com</span> </li>
-            </ul>
+          <div class="top-left py-2">
+            <span class="header" style="font-size: 20px;">Opportunites Education & Commerce pour des jeunes</span>
           </div>
 
           <!--/ End Top Left -->
         </div>
-        <div class="col-lg-7 col-md-12 col-12">
+        <div class="col-lg-6 col-md-12 col-12">
           <!-- Top Right -->
           <div class="right-content">
             <ul class="list-main">
-              <li ngbDropdown><i class="fa fa-user-plus"></i>&nbsp;<button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Inscription</button>
+              <li ngbDropdown><i class="fa fa-user-plus"></i>&nbsp;<a class="header" id="dropdownBasic1" ngbDropdownToggle>Inscription</a>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                   <a ngbDropdownItem href="ecommerce/register/client" class="header">Client</a>
                   <a ngbDropdownItem href="ecommerce/register/entreprener" class="header">Entrepreneur</a>
@@ -40,20 +38,21 @@
   <div class="middle-inner">
     <div class="search-bar-top row">
           <div class="col-md-6 col-lg-3">
-            <a href="/" class="header"><img src="assets/images/15.png" style="width: 280px;height: 90px;" alt=""></a>
+            <!-- <a href="/" class="header"><img src="assets/images/15.png" style="width: 280px;height: 90px;" alt=""></a> -->
+            <a href="/" class="header"><h1 style="font-size: 80px;">SAYE!</h1></a>
           </div>
-          <div class="col-md-6 col-lg-9" >
-                <a  (click)="getClientPage()" class="button">
-                  <span ><i class="fa fa-home"></i>&nbsp;Accueil</span>
-                </a>
-                  <a (click)="getProduitPage()"   class="button">
-                    <span ><i class="fa fa-shopping-bag"></i>&nbsp; Produits/Services</span>
+          <div class="col-md-6 col-lg-9 my-5" >
+                <a  (click)="getClientPage()"  >
+                  <img src="assets/images/accueil.png" class="header-item-home" alt="">
+                </a>          
+                  <a (click)="getCoachingPage()" >
+                    <img src="assets/images/trainnings.png" class="header-item-trainning" alt="">
                   </a>
-                  <a (click)="getCoachingPage()"  class="button">
-                    <span><i class="fa fa-tachometer"></i>&nbsp; Encadrements/Coachings</span>
+                  <a (click)="getProduitPage()"  >
+                    <img src="assets/images/produits.png" class="header-item-produits" alt="">
                   </a>
-                  <a (click)="getFinancePage()"  class="button">
-                    <span > <i class="fa fa-dollar-sign"></i>&nbsp; Micro-credits</span>
+                  <a (click)="getFinancePage()"   >
+                    <img src="assets/images/micro-credits.png" class="header-item-loans" alt="">
                   </a>
           </div>
     </div>
