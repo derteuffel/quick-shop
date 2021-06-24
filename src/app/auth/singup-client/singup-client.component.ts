@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import {AuthService} from "../auth.service";
 import {CustomerInfo} from "../requests/customer-info";
 import { SignUpInfo } from '../requests/signup-info';
+import {TokenDto} from "../../models/token-dto";
+import {TokenService} from "../../services/token.service";
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser} from "angularx-social-login";
 
 @Component({
   selector: 'app-singup-client',
@@ -19,7 +22,11 @@ export class SingupClientComponent implements OnInit {
   provinces: string[];
   communes: string[];
   activites: string[];
-  constructor(private authService: AuthService, private router: Router) { }
+  socialUser: SocialUser;
+  constructor(private authService: AuthService,
+              private router: Router,
+              private authService1: SocialAuthService,
+              private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
@@ -33,7 +40,7 @@ export class SingupClientComponent implements OnInit {
 'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
 'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
 'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
- 
+
   }
 
 
@@ -65,6 +72,52 @@ export class SingupClientComponent implements OnInit {
         console.log(error);
         this.errorMessage = error.error.message;
         this.isSignUpFailed = true;
+      }
+    );
+  }
+
+
+  signInWithGoogle(): void {
+    this.authService1.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      data => {
+        this.socialUser = data;
+        const tokenGoogle = new TokenDto(this.socialUser.idToken);
+        this.authService.google(tokenGoogle).subscribe(
+          res => {
+            this.tokenService.setToken(res.value);
+            this.router.navigate(['/admin/home']);
+          },
+          err => {
+            console.log(err);
+
+          }
+        );
+      }
+    ).catch(
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  signInWithFB(): void {
+    this.authService1.signIn(FacebookLoginProvider.PROVIDER_ID).then(
+      data => {
+        this.socialUser = data;
+        const tokenFace = new TokenDto(this.socialUser.authToken);
+        this.authService.facebook(tokenFace).subscribe(
+          res => {
+            this.tokenService.setToken(res.value);
+            this.router.navigate(['/admin/home']);
+          },
+          err => {
+            console.log(err);
+          }
+        );
+      }
+    ).catch(
+      err => {
+        console.log(err);
       }
     );
   }

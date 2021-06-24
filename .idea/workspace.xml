@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/models/token-dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -16,10 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="header-service.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
+      <file leaf-file-name="singup-client.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-109">
+            <state relative-caret-position="359">
+              <caret line="110" column="46" selection-start-line="110" selection-start-column="46" selection-end-line="110" selection-end-column="46" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -27,26 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="products.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.html">
+      <file leaf-file-name="singup-client.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="14" />
-              <folding>
-                <element signature="e#3777#4865#1" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header-produit.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="77">
+              <caret line="131" column="10" selection-start-line="131" selection-start-column="6" selection-end-line="138" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -93,11 +85,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/admin/configurations/configurations.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html" />
-        <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.ts" />
         <option value="$PROJECT_DIR$/src/app/admin/admin-sidebar/admin-sidebar.component.html" />
         <option value="$PROJECT_DIR$/src/app/services/commande.service.ts" />
@@ -117,7 +104,6 @@
         <option value="$PROJECT_DIR$/src/app/services/account.service.ts" />
         <option value="$PROJECT_DIR$/src/app/auth/login/login.component.html" />
         <option value="$PROJECT_DIR$/src/app/auth/singup-trainner/singup-trainner.component.html" />
-        <option value="$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.html" />
         <option value="$PROJECT_DIR$/src/app/auth/singup/singup.component.html" />
         <option value="$PROJECT_DIR$/src/app/auth/register/register.component.html" />
         <option value="$PROJECT_DIR$/src/app/auth/singup-loans/singup-loans.component.html" />
@@ -144,6 +130,12 @@
         <option value="$PROJECT_DIR$/src/app/header/header-service/header-service.component.html" />
         <option value="$PROJECT_DIR$/src/app/header/header-finance/header-finance.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" />
+        <option value="$PROJECT_DIR$/src/app/services/token.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/models/token-dto.ts" />
+        <option value="$PROJECT_DIR$/src/app/auth/auth.service.ts" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.html" />
       </list>
     </option>
   </component>
@@ -216,37 +208,22 @@
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="eco" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="eco" type="462c0819:PsiDirectoryNode" />
-              <item name="product" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="eco" type="462c0819:PsiDirectoryNode" />
-              <item name="product" type="462c0819:PsiDirectoryNode" />
-              <item name="products" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="singup-client" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -407,18 +384,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246965000" />
+    <option name="totallyTimeSpent" value="250639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18763326" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18763326" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3288889" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3288889" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958949" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3451852" />
@@ -523,54 +500,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/auth/singup-loans/singup-loans.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="74" column="77" selection-start-line="74" selection-start-column="77" selection-end-line="74" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="62" column="77" lean-forward="true" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/singup/singup.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="74" column="77" selection-start-line="74" selection-start-column="77" selection-end-line="74" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/account.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="74" column="45" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/register/register.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/singup/singup.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/auth/register/register.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
@@ -961,12 +890,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/models/token-dto.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-109">
+        <state relative-caret-position="102">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/auth/auth.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="94" column="135" selection-start-line="94" selection-start-column="135" selection-end-line="94" selection-end-column="135" />
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
+            <element signature="e#0#63#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/token.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -977,6 +921,39 @@
           <folding>
             <element signature="e#3777#4865#1" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-109">
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="110" column="46" selection-start-line="110" selection-start-column="46" selection-end-line="110" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="131" column="10" selection-start-line="131" selection-start-column="6" selection-end-line="138" selection-end-column="28" />
         </state>
       </provider>
     </entry>
