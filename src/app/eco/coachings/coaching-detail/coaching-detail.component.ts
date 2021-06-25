@@ -9,6 +9,8 @@ import {MessageService} from "primeng/api";
 import {CommandeService} from "../../../services/commande.service";
 import {Product} from "../../../models/product.model";
 import {EcommerceService} from "../../../services/ecommerce.service";
+import {Temoignage} from "../../../models/temoignage";
+import {TemoignageService} from "../../../services/temoignage.service";
 
 @Component({
   selector: 'app-coaching-detail',
@@ -17,6 +19,12 @@ import {EcommerceService} from "../../../services/ecommerce.service";
   providers: [MessageService],
 })
 export class CoachingDetailComponent implements OnInit {
+
+  temoignageForm: FormGroup;
+  form: any = {};
+  temoignage: Temoignage;
+  public submitted: boolean = false;
+
   currentCoaching: any;
   numbers: number[];
   productOrder: ProductOrder[] = [] ;
@@ -27,6 +35,7 @@ export class CoachingDetailComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router:Router,
               private fb: FormBuilder,
+              private temoignageService: TemoignageService,
               private ecommerceService: EcommerceService,
               private commandeService: CommandeService,
               private messageService: MessageService,
@@ -36,6 +45,7 @@ export class CoachingDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getCoaching(this.activatedRoute.snapshot.paramMap.get('id'));
     this.initForm();
+    this. initForm2();
   }
 
   getCoaching(id): void{
@@ -99,6 +109,38 @@ export class CoachingDetailComponent implements OnInit {
       this.numbers.push(i);
     }
   }
+
+
+  initForm2() {
+    this.temoignageForm = new FormGroup({
+      id: new FormControl(''),
+      email: new FormControl(''),
+      message: new FormControl(''),
+      name: new FormControl(''),
+    })
+  }
+
+  /** ajouter un temoignage **/
+
+  saveTemoignage() {
+
+    this.submitted = true;
+    if(this.temoignageForm?.invalid){return;}
+
+    this.temoignageService.createTemoignage(this.temoignageForm.value).subscribe(
+      (data: any) => {
+        this.temoignageForm.reset();
+        this.router.navigate(["/ecommerce/home"]);
+        this.messageService.add({severity:'success', summary:'Success', detail:'votre témoignage a été  soumit', sticky: true});
+
+      }, error => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
+    this.submitted = false;
+  }
+
+
 
   /** toast message function primeng  **/
   onConfirm() {

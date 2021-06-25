@@ -73,6 +73,58 @@
     </aside> <!-- col.// -->
   </div> <!-- row.// -->
 </main> <!-- card.// -->
+
+<section class=" section home">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <h2 class="text-center">Donner votre avis</h2>
+        <div class="card mx-4">
+          <div class="card-body p-4">
+            <form [formGroup]="temoignageForm" (submit)="saveTemoignage()">
+              <div class="form-group">
+                <label class="text-muted">Email</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="pi pi-envelope "></i></span>
+                  </div>
+                  <input type="email" class="form-control" formControlName="email" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="text-muted">Message</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                  </div>
+                  <textarea type="text"  rows="5" cols="55" formControlName="message">
+                  </textarea >
+                </div>
+              </div>
+              <div class="form-group">
+
+                <div class="input-group mb-3">
+                  <ul class="row rating">
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                  </ul>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-block btn-success" >Valider</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
 <app-footer></app-footer>
 
 
@@ -131,3 +183,28 @@
     </form>
   </div>
 </ng-template>
+
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<!-- TOAST MESSAGE TEMPLATE -->
+<p-toast position="top-right"></p-toast>
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" >
+  <ng-template let-message pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1">
+      <div class="p-text-center">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h4>{{message.summary}}</h4>
+        <p>{{message.detail}}</p>
+      </div>
+      <div class="p-grid p-fluid">
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+        </div>
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
