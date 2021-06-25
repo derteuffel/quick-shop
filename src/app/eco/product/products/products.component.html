@@ -157,28 +157,28 @@
     </div>-->
     <br>&nbsp;
     <div class="row">
-      <div class="col-lg-3 col-md-6 col-12">       
+      <div class="col-lg-3 col-md-6 col-12">
         <div class="single-service">
           <i class="ti-rocket"></i>
           <h4>Commmerce et services</h4>
           <p>renseignez-vous et accédez aux produits/services près de chez vous</p>
-        </div>       
+        </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-12">       
+      <div class="col-lg-3 col-md-6 col-12">
         <div class="single-service">
           <i class="ti-reload"></i>
           <h4>Encadremment et Coaching</h4>
           <p>bourses d'études, services de formation et de coaching pret de chez vous</p>
-        </div>        
+        </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-12">        
+      <div class="col-lg-3 col-md-6 col-12">
         <div class="single-service">
           <i class="ti-lock"></i>
           <h4>investir dans la jeunesse</h4>
           <p>Économisez avec Sayangana et soutenez les jeunes entrepreneurs et étudiants avec des prêts</p>
-        </div>      
+        </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-12"> 
+      <div class="col-lg-3 col-md-6 col-12">
         <div class="single-service">
           <i class="ti-tag"></i>
           <h4>demander un prêt entreprise ou étudiant</h4>
@@ -186,6 +186,48 @@
         </div>
       </div>
     </div>
+
   </div>
 </section>
 <!-- End Shop Services Area -->
+
+
+<section class=" section home">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <h2 class="text-center">Donner votre avis</h2>
+        <div class="card mx-4">
+          <div class="card-body p-4">
+            <form [formGroup]="temoignageForm" (submit)="saveTemoignage()">
+              <div class="form-group">
+                <label class="text-muted">Email</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="pi pi-envelope "></i></span>
+                  </div>
+                  <input type="email" class="form-control" formControlName="email" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="text-muted">Message</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                  </div>
+                  <textarea type="text"  rows="5" cols="55" formControlName="message">
+                  </textarea >
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-block btn-success" >Valider</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
