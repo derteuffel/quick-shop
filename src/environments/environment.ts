@@ -55,6 +55,12 @@ export const API = {
 
   ABONNEMENT: `${url}api/abonnements`,
 
+
+
+  /** Temoignages **/
+
+  TEMOIGNAGE: `${url}api/temoignages`,
+
 }
 
 //utilisateur connecté

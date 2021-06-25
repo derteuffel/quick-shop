@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../models/user";
 import {Observable} from "rxjs/index";
+import {API} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,6 @@ export class TemoignageService {
 
 
   createTemoignage(form): Observable<any>{
-    return this.http.post(this.temoignageUrl, form);
+    return this.http.post(`${API.TEMOIGNAGE}`, form);
   }
 }
