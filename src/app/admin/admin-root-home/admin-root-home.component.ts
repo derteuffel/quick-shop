@@ -13,6 +13,8 @@ import { Category } from 'src/app/models/category';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
+import {Abonnement} from "../../models/abonnement";
+import {AbonnementService} from "../../services/abonnement.service";
 
 
 
@@ -23,11 +25,18 @@ import { User } from 'src/app/models/user';
   providers: [MessageService],
 })
 export class AdminRootHome implements OnInit {
+  abonForm: FormGroup;
+  abonnements: any = [];
+  abonnement: Abonnement;
+  abonnementId;
+  types2: string[];
+
   message: string;
   loading = true;
   public submitted = false;
   categories: any = {};
   types: string[];
+
   p = 1;
   searchItem: string;
   form: any = {};
@@ -51,6 +60,7 @@ export class AdminRootHome implements OnInit {
 
 
   constructor(private ecommerceService: EcommerceService,
+              private abonnementService: AbonnementService,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
               private modalService: NgbModal,
@@ -62,6 +72,15 @@ export class AdminRootHome implements OnInit {
 
 
   ngOnInit(): void {
+
+    this.loadAbonnement();
+    this.initForm2();
+    this.types2 = [
+      'PRODUCTS_SELLING',
+      'COACHING_AND_SUPERVISION_SERVICE',
+      'MICRO_FINANCEMENT'
+    ];
+
     console.log(this.authService.currentUserValue.role);
     this.categories = Object.keys(Category);
     this.types = ['TUBERCULES', 'LEGUMES', 'EPICES','BOIS','CEREALES','DERIVE DE CEREALE','FRUIT ALIMENTAIRE','FRUIT, LEGUME ET CEREALE AOP','HUILE ESSENTIELLES',
@@ -93,6 +112,19 @@ export class AdminRootHome implements OnInit {
         }
       }
     }
+
+  }
+
+
+  initForm2(){
+
+    this.abonForm = new FormGroup({
+      id: new FormControl(''),
+      startDate: new FormControl(''),
+      endDate: new FormControl(''),
+      enabled: new FormControl(''),
+      type: new FormControl(''),
+    })
 
   }
 
@@ -258,6 +290,55 @@ export class AdminRootHome implements OnInit {
 
   clear() {
     this.messageService.clear();
+  }
+
+
+  openModalAddAbon(contentAddAbon){
+    this.modalService.open(contentAddAbon, { size: 'lg' });
+  }
+
+  loadAbonnement() {
+    this.abonnementService.getAll().subscribe(
+      data => {
+        this.abonnements = data;
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+  /** ajouter un abonnement **/
+  saveAbonnement() {
+
+    this.abonnementService.saveAbon(this.abonForm?.value).subscribe(
+      (data: any) => {
+
+        this.abonForm.reset();
+        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
+        this.loadAbonnement();
+      }, error => {
+        this.abonForm.reset();
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
+    this.submitted = false;
+  }
+
+  // suppression d'un abonnement
+
+  deleteAbon(contentDelete1, event) {
+    this.modalService.open(contentDelete1, {size: 'lg'});
+    this.abonnementId = event.id;
+  }
+
+  onDeleteAbon() {
+    this.abonnementService.deleteOne(this.abonnementId).subscribe(
+      (res: any) => {
+        this.messageService.add({severity: 'success', summary: 'Account is deleted successully', detail: 'record delete'});
+        this.loadAbonnement();
+      }, error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
   }
 
 
