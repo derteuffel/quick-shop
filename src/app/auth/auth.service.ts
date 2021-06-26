@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user';
 import { map } from 'rxjs/operators';
 import { BACK_BASE_URL } from '../../environments/environment';
+import {TokenDto} from "../models/token-dto";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -84,5 +85,13 @@ export class AuthService {
       return userCurrent.token;
     }
     return null;
+  }
+
+  public google(tokenDto: TokenDto): Observable<TokenDto> {
+    return this.http.post<TokenDto>(this.authUrl + 'google', tokenDto, {headers: {'Content-Type': 'application/json; charset= UTF-8'}});
+  }
+
+  public facebook(tokenDto: TokenDto): Observable<TokenDto> {
+    return this.http.post<TokenDto>(this.authUrl+ 'facebook', tokenDto, {headers: {'Content-Type': 'application/json; charset= UTF-8'}});
   }
 }
