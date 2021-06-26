@@ -151,6 +151,49 @@
         </div>
       </div>
     </div>
+
+    <br>
+    <br>
+    <!-- Table Abonnement-->
+    <div class="header-body">
+      <h2>Mes Abonnements</h2>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0" style="background-color:#F45B3A !important;">
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">Email</th>
+                <th  scope="col">Message</th>
+                <th scope="col">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of temoignages">
+                <td>{{item.email}}</td>
+                <td>{{item.message}}</td>
+                  <button  (click)="deleteTemoignage(contentDelete2, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer py-4">
+
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="container-fluid">
     <app-admin-footer></app-admin-footer>
@@ -480,6 +523,36 @@
       <div class="col-md-4 ">
         <button type="button" class="btn btn-danger"
                 (click)="onDeleteAbon() + modal.close('Close click')">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+<!-------------------------------------------------------DELETE Abonnemnt END-------------------------------------------------------------->
+
+
+<!-------------------------------------------------------DELETE Abonnement START------------------------------------------------------------>
+<ng-template #contentDelete2 let-modal>
+  <div class="modal-header dark-modal" style="background-color:#F45B3A !important;">
+    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="color: red;">Voulez vous vraiment supprimer ce Temoignage??&hellip;</p>
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F45B3A !important;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-danger"
+                (click)="onDeleteTemoignage() + modal.close('Close click')">Supprimer</button>
       </div>
     </div>
   </div>

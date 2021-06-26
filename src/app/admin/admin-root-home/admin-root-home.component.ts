@@ -15,6 +15,7 @@ import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
 import {Abonnement} from "../../models/abonnement";
 import {AbonnementService} from "../../services/abonnement.service";
+import {TemoignageService} from "../../services/temoignage.service";
 
 
 
@@ -29,7 +30,10 @@ export class AdminRootHome implements OnInit {
   abonnements: any = [];
   abonnement: Abonnement;
   abonnementId;
+  temoignageID;
   types2: string[];
+
+  temoignages: any = [];
 
   message: string;
   loading = true;
@@ -61,6 +65,7 @@ export class AdminRootHome implements OnInit {
 
   constructor(private ecommerceService: EcommerceService,
               private abonnementService: AbonnementService,
+              private temoignageService: TemoignageService,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
               private modalService: NgbModal,
@@ -73,6 +78,7 @@ export class AdminRootHome implements OnInit {
 
   ngOnInit(): void {
 
+    this.loadTemoignage();
     this.loadAbonnement();
     this.initForm2();
     this.types2 = [
@@ -339,6 +345,35 @@ export class AdminRootHome implements OnInit {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
     );
+  }
+
+  loadTemoignage() {
+    this.temoignageService.getAllTemoignage().subscribe(
+      res => {
+        this.temoignages = res;
+        this.messageService.add({severity:'success', summary:'Success', detail:'chargement des données reussie', sticky: true});
+
+      }, error => {
+        console.log(error);
+      }
+    )
+
+  }
+
+  deleteTemoignage(contentDelete2, event){
+    this.modalService.open(contentDelete2, {size: 'lg'});
+    this.temoignageID = event.id;
+  }
+
+  onDeleteTemoignage(){
+    this.temoignageService.deleteTemoignage(this.temoignageID).subscribe(
+      (res: any) => {
+        this.messageService.add({severity: 'success', summary: 'Temoignage is deleted successully', detail: 'record delete'});
+        this.loadTemoignage();
+      }, error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+      }
+    )
   }
 
 
