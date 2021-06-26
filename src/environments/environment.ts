@@ -61,6 +61,10 @@ export const API = {
 
   TEMOIGNAGE: `${url}api/temoignages`,
 
+  /** Rating **/
+
+  RATING: `${url}api/ratings`,
+
 }
 
 //utilisateur connecté
