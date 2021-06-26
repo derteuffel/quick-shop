@@ -156,12 +156,16 @@
     <br>
     <!-- Table Abonnement-->
     <div class="header-body">
-      <h2>Mes Abonnements</h2>
+      <h2>Temoignages</h2>
     </div>
     <div class="row">
       <div class="col">
         <div class="card shadow">
           <div class="card-header border-0" style="background-color:#F45B3A !important;">
+            <div class="col-md-6 pull-right" style="width: 40%">
+              <label >Recherche <i class="fa fa-search"></i></label>
+              <input type="text" class="form-control" [(ngModel)]="searchItem">
+            </div>
           </div>
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
@@ -173,9 +177,10 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let item of temoignages">
+              <tr *ngFor="let item of temoignages | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                 <td>{{item.email}}</td>
                 <td>{{item.message}}</td>
+                <td>
                   <button  (click)="deleteTemoignage(contentDelete2, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
                 </td>
               </tr>

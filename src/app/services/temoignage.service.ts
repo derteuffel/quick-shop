@@ -38,7 +38,7 @@ export class TemoignageService {
 
   createTemoignage(form): Observable<any>{
     console.log(form);
-    return this.http.post(`${API.TEMOIGNAGE}`, form);
+    return this.http.post(`${API.TEMOIGNAGE}/all`, form);
   }
 
   deleteTemoignage(id): Observable<any>{
