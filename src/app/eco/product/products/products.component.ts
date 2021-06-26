@@ -54,54 +54,7 @@ export class ProductsComponent implements OnInit {
               private loansService: LoansService) { }
 
   ngOnInit(): void {
-    this.productOrders = [];
-    this.loadProducts();
-    this.loadCoachings();
-    this.loadMicroFinancements();
     this.initForm();
-  }
-
-
-
-  loadProducts() {
-    this.ecommerceService.getAllProducts()
-      .subscribe(
-        data => {
-          this.products = data;
-          console.log(data);
-        },
-        (error) => console.log(error)
-      );
-  }
-
-  loadCoachings() {
-    this.coachingService.getAllCoaching().subscribe(
-      data => {
-        this.coachings = data;
-        console.log(data);
-      },
-      (error) => console.log(error)
-    );
-  }
-
-
-
-  loadMicroFinancements() {
-    this.loansService.getAllbyVisitor().subscribe(
-      data => {
-        this.microfinances = data;
-        console.log(data);
-      },
-      (error) => console.log(error)
-    )
-  }
-
-
-  reset() {
-    this.productOrders = [];
-    this.loadProducts();
-    this.ecommerceService.ProductOrders.productOrders = [];
-    this.productSelected = false;
   }
 
 
@@ -125,8 +78,9 @@ export class ProductsComponent implements OnInit {
     this.temoignageService.createTemoignage(this.temoignageForm.value).subscribe(
       (data: any) => {
         this.temoignageForm.reset();
-        this.router.navigate(["/ecommerce/home"]);
+        console.log(this.temoignageForm.value);
         this.messageService.add({severity:'success', summary:'Success', detail:'votre témoignage a été  soumit', sticky: true});
+        window.location.reload();
 
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});

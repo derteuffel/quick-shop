@@ -195,27 +195,33 @@
 <section class=" section home">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 mx-auto">
-        <h2 class="text-center">Donner votre avis</h2>
-        <div class="card mx-4">
+      <div class="col-md-6 col-lg-7 mx-auto text-center">
+        <span  style="font-size: 25px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Donnez Votre avis</span>
           <div class="card-body p-4">
             <form [formGroup]="temoignageForm" (submit)="saveTemoignage()">
               <div class="form-group">
-                <label class="text-muted">Email</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" formControlName="name" placeholder="Entrer votre nom" />
+                </div>
+              </div>
+              <div class="form-group">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="pi pi-envelope "></i></span>
                   </div>
-                  <input type="email" class="form-control" formControlName="email" />
+                  <input type="email" class="form-control" formControlName="email" placeholder="Entrer votre adresse email" />
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="text-muted">Message</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-pencil "></i></span>
                   </div>
-                  <textarea type="text"  rows="5" cols="55" formControlName="message">
+                  <textarea type="text"  rows="5" class="form-control" placeholder="Entrer votre commentaire " formControlName="message">
                   </textarea >
                 </div>
               </div>
@@ -223,8 +229,6 @@
               <button type="submit" class="btn btn-block btn-success" >Valider</button>
             </form>
           </div>
-
-        </div>
       </div>
     </div>
 
