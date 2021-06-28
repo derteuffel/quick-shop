@@ -1,65 +1,85 @@
-<app-header></app-header>
-<span></span><br>
-<span></span><br>
-<div class="app-body card mx-5 py-5" >
-  <main class="main d-flex align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mx-auto">
-          <div class="card mx-4">
-            <div class="card-body p-4">
-              <form name="form" (ngSubmit) = "f.form.valid && saveAbonnement()" #f="ngForm" novalidate>
-                <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un abonnement</h3>
-                <p class="text-muted"><a href="/ecommerce/register/home"><i class="fa fa-long-arrow-left"></i>&nbsp; Retour </a> &nbsp; ou Créer votre abonnement </p>
-                <div class="form-group">
-                  <label class="text-muted">Date de votre abonnement :</label>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="pi pi-user"></i></span>
-                    </div>
-                    <input type="date" class="form-control" name="startDate" [(ngModel)]="form.startDate" #startDate="ngModel"   autocomplete="startDate" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="text-muted">Date de fin d'abonnement:</label>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">@</span>
-                    </div>
-                    <input type="date" class="form-control" name="endDate" [(ngModel)]="form.endDate" #endDate="ngModel"   autocomplete="endDate" />
-
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="text-muted">Type abonnement :</label>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
-                    </div>
-                    <select name="type"  class="form-control" [(ngModel)]="form.type" #type="ngModel" id="">
-                      <option value="" disabled>-- Choisissez un type d'abonnement --</option>
-                      <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
-                    </select>
-
-                  </div>
-                </div>
-
-
-
-                <button type="submit" class="btn btn-block btn-success" >Enregistrer</button>
-              </form>
+<app-admin-sidebar></app-admin-sidebar>
+<div class="main-content">
+  <!-- Top navbar -->
+  <app-admin-navbar></app-admin-navbar>
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <h1>Gestion de tous les abonnements</h1>
+      </div>
+    </div>
+  </div>
+  <!-- Pages -->
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <br>
+    <br>
+    <!-- Table Abonnement-->
+    <div class="header-body">
+      <h2>Mes Abonnements</h2>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0" style="background-color:#F45B3A !important;">
+            <div class="col-md-6">
+              <button (click)="openModalAddAbon(contentAddAbon)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D !important;" label="Ajouter un abonnement"></button>
             </div>
+            <div class="col-md-6 pull-right" style="width: 40%">
+              <label >Recherche <i class="fa fa-search"></i></label>
+              <input type="text" class="form-control" [(ngModel)]="searchItem">
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">Date de debut abonnement</th>
+                <th  scope="col">Date fin abonnement</th>
+                <th scope="col">Status</th>
+                <th scope="col">Type abonnement</th>
+                <th scope="col">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                <td>{{item.startDate}}</td>
+                <td>{{item.endDate}}</td>
+                <td style="width:5em; text-align:center; font-size: 0.75rem;" *ngIf="!item?.enabled" >
+                  <span class="badge badge-dot mr-4"><i class="bg-warning"></i> Inactif</span>
+                </td>
 
+                <td *ngIf="item?.enabled" style="width:5em; text-align:center; font-size: 0.75rem;">
+                  <span class="badge badge-dot mr-4"><i class="bg-success"></i> Actif</span>
+                </td>
+                <td>{{item.type}}</td>
+                <td>
+                  <button  (click)="deleteAbon(contentDelete1, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer py-4">
+
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
     </div>
-  </main>
+
+    <br>
+    <br>
+  </div>
+  <div class="container-fluid">
+    <app-admin-footer></app-admin-footer>
+  </div>
 </div>
-<span></span><br>
-<span></span><br>
-<app-footer></app-footer>
 
 
 
@@ -86,3 +106,87 @@
     </div>
   </ng-template>
 </p-toast>
+
+
+
+<!-- MODAL  FORM FOR ADD ABONNEMENT -->
+
+<ng-template #contentAddAbon let-modal>
+  <div class="modal-header" style="background-color:#F45B3A !important;">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="abonForm" (submit)="saveAbonnement()" >
+      <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un abonnement</h3>
+      <div class="form-group">
+        <label class="text-muted">Date de votre abonnement :</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-calendar"></i></span>          </div>
+          <input type="date" class="form-control" formControlName="startDate"  autocomplete="startDate" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="text-muted">Date de fin d'abonnement:</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+          </div>
+          <input type="date" class="form-control" formControlName="endDate"  autocomplete="endDate" />
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="text-muted">Type abonnement :</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+          </div>
+          <select   class="form-control" formGroupName="type">
+            <option value="" disabled>-- Choisissez un type d'abonnement --</option>
+            <option *ngFor="let item of types2" value="{{item}}">{{item}}</option>
+          </select>
+
+        </div>
+      </div>
+
+
+
+      <button type="submit" class="btn btn-block btn-success" >Enregistrer</button>
+    </form>
+
+  </div>
+</ng-template>
+
+
+<!-------------------------------------------------------DELETE Abonnement START------------------------------------------------------------>
+<ng-template #contentDelete1 let-modal>
+  <div class="modal-header dark-modal" style="background-color:#F45B3A !important;">
+    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="color: red;">Voulez vous vraiment supprimer cet Abonnement??&hellip;</p>
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F45B3A !important;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-danger"
+                (click)="onDeleteAbon() + modal.close('Close click')">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+<!-------------------------------------------------------DELETE Abonnemnt END-------------------------------------------------------------->

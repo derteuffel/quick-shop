@@ -20,7 +20,10 @@ export class AbonnementComponent implements OnInit {
   abonForm: FormGroup;
   form: any = {};
   abonnement: Abonnement
+  abonnementId;
   public submitted: boolean = false;
+  p = 1;
+  searchItem: string;
 
   constructor(private abonnementService: AbonnementService,
               private router: Router,
@@ -31,6 +34,7 @@ export class AbonnementComponent implements OnInit {
               private messageService: MessageService,) { }
 
   ngOnInit(): void {
+    this.loadData();
 
     this.types = [
       'PRODUCTS_SELLING',
@@ -48,49 +52,44 @@ export class AbonnementComponent implements OnInit {
       }
     );
   }
+
+  openModalAddAbon(contentAddAbon){
+    this.modalService.open(contentAddAbon, { size: 'lg' });
+  }
   /** ajouter un abonnement **/
   saveAbonnement() {
-    console.log(this.form);
-    this.abonnement = new Abonnement(
-      this.form.startDate,
-      this.form.endDate,
-      this.form.type);
-    console.log(this.abonnement);
-    this.abonnementService.saveAbon(this.abonnement).subscribe(
-      (data: any) => {
-        //this.router.navigateByUrl('ecommerce/home');
-        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
 
+    this.abonnementService.saveAbon(this.abonForm?.value).subscribe(
+      (data: any) => {
+
+        this.abonForm.reset();
+        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
+        this.loadData();
       }, error => {
+        this.abonForm.reset();
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
     this.submitted = false;
   }
 
+  // suppression d'un abonnement
 
-  /** ajouter un abonnement **/
- /* saveAbonnement(data) {
+  deleteAbon(contentDelete1, event) {
+    this.modalService.open(contentDelete1, {size: 'lg'});
+    this.abonnementId = event.id;
+  }
 
-    console.log(data);
-    const formData = new FormData();
-    formData.append('startDate', data.startDate);
-    formData.append('endDate', data.endDate);
-    //formData.append('endDate', data.endDate);
-
-    formData.append('type', data.type);
-    console.log(formData);
-
-    this.submitted = true;
-    this.abonnementService.saveAbon(formData).subscribe(
-      (data: any) => {
-        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
+  onDeleteAbon() {
+    this.abonnementService.deleteOne(this.abonnementId).subscribe(
+      (res: any) => {
+        this.messageService.add({severity: 'success', summary: 'Account is deleted successully', detail: 'record delete'});
+        this.loadData();
       }, error => {
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
     );
-    this.submitted = false;
-  }*/
+  }
 
 
   onReject() {

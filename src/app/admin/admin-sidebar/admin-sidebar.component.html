@@ -64,9 +64,15 @@
             <i class="ni ni-settings"></i> Mes commandes
           </a>
         </li>
-        <li *ngIf="isTrainer || isEntreprener" class="nav-item">
+        <li *ngIf="isTrainer || isEntreprener " class="nav-item">
           <a class="nav-link"  href="/admin/commandes/allsbyusers">
             <i class="ni ni-settings"></i> Mes commandes
+          </a>
+        </li>
+
+        <li *ngIf="isAdmin || isTrainer || isEntreprener || isClient || isLoans" class="nav-item">
+          <a class="nav-link"  (click)="loadAbonnement()">
+            <i class="ni ni-settings"></i> Mes abonnements
           </a>
         </li>
 

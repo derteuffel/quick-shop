@@ -163,7 +163,8 @@ const routes: Routes = [
   },
 
   {
-    path: 'abonnement', component: AbonnementComponent
+    path: 'abonnement', component: AbonnementComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER,Role.ENTERPRENER,Role.CLIENT,Role.LOANS]}
   },
   {
     path: 'register', component: RegisterComponent

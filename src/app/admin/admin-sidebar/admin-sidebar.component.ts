@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import { AuthService } from 'src/app/auth/auth.service';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
+import {AbonnementService} from "../../services/abonnement.service";
 
 export const ROUTES =  [
 
@@ -24,7 +25,7 @@ export class AdminSidebarComponent implements OnInit {
   isEntreprener: boolean;
   isTrainer: boolean;
   isLoans: boolean;
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService,private abonnementService: AbonnementService,) { }
 
   ngOnInit(): void {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -65,6 +66,18 @@ export class AdminSidebarComponent implements OnInit {
     }else{
       this.isConnected = false;
     }
+  }
+
+
+
+  loadAbonnement() {
+    this.abonnementService.getAll().subscribe(
+      data => {
+        this.router.navigateByUrl('/abonnement');
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
 }

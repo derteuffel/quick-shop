@@ -29,7 +29,7 @@ export class AdminRootHome implements OnInit {
   abonForm: FormGroup;
   abonnements: any = [];
   abonnement: Abonnement;
-  abonnementId;
+
   temoignageID;
   types2: string[];
 
@@ -306,46 +306,13 @@ export class AdminRootHome implements OnInit {
   loadAbonnement() {
     this.abonnementService.getAll().subscribe(
       data => {
-        this.abonnements = data;
+        this.router.navigateByUrl('/abonnement');
       }, error => {
         console.log(error);
       }
     );
   }
-  /** ajouter un abonnement **/
-  saveAbonnement() {
 
-    this.abonnementService.saveAbon(this.abonForm?.value).subscribe(
-      (data: any) => {
-
-        this.abonForm.reset();
-        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
-        this.loadAbonnement();
-      }, error => {
-        this.abonForm.reset();
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
-      }
-    );
-    this.submitted = false;
-  }
-
-  // suppression d'un abonnement
-
-  deleteAbon(contentDelete1, event) {
-    this.modalService.open(contentDelete1, {size: 'lg'});
-    this.abonnementId = event.id;
-  }
-
-  onDeleteAbon() {
-    this.abonnementService.deleteOne(this.abonnementId).subscribe(
-      (res: any) => {
-        this.messageService.add({severity: 'success', summary: 'Account is deleted successully', detail: 'record delete'});
-        this.loadAbonnement();
-      }, error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
-      }
-    );
-  }
 
   loadTemoignage() {
     this.temoignageService.getAllTemoignage().subscribe(
