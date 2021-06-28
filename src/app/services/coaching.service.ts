@@ -2,69 +2,47 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import { AuthService } from '../auth/auth.service';
-import { User } from '../models/user';
-import {API} from "../../environments/environment";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoachingService {
-  private coachingUrl = 'http://localhost:8181/api/coachings';
+  private coachingUrl = environment.baseURL + '/api/coachings';
 
-  currentUser: User;
-  headers: HttpHeaders;
-  formHeaders: HttpHeaders;
+  private headers:any = new HttpHeaders()
+                          .set('content-type', 'application/json')
+                          .set('Authorization', 'Bearer ' + this.authService.getUserToken());
 
+  private formHeaders: any = new HttpHeaders()
+                                .set('Authorization', 'Bearer '+ this.authService.getUserToken);
 
   constructor(private http: HttpClient, private authService:AuthService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.headers = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({
-      'Content-Type': 'application/json; charset=UTF-8'
-    }):new HttpHeaders({
-      authorization: 'Bearer ' + this.currentUser.token,
-      'Content-Type': 'application/json; charset=UTF-8'
-    });
-
-    this.formHeaders = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({}):new HttpHeaders({
-      authorization: 'Bearer ' + this.currentUser.token
-    });
 
   }
 
   getAllCoaching(): Observable<any> {
-    return this.http.get(API.COACHINGS+'/all');
-  }
-
-  getAllCoachingSearch(form): Observable<any> {
-    return this.http.post(API.COACHINGS+'/search', form);
-  }
-
-  getAllCoachingByUser(): Observable<any> {
-    return this.http.get(API.COACHINGS+'/admin', {headers: this.headers});
+    return this.http.get(this.coachingUrl, {observe: 'response', headers: this.headers});
   }
 
   getCoachingById(id): Observable<any> {
-    return this.http.get(API.COACHINGS+'/details/'+id);
+    return this.http.get(this.coachingUrl + '/' +id, {observe: 'response', headers: this.headers});
   }
 
   getCoachingByRegion(region): Observable<any> {
-    return this.http.get(API.COACHINGS+'/region/'+region, {headers: this.headers});
-  }
-
-  findAllQuantityOfCoahingAvailable(title,region): Observable<any> {
-    return this.http.get(API.COACHINGS+'/admin/quantity/dispo/'+title+'/'+region, {headers: this.headers});
+    return this.http.get(this.coachingUrl + '/' +region, {observe: 'response', headers: this.headers});
   }
 
   saveCoaching(form): Observable<any> {
-    return this.http.post(`${API.COACHINGS}`, form, {headers: this.formHeaders});
+    return this.http.post(this.coachingUrl, form, {observe: 'response', headers: this.formHeaders});
   }
 
   updateCoaching(form): Observable<any> {
-    return this.http.put(`${API.COACHINGS}`, form, { headers: this.headers});
+    return this.http.put(this.coachingUrl+'/', form, {observe: 'response', headers: this.headers});
   }
 
   deleteCoaching(id): Observable<any> {
-    return this.http.delete(`${API.COACHINGS}/${id}`, {headers: this.headers});
+    return this.http.delete(this.coachingUrl + '/' +id, {observe: 'response', headers: this.headers});
   }
 
 }

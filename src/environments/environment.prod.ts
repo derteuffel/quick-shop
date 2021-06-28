@@ -1,5 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  baseURL: 'http://144.91.75.89:8181'
 };
 
 export const BACK_BASE_URL = "https://yesbinspire.com:8282";

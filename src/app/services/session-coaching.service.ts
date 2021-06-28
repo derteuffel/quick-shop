@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import {User} from "../models/user";
-import {API} from "../../environments/environment";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,47 +12,41 @@ export class SessionCoachingService {
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
 
-  private sessionCoachingUrl = 'http://localhost:8181/api/sessioncoachings';
+  private sessionCoachingUrl = environment.baseURL + '/api/sessioncoachings';
   constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.headers = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({
-      'Content-Type': 'application/json; charset=UTF-8'
-    }):new HttpHeaders({
+    this.headers = new HttpHeaders({
       authorization: 'Bearer ' + this.currentUser.token,
       'Content-Type': 'application/json; charset=UTF-8'
     });
 
-    this.formHeaders = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({}):new HttpHeaders({
+    this.formHeaders = new HttpHeaders({
       authorization: 'Bearer ' + this.currentUser.token
     });
   }
 
   getAllSessionCoaching(): Observable<any> {
-    return this.http.get(API.SESSIONS, {headers: this.headers});
+    return this.http.get(this.sessionCoachingUrl, {observe: 'response'});
   }
 
   getSessionCoachingById(id): Observable<any> {
-    return this.http.get(`${API.SESSIONS}/${id}`, {headers: this.headers});
+    return this.http.get(this.sessionCoachingUrl + '/' +id, {observe: 'response'});
   }
 
   getSessionCoaching(id): Observable<any> {
-    return this.http.get(`${API.SESSIONS}/coaching/${id}`, {headers: this.headers});
-  }
-
-  actionSession(id): Observable<any>{
-    return this.http.get(`${API.SESSIONS}/action/${id}`, {headers: this.headers});
+    return this.http.get(this.sessionCoachingUrl + '/coaching/' +id, {observe: 'response'});
   }
 
   saveSessionCoaching(form): Observable<any> {
-    return this.http.post(`${API.SESSIONS}`, form, {headers: this.headers});
+    return this.http.post(this.sessionCoachingUrl, form, {observe: 'response'});
   }
 
   updateSessionCoaching(form): Observable<any> {
-    return this.http.put(`${API.SESSIONS}`, form, {headers: this.headers});
+    return this.http.put(this.sessionCoachingUrl, form, {observe: 'response'});
   }
 
   deleteSessionCoaching(id): Observable<any> {
-    return this.http.delete(`${API.SESSIONS}/${id}`, {headers: this.headers});
+    return this.http.delete(this.sessionCoachingUrl + '/' +id, {observe: 'response'});
   }
 
   /**
@@ -61,7 +55,7 @@ export class SessionCoachingService {
    * */
 
   createSession(form, id): Observable<any> {
-    return this.http.post(`${API.SESSIONS}/session/${id}`, form, {headers: this.formHeaders});
+    return this.http.post(this.sessionCoachingUrl + '/session/' +id, form, {headers: this.formHeaders});
   }
 
 }
