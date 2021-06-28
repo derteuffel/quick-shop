@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import {User} from "../models/user";
-import { environment } from 'src/environments/environment';
+import {API, environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +56,12 @@ export class SessionCoachingService {
 
   createSession(form, id): Observable<any> {
     return this.http.post(this.sessionCoachingUrl + '/session/' +id, form, {headers: this.formHeaders});
+  }
+
+
+
+  actionSession(id): Observable<any> {
+    return this.http.get(`${API.SESSIONS}/action/${id}`, {headers: this.headers});
   }
 
 }

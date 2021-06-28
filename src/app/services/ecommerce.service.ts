@@ -5,7 +5,7 @@ import {ProductOrder} from '../models/product-order.model';
 import {ProductOrders} from '../models/product-orders.model';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
-import { environment } from 'src/environments/environment';
+import {API, environment} from 'src/environments/environment';
 
 
 @Injectable({
@@ -28,7 +28,7 @@ export class EcommerceService {
 
   private total: number;
 
-  
+
   ProductOrderChanged = this.productOrderSubject.asObservable();
   OrdersChanged = this.ordersSubject.asObservable();
   TotalChanged = this.totalSubject.asObservable();
@@ -122,8 +122,8 @@ export class EcommerceService {
   }
 
 
-  saveProduct(form, id): Observable<any>  {
-    return this.http.post(this.productsUrl + '/admin/' + id, form, {headers: this.formHeaders});
+  saveProduct(form): Observable<any>  {
+    return this.http.post(this.productsUrl + '/admin', form, {headers: this.formHeaders});
   }
 
   saveUpdate(form, id): Observable<any>  {
@@ -159,4 +159,38 @@ export class EcommerceService {
   deleteProduct(id): Observable<any> {
     return this.http.delete(this.productsUrl + '/admin/' + id, {headers: this.headers});
   }
+
+
+
+  getAllProductsSearch(form): Observable<any>  {
+    console.log(form);
+    return this.http.post(`${API.PRODUITS}/all`, form);
+  }
+
+  getOrderByProduct(id): Observable<any> {
+    return this.http.get(`${API.COMMANDES}/admin/produits/${id}`, {headers: this.headers});
+  }
+  getCoachingOrders(id): Observable<any> {
+    return this.http.get(`${API.COMMANDES}/admin/coachings/${id}`, {headers: this.headers});
+  }
+
+
+  findAllQuantityOfProductAvailable(region, name): Observable<any> {
+    return this.http.get(API.PRODUITS+'/admin/quantity/dispo/'+region+'/'+name, {headers: this.headers});
+  }
+
+
+  getAllProductsByUser(): Observable<any> {
+    return this.http.get(`${API.PRODUITS}/admin/user`, {headers: this.headers});
+  }
+
+
+
+
+
+  getProductFree(id): Observable<any> {
+    return this.http.get(`${API.PRODUITS}/all/${id}`);
+  }
+
+
 }

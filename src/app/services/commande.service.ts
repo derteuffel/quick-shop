@@ -1,16 +1,33 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import { environment } from 'src/environments/environment';
+import {API, environment} from 'src/environments/environment';
+import {User} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommandeService {
+
+  currentUser: User;
+  headers: HttpHeaders;
+  formHeaders: HttpHeaders;
   private productsUrl = environment.baseURL  + '/api/produits';
   private ordersUrl = environment.baseURL + '/api/commandes';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.headers = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({
+      'Content-Type': 'application/json; charset=UTF-8'
+    }):new HttpHeaders({
+      authorization: 'Bearer ' + this.currentUser.token,
+      'Content-Type': 'application/json; charset=UTF-8'
+    });
+
+    this.formHeaders = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({}):new HttpHeaders({
+      authorization: 'Bearer ' + this.currentUser.token
+    });
+  }
 
   // recupere toute les commandes
   getAll(): Observable<any> {
@@ -19,7 +36,35 @@ export class CommandeService {
 
   // enregistrer une commande
 
-  saveCmd(form): Observable<any> {
-    return this.http.post(this.ordersUrl, form, {observe: "response"});
+
+
+  saveCmd(form,id): Observable<any> {
+    return this.http.post(`${API.COMMANDES}/createOrder/${id}`, form);
+  }
+
+
+  // recupere toute les commandes d'un produit
+  getAllByProduit(id): Observable<any> {
+    return this.http.get(`${API.COMMANDES}/admin/produits/${id}`, {headers: this.headers});
+  }
+
+  // recupere toute les commandes d'un client
+  getAllByUserClient(): Observable<any> {
+    return this.http.get(`${API.COMMANDES}/admin/users`, {headers: this.headers});
+  }
+
+  // recupere toute les commandes d'un entreprener
+  getAllByUserEntreprener(): Observable<any> {
+    return this.http.get(`${API.COMMANDES}/admin/users/entreprener`, {headers: this.headers});
+  }
+
+  // recherche quantité de commande de produit et coaching par region
+
+  getQuantityCommandCoachingByRegion(region): Observable<any> {
+    return this.http.get(API.COMMANDES+'/admin/quantity/region/'+region, {headers: this.headers});
+  }
+
+  getQuantityCommandProductByRegion(location): Observable<any> {
+    return this.http.get(API.COMMANDES+'/admin/quantity/region/'+location, {headers: this.headers});
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import { AuthService } from '../auth/auth.service';
-import { environment } from 'src/environments/environment';
+import {API, environment} from 'src/environments/environment';
 
 
 @Injectable({
@@ -57,6 +57,11 @@ export class MicrofinanceService {
 
   getFinanceByRegion(region): Observable<any>{
     return this.http.get(this.microfinanceUrl+ '/byRegion/'+region,  {observe: 'response', headers: this.headers});
+  }
+
+  getActivationMicrofinacement(id): Observable<any>{
+    return this.http.get(`${API.MICROFINANCES}/activer/${id}`,  { headers: this.headers});
+
   }
 
 }

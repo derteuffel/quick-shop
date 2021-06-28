@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import { AuthService } from '../auth/auth.service';
-import { environment } from 'src/environments/environment';
+import {API, environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +43,20 @@ export class CoachingService {
 
   deleteCoaching(id): Observable<any> {
     return this.http.delete(this.coachingUrl + '/' +id, {observe: 'response', headers: this.headers});
+  }
+
+  getAllCoachingSearch(form): Observable<any> {
+    return this.http.post(API.COACHINGS+'/search', form);
+  }
+
+  getAllCoachingByUser(): Observable<any> {
+    return this.http.get(API.COACHINGS+'/admin', {headers: this.headers});
+  }
+
+
+
+  findAllQuantityOfCoahingAvailable(title,region): Observable<any> {
+    return this.http.get(API.COACHINGS+'/admin/quantity/dispo/'+title+'/'+region, {headers: this.headers});
   }
 
 }

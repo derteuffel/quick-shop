@@ -89,7 +89,7 @@ export class ConfigurationsComponent implements OnInit {
       birth_date: this.userForm.get('birth_date').value,
       secteur_activite: this.userForm.get('secteur_activite').value,
     };
-    this.accountService.updateAccount(AccountData).subscribe(
+    this.accountService.update(AccountData).subscribe(
       (data: any) => {
         this.userForm.reset();
         this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
