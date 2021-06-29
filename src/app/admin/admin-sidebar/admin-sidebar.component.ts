@@ -73,7 +73,7 @@ export class AdminSidebarComponent implements OnInit {
   loadAbonnement() {
     this.abonnementService.getAll().subscribe(
       data => {
-        this.router.navigateByUrl('/abonnement');
+        this.router.navigateByUrl('abonnement');
       }, error => {
         console.log(error);
       }
