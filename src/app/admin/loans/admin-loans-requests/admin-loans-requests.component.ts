@@ -21,6 +21,7 @@ export class AdminLoansRequestComponent implements OnInit {
   abonnements: any = [];
   abonnement: Abonnement;
   abonnementId;
+  microID;
 
   lists: any = {};
   loans: any = {};
@@ -34,17 +35,19 @@ export class AdminLoansRequestComponent implements OnInit {
   sectorForm: FormGroup;
   statusForm: FormGroup;
   productForm: FormGroup;
+  microForm: FormGroup;
   p: number = 1;
   searchItem: string;
+  currentMicro;
 
   constructor(
-                            private loansService: LoansService,
-                            private primengConfig: PrimeNGConfig,
-                            private microService: MicrofinanceService,
-                            private abonnementService: AbonnementService,
-                            private fb: FormBuilder,
-                            private modalService: NgbModal,
-                            private messageService: MessageService) { }
+    private loansService: LoansService,
+    private primengConfig: PrimeNGConfig,
+    private microService: MicrofinanceService,
+    private abonnementService: AbonnementService,
+    private fb: FormBuilder,
+    private modalService: NgbModal,
+    private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -61,7 +64,7 @@ export class AdminLoansRequestComponent implements OnInit {
   }
 
   loadData() {
-    this.loansService.getAllLoans().subscribe(
+    this.microService.getAllFinance().subscribe(
       data => {
         this.lists = data;
         console.log(data);
@@ -151,22 +154,22 @@ export class AdminLoansRequestComponent implements OnInit {
   showProvinceSearch(contentProvinceSearch){
     this.modalService.open(contentProvinceSearch, {size: "md"});
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
-  'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
+      'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
     this.init();
   }
 
   showCommuneSearch(contentCommuneSearch){
     this.modalService.open(contentCommuneSearch, {size: "md"});
     this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
-  'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
-'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
-'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
-'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
-'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
-'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
-'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi']
+      'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
+      'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
+      'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
+      'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
+      'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
+      'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
+      'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi']
 
-this.init();
+    this.init();
   }
 
   showSectorSearch(contentSectorSearch){
@@ -189,19 +192,59 @@ this.init();
   }
 
   initForm() {
-    this.productForm = new FormGroup({
+    this.microForm = new FormGroup({
       id: new FormControl(''),
       region: new FormControl(''),
-      name: new FormControl(''),
       amount: new FormControl(''),
-      title: new FormControl(''),
-      province: new FormControl(''),
+      userName: new FormControl(''),
       devise: new FormControl(''),
-      commune: new FormControl(''),
-      sector: new FormControl(''),
-      pictureUrl: new FormControl(null),
-      // pictureUrl: new FormControl(''),
+      userPhone: new FormControl(''),
+      duration: new FormControl(''),
+      bankName: new FormControl(''),
     });
+  }
+
+
+  setMicro(contentUpdate, event) {
+
+    console.log(event);
+
+    this.modalService.open(contentUpdate, {size: "lg"});
+    this.currentMicro = event.userName;
+    this.microForm.patchValue({
+      id: event.id,
+      amount: event.amount,
+      region: event.region,
+      userName: event.userName,
+      devise: event.devise,
+      userPhone: event.userName,
+      duration: event.duration,
+      bankName: event.bankName
+    })
+
+  }
+
+  updateMicro() {
+    const microData = {
+      id: this.microForm.get('id').value,
+      amount: this.microForm.get('amount').value,
+      region: this.microForm.get('region').value,
+      userName: this.microForm.get('userName').value,
+      devise: this.microForm.get('devise').value,
+      userPhone: this.microForm.get('userPhone').value,
+      duration: this.microForm.get('duration').value,
+      bankName: this.microForm.get('bankName').value,
+    };
+
+    this.microService.updateFinance(microData).subscribe(
+      (data: any) => {
+        this.microForm.reset();
+        this.messageService.add({severity:'success', summary: 'Record is updated successully', detail:'record updated'});
+        this.loadData();
+      }, error => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+      }
+    )
   }
 
 
@@ -242,12 +285,12 @@ this.init();
   deleteCoaching(contentDelete, event) {
     console.log(event)
     this.modalService.open(contentDelete, {size: "lg"});
-    this.loansRef = event.id;
+    this.microID = event.id;
 
   }
 
   onDelete() {
-    this.microService.deleteFinance(this.loansRef).subscribe(
+    this.microService.deleteFinance(this.microID).subscribe(
       (res : any) => {
         this.messageService.add({severity:'success', summary: 'Record is deleted successully', detail:'record delete'});
         this.loadData();
@@ -258,12 +301,13 @@ this.init();
   activation(contentActivation, event) {
     console.log(event)
     this.modalService.open(contentActivation, {size: "lg"});
-    this.loansRef = event.id;
+    this.microID = event.id;
+    console.log(this.microID);
 
   }
 
   onActivate() {
-    this.loansService.active(this.loansRef).subscribe(
+    this.microService.getActivationMicrofinacement(this.microID).subscribe(
       (res : any) => {
         this.messageService.add({severity:'success', summary: 'Record is activated successully', detail:'record action'});
         this.loadData();
@@ -271,14 +315,7 @@ this.init();
     )
   }
 
-  OnActiver(){
-    this.microService.getActivationMicrofinacement(this.loansRef).subscribe(
-      (res : any) => {
-        this.messageService.add({severity:'success', summary: 'Record is activated successully', detail:'record action'});
-        this.loadData();
-      }
-    )
-  }
+
 
 
 
@@ -354,6 +391,7 @@ this.init();
       }
     );
   }
+
 
 
 

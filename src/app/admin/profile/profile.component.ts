@@ -97,7 +97,7 @@ export class ProfileComponent implements OnInit {
   onSubmit() {
     let userDetails = this.updateProfileForm.value;
 
-    this.accountService.updateAccount(userDetails, this.updateProfileForm.value.id).subscribe(
+    this.accountService.updateAccount(userDetails, userDetails.id).subscribe(
       result=> {
 
         this.messageService.add({severity:'success', summary: 'Profile is updated successully', detail:'profile updated'});
