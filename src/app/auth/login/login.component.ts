@@ -4,7 +4,7 @@ import { AuthService } from '../auth.service';
 import { AuthLoginInfo } from '../requests/login-info';
 import { Parametre } from '../../models/parametre';
 import { Role } from 'src/app/models/role';
-import { AppConstants } from '../app-composant';
+import { AppConstants } from '../../../environments/environment';
 
 
 @Component({
