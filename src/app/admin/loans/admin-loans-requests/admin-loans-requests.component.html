@@ -115,67 +115,7 @@
         </div>
       </div>
     </div>
-
-    <br>
-    <br>
-    <!-- Table Abonnement-->
-    <div class="header-body">
-      <h2>Mes Abonnements</h2>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="card shadow">
-          <div class="card-header border-0" style="background-color:#F45B3A !important;">
-            <div class="col-md-6">
-              <button (click)="openModalAddAbon(contentAddAbon)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D !important;" label="Ajouter un abonnement"></button>
-            </div>
-            <div class="col-md-6 pull-right" style="width: 40%">
-              <label >Recherche <i class="fa fa-search"></i></label>
-              <input type="text" class="form-control" [(ngModel)]="searchItem">
-            </div>
-          </div>
-          <div class="table-responsive">
-            <table class="table align-items-center table-flush">
-              <thead class="thead-light">
-              <tr>
-                <th scope="col">Date de debut abonnement</th>
-                <th  scope="col">Date fin abonnement</th>
-                <th scope="col">Status</th>
-                <th scope="col">Type abonnement</th>
-                <th scope="col">Actions</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let item of abonnements | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-                <td>{{item.startDate}}</td>
-                <td>{{item.endDate}}</td>
-                <td style="width:5em; text-align:center; font-size: 0.75rem;" *ngIf="!item?.enabled" >
-                  <span class="badge badge-dot mr-4"><i class="bg-warning"></i> Inactif</span>
-                </td>
-
-                <td *ngIf="item?.enabled" style="width:5em; text-align:center; font-size: 0.75rem;">
-                  <span class="badge badge-dot mr-4"><i class="bg-success"></i> Actif</span>
-                </td>
-                <td>{{item.type}}</td>
-                <td>
-                  <button  (click)="deleteAbon(contentDelete1, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
-                </td>
-              </tr>
-
-              </tbody>
-            </table>
-          </div>
-          <div class="card-footer py-4">
-
-            <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </div>
   <div class="container-fluid">
     <app-admin-footer></app-admin-footer>

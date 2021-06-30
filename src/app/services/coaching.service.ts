@@ -51,20 +51,20 @@ export class CoachingService {
     return this.http.get(API.COACHINGS+'/region/'+region, {headers: this.headers});
   }
 
-  findAllQuantityOfCoahingAvailable(title,region): Observable<any> {
-    return this.http.get(API.COACHINGS+'/admin/quantity/dispo/'+title+'/'+region, {headers: this.headers});
+  findAllQuantityOfCoahingAvailable(form): Observable<any> {
+    return this.http.get(API.COACHINGS+'/admin/quantity/dispo/'+form.title+'/'+form.region, {headers: this.headers});
   }
 
   saveCoaching(form): Observable<any> {
-    return this.http.post(`${API.COACHINGS}`, form, {headers: this.formHeaders});
+    return this.http.post(`${API.COACHINGS}/admin`, form, {headers: this.formHeaders});
   }
 
   updateCoaching(form): Observable<any> {
-    return this.http.put(`${API.COACHINGS}`, form, { headers: this.headers});
+    return this.http.put(`${API.COACHINGS}/admin/update`, form, { headers: this.headers});
   }
 
   deleteCoaching(id): Observable<any> {
-    return this.http.delete(`${API.COACHINGS}/${id}`, {headers: this.headers});
+    return this.http.delete(`${API.COACHINGS}/admin/${id}`, {headers: this.headers});
   }
 
 }

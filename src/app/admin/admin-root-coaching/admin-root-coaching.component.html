@@ -83,10 +83,17 @@
                       </div>
                     </div>
                     <div *ngIf="isSession" class="table-responsive">
-                      <div class="col-md-6 col-lg-6 pull-right my-2" style="width: 40%">
-                        <label >Recherche <i class="fa fa-search"></i></label>
-                        <input type="text" class="form-control" [(ngModel)]="searchItem">
+                      <div class="row px-4">
+                        <div class="col-md-6 col-lg-6 pull-left my-2" >
+                          <h1 >Liste des sessions</h1>
+                          
+                        </div>
+                        <div class="col-md-6 col-lg-6 pull-right my-2" style="width: 40%">
+                          <label >Recherche <i class="fa fa-search"></i></label>
+                          <input type="text" class="form-control" [(ngModel)]="searchItem">
+                        </div>
                       </div>
+                      
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>

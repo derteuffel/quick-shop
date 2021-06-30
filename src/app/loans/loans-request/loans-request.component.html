@@ -216,7 +216,7 @@
             </div>
             <div class="form-group">
               <label>Commune </label>
-              <select class="form-control" placeholder="Province" formControlName="province">
+              <select class="form-control"(click)="selector()" placeholder="Province" formControlName="province">
                   <option value="" disabled>-- Choisir une commune --</option>
                   <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
               </select>

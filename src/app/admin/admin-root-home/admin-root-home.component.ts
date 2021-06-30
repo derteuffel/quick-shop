@@ -25,17 +25,13 @@ import {AbonnementService} from "../../services/abonnement.service";
   providers: [MessageService],
 })
 export class AdminRootHome implements OnInit {
-  abonForm: FormGroup;
-  abonnements: any = [];
-  abonnement: Abonnement;
-  abonnementId;
-  types2: string[];
+  
 
   message: string;
   loading = true;
   public submitted = false;
   categories: any = {};
-  types: string[];
+  names: string[];
 
   p = 1;
   searchItem: string;
@@ -60,7 +56,6 @@ export class AdminRootHome implements OnInit {
 
 
   constructor(private ecommerceService: EcommerceService,
-              private abonnementService: AbonnementService,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,
               private modalService: NgbModal,
@@ -72,32 +67,15 @@ export class AdminRootHome implements OnInit {
 
 
   ngOnInit(): void {
-
-    this.loadAbonnement();
-    this.initForm2();
-    this.types2 = [
-      'PRODUCTS_SELLING',
-      'COACHING_AND_SUPERVISION_SERVICE',
-      'MICRO_FINANCEMENT'
-    ];
-
     console.log(this.authService.currentUserValue.role);
-    this.categories = Object.keys(Category);
-    this.types = ['TUBERCULES', 'LEGUMES', 'EPICES','BOIS','CEREALES','DERIVE DE CEREALE','FRUIT ALIMENTAIRE','FRUIT, LEGUME ET CEREALE AOP','HUILE ESSENTIELLES',
-  'PLANTES A FIBRES','CUIR'];
-    console.log(this.types);
-    this.measures = ['Kilogramme','Litre', 'Paire', 'Piece','Sac','Prestation']
+    this.categories = ['Produit agricole','Charbon','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Kintenges','Bags','Services de reparation','Charpenterie',
+  'Salon de beaute','Couture'];
+    
+    this.measures = ['Kilogramme','Litre', 'Boites', 'Piece','Sac','Prestation']
     this.loadList();
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bunjumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-    this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
-  'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
-'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
-'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
-'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
-'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
-'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
-'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
+    
     this.initForm();
 
     if (this.authService.currentUserValue.token) {
@@ -116,16 +94,146 @@ export class AdminRootHome implements OnInit {
   }
 
 
-  initForm2(){
+  namesSelector(){
+    switch(this.productForm.get('category').value){
+      case 'Produit agricole':{
+        this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre'];
+        break;
+      }
+      case 'Charbon':{
+        this.names = ['Charbon'];
+        break;
+      }
+      case 'Secteur Agroalimentaire':{
+        this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Jus','Lait','Yaourt','Pate de tomate','Confiture','Miel','Huile de palm'];
+        break;
+      }
 
-    this.abonForm = new FormGroup({
-      id: new FormControl(''),
-      startDate: new FormControl(''),
-      endDate: new FormControl(''),
-      enabled: new FormControl(''),
-      type: new FormControl(''),
-    })
+      case 'Betails':{
+        this.names = ['Porc', 'Chevre','Lapins','Vaches','Poulets'];
+        break;
+      }
 
+      case 'Peches':{
+        this.names = ['Capitain','Tilapia','Sangala','Mukeke','Ndagala','Kuhe','Ndagala fume'];
+        break;
+      }
+      case 'Telephone portable':{
+        this.names = ['Telephone portable'];
+        break;
+      }
+      case 'Kintenges':{
+        this.names = ['Kitenges'];
+        break;
+      }
+      case 'Bags':{
+        this.names = ['Bags'];
+        break;
+      }
+      case 'Services de reparation':{
+        this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette','Plannification d\'evenement','Decoration evenementiel','Dance de salon','Dj','Theatre','Peinture','Audiovisuel'];
+        break;
+      }
+
+      case 'Charpenterie':{
+        this.names = ['Chaise de salon','Chaise de salle a mange','Table d\'etude','Table de salon','Table salle a mange','Bureau pour Enseignant','Placard a vetement','Armoire de salon','Etagere a livres'];
+        break;
+      }
+
+      case 'Salon de beaute':{
+        this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe',''];
+        break;
+      }
+      case 'Couture':{
+        this.names = ['Tissus costume (Achat)','Kitenges (Achat)','Imvutano (Achat)','Tissus costume (Couture)','Kitenges (Couture)','Pantalon (Couture)','Jupe (Couture)','Chemise (Couture)','Culotte (Couture)'];
+        break;
+      }
+
+    }
+
+  }
+
+  selector(){
+    console.log('je suis la')
+    switch(this.productForm.get('province').value){
+        case 'Bubanza':{
+            this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi'];
+            break;
+        }
+        case 'Bujumbura Mairie':{
+            this.communes = ['Muha','Mukaza','Ntahangwa'];
+            break;
+        }
+        case 'Bujumbura':{
+            this.communes = ['Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
+                    'Mutimbuzi','Nyabiraba'];
+            break
+        }
+
+        case 'Bururi': {
+            this.communes = ['Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda'];
+            break;
+        }
+        case 'Cankuzo': {
+            this.communes = ['Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha'];
+            break;
+        }
+
+        case 'Cibitoke':{
+            this.communes =['Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira'];
+            break;
+        }
+        case 'Gitega':{
+            this.communes =['Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
+                    'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro'];
+            break;
+        }
+        case 'Karuzi':{
+            this.communes = ['Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo'];
+            break;
+        }
+        case 'Kayanza':{
+            this.communes = ['Butaganzwa','Gahombo',' Gatara',' Kabarore','kayanza','Matongo','Muhanga','Muruta','Rango'];
+            break;
+        }
+        case 'Kirundo':{
+            this.communes = ['Bugabira','Busoni','Bwambarangwe', 'Gitobe','Kirundo', 'Ntega','Vumbi'];
+            break;
+        }
+
+        case 'Makamba':{
+            this.communes = ['Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo'];
+            break;
+        }
+        case 'Muramvya':{
+            this.communes =['Bukeye','Kiganda','Mbuye','Muramvya','Rutegama'];
+            break;
+        }
+
+        case 'Muyinga':{
+            this.communes = ['Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro'];
+            break;
+        }
+        case 'Mwaro':{
+            this.communes = ['Bisoro', 'Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka'];
+            break;
+        }
+        case 'Ngozi':{
+            this.communes =['Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo','Tangara'];
+            break;
+        }
+        case 'Rumonge':{
+            this.communes =['Bugarama','Burambi','Buyengero','Muhuta','Rumonge'];
+            break;
+        }
+        case 'Rutana':{
+            this.communes = ['Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana'];
+            break;
+        }
+        case 'Ruyigi':{
+            this.communes =['Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
+        }
+    }
   }
 
 
@@ -170,10 +278,9 @@ export class AdminRootHome implements OnInit {
       quantity: new FormControl(''),
       name: new FormControl(''),
       price: new FormControl(''),
-      type: new FormControl(''),
-      province: new FormControl(''),
+      //province: new FormControl(''),
       devise: new FormControl(''),
-      commune: new FormControl(''),
+      //commune: new FormControl(''),
       measure: new FormControl(''),
       category: new FormControl(''),
       description: new FormControl(''),
@@ -207,8 +314,8 @@ export class AdminRootHome implements OnInit {
     formData.append('name', this.productForm.get('name').value);
     formData.append('price', this.productForm.get('price').value);
     formData.append('category', this.productForm.get('category').value);
-    formData.append('type', this.productForm.get('type').value);
-    formData.append('localisation', this.productForm.get('province').value+', '+this.productForm.get('commune').value);
+    //formData.append('type', this.productForm.get('type').value);
+    //formData.append('localisation', this.productForm.get('province').value+', '+this.productForm.get('commune').value);
     formData.append('quantity', this.productForm.get('quantity').value);
     formData.append('devise', this.productForm.get('devise').value);
     formData.append('description', this.productForm.get('description').value);
@@ -241,7 +348,6 @@ export class AdminRootHome implements OnInit {
     this.productForm.patchValue({
       name: event.name,
       quantity: event.quantity,
-      type: event.type,
       category: event.category,
       price: event.price,
       //localisation: event.localisation,
@@ -258,7 +364,7 @@ export class AdminRootHome implements OnInit {
       id: this.productForm.get('id').value,
       name: this.productForm.get('name').value,
       quantity: this.productForm.get('quantity').value,
-      type: this.productForm.get('type').value,
+      //type: this.productForm.get('type').value,
       category: this.productForm.get('category').value,
       price: this.productForm.get('price').value,
       //localisation: this.productForm.get('localisation').value,
@@ -297,49 +403,7 @@ export class AdminRootHome implements OnInit {
     this.modalService.open(contentAddAbon, { size: 'lg' });
   }
 
-  loadAbonnement() {
-    this.abonnementService.getAll().subscribe(
-      data => {
-        this.abonnements = data;
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
-  /** ajouter un abonnement **/
-  saveAbonnement() {
-
-    this.abonnementService.saveAbon(this.abonForm?.value).subscribe(
-      (data: any) => {
-
-        this.abonForm.reset();
-        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
-        this.loadAbonnement();
-      }, error => {
-        this.abonForm.reset();
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
-      }
-    );
-    this.submitted = false;
-  }
-
-  // suppression d'un abonnement
-
-  deleteAbon(contentDelete1, event) {
-    this.modalService.open(contentDelete1, {size: 'lg'});
-    this.abonnementId = event.id;
-  }
-
-  onDeleteAbon() {
-    this.abonnementService.deleteOne(this.abonnementId).subscribe(
-      (res: any) => {
-        this.messageService.add({severity: 'success', summary: 'Account is deleted successully', detail: 'record delete'});
-        this.loadAbonnement();
-      }, error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
-      }
-    );
-  }
+  
 
 
 }

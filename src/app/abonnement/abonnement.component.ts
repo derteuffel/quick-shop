@@ -4,7 +4,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {BsModalService} from "ngx-bootstrap/modal";
 import {MessageService, PrimeNGConfig} from "primeng/api";
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {SignUpInfo} from "../auth/requests/signup-info";
 import {Abonnement} from "../models/abonnement";
 
@@ -16,9 +16,11 @@ import {Abonnement} from "../models/abonnement";
 })
 export class AbonnementComponent implements OnInit {
   lists: any = [];
-  types: string[];
+  longers: string[];
   abonForm: FormGroup;
   form: any = {};
+  p:number = 1;
+  searchItem: string;
   abonnement: Abonnement
   public submitted: boolean = false;
 
@@ -32,11 +34,22 @@ export class AbonnementComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.types = [
-      'PRODUCTS_SELLING',
-      'COACHING_AND_SUPERVISION_SERVICE',
-      'MICRO_FINANCEMENT'
-    ]
+    this.longers = [
+      '01 mois/2000 BIF(frais de renouvellement/mois 2000 BIF)',
+      '03 mois/5000 BIF(frais de renouvellement/mois 1900 BIF)',
+      '06 mois/9500 BIF(frais de renouvellement/mois 1800 BIF)',
+      '12 mois/19500 BIF(frais de renouvellement/mois 1700 BIF)',
+      '24 mois/44000 BIF(frais de renouvellement/mois 1600 BIF)',
+      '36 mois/52000 BIF(frais de renouvellement/mois 1500 BIF)',
+
+    ];
+
+    this.form = new FormGroup(
+      {
+        longer: new FormControl(''),
+        paiement: new FormControl('')
+      }
+    )
   }
 
   loadData() {
@@ -50,13 +63,10 @@ export class AbonnementComponent implements OnInit {
   }
   /** ajouter un abonnement **/
   saveAbonnement() {
-    console.log(this.form);
-    this.abonnement = new Abonnement(
-      this.form.startDate,
-      this.form.endDate,
-      this.form.type);
+    console.log(this.form.value);
+    
     console.log(this.abonnement);
-    this.abonnementService.saveAbon(this.abonnement).subscribe(
+     this.abonnementService.saveAbon(this.abonnement).subscribe(
       (data: any) => {
         //this.router.navigateByUrl('ecommerce/home');
         this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
@@ -65,7 +75,7 @@ export class AbonnementComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
-    this.submitted = false;
+    this.submitted = false; 
   }
 
 
@@ -91,6 +101,10 @@ export class AbonnementComponent implements OnInit {
     );
     this.submitted = false;
   }*/
+
+  openModalAddAbon(contentAddAbon){
+    this.modalService.open(contentAddAbon, { size: 'md' });
+  }
 
 
   onReject() {

@@ -64,67 +64,6 @@
       </div>
     </div>
     <br>
-    <br>
-    <!-- Table Abonnement-->
-    <div class="header-body">
-      <h2>Mes Abonnements</h2>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="card shadow">
-          <div class="card-header border-0" style="background-color:#F45B3A !important;">
-            <div class="col-md-6">
-              <button (click)="openModalAddAbon(contentAddAbon)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D !important;" label="Ajouter un abonnement"></button>
-            </div>
-            <div class="col-md-6 pull-right" style="width: 40%">
-              <label >Recherche <i class="fa fa-search"></i></label>
-              <input type="text" class="form-control" [(ngModel)]="searchItem">
-            </div>
-          </div>
-          <div class="table-responsive">
-            <table class="table align-items-center table-flush">
-              <thead class="thead-light">
-              <tr>
-                <th scope="col">Date de debut abonnement</th>
-                <th  scope="col">Date fin abonnement</th>
-                <th scope="col">Status</th>
-                <th scope="col">Type abonnement</th>
-                <th scope="col">Actions</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let item of abonnements | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-                <td>{{item.startDate}}</td>
-                <td>{{item.endDate}}</td>
-                <td style="width:5em; text-align:center; font-size: 0.75rem;" *ngIf="!item?.enabled" >
-                  <span class="badge badge-dot mr-4"><i class="bg-warning"></i> Inactif</span>
-                </td>
-
-                <td *ngIf="item?.enabled" style="width:5em; text-align:center; font-size: 0.75rem;">
-                  <span class="badge badge-dot mr-4"><i class="bg-success"></i> Actif</span>
-                </td>
-                <td>{{item.type}}</td>
-                <td>
-                  <button  (click)="deleteAbon(contentDelete1, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
-                </td>
-              </tr>
-
-              </tbody>
-            </table>
-          </div>
-          <div class="card-footer py-4">
-
-            <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
   </div>
 </div>
 
@@ -166,29 +105,29 @@
     </button>
   </div>
   <div class="modal-body">
-    <form #formCoaching="ngForm" (ngSubmit)="saveCoaching(formCoaching.value)">
+    <form [formGroup]="form" (submit)="saveCoaching()">
       <h2>Formulaire d'ajout d'un service de coaching/encadrement</h2>
         <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label>Titre</label>
-                <input type="text" class="form-control"required name="title" placeholder="titre du service" ngModel>
+                <input type="text" class="form-control"required formControlName="title" placeholder="titre du service" >
               </div>
 
               <div class="form-group">
                 <label>Numéro téléphone</label>
-                <input type="text" class="form-control"required name="phone" placeholder="numéro de téléphone" ngModel>
+                <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
               </div>
               <div class="form-group">
                 <label>Province</label>
-                <select name="province" class="form-control" required  ngModel>
+                <select formControlName="province" class="form-control" required  >
                   <option value="">-- Choisir une province --</option>
                   <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>Commune</label>
-                <select name="commune" class="form-control" required  ngModel>
+                <select formControlName="commune" (click)="selector()" class="form-control" required  >
                   <option value="">-- Choisir une commune --</option>
                   <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
                 </select>
@@ -196,43 +135,38 @@
 
               <div class="form-group">
                 <label>Email contact</label>
-                <input type="email" class="form-control"  required name="email" placeholder="Entrer l'adresse email contact" ngModel>
-              </div>
-
-              <div class="form-group">
-                <label>Email de l'utilisateur qui enregistre</label>
-                <input type="email" class="form-control"  required name="userEmail" placeholder="Entrer l'adresse email de l'utilisateur qui enregistre" ngModel>
+                <input type="email" class="form-control"  required formControlName="email" placeholder="Entrer l'adresse email contact" >
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label>Montant du service</label>
-                <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montant de cette prestation" ngModel>
+                <input type="number" class="form-control"  required formControlName="amount" placeholder="Entrer le montant de cette prestation" >
               </div>
               <div class="form-group">
                 <label >Devise: </label>
-                <select name="devise" class="form-control" required  ngModel>
+                <select formControlName="devise" class="form-control" >
                   <option value="">-- Choisissez une devise --</option>
                   <option value="USD">US Dollars</option>
-                  <option value="Euro">Euro</option>
-                  <option value="Fb">Franc Burundais</option>
+                  <option value="EURO">Euro</option>
+                  <option value="BIF">Franc Burundais</option>
                   <option value="Shilling">Shilling</option>
                   <option value="FCFA">Franc CFA</option>
-                  <option value="Fc">Franc Congolais</option>
+                  <option value="FC">Franc Congolais</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>Date de deroulement</label>
-                <input type="date" class="form-control"  required name="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" ngModel>
+                <input type="date" class="form-control"  required formControlName="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" >
               </div>
               <div class="form-group">
                 <label>Description</label>
-                <textarea  rows="6" class="form-control" placeholder="description" name="description" ngModel></textarea>
+                <textarea  rows="6" class="form-control" placeholder="description" formControlName="description" ></textarea>
               </div>
               <div class="form-group">
                 <label>Image de couverture</label>
-                <input type="file" class="form-control"  name="logo" (change)="onFilesSelect($event)"  placeholder="Image de profile" ngModel>
+                <input type="file" class="form-control"  name="logo" (change)="onFilesSelect($event)"  placeholder="Image de profile" >
               </div>
             </div>
         </div>
@@ -291,41 +225,60 @@
     </button>
   </div>
   <div class="modal-body">
-      <form   (ngSubmit)="updateCoaching()">
+      <form [formGroup]="form"  (submit)="updateCoaching()">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label>Titre</label>
-              <input type="text" class="form-control"required name="title" placeholder="titre du service" [(ngModel)]="currentCoaching.title">
+              <input type="text" class="form-control"required formControlName="title" placeholder="titre du service" >
             </div>
 
             <div class="form-group">
               <label>Numéro téléphone</label>
-              <input type="text" class="form-control"required name="phone" placeholder="numéro de téléphone" [(ngModel)]="currentCoaching.phone">
+              <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
+            </div>
+            <label>Region : <span>{{currentCoaching.region}}</span></label>
+            <div class="form-group">
+              <label>Province</label>
+              <select formControlName="province" class="form-control" required  >
+                <option value="">-- Choisir une province --</option>
+                <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+              </select>
             </div>
             <div class="form-group">
-              <label>Region</label>
-              <input type="text" class="form-control"  required name="region" placeholder="Entrer votre region" [(ngModel)]="currentCoaching.region">
+              <label>Commune</label>
+              <select formControlName="commune"  (click)="selector()" class="form-control" required  >
+                <option value="">-- Choisir une commune --</option>
+                <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
+              </select>
             </div>
-
-            <div class="form-group">
-              <label>Email contact</label>
-              <input type="email" class="form-control"  required name="email" placeholder="Entrer l'adresse email contact" [(ngModel)]="currentCoaching.email">
-            </div>
+           
           </div>
 
           <div class="col-md-6">
             <div class="form-group">
               <label>Montant du service</label>
-              <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montant de cette prestation" [(ngModel)]="currentCoaching.amount">
+              <input type="number" class="form-control"  required formControlName="amount" placeholder="Entrer le montant de cette prestation" >
+            </div>
+            <div class="form-group">
+              <label >Devise: </label>
+              <select formControlName="devise" class="form-control" >
+                <option value="">-- Choisissez une devise --</option>
+                <option value="USD">US Dollars</option>
+                <option value="EURO">Euro</option>
+                <option value="BIF">Franc Burundais</option>
+                <option value="Shilling">Shilling</option>
+                <option value="FCFA">Franc CFA</option>
+                <option value="FC">Franc Congolais</option>
+              </select>
             </div>
             <div class="form-group">
               <label>Date de deroulement</label>
-              <input type="date" class="form-control"  required name="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" [(ngModel)]="currentCoaching.startDate">
+              <input type="date" class="form-control"  required formControlName="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" >
             </div>
             <div class="form-group">
               <label>Description</label>
-              <textarea  rows="6" class="form-control" placeholder="description" name="description" [(ngModel)]="currentCoaching.description"></textarea>
+              <textarea  rows="6" class="form-control" placeholder="description" formControlName="description" ></textarea>
             </div>
           </div>
         </div>
