@@ -160,8 +160,12 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="form-group">
-              <label class="form-control-label" for="input-city">Secteur d'activité</label>
-              <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="secteur Activite" formControlName="secteurActivite">
+              <label class="form-control-label">Secteur d'activité</label>
+              <select name="province"  class="form-control"  formControlName="secteurActivite">
+                <option value="" disabled>-- Choisissez une activite --</option>
+                <option value="" disabled>-- Liste des activites --</option>
+                <option *ngFor="let item of activites" value="{{item}}">{{item}}</option>
+              </select>
             </div>
           </div>
           <div class="col-lg-6">

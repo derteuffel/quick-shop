@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   isConnected: boolean;
   provinces:any={};
+  activites:any={};
   communes: any = {};
   currentAccount;
   accountID;
@@ -48,6 +49,8 @@ export class ProfileComponent implements OnInit {
     }else{
       this.isConnected = false;
     }
+    this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+
 
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -106,7 +109,6 @@ export class ProfileComponent implements OnInit {
       username: this.updateProfileForm.get('username').value,
       phone: this.updateProfileForm.get('phone').value,
       fullName: this.updateProfileForm.get('fullName').value,
-      userPhone: this.updateProfileForm.get('userPhone').value,
       secteurActivite: this.updateProfileForm.get('secteurActivite').value,
       location: this.updateProfileForm.get('location').value,
       birthDate: this.updateProfileForm.get('birthDate').value,

@@ -31,32 +31,11 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logOut().subscribe(
-      data => {
-        console.log('switch off');
-        this.router.navigateByUrl('connexion');
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.authService.logOut();
+    this.router.navigateByUrl('connexion')
 
   }
 
-  private userId$: Observable<number> = this.activatedRoute.params.pipe(
-    map((params: Params) => parseInt(params['id']))
-  )
 
-  getOne() {
-    this.accountService.getOne(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
-      data =>{
-        this.router.navigateByUrl('profile');
-      }
-    )
-  }
-
-  user$: Observable<User> = this.userId$.pipe(
-    switchMap((userId: number) => this.accountService.getOne(userId))
-  )
 
 }
