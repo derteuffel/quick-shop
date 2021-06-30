@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {AccountService} from "../../services/account.service";
-import {Observable} from "rxjs/index";
-import {map, switchMap} from "rxjs/internal/operators";
 import {User} from "../../models/user";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {MessageService, PrimeNGConfig} from "primeng/api";
@@ -22,6 +20,8 @@ export class ProfileComponent implements OnInit {
   isConnected: boolean;
   provinces:any={};
   communes: any = {};
+  currentAccount;
+  accountID;
   constructor(private router: Router,
               private authService: AuthService,
               private fb: FormBuilder,
@@ -36,12 +36,11 @@ export class ProfileComponent implements OnInit {
   updateProfileForm: FormGroup;
 
 
-  private userId$: Observable<number> = this.activatedRoute.params.pipe(
-    map((params: Params) => parseInt(params['id']))
-  )
+
 
   ngOnInit(): void {
 
+    this.initForm();
 
     if (this.authService.currentUserValue.token) {
       this.isConnected = true;
@@ -49,8 +48,6 @@ export class ProfileComponent implements OnInit {
     }else{
       this.isConnected = false;
     }
-
-    this.getOne(this.activatedRoute.snapshot.paramMap.get('id'));
 
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -64,9 +61,7 @@ export class ProfileComponent implements OnInit {
       'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
   }
 
-  user$: Observable<User> = this.userId$.pipe(
-    switchMap((userId: number) => this.accountService.getOne(userId))
-  )
+
 
 
   initForm(){
@@ -84,23 +79,43 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  getOne(id) {
-    this.accountService.getOne(id).subscribe(
-      data => {
-        this.user = data;
-      }, error1 => {
-        console.log(error1);
-      }
-    );
+
+
+
+  setAccount(contentUpdate, event) {
+    this.modalService.open(contentUpdate, {size: "lg"});
+    this.currentAccount = event.username;
+    this.accountID = event.id
+    this.updateProfileForm.patchValue({
+      id: event.id,
+      email: event.email,
+      username: event.username,
+      phone: event.phone,
+      fullName: event.fullName,
+      secteurActivite: event.secteurActivite,
+      location: event.location,
+      birthDate: event.birthDate
+    })
+
   }
 
   onSubmit() {
-    let userDetails = this.updateProfileForm.value;
+    const microData = {
+      id: this.updateProfileForm.get('id').value,
+      email: this.updateProfileForm.get('email').value,
+      username: this.updateProfileForm.get('username').value,
+      phone: this.updateProfileForm.get('phone').value,
+      fullName: this.updateProfileForm.get('fullName').value,
+      userPhone: this.updateProfileForm.get('userPhone').value,
+      secteurActivite: this.updateProfileForm.get('secteurActivite').value,
+      location: this.updateProfileForm.get('location').value,
+      birthDate: this.updateProfileForm.get('birthDate').value,
+    };
 
-    this.accountService.updateAccount(userDetails, userDetails.id).subscribe(
-      result=> {
+    this.accountService.updateAccount(microData, this.accountID).subscribe(
+      (data: any) => {
 
-        this.messageService.add({severity:'success', summary: 'Profile is updated successully', detail:'profile updated'});
+        this.messageService.add({severity:'success', summary: 'Profile a été mis à jour', detail:'profile updated'});
       },error1 => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
@@ -120,9 +135,6 @@ export class ProfileComponent implements OnInit {
     this.messageService.clear();
   }
 
-  openModalAddCompany(contentAdd) {
-    this.modalService.open(contentAdd, { size: 'lg' });
 
-  }
 
 }
