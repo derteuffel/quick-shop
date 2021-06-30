@@ -34,7 +34,7 @@ export const API = {
 
   /** Account **/
 
-  ACCOUNT: `${url}api/account/admin`,
+  ACCOUNT: `${url}api/account`,
 
   /** Micro-finance **/
 

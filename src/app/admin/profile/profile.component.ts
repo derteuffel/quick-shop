@@ -116,7 +116,6 @@ export class ProfileComponent implements OnInit {
 
     this.accountService.updateAccount(microData, this.accountID).subscribe(
       (data: any) => {
-
         this.messageService.add({severity:'success', summary: 'Profile a été mis à jour', detail:'profile updated'});
       },error1 => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});

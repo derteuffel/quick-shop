@@ -35,7 +35,7 @@ export class AccountService {
   }
 
   public updateAccount(form, id): Observable<any>{
-    return this.http.put( `${API.ACCOUNT}/admin/${id}`, form,{headers: this.headers});
+    return this.http.put( `${API.ACCOUNT}/admin/update/${id}`, form,{headers: this.headers});
   }
 
   public deleteAccount(id): Observable<any> {
@@ -76,6 +76,6 @@ export class AccountService {
   }
 
   public update(form): Observable<any>{
-    return this.http.put( `${API.ACCOUNT}/update`, form,{headers: this.headers});
+    return this.http.put( `${API.ACCOUNT}/admin/update`, form,{headers: this.headers});
   }
 }
