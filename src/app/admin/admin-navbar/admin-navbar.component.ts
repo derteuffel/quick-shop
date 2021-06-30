@@ -31,9 +31,9 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logOut();
+    console.log(this.authService.logOut());
+    localStorage.removeItem('currentUser');
     this.router.navigateByUrl('connexion')
-
   }
 
 

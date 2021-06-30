@@ -27,6 +27,7 @@ export class AdminHeaderComponent implements OnInit {
     this.authService.logOut();
         
         console.log('you are now offline');
+        localStorage.removeItem('currentUser');
         this.router.navigateByUrl('/connexion');
     
   }
