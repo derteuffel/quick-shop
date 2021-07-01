@@ -34,7 +34,7 @@
               </thead>
               <tbody>
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-                
+
                 <td>{{item.userName}}</td>
                 <td>{{item.userPhone}}</td>
                 <td> {{item.amount+' '+item.devise}} </td>
@@ -103,64 +103,64 @@
     </button>
   </div>
   <div class="modal-body">
-        <div  class="card-body m-3">
-          <h5 class="card-title text-uppercase text-muted mb-0"> <span class="h2 font-weight-bold mb-0">Objet :   Entrer de fonds (Investissement)</span></h5>
-          <p class="mt-3 mb-0 text-muted text-xl" >
-              <span class="text-black mr-2" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;Nom du Depositaire :</span>
-              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.userName}}</span>
-            </p>
-            <hr>
-            <p class="mt-3 mb-0 text-muted text-xl" >
-              <span class="text-black mr-2" ><i class="fa fa-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;Telephone du Depositaire :</span>
-              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.userPhone}}</span>
-            </p>
-            <hr>
-            <p class="mt-3 mb-0 text-muted text-xl" >
-              <span class="text-black mr-2" ><i class="fa fa-envelop"></i>&nbsp;&nbsp;&nbsp;&nbsp;Email du Depositaire :</span>
-              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.userEmail}}</span>
-            </p>
-            <hr>
-            <p class="mt-3 mb-0 text-muted text-xl" >
-              <span class="text-black mr-2" ><i class="fa fa-passport"></i>&nbsp;&nbsp;&nbsp;&nbsp;Numero d'identite ou passeport du Depositaire :</span>
-              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.idNumber}}</span>
-            </p>
-            <hr>
-            <p class="mt-3 mb-0 text-muted text-xl"  >
-              <span class=" mr-2"><i class="fa fa-dollar-sign"></i> &nbsp;&nbsp;&nbsp;&nbsp;Montant :</span>
-              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.amount+' '+currentLoans?.devise}}</span>
-            </p> 
-            <hr>
-            
-            <p class="mt-3 mb-0 text-muted text-xl"  >
-              <span class="mr-2"><i class="fa fa-file-invoice"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mode de paiement  :</span>
-              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.paymentMode}}</span>
-            </p>
-            <hr>
-            <p class="mt-3 mb-0 text-muted text-xl"  >
-              <span class="mr-2"><i class="fa fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;Duree de l'investissement  :</span>
-              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.duration}}</span>
-            </p>
-            <hr>
-            <p class="mt-3 mb-0 text-muted text-xl"  >
-              <span class=" mr-2"><i class="fa fa-info"></i>&nbsp;&nbsp;&nbsp;&nbsp;Status  :</span>
-              <span *ngIf="currentLoans?.status" class="badge badge-dot mr-4 text-nowrap" style="color: #F45B3A !important;"><i class="bg-success"></i> Effectuer</span>
-              <span *ngIf="!currentLoans?.status" class="badge badge-dot mr-4 text-nowrap" style="color: #F45B3A !important;"><i class="bg-warning"></i> Suspendus</span>
-      
-            </p>
-            <hr>
-            <p class="mt-3 mb-0 text-muted text-xl"  >
-              <span class="mr-2"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;&nbsp;Date de l'operation  :</span>
-              <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.paymentMode}}</span>
-            </p>
-            <hr>
+    <div  class="card-body m-3">
+      <h5 class="card-title text-uppercase text-muted mb-0"> <span class="h2 font-weight-bold mb-0">Objet :   Entrer de fonds (Investissement)</span></h5>
+      <p class="mt-3 mb-0 text-muted text-xl" >
+        <span class="text-black mr-2" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;Nom du Depositaire :</span>
+        <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.userName}}</span>
+      </p>
+      <hr>
+      <p class="mt-3 mb-0 text-muted text-xl" >
+        <span class="text-black mr-2" ><i class="fa fa-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;Telephone du Depositaire :</span>
+        <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.userPhone}}</span>
+      </p>
+      <hr>
+      <p class="mt-3 mb-0 text-muted text-xl" >
+        <span class="text-black mr-2" ><i class="fa fa-envelop"></i>&nbsp;&nbsp;&nbsp;&nbsp;Email du Depositaire :</span>
+        <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.userEmail}}</span>
+      </p>
+      <hr>
+      <p class="mt-3 mb-0 text-muted text-xl" >
+        <span class="text-black mr-2" ><i class="fa fa-passport"></i>&nbsp;&nbsp;&nbsp;&nbsp;Numero d'identite ou passeport du Depositaire :</span>
+        <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.idNumber}}</span>
+      </p>
+      <hr>
+      <p class="mt-3 mb-0 text-muted text-xl"  >
+        <span class=" mr-2"><i class="fa fa-dollar-sign"></i> &nbsp;&nbsp;&nbsp;&nbsp;Montant :</span>
+        <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.amount+' '+currentLoans?.devise}}</span>
+      </p>
+      <hr>
+
+      <p class="mt-3 mb-0 text-muted text-xl"  >
+        <span class="mr-2"><i class="fa fa-file-invoice"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mode de paiement  :</span>
+        <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.paymentMode}}</span>
+      </p>
+      <hr>
+      <p class="mt-3 mb-0 text-muted text-xl"  >
+        <span class="mr-2"><i class="fa fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;Duree de l'investissement  :</span>
+        <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.duration}}</span>
+      </p>
+      <hr>
+      <p class="mt-3 mb-0 text-muted text-xl"  >
+        <span class=" mr-2"><i class="fa fa-info"></i>&nbsp;&nbsp;&nbsp;&nbsp;Status  :</span>
+        <span *ngIf="currentLoans?.status" class="badge badge-dot mr-4 text-nowrap" style="color: #F45B3A !important;"><i class="bg-success"></i> Effectuer</span>
+        <span *ngIf="!currentLoans?.status" class="badge badge-dot mr-4 text-nowrap" style="color: #F45B3A !important;"><i class="bg-warning"></i> Suspendus</span>
+
+      </p>
+      <hr>
+      <p class="mt-3 mb-0 text-muted text-xl"  >
+        <span class="mr-2"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;&nbsp;Date de l'operation  :</span>
+        <span class="text-nowrap" style="color: #F45B3A !important;">{{currentLoans?.paymentMode}}</span>
+      </p>
+      <hr>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-md-6">
+          <button type="button" class="btn btn-warning" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
         </div>
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-md-6">
-              <button type="button" class="btn btn-warning" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
-            </div>
-          </div>
-        </div>
+      </div>
+    </div>
   </div>
 </ng-template>
 
@@ -193,7 +193,3 @@
 
 </ng-template>
 <!-------------------------------------------------------DELETE COACHING END-------------------------------------------------------------->
-
-
-
-

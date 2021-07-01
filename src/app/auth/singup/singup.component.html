@@ -10,7 +10,7 @@
             <div class="card-body p-4">
               <form name="form" (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm" novalidate>
                 <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un entrepreneur/fournisseur</h3>
-                <p class="text-muted"><a href="/ecommerce/register/home"><i class="fa fa-long-arrow-left"></i>&nbsp; Retour </a> &nbsp; ou Créer votre compte </p>
+                <p class="text-muted"><a href="/ecommerce/register/home"><i class="fa fa-long-arrow-left"></i>&nbsp; Retour </a></p>
                 <div class="form-group">
                   <label class="text-muted">Nom complet :</label>
                 <div class="input-group mb-3">
@@ -116,7 +116,19 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-vector-square"></i></span>
                   </div>
-                  <select name="secteurActivite" pla class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
+                  <select name="secteur" pla class="form-control" [(ngModel)]="form.secteur" #secteur="ngModel" id="">
+                    <option value="" disabled>-- Choisissez un secteur d'activite --</option>
+                    <option *ngFor="let item of secteurs" value="{{item}}">{{item}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Type d'activite :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-vector-square"></i></span>
+                  </div>
+                  <select name="secteurActivite" (click)="secteursSelector()" pla class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
                     <option value="" disabled>-- Choisissez un type d'activite --</option>
                     <option *ngFor="let item of activites" value="{{item}}">{{item}}</option>
                   </select>

@@ -3,8 +3,9 @@ import { Role } from "./role";
 export class User{
     id: number;
     fullName: string;
-   location: string;
+    location: string;
     username: string;
+    phone: string;
     email: string;
     password: string;
     enabled: boolean;

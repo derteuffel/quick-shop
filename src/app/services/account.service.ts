@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
-import {API} from "../../environments/environment";
-import { User } from '../models/user';
+import {API, environment} from '../../environments/environment';
+import {User} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AccountService {
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
 
-  //private accountUrl = 'http://localhost:8181/api/account';
+  private accountUrl = environment.baseURL + '/api/account';
 
   constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -31,10 +31,11 @@ export class AccountService {
 
 
   getAllAccount(): Observable<any> {
-    return this.http.get(`${API.ACCOUNT}`,{headers: this.headers});
+    return this.http.get(this.accountUrl, {observe: "response"});
   }
 
   public updateAccount(form): Observable<any>{
+    console.log(form);
     return this.http.put( `${API.ACCOUNT}/update`, form,{headers: this.headers});
   }
 
@@ -64,7 +65,7 @@ export class AccountService {
   }
 
   public deactivateAccount(id): Observable<any>{
-     return this.http.get(`${API.ACCOUNT}/deactivation/${id}`, {headers: this.headers})
+    return this.http.get(`${API.ACCOUNT}/deactivation/${id}`, {headers: this.headers})
   }
 
   public activateAccount(id): Observable<any>{
@@ -73,5 +74,9 @@ export class AccountService {
 
   getOne(id): Observable<any>{
     return this.http.get(`${API.ACCOUNT}/view/${id}`,{headers: this.headers})
+  }
+
+  public update(form): Observable<any>{
+    return this.http.put( `${API.ACCOUNT}/admin/update`, form,{headers: this.headers});
   }
 }

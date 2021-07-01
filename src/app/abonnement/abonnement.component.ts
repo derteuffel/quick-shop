@@ -22,7 +22,9 @@ export class AbonnementComponent implements OnInit {
   p:number = 1;
   searchItem: string;
   abonnement: Abonnement
+  abonnementId;
   public submitted: boolean = false;
+
 
   constructor(private abonnementService: AbonnementService,
               private router: Router,
@@ -33,6 +35,7 @@ export class AbonnementComponent implements OnInit {
               private messageService: MessageService,) { }
 
   ngOnInit(): void {
+    this.loadData();
 
     this.longers = [
       '01 mois/2000 BIF(frais de renouvellement/mois 2000 BIF)',
@@ -61,6 +64,8 @@ export class AbonnementComponent implements OnInit {
       }
     );
   }
+
+  
   /** ajouter un abonnement **/
   saveAbonnement() {
     console.log(this.form.value);
@@ -68,39 +73,35 @@ export class AbonnementComponent implements OnInit {
     console.log(this.abonnement);
      this.abonnementService.saveAbon(this.abonnement).subscribe(
       (data: any) => {
-        //this.router.navigateByUrl('ecommerce/home');
-        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
 
+        this.abonForm.reset();
+        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
+        this.loadData();
       }, error => {
+        this.abonForm.reset();
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
     this.submitted = false; 
   }
 
+  // suppression d'un abonnement
 
-  /** ajouter un abonnement **/
- /* saveAbonnement(data) {
+  deleteAbon(contentDelete1, event) {
+    this.modalService.open(contentDelete1, {size: 'lg'});
+    this.abonnementId = event.id;
+  }
 
-    console.log(data);
-    const formData = new FormData();
-    formData.append('startDate', data.startDate);
-    formData.append('endDate', data.endDate);
-    //formData.append('endDate', data.endDate);
-
-    formData.append('type', data.type);
-    console.log(formData);
-
-    this.submitted = true;
-    this.abonnementService.saveAbon(formData).subscribe(
-      (data: any) => {
-        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
+  onDeleteAbon() {
+    this.abonnementService.deleteOne(this.abonnementId).subscribe(
+      (res: any) => {
+        this.messageService.add({severity: 'success', summary: 'Account is deleted successully', detail: 'record delete'});
+        this.loadData();
       }, error => {
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
     );
-    this.submitted = false;
-  }*/
+  }
 
   openModalAddAbon(contentAddAbon){
     this.modalService.open(contentAddAbon, { size: 'md' });

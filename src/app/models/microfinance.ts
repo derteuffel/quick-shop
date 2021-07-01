@@ -11,7 +11,8 @@ export class Microfinance {
   devise: string;
   userName: string;
   userPhone: string;
-  userEmail: string;
+  idNumber: string;
+  duration: number;
   status: boolean;
   user: User;
 }

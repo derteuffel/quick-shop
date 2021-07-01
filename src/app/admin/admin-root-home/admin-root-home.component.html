@@ -328,3 +328,33 @@
 </ng-template>
 <!-------------------------------------------------------DELETE PRODUCT END-------------------------------------------------------------->
 
+
+
+<!-------------------------------------------------------DELETE TEMOIGNAGE START------------------------------------------------------------>
+<ng-template #contentDelete2 let-modal>
+  <div class="modal-header dark-modal" style="background-color:#F45B3A !important;">
+    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="color: red;">Voulez vous vraiment supprimer ce Temoignage??&hellip;</p>
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F45B3A !important;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-danger"
+                (click)="onDeleteTemoignage() + modal.close('Close click')">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+<!-------------------------------------------------------DELETE TEMOIGNAGE END-------------------------------------------------------------->

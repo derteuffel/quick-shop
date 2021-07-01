@@ -44,7 +44,7 @@
 
         <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link"  href="/admin/configurations/account">
-            <i class="ni ni-settings"></i> Gestion Utilisateurs
+            <i class="fa fa-users"></i> Gestion Utilisateurs
           </a>
         </li>
 
@@ -64,7 +64,7 @@
             <i class="ni ni-settings"></i> Mes commandes
           </a>
         </li>
-        <li *ngIf="isTrainer || isEntreprener" class="nav-item">
+        <li *ngIf="isTrainer || isEntreprener " class="nav-item">
           <a class="nav-link"  href="/admin/commandes/allsbyusers">
             <i class="ni ni-settings"></i> Mes commandes
           </a>
@@ -72,6 +72,12 @@
         <li class="nav-item">
           <a class="nav-link"  href="/admin/abonnements/">
             <i class="fa fa-subscript"></i> Abonnements
+          </a>
+        </li>
+
+        <li *ngIf="isAdmin || isTrainer || isEntreprener || isClient || isLoans" class="nav-item">
+          <a class="nav-link"  href="/abonnement">
+            <i class="ni ni-settings"></i> Mes abonnements
           </a>
         </li>
 
