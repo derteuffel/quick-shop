@@ -51,4 +51,24 @@ export const API = {
 
   ABONNEMENT: `${url}api/abonnements`,
 
+  
+  /** Temoignages **/
+
+  TEMOIGNAGE: `${url}api/temoignages`,
+
+  /** Rating **/
+
+  RATING: `${url}api/ratings`,
+
+}
+
+//utilisateur connecté
+export var USER: any;
+export function getUsers() {
+  let storage: string = localStorage.getItem('lgl-user-profil');
+  if (storage) {
+    USER = JSON.parse(storage);
+  }else {
+    USER = {};
+  }
 }
