@@ -152,6 +152,9 @@ const routes: Routes = [
     path: 'admin/coachings', component: AdminRootCoachingsComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.TRAINNER]}
   },
+  {
+    path: 'admin/abonnements', component: AbonnementComponent
+  },
 
   {
     path: 'admin/coachings/details/:id', component: AdminRootCoachingComponent,

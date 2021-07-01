@@ -18,10 +18,12 @@ export class SingupComponent implements OnInit {
   provinces: string[];
   communes: string[];
   activites: string[];
+  secteurs: string[];
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+      this.secteurs = ['Agriculteur','Commercant','Agroalimentaire','Fournisseur de services'];
+    
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
     
@@ -110,6 +112,30 @@ export class SingupComponent implements OnInit {
         }
     }
 }
+
+secteursSelector(){
+    switch(this.form.secteur){
+      case 'Agriculteur':{
+        this.activites = ['Riziculteur', 'Agriculteur(Palmiers)', 'Agriculteur(Manioc)', 'Producteur(Mais)','Producteur(Choux)','Producteur(Pasteque)','Producteur(Ananas)','Producteur(Mangue)', 'Fermier(Ble)','Fermier(Haricots)'];
+        break;
+      }
+      case 'Commercant':{
+        this.activites = ['Marchand(Charbon de bois)', 'Marchand(Farine de mais)', 'Marchand(Farine de Manioc)', 'Marchand(Farine de ble)','Marchand(Riz)','Marchand(Haricots)','Marchand(Banane)','Marchand(Ananas)','Marchand(Pasteque)','Marchand(Mangue)','Marchand(Lait)','Marchand(Huile de cuisson)','Marchand(Vaches)','Marchand(Chevres)','Marchand(Porcs)','Marchand(Poulets)','Marchand(Telephone portable)','Marchand(Kitenge)','Marchand(Sacs)'];
+        break;
+      }
+      case 'Agroalimentaire':{
+        this.activites = ['Production(Farine)', 'Transformation(Riz)', 'Production(Pate de tomate)', 'Production(Yaourt)','Production(Huile de cuisson)','Production(Confiture)'];
+        break;
+      }
+      case 'Fournisseur de services':{
+        this.activites = ['Services de reparation Velo', 'Charpentier', 'Services Salon de beaute', 'Services de couture','Services de reparation Telephone','Services de reparation Moto'];
+        break;
+      }
+      
+
+    }
+
+  }
 
 
   onSubmit() {

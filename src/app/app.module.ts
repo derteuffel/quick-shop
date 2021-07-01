@@ -75,6 +75,7 @@ import { AbonnementComponent } from './abonnement/abonnement.component';
 import { ActivationComponent } from './auth/activation/activation.component';
 import { ProfileComponent } from './admin/profile/profile.component';
 import { TemoignageComponent } from './temoignage/temoignage.component';
+//import {PhoneNumberPickerModule} from 'phone-number-picker';
 
 
 
@@ -156,6 +157,7 @@ import { TemoignageComponent } from './temoignage/temoignage.component';
     ConfirmDialogModule,
     SharedModule,
     SidebarModule,
+    //PhoneNumberPickerModule,
     ModalModule.forRoot(),
     IconSetModule.forRoot(),
     ToastrModule.forRoot({

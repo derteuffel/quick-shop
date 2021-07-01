@@ -5,19 +5,14 @@
   <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
       <div class="header-body">
-        <h1>Gestion de tous les abonnements</h1>
+        <h1>Gestion des abonnements</h1>
       </div>
     </div>
   </div>
   <!-- Pages -->
   <!-- Page content -->
   <div class="container-fluid mt--7">
-    <br>
-    <br>
     <!-- Table Abonnement-->
-    <div class="header-body">
-      <h2>Mes Abonnements</h2>
-    </div>
     <div class="row">
       <div class="col">
         <div class="card shadow">
@@ -37,7 +32,7 @@
                 <th scope="col">Date de debut abonnement</th>
                 <th  scope="col">Date fin abonnement</th>
                 <th scope="col">Status</th>
-                <th scope="col">Type abonnement</th>
+                <th scope="col">Duree abonnement</th>
                 <th scope="col">Actions</th>
               </tr>
               </thead>
@@ -52,7 +47,7 @@
                 <td *ngIf="item?.enabled" style="width:5em; text-align:center; font-size: 0.75rem;">
                   <span class="badge badge-dot mr-4"><i class="bg-success"></i> Actif</span>
                 </td>
-                <td>{{item.type}}</td>
+                <td>{{item.longer}}</td>
                 <td>
                   <button  (click)="deleteAbon(contentDelete1, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
                 </td>
@@ -72,9 +67,6 @@
         </div>
       </div>
     </div>
-
-    <br>
-    <br>
   </div>
   <div class="container-fluid">
     <app-admin-footer></app-admin-footer>
@@ -82,10 +74,9 @@
 </div>
 
 
-
 <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
 
-
+<!-- TOAST MESSAGE TEMPLATE -->
 <p-toast position="top-right"></p-toast>
 <p-toast position="bottom-center" key="c" (onClose)="onReject()" >
   <ng-template let-message pTemplate="message">
@@ -109,6 +100,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <!-- MODAL  FORM FOR ADD ABONNEMENT -->
 
 <ng-template #contentAddAbon let-modal>
@@ -118,36 +119,35 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="abonForm" (submit)="saveAbonnement()" >
+    <form [formGroup]="form" (submit)="saveAbonnement()" >
       <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un abonnement</h3>
+      
+
       <div class="form-group">
-        <label class="text-muted">Date de votre abonnement :</label>
+        <label class="text-muted">Duree abonnement :</label>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fa fa-calendar"></i></span>          </div>
-          <input type="date" class="form-control" formControlName="startDate"  autocomplete="startDate" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="text-muted">Date de fin d'abonnement:</label>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+            <span class="input-group-text"><i class="fa fa-clock"></i></span>
           </div>
-          <input type="date" class="form-control" formControlName="endDate"  autocomplete="endDate" />
+          <select   class="form-control" formControlName="longer">
+            <option value="" disabled>-- Choisissez une duree d'abonnement --</option>
+            <option *ngFor="let item of longers" value="{{item}}">{{item}}</option>
+          </select>
 
         </div>
       </div>
 
       <div class="form-group">
-        <label class="text-muted">Type abonnement :</label>
+        <label class="text-muted">Paiement:</label>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+            <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
           </div>
-          <select   class="form-control" formGroupName="type">
-            <option value="" disabled>-- Choisissez un type d'abonnement --</option>
-            <option *ngFor="let item of types2" value="{{item}}">{{item}}</option>
+          <select   class="form-control" formControlName="paiement">
+            <option value="" disabled>-- Choisissez un moyen de paiement --</option>
+            <option  value="CARD">Carte bancaire</option>
+            <option  value="MOBILE">Mobile money</option>
+            <option  value="CASH">CASH</option>
           </select>
 
         </div>

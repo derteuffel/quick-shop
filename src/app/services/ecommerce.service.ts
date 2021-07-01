@@ -50,7 +50,11 @@ export class EcommerceService {
   }
 
   getAllProductsAdmin(): Observable<any>  {
-    return this.http.get(this.productsUrl + '/admin',  {headers: this.headers});
+    return this.http.get(`${API.PRODUITS}/admin`,  {headers: this.headers});
+  }
+
+  findAllQuantityOfProductAvailable(form): Observable<any> {
+    return this.http.get(API.PRODUITS+'/admin/quantity/dispo/'+form.region+'/'+form.category+'/'+form.name, {headers: this.headers});
   }
 
   getAllMobile(): Observable<any> {
@@ -175,17 +179,9 @@ export class EcommerceService {
   }
 
 
-  findAllQuantityOfProductAvailable(region, name): Observable<any> {
-    return this.http.get(API.PRODUITS+'/admin/quantity/dispo/'+region+'/'+name, {headers: this.headers});
-  }
-
-
   getAllProductsByUser(): Observable<any> {
     return this.http.get(`${API.PRODUITS}/admin/user`, {headers: this.headers});
   }
-
-
-
 
 
   getProductFree(id): Observable<any> {

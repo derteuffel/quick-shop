@@ -5,6 +5,7 @@ export class User{
     fullName: string;
     location: string;
     username: string;
+    phone: string;
     email: string;
     password: string;
     enabled: boolean;

@@ -4,7 +4,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {BsModalService} from "ngx-bootstrap/modal";
 import {MessageService, PrimeNGConfig} from "primeng/api";
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {SignUpInfo} from "../auth/requests/signup-info";
 import {Abonnement} from "../models/abonnement";
 
@@ -16,14 +16,15 @@ import {Abonnement} from "../models/abonnement";
 })
 export class AbonnementComponent implements OnInit {
   lists: any = [];
-  types: string[];
+  longers: string[];
   abonForm: FormGroup;
   form: any = {};
+  p:number = 1;
+  searchItem: string;
   abonnement: Abonnement
   abonnementId;
   public submitted: boolean = false;
-  p = 1;
-  searchItem: string;
+
 
   constructor(private abonnementService: AbonnementService,
               private router: Router,
@@ -36,11 +37,22 @@ export class AbonnementComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
 
-    this.types = [
-      'PRODUCTS_SELLING',
-      'COACHING_AND_SUPERVISION_SERVICE',
-      'MICRO_FINANCEMENT'
-    ]
+    this.longers = [
+      '01 mois/2000 BIF(frais de renouvellement/mois 2000 BIF)',
+      '03 mois/5000 BIF(frais de renouvellement/mois 1900 BIF)',
+      '06 mois/9500 BIF(frais de renouvellement/mois 1800 BIF)',
+      '12 mois/19500 BIF(frais de renouvellement/mois 1700 BIF)',
+      '24 mois/44000 BIF(frais de renouvellement/mois 1600 BIF)',
+      '36 mois/52000 BIF(frais de renouvellement/mois 1500 BIF)',
+
+    ];
+
+    this.form = new FormGroup(
+      {
+        longer: new FormControl(''),
+        paiement: new FormControl('')
+      }
+    )
   }
 
   loadData() {
@@ -53,13 +65,13 @@ export class AbonnementComponent implements OnInit {
     );
   }
 
-  openModalAddAbon(contentAddAbon){
-    this.modalService.open(contentAddAbon, { size: 'lg' });
-  }
+  
   /** ajouter un abonnement **/
   saveAbonnement() {
-
-    this.abonnementService.saveAbon(this.abonForm?.value).subscribe(
+    console.log(this.form.value);
+    
+    console.log(this.abonnement);
+     this.abonnementService.saveAbon(this.abonnement).subscribe(
       (data: any) => {
 
         this.abonForm.reset();
@@ -70,7 +82,7 @@ export class AbonnementComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
-    this.submitted = false;
+    this.submitted = false; 
   }
 
   // suppression d'un abonnement
@@ -89,6 +101,10 @@ export class AbonnementComponent implements OnInit {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
     );
+  }
+
+  openModalAddAbon(contentAddAbon){
+    this.modalService.open(contentAddAbon, { size: 'md' });
   }
 
 
