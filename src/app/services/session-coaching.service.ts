@@ -15,12 +15,12 @@ export class SessionCoachingService {
   private sessionCoachingUrl = environment.baseURL + '/api/sessioncoachings';
   constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.headers = new HttpHeaders({
+    this.headers = (this.currentUser==null || this.currentUser==undefined) ? new HttpHeaders(): new HttpHeaders({
       authorization: 'Bearer ' + this.currentUser.token,
       'Content-Type': 'application/json; charset=UTF-8'
     });
 
-    this.formHeaders = new HttpHeaders({
+    this.formHeaders = (this.currentUser==null || this.currentUser==undefined) ? new HttpHeaders(): new HttpHeaders({
       authorization: 'Bearer ' + this.currentUser.token
     });
   }

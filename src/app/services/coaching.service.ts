@@ -10,12 +10,12 @@ import {API, environment} from 'src/environments/environment';
 export class CoachingService {
   private coachingUrl = environment.baseURL + '/api/coachings';
 
-  private headers:any = new HttpHeaders()
+  private headers:any = (this.authService.getUserToken()==null || this.authService.getUserToken()==undefined) ? new HttpHeaders().set('content-type', 'application/json') : new HttpHeaders()
                           .set('content-type', 'application/json')
                           .set('Authorization', 'Bearer ' + this.authService.getUserToken());
 
-  private formHeaders: any = new HttpHeaders()
-                                .set('Authorization', 'Bearer '+ this.authService.getUserToken);
+  private formHeaders: any = (this.authService.getUserToken()==null || this.authService.getUserToken()==undefined) ? new HttpHeaders() : new HttpHeaders()
+                                .set('Authorization', 'Bearer '+ this.authService.getUserToken());
 
   constructor(private http: HttpClient, private authService:AuthService) {
 
