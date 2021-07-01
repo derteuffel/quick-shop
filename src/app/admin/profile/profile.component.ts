@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   provinces:any={};
   activites:any={};
   communes: any = {};
-  currentAccount;
+  currentAccount:User;
   accountID;
   constructor(private router: Router,
               private authService: AuthService,
@@ -54,18 +54,93 @@ export class ProfileComponent implements OnInit {
 
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-    this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
-      'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
-      'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
-      'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
-      'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
-      'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
-      'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
-      'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
+    
+      this.getAccount(this.user.id);
   }
 
 
+  selector(){
+    console.log('je suis la')
+    switch(this.updateProfileForm.get('province').value){
+        case 'Bubanza':{
+            this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi'];
+            break;
+        }
+        case 'Bujumbura Mairie':{
+            this.communes = ['Muha','Mukaza','Ntahangwa'];
+            break;
+        }
+        case 'Bujumbura':{
+            this.communes = ['Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
+                    'Mutimbuzi','Nyabiraba'];
+            break
+        }
 
+        case 'Bururi': {
+            this.communes = ['Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda'];
+            break;
+        }
+        case 'Cankuzo': {
+            this.communes = ['Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha'];
+            break;
+        }
+
+        case 'Cibitoke':{
+            this.communes =['Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira'];
+            break;
+        }
+        case 'Gitega':{
+            this.communes =['Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
+                    'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro'];
+            break;
+        }
+        case 'Karuzi':{
+            this.communes = ['Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo'];
+            break;
+        }
+        case 'Kayanza':{
+            this.communes = ['Butaganzwa','Gahombo',' Gatara',' Kabarore','kayanza','Matongo','Muhanga','Muruta','Rango'];
+            break;
+        }
+        case 'Kirundo':{
+            this.communes = ['Bugabira','Busoni','Bwambarangwe', 'Gitobe','Kirundo', 'Ntega','Vumbi'];
+            break;
+        }
+
+        case 'Makamba':{
+            this.communes = ['Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo'];
+            break;
+        }
+        case 'Muramvya':{
+            this.communes =['Bukeye','Kiganda','Mbuye','Muramvya','Rutegama'];
+            break;
+        }
+
+        case 'Muyinga':{
+            this.communes = ['Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro'];
+            break;
+        }
+        case 'Mwaro':{
+            this.communes = ['Bisoro', 'Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka'];
+            break;
+        }
+        case 'Ngozi':{
+            this.communes =['Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo','Tangara'];
+            break;
+        }
+        case 'Rumonge':{
+            this.communes =['Bugarama','Burambi','Buyengero','Muhuta','Rumonge'];
+            break;
+        }
+        case 'Rutana':{
+            this.communes = ['Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana'];
+            break;
+        }
+        case 'Ruyigi':{
+            this.communes =['Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
+        }
+    }
+  }
 
   initForm(){
 
@@ -76,14 +151,27 @@ export class ProfileComponent implements OnInit {
       phone: new FormControl(''),
       fullName: new FormControl(''),
       secteurActivite: new FormControl(''),
-      location: new FormControl(''),
+      province: new FormControl(''),
+      commune: new FormControl(''),
       birthDate: new FormControl(''),
+      idNumber: new FormControl('')
     })
 
   }
 
 
 
+  getAccount(id){
+    this.accountService.getOne(id).subscribe(
+      data => {
+        this.currentAccount = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 
   setAccount(contentUpdate, event) {
     this.modalService.open(contentUpdate, {size: "lg"});
@@ -94,6 +182,7 @@ export class ProfileComponent implements OnInit {
       email: event.email,
       username: event.username,
       phone: event.phone,
+      idNumber: event.idNumber,
       fullName: event.fullName,
       secteurActivite: event.secteurActivite,
       location: event.location,
@@ -104,19 +193,24 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     const microData = {
-      id: this.updateProfileForm.get('id').value,
+      //id: this.updateProfileForm.get('id').value,
       email: this.updateProfileForm.get('email').value,
       username: this.updateProfileForm.get('username').value,
       phone: this.updateProfileForm.get('phone').value,
       fullName: this.updateProfileForm.get('fullName').value,
       secteurActivite: this.updateProfileForm.get('secteurActivite').value,
-      location: this.updateProfileForm.get('location').value,
+      location: this.updateProfileForm.get('province').value+', '+this.updateProfileForm.get('commune').value,
       birthDate: this.updateProfileForm.get('birthDate').value,
+      idNumber: this.updateProfileForm.get('idNumber').value
     };
+    console.log(microData);
 
-    this.accountService.updateAccount(microData, this.accountID).subscribe(
+    this.accountService.updateAccount(microData).subscribe(
       (data: any) => {
         this.messageService.add({severity:'success', summary: 'Profile a été mis à jour', detail:'profile updated'});
+        this.logout();
+        //window.location.reload();
+        
       },error1 => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
       }
@@ -134,6 +228,17 @@ export class ProfileComponent implements OnInit {
 
   clear() {
     this.messageService.clear();
+  }
+
+  logout(){
+    this.authService.logOut().subscribe(
+      data => {
+        this.router.navigateByUrl('connexion');
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 

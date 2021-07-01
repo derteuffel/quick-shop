@@ -34,8 +34,9 @@ export class AccountService {
     return this.http.get(this.accountUrl, {observe: "response"});
   }
 
-  public updateAccount(form, id): Observable<any>{
-    return this.http.put( `${API.ACCOUNT}/admin/update/${id}`, form,{headers: this.headers});
+  public updateAccount(form): Observable<any>{
+    console.log(form);
+    return this.http.put( `${API.ACCOUNT}/update`, form,{headers: this.headers});
   }
 
   public deleteAccount(id): Observable<any> {

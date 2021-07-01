@@ -116,7 +116,19 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-vector-square"></i></span>
                   </div>
-                  <select name="secteurActivite" pla class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
+                  <select name="secteur" pla class="form-control" [(ngModel)]="form.secteur" #secteur="ngModel" id="">
+                    <option value="" disabled>-- Choisissez un secteur d'activite --</option>
+                    <option *ngFor="let item of secteurs" value="{{item}}">{{item}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Type d'activite :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-vector-square"></i></span>
+                  </div>
+                  <select name="secteurActivite" (click)="secteursSelector()" pla class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
                     <option value="" disabled>-- Choisissez un type d'activite --</option>
                     <option *ngFor="let item of activites" value="{{item}}">{{item}}</option>
                   </select>

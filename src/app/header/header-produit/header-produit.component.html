@@ -6,8 +6,17 @@
           <div class="search-bar-top">
             <form [formGroup]="produitForm" (submit)="onProduitSearch()"  >
               <div class="row">
+                <div class="form-group col-xl-3 col-md-6">
+                  <select formControlName="secteurActivite" class="form-control" >
+                    <option value="" disabled>-- Choisir un secteur --</option>
+                    <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
+                  </select>
+                </div>
                 <div class="form-group col-xl-2 col-md-6">
-                  <input type="text" placeholder="Nom du produit" class="form-control" formControlName="name">
+                  <select formControlName="name" (click)="namesSelector()" class="form-control" >
+                    <option value="" disabled>-- Choisir un produit --</option>
+                    <option value="{{item}}" *ngFor="let item of names">{{item}}</option>
+                  </select>
                 </div>
                 <div class="form-group col-md-6 col-xl-2">
                   <select formControlName="province" class="form-control" >
@@ -24,12 +33,7 @@
                   </select>
                 </div>
 
-                <div class="form-group col-xl-3 col-md-6">
-                  <select formControlName="secteurActivite" class="form-control" >
-                    <option value="" disabled>-- Choisir un secteur d'activite --</option>
-                    <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
-                  </select>
-                </div>
+                
                 <div class="top-search col-xl-3 col-md-6">
                   <button type="submit" class="btn btn-default text-white" >
                     <i class="ti-search"></i>&nbsp; Rechercher

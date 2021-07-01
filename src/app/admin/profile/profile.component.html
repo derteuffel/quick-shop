@@ -68,8 +68,45 @@
       </div>
 
       <div class="col-xl-8 order-xl-1">
-        <button class="btn btn-primary" (click)="setAccount(contentUpdate, user)">Modifier vos informations</button>
+        <button class="btn btn-primary" (click)="setAccount(contentUpdate, currentAccount)">Modifier vos informations</button>
       </div>
+    </div>
+    <h1>Mes informations</h1>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <tr >
+          <td><span style="font-size: 22px;" class=" mr-2">Nom complet :</span></td>
+          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.fullName}}</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size: 22px;" class=" mr-2">Nom utilisateur:</span></td>
+          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.username}}</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size: 22px;" class="mr-2" > Email:</span></td>
+          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.email}}</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size: 22px;" class=" mr-2" > Localisation :</span></td>
+          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.location}}</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size: 22px;" class=" mr-2" > Telephone :</span></td>
+          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.phone}}</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size: 22px;" class=" mr-2" > Date de naissance :</span></td>
+          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.birthDate}}</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size: 22px;" class=" mr-2" > Numero identite :</span></td>
+          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.idNumber}}</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size: 22px;" class=" mr-2" > Interet sur la plateforme :</span></td>
+          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.interest}}</span></td>
+        </tr>
+      </table>      
     </div>
   </div>
   <div class="container-fluid">
@@ -115,7 +152,7 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="form-group">
-              <label class="form-control-label" for="input-username">Pseudo</label>
+              <label class="form-control-label" for="input-username">Nom utilisateur</label>
               <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" formControlName="username">
             </div>
           </div>
@@ -129,8 +166,8 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="form-group">
-              <label class="form-control-label" for="input-first-name">Nom</label>
-              <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" formControlName="fullName">
+              <label class="form-control-label" for="input-first-name">Nom complet</label>
+              <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Full name" formControlName="fullName">
             </div>
           </div>
           <div class="col-lg-6">
@@ -146,32 +183,35 @@
       <h6 class="heading-small text-muted mb-4">Informations de contact</h6>
       <div class="pl-lg-4">
         <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label class="form-control-label" >Adresse</label>
-              <select name="province"  class="form-control"  formControlName="location">
+            <div class="form-group col-md-6">
+              <label class="form-control-label" >Province</label>
+              <select   class="form-control"  formControlName="province">
                 <option value="" disabled>-- Choisissez une representation --</option>
                 <option value="" disabled>-- Liste des Provinces --</option>
                 <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
               </select>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label class="form-control-label">Secteur d'activité</label>
-              <select name="province"  class="form-control"  formControlName="secteurActivite">
-                <option value="" disabled>-- Choisissez une activite --</option>
-                <option value="" disabled>-- Liste des activites --</option>
-                <option *ngFor="let item of activites" value="{{item}}">{{item}}</option>
+            <div class="form-group col-md-6">
+              <label class="form-control-label" for="">Commune</label>
+              <select formControlName="commune" (click)="selector()" class="form-control" >
+                <option value="" disabled>-- Choisir  une commune --</option>
+                <option value="" disabled>-- Liste des communes --</option>
+                <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
               </select>
             </div>
-          </div>
+        </div>
+        <div class="row">
+          
           <div class="col-lg-6">
             <div class="form-group">
               <label class="form-control-label" for="input-country">Téléphone</label>
               <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="téléphone" formControlName="phone">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-country">Numero Identite</label>
+              <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Numero de votre piece d'identite" formControlName="idNumber">
             </div>
           </div>
         </div>
