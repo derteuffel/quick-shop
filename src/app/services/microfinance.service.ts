@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/index";
 import { AuthService } from '../auth/auth.service';
-import { User } from '../models/user';
-import { API } from 'src/environments/environment';
+import {API, environment} from 'src/environments/environment';
+import {User} from "../models/user";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MicrofinanceService {
-
   currentUser: User;
   headers: HttpHeaders;
   formHeaders: HttpHeaders;
@@ -19,19 +18,19 @@ export class MicrofinanceService {
   private microfinanceUrl = 'http://localhost:8181/api/microfinancements';
   constructor(private http: HttpClient,
               private authService:AuthService) {
-                this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                this.headers = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({
-                  'Content-Type': 'application/json; charset=UTF-8'
-                }):new HttpHeaders({
-                  authorization: 'Bearer ' + this.currentUser.token,
-                  'Content-Type': 'application/json; charset=UTF-8'
-                });
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.headers = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({
+      'Content-Type': 'application/json; charset=UTF-8'
+    }):new HttpHeaders({
+      authorization: 'Bearer ' + this.currentUser.token,
+      'Content-Type': 'application/json; charset=UTF-8'
+    });
 
-                this.formHeaders = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({}):new HttpHeaders({
-                  authorization: 'Bearer ' + this.currentUser.token
-                });
+    this.formHeaders = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({}):new HttpHeaders({
+      authorization: 'Bearer ' + this.currentUser.token
+    });
 
-              }
+  }
 
 
   // recupère toute les microfinances
@@ -78,5 +77,4 @@ export class MicrofinanceService {
     return this.http.get(`${API.MICROFINANCES}/activer/${id}`,  { headers: this.headers});
 
   }
-
 }

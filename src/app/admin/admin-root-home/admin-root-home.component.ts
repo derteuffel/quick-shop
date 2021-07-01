@@ -15,6 +15,7 @@ import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
 import {Abonnement} from "../../models/abonnement";
 import {AbonnementService} from "../../services/abonnement.service";
+import {TemoignageService} from "../../services/temoignage.service";
 
 
 
@@ -26,6 +27,8 @@ import {AbonnementService} from "../../services/abonnement.service";
 })
 export class AdminRootHome implements OnInit {
   
+
+  temoignages: any = [];
 
   message: string;
   loading = true;
