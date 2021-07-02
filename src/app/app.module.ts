@@ -74,6 +74,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
 import { ActivationComponent } from './auth/activation/activation.component';
 import { ProfileComponent } from './admin/profile/profile.component';
+import { TemoignageComponent } from './temoignage/temoignage.component';
+
 
 
 
@@ -128,9 +130,10 @@ import { ProfileComponent } from './admin/profile/profile.component';
     CommandeEntreprenerComponent,
     CommandeClientComponent,
     DashboardComponent,
-    AbonnementComponent, 
+    AbonnementComponent,
     ActivationComponent,
-    ProfileComponent
+    ProfileComponent,
+    TemoignageComponent,
     ],
   imports: [
     BrowserModule,

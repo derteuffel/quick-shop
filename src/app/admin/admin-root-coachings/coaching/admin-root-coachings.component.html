@@ -63,6 +63,7 @@
         </div>
       </div>
     </div>
+    <br>
   </div>
 </div>
 
@@ -104,29 +105,32 @@
     </button>
   </div>
   <div class="modal-body">
-    <form #formCoaching="ngForm" (ngSubmit)="saveCoaching(formCoaching.value)">
+    <form [formGroup]="form" (submit)="saveCoaching()">
       <h2>Formulaire d'ajout d'un service de coaching/encadrement</h2>
         <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label>Titre</label>
-                <input type="text" class="form-control"required name="title" placeholder="titre du service" ngModel>
+                <select formControlName="title" class="form-control" required  >
+                  <option value="">-- Choisir un titre --</option>
+                  <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
+                </select>
               </div>
 
               <div class="form-group">
                 <label>Numéro téléphone</label>
-                <input type="text" class="form-control"required name="phone" placeholder="numéro de téléphone" ngModel>
+                <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
               </div>
               <div class="form-group">
                 <label>Province</label>
-                <select name="province" class="form-control" required  ngModel>
+                <select formControlName="province" class="form-control" required  >
                   <option value="">-- Choisir une province --</option>
                   <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>Commune</label>
-                <select name="commune" class="form-control" required  ngModel>
+                <select formControlName="commune" (click)="selector()" class="form-control" required  >
                   <option value="">-- Choisir une commune --</option>
                   <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
                 </select>
@@ -134,43 +138,38 @@
 
               <div class="form-group">
                 <label>Email contact</label>
-                <input type="email" class="form-control"  required name="email" placeholder="Entrer l'adresse email contact" ngModel>
-              </div>
-
-              <div class="form-group">
-                <label>Email de l'utilisateur qui enregistre</label>
-                <input type="email" class="form-control"  required name="userEmail" placeholder="Entrer l'adresse email de l'utilisateur qui enregistre" ngModel>
+                <input type="email" class="form-control"  required formControlName="email" placeholder="Entrer l'adresse email contact" >
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label>Montant du service</label>
-                <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montant de cette prestation" ngModel>
+                <input type="number" class="form-control"  required formControlName="amount" placeholder="Entrer le montant de cette prestation" >
               </div>
               <div class="form-group">
                 <label >Devise: </label>
-                <select name="devise" class="form-control" required  ngModel>
+                <select formControlName="devise" class="form-control" >
                   <option value="">-- Choisissez une devise --</option>
                   <option value="USD">US Dollars</option>
-                  <option value="Euro">Euro</option>
-                  <option value="Fb">Franc Burundais</option>
+                  <option value="EURO">Euro</option>
+                  <option value="BIF">Franc Burundais</option>
                   <option value="Shilling">Shilling</option>
                   <option value="FCFA">Franc CFA</option>
-                  <option value="Fc">Franc Congolais</option>
+                  <option value="FC">Franc Congolais</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>Date de deroulement</label>
-                <input type="date" class="form-control"  required name="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" ngModel>
+                <input type="date" class="form-control"  required formControlName="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" >
               </div>
               <div class="form-group">
                 <label>Description</label>
-                <textarea  rows="6" class="form-control" placeholder="description" name="description" ngModel></textarea>
+                <textarea  rows="6" class="form-control" placeholder="description" formControlName="description" ></textarea>
               </div>
               <div class="form-group">
                 <label>Image de couverture</label>
-                <input type="file" class="form-control"  name="logo" (change)="onFilesSelect($event)"  placeholder="Image de profile" ngModel>
+                <input type="file" class="form-control"  name="logo" (change)="onFilesSelect($event)"  placeholder="Image de profile" >
               </div>
             </div>
         </div>
@@ -229,41 +228,60 @@
     </button>
   </div>
   <div class="modal-body">
-      <form   (ngSubmit)="updateCoaching()">
+      <form [formGroup]="form"  (submit)="updateCoaching()">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label>Titre</label>
-              <input type="text" class="form-control"required name="title" placeholder="titre du service" [(ngModel)]="currentCoaching.title">
+              <input type="text" class="form-control"required formControlName="title" placeholder="titre du service" >
             </div>
 
             <div class="form-group">
               <label>Numéro téléphone</label>
-              <input type="text" class="form-control"required name="phone" placeholder="numéro de téléphone" [(ngModel)]="currentCoaching.phone">
+              <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
+            </div>
+            <label>Region : <span>{{currentCoaching.region}}</span></label>
+            <div class="form-group">
+              <label>Province</label>
+              <select formControlName="province" class="form-control" required  >
+                <option value="">-- Choisir une province --</option>
+                <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+              </select>
             </div>
             <div class="form-group">
-              <label>Region</label>
-              <input type="text" class="form-control"  required name="region" placeholder="Entrer votre region" [(ngModel)]="currentCoaching.region">
+              <label>Commune</label>
+              <select formControlName="commune"  (click)="selector()" class="form-control" required  >
+                <option value="">-- Choisir une commune --</option>
+                <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
+              </select>
             </div>
-
-            <div class="form-group">
-              <label>Email contact</label>
-              <input type="email" class="form-control"  required name="email" placeholder="Entrer l'adresse email contact" [(ngModel)]="currentCoaching.email">
-            </div>
+           
           </div>
 
           <div class="col-md-6">
             <div class="form-group">
               <label>Montant du service</label>
-              <input type="number" class="form-control"  required name="amount" placeholder="Entrer le montant de cette prestation" [(ngModel)]="currentCoaching.amount">
+              <input type="number" class="form-control"  required formControlName="amount" placeholder="Entrer le montant de cette prestation" >
+            </div>
+            <div class="form-group">
+              <label >Devise: </label>
+              <select formControlName="devise" class="form-control" >
+                <option value="">-- Choisissez une devise --</option>
+                <option value="USD">US Dollars</option>
+                <option value="EURO">Euro</option>
+                <option value="BIF">Franc Burundais</option>
+                <option value="Shilling">Shilling</option>
+                <option value="FCFA">Franc CFA</option>
+                <option value="FC">Franc Congolais</option>
+              </select>
             </div>
             <div class="form-group">
               <label>Date de deroulement</label>
-              <input type="date" class="form-control"  required name="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" [(ngModel)]="currentCoaching.startDate">
+              <input type="date" class="form-control"  required formControlName="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" >
             </div>
             <div class="form-group">
               <label>Description</label>
-              <textarea  rows="6" class="form-control" placeholder="description" name="description" [(ngModel)]="currentCoaching.description"></textarea>
+              <textarea  rows="6" class="form-control" placeholder="description" formControlName="description" ></textarea>
             </div>
           </div>
         </div>
@@ -343,3 +361,87 @@
 
 </ng-template>
 <!-------------------------------------------------------DELETE SESSION COACHING END-------------------------------------------------------------->
+
+
+
+<!-- MODAL  FORM FOR ADD ABONNEMENT -->
+
+<ng-template #contentAddAbon let-modal>
+  <div class="modal-header" style="background-color:#F45B3A !important;">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="abonForm" (submit)="saveAbonnement()" >
+      <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un abonnement</h3>
+      <div class="form-group">
+        <label class="text-muted">Date de votre abonnement :</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-calendar"></i></span>          </div>
+          <input type="date" class="form-control" formControlName="startDate"  autocomplete="startDate" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="text-muted">Date de fin d'abonnement:</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+          </div>
+          <input type="date" class="form-control" formControlName="endDate"  autocomplete="endDate" />
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="text-muted">Type abonnement :</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+          </div>
+          <select   class="form-control" formGroupName="type">
+            <option value="" disabled>-- Choisissez un type d'abonnement --</option>
+            <option *ngFor="let item of types" value="{{item}}">{{item}}</option>
+          </select>
+
+        </div>
+      </div>
+
+
+
+      <button type="submit" class="btn btn-block btn-success" >Enregistrer</button>
+    </form>
+
+  </div>
+</ng-template>
+
+
+<!-------------------------------------------------------DELETE Abonnement START------------------------------------------------------------>
+<ng-template #contentDelete1 let-modal>
+  <div class="modal-header dark-modal" style="background-color:#F45B3A !important;">
+    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="color: red;">Voulez vous vraiment supprimer cet Abonnement??&hellip;</p>
+  </div>
+  <!--<hr class="my-4" style="background-color: salmon;" />-->
+
+  <div class="modal-footer" style="background-color:#F45B3A !important;">
+    <div class="row">
+      <!-- <div class="col-md-4 "></div> -->
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 ">
+        <button type="button" class="btn btn-danger"
+                (click)="onDeleteAbon() + modal.close('Close click')">Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+<!-------------------------------------------------------DELETE Abonnemnt END-------------------------------------------------------------->

@@ -37,7 +37,6 @@
                 <th scope="col">Image</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Categorie</th>
-                <th scope="col">Type</th>
                 <th scope="col">Montant</th>
                 <th scope="col">Quantité</th>
                 <th scope="col">Actions</th>
@@ -49,9 +48,6 @@
                 <td>{{product?.name}}</td>
                 <td>
                   {{product?.category}}
-                </td>
-                <td>
-                  {{product?.type}}
                 </td>
                 <td>
                   {{product?.price+'Fb/'+product?.measure}}
@@ -90,10 +86,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="container-fluid">
-    <app-admin-footer></app-admin-footer>
-  </div>
 </div>
 
 
@@ -137,43 +129,40 @@
       <h2>Formulaire d'ajout d'un nouveau produit</h2>
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group">
-            <label>Nom du produit</label>
-            <input type="text" class="form-control"  required  placeholder="Nom de l'article" formControlName="name">
-          </div>
+            <div class="form-group">
+              <label>Categorie: </label>
+              <select  formControlName="category" required  class="form-control">
+                <option value="" disabled>-- Choisir une category de votre produit --</option>
+                <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label >Nom du produit</label>
+              <select formControlName="name" (click)="namesSelector()" required class="form-control">
+                <option value="" disabled>-- Choisir votre produit--</option>
+                <option value="{{item}}" *ngFor="let item of names">{{item}}</option>
+              </select>
+            </div>
 
-          <div class="form-group  ">
-            <label >Montant par unite</label>
-            <input type="number" class="form-control"  required formControlName="price"  placeholder="Montant de votre article">
-          </div>
-          <div class="form-group ">
-            <label for="">Devise: </label>
-            <select formControlName="devise" class="form-control" required id="">
-              <option value="">-- Choisissez une devise --</option>
-              <option value="USD">US Dollars</option>
-              <option value="Euro">Euro</option>
-              <option value="Fb">Franc Burundais</option>
-              <option value="Shilling">Shilling</option>
-              <option value="FCFA">Franc CFA</option>
-              <option value="Fc">Franc Congolais</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Categorie</label>
-            <select  formControlName="category"  class="form-control">
-              <option value="" disabled>-- Choisir une category de votre produit --</option>
-              <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
-            </select>
-          </div>
+              <div class="form-group  ">
+                <label >Montant par unite</label>
+                <input type="number" class="form-control"  required formControlName="price"  placeholder="Montant de votre article">
+              </div>
+              <div class="form-group ">
+                <label for="">Devise: </label>
+                <select formControlName="devise" class="form-control" required id="">
+                  <option value="">-- Choisissez une devise --</option>
+                  <option value="USD">US Dollars</option>
+                  <option value="EURO">Euro</option>
+                  <option value="BIF">Franc Burundais</option>
+                  <option value="Shilling">Shilling</option>
+                  <option value="FCFA">Franc CFA</option>
+                  <option value="FC">Franc Congolais</option>
+                </select>
+              </div>
+          
         </div>
         <div class="col-md-6">
-          <div class="form-group">
-            <label >type</label>
-            <select formControlName="type"  class="form-control">
-              <option value="" disabled>-- Choisir un genre pour votre produit --</option>
-              <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
-            </select>
-          </div>
           <div class="form-group">
             <label>Quantity disponible en stock</label>
             <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La Quantite disponible de votre produit">
@@ -234,8 +223,18 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label>Nom du produit</label>
-            <input type="text" class="form-control"  required  placeholder="Nom de l'article" formControlName="name">
+            <label>Categorie: </label>
+            <select  formControlName="category" required  class="form-control">
+              <option value="" disabled>-- Choisir une category de votre produit --</option>
+              <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label >Nom du produit</label>
+            <select formControlName="name" (click)="namesSelector()" required class="form-control">
+              <option value="" disabled>-- Choisir votre produit--</option>
+              <option value="{{item}}" *ngFor="let item of names">{{item}}</option>
+            </select>
           </div>
 
           <div class="form-group  ">
@@ -247,29 +246,15 @@
             <select formControlName="devise" class="form-control" required >
               <option value="">-- Choisissez une devise --</option>
               <option value="USD">US Dollars</option>
-              <option value="Euro">Euro</option>
-              <option value="Fb">Franc Burundais</option>
+              <option value="EURO">Euro</option>
+              <option value="BIF">Franc Burundais</option>
               <option value="Shilling">Shilling</option>
               <option value="FCFA">Franc CFA</option>
-              <option value="Fc">Franc Congolais</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Categorie</label>
-            <select  formControlName="category"  class="form-control">
-              <option value="" disabled>-- Choisir une category de votre produit --</option>
-              <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
+              <option value="FC">Franc Congolais</option>
             </select>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
-            <label >type</label>
-            <select formControlName="type"  class="form-control">
-              <option value="" disabled>-- Choisir un genre pour votre produit --</option>
-              <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
-            </select>
-          </div>
           <div class="form-group">
             <label>Quantity disponible en stock</label>
             <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La Quantite disponible de votre produit">

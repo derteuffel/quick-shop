@@ -1,3 +1,9 @@
 .colortext, .text-price {
   color: #F7941D;
 }
+
+
+ .fa-star {
+  color: #FFC107;
+  font-size: 40px;
+}

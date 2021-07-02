@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/rating.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/rating.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/rating.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -16,12 +19,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="header-service.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
+      <file leaf-file-name="rating.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/services/rating.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-109">
+            <state relative-caret-position="225">
+              <caret line="14" column="74" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
               <folding>
-                <element signature="e#0#50#0" expanded="true" />
+                <element signature="e#0#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -30,22 +34,26 @@
       <file leaf-file-name="products.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="14" />
+            <state relative-caret-position="209">
+              <caret line="194" column="30" selection-start-line="194" selection-start-column="30" selection-end-line="194" selection-end-column="30" />
               <folding>
-                <element signature="e#3777#4865#1" />
+                <element signature="e#384#2749#1" />
+                <element signature="e#2821#3775#1" />
+                <element signature="e#3832#4920#1" />
+                <element signature="n#section#2;n#!!top" />
+                <element signature="n#p-toast#1;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header-produit.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.ts">
+      <file leaf-file-name="ecommerce.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/services/ecommerce.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="-76">
+              <caret line="49" column="18" lean-forward="true" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="36" />
               <folding>
-                <element signature="e#0#44#0" expanded="true" />
+                <element signature="e#0#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,27 +101,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/admin/configurations/configurations.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html" />
-        <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/admin-sidebar/admin-sidebar.component.html" />
-        <option value="$PROJECT_DIR$/src/app/services/commande.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/ecommerce.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/dashboard/dashboard.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/dashboard/dashboard.component.html" />
-        <option value="$PROJECT_DIR$/src/app/models/typeAbonnement.ts" />
-        <option value="$PROJECT_DIR$/src/environments/environment.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/abonnement.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/abonnement/abonnement.component.html" />
         <option value="$PROJECT_DIR$/src/app/models/abonnement.ts" />
         <option value="$PROJECT_DIR$/src/app/abonnement/abonnement.component.ts" />
         <option value="$PROJECT_DIR$/src/app/header/header/header.component.html" />
-        <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html" />
-        <option value="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html" />
-        <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html" />
         <option value="$PROJECT_DIR$/src/app/services/account.service.ts" />
         <option value="$PROJECT_DIR$/src/app/auth/login/login.component.html" />
         <option value="$PROJECT_DIR$/src/app/auth/singup-trainner/singup-trainner.component.html" />
@@ -125,25 +115,43 @@
         <option value="$PROJECT_DIR$/src/app/auth/singup-invester/singup-invester.component.html" />
         <option value="$PROJECT_DIR$/src/app/services/coaching.service.ts" />
         <option value="$PROJECT_DIR$/src/app/admin/admin-root-coaching/admin-root-coaching.component.html" />
-        <option value="$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts" />
         <option value="$PROJECT_DIR$/src/app/admin/admin-root-product/admin-root-product.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.html" />
-        <option value="$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.html" />
         <option value="$PROJECT_DIR$/src/app/admin/admin-navbar/admin-navbar.component.html" />
         <option value="$PROJECT_DIR$/src/app/app-routing.module.ts" />
         <option value="$PROJECT_DIR$/src/app/models/user.ts" />
         <option value="$PROJECT_DIR$/src/app/admin/profile/profile.component.ts" />
         <option value="$PROJECT_DIR$/src/app/admin/profile/profile.component.html" />
         <option value="$PROJECT_DIR$/src/app/services/microfinance.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.html" />
-        <option value="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts" />
         <option value="$PROJECT_DIR$/src/app/footer/footer/footer.component.html" />
         <option value="$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.ts" />
         <option value="$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.html" />
         <option value="$PROJECT_DIR$/src/app/header/header-service/header-service.component.html" />
         <option value="$PROJECT_DIR$/src/app/header/header-finance/header-finance.component.html" />
+        <option value="$PROJECT_DIR$/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/src/app/models/temoignage.ts" />
+        <option value="$PROJECT_DIR$/src/app/temoignage/temoignage.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/eco/product/products/products.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" />
+        <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.css" />
+        <option value="$PROJECT_DIR$/src/app/services/temoignage.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/abonnement.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.html" />
+        <option value="$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.html" />
+        <option value="$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.html" />
+        <option value="$PROJECT_DIR$/src/app/models/rating.ts" />
+        <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html" />
+        <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/environments/environment.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/rating.service.ts" />
       </list>
     </option>
   </component>
@@ -192,7 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -216,42 +223,13 @@
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="eco" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="eco" type="462c0819:PsiDirectoryNode" />
-              <item name="product" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="eco" type="462c0819:PsiDirectoryNode" />
-              <item name="product" type="462c0819:PsiDirectoryNode" />
-              <item name="products" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -407,42 +385,52 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246965000" />
+    <option name="totallyTimeSpent" value="263378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18763326" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3288889" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3288889" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958949" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3451852" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3451852" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3288889" />
       <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3451852" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18763326" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3288889" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info id="Learn" order="3" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24958949" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="2" />
@@ -464,7 +452,6 @@
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3288889" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18763326" />
       <window_info id="Learn" order="7" />
       <window_info anchor="right" id="Database" order="6" />
@@ -474,6 +461,7 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958949" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3288889" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
     </layout-to-restore>
   </component>
@@ -518,166 +506,86 @@
           <url>file://$PROJECT_DIR$/src/app/coachings/coaching/details-coaching/details-coaching.component.ts</url>
           <line>153</line>
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts</url>
+          <line>96</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/auth/singup-loans/singup-loans.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/eco/ecommerce/ecommerce.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="74" column="77" selection-start-line="74" selection-start-column="77" selection-end-line="74" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/singup-client/singup-client.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="62" column="77" lean-forward="true" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/singup/singup.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="74" column="77" selection-start-line="74" selection-start-column="77" selection-end-line="74" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/account.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="74" column="45" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/register/register.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+        <state>
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/singup/singup.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="54" />
+        <state>
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
+            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/register/register.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/app-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="40" column="36" lean-forward="true" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+        <state relative-caret-position="3196">
+          <caret line="188" column="18" selection-start-line="188" selection-start-column="18" selection-end-line="188" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/singup-invester/singup-invester.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="129" column="74" selection-start-line="129" selection-start-column="74" selection-end-line="129" selection-end-column="74" />
+        <state relative-caret-position="73">
+          <caret line="133" column="21" selection-start-line="133" selection-start-column="21" selection-end-line="133" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/coaching.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/services/microfinance.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="34" column="63" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/session-coaching.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-266">
+        <state relative-caret-position="101">
+          <caret line="13" selection-start-line="13" selection-end-line="15" selection-end-column="27" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coaching/admin-root-coaching.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-70">
-          <caret line="120" column="6" lean-forward="true" selection-start-line="114" selection-start-column="3" selection-end-line="120" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/administration/administration.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1972">
-          <caret line="126" column="12" lean-forward="true" selection-start-line="126" selection-start-column="12" selection-end-line="126" selection-end-column="12" />
-          <folding>
-            <element signature="n#div#0;n#form#0;n#div#1;n#ng-template#0;n#!!top" />
-            <element signature="n#div#1;n#form#0;n#div#1;n#ng-template#0;n#!!top" />
-            <element signature="n#div#2;n#form#0;n#div#1;n#ng-template#0;n#!!top" />
-            <element signature="n#div#3;n#form#0;n#div#1;n#ng-template#0;n#!!top" />
-            <element signature="n#ng-template#1;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-product/admin-root-product.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="66" column="36" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#!!top" />
-            <element signature="n#p-toast#1;n#!!top" />
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#ng-template#1;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/ecommerce.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="180" column="15" selection-start-line="180" selection-start-column="2" selection-end-line="180" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/administration/administration.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="106" column="12" selection-start-line="106" selection-start-column="2" selection-end-line="106" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-product/admin-root-product.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
+        <state relative-caret-position="545">
           <caret line="64" column="34" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/models/product.model.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/models/temoignage.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coaching/admin-root-coaching.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3638">
-          <caret line="254" column="52" lean-forward="true" selection-start-line="254" selection-start-column="52" selection-end-line="254" selection-end-column="71" />
+        <state relative-caret-position="239">
+          <caret line="261" column="10" selection-start-line="261" selection-start-column="10" selection-end-line="261" selection-end-column="64" />
           <folding>
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -686,6 +594,7 @@
             <element signature="n#ng-template#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#ng-template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#3;n#form#0;n#div#1;n#ng-template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#ng-template#1;n#!!top" expanded="true" />
             <element signature="n#ng-template#2;n#!!top" />
             <element signature="n#style#0;n#div#0;n#ng-template#2;n#!!top" expanded="true" />
             <element signature="n#ng-template#3;n#!!top" />
@@ -698,125 +607,181 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coaching/admin-root-coaching.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="87" selection-start-line="16" selection-start-column="87" selection-end-line="16" selection-end-column="87" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#p-toast#1;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#ng-template#0;n#!!top" expanded="true" />
-            <element signature="n#ng-template#1;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#ng-template#1;n#!!top" expanded="true" />
-            <element signature="n#ng-template#2;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#ng-template#2;n#!!top" expanded="true" />
-            <element signature="n#ng-template#3;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#ng-template#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#div#0;n#ng-template#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#ng-template#3;n#!!top" expanded="true" />
-            <element signature="n#ng-template#4;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#ng-template#4;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#ng-template#4;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="-43">
+          <caret line="194" column="8" selection-start-line="194" selection-start-column="8" selection-end-line="194" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-sidebar/admin-sidebar.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/auth/login/login.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="38" column="26" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-navbar/admin-navbar.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="22" column="64" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/requests/signup-info.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="21" selection-start-line="10" selection-start-column="3" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/models/user.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/commande/commande/commande.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="514">
+          <caret line="64" column="13" lean-forward="true" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="52" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="119" column="7" selection-start-line="119" selection-start-column="7" selection-end-line="119" selection-end-column="121" />
+        <state relative-caret-position="-1302">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/auth/singup-invester/singup-invester.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+        <state relative-caret-position="34">
+          <caret line="117" selection-start-line="117" selection-end-line="135" selection-end-column="3" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/loans.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="4" />
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-inputs/admin-loans-inputs.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="50" selection-end-column="20" />
+        <state relative-caret-position="171">
+          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
           <folding>
-            <element signature="n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="e#0#59#0" expanded="true" />
+            <element signature="n#!!block;n#initForm#1;n#CoachingDetailComponent#0" />
+            <element signature="n#!!block;n#saveTemoignage#0;n#CoachingDetailComponent#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="32" selection-start-line="32" selection-end-line="33" selection-end-column="64" />
+        <state relative-caret-position="67">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="88" />
           <folding>
-            <element signature="n#ng-template#2;n#!!top" />
+            <element signature="e#0#59#0" expanded="true" />
+            <element signature="n#!!block;n#initForm#0;n#MicrofinanceDetailComponent#0" />
+            <element signature="n#!!block;n#saveTemoignage#0;n#MicrofinanceDetailComponent#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/microfinance.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/environments/environment.prod.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/temoignage.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="61" column="15" selection-start-line="61" selection-start-column="2" selection-end-line="61" selection-end-column="15" />
+        <state relative-caret-position="225">
+          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/services/coaching.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="181" column="34" selection-start-line="181" selection-start-column="34" selection-end-line="181" selection-end-column="34" />
+        <state relative-caret-position="72">
+          <caret line="58" column="52" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/abonnement/abonnement.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="10" column="30" selection-start-line="10" selection-end-line="51" />
+          <folding>
+            <element signature="n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#!!top" />
+            <element signature="n#p-toast#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/configurations/configurations.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/temoignage/temoignage.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/temoignage/temoignage.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/abonnement/abonnement.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+            <element signature="n#!!block;n#saveAbonnement#0;n#AbonnementComponent#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/models/abonnement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/configurations/admin-account/admin-account.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="78" column="74" selection-start-line="78" selection-start-column="74" selection-end-line="78" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coaching/admin-root-coaching.component.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-product/admin-root-product.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2521">
+          <folding>
+            <element signature="n#div#1;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-inputs/admin-loans-inputs.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1390">
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
@@ -825,157 +790,255 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
+        <state relative-caret-position="323">
+          <caret line="177" column="10" selection-start-line="177" selection-start-column="10" selection-end-line="177" selection-end-column="10" />
           <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#!!top" />
             <element signature="n#p-toast#1;n#!!top" />
+            <element signature="n#ng-template#0;n#!!top" />
+            <element signature="n#ng-template#1;n#!!top" />
+            <element signature="n#ng-template#2;n#!!top" />
+            <element signature="n#ng-template#3;n#!!top" />
+            <element signature="n#ng-template#4;n#!!top" />
+            <element signature="n#ng-template#5;n#!!top" />
+            <element signature="n#ng-template#6;n#!!top" />
+            <element signature="n#ng-template#7;n#!!top" />
+            <element signature="n#ng-template#8;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/profile/profile.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="24" column="85" selection-start-line="24" selection-start-column="85" selection-end-line="24" selection-end-column="85" />
+        <state>
+          <caret selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/abonnement.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="56" column="78" selection-start-line="56" selection-start-column="78" selection-end-line="56" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="65" selection-start-line="65" selection-end-line="124" selection-end-column="10" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#p-toast#1;n#!!top" />
+            <element signature="n#ng-template#0;n#!!top" />
+            <element signature="n#ng-template#1;n#!!top" />
+            <element signature="n#ng-template#2;n#!!top" />
+            <element signature="n#ng-template#3;n#!!top" />
+            <element signature="n#ng-template#4;n#!!top" />
+            <element signature="n#ng-template#5;n#!!top" />
+            <element signature="n#ng-template#6;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="445" column="46" selection-start-line="445" selection-start-column="46" selection-end-line="445" selection-end-column="46" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#ng-template#1;n#!!top" />
+            <element signature="n#ng-template#2;n#!!top" />
+            <element signature="n#ng-template#4;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="27" column="2" lean-forward="true" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="27" />
+        <state relative-caret-position="111">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="8" />
           <folding>
             <element signature="e#0#73#0" expanded="true" />
+            <element signature="n#!!block;n#initForm2#0;n#AdminRootHome#0" />
+            <element signature="n#!!block;n#loadList#0;n#AdminRootHome#0" />
+            <element signature="n#!!block;n#initForm#0;n#AdminRootHome#0" />
+            <element signature="n#!!block;n#openModalProduct#0;n#AdminRootHome#0" />
+            <element signature="n#!!block;n#onFilesSelect#0;n#AdminRootHome#0" />
+            <element signature="n#!!block;n#onBack#0;n#AdminRootHome#0" />
+            <element signature="n#!!block;n#onSubmitProduct#0;n#AdminRootHome#0" />
+            <element signature="n#!!block;n#setProduct#0;n#AdminRootHome#0" />
+            <element signature="n#!!block;n#updateProduct#0;n#AdminRootHome#0" />
+            <element signature="e#8208#8819#0" />
+            <element signature="e#8922#9151#0" />
+            <element signature="n#!!block;n#onConfirm#0;n#AdminRootHome#0" />
+            <element signature="n#!!block;n#onReject#0;n#AdminRootHome#0" />
+            <element signature="n#!!block;n#clear#0;n#AdminRootHome#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/profile/profile.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="65" column="98" selection-start-line="65" selection-start-column="98" selection-end-line="65" selection-end-column="98" />
+        <state relative-caret-position="2244">
+          <caret line="297" column="11" selection-start-line="297" selection-start-column="11" selection-end-line="297" selection-end-column="11" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
+            <element signature="n#!!block;n#loadData#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#onProvinceSearch#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#onCommuneSearch#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#onSectorSearch#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#onStatusSearch#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#init#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#showProvinceSearch#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#showCommuneSearch#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#showSectorSearch#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#showStatusSearch#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#showDetail#0;n#AdminLoansRequestComponent#0" />
+            <element signature="n#!!block;n#initForm#0;n#AdminLoansRequestComponent#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-navbar/admin-navbar.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="57" column="7" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="7" />
+        <state relative-caret-position="160">
+          <caret line="53" column="20" lean-forward="true" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
+            <element signature="n#!!block;n#initForm#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#onFilesSelect#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#loadData#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#saveCoaching#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#setCoaching#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#updateCoaching#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#getCoaching#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#deleteCoaching#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#onDelete#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#deleteCoachingSession#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#onDeleteSession#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#onConfirm#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#onReject#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#clear#0;n#AdminRootCoachingsComponent#0" />
+            <element signature="n#!!block;n#openModalAddCompany#0;n#AdminRootCoachingsComponent#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app-routing.module.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/models/rating.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2348">
-          <caret line="188" column="18" selection-start-line="188" selection-start-column="18" selection-end-line="188" selection-end-column="18" />
+        <state relative-caret-position="136">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/style.css">
+    <entry file="file://$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1828">
-          <caret column="74843" selection-start-column="74832" selection-end-column="74843" />
+        <state relative-caret-position="225">
+          <caret line="67" selection-start-line="67" selection-end-line="74" selection-end-column="13" />
+          <folding>
+            <element signature="n#p-toast#1;n#!!top" />
+            <element signature="n#ng-template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
+          <folding>
+            <element signature="e#2405#3740#1" />
+            <element signature="n#p-toast#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
+          <folding>
+            <element signature="n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" />
+            <element signature="n#div#2;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" />
+            <element signature="n#ng-template#0;n#!!top" />
+            <element signature="n#p-toast#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/environments/environment.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/ecommerce.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-76">
+          <caret line="49" column="18" lean-forward="true" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/footer/footer/footer.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
+        <state relative-caret-position="833">
           <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/articles/articles.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-913" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/ecommerce/ecommerce.component.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/eco/articles/articles.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/services/rating.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/eco/articles/articles.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="225">
+          <caret line="14" column="74" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header-finance/header-finance.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="21" column="37" selection-start-line="21" selection-end-line="22" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header.service.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="74" selection-start-line="6" selection-start-column="74" selection-end-line="6" selection-end-column="74" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#header#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header-finance/header-finance.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="6" column="72" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="73" selection-start-line="6" selection-start-column="73" selection-end-line="6" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-109">
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="14" />
+        <state relative-caret-position="209">
+          <caret line="194" column="30" selection-start-line="194" selection-start-column="30" selection-end-line="194" selection-end-column="30" />
           <folding>
-            <element signature="e#3777#4865#1" />
+            <element signature="e#384#2749#1" />
+            <element signature="e#2821#3775#1" />
+            <element signature="e#3832#4920#1" />
+            <element signature="n#section#2;n#!!top" />
+            <element signature="n#p-toast#1;n#!!top" />
           </folding>
         </state>
       </provider>

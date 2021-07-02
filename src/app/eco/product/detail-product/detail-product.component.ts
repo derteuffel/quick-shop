@@ -10,6 +10,8 @@ import { Product } from '../../../models/product.model';
 import { EcommerceService } from '../../../services/ecommerce.service';
 import {CommandeService} from "../../../services/commande.service";
 import {MessageService} from "primeng/api";
+import {Temoignage} from "../../../models/temoignage";
+import {TemoignageService} from "../../../services/temoignage.service";
 
 @Component({
   selector: 'app-detail-product',
@@ -19,7 +21,7 @@ import {MessageService} from "primeng/api";
 })
 export class DetailProductComponent implements OnInit {
 
-
+  public submitted: boolean = false;
   currentProduct: any;
   productOrder: ProductOrder[] = [] ;
   sub: Subscription;
@@ -30,8 +32,10 @@ export class DetailProductComponent implements OnInit {
   orderFinished = false;
 
   orderForm: FormGroup;
-
+  temoignageForm: FormGroup;
+  temoignage: Temoignage;
   constructor(private ecommerceService: EcommerceService,
+              private temoignageService: TemoignageService,
               private activatedRoute: ActivatedRoute,
               private router:Router,
               private commandeService: CommandeService,
@@ -41,13 +45,21 @@ export class DetailProductComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
     this.initForm();
+    this.initForm2();
   }
 
 
 
-  
 
-  
+  initForm2() {
+    this.temoignageForm = new FormGroup({
+      id: new FormControl(''),
+      email: new FormControl(''),
+      message: new FormControl(''),
+      name: new FormControl(''),
+    })
+  }
+
   getProduct(id): void{
     this.ecommerceService.getProductFree(id).subscribe(
         data => {
@@ -75,9 +87,9 @@ export class DetailProductComponent implements OnInit {
     this.currentProduct = event;
    }
 
-  
 
-  
+
+
 
   onSaveSubscribe(){
     const formData =  {
@@ -99,6 +111,25 @@ export class DetailProductComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+
+  saveTemoignage() {
+
+    this.submitted = true;
+    if(this.temoignageForm?.invalid){return;}
+
+    this.temoignageService.createTemoignage(this.temoignageForm.value).subscribe(
+      (data: any) => {
+        this.temoignageForm.reset();
+        this.router.navigate(["/ecommerce/home"]);
+        this.messageService.add({severity:'success', summary:'Success', detail:'votre témoignage a été  soumit', sticky: true});
+
+      }, error => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
+    this.submitted = false;
   }
 
   /** toast message function primeng  **/
