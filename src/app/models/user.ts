@@ -6,6 +6,7 @@ export class User{
    location: string;
     username: string;
     email: string;
+    phone: string;
     password: string;
     enabled: boolean;
     token: string;

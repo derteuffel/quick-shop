@@ -111,7 +111,10 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Titre</label>
-                <input type="text" class="form-control"required formControlName="title" placeholder="titre du service" >
+                <select formControlName="title" class="form-control" required  >
+                  <option value="">-- Choisir un titre --</option>
+                  <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
+                </select>
               </div>
 
               <div class="form-group">

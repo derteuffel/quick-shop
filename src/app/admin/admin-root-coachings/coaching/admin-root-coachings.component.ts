@@ -55,6 +55,7 @@ export class AdminRootCoachingsComponent implements OnInit {
     this.initForm();
     this.primengConfig.ripple = true;
     this.loadData();
+    this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
   }
@@ -190,7 +191,7 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('phone', this.form.get('phone').value);
     formData.append('email', this.form.get('email').value);
     formData.append('devise', this.form.get('devise').value);
-    formData.append('region', this.form.get('province')+', '+this.form.get('commune').value);
+    formData.append('region', this.form.get('province').value+', '+this.form.get('commune').value);
     formData.append('startDate', this.form.get('startDate').value);
     formData.append('file', this.uploadedFile);
     console.log(formData);

@@ -35,6 +35,7 @@ export class AccountService {
   }
 
   public updateAccount(form): Observable<any>{
+    console.log(form);
     return this.http.put( `${API.ACCOUNT}/update`, form,{headers: this.headers});
   }
 

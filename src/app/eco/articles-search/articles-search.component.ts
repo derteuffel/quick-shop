@@ -27,7 +27,8 @@ export class ArticlesSearchComponent implements OnInit {
   provinces: string[];
   communes: string[];
   types: any ={};
-  p=1;
+  p: number=1;
+  names: string [];
 
   constructor(
     private ecommerceService: EcommerceService,
@@ -38,7 +39,8 @@ export class ArticlesSearchComponent implements OnInit {
       this.navigationParams = JSON.parse(params['values']);
     }) 
 
-    this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+    this.types = ['Produit agricole','Charbon','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Kintenges','Bags','Services de reparation','Charpenterie',
+    'Salon de beaute','Couture'];
     // this.navigationParams = this.localisation.getState();
     console.log(this.navigationParams);
     this.loadSearchedProduit(this.navigationParams );
@@ -47,6 +49,65 @@ export class ArticlesSearchComponent implements OnInit {
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
     
 this.init();  
+  }
+
+  namesSelector(){
+    switch(this.produitForm.get('secteurActivite').value){
+      case 'Produit agricole':{
+        this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre'];
+        break;
+      }
+      case 'Charbon':{
+        this.names = ['Charbon'];
+        break;
+      }
+      case 'Secteur Agroalimentaire':{
+        this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Jus','Lait','Yaourt','Pate de tomate','Confiture','Miel','Huile de palm'];
+        break;
+      }
+  
+      case 'Betails':{
+        this.names = ['Porc', 'Chevre','Lapins','Vaches','Poulets'];
+        break;
+      }
+  
+      case 'Peches':{
+        this.names = ['Capitain','Tilapia','Sangala','Mukeke','Ndagala','Kuhe','Ndagala fume'];
+        break;
+      }
+      case 'Telephone portable':{
+        this.names = ['Telephone portable'];
+        break;
+      }
+      case 'Kintenges':{
+        this.names = ['Kitenges'];
+        break;
+      }
+      case 'Bags':{
+        this.names = ['Bags'];
+        break;
+      }
+      case 'Services de reparation':{
+        this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette','Plannification d\'evenement','Decoration evenementiel','Dance de salon','Dj','Theatre','Peinture','Audiovisuel'];
+        break;
+      }
+  
+      case 'Charpenterie':{
+        this.names = ['Chaise de salon','Chaise de salle a mange','Table d\'etude','Table de salon','Table salle a mange','Bureau pour Enseignant','Placard a vetement','Armoire de salon','Etagere a livres'];
+        break;
+      }
+  
+      case 'Salon de beaute':{
+        this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe',''];
+        break;
+      }
+      case 'Couture':{
+        this.names = ['Tissus costume (Achat)','Kitenges (Achat)','Imvutano (Achat)','Tissus costume (Couture)','Kitenges (Couture)','Pantalon (Couture)','Jupe (Couture)','Chemise (Couture)','Culotte (Couture)'];
+        break;
+      }
+  
+    }
+  
   }
 
 
