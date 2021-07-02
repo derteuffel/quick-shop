@@ -319,8 +319,10 @@
         <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
       </div> &nbsp;&nbsp;&nbsp;&nbsp;
       <div class="col-md-4 ">
-        <button type="button" class="btn btn-danger"
-                (click)="deleteProduct() + modal.close('Close click')">Supprimer</button>
+        <form (ngSubmit)="deleteProduct(productID)">
+        <button type="submit" class="btn btn-danger"
+                (click)="modal.close('Close click')">Supprimer</button>
+                </form>
       </div>
     </div>
   </div>
