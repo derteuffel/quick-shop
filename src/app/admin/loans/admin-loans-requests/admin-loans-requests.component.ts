@@ -54,7 +54,6 @@ export class AdminLoansRequestComponent implements OnInit {
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
 
-    this.loadAbonnement();
     this.initForm1();
     
   }
@@ -390,53 +389,7 @@ this.init();
 
   }
 
-  openModalAddAbon(contentAddAbon){
-    this.modalService.open(contentAddAbon, { size: 'lg' });
-  }
-
-  loadAbonnement() {
-    this.abonnementService.getAll().subscribe(
-      data => {
-        this.abonnements = data;
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
-  /** ajouter un abonnement **/
-  saveAbonnement() {
-
-    this.abonnementService.saveAbon(this.abonForm?.value).subscribe(
-      (data: any) => {
-
-        this.abonForm.reset();
-        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
-        this.loadAbonnement();
-      }, error => {
-        this.abonForm.reset();
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
-      }
-    );
-    this.submitted = false;
-  }
-
-  // suppression d'un abonnement
-
-  deleteAbon(contentDelete1, event) {
-    this.modalService.open(contentDelete1, {size: 'lg'});
-    this.abonnementId = event.id;
-  }
-
-  onDeleteAbon() {
-    this.abonnementService.deleteOne(this.abonnementId).subscribe(
-      (res: any) => {
-        this.messageService.add({severity: 'success', summary: 'Account is deleted successully', detail: 'record delete'});
-        this.loadAbonnement();
-      }, error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
-      }
-    );
-  }
+  
 
 
 
