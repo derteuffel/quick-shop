@@ -130,7 +130,8 @@ selector(){
 
   onServiceSearch(){
     const searchValue = {
-      location: this.serviceForm.get('province').value+', '+this.serviceForm.get('commune').value,
+      province: this.serviceForm.get('province').value,
+      commune: this.serviceForm.get('commune').value,
       name: this.serviceForm.get('name').value
     }
     this.loadSearchedCoaching(this.serviceForm.value);

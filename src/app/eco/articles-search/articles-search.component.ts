@@ -213,7 +213,8 @@ selector(){
 
 onProduitSearch(){
   const searchValue = {
-    location: this.produitForm.get('province').value+', '+this.produitForm.get('commune').value,
+    province: this.produitForm.get('province').value,
+    commune: this.produitForm.get('commune').value,
     name: this.produitForm.get('name').value,
     secteurActive:  this.produitForm.get('secteurActivite').value
   }

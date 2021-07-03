@@ -160,6 +160,21 @@
                   <option value="FC">Franc Congolais</option>
                 </select>
               </div>
+
+            <div class="form-group">
+              <label>Province</label>
+              <select formControlName="province" class="form-control" required  >
+                <option value="">-- Choisir une province --</option>
+                <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Commune</label>
+              <select formControlName="commune"  (click)="selector()" class="form-control" required  >
+                <option value="">-- Choisir une commune --</option>
+                <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
+              </select>
+            </div>
           
         </div>
         <div class="col-md-6">
@@ -251,6 +266,21 @@
               <option value="Shilling">Shilling</option>
               <option value="FCFA">Franc CFA</option>
               <option value="FC">Franc Congolais</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Province</label>
+            <select formControlName="province" class="form-control" required  >
+              <option value="">-- Choisir une province --</option>
+              <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Commune</label>
+            <select formControlName="commune"  (click)="selector()" class="form-control" required  >
+              <option value="">-- Choisir une commune --</option>
+              <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
             </select>
           </div>
         </div>

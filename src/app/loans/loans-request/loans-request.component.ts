@@ -43,7 +43,7 @@ export class LoansRequestComponent implements OnInit {
     this.primengConfig.ripple = true;
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-  
+  this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
     this.initForm();
     this.loadData();
   }
@@ -133,6 +133,7 @@ export class LoansRequestComponent implements OnInit {
 
   initForm() {
     this.loansFormGroup = new FormGroup({
+      id: new FormControl(''),
       province: new FormControl(''),
       commune: new FormControl(''),
       amount:  new FormControl(''),
@@ -186,7 +187,8 @@ export class LoansRequestComponent implements OnInit {
     const formData = new FormData();
     formData.append('file',this.loansFormGroup.get('projectSupport').value);
     formData.append('file2',this.loansFormGroup.get('validatedSupport').value);
-    formData.append('region', this.loansFormGroup.get('province').value+', '+this.loansFormGroup.get('commune').value);
+    formData.append('province', this.loansFormGroup.get('province').value);
+    formData.append('commune',this.loansFormGroup.get('commune').value)
     formData.append('amount', this.loansFormGroup.get('amount').value);
     formData.append('sector', this.loansFormGroup.get('sector').value);
     formData.append('devise', this.loansFormGroup.get('devise').value);
@@ -212,10 +214,10 @@ export class LoansRequestComponent implements OnInit {
     this.modalService.open(contentUpdate, {size: "lg"});
     this.loans = event;
 
-    this.loansUpdateFormGroup.patchValue({
+    this.loansFormGroup.patchValue({
       id: event.id,
-      province: event.region,
-      commune: event.region,
+      province: event.province,
+      commune: event.commune,
       amount:  event.amount,
       sector:  event.sector,
       object:  event.object,
@@ -233,13 +235,15 @@ export class LoansRequestComponent implements OnInit {
 
   updateCoaching() {
     const updateData = {
-      id: this.loansUpdateFormGroup.get('id').value,
-      amount: this.loansUpdateFormGroup.get('amount').value,
-      object: this.loansUpdateFormGroup.get('object').value,
-      sector: this.loansUpdateFormGroup.get('sector').value,
-      region: this.loansUpdateFormGroup.get('province').value+', '+this.loansUpdateFormGroup.get('commune').value,
-      devise: this.loansUpdateFormGroup.get('devise').value
-
+      id: this.loansFormGroup.get('id').value,
+      amount: this.loansFormGroup.get('amount').value,
+      object: this.loansFormGroup.get('object').value,
+      sector: this.loansFormGroup.get('sector').value,
+      province: this.loansFormGroup.get('province').value,
+      commune: this.loansFormGroup.get('commune').value,
+      devise: this.loansFormGroup.get('devise').value,
+      projectSupport: this.loansFormGroup.get('projectSupport').value,
+      validatedSupport: this.loansFormGroup.get('validatedSupport').value
     }
 
     console.log(updateData);
