@@ -50,12 +50,48 @@ export const API = {
 
   ABONNEMENT: `${url}api/abonnements`,
 
+
+  /** Temoignages **/
+
+  TEMOIGNAGE: `${url}api/temoignages`,
+
+  /** Rating **/
+
+  RATING: `${url}api/ratings`,
+
+}
+
+//utilisateur connecté
+export var USER: any;
+export function getUsers() {
+  let storage: string = localStorage.getItem('lgl-user-profil');
+  if (storage) {
+    USER = JSON.parse(storage);
+  }else {
+    USER = {};
+  }
+}
+
+
+/**
+ * fonction permettant de connaitre si l'utilisateur connecté
+ * possède les droits d'accéder à des fonctionnalités qui sont passées en paramètres à la fonction
+ * @param func
+ */
+export function hasFunctionality(func: string) {
+  getUsers();
+  for (const f of USER.functionalities) {
+    if (func == f.code) {
+      return true;
+    }
+  }
+  return false;
 }
 
 export class AppConstants{
-  private static API_BASE_URL = "https://yesbinspire.com:8282/";
+  private static API_BASE_URL = "http://localhost:8181/";
   private static OAUTH2_URL = AppConstants.API_BASE_URL + "oauth2/authorization/";
-  private static REDIRECT_URL = "?redirect_uri=https://yesbinspire.com:8282/api/auth/redirect";
+  private static REDIRECT_URL = "?redirect_uri=http://localhost:8181/api/auth/redirect";
   public static API_URL = AppConstants.API_BASE_URL + "api/";
   public static AUTH_API = AppConstants.API_URL + "auth/";
   public static GOOGLE_AUTH_URL = AppConstants.OAUTH2_URL + "google" + AppConstants.REDIRECT_URL;
