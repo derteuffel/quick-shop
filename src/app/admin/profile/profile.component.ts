@@ -247,14 +247,9 @@ export class ProfileComponent implements OnInit {
   }
 
   logout(){
-    this.authService.logOut().subscribe(
-      data => {
+    this.authService.logOut();
         this.router.navigateByUrl('connexion');
-      },
-      error => {
-        console.log(error);
-      }
-    );
+      
   }
 
 }

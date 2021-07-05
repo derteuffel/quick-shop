@@ -34,13 +34,16 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  logOut(): Observable<any> {
-    return this.http.post(this.authUrl + "/logout", {}).pipe(
+  logOut() {
+    localStorage.removeItem('currentUser');
+        this.currentUserSubject.next(null);
+    console.log('je suis ici dedans')
+    /* return this.http.post(this.authUrl + "/logout", {}).pipe(
       map(response => {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
       })
-    );
+    ); */
   }
 
   activate(code): Observable<any> {
