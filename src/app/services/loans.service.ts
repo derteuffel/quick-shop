@@ -55,7 +55,7 @@ export class LoansService {
     }
 
     getAllSearch(form): Observable<any>{
-      return this.http.post(`${API.LOANS}/search`,form)
+      return this.http.post(`${API.LOANS}/all/search`,form)
     }
 
     getAllbySector(sector): Observable<any>{

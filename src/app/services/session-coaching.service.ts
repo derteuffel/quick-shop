@@ -36,23 +36,23 @@ export class SessionCoachingService {
   }
 
   getSessionCoaching(id): Observable<any> {
-    return this.http.get(`${API.SESSIONS}/coaching/${id}`, {headers: this.headers});
+    return this.http.get(`${API.SESSIONS}/get/coaching/${id}`);
   }
 
   actionSession(id): Observable<any>{
-    return this.http.get(`${API.SESSIONS}/action/${id}`, {headers: this.headers});
+    return this.http.get(`${API.SESSIONS}/admin/action/${id}`, {headers: this.headers});
   }
 
   saveSessionCoaching(form): Observable<any> {
-    return this.http.post(`${API.SESSIONS}`, form, {headers: this.headers});
+    return this.http.post(`${API.SESSIONS}/admin`, form, {headers: this.headers});
   }
 
   updateSessionCoaching(form): Observable<any> {
-    return this.http.put(`${API.SESSIONS}`, form, {headers: this.headers});
+    return this.http.put(`${API.SESSIONS}/admin`, form, {headers: this.headers});
   }
 
   deleteSessionCoaching(id): Observable<any> {
-    return this.http.delete(`${API.SESSIONS}/${id}`, {headers: this.headers});
+    return this.http.delete(`${API.SESSIONS}/admin/${id}`, {headers: this.headers});
   }
 
   /**
@@ -61,7 +61,7 @@ export class SessionCoachingService {
    * */
 
   createSession(form, id): Observable<any> {
-    return this.http.post(`${API.SESSIONS}/session/${id}`, form, {headers: this.formHeaders});
+    return this.http.post(`${API.SESSIONS}/admin/${id}`, form, {headers: this.formHeaders});
   }
 
 }

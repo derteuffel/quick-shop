@@ -36,7 +36,7 @@ export class CoachingService {
   }
 
   getAllCoachingSearch(form): Observable<any> {
-    return this.http.post(API.COACHINGS+'/search', form);
+    return this.http.post(API.COACHINGS+'/all/search', form);
   }
 
   getAllCoachingByUser(): Observable<any> {
@@ -56,7 +56,7 @@ export class CoachingService {
   }
 
   saveCoaching(form): Observable<any> {
-    return this.http.post(`${API.COACHINGS}/admin/save`, form, {headers: this.formHeaders});
+    return this.http.post(`${API.COACHINGS}/admin`, form, {headers: this.formHeaders});
   }
 
   updateCoaching(form): Observable<any> {

@@ -263,8 +263,8 @@ export class AdminRootHome implements OnInit {
     this.productID = event.id;
   }
 
-  deleteProduct() {
-    this.ecommerceService.deleteProduct(this.productID).subscribe(
+  deleteProduct(id) {
+    this.ecommerceService.deleteProduct(id).subscribe(
       (res: any) => {
         this.loadList();
       }
@@ -278,9 +278,9 @@ export class AdminRootHome implements OnInit {
       quantity: new FormControl(''),
       name: new FormControl(''),
       price: new FormControl(''),
-      //province: new FormControl(''),
+      province: new FormControl(''),
       devise: new FormControl(''),
-      //commune: new FormControl(''),
+      commune: new FormControl(''),
       measure: new FormControl(''),
       category: new FormControl(''),
       description: new FormControl(''),
@@ -315,7 +315,8 @@ export class AdminRootHome implements OnInit {
     formData.append('price', this.productForm.get('price').value);
     formData.append('category', this.productForm.get('category').value);
     //formData.append('type', this.productForm.get('type').value);
-    //formData.append('localisation', this.productForm.get('province').value+', '+this.productForm.get('commune').value);
+    formData.append('province', this.productForm.get('province').value);
+    formData.append('commune', this.productForm.get('commune').value);
     formData.append('quantity', this.productForm.get('quantity').value);
     formData.append('devise', this.productForm.get('devise').value);
     formData.append('description', this.productForm.get('description').value);
@@ -350,6 +351,9 @@ export class AdminRootHome implements OnInit {
       quantity: event.quantity,
       category: event.category,
       price: event.price,
+      province: event.province,
+      commune: event.commune,
+      devise: event.devise,
       //localisation: event.localisation,
       description: event.description,
       measure: event.measure,
@@ -364,10 +368,12 @@ export class AdminRootHome implements OnInit {
       id: this.productForm.get('id').value,
       name: this.productForm.get('name').value,
       quantity: this.productForm.get('quantity').value,
+      devise: this.productForm.get('devise').value,
       //type: this.productForm.get('type').value,
       category: this.productForm.get('category').value,
       price: this.productForm.get('price').value,
-      //localisation: this.productForm.get('localisation').value,
+      province:  this.productForm.get('province').value,
+      commune: this.productForm.get('commune').value,
       description: this.productForm.get('description').value,
       measure: this.productForm.get('measure').value,
       //pictureUrl: this.productForm.get('pictureUrl').value,

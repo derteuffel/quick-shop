@@ -191,7 +191,8 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('phone', this.form.get('phone').value);
     formData.append('email', this.form.get('email').value);
     formData.append('devise', this.form.get('devise').value);
-    formData.append('region', this.form.get('province').value+', '+this.form.get('commune').value);
+    formData.append('province', this.form.get('province').value);
+    formData.append('commune',this.form.get('commune').value);
     formData.append('startDate', this.form.get('startDate').value);
     formData.append('file', this.uploadedFile);
     console.log(formData);
@@ -218,8 +219,8 @@ export class AdminRootCoachingsComponent implements OnInit {
       id: event.id,
       title: event.title,
       phone: event.phone,
-      province: new FormControl(''),
-      commune: new FormControl(''),
+      province: event.province,
+      commune: event.commune,
       email: event.email,
       amount: event.amount,
       devise: event.devise,
@@ -237,7 +238,8 @@ export class AdminRootCoachingsComponent implements OnInit {
       id: this.form.get('id').value,
       title: this.form.get('title').value,
       phone: this.form.get('phone').value,
-      region: this.form.get('province').value+', '+this.form.get('commune').value,
+      province: this.form.get('province').value,
+      commune: this.form.get('commune').value,
       email: this.form.get('email').value,
       amount: this.form.get('amount').value,
       devise: this.form.get('devise').value,

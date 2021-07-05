@@ -134,7 +134,8 @@ export class MicrofinanceSearchComponent implements OnInit {
 
   onFinanceSearch(){
     const searchValue = {
-      location: this.financeForm.get('province').value+', '+this.financeForm.get('commune').value,
+      province: this.financeForm.get('province').value,
+      commune: this.financeForm.get('commune').value,
       name: this.financeForm.get('name').value
     }
     this.loadSearchedFinances(this.financeForm.value);

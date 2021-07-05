@@ -144,13 +144,14 @@ export class SingupComponent implements OnInit {
       this.form.fullName,
       this.form.email,
       this.form.email,
-      this.form.province+', '+this.form.province,
+      this.form.province,
+      this.form.commune,
       this.form.phone,
       this.form.birthDate,
       null,
       this.form.secteurActivite,
       this.form.password,      
-      'ENTREPRENER',
+      'ENTERPRENER',
       '');
 
       console.log(this.signupInfo);
