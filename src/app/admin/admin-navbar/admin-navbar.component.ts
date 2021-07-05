@@ -31,7 +31,7 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logOut().subscribe(
+    this.authService.logOut()/* .subscribe(
       data => {
         console.log('switch off');
         this.router.navigateByUrl('connexion');
@@ -39,7 +39,8 @@ export class AdminNavbarComponent implements OnInit {
       error => {
         console.log(error);
       }
-    );
+    ); */
+    this.router.navigateByUrl('connexion');
 
   }
 
