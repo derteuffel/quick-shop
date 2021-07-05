@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
       null,
       this.form.password,
       'ADMIN',
-      null, 
       null);
 
     this.authService.signUp(this.registerInfo).subscribe(
