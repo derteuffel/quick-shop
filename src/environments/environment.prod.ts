@@ -50,6 +50,42 @@ export const API = {
 
   ABONNEMENT: `${url}api/abonnements`,
 
+
+  /** Temoignages **/
+
+  TEMOIGNAGE: `${url}api/temoignages`,
+
+  /** Rating **/
+
+  RATING: `${url}api/ratings`,
+
+}
+
+//utilisateur connecté
+export var USER: any;
+export function getUsers() {
+  let storage: string = localStorage.getItem('lgl-user-profil');
+  if (storage) {
+    USER = JSON.parse(storage);
+  }else {
+    USER = {};
+  }
+}
+
+
+/**
+ * fonction permettant de connaitre si l'utilisateur connecté
+ * possède les droits d'accéder à des fonctionnalités qui sont passées en paramètres à la fonction
+ * @param func
+ */
+export function hasFunctionality(func: string) {
+  getUsers();
+  for (const f of USER.functionalities) {
+    if (func == f.code) {
+      return true;
+    }
+  }
+  return false;
 }
 
 export class AppConstants{
