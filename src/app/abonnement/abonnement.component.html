@@ -119,9 +119,9 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="form" (submit)="saveAbonnement()" >
+    <form [formGroup]="abonForm" (submit)="saveAbonnement()" >
       <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un abonnement</h3>
-      
+
 
       <div class="form-group">
         <label class="text-muted">Duree abonnement :</label>
@@ -155,7 +155,7 @@
 
 
 
-      <button type="submit" class="btn btn-block btn-success" >Enregistrer</button>
+      <button type="submit" class="btn btn-block btn-success"  (click)="saveAbonnement()+modal.close('Close click')">Enregistrer</button>
     </form>
 
   </div>

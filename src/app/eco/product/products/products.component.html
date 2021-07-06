@@ -11,138 +11,8 @@
       </div>
     </div>
   </div>
-
 </section>
-<!--/ End Slider Area -->
-<!--<br>&nbsp;-->
-<!-- Start Product Area -->
-<!--<div class="product-area section">
-  <div class="container">
-    <br>&nbsp;
-    <div class="row">
-      <div class="col-12">
-        <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Produits récents</h1>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="product-info">
 
-          <div class="tab-content" id="myTabContent">
-            &lt;!&ndash; Start Single Tab &ndash;&gt;
-            <div class="tab-pane fade show active" id="man" role="tabpanel">
-              <div class="tab-single">
-                <div class="row">
-                  <div class="col-xl-3 col-lg-4 col-md-4 col-12" *ngFor="let item of products">
-                    <div class="single-product img-wrap">
-                      <div class="product-img">
-                        <a href="/ecommerce/product/detail/{{item?.id}}">
-                          <img class="default-img" [src]="item.pictureUrl" alt="#">
-                          <img class="hover-img" [src]="item.pictureUrl" alt="#">
-                        </a>
-                        <div class="button-head">
-                          <div class="product-action">
-                            <a  title="Quick View" href="/ecommerce/product/detail/{{item?.id}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                            &lt;!&ndash; <a type="button"  *ngIf="!isProductSelected(item)" (click)="addToCart(item)" title="Add to cart" ><i class="fa fa-shopping-bag"></i><span>Add to cart</span>&nbsp;</a> &ndash;&gt;
-
-                          </div>
-                          <div class="product-action-2">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="product-content">
-                        <h3 class="title"><a href="/ecommerce/product/detail/{{item?.id}}">{{item?.name}}</a></h3>
-                        <div class="product-price">
-                          <p class="price with-discount">{{item?.price+' '+item?.devise}}</p>
-                          <span></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
-<!-- End Product Area -->
-
-<!--<br>&nbsp;-->
-
-<!-- Start Coaching  -->
-<!--<section class="shop-blog section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Encadrements et Coaching</h1>
-        </div>
-      </div>
-    </div>
-    <br>&nbsp;
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings">
-        &lt;!&ndash; Start Single Blog  &ndash;&gt;
-        <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="shop-single-blog">
-              <img [src]="coaching.logo" style="height: 300px;" alt="#">
-          <div class="content">
-            <p class="date">{{coaching?.startDate}}</p>
-            <p class="title">{{coaching?.title}}</p>
-            <p class="more-btn">{{coaching?.amount+' '+item.devise}}</p>
-          </div>
-        </a>
-        &lt;!&ndash; End Single Blog  &ndash;&gt;
-      </div>
-    </div>
-  </div>
-</section>-->
-<!-- End Coaching  -->
-
-<!-- Start Microfinancement -->
-<!--<section class="shop-blog section">
-  <div class="container">
-
-    <div class="row">
-      <div class="col-12">
-        <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Micros-credits</h1>
-        </div>
-      </div>
-    </div>
-    <br>&nbsp;
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-12" *ngFor="let m of microfinances">
-        &lt;!&ndash; Start Single Blog  &ndash;&gt;
-        <div class="shop-single-blog">
-          <a href="#">
-            <img src="https://via.placeholder.com/170x100.png" alt="#">
-          </a>
-          <div class="card-body text-left">
-            <p class="title">{{m?.object}}</p>
-            <div class="card-text">
-              <p>Secteur d'activite: <span class="text-muted">{{m?.sector}}</span></p>
-            </div>
-            <div class="card-text">
-              <p>Localisation : <span class="text-muted">{{m?.region}}</span></p>
-            </div>
-          </div>
-        </div>
-        &lt;!&ndash; End Single Blog  &ndash;&gt;
-      </div>
-    </div>
-  </div>
-</section>-->
-<!-- End Microfinancement  -->
-
-
-<!--<br>&nbsp;-->
 
 <!-- Start Shop Services Area -->
 <section class="shop-services section home">
@@ -191,6 +61,45 @@
 </section>
 <!-- End Shop Services Area -->
 
+<section class=" section home">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-7 mx-auto text-center">
+        <span  style="font-size: 25px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Temoignages</span>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+<br>
+<!-- Start Testimoniales Area -->
+
+<section class="section home">
+  <div class="container">
+    <div class="row" >
+
+      <div class="col-md-4" *ngFor="let testimonials of temoignages">
+
+        <div class="card d-flex mx-auto">
+          <div class="card-image"> <img class="img-fluid d-flex mx-auto" src="https://i.imgur.com/3TlwnLF.jpg"> </div>
+          <div class="card-text">
+            <div class="card-title"></div>
+            {{testimonials.message}}
+          </div>
+          <div class="footer"> <span id="name">{{testimonials.name}}<br></span> <span id="position"></span> </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+<!-- End Testimoniale Area -->
+
+
+<br>
 
 <section class=" section home">
   <div class="container">

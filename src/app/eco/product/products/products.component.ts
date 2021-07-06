@@ -29,6 +29,8 @@ export class ProductsComponent implements OnInit {
 
   productOrders: ProductOrder[] = [];
   products: Product[] = [];
+  temoignages: Temoignage[] = [];
+  lists: any = [];
 
   sub: Subscription;
   productSelected: boolean = false;
@@ -55,6 +57,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.loadTestimonial();
   }
 
 
@@ -65,6 +68,17 @@ export class ProductsComponent implements OnInit {
       message: new FormControl(''),
       name: new FormControl(''),
     })
+  }
+
+  loadTestimonial() {
+    this.temoignageService.getAllTestimonial().subscribe(
+      data => {
+        this.temoignages = data;
+      }, error => {
+
+        console.log(error);
+      }
+    )
   }
 
 
