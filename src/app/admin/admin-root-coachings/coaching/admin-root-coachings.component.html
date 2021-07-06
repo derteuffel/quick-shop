@@ -29,7 +29,7 @@
               <tr>
                 <th scope="col">Titre</th>
                 <th  scope="col">Telephone</th>
-                <th scope="col">Region</th>
+                <th scope="col">Localisation</th>
                 <th scope="col">Date</th>
                 <th scope="col">Montant</th>
                 <th scope="col">Actions</th>
@@ -39,7 +39,7 @@
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                 <td>{{item.title}}</td>
                 <td>{{item.phone}}</td>
-                <td>{{item.region}}</td>
+                <td>{{item.province+', '+item.commune}}</td>
                 <td>{{item.startDate}}</td>
                 <td> {{item.amount+' '+item.devise}} </td>
                 <td>
