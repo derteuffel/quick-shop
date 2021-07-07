@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/abonnement/abonnement.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/abonnement/abonnement.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/product/products/products.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/product/products/products.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
@@ -40,8 +37,8 @@
       <file leaf-file-name="products.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="35">
-              <caret line="87" column="14" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
+            <state relative-caret-position="182">
+              <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -438,12 +435,12 @@
       <workItem from="1624372861674" duration="14200000" />
       <workItem from="1625216460142" duration="310000" />
       <workItem from="1625510384470" duration="7423000" />
-      <workItem from="1625667916871" duration="4401000" />
+      <workItem from="1625667916871" duration="5020000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275692000" />
+    <option name="totallyTimeSpent" value="276311000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
@@ -918,8 +915,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="87" column="14" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
+        <state relative-caret-position="182">
+          <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
         </state>
       </provider>
     </entry>
