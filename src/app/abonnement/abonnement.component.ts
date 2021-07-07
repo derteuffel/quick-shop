@@ -44,12 +44,12 @@ export class AbonnementComponent implements OnInit {
 
     ];
 
-    this.form = new FormGroup(
+/*    this.form = new FormGroup(
       {
         longer: new FormControl(''),
         paiement: new FormControl('')
       }
-    )
+    )*/
     this.initForm();
 
     this.loadData();
@@ -75,14 +75,10 @@ export class AbonnementComponent implements OnInit {
   }
   /** ajouter un abonnement **/
   saveAbonnement() {
-    console.log(this.form.value);
-
-    console.log(this.abonnement);
-     this.abonnementService.saveAbon(this.abonnement).subscribe(
+     this.abonnementService.saveAbon(this.abonForm?.value).subscribe(
       (data: any) => {
-        //this.router.navigateByUrl('ecommerce/home');
-        this.abonForm.reset();
         this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
+        this.abonForm.reset();
         this.loadData();
 
       }, error => {
