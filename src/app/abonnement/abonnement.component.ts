@@ -57,6 +57,7 @@ export class AbonnementComponent implements OnInit {
 
   initForm(){
     this.abonForm = new FormGroup({
+      id: new FormControl(''),
       longer: new FormControl(''),
       paiement: new FormControl('')
 
@@ -90,27 +91,23 @@ export class AbonnementComponent implements OnInit {
 
 
   /** ajouter un abonnement **/
- /* saveAbonnement(data) {
-
-    console.log(data);
-    const formData = new FormData();
-    formData.append('startDate', data.startDate);
-    formData.append('endDate', data.endDate);
-    //formData.append('endDate', data.endDate);
-
-    formData.append('type', data.type);
-    console.log(formData);
+  saveAbon() {
 
     this.submitted = true;
-    this.abonnementService.saveAbon(formData).subscribe(
+    if(this.abonForm?.invalid){return;}
+
+    this.abonnementService.saveAbon(this.abonForm.value).subscribe(
       (data: any) => {
-        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
+        this.abonForm.reset();
+        console.log(this.abonForm.value);
+        this.messageService.add({severity:'success', summary:'Success', detail:'votre témoignage a été  soumit', sticky: true});
+        this.loadData();
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
     this.submitted = false;
-  }*/
+  }
 
   openModalAddAbon(contentAddAbon){
     this.modalService.open(contentAddAbon, { size: 'md' });

@@ -6,11 +6,13 @@ import {Role} from "../../models/role";
 import { SignUpInfo } from '../requests/signup-info';
 import { CustomerInfo } from '../requests/customer-info';
 import { MicrofinanceService } from 'src/app/services/microfinance.service';
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-singup-invester',
   templateUrl: './singup-invester.component.html',
-  styleUrls: ['./singup-invester.component.scss']
+  styleUrls: ['./singup-invester.component.scss'],
+  providers: [MessageService],
 })
 export class SingupInvesterComponent implements OnInit {
 
@@ -24,7 +26,8 @@ export class SingupInvesterComponent implements OnInit {
   communes: string[];
   activites: string[];
   constructor(private financeService: MicrofinanceService,
-              private router: Router) { }
+              private router: Router,
+              private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
@@ -38,9 +41,9 @@ export class SingupInvesterComponent implements OnInit {
 'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
 'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
 'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
- 
+
   }
-  
+
   onSubmit() {
     console.log(this.form);
 
@@ -58,20 +61,18 @@ export class SingupInvesterComponent implements OnInit {
         console.log(data);
         this.isSignedUp = true;
         if(this.signupInfo.paymentMethod === 'VB'){
-          console.log('Vous serez rediriger vers votre espace de paiement bancaire');
+          this.messageService.add({severity:'success', summary:'Success', detail:'votre demande a été  soumisse, veillez verifier votre boite email', sticky: true});
         }else if(this.signupInfo.paymentMethod === 'MM'){
-          console.log('vous serez rediriger vers votre espace de payement mobile');
+          this.messageService.add({severity:'success', summary:'Success', detail:'votre demande a été  soumisse, veillez verifier votre boite email', sticky: true});
         }else{
-          console.log('faite un versement de la somme preciser contre un recue de verification');
+          this.messageService.add({severity:'success', summary:'Success', detail:'votre demande a été  soumisse, veillez verifier votre boite email', sticky: true});
         }
-        this.errorMessage = 'Votre requete a ete soumise avec succes, vous serrez redirige vers votre page de paiement';
-        this.router.navigateByUrl('register/success');
-        //this.isSignUpFailed = false;
-        //this.router.navigateByUrl('login');
+        this.messageService.add({severity:'success', summary:'Success', detail:'votre demande a été  soumisse, veillez verifier votre boite email', sticky: true});
+
       },
       error => {
         console.log(error);
-        this.errorMessage = error.error.message;
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
         this.isSignUpFailed = true;
       }
     );
@@ -83,11 +84,21 @@ export class SingupInvesterComponent implements OnInit {
     }else{
       this.isChecked = false;
     }
-    
+
   }
 
   reloadPage() {
     this.router.navigateByUrl('/ecommerce/home');
   }
+
+
+  onReject() {
+    this.messageService.clear('c');
+  }
+
+  clear() {
+    this.messageService.clear();
+  }
+
 
 }

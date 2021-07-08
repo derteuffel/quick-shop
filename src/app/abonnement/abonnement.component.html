@@ -119,7 +119,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="abonForm" (submit)="saveAbonnement()" >
+    <form [formGroup]="abonForm" (submit)="saveAbon()" >
       <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un abonnement</h3>
 
 
@@ -155,7 +155,7 @@
 
 
 
-      <button type="submit" class="btn btn-block btn-success"  (click)="saveAbonnement()+modal.close('Close click')">Enregistrer</button>
+      <button type="submit" class="btn btn-block btn-success"  (click)="modal.close('Close click')">Enregistrer</button>
     </form>
 
   </div>
