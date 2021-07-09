@@ -18,41 +18,34 @@
 <section class="shop-services section home">
   <div class="container">
 
-    <!--<div class="row">
-      <div class="col-12">
-        <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Temoignages</h1>
-        </div>
-      </div>
-    </div>-->
     <br>&nbsp;
     <div class="row">
       <div class="col-lg-3 col-md-6 col-12">
         <div class="single-service">
-          <i class="ti-rocket"></i>
-          <h4>Commmerce et services</h4>
-          <p>renseignez-vous et accédez aux produits/services près de chez vous</p>
+          <i class="ti-rocket zigs"></i>
+          <h4 class="zigs" >Commmerce et services</h4>
+          <p class="zigs">renseignez-vous et accédez aux produits/services près de chez vous</p>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-12">
         <div class="single-service">
-          <i class="ti-reload"></i>
-          <h4>Encadremment et Coaching</h4>
-          <p>bourses d'études, services de formation et de coaching pret de chez vous</p>
+          <i class="ti-reload zigs"></i>
+          <h4 class="zigs" >Encadremment et Coaching</h4>
+          <p class="zigs">bourses d'études, services de formation et de coaching pret de chez vous</p>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-12">
         <div class="single-service">
-          <i class="ti-lock"></i>
-          <h4>investir dans la jeunesse</h4>
-          <p>Économisez avec Sayangana et soutenez les jeunes entrepreneurs et étudiants avec des prêts</p>
+          <i class="ti-lock zigs"></i>
+          <h4 class="zigs" >investir dans la jeunesse</h4>
+          <p class="zigs">Économisez avec Sayangana et soutenez les jeunes entrepreneurs et étudiants avec des prêts</p>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-12">
         <div class="single-service">
-          <i class="ti-tag"></i>
-          <h4>demander un prêt entreprise ou étudiant</h4>
-          <p>Pitch aux investisseurs près de chez vous</p>
+          <i class="ti-tag zigs"></i>
+          <h4 class="zigs" >demander un prêt entreprise ou étudiant</h4>
+          <p class="zigs">Pitch aux investisseurs près de chez vous</p>
         </div>
       </div>
     </div>
@@ -65,7 +58,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-lg-7 mx-auto text-center">
-        <span  style="font-size: 25px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Temoignages</span>
+        <span class="zigs"  style="font-size: 25px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Temoignages</span>
 
       </div>
     </div>
@@ -79,7 +72,7 @@
     <div class="row d-flex justify-content-center">
       <div class="col-md-10 col-lg-9 col-xl-8">
         <div class="card card-main border-0 text-center">
-          <h5 class="font-weight-bold mb-4">Ce que nos clients disent
+          <h5 class="font-weight-bold mb-4" class="zigs" >Ce que nos clients disent
             <br>de nous.</h5>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -91,7 +84,7 @@
               <div class="carousel-item " *ngFor="let testimonials of temoignages;let index = index;let isFirst = first" [ngClass]="{active:isFirst}">
                 <div class="card border-0 card-0">
                   <div class="card profile py-3 px-4">
-                    <div class="text-center"> <img src="https://i.imgur.com/oW8Wpwi.jpg" class="img-fluid profile-pic"> </div>
+                    <div class="text-center"> <img src="https://st.depositphotos.com/1060471/2586/i/950/depositphotos_25869479-stock-photo-fruit-display-at-the-market.jpg" class="img-fluid profile-pic"> </div>
                     <h6 class="mb-0 mt-2">{{testimonials.name}}</h6>
                   </div> <img class="img-fluid open-quotes" src="https://i.imgur.com/Hp91vdT.png" width="20" height="20">
                   <p class="content mb-0">{{testimonials.message}}</p> <img class="img-fluid close-quotes ml-auto" src="https://i.imgur.com/iPcHyJK.png" width="20" height="20">
@@ -103,27 +96,9 @@
       </div>
     </div>
   </div>
-  <!--<div class="container">
-    <div class="row" >
 
-      <div class="col-md-4" *ngFor="let testimonials of temoignages">
-
-        <div class="card d-flex mx-auto">
-          <div class="card-image"> <img class="img-fluid d-flex mx-auto" src="https://i.imgur.com/3TlwnLF.jpg"> </div>
-          <div class="card-text">
-            <div class="card-title"></div>
-            {{testimonials.message}}
-          </div>
-          <div class="footer"> <span id="name">{{testimonials.name}}<br></span> <span id="position"></span> </div>
-        </div>
-      </div>
-
-    </div>
-  </div>-->
 
 </section>
-<!-- End Testimoniale Area -->
-
 
 <br>
 
@@ -131,7 +106,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-lg-7 mx-auto text-center">
-        <span  style="font-size: 25px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Donnez Votre avis</span>
+        <span class="zigs" style="font-size: 25px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Donnez Votre avis</span>
           <div class="card-body p-4">
             <form [formGroup]="temoignageForm" (submit)="saveTemoignage()">
               <div class="form-group">
@@ -161,7 +136,7 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-block btn-success" >Valider</button>
+              <button type="submit" class="btn btn-block btn-success zigs" >Valider</button>
             </form>
           </div>
       </div>
