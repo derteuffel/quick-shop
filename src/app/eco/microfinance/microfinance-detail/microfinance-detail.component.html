@@ -9,12 +9,12 @@
           class="banner_content d-md-flex justify-content-between align-items-center"
         >
           <div class="mb-3 mb-md-0">
-            <h2>Detail d'un projet demandeur de credit</h2>
-            <p>Vous pouvez financer ce projet</p>
+            <h2 class="zigs">Detail d'un projet demandeur de credit</h2>
+            <p class="zigs">Vous pouvez financer ce projet</p>
           </div>
           <div class="page_link">
-            <a href="/">Accueil</a>
-            <a href="/ecommerce/microfinance/detail/{{currentMicroFinance.id}}">Detail du projet</a>
+            <a href="/" class="zigs">Accueil</a>
+            <a href="/ecommerce/microfinance/detail/{{currentMicroFinance.id}}" class="zigs">Detail du projet</a>
           </div>
         </div>
       </div>
@@ -75,45 +75,7 @@
   </div> <!-- row.// -->
 </main> <!-- card.// -->
 
-<!--<section class=" section home">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <h2 class="text-center">Donner votre avis</h2>
-        <div class="card mx-4">
-          <div class="card-body p-4">
-            <form [formGroup]="temoignageForm" (submit)="saveTemoignage()">
-              <div class="form-group">
-                <label class="text-muted">Email</label>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="pi pi-envelope "></i></span>
-                  </div>
-                  <input type="email" class="form-control" formControlName="email" />
-                </div>
-              </div>
 
-              <div class="form-group">
-                <label class="text-muted">Message</label>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                  </div>
-                  <textarea type="text"  rows="5" cols="55" formControlName="message">
-                  </textarea >
-                </div>
-              </div>
-
-              <button type="submit" class="btn btn-block btn-success" >Valider</button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</section>-->
 <app-footer></app-footer>
 
 
