@@ -1216,7 +1216,7 @@ Version:1.0
 }
 .hero-slider .single-slider {
   height: auto;
-  background-image: url('../images/items/home-page.png');
+  background-image: url('../images/femme.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1716,7 +1716,7 @@ Version:1.0
   display: inline-block;
   width: 100%;
   border:none;
-  
+
 }
 .product-area .nav-tabs .nav-item {
   margin-bottom: -1px;
