@@ -25,14 +25,13 @@ export class CoachingsSearchComponent implements OnInit {
       this.navigationParams = JSON.parse(params['values']);
     })
     console.log(this.navigationParams);
-    
-      console.log('je suis plutot la');
+
       this.loadSearchedCoaching(this.navigationParams);
-      this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+      this.types = ['Coaching', 'orkShop', 'Trainning', 'Conference', 'Call with a coach', 'Online coach meeting','In person consultation','Fellowship program','Exchange visit'];
       this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-        
-    this.init(); 
+
+    this.init();
   }
 
 

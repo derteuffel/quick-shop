@@ -31,7 +31,7 @@ export class ArticlesComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    //this.loadProducts();
+    this.loadProducts();
   }
 
  isEmpty(obj) {

@@ -18,7 +18,7 @@ export class MicrofinanceComponent implements OnInit {
   constructor(private loansService: LoansService) { }
 
   ngOnInit(): void {
-   // this.loadMicroFinancements();
+    this.loadMicroFinancements();
   }
 
   loadMicroFinancements() {

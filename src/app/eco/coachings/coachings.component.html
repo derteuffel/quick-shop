@@ -2,33 +2,29 @@
 
 <section class="hero-slider1 px-2">
 
-  <div class="single-slider1">
-    <div class="container">
-      <div class="row no-gutters">
-        <div class="col-lg-8 offset-lg-3 col-12">
-          <div class="text-inner">
-          </div>
-        </div>
-      </div>
+  <div class="container">
+    <img src="/assets/images/items/vert.jpeg" alt="Snow" style="width:100%;">
+
+    <div class="centered">
+      <h2 class="section-title" style="font: 3em Georgia, serif;">Encadrements et Coachings</h2>
     </div>
   </div>
 </section>
 
 <!-- Start Shop Blog  -->
-<section class="shop-blog section">
+<!--<section class="shop-blog section">
   <div class="container">
     <br>&nbsp;
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <!--<h1 class="text-center text-uppercase text-underline zigs">Encadrements et Coachings</h1>-->
         </div>
       </div>
     </div>
     <br>&nbsp;
     <div class="row">
       <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings | paginate: {itemsPerPage: 10, currentPage: p}">
-        <!-- Start Single Blog  -->
+        &lt;!&ndash; Start Single Blog  &ndash;&gt;
         <div class="shop-single-blog">
           <a href="/ecommerce/coaching/detail/{{coaching?.id}}">
             <img *ngIf="!coaching.logo" src="https://via.placeholder.com/370x300" alt="#">
@@ -40,7 +36,7 @@
             <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="more-btn">{{coaching?.amount+' '+coaching.devise}}</a>
           </div>
         </div>
-        <!-- End Single Blog  -->
+        &lt;!&ndash; End Single Blog  &ndash;&gt;
       </div>
     </div>
 
@@ -52,6 +48,6 @@
       </nav>
     </div>
   </div>
-</section>
+</section>-->
 <!-- End Shop Blog  -->
 <app-footer></app-footer>

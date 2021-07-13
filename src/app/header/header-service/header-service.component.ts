@@ -18,11 +18,11 @@ export class HeaderServiceComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+    this.types = ['Coaching', 'orkShop', 'Trainning', 'Conference', 'Call with a coach', 'Online coach meeting','In person consultation','Fellowship program','Exchange visit'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-    
-this.init(); 
+
+this.init();
   }
 
   selector(){
@@ -125,15 +125,15 @@ this.init();
   }
 
   onServiceSearch(){
-    
+
     const serviceNavigationExtras: NavigationExtras = {
       queryParams: {
         'values':JSON.stringify(this.serviceForm.value)
       }
     };
     console.log(this.serviceForm.value);
-    
-      
+
+
       this.router.navigate(['/ecommerce/services/search'], serviceNavigationExtras);
       this.clear();
   }
