@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts" afterDir="false" />
-    </list>
+    <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -31,7 +29,7 @@
       <file leaf-file-name="header-service.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
+            <state relative-caret-position="-406">
               <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
@@ -433,12 +431,12 @@
       <workItem from="1625853617791" duration="9519000" />
       <workItem from="1626112030398" duration="3801000" />
       <workItem from="1626161327643" duration="27000" />
-      <workItem from="1626167374275" duration="5409000" />
+      <workItem from="1626167374275" duration="5786000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301660000" />
+    <option name="totallyTimeSpent" value="302037000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
@@ -449,7 +447,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32686567" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32686567" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958949" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.34477612" />
@@ -935,7 +933,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
+        <state relative-caret-position="-406">
           <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
