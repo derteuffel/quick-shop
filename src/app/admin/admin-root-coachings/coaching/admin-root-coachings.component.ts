@@ -75,6 +75,7 @@ export class AdminRootCoachingsComponent implements OnInit {
       devise: new FormControl(''),
       startDate: new FormControl(null),
       description: new FormControl(''),
+      type: new FormControl(''),
 
 
     })
@@ -195,6 +196,7 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('province', this.form.get('province').value);
     formData.append('commune',this.form.get('commune').value);
     formData.append('startDate', this.form.get('startDate').value);
+    formData.append('type', this.form.get('type').value);
     formData.append('file', this.uploadedFile);
     console.log(formData);
 
@@ -245,7 +247,8 @@ export class AdminRootCoachingsComponent implements OnInit {
       amount: this.form.get('amount').value,
       devise: this.form.get('devise').value,
       startDate: this.form.get('startDate').value,
-      description: this.form.get('description').value
+      description: this.form.get('description').value,
+      type: this.form.get('type').value
     }
      this.coachingService.updateCoaching(updateForm).subscribe(
       (data: any) => {
