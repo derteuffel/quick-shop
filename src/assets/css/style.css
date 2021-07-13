@@ -4998,3 +4998,53 @@ p a .zigs {
 }
 
 
+/*=============================
+Mon CSS pour encadrement et
+coaching côté utilisateur
+===============================*/
+.hero-slider1 {
+  background: #fff;
+  overflow: hidden;
+}
+.hero-slider1 .single-slider1 {
+  height: auto;
+  background-image: url('../images/items/vert.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 610px;
+}
+
+
+/*=============================
+Mon CSS pour microcredit côté utilisateur
+===============================*/
+.hero-slider2 {
+  background: #fff;
+  overflow: hidden;
+}
+.hero-slider2 .single-slider2 {
+  height: auto;
+  background-image: url('../images/items/bleu.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 610px;
+}
+
+
+/*=============================
+Mon CSS pour produit côté utilisateur
+===============================*/
+.hero-slider3 {
+  background: #fff;
+  overflow: hidden;
+}
+.hero-slider3 .single-slider3 {
+  height: auto;
+  background-image: url('../images/items/orange.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 610px;
+}

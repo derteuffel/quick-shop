@@ -23,7 +23,7 @@ export class CoachingsComponent implements OnInit {
     if(this.isEmpty(this.navigationParams)){
       console.log('je suis la')
       this.loadCoachings();
-    }else{ 
+    }else{
       console.log('je suis plutot la');
       this.loadSearchedCoaching(this.navigationParams);
     }
@@ -32,12 +32,22 @@ export class CoachingsComponent implements OnInit {
   loadCoachings() {
     this.coachingService.getAllCoaching().subscribe(
       data => {
-        this.coachings = data; 
-        console.log(data);  
+        this.coachings = data;
+        console.log(data);
       },
       (error) => console.log(error)
     )
   }
+
+
+
+  isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 
   loadSearchedCoaching(form){
     this.coachingService.getAllCoachingSearch(form).subscribe(
@@ -50,13 +60,5 @@ export class CoachingsComponent implements OnInit {
       }
     );
   }
-
-  isEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
-    }
-    return true;
-}
 
 }

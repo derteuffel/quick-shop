@@ -1,16 +1,33 @@
 <app-header-finance></app-header-finance>
 
 
-<!-- Start Microfinancement -->
-<section class="shop-blog section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="section-title">
-          <h1 class="text-center zigs">Micro-Credits</h1>
+
+<!--<section class="hero-slider2 px-2">
+
+  <div class="single-slider2">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-lg-8 offset-lg-3 col-12">
+          <div class="text-inner">
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</section>-->
+<!-- Start Microfinancement -->
+
+<section class="shop-blog section">
+  <div class="container">
+    <br>&nbsp;
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <!--<h1 class="text-center text-uppercase text-underline zigs">Encadrements et Coachings</h1>-->
+        </div>
+      </div>
+    </div>
+    <br>&nbsp;
     <div class="row">
       <div class="col-lg-4 col-md-6 col-12" *ngFor="let m of lists | paginate: {itemsPerPage: 10, currentPage: p}">
         <!-- Start Single Blog  -->
@@ -31,6 +48,7 @@
         <!-- End Single Blog  -->
       </div>
     </div>
+
     <div class="card-footer py-4">
       <nav aria-label="...">
         <ul class="pagination justify-content-end mb-0">

@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ArticlesComponent implements OnInit {
 
 
-  
+
   products: Product[] = [];
   private shoppingCartOrders: ProductOrders;
   sub: Subscription;
@@ -31,7 +31,7 @@ export class ArticlesComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.loadProducts();
+    //this.loadProducts();
   }
 
  isEmpty(obj) {
@@ -74,9 +74,9 @@ export class ArticlesComponent implements OnInit {
     this.ecommerceService.getAllProducts()
       .subscribe(
         data => {
-          this.products = data; 
-        
-          console.log(data);  
+          this.products = data;
+
+          console.log(data);
         },
         (error) => console.log(error)
       );
