@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/items/bleu.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/items/orange.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/items/vert.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/articles/articles.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/articles/articles.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/articles/articles.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/articles/articles.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -30,16 +19,16 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="5041" column="1" lean-forward="true" selection-start-line="5041" selection-start-column="1" selection-end-line="5041" selection-end-column="1" />
+            <state relative-caret-position="86989">
+              <caret line="5041" column="1" selection-start-line="5041" selection-start-column="1" selection-end-line="5041" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="microfinance.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="microfinance.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
+            <state relative-caret-position="332">
               <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
@@ -51,7 +40,7 @@
       <file leaf-file-name="loans.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/loans.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
+            <state relative-caret-position="731">
               <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
             </state>
           </provider>
@@ -60,7 +49,7 @@
       <file leaf-file-name="articles.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/eco/articles/articles.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-537">
+            <state relative-caret-position="425">
               <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
@@ -72,8 +61,8 @@
       <file leaf-file-name="coachings.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coachings.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
-              <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+            <state relative-caret-position="34">
+              <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
               <folding>
                 <element signature="n#section#0;n#!!top" />
               </folding>
@@ -81,14 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="microfinance.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="microfinance.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="-467">
               <caret line="4" column="4" selection-start-line="4" selection-end-line="16" selection-end-column="13" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#section#1;n#!!top" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -238,6 +224,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,13 +264,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="eco" type="462c0819:PsiDirectoryNode" />
+              <item name="microfinance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="eco" type="462c0819:PsiDirectoryNode" />
               <item name="product" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -442,12 +436,13 @@
       <workItem from="1625693604981" duration="231000" />
       <workItem from="1625738315674" duration="1028000" />
       <workItem from="1625853617791" duration="9519000" />
-      <workItem from="1626112030398" duration="3798000" />
+      <workItem from="1626112030398" duration="3801000" />
+      <workItem from="1626161327643" duration="27000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="296221000" />
+    <option name="totallyTimeSpent" value="296251000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
@@ -458,7 +453,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32686567" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32686567" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958949" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.34477612" />
@@ -568,6 +563,23 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/footer/footer/footer.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -631,11 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
           <caret line="76" selection-start-line="76" selection-end-line="99" />
-          <folding>
-            <element signature="n#p-toast#1;n#!!top" />
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#ng-template#1;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -692,9 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-859" />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/models/product.model.ts">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-product/admin-root-product.component.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -780,9 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header/header.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/header/header/header.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
@@ -822,9 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
           <caret line="92" column="3" lean-forward="true" selection-start-line="92" selection-start-column="3" selection-end-line="92" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -860,14 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" selection-start-line="1" selection-end-line="13" selection-end-column="10" />
-          <folding>
-            <element signature="n#section#0;n#!!top" />
-            <element signature="n#section#2;n#!!top" />
-            <element signature="n#section#3;n#!!top" />
-            <element signature="n#section#4;n#!!top" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#section#4;n#!!top" expanded="true" />
-            <element signature="n#p-toast#1;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -875,11 +865,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="61" column="3" selection-start-line="61" selection-start-column="3" selection-end-line="61" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-            <element signature="n#!!block;n#loadCoachings#0;n#CoachingsComponent#0" />
-            <element signature="n#!!block;n#loadSearchedCoaching#0;n#CoachingsComponent#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -897,27 +882,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" selection-start-line="4" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#section#1;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="5041" column="1" lean-forward="true" selection-start-line="5041" selection-start-column="1" selection-end-line="5041" selection-end-column="1" />
+        <state relative-caret-position="86989">
+          <caret line="5041" column="1" selection-start-line="5041" selection-start-column="1" selection-end-line="5041" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coachings.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        <state relative-caret-position="34">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
           <folding>
             <element signature="n#section#0;n#!!top" />
           </folding>
@@ -926,7 +901,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/articles/articles.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-537">
+        <state relative-caret-position="425">
           <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
@@ -936,18 +911,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/loans.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
+        <state relative-caret-position="731">
           <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
+        <state relative-caret-position="332">
           <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-467">
+          <caret line="4" column="4" selection-start-line="4" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
