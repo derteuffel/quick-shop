@@ -89,6 +89,7 @@ export class CoachingDetailComponent implements OnInit {
       clientPhone: this.orderForm.get('phone').value,
       quantity: this.orderForm.get('quantity').value,
       paymentMode: this.orderForm.get('paymentMode').value,
+      lieuDeLivraison: this.orderForm.get('lieuDeLivraison').value,
       isCoaching: true
     }
     this.commandeService.saveCmd(formData, this.currentCoaching.id).subscribe(
