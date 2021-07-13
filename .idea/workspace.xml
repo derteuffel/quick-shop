@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/models/coaching.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/coaching.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -17,11 +16,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="admin-root-coachings.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin-root-coachings.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
-              <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header-service.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -120,7 +131,6 @@
         <option value="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.scss" />
         <option value="$PROJECT_DIR$/src/app/eco/coachings-search/coachings-search.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/articles/articles.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.scss" />
         <option value="$PROJECT_DIR$/src/app/eco/articles/articles.component.html" />
@@ -131,6 +141,7 @@
         <option value="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html" />
         <option value="$PROJECT_DIR$/src/app/models/coaching.ts" />
         <option value="$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts" />
       </list>
     </option>
   </component>
@@ -219,16 +230,22 @@
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="admin-root-coachings" type="462c0819:PsiDirectoryNode" />
-              <item name="coaching" type="462c0819:PsiDirectoryNode" />
+              <item name="eco" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="eco" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
+              <item name="header-service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
@@ -416,12 +433,12 @@
       <workItem from="1625853617791" duration="9519000" />
       <workItem from="1626112030398" duration="3801000" />
       <workItem from="1626161327643" duration="27000" />
-      <workItem from="1626167374275" duration="5233000" />
+      <workItem from="1626167374275" duration="5409000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301484000" />
+    <option name="totallyTimeSpent" value="301660000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
@@ -774,16 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
@@ -919,7 +926,17 @@
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
-          <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>

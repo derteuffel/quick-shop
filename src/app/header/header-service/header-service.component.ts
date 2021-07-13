@@ -18,7 +18,7 @@ export class HeaderServiceComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.types = ['Coaching', 'orkShop', 'Trainning', 'Conference', 'Call with a coach', 'Online coach meeting','In person consultation','Fellowship program','Exchange visit'];
+    this.types = ['Coaching', 'WorkShop', 'Trainning', 'Conference', 'Call with a coach', 'Online coach meeting','In person consultation','Fellowship program','Exchange visit'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
 
