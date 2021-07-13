@@ -76,6 +76,8 @@ export class AdminRootCoachingsComponent implements OnInit {
       startDate: new FormControl(null),
       description: new FormControl(''),
       type: new FormControl(''),
+      dateLimiteDenregistrement: new FormControl(''),
+      dateFinFormation: new FormControl(''),
 
 
     })
@@ -197,6 +199,8 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('commune',this.form.get('commune').value);
     formData.append('startDate', this.form.get('startDate').value);
     formData.append('type', this.form.get('type').value);
+    formData.append('dateFinFormation', this.form.get('dateFinFormation').value);
+    formData.append('dateLimiteDenregistrement', this.form.get('dateLimiteDenregistrement').value);
     formData.append('file', this.uploadedFile);
     console.log(formData);
 

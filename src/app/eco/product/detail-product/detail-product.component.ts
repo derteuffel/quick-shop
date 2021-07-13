@@ -98,6 +98,7 @@ export class DetailProductComponent implements OnInit {
       clientPhone: this.orderForm.get('phone').value,
       quantity: this.orderForm.get('quantity').value,
       paymentMode: this.orderForm.get('paymentMode').value,
+      lieuDeLivraison: this.orderForm.get('lieuDeLivraison').value,
       isProduit: true
     }
     this.commandeService.saveCmd(formData, this.currentProduct.id).subscribe(
