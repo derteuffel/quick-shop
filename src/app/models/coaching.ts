@@ -16,6 +16,7 @@ export class Coaching {
   creationDate: Date;
   startDate: Date;
   user: User;
+  type: string;
   sesions: SessionCoaching[];
 
 
