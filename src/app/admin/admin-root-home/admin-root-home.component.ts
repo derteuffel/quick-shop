@@ -69,9 +69,9 @@ export class AdminRootHome implements OnInit {
   ngOnInit(): void {
     console.log(this.authService.currentUserValue.role);
     this.categories = ['Produit agricole','Charbon','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Kintenges','Bags','Services de reparation','Charpenterie',
-  'Salon de beaute','Couture'];
+  'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie', 'Achats des pieces de rechanges'];
     
-    this.measures = ['Kilogramme','Litre', 'Boites', 'Piece','Sac','Prestation']
+    this.measures = ['KG','L', 'Btl', 'Pc','Sac','Prest']
     this.loadList();
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bunjumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -119,7 +119,7 @@ export class AdminRootHome implements OnInit {
         break;
       }
       case 'Telephone portable':{
-        this.names = ['Telephone portable'];
+        this.names = ['Telephone portable', 'Smart phone'];
         break;
       }
       case 'Kintenges':{
@@ -127,11 +127,11 @@ export class AdminRootHome implements OnInit {
         break;
       }
       case 'Bags':{
-        this.names = ['Bags'];
+        this.names = ['Sacs de classe','Sacs a main','Valises','Sacs de sports'];
         break;
       }
       case 'Services de reparation':{
-        this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette','Plannification d\'evenement','Decoration evenementiel','Dance de salon','Dj','Theatre','Peinture','Audiovisuel'];
+        this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
         break;
       }
 
@@ -147,6 +147,34 @@ export class AdminRootHome implements OnInit {
       case 'Couture':{
         this.names = ['Tissus costume (Achat)','Kitenges (Achat)','Imvutano (Achat)','Tissus costume (Couture)','Kitenges (Couture)','Pantalon (Couture)','Jupe (Couture)','Chemise (Couture)','Culotte (Couture)'];
         break;
+      }
+      case 'Services culturel et social' :{
+        this.names = ['Plannification d\'evenement','Decoration evenementiel','Dj','Theatre','Peinture',]
+      }
+
+      case 'Performance musicales' :{
+        this.names = ['Batteurs/Batteuses','Bande','Groupe d\'interprete','Chorale','Deejay','Quatuor','Orchestre','Solo','Autre']
+      }
+
+      case 'Danse':{
+        this.names = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
+      }
+      case 'Video production':{
+        this.names = ['Publicites','Documentaires','Evennementielle','Vlog', 'Autres'];
+      }
+      case 'Performance theatrales':{
+        this.names = ['Pieces','Sketches','Publicites','Commedies musicales', 'Autres'];
+      }
+
+      case 'Peintures':{
+        this.names = ['Paysages','Portrait','Abstraite', 'Autres'];
+      }
+      case 'Photographie':{
+        this.names = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
+      }
+
+      case 'Achats des pieces de rechanges':{
+        this.names = ['Motocyle', 'Vehicules', 'Camions'];
       }
 
     }
