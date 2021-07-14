@@ -167,8 +167,12 @@
                 </select>
               </div>
               <div class="form-group">
-                <label>Date de deroulement</label>
+                <label>Debut Formation</label>
                 <input type="date" class="form-control"  required formControlName="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" >
+              </div>
+              <div class="form-group">
+                <label>Fin Formation</label>
+                <input type="date" class="form-control"  required formControlName="dateFinFormation" placeholder="Date fin de coaching et/ou encadrement" >
               </div>
               <div class="form-group">
                 <label>Description</label>
@@ -240,8 +244,16 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>Titre</label>
-              <select formControlName="title" class="form-control" required  >
-                <option value="">-- Choisir un titre --</option>
+              <input type="text" class="form-control"required formControlName="title" placeholder="entrée le titre " >
+            </div>
+            <div class="form-group">
+              <label>Date limite d'enregistrement</label>
+              <input type="date" class="form-control"required formControlName="dateLimiteDenregistrement">
+            </div>
+            <div class="form-group">
+              <label>Type de Formation</label>
+              <select formControlName="type" class="form-control" required  >
+                <option value="">-- Choisir un type --</option>
                 <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
               </select>
             </div>
@@ -286,12 +298,20 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Date de deroulement</label>
+              <label>Debut Formation</label>
               <input type="date" class="form-control"  required formControlName="startDate" placeholder="Date de debut du service de coaching et/ou encadrement" >
+            </div>
+            <div class="form-group">
+              <label>Fin Formation</label>
+              <input type="date" class="form-control"  required formControlName="dateFinFormation" placeholder="Date fin de coaching et/ou encadrement" >
             </div>
             <div class="form-group">
               <label>Description</label>
               <textarea  rows="6" class="form-control" placeholder="description" formControlName="description" ></textarea>
+            </div>
+            <div class="form-group">
+              <label>Image de couverture</label>
+              <input type="file" class="form-control"  name="logo" (change)="onFilesSelect($event)"  placeholder="Image de profile" >
             </div>
           </div>
         </div>
