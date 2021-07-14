@@ -55,6 +55,11 @@
         <dl class="row">
           <dt class="col-sm-3">Catégorie</dt>
           <dd class="col-sm-9">{{currentProduct.category}}</dd>
+          <dt class="col-sm-3">Province</dt>
+          <dd class="col-sm-9">{{currentProduct.province}}</dd>
+
+          <dt class="col-sm-3">Commune</dt>
+          <dd class="col-sm-9">{{currentProduct.commune}}</dd>
 
           <dt class="col-sm-3">Disponibilité</dt>
           <dd class="col-sm-9 text-success" *ngIf="currentProduct.status">En Stock ( {{currentProduct.quantity+' '+currentProduct.measure}})</dd>
@@ -142,6 +147,17 @@
           <div class="form-group">
             <label>Lieu de Livraison</label>
             <input type="text" formControlName="lieuDeLivraison" class="form-control" placeholder="Lieu de livraison">
+          </div>
+          <div class="form-group">
+            <label>Date de Livraison</label>
+            <input type="date" formControlName="dateDeLivraison" class="form-control" placeholder="Date de livraison">
+          </div>
+          <div class="form-group">
+            <label>Heure de Livraison</label>
+            <select formControlName="heureDeLivraison" class="form-control"  id="">
+              <option value="">-- Choisir un interval de temps pour vous faire livree --</option>
+              <option *ngFor="let item of intervalsHours" value="{{item}}">{{item}}</option>
+            </select>
           </div>
 
         <div class="form-group">

@@ -187,6 +187,14 @@ export class AdminRootCoachingsComponent implements OnInit {
   saveCoaching() {
 
 
+    let startDate = this.form.get('startDate').value;
+    let endDate = this.form.get('dateFintFormation').value;
+    let endSubscribeDate = this.form.get('dateLimiteDenregistrement').value;
+    if(startDate.getTime() > endDate.getTime()){
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'The start date can not be greather than end date '});
+    }else if(endSubscribeDate.getTime() > startDate.getTime()){
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'The end subscribe date can not be greather than start date'});
+    }
     console.log(this.uploadedFile)
     const formData = new FormData();
     formData.append('title', this.form.get('title').value);
@@ -197,10 +205,10 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('devise', this.form.get('devise').value);
     formData.append('province', this.form.get('province').value);
     formData.append('commune',this.form.get('commune').value);
-    formData.append('startDate', this.form.get('startDate').value);
+    formData.append('startDate', startDate);
     formData.append('type', this.form.get('type').value);
-    formData.append('dateFinFormation', this.form.get('dateFinFormation').value);
-    formData.append('dateLimiteDenregistrement', this.form.get('dateLimiteDenregistrement').value);
+    formData.append('dateFinFormation', endDate);
+    formData.append('dateLimiteDenregistrement', endSubscribeDate);
     formData.append('file', this.uploadedFile);
     console.log(formData);
 
@@ -242,6 +250,14 @@ export class AdminRootCoachingsComponent implements OnInit {
 
   updateCoaching() {
 
+    let startDate = this.form.get('startDate').value;
+    let endDate = this.form.get('dateFintFormation').value;
+    let endSubscribeDate = this.form.get('dateLimiteDenregistrement').value;
+    if(startDate.getTime() > endDate.getTime()){
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'The start date can not be greather than end date '});
+    }else if(endSubscribeDate.getTime() > startDate.getTime()){
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'The end subscribe date can not be greather than start date'});
+    }
     console.log('je suis la');
     console.log(this.form.value);
     const updateForm = {
@@ -253,11 +269,11 @@ export class AdminRootCoachingsComponent implements OnInit {
       email: this.form.get('email').value,
       amount: this.form.get('amount').value,
       devise: this.form.get('devise').value,
-      startDate: this.form.get('startDate').value,
+      startDate: startDate,
       description: this.form.get('description').value,
       type: this.form.get('type').value,
-      dateLimiteDenregistrement: this.form.get('dateLimiteDenregistrement').value,
-      dateFinFormation: this.form.get('dateFinFormation').value
+      dateLimiteDenregistrement: endSubscribeDate,
+      dateFinFormation: endDate
     }
      this.coachingService.updateCoaching(updateForm).subscribe(
       (data: any) => {
