@@ -26,6 +26,7 @@ export class DetailProductComponent implements OnInit {
   productOrder: ProductOrder[] = [] ;
   sub: Subscription;
   products: Product[] = [];
+  intervalsHours : string[];
   productSelected: boolean = false;
   selectedProductOrder: ProductOrder;
   private shoppingCartOrders: ProductOrders;
@@ -46,6 +47,7 @@ export class DetailProductComponent implements OnInit {
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
     this.initForm();
     this.initForm2();
+    this.intervalsHours = ['07:00 am - 10:00 am','10:01 am - 1:00 pm ','1:01 pm - 4:00 pm','4:01 pm - 7:00 pm']
   }
 
 
@@ -78,6 +80,9 @@ export class DetailProductComponent implements OnInit {
       name: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
+      lieuLivraison: new FormControl(''),
+      dateLivraison: new FormControl(''),
+      heurelivraison: new FormControl(''),
       quantity: new FormControl(''),
       paymentMode: new FormControl('')
     });
@@ -98,7 +103,9 @@ export class DetailProductComponent implements OnInit {
       clientPhone: this.orderForm.get('phone').value,
       quantity: this.orderForm.get('quantity').value,
       paymentMode: this.orderForm.get('paymentMode').value,
-      lieuDeLivraison: this.orderForm.get('lieuDeLivraison').value,
+      lieuLivraison: this.orderForm.get('lieuLivraison').value,
+      heureLivraison: this.orderForm.get('heureLivraison').value,
+      dateLivraison: this.orderForm.get('dateLivraison').value,
       isProduit: true
     }
     this.commandeService.saveCmd(formData, this.currentProduct.id).subscribe(

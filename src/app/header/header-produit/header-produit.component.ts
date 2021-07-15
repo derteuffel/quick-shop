@@ -22,7 +22,8 @@ export class HeaderProduitComponent implements OnInit {
 
   ngOnInit(): void {
     this.types = ['Produit agricole','Charbon','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Kintenges','Bags','Services de reparation','Charpenterie',
-    'Salon de beaute','Couture', 'Télephonie'];
+      'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges'];
+
 
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -63,7 +64,7 @@ namesSelector(){
       break;
     }
     case 'Bags':{
-      this.names = ['Bags'];
+      this.names = ['Sacs de classe','Sacs a main','Valises','Sacs de sports'];
       break;
     }
     case 'Services de reparation':{
@@ -88,6 +89,21 @@ namesSelector(){
     case 'Télephonie': {
       this.names = ['Smart phone', 'Télephone fixe', 'Télephone de bureau', 'autre']
 
+    }
+    case 'Danse':{
+      this.names = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
+    }
+    case 'Video production':{
+      this.names = ['Publicites','Documentaires','Evennementielle','Vlog', 'Autres'];
+    }
+    case 'Performance theatrales':{
+      this.names = ['Pieces','Sketches','Publicites','Commedies musicales', 'Autres'];
+    }
+    case 'Peintures':{
+      this.names = ['Paysages','Portrait','Abstraite', 'Autres'];
+    }
+    case 'Photographie':{
+      this.names = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
     }
 
   }
