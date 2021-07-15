@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/vectors/Invest_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/vectors/Learn_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/vectors/Student_Loan_.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/vectors/Trade_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/vectors/Invest_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/product/products/products.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header/header-service/header-service.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/header-service/header-service.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header/header-service/header-service.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -31,10 +20,11 @@
       <file leaf-file-name="products.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
+            <state relative-caret-position="251">
+              <caret line="39" column="56" lean-forward="true" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#i#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#i#0;n#div#0;n#div#1;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#i#0;n#div#0;n#div#2;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#i#0;n#div#0;n#div#3;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
                 <element signature="n#section#3;n#!!top" />
@@ -446,12 +436,12 @@
       <workItem from="1626161327643" duration="27000" />
       <workItem from="1626167374275" duration="5786000" />
       <workItem from="1626199684514" duration="8547000" />
-      <workItem from="1626337640051" duration="3235000" />
+      <workItem from="1626337640051" duration="3847000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="313819000" />
+    <option name="totallyTimeSpent" value="314431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
@@ -995,10 +985,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/product/products/products.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
+        <state relative-caret-position="251">
+          <caret line="39" column="56" lean-forward="true" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
           <folding>
             <element signature="n#style#0;n#img#0;n#i#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#i#0;n#div#0;n#div#1;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#i#0;n#div#0;n#div#2;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#i#0;n#div#0;n#div#3;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
             <element signature="n#section#3;n#!!top" />
