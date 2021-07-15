@@ -58,6 +58,18 @@ export class AdminSidebarComponent implements OnInit {
           this.isLoans = true;
           break;
         }
+        case Role.LOANS_STUDENT: {
+          this.isLoans = true;
+          break;
+        }
+        case Role.LOANS_ENTERPRENER: {
+          this.isLoans = true;
+          break;
+        }
+        case Role.LOANS_INVESTOR: {
+          this.isLoans = true;
+          break;
+        }
         default: {
           this.isAdmin = true;
         }

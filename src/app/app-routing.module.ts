@@ -45,7 +45,7 @@ import {ProfileComponent} from "./admin/profile/profile.component";
 const routes: Routes = [
   {
     path: 'admin/home', component: AdminRootHome,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.ENTERPRENER,Role.CLIENT,Role.LOANS,Role.TRAINNER]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.ENTERPRENER,Role.CLIENT,Role.LOANS, , Role.LOANS_STUDENT, Role.LOANS_ENTERPRENER, Role.LOANS_INVESTOR, Role.TRAINNER]}
   },
 
 
@@ -115,11 +115,11 @@ const routes: Routes = [
   },
   {
     path: 'admin/loans/entrants', component: AdminLoansRequestComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS, Role.LOANS_STUDENT, Role.LOANS_ENTERPRENER, Role.LOANS_INVESTOR]}
   },
   {
     path: 'loans/requests', component: LoansRequestComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS, Role.LOANS_STUDENT, Role.LOANS_ENTERPRENER, Role.LOANS_INVESTOR]}
   },
 
   {
@@ -190,7 +190,7 @@ const routes: Routes = [
 
   {
     path: 'profile', component: ProfileComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER,Role.ENTERPRENER,Role.CLIENT,Role.LOANS]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER,Role.ENTERPRENER,Role.CLIENT,Role.LOANS, , Role.LOANS_STUDENT, Role.LOANS_ENTERPRENER, Role.LOANS_INVESTOR]}
   },
 
 

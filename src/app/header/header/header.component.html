@@ -21,8 +21,14 @@
                   <a ngbDropdownItem href="ecommerce/register/client" class="header zigs">Client</a>
                   <a ngbDropdownItem href="ecommerce/register/entreprener" class="header zigs">Entrepreneur</a>
                   <a ngbDropdownItem href="ecommerce/register/coaching" class="header zigs">Encadrement/Coaching</a>
-                  <a ngbDropdownItem href="ecommerce/register/loans" class="header zigs">Micro-Credit</a>
-                  <a ngbDropdownItem href="ecommerce/register/invester" class="header zigs">Investisseur</a>
+                  <div ngbDropdown> <a id="dropdownBasic1"  class="header zigs" ngbDropdownToggle>Micro-Credit</a>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <a ngbDropdownItem href="ecommerce/register/loans?type=etudiant" class="header zigs">Etudiant</a>
+                      <a ngbDropdownItem href="ecommerce/register/loans?type=entreprener" class="header zigs">Entrepreneur</a>
+                      <a ngbDropdownItem href="ecommerce/register/loans?type=investisseur" class="header zigs">Investisseur</a>
+                    </div>
+                  </div>
+                  <!--<a ngbDropdownItem href="ecommerce/register/invester" class="header zigs">Investisseur</a>-->
                 </div>
               </li>
 

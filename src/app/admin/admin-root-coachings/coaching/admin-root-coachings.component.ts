@@ -55,7 +55,7 @@ export class AdminRootCoachingsComponent implements OnInit {
     this.initForm();
     this.primengConfig.ripple = true;
     this.loadData();
-    this.types = ['Encadrement', 'Atelier', 'Formation', 'Conférence', 'Appel avec un coach', 'Reunion de coach en ligne','Consultaton en personne','Programme de bourse'];
+    this.types = ['Appele avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
   }
@@ -75,6 +75,9 @@ export class AdminRootCoachingsComponent implements OnInit {
       devise: new FormControl(''),
       startDate: new FormControl(null),
       description: new FormControl(''),
+      type: new FormControl(''),
+      dateLimiteDenregistrement: new FormControl(''),
+      dateFinFormation: new FormControl(''),
 
 
     })
@@ -195,6 +198,9 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('province', this.form.get('province').value);
     formData.append('commune',this.form.get('commune').value);
     formData.append('startDate', this.form.get('startDate').value);
+    formData.append('type', this.form.get('type').value);
+    formData.append('dateFinFormation', this.form.get('dateFinFormation').value);
+    formData.append('dateLimiteDenregistrement', this.form.get('dateLimiteDenregistrement').value);
     formData.append('file', this.uploadedFile);
     console.log(formData);
 
@@ -226,7 +232,10 @@ export class AdminRootCoachingsComponent implements OnInit {
       amount: event.amount,
       devise: event.devise,
       startDate: event.startDate,
-      description: event.description
+      type: event.type,
+      description: event.description,
+      dateFinFormation: event.dateFinFormation,
+      dateLimiteDenregistrement: event.dateLimiteDenregistrement
     })
 
   }
@@ -245,7 +254,10 @@ export class AdminRootCoachingsComponent implements OnInit {
       amount: this.form.get('amount').value,
       devise: this.form.get('devise').value,
       startDate: this.form.get('startDate').value,
-      description: this.form.get('description').value
+      description: this.form.get('description').value,
+      type: this.form.get('type').value,
+      dateLimiteDenregistrement: this.form.get('dateLimiteDenregistrement').value,
+      dateFinFormation: this.form.get('dateFinFormation').value
     }
      this.coachingService.updateCoaching(updateForm).subscribe(
       (data: any) => {
