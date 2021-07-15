@@ -25,7 +25,7 @@ import {AbonnementService} from "../../services/abonnement.service";
   providers: [MessageService],
 })
 export class AdminRootHome implements OnInit {
-  
+
 
   message: string;
   loading = true;
@@ -69,13 +69,13 @@ export class AdminRootHome implements OnInit {
   ngOnInit(): void {
     console.log(this.authService.currentUserValue.role);
     this.categories = ['Produit agricole','Charbon','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Kintenges','Bags','Services de reparation','Charpenterie',
-  'Salon de beaute','Couture'];
-    
+      'Salon de beaute','Couture', 'Télephonie','Painting', 'Photography'];
+
     this.measures = ['Kilogramme','Litre', 'Boites', 'Piece','Sac','Prestation']
     this.loadList();
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bunjumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-    
+
     this.initForm();
 
     if (this.authService.currentUserValue.token) {
@@ -127,7 +127,7 @@ export class AdminRootHome implements OnInit {
         break;
       }
       case 'Bags':{
-        this.names = ['Bags'];
+        this.names = ['School bags', 'Purses','Suitcases', 'Sports bags'];
         break;
       }
       case 'Services de reparation':{
@@ -147,6 +147,19 @@ export class AdminRootHome implements OnInit {
       case 'Couture':{
         this.names = ['Tissus costume (Achat)','Kitenges (Achat)','Imvutano (Achat)','Tissus costume (Couture)','Kitenges (Couture)','Pantalon (Couture)','Jupe (Couture)','Chemise (Couture)','Culotte (Couture)'];
         break;
+      }
+
+      case 'Télephonie': {
+        this.names = ['Smart phone', 'Télephone fixe', 'Télephone de bureau', 'autre']
+
+      }
+      case 'Painting': {
+        this.names = ['Landscape', 'Portraits', 'Abstract', 'Other']
+
+      }
+      case 'Photography': {
+        this.names = ['Photodocumentary', 'Photostock', 'Event coverage', 'Portraits','Passport photos', 'Other']
+
       }
 
     }
@@ -409,7 +422,7 @@ export class AdminRootHome implements OnInit {
     this.modalService.open(contentAddAbon, { size: 'lg' });
   }
 
-  
+
 
 
 }

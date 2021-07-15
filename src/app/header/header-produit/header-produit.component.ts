@@ -22,7 +22,7 @@ export class HeaderProduitComponent implements OnInit {
 
   ngOnInit(): void {
     this.types = ['Produit agricole','Charbon','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Kintenges','Bags','Services de reparation','Charpenterie',
-    'Salon de beaute','Couture', 'Télephonie'];
+    'Salon de beaute','Couture', 'Télephonie','Painting', 'Photography'];
 
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -63,7 +63,7 @@ namesSelector(){
       break;
     }
     case 'Bags':{
-      this.names = ['Bags'];
+      this.names = ['School bags', 'Purses','Suitcases', 'Sports bags'];
       break;
     }
     case 'Services de reparation':{
@@ -87,6 +87,14 @@ namesSelector(){
 
     case 'Télephonie': {
       this.names = ['Smart phone', 'Télephone fixe', 'Télephone de bureau', 'autre']
+
+    }
+    case 'Painting': {
+      this.names = ['Landscape', 'Portraits', 'Abstract', 'Other']
+
+    }
+    case 'Photography': {
+      this.names = ['Photodocumentary', 'Photostock', 'Event coverage', 'Portraits','Passport photos', 'Other']
 
     }
 
