@@ -55,7 +55,7 @@ export class AdminRootCoachingsComponent implements OnInit {
     this.initForm();
     this.primengConfig.ripple = true;
     this.loadData();
-    this.types = ['Call with a coach', 'Coaching online', 'In person consultation meeting', 'In person coaching meeting', 'Workshop', 'Training','Conference','Fellowship Program','Exchange visit'];
+    this.types = ['Appele avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
   }
