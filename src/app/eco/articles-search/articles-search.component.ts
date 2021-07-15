@@ -106,32 +106,40 @@ this.init();
         break;
       }
       case 'Services culturel et social' :{
-        this.names = ['Plannification d\'evenement','Decoration evenementiel','Dj','Theatre','Peinture',]
+        this.names = ['Plannification d\'evenement','Decoration evenementiel','Dj','Theatre','Peinture',];
+        break;
       }
   
       case 'Performance musicales' :{
-        this.names = ['Batteurs/Batteuses','Bande','Groupe d\'interprete','Chorale','Deejay','Quatuor','Orchestre','Solo','Autre']
+        this.names = ['Batteurs/Batteuses','Bande','Groupe d\'interprete','Chorale','Deejay','Quatuor','Orchestre','Solo','Autre'];
+        break;
       }
   
       case 'Danse':{
         this.names = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
+        break;
       }
       case 'Video production':{
         this.names = ['Publicites','Documentaires','Evennementielle','Vlog', 'Autres'];
+        break;
       }
       case 'Performance theatrales':{
         this.names = ['Pieces','Sketches','Publicites','Commedies musicales', 'Autres'];
+        break;
       }
   
       case 'Peintures':{
         this.names = ['Paysages','Portrait','Abstraite', 'Autres'];
+        break;
       }
       case 'Photographie':{
         this.names = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
+        break;
       }
   
       case 'Achats des pieces de rechanges':{
         this.names = ['Motocyle', 'Vehicules', 'Camions'];
+        break;
       }
     }
   

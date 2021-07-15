@@ -31,12 +31,17 @@
             <i class="ni ni-money-coins"></i> Investissements
           </a>
         </li>
+        <li *ngIf="isInvestor" class="nav-item">
+          <a class="nav-link" href="/loans/inputs">
+            <i class="ni ni-money-coins"></i> Investissements
+          </a>
+        </li>
         <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link" href="/admin/loans/entrants">
             <i class="ni ni-money-coins"></i> Demandes de micros-financements
           </a>
         </li>
-        <li *ngIf="isLoans" class="nav-item">
+        <li *ngIf="isLoans || isEntreprener" class="nav-item">
           <a class="nav-link" href="/loans/requests">
             <i class="fa fa-bars"></i> Mes demandes de financements
           </a>

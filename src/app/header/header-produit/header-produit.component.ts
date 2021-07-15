@@ -87,23 +87,37 @@ namesSelector(){
     }
 
     case 'Télephonie': {
-      this.names = ['Smart phone', 'Télephone fixe', 'Télephone de bureau', 'autre']
+      this.names = ['Smart phone', 'Télephone fixe', 'Télephone de bureau', 'autre'];
+      break;
 
     }
     case 'Danse':{
       this.names = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
+      break;
     }
     case 'Video production':{
       this.names = ['Publicites','Documentaires','Evennementielle','Vlog', 'Autres'];
+      break;
     }
     case 'Performance theatrales':{
       this.names = ['Pieces','Sketches','Publicites','Commedies musicales', 'Autres'];
+      break;
+    }
+    case 'Performance musicales':{
+      this.names = ['Pieces','Sketches','Publicites','Commedies musicales', 'Autres'];
+      break;
     }
     case 'Peintures':{
       this.names = ['Paysages','Portrait','Abstraite', 'Autres'];
+      break;
     }
     case 'Photographie':{
       this.names = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
+      break;
+    }
+    case 'Services culturel et social':{
+      this.names = ['Plannification d\'evenement','Decoration evenementiel'];
+      break;
     }
 
   }

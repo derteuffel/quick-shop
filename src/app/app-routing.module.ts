@@ -39,13 +39,14 @@ import {AbonnementComponent} from "./abonnement/abonnement.component";
 
 import { ActivationComponent } from './auth/activation/activation.component';
 import {ProfileComponent} from "./admin/profile/profile.component";
+import { LoansInputsComponent } from './loans/loans-inputs/loans-inputs.component';
 
 
 
 const routes: Routes = [
   {
     path: 'admin/home', component: AdminRootHome,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.ENTERPRENER,Role.CLIENT,Role.LOANS, , Role.LOANS_STUDENT, Role.LOANS_ENTERPRENER, Role.LOANS_INVESTOR, Role.TRAINNER]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.ENTERPRENER,Role.CLIENT,Role.LOANS]}
   },
 
 
@@ -114,12 +115,16 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
+    path: 'loans/inputs', component: LoansInputsComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.INVESTOR]}
+  },
+  {
     path: 'admin/loans/entrants', component: AdminLoansRequestComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS, Role.LOANS_STUDENT, Role.LOANS_ENTERPRENER, Role.LOANS_INVESTOR]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
     path: 'loans/requests', component: LoansRequestComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS, Role.LOANS_STUDENT, Role.LOANS_ENTERPRENER, Role.LOANS_INVESTOR]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS, Role.ENTERPRENER]}
   },
 
   {
@@ -190,7 +195,7 @@ const routes: Routes = [
 
   {
     path: 'profile', component: ProfileComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER,Role.ENTERPRENER,Role.CLIENT,Role.LOANS, , Role.LOANS_STUDENT, Role.LOANS_ENTERPRENER, Role.LOANS_INVESTOR]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER,Role.ENTERPRENER,Role.CLIENT,Role.LOANS,  Role.INVESTOR]}
   },
 
 

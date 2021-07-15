@@ -26,7 +26,7 @@ export class SingupLoansComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Education', 'Offre d\'emploi','Autres'];
+    
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
     
@@ -157,13 +157,10 @@ export class SingupLoansComponent implements OnInit {
                     if(params.type!=null && params.type!=undefined){
                         switch(params.type){
                             case 'etudiant':
-                                role = 'LOANS_STUDENT';
-                                break;
-                            case 'entreprener':
-                                role = 'LOANS_ENTERPRENER';
+                                role = 'LOANS';
                                 break;
                             case 'investisseur':
-                                role = 'LOANS_INVESTOR';
+                                role = 'INVESTOR';
                                 break;
                         }
                     }
@@ -179,9 +176,6 @@ export class SingupLoansComponent implements OnInit {
                 switch(params.type){
                     case 'etudiant':
                         texte = 'Etudiant';
-                        break;
-                    case 'entreprener':
-                        texte = 'Entrepreneur';
                         break;
                     case 'investisseur':
                         texte = 'Investisseur';

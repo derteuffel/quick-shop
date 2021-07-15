@@ -48,7 +48,6 @@ import { CoachingDetailComponent } from './eco/coachings/coaching-detail/coachin
 import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
 import { MicrofinanceDetailComponent } from './eco/microfinance/microfinance-detail/microfinance-detail.component';
 import { MicrofinanceComponent } from './eco/microfinance/microfinance.component';
-import { LoansSortantComponent } from './loans/loans-sortant/loans-sortant.component';
 import { HeaderProduitComponent } from './header/header-produit/header-produit.component';
 import { HeaderServiceComponent } from './header/header-service/header-service.component';
 import { HeaderFinanceComponent } from './header/header-finance/header-finance.component';
@@ -75,6 +74,7 @@ import { AbonnementComponent } from './abonnement/abonnement.component';
 import { ActivationComponent } from './auth/activation/activation.component';
 import { ProfileComponent } from './admin/profile/profile.component';
 import { TemoignageComponent } from './temoignage/temoignage.component';
+import { LoansInputsComponent } from './loans/loans-inputs/loans-inputs.component';
 
 
 
@@ -113,7 +113,7 @@ import { TemoignageComponent } from './temoignage/temoignage.component';
     LoansRequestComponent,
     MicrofinanceDetailComponent,
     MicrofinanceComponent,
-    LoansSortantComponent,
+    LoansInputsComponent,
     HeaderProduitComponent,
     HeaderServiceComponent,
     HeaderFinanceComponent,
