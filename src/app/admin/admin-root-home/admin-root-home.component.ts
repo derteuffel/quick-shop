@@ -68,9 +68,8 @@ export class AdminRootHome implements OnInit {
 
   ngOnInit(): void {
     console.log(this.authService.currentUserValue.role);
-    this.categories = ['Produit agricole','Charbon','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Kintenges','Bags','Services de reparation','Charpenterie',
-  'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie', 'Achats des pieces de rechanges'];
-    
+  this.categories = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
+  'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges'];
     this.measures = ['KG','L', 'Btl', 'Pc','Sac','Prest']
     this.loadList();
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bunjumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
@@ -93,27 +92,26 @@ export class AdminRootHome implements OnInit {
 
   }
 
-
   namesSelector(){
     switch(this.productForm.get('category').value){
       case 'Produit agricole':{
         this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre'];
         break;
       }
-      case 'Charbon':{
-        this.names = ['Charbon'];
+      case 'Energie':{
+        this.names = ['Installation des systemes d\'electricite','Paiement des factures d\'electricite','Conter un electricien','Acheter un generateur','Acheter du Gaz','Recharge gaz','Acheter du charbon'];
         break;
       }
       case 'Secteur Agroalimentaire':{
         this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Jus','Lait','Yaourt','Pate de tomate','Confiture','Miel','Huile de palm'];
         break;
       }
-
+  
       case 'Betails':{
         this.names = ['Porc', 'Chevre','Lapins','Vaches','Poulets'];
         break;
       }
-
+  
       case 'Peches':{
         this.names = ['Capitain','Tilapia','Sangala','Mukeke','Ndagala','Kuhe','Ndagala fume'];
         break;
@@ -122,10 +120,7 @@ export class AdminRootHome implements OnInit {
         this.names = ['Telephone portable', 'Smart phone'];
         break;
       }
-      case 'Kintenges':{
-        this.names = ['Kitenges'];
-        break;
-      }
+      
       case 'Bags':{
         this.names = ['Sacs de classe','Sacs a main','Valises','Sacs de sports'];
         break;
@@ -134,12 +129,12 @@ export class AdminRootHome implements OnInit {
         this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
         break;
       }
-
+  
       case 'Charpenterie':{
         this.names = ['Chaise de salon','Chaise de salle a mange','Table d\'etude','Table de salon','Table salle a mange','Bureau pour Enseignant','Placard a vetement','Armoire de salon','Etagere a livres'];
         break;
       }
-
+  
       case 'Salon de beaute':{
         this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe',''];
         break;
@@ -149,37 +144,45 @@ export class AdminRootHome implements OnInit {
         break;
       }
       case 'Services culturel et social' :{
-        this.names = ['Plannification d\'evenement','Decoration evenementiel','Dj','Theatre','Peinture',]
+        this.names = ['Plannification d\'evenement','Decoration evenementiel','Dj','Theatre','Peinture',];
+        break;
       }
-
+  
       case 'Performance musicales' :{
-        this.names = ['Batteurs/Batteuses','Bande','Groupe d\'interprete','Chorale','Deejay','Quatuor','Orchestre','Solo','Autre']
+        this.names = ['Batteurs/Batteuses','Bande','Groupe d\'interprete','Chorale','Deejay','Quatuor','Orchestre','Solo','Autre'];
+        break;
       }
-
+  
       case 'Danse':{
         this.names = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
+        break;
       }
       case 'Video production':{
         this.names = ['Publicites','Documentaires','Evennementielle','Vlog', 'Autres'];
+        break;
       }
       case 'Performance theatrales':{
         this.names = ['Pieces','Sketches','Publicites','Commedies musicales', 'Autres'];
+        break;
       }
-
+  
       case 'Peintures':{
         this.names = ['Paysages','Portrait','Abstraite', 'Autres'];
+        break;
       }
       case 'Photographie':{
         this.names = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
+        break;
       }
-
+  
       case 'Achats des pieces de rechanges':{
         this.names = ['Motocyle', 'Vehicules', 'Camions'];
+        break;
       }
-
     }
-
+  
   }
+  
 
   selector(){
     console.log('je suis la')
