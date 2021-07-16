@@ -34,11 +34,19 @@ export class AbonnementService {
     return this.http.get(API.ABONNEMENT,  {headers: this.headers});
   }
 
+  getByUser(id){
+    return this.http.get(API.ABONNEMENT+'/user/'+id, {headers: this.headers});
+  }
+
   // enregistrer un abonnement
 
   saveAbon(form): Observable<any> {
     console.log(form);
-    return this.http.post(`${API.ABONNEMENT}`, form, {headers: this.formHeaders});
+    return this.http.post(`${API.ABONNEMENT}/create`, form, {headers: this.formHeaders});
+  }
+
+  saveAbonnementUser(form, id){
+    return this.http.post(API.ABONNEMENT+'/create/user/'+id, form, {headers: this.formHeaders});
   }
 
   // mettre à jour  un abonnement

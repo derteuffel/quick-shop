@@ -39,7 +39,7 @@ export class ArticlesSearchComponent implements OnInit {
       this.navigationParams = JSON.parse(params['values']);
     })
 
-    this.types = ['Produit agricole','Charbon','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Kintenges','Bags','Services de reparation','Charpenterie',
+    this.types = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
   'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges'];
     // this.navigationParams = this.localisation.getState();
     console.log(this.navigationParams);
@@ -57,8 +57,8 @@ this.init();
         this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre'];
         break;
       }
-      case 'Charbon':{
-        this.names = ['Charbon'];
+      case 'Energie':{
+        this.names = ['Installation des systemes d\'electricite','Paiement des factures d\'electricite','Conter un electricien','Acheter un generateur','Acheter du Gaz','Recharge gaz','Acheter du charbon'];
         break;
       }
       case 'Secteur Agroalimentaire':{
@@ -76,13 +76,10 @@ this.init();
         break;
       }
       case 'Telephone portable':{
-        this.names = ['Telephone portable', 'Smart phone'];
+        this.names = ['Telephone portable', 'Telephone Android'];
         break;
       }
-      case 'Kintenges':{
-        this.names = ['Kitenges'];
-        break;
-      }
+      
       case 'Bags':{
         this.names = ['Sacs de classe','Sacs a main','Valises','Sacs de sports'];
         break;
@@ -106,32 +103,40 @@ this.init();
         break;
       }
       case 'Services culturel et social' :{
-        this.names = ['Plannification d\'evenement','Decoration evenementiel','Dj','Theatre','Peinture',]
+        this.names = ['Plannification d\'evenement','Decoration evenementiel','Dj','Theatre','Peinture',];
+        break;
       }
   
       case 'Performance musicales' :{
-        this.names = ['Batteurs/Batteuses','Bande','Groupe d\'interprete','Chorale','Deejay','Quatuor','Orchestre','Solo','Autre']
+        this.names = ['Batteurs/Batteuses','Bande','Groupe d\'interprete','Chorale','Deejay','Quatuor','Orchestre','Solo','Autre'];
+        break;
       }
   
       case 'Danse':{
         this.names = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
+        break;
       }
       case 'Video production':{
         this.names = ['Publicites','Documentaires','Evennementielle','Vlog', 'Autres'];
+        break;
       }
       case 'Performance theatrales':{
         this.names = ['Pieces','Sketches','Publicites','Commedies musicales', 'Autres'];
+        break;
       }
   
       case 'Peintures':{
         this.names = ['Paysages','Portrait','Abstraite', 'Autres'];
+        break;
       }
       case 'Photographie':{
         this.names = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
+        break;
       }
   
       case 'Achats des pieces de rechanges':{
         this.names = ['Motocyle', 'Vehicules', 'Camions'];
+        break;
       }
     }
   

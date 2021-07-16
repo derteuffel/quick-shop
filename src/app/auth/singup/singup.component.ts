@@ -149,7 +149,7 @@ export class SingupComponent implements OnInit {
       this.form.phone,
       this.form.birthDate,
       null,
-      this.form.secteurActivite,
+      this.form.secteur+', '+this.form.secteurActivite,
       this.form.password,      
       'ENTERPRENER',
       '');

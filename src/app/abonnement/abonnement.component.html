@@ -129,7 +129,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fa fa-clock"></i></span>
           </div>
-          <select   class="form-control" formControlName="longer">
+          <select   class="form-control" formControlName="longer" [(ngModel)]="currentLonger">
             <option value="" disabled>-- Choisissez une duree d'abonnement --</option>
             <option *ngFor="let item of longers" value="{{item}}">{{item}}</option>
           </select>
@@ -153,7 +153,11 @@
         </div>
       </div>
 
-
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <input  type="hidden" class="form-control" formControlName="duree" [value]="getDuree()">
+        </div>
+      </div>
 
       <button type="submit" class="btn btn-block btn-success"  (click)="modal.close('Close click')">Enregistrer</button>
     </form>

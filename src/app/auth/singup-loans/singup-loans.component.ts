@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Role} from "../../models/role";
 import {AuthService} from "../auth.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthLoginInfo} from "../requests/login-info";
 import { SignUpInfo } from '../requests/signup-info';
 
@@ -20,11 +20,13 @@ export class SingupLoansComponent implements OnInit {
   provinces: string[];
   communes: string[];
   activites: string[];
+  type:string = null;
   constructor(private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Education', 'Offre d\'emploi','Autres'];
+    
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
     
@@ -127,7 +129,7 @@ export class SingupLoansComponent implements OnInit {
       this.form.idNumber,
       this.form.secteurActivite,
       this.form.password,
-      'LOANS',
+      this.getRole(),
       '');
 
       console.log(this.signupInfo);
@@ -146,5 +148,42 @@ export class SingupLoansComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+  }
+
+  getRole():string{
+      let role:string = 'LOANS';
+      this.route.queryParams
+                .subscribe(params=>{
+                    if(params.type!=null && params.type!=undefined){
+                        switch(params.type){
+                            case 'etudiant':
+                                role = 'LOANS';
+                                break;
+                            case 'investisseur':
+                                role = 'INVESTOR';
+                                break;
+                        }
+                    }
+                });
+      return role;
+  }
+
+  getUserText():string{
+    let texte:string = '';
+    this.route.queryParams
+        .subscribe(params=>{
+            if(params.type!=null && params.type!=undefined){
+                switch(params.type){
+                    case 'etudiant':
+                        texte = 'Etudiant';
+                        break;
+                    case 'investisseur':
+                        texte = 'Investisseur';
+                        break;
+                }
+            }
+        });
+    console.log('##### texte = '+texte);
+    return texte;
   }
 }
