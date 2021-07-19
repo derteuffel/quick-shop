@@ -45,7 +45,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('ecommerce/services');
   }
 
-  getFinancePage(){
+  getInvestPage(){
+    this.router.navigateByUrl('ecommerce/invests');
+  }
+
+  getLoansPage(){
     this.router.navigateByUrl('ecommerce/finances');
   }
 

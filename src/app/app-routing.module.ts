@@ -40,6 +40,7 @@ import {AbonnementComponent} from "./abonnement/abonnement.component";
 import { ActivationComponent } from './auth/activation/activation.component';
 import {ProfileComponent} from "./admin/profile/profile.component";
 import { LoansInputsComponent } from './loans/loans-inputs/loans-inputs.component';
+import { InvestComponent } from './eco/invest/invest.component';
 
 
 
@@ -99,6 +100,9 @@ const routes: Routes = [
 
   {
     path: 'ecommerce/finances', component: MicrofinanceComponent
+  },
+  {
+    path: 'ecommerce/invests', component: InvestComponent
   },
   {
     path: 'ecommerce/product/detail/:id', component: DetailProductComponent

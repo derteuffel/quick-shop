@@ -52,7 +52,7 @@ this.init();
   }
 
   namesSelector(){
-    switch(this.produitForm.get('secteurActivite').value){
+    switch(this.produitForm.get('category').value){
       case 'Produit agricole':{
         this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre'];
         break;
@@ -76,7 +76,7 @@ this.init();
         break;
       }
       case 'Telephone portable':{
-        this.names = ['Telephone portable', 'Telephone Android'];
+        this.names = ['Telephone portable', 'Smart phone'];
         break;
       }
       
@@ -85,7 +85,7 @@ this.init();
         break;
       }
       case 'Services de reparation':{
-        this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
+        this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Reparation Bateaux','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
         break;
       }
   
@@ -95,7 +95,7 @@ this.init();
       }
   
       case 'Salon de beaute':{
-        this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe',''];
+        this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe','Maquillage','Pedicure','Manucure'];
         break;
       }
       case 'Couture':{
@@ -103,12 +103,12 @@ this.init();
         break;
       }
       case 'Services culturel et social' :{
-        this.names = ['Plannification d\'evenement','Decoration evenementiel','Dj','Theatre','Peinture',];
+        this.names = ['Plannification d\'evenement','Decoration evenementiel','Maitre de ceremonie','Traducteur'];
         break;
       }
   
       case 'Performance musicales' :{
-        this.names = ['Batteurs/Batteuses','Bande','Groupe d\'interprete','Chorale','Deejay','Quatuor','Orchestre','Solo','Autre'];
+        this.names = ['Tambourinaire','Groupe acoustique','Groupe d\'interprete','Chorale','Deejay','Guitariste','Violon','Pianiste','Quatuor','Orchestre','Solo','Autre'];
         break;
       }
   
@@ -121,7 +121,7 @@ this.init();
         break;
       }
       case 'Performance theatrales':{
-        this.names = ['Pieces','Sketches','Publicites','Commedies musicales', 'Autres'];
+        this.names = ['Pieces','Sketches','Publicites','Commedies musicales','Paroles','Narrateur et conteur', 'Autres'];
         break;
       }
   
@@ -233,7 +233,7 @@ selector(){
     this.produitForm = new FormGroup({
       province: new FormControl(''),
       commune: new FormControl(''),
-      secteurActivite: new FormControl(''),
+      category: new FormControl(''),
       name: new FormControl('')
     });
   }
@@ -251,7 +251,7 @@ onProduitSearch(){
     province: this.produitForm.get('province').value,
     commune: this.produitForm.get('commune').value,
     name: this.produitForm.get('name').value,
-    secteurActive:  this.produitForm.get('secteurActivite').value
+    category:  this.produitForm.get('category').value
   }
   console.log(searchValue);
   this.loadSearchedProduit(searchValue);

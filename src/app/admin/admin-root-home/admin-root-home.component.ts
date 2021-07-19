@@ -126,7 +126,7 @@ export class AdminRootHome implements OnInit {
         break;
       }
       case 'Services de reparation':{
-        this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
+        this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Reparation Bateaux','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
         break;
       }
   
@@ -136,7 +136,7 @@ export class AdminRootHome implements OnInit {
       }
   
       case 'Salon de beaute':{
-        this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe',''];
+        this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe','Maquillage','Pedicure','Manucure'];
         break;
       }
       case 'Couture':{
@@ -144,12 +144,12 @@ export class AdminRootHome implements OnInit {
         break;
       }
       case 'Services culturel et social' :{
-        this.names = ['Plannification d\'evenement','Decoration evenementiel','Dj','Theatre','Peinture',];
+        this.names = ['Plannification d\'evenement','Decoration evenementiel','Maitre de ceremonie','Traducteur'];
         break;
       }
   
       case 'Performance musicales' :{
-        this.names = ['Batteurs/Batteuses','Bande','Groupe d\'interprete','Chorale','Deejay','Quatuor','Orchestre','Solo','Autre'];
+        this.names = ['Tambourinaire','Groupe acoustique','Groupe d\'interprete','Chorale','Deejay','Guitariste','Violon','Pianiste','Quatuor','Orchestre','Solo','Autre'];
         break;
       }
   
@@ -162,7 +162,7 @@ export class AdminRootHome implements OnInit {
         break;
       }
       case 'Performance theatrales':{
-        this.names = ['Pieces','Sketches','Publicites','Commedies musicales', 'Autres'];
+        this.names = ['Pieces','Sketches','Publicites','Commedies musicales','Paroles','Narrateur et conteur', 'Autres'];
         break;
       }
   

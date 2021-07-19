@@ -75,6 +75,7 @@ import { ActivationComponent } from './auth/activation/activation.component';
 import { ProfileComponent } from './admin/profile/profile.component';
 import { TemoignageComponent } from './temoignage/temoignage.component';
 import { LoansInputsComponent } from './loans/loans-inputs/loans-inputs.component';
+import { InvestComponent } from './eco/invest/invest.component';
 
 
 
@@ -134,6 +135,7 @@ import { LoansInputsComponent } from './loans/loans-inputs/loans-inputs.componen
     ActivationComponent,
     ProfileComponent,
     TemoignageComponent,
+    InvestComponent
     ],
   imports: [
     BrowserModule,
