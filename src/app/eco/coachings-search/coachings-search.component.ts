@@ -15,7 +15,9 @@ export class CoachingsSearchComponent implements OnInit {
   provinces: string[];
   communes: string[];
   types:string[];
-  p=1;
+  lists: any = {};
+  p:number = 1;
+
   serviceForm: FormGroup;
 
   constructor(private coachingService: CoachingService, private activatedRoute: ActivatedRoute) { }
@@ -27,6 +29,7 @@ export class CoachingsSearchComponent implements OnInit {
     console.log(this.navigationParams);
 
       this.loadSearchedCoaching(this.navigationParams);
+      this.loadSearchedCoachingLike(this.navigationParams);
       this.types = ['Appel avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];
       this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -141,6 +144,18 @@ selector(){
     this.coachingService.getAllCoachingSearch(form).subscribe(
       data => {
         this.coachings = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  loadSearchedCoachingLike(form){
+    this.coachingService.getAllCoachingSearchLike(form).subscribe(
+      data => {
+        this.lists = data;
         console.log(data);
       },
       error => {
