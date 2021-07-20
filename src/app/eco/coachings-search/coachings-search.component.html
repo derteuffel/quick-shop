@@ -37,23 +37,6 @@
   </header>
 <!--/ End Header -->
 
-<!-- Sidebar filter section -->
-<section id="sidebar">
-  <div class="border-bottom pb-2 ml-2">
-    <!--<h4 id="burgundy">Filters</h4>-->
-  </div>
-  <div class="py-2 border-bottom ml-3">
-    <h6 class="font-weight-bold" id="burgundy">Categories</h6>
-    <div id="orange"><span class="fa fa-minus"></span></div>
-    <div *ngFor="let coaching of coachings">
-      <div class="form-group"><label>Type de service: {{coaching.type}}</label></div>
-      <div class="form-group"><label>Province: {{coaching.province}}</label></div>
-    </div>
-  </div>
-
-
-</section>
-
 <!-- Start Shop Blog  -->
 <section class="shop-blog section">
   <div class="container">
@@ -89,6 +72,26 @@
           <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </ul>
       </nav>
+    </div>
+    <div class="card-body my-4">
+      <h2>Formations similaires</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-2 col-md-6 col-12" *ngFor="let item of lists ">
+        <!-- Start Single Blog  -->
+        <div class="shop-single-blog">
+          <a href="/ecommerce/coaching/detail/{{item?.id}}">
+            <img *ngIf="!item.logo" src="https://via.placeholder.com/370x300" alt="#">
+            <img *ngIf="item.logo" [src]="item.logo" alt="#">
+          </a>
+          <div class="content">
+            <p class="date">{{item?.startDate}}</p>
+            <a href="/ecommerce/coaching/detail/{{item?.id}}" class="title">{{item?.title}}</a>
+            <a href="/ecommerce/coaching/detail/{{item?.id}}" class="more-btn">{{item?.province+' '+item.commune}}</a>
+          </div>
+        </div>
+        <!-- End Single Blog  -->
+      </div>
     </div>
   </div>
 </section>

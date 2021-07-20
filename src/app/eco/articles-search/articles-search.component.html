@@ -67,29 +67,14 @@
             <div class="nav-main">
             </div>
           </div>
-<!-- Sidebar filter section -->
-<!-- <section id="sidebar">
-  <div class="border-bottom pb-2 ml-2">
-    <h4 id="burgundy">Filters</h4>
-  </div>
-  <div class="py-2 border-bottom ml-3">
-    <h6 class="font-weight-bold" id="burgundy">Categories</h6>
-    <div id="orange"><span class="fa fa-minus"></span></div>
-    <div *ngFor="let item of products">
-      <div class="form-group"><label>Quantité: {{item.quantity}}</label></div>
-      <div class="form-group"><label>Province: {{item.province}}</label></div>
-      <div class="form-group"><label>Commune: {{item.commune}}</label></div>
-    </div>
-  </div> 
-</section> -->
+
 
 
 
             <div class="tab-content" id="myTabContent">
 
               <div class="tab-pane fade show active" *ngIf="(products.length > 0)" id="man" role="tabpanel">
-                <div class="tab-single d-flex justify-content-center">
-                  <div class="row" >
+                <div class="tab-single row">
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12" *ngFor="let item of products | paginate: {itemsPerPage: 10, currentPage: p}">
                       <div  class="single-product">
                         <div  class="product-img">
@@ -115,7 +100,6 @@
                         </div>
                       </div>
                     </div>
-                  </div>
                 </div>
               </div>
               <div class="card-footer py-4">
@@ -125,8 +109,38 @@
                   </ul>
                 </nav>
               </div>
+            </div>
+            <div class="tab-single my-4">
+              <div class="card-body">
+                <h2>Produits/Services similaires</h2>
+              </div>
+              <div class="row">
+                <div class="col-xl-2 col-md-6 col-12" *ngFor="let item of lists">
+                  <div  class="single-product">
+                    <div  class="product-img">
+                      <a href="/ecommerce/product/detail/{{item?.id}}">
+                        <img class="default-img" [src]="item.pictureUrl" alt="#">
+                        <img class="hover-img" [src]="item.pictureUrl" alt="#">
+                      </a>
+                      <div class="button-head">
+                        <div class="product-action-2">
+                          <a   href="/ecommerce/product/detail/{{item?.id}}">{{item.quantity}}</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product-content">
+                      <a href="/ecommerce/product/detail/{{item?.id}}">
+                        <h4><p >{{item?.name}}</p></h4>
+                      </a>
 
-
+                      <div class="product-price">
+                        <p class="price with-discount">{{item?.province+' '+item?.commune}}</p>
+                        <span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
     </div>
   </div>

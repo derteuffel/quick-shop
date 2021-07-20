@@ -55,6 +55,10 @@ export class EcommerceService {
     console.log(form);
     return this.http.post(`${API.PRODUITS}/all`, form);
   }
+  getAllProductsSearchLike(form): Observable<any>  {
+    console.log(form);
+    return this.http.post(`${API.PRODUITS}/all/search`, form);
+  }
 
   getOrderByProduct(id): Observable<any> {
     return this.http.get(`${API.COMMANDES}/admin/produits/${id}`, {headers: this.headers});
