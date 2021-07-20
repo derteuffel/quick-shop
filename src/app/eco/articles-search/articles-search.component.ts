@@ -24,6 +24,8 @@ export class ArticlesSearchComponent implements OnInit {
   navigationParams: any = {};
   produitForm: FormGroup;
 
+  lists: any = {};
+
   provinces: string[];
   communes: string[];
   types: any ={};
@@ -44,6 +46,7 @@ export class ArticlesSearchComponent implements OnInit {
     // this.navigationParams = this.localisation.getState();
     console.log(this.navigationParams);
     this.loadSearchedProduit(this.navigationParams );
+    this.loadSearchedProduitLike(this.navigationParams);
 
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -293,6 +296,17 @@ onProduitSearch(){
     this.ecommerceService.getAllProductsSearch(form).subscribe(
       data => {
         this.products = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  loadSearchedProduitLike(form){
+    this.ecommerceService.getAllProductsSearchLike(form).subscribe(
+      data => {
+        this.lists = data;
         console.log(data);
       },
       error => {
