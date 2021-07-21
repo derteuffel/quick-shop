@@ -1,6 +1,6 @@
 <!-- Slider Area -->
 <section class="hero-slider px-2">
-  <!-- Single Slider -->
+
   <div class="single-slider">
     <div class="container">
       <div class="row no-gutters">
@@ -11,213 +11,162 @@
       </div>
     </div>
   </div>
-  <!--/ End Single Slider -->
 </section>
-<!--/ End Slider Area -->
-<br>&nbsp;
-<!-- Start Product Area -->
-<div class="product-area section">
-  <div class="container">
-    <!-- Start Link to pages Area -->
-    <!-- <div class="row">
-      <a href="ecommerce/produits" class="btn btn-outline-warning col-12 col-lg-2 col-md-6">
-        <div class="section-title">
-          <h3 class="text-center">Tous les produits</h3>
-        </div>
-      </a>
-      <a href="ecommerce/services" class="btn btn-outline-warning col-12 col-lg-3 col-md-6">
-        <div class="section-title">
-          <h3 class="text-center">Tous les services et coachings</h3>
-        </div>
-      </a>
-      <a href="ecommerce/finances" class="btn btn-outline-warning col-12 col-lg-4 col-md-6">
-        <div class="section-title">
-          <h3 class="text-center">Trouvez vos micros-financements</h3>
-        </div>
-      </a>
-      <a href="ecommerce/register/home" class="btn btn-outline-warning col-12 col-lg-2 col-md-6">
-        <div class="section-title">
-          <h3 class="text-center">Enregistrez-vous</h3>
-        </div>
-      </a>
-    </div> -->
-    <!-- End Link to pages Area -->
-    <br>&nbsp;
-    <div class="row">
-      <div class="col-12">
-        <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Produits récents</h1>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="product-info">
 
-          <div class="tab-content" id="myTabContent">
-            <!-- Start Single Tab -->
-            <div class="tab-pane fade show active" id="man" role="tabpanel">
-              <div class="tab-single">
-                <div class="row">
-                  <div class="col-xl-3 col-lg-4 col-md-4 col-12" *ngFor="let item of products">
-                    <div class="single-product img-wrap">
-                      <div class="product-img">
-                        <a href="/ecommerce/product/detail/{{item?.id}}">
-                          <img class="default-img" [src]="item.pictureUrl" alt="#">
-                          <img class="hover-img" [src]="item.pictureUrl" alt="#">
-                        </a>
-                        <div class="button-head">
-                          <div class="product-action">
-                            <a  title="Quick View" href="/ecommerce/product/detail/{{item?.id}}"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                            <!-- <a type="button"  *ngIf="!isProductSelected(item)" (click)="addToCart(item)" title="Add to cart" ><i class="fa fa-shopping-bag"></i><span>Add to cart</span>&nbsp;</a> -->
-
-                          </div>
-                          <div class="product-action-2">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="product-content">
-                        <h3 class="title"><a href="/ecommerce/product/detail/{{item?.id}}">{{item?.name}}</a></h3>
-                        <div class="product-price">
-                          <p class="price with-discount">{{item?.price+' '+item?.devise}}</p>
-                          <span></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--/ End Single Tab -->
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Product Area -->
-
-<br>&nbsp;
-
-<!-- Start Coaching  -->
-<section class="shop-blog section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Encadrements et Coaching</h1>
-        </div>
-      </div>
-    </div>
-    <br>&nbsp;
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings">
-        <!-- Start Single Blog  -->
-        <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="shop-single-blog">
-              <img [src]="coaching.logo" style="height: 300px;" alt="#">
-          <div class="content">
-            <p class="date">{{coaching?.startDate}}</p>
-            <p class="title">{{coaching?.title}}</p>
-            <p class="more-btn">{{coaching?.amount+' '+item.devise}}</p>
-          </div>
-        </a>
-        <!-- End Single Blog  -->
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End Coaching  -->
-
-<!-- Start Microfinancement -->
-<section class="shop-blog section">
-  <div class="container">
-
-    <div class="row">
-      <div class="col-12">
-        <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Micros-credits</h1>
-        </div>
-      </div>
-    </div>
-    <br>&nbsp;
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-12" *ngFor="let m of microfinances">
-        <!-- Start Single Blog  -->
-        <div class="shop-single-blog">
-          <a href="#">
-            <img src="https://via.placeholder.com/170x100.png" alt="#">
-          </a>
-          <div class="card-body text-left">
-            <p class="title">{{m?.object}}</p>
-            <div class="card-text">
-              <p>Secteur d'activite: <span class="text-muted">{{m?.sector}}</span></p>
-            </div>
-            <div class="card-text">
-              <p>Localisation : <span class="text-muted">{{m?.region}}</span></p>
-            </div>
-          </div>
-        </div>
-        <!-- End Single Blog  -->
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End Microfinancement  -->
-
-
-<br>&nbsp;
 
 <!-- Start Shop Services Area -->
 <section class="shop-services section home">
   <div class="container">
 
+    <br>&nbsp;
     <div class="row">
-      <div class="col-12">
-        <div class="section-title">
-          <h1 class="text-center text-underline text-uppercase">Temoignages</h1>
+      <div  class="col-lg-3 col-md-6 col-12 ">
+        <div  class="single-service">
+         <i> <a href="ecommerce/produits" ><img src="/assets/images/vectors/Trade_2.png" alt="Snow" style="width:100%;"></a></i>
+          <h4 class="zigs" ><a href="ecommerce/produits" style="color: black;"> Commmerce et services</a></h4>
+          <p class="zigs"><a href="ecommerce/produits" style="color: black;">renseignez-vous et accédez aux produits/services près de chez vous</a></p>
+        </div>
+      </div>
+      <div  class="col-lg-3 col-md-6 col-12">
+        <div class="single-service">
+          <i ><a href="ecommerce/services" ><img src="/assets/images/vectors/Learn_2.png" alt="Snow" style="width:120%;"></a></i>
+          <h4 class="zigs" ><a href="ecommerce/services" style="color: black;">Encadremment et Coaching</a></h4>
+          <p class="zigs"><a href="ecommerce/services" style="color: black;">bourses d'études, services de formation et de coaching pret de chez vous</a></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <div class="single-service">
+          <i ><a href="ecommerce/invests" ><img src="/assets/images/invest-youth.png" alt="Snow" style="width:120%;"></a></i>
+          <h4 class="zigs" ><a href="ecommerce/invests" style="color: black;">investir dans la jeunesse</a></h4>
+          <p class="zigs"><a href="ecommerce/invests" style="color: black;">Économisez avec Sayangana et soutenez les jeunes entrepreneurs et étudiants avec des prêts</a></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <div class="single-service">
+          <i ><a href="ecommerce/finances" ><img src="/assets/images/vectors/Student_Loan_.png" alt="Snow" style="width:120%;"></a></i>
+          <h4 class="zigs" ><a href="ecommerce/finances" style="color: black;">demander un prêt entreprise ou étudiant</a></h4>
+          <p class="zigs"><a href="ecommerce/finances" style="color: black;">Pitch aux investisseurs près de chez vous</a></p>
         </div>
       </div>
     </div>
-    <br>&nbsp;
+
+  </div>
+</section>
+<!-- End Shop Services Area -->
+<!-- 
+<section class=" section home">
+  <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-md-6 col-12">
-        <!-- Start Single Service -->
-        <div class="single-service">
-          <i class="ti-rocket"></i>
-          <h4>Livraison gratuite</h4>
-          <p>Commandes de plus de 100 FB</p>
-        </div>
-        <!-- End Single Service -->
-      </div>
-      <div class="col-lg-3 col-md-6 col-12">
-        <!-- Start Single Service -->
-        <div class="single-service">
-          <i class="ti-reload"></i>
-          <h4>Retour gratuit</h4>
-          <p>Retours dans les 30 jours</p>
-        </div>
-        <!-- End Single Service -->
-      </div>
-      <div class="col-lg-3 col-md-6 col-12">
-        <!-- Start Single Service -->
-        <div class="single-service">
-          <i class="ti-lock"></i>
-          <h4>Paiement sécurisé</h4>
-          <p>Paiement 100% sécurisé</p>
-        </div>
-        <!-- End Single Service -->
-      </div>
-      <div class="col-lg-3 col-md-6 col-12">
-        <!-- Start Single Service -->
-        <div class="single-service">
-          <i class="ti-tag"></i>
-          <h4>Meilleure pièce</h4>
-          <p>Prix garanti</p>
-        </div>
-        <!-- End Single Service -->
+      <div class="col-md-6 col-lg-7 mx-auto text-center">
+        <span class="zigs"  style="font-size: 25px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Temoignages</span>
+
       </div>
     </div>
   </div>
 </section>
-<!-- End Shop Services Area -->
+
+
+
+<section class="section home">
+  <div class="container-fluid px-2 px-md-4 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10 col-lg-9 col-xl-8">
+        <div class="card card-main border-0 text-center">
+          <h5 class="font-weight-bold mb-4" class="zigs" >Ce que nos clients disent
+            <br>de nous.</h5>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" *ngFor="let testimonials of temoignages;let index = index" [attr.data-slide-to]="index"></li>
+
+            </ol>
+            <div class="carousel-inner">
+
+              <div class="carousel-item " *ngFor="let testimonials of temoignages;let index = index;let isFirst = first" [ngClass]="{active:isFirst}">
+                <div class="card border-0 card-0">
+                  <div class="card profile py-3 px-4">
+                    <div class="text-center"> <img src="https://st.depositphotos.com/1060471/2586/i/950/depositphotos_25869479-stock-photo-fruit-display-at-the-market.jpg" class="img-fluid profile-pic"> </div>
+                    <h6 class="mb-0 mt-2">{{testimonials.name}}</h6>
+                  </div> <img class="img-fluid open-quotes" src="https://i.imgur.com/Hp91vdT.png" width="20" height="20">
+                  <p class="content mb-0">{{testimonials.message}}</p> <img class="img-fluid close-quotes ml-auto" src="https://i.imgur.com/iPcHyJK.png" width="20" height="20">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+<br>
+
+<section class=" section home">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-7 mx-auto text-center">
+        <span class="zigs" style="font-size: 25px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Donnez Votre avis</span>
+          <div class="card-body p-4">
+            <form [formGroup]="temoignageForm" (submit)="saveTemoignage()">
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" formControlName="name" placeholder="Entrer votre nom" />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="pi pi-envelope "></i></span>
+                  </div>
+                  <input type="email" class="form-control" formControlName="email" placeholder="Entrer votre adresse email" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-pencil "></i></span>
+                  </div>
+                  <textarea type="text"  rows="5" class="form-control" placeholder="Entrer votre commentaire " formControlName="message">
+                  </textarea >
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-block btn-success zigs" >Valider</button>
+            </form>
+          </div>
+      </div>
+    </div>
+
+  </div>
+
+</section> -->
+
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<!-- TOAST MESSAGE TEMPLATE -->
+<p-toast position="top-right"></p-toast>
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" >
+  <ng-template let-message pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1">
+      <div class="p-text-center">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h4>{{message.summary}}</h4>
+        <p>{{message.detail}}</p>
+      </div>
+      <div class="p-grid p-fluid">
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+        </div>
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>

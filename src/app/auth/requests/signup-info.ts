@@ -1,6 +1,7 @@
 export class SignUpInfo{
     fullName: string;
-    location: string;
+    province: string;
+    commune: string;
     phone: string;
     birthDate: Date;
     secteurActivite: string;
@@ -12,13 +13,14 @@ export class SignUpInfo{
     interest: string;
 
     constructor(fullName: string, username: string, email: string,
-        location: string, phone: string, birthDate: Date, idNumber: string,
+        province: string,commune:string, phone: string, birthDate: Date, idNumber: string,
         secteurActivite: string, password: string, role: string, interest: string) {
         this.fullName = fullName;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.location = location;
+        this.province = province;
+        this.commune = commune;
         this.phone = phone;
         this.birthDate = birthDate;
         this.secteurActivite = secteurActivite;

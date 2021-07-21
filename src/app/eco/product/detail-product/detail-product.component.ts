@@ -10,6 +10,8 @@ import { Product } from '../../../models/product.model';
 import { EcommerceService } from '../../../services/ecommerce.service';
 import {CommandeService} from "../../../services/commande.service";
 import {MessageService} from "primeng/api";
+import {Temoignage} from "../../../models/temoignage";
+import {TemoignageService} from "../../../services/temoignage.service";
 
 @Component({
   selector: 'app-detail-product',
@@ -19,19 +21,22 @@ import {MessageService} from "primeng/api";
 })
 export class DetailProductComponent implements OnInit {
 
-
+  public submitted: boolean = false;
   currentProduct: any;
   productOrder: ProductOrder[] = [] ;
   sub: Subscription;
   products: Product[] = [];
+  intervalsHours : string[];
   productSelected: boolean = false;
   selectedProductOrder: ProductOrder;
   private shoppingCartOrders: ProductOrders;
   orderFinished = false;
 
   orderForm: FormGroup;
-
+  temoignageForm: FormGroup;
+  temoignage: Temoignage;
   constructor(private ecommerceService: EcommerceService,
+              private temoignageService: TemoignageService,
               private activatedRoute: ActivatedRoute,
               private router:Router,
               private commandeService: CommandeService,
@@ -41,13 +46,22 @@ export class DetailProductComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
     this.initForm();
+    this.initForm2();
+    this.intervalsHours = ['07:00 am - 10:00 am','10:01 am - 1:00 pm ','1:01 pm - 4:00 pm','4:01 pm - 7:00 pm']
   }
 
 
 
-  
 
-  
+  initForm2() {
+    this.temoignageForm = new FormGroup({
+      id: new FormControl(''),
+      email: new FormControl(''),
+      message: new FormControl(''),
+      name: new FormControl(''),
+    })
+  }
+
   getProduct(id): void{
     this.ecommerceService.getProductFree(id).subscribe(
         data => {
@@ -66,6 +80,9 @@ export class DetailProductComponent implements OnInit {
       name: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
+      lieuLivraison: new FormControl(''),
+      dateLivraison: new FormControl(''),
+      heurelivraison: new FormControl(''),
       quantity: new FormControl(''),
       paymentMode: new FormControl('')
     });
@@ -75,9 +92,9 @@ export class DetailProductComponent implements OnInit {
     this.currentProduct = event;
    }
 
-  
 
-  
+
+
 
   onSaveSubscribe(){
     const formData =  {
@@ -86,6 +103,9 @@ export class DetailProductComponent implements OnInit {
       clientPhone: this.orderForm.get('phone').value,
       quantity: this.orderForm.get('quantity').value,
       paymentMode: this.orderForm.get('paymentMode').value,
+      lieuLivraison: this.orderForm.get('lieuLivraison').value,
+      heureLivraison: this.orderForm.get('heureLivraison').value,
+      dateLivraison: this.orderForm.get('dateLivraison').value,
       isProduit: true
     }
     this.commandeService.saveCmd(formData, this.currentProduct.id).subscribe(
@@ -99,6 +119,25 @@ export class DetailProductComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+
+  saveTemoignage() {
+
+    this.submitted = true;
+    if(this.temoignageForm?.invalid){return;}
+
+    this.temoignageService.createTemoignage(this.temoignageForm.value).subscribe(
+      (data: any) => {
+        this.temoignageForm.reset();
+        this.router.navigate(["/ecommerce/home"]);
+        this.messageService.add({severity:'success', summary:'Success', detail:'votre témoignage a été  soumit', sticky: true});
+
+      }, error => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
+    this.submitted = false;
   }
 
   /** toast message function primeng  **/

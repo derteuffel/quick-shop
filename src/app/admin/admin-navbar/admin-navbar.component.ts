@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {AuthService} from "../../auth/auth.service";
 import {Observable} from "rxjs/index";
 import {User} from "../../models/user";
+import {AccountService} from "../../services/account.service";
+import {map, switchMap} from "rxjs/internal/operators";
 
 @Component({
   selector: 'app-admin-navbar',
@@ -14,7 +16,10 @@ export class AdminNavbarComponent implements OnInit {
   roles: string[];
   isConnected: boolean;
   user: User;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+             private authService: AuthService, private router: Router,
+             private accountService: AccountService,
+             private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     if (this.authService.currentUserValue.token) {
@@ -26,7 +31,7 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logOut().subscribe(
+    this.authService.logOut()/* .subscribe(
       data => {
         console.log('switch off');
         this.router.navigateByUrl('connexion');
@@ -34,8 +39,25 @@ export class AdminNavbarComponent implements OnInit {
       error => {
         console.log(error);
       }
-    );
-    
+    ); */
+    this.router.navigateByUrl('connexion');
+
   }
+
+  private userId$: Observable<number> = this.activatedRoute.params.pipe(
+    map((params: Params) => parseInt(params['id']))
+  )
+
+  getOne() {
+    this.accountService.getOne(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+      data =>{
+        this.router.navigateByUrl('profile');
+      }
+    )
+  }
+
+  user$: Observable<User> = this.userId$.pipe(
+    switchMap((userId: number) => this.accountService.getOne(userId))
+  )
 
 }

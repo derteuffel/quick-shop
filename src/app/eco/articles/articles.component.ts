@@ -16,13 +16,14 @@ import { ActivatedRoute } from '@angular/router';
 export class ArticlesComponent implements OnInit {
 
 
-  
+
   products: Product[] = [];
   private shoppingCartOrders: ProductOrders;
   sub: Subscription;
   productSelected: boolean = false;
 
   navigationParams: any = {};
+  p=1;
 
 
   constructor(
@@ -73,9 +74,9 @@ export class ArticlesComponent implements OnInit {
     this.ecommerceService.getAllProducts()
       .subscribe(
         data => {
-          this.products = data; 
-        
-          console.log(data);  
+          this.products = data;
+
+          console.log(data);
         },
         (error) => console.log(error)
       );

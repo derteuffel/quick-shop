@@ -7,7 +7,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" routerLinkActive="active"  href="/admin/home">
-      <img src="./assets/images/15x25.png" class="navbar-brand-img" style="width: 150px;height: 150px ;" alt="...">
+      <img src="./assets/images/cmobile.png" class="navbar-brand-img" style="width: 150px;height: 150px ;" alt="...">
     </a>
     <!-- Collapse -->
     <div class="collapse navbar-collapse"  [ngbCollapse]="isCollapsed" id="sidenav-collapse-main">
@@ -16,40 +16,67 @@
       <!-- Heading -->
       <!-- Navigation -->
       <ul class="navbar-nav mb-md-3">
-        <li class="nav-item">
+        <li *ngIf="isAdmin || isEntreprener" class="nav-item">
           <a class="nav-link" href="/admin/home">
-            <i class="ni ni-shop"></i> Produits
+            <i class="ni ni-shop"></i> Produits/Services
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAdmin || isTrainer" class="nav-item">
           <a class="nav-link" href="/admin/coachings">
-            <i class="ni ni-books"></i> Coaching et Encadrement
+            <i class="ni ni-books"></i> Coachings et Encadrements
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link" href="/admin/loans/inputs">
             <i class="ni ni-money-coins"></i> Investissements
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isInvestor" class="nav-item">
+          <a class="nav-link" href="/loans/inputs">
+            <i class="ni ni-money-coins"></i> Investissements
+          </a>
+        </li>
+        <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link" href="/admin/loans/entrants">
             <i class="ni ni-money-coins"></i> Demandes de micros-financements
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isLoans || isEntreprener" class="nav-item">
           <a class="nav-link" href="/loans/requests">
             <i class="fa fa-bars"></i> Mes demandes de financements
           </a>
         </li>
 
-        <li class="nav-item">
+        <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link"  href="/admin/configurations/account">
-            <i class="ni ni-settings"></i> Gestion Utilisateurs
+            <i class="fa fa-users"></i> Gestion Utilisateurs
+          </a>
+        </li>
+
+        <li *ngIf="isAdmin" class="nav-item">
+          <a class="nav-link"  href="/admin/dashboard">
+            <i class="ni ni-settings"></i> Dashboard
+          </a>
+        </li>
+
+        <li *ngIf="isAdmin" class="nav-item">
+          <a class="nav-link"  href="/admin/commandes">
+            <i class="ni ni-settings"></i> Gestion des commandes
+          </a>
+        </li>
+        <li *ngIf="isClient" class="nav-item">
+          <a class="nav-link"  href="/admin/commandes/users">
+            <i class="ni ni-settings"></i> Mes commandes
+          </a>
+        </li>
+        <li *ngIf="isTrainer || isEntreprener" class="nav-item">
+          <a class="nav-link"  href="/admin/commandes/allsbyusers">
+            <i class="ni ni-settings"></i> Mes commandes
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  href="/admin/commandes">
-            <i class="ni ni-settings"></i> Gestion des commandes
+          <a class="nav-link"  href="/admin/abonnements/">
+            <i class="fa fa-subscript"></i> Abonnements
           </a>
         </li>
 

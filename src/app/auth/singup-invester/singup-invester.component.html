@@ -9,8 +9,7 @@
           <div class="card mx-4">
             <div class="card-body p-4">
               <form name="form" (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                <h3 class="text-center">Page d'enregistrement d'un Investisseur</h3>
-                <p class="text-muted"><a href="/ecommerce/register/home"><i class="fa fa-long-arrow-left"></i>&nbsp; Retour </a> &nbsp; ou Créer votre compte </p>
+                <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un Investisseur</h3>
                 <div class="form-group">
                   <label class="text-muted">Nom complet :</label>
                 <div class="input-group mb-3">
@@ -36,18 +35,19 @@
                   </div>
                 </div>
               </div>
-            
-              
+
+
               <div class="form-group">
                 <label class="text-muted">Numero de telephone :</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                   </div>
-                  <input type="text" class="form-control" name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
+                  <input type="text" class="form-control" pattern="^\\(?([0-9]{3})\\)?[-,]?([0-9]{3})[-,]?([0-9]{4})$" name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
                          required minlength="6" />
                   <div *ngIf="f.submitted && phone.invalid">
                     <div *ngIf="phone.errors.required">Vous devez entrer un numero de telephone</div>
+                    <div *ngIf="phone.errors?.pattern">phone is invalid</div>
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
                   </div>
-                  <select name="devise" class="form-control" required id="" [(ngModel)]="form.devise" #devise="ngModel">
+                  <select name="devise" class="form-control" required  [(ngModel)]="form.devise" #devise="ngModel">
                     <option value="">-- Choisissez une devise --</option>
                     <option value="US Dollars">US Dollars</option>
                     <option value="Euro">Euro</option>
@@ -94,7 +94,7 @@
                     <option value="Franc CFA">Franc CFA</option>
                     <option value="Franc Congolais">Franc Congolais</option>
                   </select>
-                  
+
                   <div *ngIf="f.submitted && devise.invalid">
                     <div *ngIf="devise.errors.required">Vous devez entrer une devise</div>
                   </div>
@@ -107,13 +107,13 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-money-bill"></i></span>
                   </div>
-                  <select name="method" required class="form-control" id="" [(ngModel)]="form.method" #method="ngModel">
+                  <select name="method" required class="form-control"  [(ngModel)]="form.method" #method="ngModel">
                     <option value="">-- Choisissez une des methodes de Paiement --</option>
                     <option value="VB">Virement bancaire</option>
                     <option value="MM">Mobile money</option>
                     <option value="CASH">Liquide(cash)</option>
                   </select>
-                  
+
                   <div *ngIf="f.submitted && method.invalid">
                     <div *ngIf="method.errors.required">Vous devez entrer une method de Paiement</div>
                   </div>
@@ -126,7 +126,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-clock"></i></span>
                   </div>
-                    <select name="duration" required class="form-control" id="" [(ngModel)]="form.duration" #duration="ngModel">
+                    <select name="duration" required class="form-control" [(ngModel)]="form.duration" #duration="ngModel">
                           <option value="">-- Choisissez une duree d'investissement --</option>
                           <option value="3">3 mois</option>
                           <option value="6">6 mois</option>
@@ -136,7 +136,7 @@
                           <option value="18">18 mois</option>
                       </select>
 
-                      
+
                   <div *ngIf="f.submitted && duration.invalid">
                     <div *ngIf="duration.errors.required">Vous devez entrer une duree souhaite pour votre placement</div>
                   </div>
@@ -145,15 +145,15 @@
               <div class="form-group">
                 <label class="text-muted">Conditions d'utilisation</label>
                 <div class="input-group mb-3">
-                  
+
                          <input type="checkbox" class="form-control" name="terms" (click)="accept()"
                          required  />
                 </div>
               </div>
-              
 
-                <button type="submit" class="btn btn-block btn-primary" style="background-color:#F7941D !important;" *ngIf="isChecked" >Enregistre</button>
-                <button type="submit" class="btn btn-block btn-primary" style="background-color:#F7941D !important;" *ngIf="!isChecked" disabled>Enregistre</button>
+
+                <button type="submit" class="btn btn-block btn-success"  *ngIf="isChecked" >Enregistrer</button>
+                <button type="submit" class="btn btn-block btn-success" *ngIf="!isChecked" disabled>Enregistrer</button>
                 <!-- <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
                   Inscription echouer!<br/>{{errorMessage}}
                 </div>
@@ -171,3 +171,30 @@
 <span></span><br>
 <span></span><br>
 <app-footer></app-footer>
+
+
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<!-- TOAST MESSAGE TEMPLATE -->
+<p-toast position="top-right"></p-toast>
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" >
+  <ng-template let-message pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1">
+      <div class="p-text-center">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h4>{{message.summary}}</h4>
+        <p>{{message.detail}}</p>
+      </div>
+      <div class="p-grid p-fluid">
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+        </div>
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
+

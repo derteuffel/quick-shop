@@ -8,6 +8,7 @@ import { Product } from 'src/app/models/product.model';
 import { UpdateProduit } from 'src/app/models/update-product.model';
 import { EcommerceService } from 'src/app/services/ecommerce.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-admin-root-product',
@@ -27,6 +28,7 @@ export class AdminRootProductComponent implements OnInit {
   isOrder: boolean;
   loading = true;
   public submitted = false;
+  isClient: boolean;
   submittedCode: string;
   bsModalRef: BsModalRef;
   updateID;
@@ -47,15 +49,19 @@ export class AdminRootProductComponent implements OnInit {
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
     this.showOrders();
     this.isOrder = true;
+    if(this.authService.currentUserValue.role == Role.CLIENT){
+      this.isClient = true;
+    }
   }
 
-  
+
+
 
   onSubmit(data){
 
     this.submitted = true;
     console.log(data);
-  
+
     this.productService.saveUpdate(data, this.currentProduct.id).subscribe(
       data => {
         this.messageService.add({severity: 'success', summary: 'Success', detail: 'Update done', sticky: true});
@@ -153,10 +159,10 @@ export class AdminRootProductComponent implements OnInit {
 
   }
 
-  
 
 
-  
+
+
 
   /** toast message function primeng  **/
   onConfirm() {

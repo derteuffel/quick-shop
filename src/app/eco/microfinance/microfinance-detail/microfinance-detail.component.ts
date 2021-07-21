@@ -5,12 +5,15 @@ import {ProductOrder} from "../../../models/product-order.model";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {CoachingService} from "../../../services/coaching.service";
 import {MicrofinanceService} from "../../../services/microfinance.service";
-import {MessageService} from "primeng/api";
+import {MessageService, PrimeNGConfig} from "primeng/api";
 import {Product} from "../../../models/product.model";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {EcommerceService} from "../../../services/ecommerce.service";
 import {CommandeService} from "../../../services/commande.service";
 import { LoansService } from 'src/app/services/loans.service';
+import {Temoignage} from "../../../models/temoignage";
+import {BsModalService} from "ngx-bootstrap/modal";
+import {TemoignageService} from "../../../services/temoignage.service";
 
 @Component({
   selector: 'app-microfinance-detail',
@@ -19,16 +22,22 @@ import { LoansService } from 'src/app/services/loans.service';
   providers: [MessageService],
 })
 export class MicrofinanceDetailComponent implements OnInit {
-
+  temoignageForm: FormGroup;
+  form: any = {};
+  temoignage: Temoignage;
+  public submitted: boolean = false;
 
   currentMicroFinance: any={};
   subscribeForm: FormGroup;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router:Router,
+    private temoignageService: TemoignageService,
+    private router: Router,
     private fb: FormBuilder,
-    private messageService: MessageService,
+    private primengConfig: PrimeNGConfig,
     private modalService: NgbModal,
+    private modalService2: BsModalService,
+    private messageService: MessageService,
     private loansService: LoansService) { }
 
   ngOnInit(): void {
@@ -48,20 +57,34 @@ export class MicrofinanceDetailComponent implements OnInit {
     );
   }
 
-  /* onSaveSubscribe(){
-    this.commandeService.saveCmd(this.subscribeForm?.value).subscribe(
-      data => {
-        this.subscribeForm.reset();
-        this.messageService.add({severity: 'success', summary: 'Success', detail: 'commande submitted', sticky: true});
-        this.getMicroFinance(this.activatedRoute.snapshot.paramMap.get('id'));
-      },
-      error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
-        console.log(error);
-      }
-    )
-  } */
+  initForm() {
+    this.temoignageForm = new FormGroup({
+      id: new FormControl(''),
+      email: new FormControl(''),
+      message: new FormControl(''),
+      name: new FormControl(''),
+    })
+  }
 
+  /** ajouter un temoignage **/
+
+  saveTemoignage() {
+
+    this.submitted = true;
+    if(this.temoignageForm?.invalid){return;}
+
+    this.temoignageService.createTemoignage(this.temoignageForm.value).subscribe(
+      (data: any) => {
+        this.temoignageForm.reset();
+        this.router.navigate(["/ecommerce/home"]);
+        this.messageService.add({severity:'success', summary:'Success', detail:'votre témoignage a été  soumit', sticky: true});
+
+      }, error => {
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+      }
+    );
+    this.submitted = false;
+  }
 
 
   /** toast message function primeng  **/

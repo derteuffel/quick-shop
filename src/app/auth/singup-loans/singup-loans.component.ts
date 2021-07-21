@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Role} from "../../models/role";
 import {AuthService} from "../auth.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthLoginInfo} from "../requests/login-info";
 import { SignUpInfo } from '../requests/signup-info';
 
@@ -20,21 +20,99 @@ export class SingupLoansComponent implements OnInit {
   provinces: string[];
   communes: string[];
   activites: string[];
+  type:string = null;
   constructor(private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activites = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Education', 'Offre d\'emploi','Autres'];
+    
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-    this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
-  'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
-'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
-'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
-'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
-'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
-'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
-'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
+    
+  }
+
+  selector(){
+    console.log('je suis la')
+    switch(this.form.province){
+        case 'Bubanza':{
+            this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi'];
+            break;
+        }
+        case 'Bujumbura Mairie':{
+            this.communes = ['Muha','Mukaza','Ntahangwa'];
+            break;
+        }
+        case 'Bujumbura':{
+            this.communes = ['Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
+                    'Mutimbuzi','Nyabiraba'];
+            break
+        }
+
+        case 'Bururi': {
+            this.communes = ['Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda'];
+            break;
+        }
+        case 'Cankuzo': {
+            this.communes = ['Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha'];
+            break;
+        }
+
+        case 'Cibitoke':{
+            this.communes =['Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira'];
+            break;
+        }
+        case 'Gitega':{
+            this.communes =['Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
+                    'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro'];
+            break;
+        }
+        case 'Karuzi':{
+            this.communes = ['Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo'];
+            break;
+        }
+        case 'Kayanza':{
+            this.communes = ['Butaganzwa','Gahombo',' Gatara',' Kabarore','kayanza','Matongo','Muhanga','Muruta','Rango'];
+            break;
+        }
+        case 'Kirundo':{
+            this.communes = ['Bugabira','Busoni','Bwambarangwe', 'Gitobe','Kirundo', 'Ntega','Vumbi'];
+            break;
+        }
+
+        case 'Makamba':{
+            this.communes = ['Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo'];
+            break;
+        }
+        case 'Muramvya':{
+            this.communes =['Bukeye','Kiganda','Mbuye','Muramvya','Rutegama'];
+            break;
+        }
+
+        case 'Muyinga':{
+            this.communes = ['Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro'];
+            break;
+        }
+        case 'Mwaro':{
+            this.communes = ['Bisoro', 'Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka'];
+            break;
+        }
+        case 'Ngozi':{
+            this.communes =['Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo','Tangara'];
+            break;
+        }
+        case 'Rumonge':{
+            this.communes =['Bugarama','Burambi','Buyengero','Muhuta','Rumonge'];
+            break;
+        }
+        case 'Rutana':{
+            this.communes = ['Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana'];
+            break;
+        }
+        case 'Ruyigi':{
+            this.communes =['Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
+        }
+    }
   }
 
   onSubmit() {
@@ -44,13 +122,14 @@ export class SingupLoansComponent implements OnInit {
       this.form.fullName,
       this.form.email,
       this.form.email,
-      this.form.province+', '+this.form.commune,
+      this.form.province,
+      this.form.commune,
       this.form.phone,
       this.form.birthDate,
       this.form.idNumber,
       this.form.secteurActivite,
       this.form.password,
-      'LOANS',
+      this.getRole(),
       '');
 
       console.log(this.signupInfo);
@@ -69,5 +148,42 @@ export class SingupLoansComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+  }
+
+  getRole():string{
+      let role:string = 'LOANS';
+      this.route.queryParams
+                .subscribe(params=>{
+                    if(params.type!=null && params.type!=undefined){
+                        switch(params.type){
+                            case 'etudiant':
+                                role = 'LOANS';
+                                break;
+                            case 'investisseur':
+                                role = 'INVESTOR';
+                                break;
+                        }
+                    }
+                });
+      return role;
+  }
+
+  getUserText():string{
+    let texte:string = '';
+    this.route.queryParams
+        .subscribe(params=>{
+            if(params.type!=null && params.type!=undefined){
+                switch(params.type){
+                    case 'etudiant':
+                        texte = 'Etudiant';
+                        break;
+                    case 'investisseur':
+                        texte = 'Investisseur';
+                        break;
+                }
+            }
+        });
+    console.log('##### texte = '+texte);
+    return texte;
   }
 }

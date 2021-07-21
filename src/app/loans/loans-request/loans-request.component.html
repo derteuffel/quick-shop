@@ -132,7 +132,7 @@
               </div>
               <div class="form-group">
                 <label>Commune </label>
-                <select class="form-control" placeholder="Province" formControlName="commune">
+                <select class="form-control" (click)="selector()" placeholder="Province" formControlName="commune">
                     <option value="" disabled>-- Choisir une commune --</option>
                     <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
                 </select>
@@ -146,9 +146,11 @@
                 <select class="form-control" placeholder="Devise de paiement" formControlName="devise">
                     <option value="" disabled>-- Choisir une devise de paiement --</option>
                     <option value="USD">USD</option>
-                    <option value="Francs Burundais">Francs burundais</option>
-                    <option value="Francs Congolais">Francs congolais</option>
-                    <option value="Francs CFA">Francs CFA</option>
+                  <option value="EURO">EURO</option>
+                  <option value="Shilling">Shilling</option>
+                  <option value="BIF">Francs burundais</option>
+                  <option value="FC">Francs congolais</option>
+                  <option value="FCFA">Francs CFA</option>
                 </select>
               </div>
               <div class="form-group">
@@ -192,12 +194,13 @@
     </button>
   </div>
   <div class="modal-body">
-      <form [formGroup]="loansUpdateFormGroup" (submit)="updateCoaching()">
+      <form [formGroup]="loansFormGroup" (submit)="updateCoaching()">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label>Resume du projet</label>
               <textarea formControlName="object" id="" class="form-control" rows="7" placeholder="Entrer le resume de votre projet" required></textarea>
+              <input type="hidden" formControlName="id">
             </div>
 
             <div class="form-group">
@@ -216,7 +219,7 @@
             </div>
             <div class="form-group">
               <label>Commune </label>
-              <select class="form-control" placeholder="Province" formControlName="province">
+              <select class="form-control"(click)="selector()" placeholder="Province" formControlName="province">
                   <option value="" disabled>-- Choisir une commune --</option>
                   <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
               </select>
@@ -230,9 +233,11 @@
               <select class="form-control" placeholder="Devise de paiement" formControlName="devise">
                   <option value="" disabled>-- Choisir une devise de paiement --</option>
                   <option value="USD">USD</option>
-                  <option value="Francs Burundais">Francs burundais</option>
-                  <option value="Francs Congolais">Francs congolais</option>
-                  <option value="Francs CFA">Francs CFA</option>
+                  <option value="EURO">EURO</option>
+                  <option value="Shilling">Shilling</option>
+                  <option value="BIF">Francs burundais</option>
+                  <option value="FC">Francs congolais</option>
+                  <option value="FCFA">Francs CFA</option>
               </select>
             </div>
             <div class="form-group">
@@ -284,7 +289,7 @@
             <hr>
             <p class="mt-3 mb-0 text-muted text-xl"  >
               <span class=" mr-2"><i class="fa fa-thumbtack"></i>&nbsp;&nbsp;&nbsp;&nbsp;Localisation :</span>
-              <span class="text-nowrap" style="color: #F45B3A !important;">{{loans.region}}</span>
+              <span class="text-nowrap" style="color: #F45B3A !important;">{{loans.province+', '+loans.commune}}</span>
             </p>
             <hr>
             <p class="mt-3 mb-0 text-muted text-xl"  >
