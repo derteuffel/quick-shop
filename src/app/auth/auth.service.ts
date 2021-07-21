@@ -36,6 +36,7 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('reload');
         this.currentUserSubject.next(null);
     console.log('je suis ici dedans')
     /* return this.http.post(this.authUrl + "/logout", {}).pipe(

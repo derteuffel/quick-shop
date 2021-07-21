@@ -16,6 +16,8 @@ export class SocialRedirectComponent implements OnInit {
 
   private isOld:boolean = true;
 
+  private isReloaded:boolean = false;
+
 
 
   constructor(private activatedRoute:ActivatedRoute,
@@ -59,7 +61,11 @@ export class SocialRedirectComponent implements OnInit {
               this.router.navigate(["/admin/home"]);
           }
         }
-        location.reload();
+        if(localStorage.getItem("reload")==null || localStorage.getItem("reload")==undefined)
+          location.reload();
+        else
+          localStorage.setItem("reload", "true");
+
       }
     );
   }
@@ -77,7 +83,7 @@ export class SocialRedirectComponent implements OnInit {
       localStorage.setItem("currentUser", JSON.stringify(data));
       localStorage.setItem('id', this.authService.currentUserValue.id + '');
       this.authService.currentUserSubject.next(data);
-
+      
       switch(data.role){
         case Role.CLIENT:
           this.router.navigate(["/admin/commandes/users"]);
