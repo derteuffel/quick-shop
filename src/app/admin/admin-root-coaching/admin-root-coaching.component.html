@@ -31,15 +31,23 @@
                           </p>
                           <p class="mt-3 mb-0 text-muted text-sm"  >
                             <span class="text-success mr-2">Montant : </span>
-                            <span class="text-nowrap">{{currentCoaching?.amount+' Fb'}}</span>
+                            <span class="text-nowrap">{{currentCoaching?.amount+' '+currentCoaching?.devise}}</span>
                           </p>
                           <p class="mt-3 mb-0 text-muted text-sm"  >
                             <span class="text-success mr-2">Date d'ajout : </span>
                             <span class="text-nowrap">{{currentCoaching?.creationDate}}</span>
                           </p>
                           <p class="mt-3 mb-0 text-muted text-sm" >
-                            <span class="text-success mr-2">Date de debut de la session : </span>
+                            <span class="text-success mr-2">Date de debut de la formation : </span>
                             <span class="text-nowrap">{{currentCoaching?.startDate}}</span>
+                          </p>
+                          <p class="mt-3 mb-0 text-muted text-sm" >
+                            <span class="text-success mr-2">Date de fin de la formation : </span>
+                            <span class="text-nowrap">{{currentCoaching?.dateFinFormation}}</span>
+                          </p>
+                          <p class="mt-3 mb-0 text-muted text-sm" >
+                            <span class="text-success mr-2">Date limite d'inscription: </span>
+                            <span class="text-nowrap">{{currentCoaching?.dateLimiteDenregistrement}}</span>
                           </p>
                         </div>
                         <div class="col-md-6 col-sm-12">
@@ -158,8 +166,8 @@
                       <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                         <tr>
-                          <th scope="col">Nom Produit</th>
-                          <th scope="col">Quantite</th>
+                          <th scope="col">Titre de la Formation</th>
+                          <th scope="col">Type de Formation</th>
                           <th scope="col">Prix unitaire </th>
                           <th scope="col">Prix total </th>
                           <th scope="col">Date </th>
@@ -168,14 +176,14 @@
                         </thead>
                         <tbody>
                         <tr *ngFor="let item of orders | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
-                          <td>{{item?.coaching.name}}</td>
+                          <td>{{item?.coaching.title}}</td>
                           <td>
-                            {{item?.quantity}}
+                            {{item?.coaching.type}}
                           </td>
                           <td>
-                            {{item?.coaching.amount}}
+                            {{item?.coaching.amount+' '+item?.coaching.devise}}
                           </td>
-                          <td>{{item?.amount}}</td>
+                          <td>{{item?.amount+' '+item.coaching.devise}}</td>
                           <td>{{item?.orderDate}}</td>
                           <td><button (click)="getOrder(contentOrder, item)" class="btn btn-primary "><i class="pi pi-eye"></i></button></td>
                         </tr>
