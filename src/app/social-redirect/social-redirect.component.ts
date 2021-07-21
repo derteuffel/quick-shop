@@ -61,10 +61,11 @@ export class SocialRedirectComponent implements OnInit {
               this.router.navigate(["/admin/home"]);
           }
         }
-        if(localStorage.getItem("reload")==null || localStorage.getItem("reload")==undefined)
-          location.reload();
-        else
+        if(localStorage.getItem("reload")==null || localStorage.getItem("reload")==undefined){
           localStorage.setItem("reload", "true");
+          location.reload();
+        }
+          
 
       }
     );
