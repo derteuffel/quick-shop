@@ -17,7 +17,7 @@ export class AuthService {
 
 
   public currentUser: Observable<User>;
-  private currentUserSubject: BehaviorSubject<User>;
+  public currentUserSubject: BehaviorSubject<User>;
 
   private authUrl =  BACK_BASE_URL + '/api/auth';
   //private testUrl = 'http://localhost:8181/api/account';
@@ -59,6 +59,9 @@ export class AuthService {
       username: credentials.username,
       password: credentials.password
     }, httpOptions);
+
+    {"id":23,"profile":null,"deleted":null,"email":"takedealbert@gmail.com","enabled":true,"username":"takedealbert@gmail.com","created_date":1624395802000,"password":null,"phone":"237695345931","full_name":"TAKEDE MADIGA Albert","birth_date":null,"province":null,"commune":null,"secteur_activite":"Agriculture","id_number":null,"interest":"","provide_by":null,"token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YWtlZGVhbGJlcnRAZ21haWwuY29tIiwicm9sZXMiOiJDTElFTlQiLCJleHAiOjE2MjY5NTMxNjd9.a4Q-giY2Jh4eLaaIxfFQVzZxZ-qBbCWiSvKAn-0bM641QieJZkKNGoK-Ts1zSLHLFD99iF4TmklSp5QLoXPH7Q","activation_code":"Fc4lcIisck","created_on":null,"created_at":null,"updated_on":null,"updated_at":null,"isDeleted":null,"role":"CLIENT","utilisateur_id":null}#_=_
+
   } */
 
   login(user): Observable<any> {
