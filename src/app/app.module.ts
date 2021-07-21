@@ -76,6 +76,7 @@ import { ProfileComponent } from './admin/profile/profile.component';
 import { TemoignageComponent } from './temoignage/temoignage.component';
 import { LoansInputsComponent } from './loans/loans-inputs/loans-inputs.component';
 import { InvestComponent } from './eco/invest/invest.component';
+import { SocialRedirectComponent } from './social-redirect/social-redirect.component';
 
 
 
@@ -135,7 +136,8 @@ import { InvestComponent } from './eco/invest/invest.component';
     ActivationComponent,
     ProfileComponent,
     TemoignageComponent,
-    InvestComponent
+    InvestComponent,
+    SocialRedirectComponent
     ],
   imports: [
     BrowserModule,

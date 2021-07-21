@@ -63,7 +63,9 @@ export class AbonnementComponent implements OnInit {
       id: new FormControl(''),
       longer: new FormControl(''),
       paiement: new FormControl(''),
-      duree: new FormControl('')
+      duree: new FormControl(''),
+      startDate: new FormControl(''),
+      endDate: new FormControl(''),
     })
 
   }
@@ -91,17 +93,24 @@ export class AbonnementComponent implements OnInit {
   }
   /** ajouter un abonnement **/
   saveAbonnement() {
-     this.abonnementService.saveAbon(this.abonForm?.value).subscribe(
-      (data: any) => {
-        this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
-        this.abonForm.reset();
-        this.loadData();
+    let startDate = this.form.get('startDate').value;
+    let endDate = this.form.get('endDate').value;
+    if(startDate.getTime() < endDate.getTime()){
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'The end date can not be greather than start date '});
+    }else {
+      this.abonnementService.saveAbon(this.abonForm?.value).subscribe(
+        (data: any) => {
+          this.messageService.add({severity:'success', summary:'Success', detail:'votre abonnement a été  soumit', sticky: true});
+          this.abonForm.reset();
+          this.loadData();
 
-      }, error => {
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
-      }
-    );
-    this.submitted = false;
+        }, error => {
+          this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+        }
+      );
+      this.submitted = false;
+    }
+
   }
 
 

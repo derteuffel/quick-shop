@@ -41,6 +41,7 @@ import { ActivationComponent } from './auth/activation/activation.component';
 import {ProfileComponent} from "./admin/profile/profile.component";
 import { LoansInputsComponent } from './loans/loans-inputs/loans-inputs.component';
 import { InvestComponent } from './eco/invest/invest.component';
+import { SocialRedirectComponent } from './social-redirect/social-redirect.component';
 
 
 
@@ -196,6 +197,9 @@ const routes: Routes = [
     path: 'ecommerce/register/invester', component: SingupInvesterComponent
   },
 
+  {
+    path: 'socialredirect', component: SocialRedirectComponent
+  },
 
   {
     path: 'profile', component: ProfileComponent,
