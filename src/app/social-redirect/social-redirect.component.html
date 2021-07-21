@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+
+<div class="row" *ngIf="showLinks()">
+    <div class="col md-5"></div>
+    <div class="col md-2">
+        <div class="row">
+            <h2>Choisisez votre profil</h2>
+        </div><div class="row"></div>
+        <div class="row">
+            <button class="btn btn-secondary" style="width: 100%" (click)="updateUser('LOANS')">Apprenant</button><br><br><br><br>
+        </div><div class="row"></div>
+        <div class="row">
+            <button class="btn btn-secondary" style="width: 100%" (click)="updateUser('ENTERPRENER')">Entrepreneur</button><br>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <button class="btn btn-secondary" style="width: 100%" (click)="updateUser('TRAINNER')">Encadreur/Coach</button><br>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <button class="btn btn-secondary" style="width: 100%" (click)="updateUser('INVESTOR')">Investisseur</button><br>
+        </div>
+    </div>
+    <div class="col md-5"></div>
+</div>

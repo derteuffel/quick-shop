@@ -55,16 +55,24 @@ export class EcommerceService {
     console.log(form);
     return this.http.post(`${API.PRODUITS}/all`, form);
   }
+  getAllProductsSearchLike(form): Observable<any>  {
+    console.log(form);
+    return this.http.post(`${API.PRODUITS}/all/search`, form);
+  }
 
   getOrderByProduct(id): Observable<any> {
-    return this.http.get(this.ordersUrl+'/produits/'+id, {headers: this.headers});
+    return this.http.get(`${API.COMMANDES}/admin/produits/${id}`, {headers: this.headers});
   }
   getCoachingOrders(id): Observable<any> {
-    return this.http.get(this.ordersUrl+'/coachings/'+id, {headers: this.headers});
+    return this.http.get(`${API.COMMANDES}/admin/coachings/${id}`, {headers: this.headers});
   }
 
   getAllProductsAdmin(): Observable<any>  {
     return this.http.get(`${API.PRODUITS}/admin`,  {headers: this.headers});
+  }
+
+  findAllQuantityOfProductAvailable(form): Observable<any> {
+    return this.http.get(API.PRODUITS+'/admin/quantity/dispo/'+form.region+'/'+form.category+'/'+form.name, {headers: this.headers});
   }
 
   getAllMobile(): Observable<any> {

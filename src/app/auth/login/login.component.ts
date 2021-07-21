@@ -4,6 +4,8 @@ import { AuthService } from '../auth.service';
 import { AuthLoginInfo } from '../requests/login-info';
 import { Parametre } from '../../models/parametre';
 import { Role } from 'src/app/models/role';
+import { AppConstants } from '../../../environments/environment';
+
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,11 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   role: Role;
+
+  googleURL = AppConstants.GOOGLE_AUTH_URL;
+  facebookURL = AppConstants.FACEBOOK_AUTH_URL;
+  githubURL = AppConstants.GITHUB_AUTH_URL;
+  linkedinURL = AppConstants.LINKEDIN_AUTH_URL;
   private loginInfo: AuthLoginInfo;
   constructor(private authService: AuthService,
               private router: Router) { }
@@ -41,7 +48,26 @@ export class LoginComponent implements OnInit {
           this.isLoggedIn = true;
           localStorage.setItem('id', this.authService.currentUserValue.id + '');
           this.role = this.authService.currentUserValue.role;
-          this.router.navigateByUrl('admin/home');
+          switch(this.role){
+            case Role.CLIENT:
+              this.router.navigate(["/admin/commandes/users"]);
+              break;
+            case Role.ENTERPRENER:
+              this.router.navigate(["/admin/home"]);
+              break;
+            case Role.TRAINNER:
+              this.router.navigate(["/admin/coachings"]);
+              break;
+            case Role.LOANS:
+              this.router.navigate(["/loans/requests"]);
+              break;
+            
+            case Role.INVESTOR:
+              this.router.navigate(["/loans/inputs"]);
+              break;
+            default: 
+              this.router.navigate(["/admin/home"]);
+          }
           console.log(this.role);
         }
 

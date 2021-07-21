@@ -8,13 +8,17 @@ export class Coaching {
   description: string;
   phone: string;
   email: string;
-  region: string;
+  province: string;
+  commune: string;
   amount: number;
   devise: string;
   logo: string;
   creationDate: Date;
   startDate: Date;
   user: User;
+  type: string;
+  dateFinFormation: Date;
+  dateLimiteDenregistrement: Date;
   sesions: SessionCoaching[];
 
 

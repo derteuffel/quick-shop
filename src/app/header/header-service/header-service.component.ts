@@ -18,18 +18,94 @@ export class HeaderServiceComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+    this.types=['Appele avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];    
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-    this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
-  'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
-'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
-'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
-'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
-'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
-'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
-'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
-this.init(); 
+
+this.init();
+  }
+
+  selector(){
+    console.log('je suis la')
+    switch(this.serviceForm.get('province').value){
+        case 'Bubanza':{
+            this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi'];
+            break;
+        }
+        case 'Bujumbura Mairie':{
+            this.communes = ['Muha','Mukaza','Ntahangwa'];
+            break;
+        }
+        case 'Bujumbura':{
+            this.communes = ['Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
+                    'Mutimbuzi','Nyabiraba'];
+            break
+        }
+
+        case 'Bururi': {
+            this.communes = ['Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda'];
+            break;
+        }
+        case 'Cankuzo': {
+            this.communes = ['Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha'];
+            break;
+        }
+
+        case 'Cibitoke':{
+            this.communes =['Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira'];
+            break;
+        }
+        case 'Gitega':{
+            this.communes =['Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
+                    'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro'];
+            break;
+        }
+        case 'Karuzi':{
+            this.communes = ['Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo'];
+            break;
+        }
+        case 'Kayanza':{
+            this.communes = ['Butaganzwa','Gahombo',' Gatara',' Kabarore','kayanza','Matongo','Muhanga','Muruta','Rango'];
+            break;
+        }
+        case 'Kirundo':{
+            this.communes = ['Bugabira','Busoni','Bwambarangwe', 'Gitobe','Kirundo', 'Ntega','Vumbi'];
+            break;
+        }
+
+        case 'Makamba':{
+            this.communes = ['Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo'];
+            break;
+        }
+        case 'Muramvya':{
+            this.communes =['Bukeye','Kiganda','Mbuye','Muramvya','Rutegama'];
+            break;
+        }
+
+        case 'Muyinga':{
+            this.communes = ['Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro'];
+            break;
+        }
+        case 'Mwaro':{
+            this.communes = ['Bisoro', 'Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka'];
+            break;
+        }
+        case 'Ngozi':{
+            this.communes =['Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo','Tangara'];
+            break;
+        }
+        case 'Rumonge':{
+            this.communes =['Bugarama','Burambi','Buyengero','Muhuta','Rumonge'];
+            break;
+        }
+        case 'Rutana':{
+            this.communes = ['Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana'];
+            break;
+        }
+        case 'Ruyigi':{
+            this.communes =['Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
+        }
+    }
   }
 
   init(){
@@ -49,15 +125,15 @@ this.init();
   }
 
   onServiceSearch(){
-    
+
     const serviceNavigationExtras: NavigationExtras = {
       queryParams: {
         'values':JSON.stringify(this.serviceForm.value)
       }
     };
     console.log(this.serviceForm.value);
-    
-      
+
+
       this.router.navigate(['/ecommerce/services/search'], serviceNavigationExtras);
       this.clear();
   }

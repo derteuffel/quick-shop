@@ -9,12 +9,12 @@
           class="banner_content d-md-flex justify-content-between align-items-center"
         >
           <div class="mb-3 mb-md-0">
-            <h2>Detail d'un projet demandeur de credit</h2>
-            <p>Vous pouvez financer ce projet</p>
+            <h2 class="zigs">Detail d'un projet demandeur de credit</h2>
+            <p class="zigs">Vous pouvez financer ce projet</p>
           </div>
           <div class="page_link">
-            <a href="/">Accueil</a>
-            <a href="/ecommerce/microfinance/detail/{{currentMicroFinance.id}}">Detail du projet</a>
+            <a href="/" class="zigs">Accueil</a>
+            <a href="/ecommerce/microfinance/detail/{{currentMicroFinance.id}}" class="zigs">Detail du projet</a>
           </div>
         </div>
       </div>
@@ -60,11 +60,47 @@
         <hr>
         <hr>
         <a  class="btn  btn-primary"  href="/ecommerce/register/invester">Aller au formulaire de souscription</a>
+        <br>
+        <br>
+        <br>
+        <ul class="row rating">
+          <li><i class="fa fa-star"></i></li>
+          <li><i class="fa fa-star"></i></li>
+          <li><i class="fa fa-star"></i></li>
+          <li><i class="fa fa-star"></i></li>
+          <li><i class="fa fa-star"></i></li>
+        </ul>
 
         <!-- short-info-wrap .// -->
       </article> <!-- card-body.// -->
     </aside> <!-- col.// -->
   </div> <!-- row.// -->
 </main> <!-- card.// -->
+
+
 <app-footer></app-footer>
 
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<!-- TOAST MESSAGE TEMPLATE -->
+<p-toast position="top-right"></p-toast>
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" >
+  <ng-template let-message pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1">
+      <div class="p-text-center">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h4>{{message.summary}}</h4>
+        <p>{{message.detail}}</p>
+      </div>
+      <div class="p-grid p-fluid">
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+        </div>
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>

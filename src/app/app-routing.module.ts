@@ -32,18 +32,33 @@ import {AdminAccountComponent} from "./admin/configurations/admin-account/admin-
 import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
 import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
 import { MicrofinanceSearchComponent } from './eco/microfinance-search/microfinance-search.component';
+import { CommandeClientComponent } from './admin/commande/commande-client/commande-client.component';
+import { CommandeEntreprenerComponent } from './admin/commande/commande-entreprener/commande-entreprener.component';
+import {DashboardComponent} from "./admin/dashboard/dashboard.component";
+import {AbonnementComponent} from "./abonnement/abonnement.component";
+
+import { ActivationComponent } from './auth/activation/activation.component';
+import {ProfileComponent} from "./admin/profile/profile.component";
+import { LoansInputsComponent } from './loans/loans-inputs/loans-inputs.component';
+import { InvestComponent } from './eco/invest/invest.component';
+import { SocialRedirectComponent } from './social-redirect/social-redirect.component';
 
 
 
 const routes: Routes = [
   {
     path: 'admin/home', component: AdminRootHome,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.ENTERPRENER,Role.CLIENT,Role.LOANS,Role.TRAINNER]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.ENTERPRENER,Role.CLIENT,Role.LOANS]}
   },
 
 
   {
     path: 'ecommerce/home', component: EcommerceComponent
+  },
+
+
+  {
+    path: 'activation/:code', component: ActivationComponent
   },
 
   {
@@ -71,6 +86,12 @@ const routes: Routes = [
     path: 'ecommerce/register/entreprener', component: SingupComponent
   },
   {
+    path: 'ecommerce/register/client', component: SingupClientComponent
+  },
+  {
+    path: 'ecommerce/register/invester', component: SingupInvesterComponent
+  },
+  {
     path: 'ecommerce/register/coaching', component: SingupTrainnerComponent
   },
   {
@@ -80,6 +101,9 @@ const routes: Routes = [
 
   {
     path: 'ecommerce/finances', component: MicrofinanceComponent
+  },
+  {
+    path: 'ecommerce/invests', component: InvestComponent
   },
   {
     path: 'ecommerce/product/detail/:id', component: DetailProductComponent
@@ -96,12 +120,16 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
+    path: 'loans/inputs', component: LoansInputsComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.INVESTOR]}
+  },
+  {
     path: 'admin/loans/entrants', component: AdminLoansRequestComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
     path: 'loans/requests', component: LoansRequestComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.LOANS, Role.ENTERPRENER]}
   },
 
   {
@@ -113,14 +141,29 @@ const routes: Routes = [
     path: 'admin/produit/detail/:id', component: AdminRootProductComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.ENTERPRENER]}
   },
+  {
+    path: 'admin/dashboard', component: DashboardComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
  {
     path: 'admin/commandes', component: CommandeComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/commandes/users', component: CommandeClientComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.CLIENT]}
+  },
+  {
+    path: 'admin/commandes/allsbyusers', component: CommandeEntreprenerComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.ENTERPRENER]}
   },
 
   {
     path: 'admin/coachings', component: AdminRootCoachingsComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.TRAINNER]}
+  },
+  {
+    path: 'admin/abonnements', component: AbonnementComponent
   },
 
   {
@@ -130,6 +173,10 @@ const routes: Routes = [
 
   {
     path: 'connexion', component: LoginComponent
+  },
+
+  {
+    path: 'abonnement', component: AbonnementComponent
   },
   {
     path: 'register', component: RegisterComponent
@@ -150,6 +197,14 @@ const routes: Routes = [
     path: 'ecommerce/register/invester', component: SingupInvesterComponent
   },
 
+  {
+    path: 'socialredirect', component: SocialRedirectComponent
+  },
+
+  {
+    path: 'profile', component: ProfileComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.TRAINNER,Role.ENTERPRENER,Role.CLIENT,Role.LOANS,  Role.INVESTOR]}
+  },
 
 
   {

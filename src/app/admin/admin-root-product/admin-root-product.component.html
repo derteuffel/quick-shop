@@ -20,10 +20,6 @@
 
                 </div>
                 <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
-                  <span class="text-success mr-2">Type:</span>
-                  <span class="text-nowrap">{{currentProduct?.type}}</span>
-                </p>
-                <p class="mt-3 mb-0 text-muted text-sm"  style="color: #F45B3A !important;">
                   <span class="text-success mr-2">Categorie :</span>
                   <span class="text-nowrap">{{currentProduct?.category}}</span>
                 </p>
@@ -37,7 +33,7 @@
                 </p>
                 <p class="mt-3 mb-0 text-muted text-sm" style="color: #F45B3A !important;">
                   <span class="text-success mr-2" > Localisation :</span>
-                  <span class="text-nowrap">{{currentProduct?.location}}</span>
+                  <span class="text-nowrap">{{currentProduct?.province+', '+currentProduct?.commune}}</span>
                 </p>
                 
               </div>
@@ -74,13 +70,13 @@
             <div class="col-md-6 col-lg-2">
               <button (click)="onBack()" pButton icon="fa fa-long-arrow-left" style="float:left;background-color:#F7941D;" label="Retour"></button>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div *ngIf="!isClient" class="col-md-6 col-lg-4">
               <button (click)="openModalProduct(contentAdd)" pButton icon="fa fa-pencil" style="float:left;background-color:#F7941D;" label="Mettre a jours Produit"></button>
             </div>
-            <div class="col-md-6 col-lg-3">
+            <div *ngIf="!isClient" class="col-md-6 col-lg-3">
               <button (click)="showOrders()" pButton icon="fa fa-cart-arrow-down" style="float:left;background-color:#F7941D;" label="Les Commandes"></button>
             </div>
-            <div class="col-md-6 col-lg-3">
+            <div *ngIf="!isClient" class="col-md-6 col-lg-3">
               <button (click)="showUpdates()" pButton icon="fa fa-list" style="float:left;background-color:#F7941D;" label="Les mises a jours"></button>
             </div>
             

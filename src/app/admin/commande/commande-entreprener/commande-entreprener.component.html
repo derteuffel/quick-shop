@@ -1,0 +1,72 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="main-content">
+  <!-- Top navbar -->
+  <app-admin-navbar></app-admin-navbar>
+  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+          <h1>Gestion de toutes les commandes sur mes produits</h1>
+      </div>
+    </div>
+  </div>
+  <!-- Pages -->
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0"style="background-color:#F45B3A;">
+            <div class="col-md-6 pull-right" style="width: 40%">
+              <label >Recherche <i class="fa fa-search"></i></label>
+              <input type="text" class="form-control" [(ngModel)]="searchItem">
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">Numero</th>
+                <th scope="col">Nom Produit</th>
+                <th scope="col">Quantite</th>
+                <th scope="col">Montant</th>
+                <th scope="col">Client</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                              
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+                <td>{{item?.numero}}</td>
+                <td>
+                  {{item?.produit.name}}
+                </td>
+                <td>{{item?.quantity}}</td>
+                <td>{{item?.amount+' '+item.produit.devise}}</td>
+                <td>{{item?.clientName}}</td>
+                <td>{{item?.orderDate}} </td>
+                <td>{{item.status}} </td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer py-4">
+
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <app-admin-footer></app-admin-footer>
+  </div>
+</div>
+

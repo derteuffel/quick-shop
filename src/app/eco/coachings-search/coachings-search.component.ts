@@ -15,6 +15,9 @@ export class CoachingsSearchComponent implements OnInit {
   provinces: string[];
   communes: string[];
   types:string[];
+  lists: any = {};
+  p:number = 1;
+
   serviceForm: FormGroup;
 
   constructor(private coachingService: CoachingService, private activatedRoute: ActivatedRoute) { }
@@ -24,23 +27,99 @@ export class CoachingsSearchComponent implements OnInit {
       this.navigationParams = JSON.parse(params['values']);
     })
     console.log(this.navigationParams);
-    
-      console.log('je suis plutot la');
+
       this.loadSearchedCoaching(this.navigationParams);
-      this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+      this.loadSearchedCoachingLike(this.navigationParams);
+      this.types = ['Appel avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];
       this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-        this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
-      'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
-    'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
-    'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
-    'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
-    'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
-    'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
-    'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
-    this.init(); 
+
+    this.init();
   }
 
+
+selector(){
+  console.log('je suis la')
+  switch(this.serviceForm.get('province').value){
+      case 'Bubanza':{
+          this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi'];
+          break;
+      }
+      case 'Bujumbura Mairie':{
+          this.communes = ['Muha','Mukaza','Ntahangwa'];
+          break;
+      }
+      case 'Bujumbura':{
+          this.communes = ['Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
+                  'Mutimbuzi','Nyabiraba'];
+          break
+      }
+
+      case 'Bururi': {
+          this.communes = ['Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda'];
+          break;
+      }
+      case 'Cankuzo': {
+          this.communes = ['Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha'];
+          break;
+      }
+
+      case 'Cibitoke':{
+          this.communes =['Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira'];
+          break;
+      }
+      case 'Gitega':{
+          this.communes =['Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
+                  'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro'];
+          break;
+      }
+      case 'Karuzi':{
+          this.communes = ['Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo'];
+          break;
+      }
+      case 'Kayanza':{
+          this.communes = ['Butaganzwa','Gahombo',' Gatara',' Kabarore','kayanza','Matongo','Muhanga','Muruta','Rango'];
+          break;
+      }
+      case 'Kirundo':{
+          this.communes = ['Bugabira','Busoni','Bwambarangwe', 'Gitobe','Kirundo', 'Ntega','Vumbi'];
+          break;
+      }
+
+      case 'Makamba':{
+          this.communes = ['Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo'];
+          break;
+      }
+      case 'Muramvya':{
+          this.communes =['Bukeye','Kiganda','Mbuye','Muramvya','Rutegama'];
+          break;
+      }
+
+      case 'Muyinga':{
+          this.communes = ['Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro'];
+          break;
+      }
+      case 'Mwaro':{
+          this.communes = ['Bisoro', 'Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka'];
+          break;
+      }
+      case 'Ngozi':{
+          this.communes =['Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo','Tangara'];
+          break;
+      }
+      case 'Rumonge':{
+          this.communes =['Bugarama','Burambi','Buyengero','Muhuta','Rumonge'];
+          break;
+      }
+      case 'Rutana':{
+          this.communes = ['Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana'];
+          break;
+      }
+      case 'Ruyigi':{
+          this.communes =['Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
+      }
+  }
+}
 
   init(){
     this.serviceForm = new FormGroup({
@@ -53,7 +132,8 @@ export class CoachingsSearchComponent implements OnInit {
 
   onServiceSearch(){
     const searchValue = {
-      location: this.serviceForm.get('province').value+', '+this.serviceForm.get('commune').value,
+      province: this.serviceForm.get('province').value,
+      commune: this.serviceForm.get('commune').value,
       name: this.serviceForm.get('name').value
     }
     this.loadSearchedCoaching(this.serviceForm.value);
@@ -64,6 +144,18 @@ export class CoachingsSearchComponent implements OnInit {
     this.coachingService.getAllCoachingSearch(form).subscribe(
       data => {
         this.coachings = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  loadSearchedCoachingLike(form){
+    this.coachingService.getAllCoachingSearchLike(form).subscribe(
+      data => {
+        this.lists = data;
         console.log(data);
       },
       error => {

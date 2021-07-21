@@ -34,7 +34,12 @@ export class AccountService {
     return this.http.get(`${API.ACCOUNT}`,{headers: this.headers});
   }
 
+  updateRole(id:number, role): Observable<any> {
+    return this.http.get(API.ACCOUNT+'/updateRole'+'?userId='+id+'&role='+role,{headers: this.headers});
+  }
+
   public updateAccount(form): Observable<any>{
+    console.log(form);
     return this.http.put( `${API.ACCOUNT}/update`, form,{headers: this.headers});
   }
 
@@ -69,5 +74,9 @@ export class AccountService {
 
   public activateAccount(id): Observable<any>{
     return this.http.get(`${API.ACCOUNT}/activation/${id}`,{headers: this.headers})
+  }
+
+  getOne(id): Observable<any>{
+    return this.http.get(`${API.ACCOUNT}/view/${id}`,{headers: this.headers})
   }
 }

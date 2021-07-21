@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderProduitComponent } from './header-produit.component';
+import { SocialRedirectComponent } from './social-redirect.component';
 
-describe('HeaderProduitComponent', () => {
-  let component: HeaderProduitComponent;
-  let fixture: ComponentFixture<HeaderProduitComponent>;
+describe('SocialRedirectComponent', () => {
+  let component: SocialRedirectComponent;
+  let fixture: ComponentFixture<SocialRedirectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderProduitComponent ]
+      declarations: [ SocialRedirectComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderProduitComponent);
+    fixture = TestBed.createComponent(SocialRedirectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

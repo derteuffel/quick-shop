@@ -1,7 +1,7 @@
 export class CustomerInfo {
 
-  fullName: string;
-    location: string;
+    fullName: string;
+    region: string;
     phone: string;
     amount: string;
     devise: string;
@@ -11,13 +11,13 @@ export class CustomerInfo {
     idNumber: string;
 
     constructor(fullName: string, email: string,
-        location: string, phone: string, devise: string, idNumber: string,
+                region: string, phone: string, devise: string, idNumber: string,
         amount: string, paymentMethod: string) {
         this.fullName = fullName;
         this.devise = devise;
         this.email = email;
         this.amount = amount;
-        this.location = location;
+        this.region = region;
         this.phone = phone;
         this.idNumber = idNumber;
         this.paymentMethod = paymentMethod;

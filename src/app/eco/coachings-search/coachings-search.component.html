@@ -1,80 +1,41 @@
 <!-- Header -->
+<app-header></app-header>
 <header class="header shop">
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 col-md-12 col-12">
-          <!-- Top Left -->
-          <div class="top-left">
-            <ul class="list-main">
-              <li><i class="ti-email"></i> support@yesbinspire.com</li>
-            </ul>
+    <div class="middle-inner">
+      <div class="container">
+          <div class="search-bar-top">
+            <form [formGroup]="serviceForm" (submit)="onServiceSearch()" >
+              <div class="row">
+                <div class="form-group col-xl-3 col-md-6">
+                  <select formControlName="name" class="form-control" >
+                      <option value="" disabled>-- Choisir un type de formation --</option>
+                      <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
+                    </select>
+              </div>
+                <div class="form-group col-md-6 col-xl-3">
+                  <select formControlName="province" class="form-control" >
+                    <option value="" disabled>-- Choisir une province --</option>
+                    <option value="">-- Listes des provinces --</option>
+                    <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6 col-xl-3">
+                  <select formControlName="commune" (click)="selector()" class="form-control" >
+                    <option value="" disabled>-- Choisir une commune --</option>
+                    <option value="" disabled>-- Liste des communes --</option>
+                    <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
+                  </select>
+                </div>
+                
+                <div class="top-search col-xl-3 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-white"></i>&nbsp; Rechercher </button></div>
+              </div>
+            </form>
           </div>
-          <!--/ End Top Left -->
-        </div>
-        <div class="col-lg-7 col-md-12 col-12">
-          <!-- Top Right -->
-          <div class="right-content">
-            <ul class="list-main">
-              <!-- <li><i class="ti-power-off"></i><a href="signup">Inscription</a></li> -->
-              <li><i class="ti-power-off"></i><a href="connexion">Connexion</a></li>
-            </ul>
-          </div>
-          <!-- End Top Right -->
-        </div>
       </div>
     </div>
-  </div>
-  <!-- End Topbar -->
-  <div class="middle-inner">
-    <div class="container">
-        <div class="search-bar-top row">
-            <div class="col-md-6 col-lg-3">
-              <a href="/" class="btn"> <h1>YESB-INSPIRE</h1> </a>
-              </div>
-          <form [formGroup]="serviceForm" (submit)="onServiceSearch()"  class="card py-2 px-3 col-md-6 col-lg-9">
-            <div class="row">
-              <div class="form-group col-md-6 col-xl-3">
-                <select formControlName="province" class="form-control" >
-                  <option value="" disabled>-- Choisir une province --</option>
-                  <option value="">-- Listes des provinces --</option>
-                  <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
-                </select>
-              </div>
-              <div class="form-group col-md-6 col-xl-3">
-                <select formControlName="commune" class="form-control" >
-                  <option value="" disabled>-- Choisir une commune --</option>
-                  <option value="" disabled>-- Liste des communes --</option>
-                  <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
-                </select>
-              </div>
-              <div class="form-group col-xl-3 col-md-6">
-                <select formControlName="name" class="form-control" >
-                  <option value="" disabled>-- Choisir un type de service --</option>
-                  <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
-                </select>
-              </div>
-              <div class="top-search col-xl-3 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-warning"></i>&nbsp; Rechercher </button></div>
-            </div>
-          </form>
-        </div>
-    </div>
-  </div>
-  <!-- Header Inner -->
-
-  <!-- End Topbar -->
-    <div class="container">
-        <!-- Search Form -->
-        <div class="search-top">
-          
-        </div>
-        <!--/ End Search Form -->
-    </div>
-</header>
+    <!-- Header Inner -->
+  </header>
 <!--/ End Header -->
-
-
 
 <!-- Start Shop Blog  -->
 <section class="shop-blog section">
@@ -89,7 +50,7 @@
     </div>
     <br>&nbsp;
     <div class="row">
-      <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings">
+      <div class="col-lg-4 col-md-6 col-12" *ngFor="let coaching of coachings | paginate: {itemsPerPage: 10, currentPage: p}">
         <!-- Start Single Blog  -->
         <div class="shop-single-blog">
           <a href="/ecommerce/coaching/detail/{{coaching?.id}}">
@@ -100,6 +61,33 @@
             <p class="date">{{coaching?.startDate}}</p>
             <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="title">{{coaching?.title}}</a>
             <a href="/ecommerce/coaching/detail/{{coaching?.id}}" class="more-btn">{{coaching?.amount+' '+coaching.devise}}</a>
+          </div>
+        </div>
+        <!-- End Single Blog  -->
+      </div>
+    </div>
+    <div class="card-footer py-4">
+      <nav aria-label="...">
+        <ul class="pagination justify-content-end mb-0">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </ul>
+      </nav>
+    </div>
+    <div class="card-body my-4">
+      <h2>Formations similaires</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-2 col-md-6 col-12" *ngFor="let item of lists ">
+        <!-- Start Single Blog  -->
+        <div class="shop-single-blog">
+          <a href="/ecommerce/coaching/detail/{{item?.id}}">
+            <img *ngIf="!item.logo" src="https://via.placeholder.com/370x300" alt="#">
+            <img *ngIf="item.logo" [src]="item.logo" alt="#">
+          </a>
+          <div class="content">
+            <p class="date">{{item?.startDate}}</p>
+            <a href="/ecommerce/coaching/detail/{{item?.id}}" class="title">{{item?.title}}</a>
+            <a href="/ecommerce/coaching/detail/{{item?.id}}" class="more-btn">{{item?.province+' '+item.commune}}</a>
           </div>
         </div>
         <!-- End Single Blog  -->

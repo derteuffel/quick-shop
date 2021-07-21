@@ -11,7 +11,8 @@ export class Product{
   measure?: string;
   description?: string;
   quantity?: number;
-  location: string;
+  province: string;
+  commune: string;
   devise: string;
   pictures?: string[];
   boutique?: Boutique;

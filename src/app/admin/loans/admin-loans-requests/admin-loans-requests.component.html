@@ -35,6 +35,41 @@
               <label >Recherche <i class="fa fa-search"></i></label>
               <input type="text" class="form-control" [(ngModel)]="searchItem">
             </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                <tr>
+                  <th scope="col">Nom du demandeur</th>
+                  <th scope="col">Telephone</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Titre de la demande</th>
+                  <th scope="col">Type d'activite</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
+
+                  <td>{{item.user.fullName}}</td>
+                  <td>{{item.user.phone}}</td>
+                  <td> {{item.user.email}} </td>
+                  <td> {{item.object}} </td>
+                  <td> {{item.sector}} </td>
+                  <td *ngIf="item.status" class="alert-succes">Accepter </td>
+                  <td *ngIf="!item.status" class="alert-danger">Refuser </td>
+                  <td>
+                    <button (click)="showDetail(contentDetails, item)"  class="btn btn-success m-1" ><i class="pi pi-eye"></i></button>
+                    <button (click)="activation(contentActivation, item)" *ngIf="!item.status"  class="btn btn-primary m-1" ><i class="pi pi-check"></i></button>
+                    <button (click)="activation(contentActivation, item)" *ngIf="item.status"  class="btn btn-secondary m-1" ><i class="pi pi-check-square"></i></button>
+                    <button  (click)="deleteCoaching(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
+                  </td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+<!--
             <table class="table align-items-center table-responsive table-responsive-md table-flush">
               <thead class="thead-light">
               <tr>
@@ -67,6 +102,7 @@
 
               </tbody>
             </table>
+-->
           </div>
           <div class="card-footer py-4">
 
@@ -79,6 +115,7 @@
         </div>
       </div>
     </div>
+    
   </div>
   <div class="container-fluid">
     <app-admin-footer></app-admin-footer>
