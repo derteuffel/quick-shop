@@ -27,6 +27,10 @@ export class SocialRedirectComponent implements OnInit {
     private accoutService: AccountService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem("reload")==null || localStorage.getItem("reload")==undefined){
+      localStorage.setItem("reload", "true");
+      location.reload();
+    }
     this.activatedRoute.queryParams.subscribe(
       params =>{
         this.data = params.data;
@@ -61,11 +65,6 @@ export class SocialRedirectComponent implements OnInit {
               this.router.navigate(["/admin/home"]);
           }
         }
-        if(localStorage.getItem("reload")==null || localStorage.getItem("reload")==undefined){
-          localStorage.setItem("reload", "true");
-          location.reload();
-        }
-          
 
       }
     );
