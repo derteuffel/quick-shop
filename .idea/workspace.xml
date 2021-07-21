@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html" afterDir="false" />
-    </list>
+    <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -19,20 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="microfinance-detail.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html">
+      <file leaf-file-name="admin-root-coachings.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="coaching-detail.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="74" column="12" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="12" />
+            <state relative-caret-position="-3540">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
         </entry>
@@ -210,24 +196,24 @@
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="eco" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="eco" type="462c0819:PsiDirectoryNode" />
-              <item name="coachings" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="admin-root-coachings" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="eco" type="462c0819:PsiDirectoryNode" />
-              <item name="coachings" type="462c0819:PsiDirectoryNode" />
-              <item name="coaching-detail" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="admin-root-coachings" type="462c0819:PsiDirectoryNode" />
+              <item name="coaching" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
@@ -413,12 +399,12 @@
       <workItem from="1626437270756" duration="1511000" />
       <workItem from="1626508649792" duration="452000" />
       <workItem from="1626628921127" duration="5352000" />
-      <workItem from="1626851580512" duration="276000" />
+      <workItem from="1626851580512" duration="1144000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="323637000" />
+    <option name="totallyTimeSpent" value="324505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
@@ -544,36 +530,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app-routing.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2873">
-          <caret line="169" column="11" selection-start-line="169" selection-start-column="11" selection-end-line="169" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app-routing.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2788">
-          <caret line="164" column="11" selection-start-line="164" selection-start-column="11" selection-end-line="164" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -842,13 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coachings.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -900,6 +849,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="74" column="12" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
@@ -907,10 +863,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/abonnement/abonnement.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="74" column="12" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="12" />
+        <state relative-caret-position="-2955">
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/models/abonnement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/abonnement/abonnement.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-563" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3540">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
         </state>
       </provider>
     </entry>
