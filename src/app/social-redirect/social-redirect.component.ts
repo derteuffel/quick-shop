@@ -59,6 +59,7 @@ export class SocialRedirectComponent implements OnInit {
               this.router.navigate(["/admin/home"]);
           }
         }
+        location.reload();
       }
     );
   }
