@@ -73,15 +73,7 @@ export class CoachingDetailComponent implements OnInit {
     });
   }
 
-  loadProducts() {
-    this.ecommerceService.getAllProducts().subscribe(
-      data => {
-        this.products = data;
-      }, error1 => {
-        console.log(error1);
-      }
-    )
-  }
+  
   onSaveSubscribe(){
     const formData =  {
       clientName: this.orderForm.get('name').value,
