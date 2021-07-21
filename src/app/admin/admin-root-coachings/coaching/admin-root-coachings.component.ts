@@ -194,7 +194,7 @@ export class AdminRootCoachingsComponent implements OnInit {
       this.messageService.add({severity:'error', summary: 'Error', detail: 'The start date can not be greather than end date '});
     }else if(endSubscribeDate.getTime() > startDate.getTime()){
       this.messageService.add({severity:'error', summary: 'Error', detail: 'The end subscribe date can not be greather than start date'});
-    }
+    }else{
     console.log(this.uploadedFile)
     const formData = new FormData();
     formData.append('title', this.form.get('title').value);
@@ -222,6 +222,7 @@ export class AdminRootCoachingsComponent implements OnInit {
       }
     );
     this.submitted = false;
+    }
   }
 
 
@@ -257,7 +258,7 @@ export class AdminRootCoachingsComponent implements OnInit {
       this.messageService.add({severity:'error', summary: 'Error', detail: 'The start date can not be greather than end date '});
     }else if(endSubscribeDate.getTime() > startDate.getTime()){
       this.messageService.add({severity:'error', summary: 'Error', detail: 'The end subscribe date can not be greather than start date'});
-    }
+    }else{
     console.log('je suis la');
     console.log(this.form.value);
     const updateForm = {
@@ -283,7 +284,8 @@ export class AdminRootCoachingsComponent implements OnInit {
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
-    )
+    );
+    }
   }
 
 
