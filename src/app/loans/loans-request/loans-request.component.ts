@@ -17,19 +17,18 @@ export class LoansRequestComponent implements OnInit {
 
   lists: any = {};
   boutiqueRef
-  sessionRef
+
   p: number = 1;
   searchItem: string;
   types: string[];
   provinces: string[];
   communes: string[];
   public submitted: boolean = false;
-  public sessionSubmitted: boolean = false;
   public loansFormGroup?: FormGroup;
   public loansUpdateFormGroup?: FormGroup;
-  public addCoachingSessionFurmGroup?: FormGroup;
   public loans;
-  public currentSession;
+  uploadedFile: File = null;
+
   constructor(              //private coachingService: CoachingService,
                             private sessionService: SessionCoachingService,
                             private loansService: LoansService,
@@ -185,8 +184,7 @@ export class LoansRequestComponent implements OnInit {
     this.submitted = true;
     if (this.loansFormGroup?.invalid) return;
     const formData = new FormData();
-    formData.append('file',this.loansFormGroup.get('projectSupport').value);
-    formData.append('file2',this.loansFormGroup.get('validatedSupport').value);
+
     formData.append('province', this.loansFormGroup.get('province').value);
     formData.append('commune',this.loansFormGroup.get('commune').value)
     formData.append('amount', this.loansFormGroup.get('amount').value);
@@ -194,18 +192,35 @@ export class LoansRequestComponent implements OnInit {
     formData.append('devise', this.loansFormGroup.get('devise').value);
     formData.append('title', this.loansFormGroup.get('object').value);
     console.log(this.loansFormGroup.value);
-    console.log(formData)
-     this.loansService.save(formData).subscribe(
-      (data: any) => {
-        // this.router.navigateByUrl('/admin/boutiques');
-        this.loansFormGroup.reset();
-        this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
-        this.loadData();
-      }, error => {
-        this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
-      }
-    ); 
+    if(!this.validateFile(this.uploadedFile.name)){
+      this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
+      this.onReject();
+    }{
+      formData.append('file',this.uploadedFile);
+      formData.append('file2',this.uploadedFile);
+      this.loansService.save(formData).subscribe(
+        (data: any) => {
+          // this.router.navigateByUrl('/admin/boutiques');
+          this.loansFormGroup.reset();
+          this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
+          this.loadData();
+        }, error => {
+          this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+        }
+      );
+    }
+
     this.submitted = false;
+  }
+
+  validateFile(name: String) {
+    var ext = name.substring(name.lastIndexOf('.') + 1);
+    if (ext.toLowerCase() == 'pdf') {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
 
@@ -287,7 +302,7 @@ export class LoansRequestComponent implements OnInit {
     )
   }
 
-  
+
 
   /** toast message function primeng  **/
   onConfirm() {

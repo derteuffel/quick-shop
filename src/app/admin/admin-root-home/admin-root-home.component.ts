@@ -341,12 +341,9 @@ export class AdminRootHome implements OnInit {
     this.submitted = true;
     if (this.productForm?.invalid) { return; }
     const formData = new FormData();
-    formData.append('file',this.productForm.get('pictureUrl').value);
-
     formData.append('name', this.productForm.get('name').value);
     formData.append('price', this.productForm.get('price').value);
     formData.append('category', this.productForm.get('category').value);
-    //formData.append('type', this.productForm.get('type').value);
     formData.append('province', this.productForm.get('province').value);
     formData.append('commune', this.productForm.get('commune').value);
     formData.append('quantity', this.productForm.get('quantity').value);
