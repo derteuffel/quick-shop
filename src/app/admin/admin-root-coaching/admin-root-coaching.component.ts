@@ -44,7 +44,7 @@ export class AdminRootCoachingComponent implements OnInit {
 
   ngOnInit(): void {
     this.showSessions();
-    this.getSession(this.activatedRoute.snapshot.paramMap.get('id'));
+      
     this.initForm();
   }
 
