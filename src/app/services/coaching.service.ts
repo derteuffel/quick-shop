@@ -26,7 +26,8 @@ export class CoachingService {
     });
 
     this.formHeaders = (this.currentUser==null || this.currentUser == undefined) ? new HttpHeaders({}):new HttpHeaders({
-      authorization: 'Bearer ' + this.currentUser.token
+      authorization: 'Bearer ' + this.currentUser.token,
+      
     });
 
   }

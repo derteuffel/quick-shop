@@ -6,9 +6,9 @@ export const environment = {
   production: false
 };
 
-export const BACK_BASE_URL = "http://192.168.1.130:8181";
+export const BACK_BASE_URL = "http://localhost:8181";
 
-const url = 'http://192.168.1.130:8181/';
+const url = 'http://localhost:8181/';
 
 export const API = {
 
@@ -97,7 +97,7 @@ export function hasFunctionality(func: string) {
 export class AppConstants{
   private static API_BASE_URL = "http://localhost:8181/";
   private static OAUTH2_URL = AppConstants.API_BASE_URL + "oauth2/authorization/";
-  private static REDIRECT_URL = "?redirect_uri=http://localhost:8181/api/auth/redirect";
+  private static REDIRECT_URL = "?redirect_uri=http://localhost:4200/socialredirect";
   public static API_URL = AppConstants.API_BASE_URL + "api/";
   public static AUTH_API = AppConstants.API_URL + "auth/";
   public static GOOGLE_AUTH_URL = AppConstants.OAUTH2_URL + "google" + AppConstants.REDIRECT_URL;

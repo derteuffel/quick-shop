@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, ValidatorFn} from "@angular/forms";
 import {Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {MessageService, PrimeNGConfig} from "primeng/api";
@@ -76,8 +76,8 @@ export class AdminRootCoachingsComponent implements OnInit {
       startDate: new FormControl(null),
       description: new FormControl(''),
       type: new FormControl(''),
-      dateLimiteDenregistrement: new FormControl(''),
-      dateFinFormation: new FormControl(''),
+      dateLimiteDenregistrement: new FormControl(null),
+      dateFinFormation: new FormControl(null),
 
 
     })
@@ -188,13 +188,14 @@ export class AdminRootCoachingsComponent implements OnInit {
 
 
     let startDate = this.form.get('startDate').value;
-    let endDate = this.form.get('dateFintFormation').value;
+    console.log(startDate);
+    let endDate = this.form.get('dateFinFormation').value;
+    console.log(this.form.get('dateFinFormation').value);
     let endSubscribeDate = this.form.get('dateLimiteDenregistrement').value;
-    if(startDate.getTime() > endDate.getTime()){
-      this.messageService.add({severity:'error', summary: 'Error', detail: 'The start date can not be greather than end date '});
-    }else if(endSubscribeDate.getTime() > startDate.getTime()){
-      this.messageService.add({severity:'error', summary: 'Error', detail: 'The end subscribe date can not be greather than start date'});
-    }else{
+    this.dateRangeValidator(startDate,startDate);
+    this.dateRangeValidator(endSubscribeDate,endDate);
+    
+      console.log('j\'ai fait le troisieme test');
     console.log(this.uploadedFile)
     const formData = new FormData();
     formData.append('title', this.form.get('title').value);
@@ -209,6 +210,11 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('type', this.form.get('type').value);
     formData.append('dateFinFormation', endDate);
     formData.append('dateLimiteDenregistrement', endSubscribeDate);
+    if(!this.validateFile(this.uploadedFile.name)){
+      console.log('je suis une erreur')
+      this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
+      this.onReject();
+    }else{
     formData.append('file', this.uploadedFile);
     console.log(formData);
 
@@ -216,12 +222,44 @@ export class AdminRootCoachingsComponent implements OnInit {
      this.coachingService.saveCoaching(formData).subscribe(
       (data: any) => {
         this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
+        this.initForm();
         this.loadData();
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
+  }
     this.submitted = false;
+    }
+  
+    validateFile(name: String) {
+      var ext = name.substring(name.lastIndexOf('.') + 1);
+      if (ext.toLowerCase() == 'png'||ext.toLowerCase() == 'jpg'||ext.toLowerCase() == 'jpeg') {
+          return true;
+      }
+      else {
+          return false;
+      }
+  }
+   dateRangeValidator(min: Date, max: Date): ValidatorFn {
+    return control => {
+      if (!control.value) return null;
+      console.log('je suis dans le test');
+      const dateValue = new Date(control.value);
+  
+      if (min && dateValue < min) {
+        console.log('je ne marche pas 1');
+        this.messageService.add({severity:'error', summary:'Error', detail:'The Start date cannot be greater than end date'});
+        return { message: 'error message' };
+      }
+  
+      if (max && dateValue > max) {
+        console.log('je ne marche pas 2');
+        this.messageService.add({severity:'error', summary:'Error', detail:'The End date cannot be greater than maximum'});
+        return { message: 'error message' };
+      }
+  
+      null;
     }
   }
 
