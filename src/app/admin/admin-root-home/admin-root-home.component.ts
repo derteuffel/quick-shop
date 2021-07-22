@@ -25,7 +25,7 @@ import {AbonnementService} from "../../services/abonnement.service";
   providers: [MessageService],
 })
 export class AdminRootHome implements OnInit {
-  
+
 
   message: string;
   loading = true;
@@ -53,7 +53,7 @@ export class AdminRootHome implements OnInit {
   public imagePath;
   imgURL: any;
   user: User;
-
+  uploadedFile: File = null;
 
   constructor(private ecommerceService: EcommerceService,
               private fb: FormBuilder,
@@ -74,7 +74,7 @@ export class AdminRootHome implements OnInit {
     this.loadList();
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bunjumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-    
+
     this.initForm();
 
     if (this.authService.currentUserValue.token) {
@@ -106,12 +106,12 @@ export class AdminRootHome implements OnInit {
         this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Jus','Lait','Yaourt','Pate de tomate','Confiture','Miel','Huile de palm'];
         break;
       }
-  
+
       case 'Betails':{
         this.names = ['Porc', 'Chevre','Lapins','Vaches','Poulets'];
         break;
       }
-  
+
       case 'Peches':{
         this.names = ['Capitain','Tilapia','Sangala','Mukeke','Ndagala','Kuhe','Ndagala fume'];
         break;
@@ -120,7 +120,7 @@ export class AdminRootHome implements OnInit {
         this.names = ['Telephone portable', 'Smart phone'];
         break;
       }
-      
+
       case 'Bags':{
         this.names = ['Sacs de classe','Sacs a main','Valises','Sacs de sports'];
         break;
@@ -129,12 +129,12 @@ export class AdminRootHome implements OnInit {
         this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Reparation Bateaux','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
         break;
       }
-  
+
       case 'Charpenterie':{
         this.names = ['Chaise de salon','Chaise de salle a mange','Table d\'etude','Table de salon','Table salle a mange','Bureau pour Enseignant','Placard a vetement','Armoire de salon','Etagere a livres'];
         break;
       }
-  
+
       case 'Salon de beaute':{
         this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe','Maquillage','Pedicure','Manucure'];
         break;
@@ -147,12 +147,12 @@ export class AdminRootHome implements OnInit {
         this.names = ['Plannification d\'evenement','Decoration evenementiel','Maitre de ceremonie','Traducteur'];
         break;
       }
-  
+
       case 'Performance musicales' :{
         this.names = ['Tambourinaire','Groupe acoustique','Groupe d\'interprete','Chorale','Deejay','Guitariste','Violon','Pianiste','Quatuor','Orchestre','Solo','Autre'];
         break;
       }
-  
+
       case 'Danse':{
         this.names = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
         break;
@@ -165,7 +165,7 @@ export class AdminRootHome implements OnInit {
         this.names = ['Pieces','Sketches','Publicites','Commedies musicales','Paroles','Narrateur et conteur', 'Autres'];
         break;
       }
-  
+
       case 'Peintures':{
         this.names = ['Paysages','Portrait','Abstraite', 'Autres'];
         break;
@@ -174,15 +174,15 @@ export class AdminRootHome implements OnInit {
         this.names = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
         break;
       }
-  
+
       case 'Achats des pieces de rechanges':{
         this.names = ['Motocyle', 'Vehicules', 'Camions'];
         break;
       }
     }
-  
+
   }
-  
+
 
   selector(){
     console.log('je suis la')
@@ -342,11 +342,7 @@ export class AdminRootHome implements OnInit {
     if (this.productForm?.invalid) { return; }
     const formData = new FormData();
     formData.append('file',this.productForm.get('pictureUrl').value);
-   // if(!this.validateFile(this.productForm.get('pictureUrl').value)){
-     // console.log('je suis une erreur')
-      //this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
-      //this.onReject();
-    //}else{
+
     formData.append('name', this.productForm.get('name').value);
     formData.append('price', this.productForm.get('price').value);
     formData.append('category', this.productForm.get('category').value);
@@ -357,22 +353,28 @@ export class AdminRootHome implements OnInit {
     formData.append('devise', this.productForm.get('devise').value);
     formData.append('description', this.productForm.get('description').value);
     formData.append('measure', this.productForm.get('measure').value);
-    console.log(formData);
-    this.ecommerceService.saveProduct(formData).subscribe(
-      data => {
-        this.productForm.reset();
-        this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
-        this.loadList();
-        console.log(this.productForm);
-        console.log(data);
-        window.location.reload();
-      },
-      error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
-        console.log(error);
-      }
-    );
-  //}
+    if(!this.validateFile(this.uploadedFile.name)){
+      this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
+      this.onReject();
+    }else{
+      formData.append('file', this.uploadedFile);
+      this.ecommerceService.saveProduct(formData).subscribe(
+        data => {
+          this.productForm.reset();
+          this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
+          this.loadList();
+          console.log(this.productForm);
+          console.log(data);
+          window.location.reload();
+        },
+        error => {
+          this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+          console.log(error);
+        }
+      );
+    }
+
+
   }
 
   validateFile(name: String) {
@@ -456,7 +458,7 @@ export class AdminRootHome implements OnInit {
     this.modalService.open(contentAddAbon, { size: 'lg' });
   }
 
-  
+
 
 
 }

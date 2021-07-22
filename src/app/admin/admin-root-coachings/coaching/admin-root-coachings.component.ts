@@ -194,9 +194,8 @@ export class AdminRootCoachingsComponent implements OnInit {
     let endSubscribeDate = this.form.get('dateLimiteDenregistrement').value;
     this.dateRangeValidator(startDate,startDate);
     this.dateRangeValidator(endSubscribeDate,endDate);
-    
+
       console.log('j\'ai fait le troisieme test');
-    console.log(this.uploadedFile)
     const formData = new FormData();
     formData.append('title', this.form.get('title').value);
     formData.append('description', this.form.get('description').value);
@@ -231,7 +230,7 @@ export class AdminRootCoachingsComponent implements OnInit {
   }
     this.submitted = false;
     }
-  
+
     validateFile(name: String) {
       var ext = name.substring(name.lastIndexOf('.') + 1);
       if (ext.toLowerCase() == 'png'||ext.toLowerCase() == 'jpg'||ext.toLowerCase() == 'jpeg') {
@@ -246,19 +245,19 @@ export class AdminRootCoachingsComponent implements OnInit {
       if (!control.value) return null;
       console.log('je suis dans le test');
       const dateValue = new Date(control.value);
-  
+
       if (min && dateValue < min) {
         console.log('je ne marche pas 1');
         this.messageService.add({severity:'error', summary:'Error', detail:'The Start date cannot be greater than end date'});
         return { message: 'error message' };
       }
-  
+
       if (max && dateValue > max) {
         console.log('je ne marche pas 2');
         this.messageService.add({severity:'error', summary:'Error', detail:'The End date cannot be greater than maximum'});
         return { message: 'error message' };
       }
-  
+
       null;
     }
   }

@@ -36,6 +36,7 @@ export class AdminLoansRequestComponent implements OnInit {
   productForm: FormGroup;
   p: number = 1;
   searchItem: string;
+  uploadedFile: File = null;
 
   constructor(
                             private loansService: LoansService,
@@ -55,7 +56,7 @@ export class AdminLoansRequestComponent implements OnInit {
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
 
     this.initForm1();
-    
+
   }
 
 
@@ -294,29 +295,46 @@ this.init();
     this.submitted = true;
     if (this.productForm?.invalid) { return; }
     const formData = new FormData();
-    formData.append('file',this.productForm.get('file').value);
     formData.append('title', this.productForm.get('title').value);
     formData.append('region', this.productForm.get('region').value);
     formData.append('devise', this.productForm.get('devise').value);
     formData.append('amount', this.productForm.get('amount').value);
     formData.append('localisation', this.productForm.get('province').value+', '+this.productForm.get('commune').value);
-    formData.append('file2', this.productForm.get('file2').value);
+
     formData.append('sector', this.productForm.get('sector').value);
-    console.log(formData);
-    this.loansService.save(formData).subscribe(
-      data => {
-        this.productForm.reset();
-        this.messageService.add({severity: 'success', summary: 'Success', detail: 'loans submitted', sticky: true});
-        this.loadData();
-        console.log(this.productForm);
-        console.log(data);
-        window.location.reload();
-      },
-      error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
-        console.log(error);
-      }
-    );
+    if(!this.validateFile(this.uploadedFile.name)){
+      this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
+      this.onReject();
+    }else{
+      formData.append('file2', this.uploadedFile);
+      formData.append('file', this.uploadedFile);
+      this.loansService.save(formData).subscribe(
+        data => {
+          this.productForm.reset();
+          this.messageService.add({severity: 'success', summary: 'Success', detail: 'loans submitted', sticky: true});
+          this.loadData();
+          console.log(this.productForm);
+          console.log(data);
+          window.location.reload();
+        },
+        error => {
+          this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+          console.log(error);
+        }
+      );
+    }
+
+  }
+
+
+  validateFile(name: String) {
+    var ext = name.substring(name.lastIndexOf('.') + 1);
+    if (ext.toLowerCase() == 'xls'||ext.toLowerCase() == 'docx'||ext.toLowerCase() == 'pdf') {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   // suppression d'une coaching
@@ -389,7 +407,7 @@ this.init();
 
   }
 
-  
+
 
 
 
