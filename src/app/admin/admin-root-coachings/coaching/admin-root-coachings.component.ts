@@ -210,6 +210,11 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('type', this.form.get('type').value);
     formData.append('dateFinFormation', endDate);
     formData.append('dateLimiteDenregistrement', endSubscribeDate);
+    if(!this.validateFile(this.uploadedFile.name)){
+      console.log('je suis une erreur')
+      this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
+      this.onReject();
+    }else{
     formData.append('file', this.uploadedFile);
     console.log(formData);
 
@@ -217,15 +222,25 @@ export class AdminRootCoachingsComponent implements OnInit {
      this.coachingService.saveCoaching(formData).subscribe(
       (data: any) => {
         this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
+        this.initForm();
         this.loadData();
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
+  }
     this.submitted = false;
     }
   
-
+    validateFile(name: String) {
+      var ext = name.substring(name.lastIndexOf('.') + 1);
+      if (ext.toLowerCase() == 'png'||ext.toLowerCase() == 'jpg'||ext.toLowerCase() == 'jpeg') {
+          return true;
+      }
+      else {
+          return false;
+      }
+  }
    dateRangeValidator(min: Date, max: Date): ValidatorFn {
     return control => {
       if (!control.value) return null;
@@ -234,11 +249,13 @@ export class AdminRootCoachingsComponent implements OnInit {
   
       if (min && dateValue < min) {
         console.log('je ne marche pas 1');
+        this.messageService.add({severity:'error', summary:'Error', detail:'The Start date cannot be greater than end date'});
         return { message: 'error message' };
       }
   
       if (max && dateValue > max) {
         console.log('je ne marche pas 2');
+        this.messageService.add({severity:'error', summary:'Error', detail:'The End date cannot be greater than maximum'});
         return { message: 'error message' };
       }
   

@@ -342,6 +342,11 @@ export class AdminRootHome implements OnInit {
     if (this.productForm?.invalid) { return; }
     const formData = new FormData();
     formData.append('file',this.productForm.get('pictureUrl').value);
+   // if(!this.validateFile(this.productForm.get('pictureUrl').value)){
+     // console.log('je suis une erreur')
+      //this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
+      //this.onReject();
+    //}else{
     formData.append('name', this.productForm.get('name').value);
     formData.append('price', this.productForm.get('price').value);
     formData.append('category', this.productForm.get('category').value);
@@ -367,7 +372,18 @@ export class AdminRootHome implements OnInit {
         console.log(error);
       }
     );
+  //}
   }
+
+  validateFile(name: String) {
+    var ext = name.substring(name.lastIndexOf('.') + 1);
+    if (ext.toLowerCase() == 'png'||ext.toLowerCase() == 'jpg'||ext.toLowerCase() == 'jpeg') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
   // mise à jour d'un Produit
 
