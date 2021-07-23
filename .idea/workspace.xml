@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dc5837f-6238-47ec-9c86-41aabe442eca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/loans/loans-request/loans-request.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/loans/loans-request/loans-request.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/eco/invest/invest.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/invest/invest.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/footer/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/footer/footer/footer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/footer/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/footer/footer/footer.component.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -16,41 +19,39 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="admin-loans-requests.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="invest.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/eco/invest/invest.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="308" column="31" selection-start-line="308" selection-start-column="31" selection-end-line="308" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-                <element signature="n#!!block;n#selector#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#loadData#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#onProvinceSearch#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#onCommuneSearch#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#onSectorSearch#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#onStatusSearch#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#init#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#showProvinceSearch#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#showCommuneSearch#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#showSectorSearch#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#showStatusSearch#0;n#AdminLoansRequestComponent#0" />
-                <element signature="n#!!block;n#showDetail#0;n#AdminLoansRequestComponent#0" />
-              </folding>
+            <state relative-caret-position="229">
+              <caret line="15" column="123" selection-start-line="15" selection-start-column="123" selection-end-line="15" selection-end-column="123" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin-root-home.component.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts">
+      <file leaf-file-name="microfinance.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="342" column="36" selection-start-line="342" selection-start-column="36" selection-end-line="342" selection-end-column="36" />
-              <folding>
-                <element signature="n#!!block;n#namesSelector#0;n#AdminRootHome#0" />
-                <element signature="n#!!block;n#selector#0;n#AdminRootHome#0" />
-                <element signature="n#!!block;n#loadList#0;n#AdminRootHome#0" />
-              </folding>
+            <state relative-caret-position="295">
+              <caret line="18" column="111" selection-start-line="18" selection-start-column="111" selection-end-line="18" selection-end-column="111" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/footer/footer/footer.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="55" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/footer/footer/footer.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -104,8 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/abonnement/abonnement.component.html" />
-        <option value="$PROJECT_DIR$/src/app/auth/singup-invester/singup-invester.component.html" />
         <option value="$PROJECT_DIR$/src/app/services/abonnement.service.ts" />
         <option value="$PROJECT_DIR$/src/app/auth/requests/customer-info.ts" />
         <option value="$PROJECT_DIR$/src/app/auth/singup-invester/singup-invester.component.ts" />
@@ -120,7 +119,6 @@
         <option value="$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.scss" />
         <option value="$PROJECT_DIR$/src/app/header/header-service/header-service.component.scss" />
         <option value="$PROJECT_DIR$/src/app/header/header-produit/header-produit.component.html" />
-        <option value="$PROJECT_DIR$/src/app/footer/footer/footer.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.ts" />
         <option value="$PROJECT_DIR$/src/assets/css/style.css" />
         <option value="$PROJECT_DIR$/src/app/eco/articles/articles.component.scss" />
@@ -145,7 +143,6 @@
         <option value="$PROJECT_DIR$/src/app/header/header-service/header-service.component.ts" />
         <option value="$PROJECT_DIR$/src/app/eco/coachings/coachings.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.scss" />
-        <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance-detail/microfinance-detail.component.html" />
         <option value="$PROJECT_DIR$/src/app/eco/coachings/coaching-detail/coaching-detail.component.html" />
@@ -155,6 +152,10 @@
         <option value="$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts" />
         <option value="$PROJECT_DIR$/src/app/loans/loans-request/loans-request.component.ts" />
         <option value="$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/footer/footer/footer.component.html" />
+        <option value="$PROJECT_DIR$/src/app/footer/footer/footer.component.css" />
+        <option value="$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html" />
+        <option value="$PROJECT_DIR$/src/app/eco/invest/invest.component.html" />
       </list>
     </option>
   </component>
@@ -205,6 +206,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -228,21 +230,43 @@
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="eco" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="admin-root-home" type="462c0819:PsiDirectoryNode" />
+              <item name="eco" type="462c0819:PsiDirectoryNode" />
+              <item name="invest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="eco" type="462c0819:PsiDirectoryNode" />
+              <item name="microfinance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="footer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quick-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="quick-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="footer" type="462c0819:PsiDirectoryNode" />
+              <item name="footer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -412,12 +436,13 @@
       <workItem from="1626851580512" duration="2666000" />
       <workItem from="1626959932274" duration="309000" />
       <workItem from="1626960313396" duration="212000" />
-      <workItem from="1626960694726" duration="1797000" />
+      <workItem from="1626960694726" duration="2021000" />
+      <workItem from="1627027031181" duration="1721000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="328345000" />
+    <option name="totallyTimeSpent" value="330290000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="30" width="1428" height="794" extended-state="0" />
@@ -428,7 +453,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.40298507" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40298507" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24958949" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.42089552" />
@@ -541,13 +566,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/admin/admin-root-product/admin-root-product.component.ts</url>
           <line>81</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts</url>
           <line>240</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
@@ -555,20 +578,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="5051" selection-start-line="5051" selection-end-line="5051" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/eco/articles/articles.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-380">
-          <caret line="4" selection-start-line="4" selection-end-line="39" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/articles/articles.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -725,13 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/eco/product/detail-product/detail-product.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -797,17 +799,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-product/admin-root-product.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2326">
-          <folding>
-            <element signature="n#p-toast#1;n#!!top" />
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#ng-template#1;n#!!top" />
-          </folding>
-        </state>
+        <state relative-caret-position="-2326" />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.css">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-coachings/coaching/admin-root-coachings.component.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -837,66 +830,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="231" column="5" lean-forward="true" selection-start-line="231" selection-start-column="5" selection-end-line="231" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!block;n#selector#0;n#AdminRootCoachingsComponent#0" />
-            <element signature="e#7523#7740#0" />
-            <element signature="n#!!block;n#setCoaching#0;n#AdminRootCoachingsComponent#0" />
-            <element signature="n#!!block;n#updateCoaching#0;n#AdminRootCoachingsComponent#0" />
-            <element signature="n#!!block;n#getCoaching#0;n#AdminRootCoachingsComponent#0" />
-            <element signature="n#!!block;n#deleteCoaching#0;n#AdminRootCoachingsComponent#0" />
-            <element signature="n#!!block;n#onDelete#0;n#AdminRootCoachingsComponent#0" />
-            <element signature="n#!!block;n#deleteCoachingSession#0;n#AdminRootCoachingsComponent#0" />
-            <element signature="n#!!block;n#onDeleteSession#0;n#AdminRootCoachingsComponent#0" />
-            <element signature="n#!!block;n#onConfirm#0;n#AdminRootCoachingsComponent#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/dashboard/dashboard.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-382">
-          <folding>
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#ng-template#1;n#!!top" />
-          </folding>
-        </state>
+        <state relative-caret-position="-382" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-inputs/admin-loans-inputs.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1300">
-          <folding>
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#ng-template#1;n#!!top" />
-          </folding>
-        </state>
+        <state relative-caret-position="-1300" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-inputs/admin-loans-inputs.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#div#1;n#div#0;n#!!top" />
-            <element signature="n#p-toast#1;n#!!top" />
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#ng-template#1;n#!!top" />
-            <element signature="n#ng-template#2;n#!!top" />
-            <element signature="n#ng-template#3;n#!!top" />
-            <element signature="n#ng-template#4;n#!!top" />
-            <element signature="n#ng-template#5;n#!!top" />
-            <element signature="n#ng-template#6;n#!!top" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/loans/loans-request/loans-request.component.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -909,24 +860,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="199" column="47" selection-start-line="199" selection-start-column="47" selection-end-line="199" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-            <element signature="n#!!block;n#selector#0;n#LoansRequestComponent#0" />
-            <element signature="n#!!block;n#initForm#0;n#LoansRequestComponent#0" />
-            <element signature="n#!!block;n#loadData#0;n#LoansRequestComponent#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/loans/loans-inputs/loans-inputs.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1412">
-          <folding>
-            <element signature="n#ng-template#0;n#!!top" />
-            <element signature="n#ng-template#1;n#!!top" />
-            <element signature="n#ng-template#2;n#!!top" />
-          </folding>
-        </state>
+        <state relative-caret-position="-1412" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-product/admin-root-product.component.ts">
@@ -942,7 +881,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/loans/admin-loans-requests/admin-loans-requests.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="2074">
           <caret line="308" column="31" selection-start-line="308" selection-start-column="31" selection-end-line="308" selection-end-column="48" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
@@ -964,13 +903,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/admin/admin-root-home/admin-root-home.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
+        <state relative-caret-position="17">
           <caret line="342" column="36" selection-start-line="342" selection-start-column="36" selection-end-line="342" selection-end-column="36" />
           <folding>
             <element signature="n#!!block;n#namesSelector#0;n#AdminRootHome#0" />
             <element signature="n#!!block;n#selector#0;n#AdminRootHome#0" />
             <element signature="n#!!block;n#loadList#0;n#AdminRootHome#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/footer/footer/footer.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/footer/footer/footer.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="55" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/microfinance/microfinance.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="18" column="111" selection-start-line="18" selection-start-column="111" selection-end-line="18" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/eco/invest/invest.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="15" column="123" selection-start-line="15" selection-start-column="123" selection-end-line="15" selection-end-column="123" />
         </state>
       </provider>
     </entry>
