@@ -17,13 +17,10 @@ export class LoansRequestComponent implements OnInit {
 
   lists: any = {};
   boutiqueRef
-<<<<<<< HEAD
   sessionRef;
   message1: string;
   message2 : string;
-=======
 
->>>>>>> 1f37496077c17b000f908616e897da5ed72e9872
   p: number = 1;
   searchItem: string;
   supportProject: File = null;
@@ -256,7 +253,7 @@ export class LoansRequestComponent implements OnInit {
     this.submitted = false;
   }
 
-  validateFile(name: String) {
+  /*validateFile(name: String) {
     var ext = name.substring(name.lastIndexOf('.') + 1);
     if (ext.toLowerCase() == 'pdf') {
       return true;
@@ -264,7 +261,7 @@ export class LoansRequestComponent implements OnInit {
     else {
       return false;
     }
-  }
+  }*/
 
 
   setCoaching(contentUpdate, event) {
