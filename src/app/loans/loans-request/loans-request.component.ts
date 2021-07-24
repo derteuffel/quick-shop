@@ -17,9 +17,16 @@ export class LoansRequestComponent implements OnInit {
 
   lists: any = {};
   boutiqueRef
-  sessionRef
+  sessionRef;
+  message1: string;
+  message2 : string;
   p: number = 1;
   searchItem: string;
+  supportProject: File = null;
+  validatedSupport: File = null;
+  isValid1: boolean = false;
+  isValid2: boolean = false;
+  isValid: boolean = false;
   types: string[];
   provinces: string[];
   communes: string[];
@@ -160,15 +167,47 @@ export class LoansRequestComponent implements OnInit {
   onFilesSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      if(!this.validateFile(file.name)){
+        console.log('contains bad files1');
+        this.message1 = 'Error the file should be in PDF, WORD or EXCEL file, please load correct format file';
+        this.isValid = false;
+      }else{
+        console.log('contains good files1');
       this.loansFormGroup.get('projectSupport').setValue(file);
+      this.isValid1 = true;
+      if(this.isValid2){
+        this.isValid = true;
+      }
+      }
     }
   }
   onFilesSelect2(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      if(!this.validateFile(file.name)){
+        console.log('contains bad files2');
+        this.message2 = 'Error the file should be in PDF, WORD or EXCEL file, please load correct format file';
+        this.isValid = false;
+      }else{
+        console.log('contains good files2');
       this.loansFormGroup.get('validatedSupport').setValue(file);
+      this.isValid2 = true;
+      if(this.isValid1){
+        this.isValid = true;
+      }
+      }
     }
   }
+
+  validateFile(name: String) {
+    var ext = name.substring(name.lastIndexOf('.') + 1);
+    if (ext.toLowerCase() == 'pdf'||ext.toLowerCase() == 'docx'||ext.toLowerCase() == 'xlsx'||ext.toLowerCase() == 'xls') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
   loadData() {
     this.loansService.getAllbyUser().subscribe(

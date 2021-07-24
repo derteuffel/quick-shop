@@ -25,6 +25,8 @@ export class AdminRootCoachingsComponent implements OnInit {
   abonnements: any = [];
   abonnement: Abonnement;
   abonnementId;
+  message: string;
+  isValid: boolean = false;
 
   lists: any = [];
   types: string[];
@@ -170,7 +172,13 @@ export class AdminRootCoachingsComponent implements OnInit {
   onFilesSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.uploadedFile = file
+      if(!this.validateFile(file.name)){
+        this.message = 'File should be an image, please load image';
+        this.isValid = false;
+      }else{
+        this.uploadedFile = file;
+        this.isValid =  true;
+      }
     }
   }
 
@@ -210,11 +218,7 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('type', this.form.get('type').value);
     formData.append('dateFinFormation', endDate);
     formData.append('dateLimiteDenregistrement', endSubscribeDate);
-    if(!this.validateFile(this.uploadedFile.name)){
-      console.log('je suis une erreur')
-      this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
-      this.onReject();
-    }else{
+    
     formData.append('file', this.uploadedFile);
     console.log(formData);
 
@@ -228,7 +232,7 @@ export class AdminRootCoachingsComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
-  }
+  
     this.submitted = false;
     }
   

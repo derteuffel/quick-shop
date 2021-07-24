@@ -49,6 +49,7 @@ export class AdminRootHome implements OnInit {
   communes: string[];
 
   isClient: boolean;
+  isValid: boolean = false;
   productForm: FormGroup;
   public imagePath;
   imgURL: any;
@@ -327,7 +328,14 @@ export class AdminRootHome implements OnInit {
   onFilesSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      if(!this.validateFile(file.name)){
+        this.message = 'File should be image, please load correct file';
+        this.isValid = false;
+
+      }else{
       this.productForm.get('pictureUrl').setValue(file);
+      this.isValid = true;
+    }
     }
   }
 
@@ -342,11 +350,7 @@ export class AdminRootHome implements OnInit {
     if (this.productForm?.invalid) { return; }
     const formData = new FormData();
     formData.append('file',this.productForm.get('pictureUrl').value);
-   // if(!this.validateFile(this.productForm.get('pictureUrl').value)){
-     // console.log('je suis une erreur')
-      //this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
-      //this.onReject();
-    //}else{
+   
     formData.append('name', this.productForm.get('name').value);
     formData.append('price', this.productForm.get('price').value);
     formData.append('category', this.productForm.get('category').value);
