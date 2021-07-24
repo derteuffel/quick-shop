@@ -17,13 +17,9 @@ export class LoansRequestComponent implements OnInit {
 
   lists: any = {};
   boutiqueRef
-<<<<<<< HEAD
   sessionRef;
   message1: string;
   message2 : string;
-=======
-
->>>>>>> 1f37496077c17b000f908616e897da5ed72e9872
   p: number = 1;
   searchItem: string;
   supportProject: File = null;
@@ -235,12 +231,9 @@ export class LoansRequestComponent implements OnInit {
     formData.append('devise', this.loansFormGroup.get('devise').value);
     formData.append('title', this.loansFormGroup.get('object').value);
     console.log(this.loansFormGroup.value);
-    if(!this.validateFile(this.uploadedFile.name)){
-      this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
-      this.onReject();
-    }{
-      formData.append('file',this.uploadedFile);
-      formData.append('file2',this.uploadedFile);
+    
+      formData.append('file',this.loansFormGroup.get('projectSupport').value);
+      formData.append('file2',this.loansFormGroup.get('validatedSupport').value);
       this.loansService.save(formData).subscribe(
         (data: any) => {
           // this.router.navigateByUrl('/admin/boutiques');
@@ -251,19 +244,9 @@ export class LoansRequestComponent implements OnInit {
           this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
         }
       );
-    }
+    
 
     this.submitted = false;
-  }
-
-  validateFile(name: String) {
-    var ext = name.substring(name.lastIndexOf('.') + 1);
-    if (ext.toLowerCase() == 'pdf') {
-      return true;
-    }
-    else {
-      return false;
-    }
   }
 
 
