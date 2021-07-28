@@ -51,11 +51,14 @@ export class SingupInvesterComponent implements OnInit {
       this.form.fullName,
       this.form.email,
       '',
+      '',
       this.form.phone,
       this.form.devise,
       this.form.idNumber,
       this.form.amount,
-      this.form.method);
+      this.form.method,
+      this.form.duration,
+      '');
     this.financeService.saveFinance(this.signupInfo).subscribe(
       data => {
         console.log(data);

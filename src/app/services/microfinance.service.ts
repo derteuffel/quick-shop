@@ -43,7 +43,7 @@ export class MicrofinanceService {
 
   //enregister une microfinances
   saveFinance(form): Observable<any> {
-    return this.http.post(`${API.MICROFINANCES}`, form);
+    return this.http.post(`${API.MICROFINANCES}`, form, {headers: this.formHeaders});
   }
 
   //mettre à jour une microfinances
@@ -54,7 +54,7 @@ export class MicrofinanceService {
   //recupère une microfinances par son id
 
   getFinance(id): Observable<any> {
-    return this.http.get(`${API.MICROFINANCES}/${id}`);
+    return this.http.get(`${API.MICROFINANCES}/details/${id}`, {headers: this.headers});
   }
 
   //supprime une microfinances

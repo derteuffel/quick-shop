@@ -77,6 +77,7 @@ import { TemoignageComponent } from './temoignage/temoignage.component';
 import { LoansInputsComponent } from './loans/loans-inputs/loans-inputs.component';
 import { InvestComponent } from './eco/invest/invest.component';
 import { SocialRedirectComponent } from './social-redirect/social-redirect.component';
+import { LoansInputsDetailsComponent } from './loans/loans-inputs-details/loans-inputs-details.component';
 
 
 
@@ -137,7 +138,8 @@ import { SocialRedirectComponent } from './social-redirect/social-redirect.compo
     ProfileComponent,
     TemoignageComponent,
     InvestComponent,
-    SocialRedirectComponent
+    SocialRedirectComponent,
+    LoansInputsDetailsComponent
     ],
   imports: [
     BrowserModule,

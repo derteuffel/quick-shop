@@ -19,7 +19,7 @@ export class LoansInputsComponent implements OnInit {
   lists: any = {};
   boutiqueRef
   sessionRef
-  form: any = {};
+  form: FormGroup;
   signupInfo: CustomerInfo;
   p: number = 1;
   searchItem: string;
@@ -40,6 +40,24 @@ export class LoansInputsComponent implements OnInit {
   ngOnInit(): void {
     this.primengConfig.ripple = true;
     this.loadData();
+    this.initForm();
+  }
+
+  initForm() {
+    this.form = new FormGroup({
+      id: new FormControl(''),
+      province: new FormControl(''),
+      commune: new FormControl(''),
+      amount:  new FormControl(''),
+      fullName:  new FormControl(''),
+      email:  new FormControl(''),
+      phone: new FormControl(''),
+      idNumber: new FormControl(''),
+      paymentMethod: new FormControl(''),
+      duration: new FormControl(''),
+      sector: new FormControl(''),
+      devise: new FormControl('')
+    });
   }
 
   
@@ -85,26 +103,23 @@ export class LoansInputsComponent implements OnInit {
 
   onSubmit(){
     this.signupInfo = new CustomerInfo(
-      this.authService.currentUserValue.fullName,
-      this.authService.currentUserValue.email,
       '',
-      this.authService.currentUserValue.phone,
-      this.form.devise,
-      this.authService.currentUserValue.idNumber,
-      this.form.amount,
-      this.form.method);
+      '',
+      '',
+      '',
+      '',
+      this.form.get('devise').value,
+      '',
+      this.form.get('amount').value+'',
+      '',
+      this.form.get('duration').value,
+      this.form.get('sector').value);
+      
     this.microfinancementService.saveFinance(this.signupInfo).subscribe(
       data => {
         console.log(data);
-        
-        if(this.signupInfo.paymentMethod === 'VB'){
-          this.messageService.add({severity:'success', summary:'Success', detail:'votre demande a été  soumisse, veillez verifier votre boite email', sticky: true});
-        }else if(this.signupInfo.paymentMethod === 'MM'){
-          this.messageService.add({severity:'success', summary:'Success', detail:'votre demande a été  soumisse, veillez verifier votre boite email', sticky: true});
-        }else{
-          this.messageService.add({severity:'success', summary:'Success', detail:'votre demande a été  soumisse, veillez verifier votre boite email', sticky: true});
-        }
         this.messageService.add({severity:'success', summary:'Success', detail:'votre demande a été  soumisse, veillez verifier votre boite email', sticky: true});
+        
 
       },
       error => {
