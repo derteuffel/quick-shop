@@ -79,4 +79,8 @@ export class MicrofinanceService {
 
   }
 
+  checkoutLoans(id,method): Observable<any>{
+    return this.http.get(`${API.MICROFINANCES}/checkout/${method}/${id}`, {headers: this.headers});
+  }
+
 }

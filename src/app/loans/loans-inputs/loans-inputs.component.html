@@ -45,7 +45,7 @@
                 <td *ngIf="item.status" class="alert-succes">Paiement effectuer  </td>
                 <td *ngIf="!item.status" class="alert-danger">Paiement non effectuer  </td>
                 <td>
-                  <a href="/loans/inputs/detail/{{item.id}}"   class="btn btn-success m-1" ><i class="pi pi-eye"></i></a>
+                  <a href="/loans/inputs/details/{{item.id}}"   class="btn btn-success m-1" ><i class="pi pi-eye"></i></a>
                   <button  (click)="deleteCoaching(contentDelete, item)" class="btn btn-danger m-1"><i class="pi pi-trash"></i></button>
                 </td>
               </tr>

@@ -1,0 +1,113 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="main-content">
+    <app-admin-navbar></app-admin-navbar>
+    <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+          <div class="header-body">
+            <h1>Detail Investissement</h1>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid mt--7">
+          <div class="card-body m-5">
+              <div class="my-5">
+                <h5 class="card-title text-uppercase text-muted mb-0"> <span class="h2 font-weight-bold mb-0">Objet :   Entrer de fonds (Investissement)</span></h5>
+                <hr>
+                <p class="mt-3 mb-0 text-muted text-xl" >
+                    <span class="text-black mr-2" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;Nom du Depositaire :</span>
+                    <span class="text-nowrap" >{{currentLoans?.fullName}}</span>
+                </p>
+                <hr>
+                <p class="mt-3 mb-0 text-muted text-xl" >
+                    <span class="text-black mr-2" ><i class="fa fa-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;Telephone du Depositaire :</span>
+                    <span class="text-nowrap" >{{currentLoans?.phone}}</span>
+                </p>
+                <hr>
+                <p class="mt-3 mb-0 text-muted text-xl" >
+                    <span class="text-black mr-2" ><i class="fa fa-envelop"></i>&nbsp;&nbsp;&nbsp;&nbsp;Email du Depositaire :</span>
+                    <span class="text-nowrap" >{{currentLoans?.email}}</span>
+                </p>
+                <hr>
+                <p class="mt-3 mb-0 text-muted text-xl" >
+                    <span class="text-black mr-2" ><i class="fa fa-passport"></i>&nbsp;&nbsp;&nbsp;&nbsp;Numero d'identite ou passeport du Depositaire :</span>
+                    <span class="text-nowrap" >{{currentLoans?.idNumber}}</span>
+                </p>
+                <hr>
+                <p class="mt-3 mb-0 text-muted text-xl"  >
+                    <span class=" mr-2"><i class="fa fa-dollar-sign"></i> &nbsp;&nbsp;&nbsp;&nbsp;Montant :</span>
+                    <span class="text-nowrap" >{{currentLoans?.amount+' '+currentLoans?.devise}}</span>
+                </p> 
+                <hr>
+                
+                <p class="mt-3 mb-0 text-muted text-xl"  >
+                    <span class="mr-2"><i class="fa fa-file-invoice"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mode de paiement  :</span>
+                    <span class="text-nowrap" >{{currentLoans?.paymentMode}}</span>
+                </p>
+                <hr>
+                <p class="mt-3 mb-0 text-muted text-xl"  >
+                    <span class="mr-2"><i class="fa fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;Duree de l'investissement  :</span>
+                    <span class="text-nowrap" >{{currentLoans?.duration+' mois'}}</span>
+                </p>
+                <hr>
+                <p class="mt-3 mb-0 text-muted text-xl"  >
+                    <span class=" mr-2"><i class="fa fa-info"></i>&nbsp;&nbsp;&nbsp;&nbsp;Status  :</span>
+                    <span *ngIf="currentLoans?.status" class="badge badge-dot mr-4 text-nowrap" ><i class="bg-success"></i> Effectuer</span>
+                    <span *ngIf="!currentLoans?.status" class="badge badge-dot mr-4 text-nowrap" ><i class="bg-warning"></i> Suspendus</span>
+            
+                </p>
+                <hr>
+              </div>
+          </div>
+          <div class="card-footer">
+            <div class="alert alert-info text-center text-muted">
+              <h2>Terminer votre paiement</h2>
+            </div>
+            <div class="m-4">
+              <div class="row" *ngIf="isBankPayment">
+                  <div class="col-xl-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label>Carte Bancaire </label>&nbsp;&nbsp;
+                      <input type="radio" checked  (click)="bankPayment()">
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label>Mobile Money </label>&nbsp;&nbsp;
+                      <input type="radio" (click)="mobilePayment()">
+                    </div>
+                  </div>
+              </div>
+              <div class="row" *ngIf="isMobilePayment">
+                <div class="col-xl-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label>Carte Bancaire </label>&nbsp;&nbsp;
+                    <input type="radio"  (click)="bankPayment()">
+                  </div>
+                </div>
+                <div class="col-xl-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label>Mobile Money </label>&nbsp;&nbsp;
+                    <input type="radio" checked (click)="mobilePayment()">
+                  </div>
+                </div>
+            </div>
+            </div>
+          </div>
+          <br>
+          <div class="card-body">
+            <div class="row" *ngIf="isBankPayment">
+              <button type="button" (click)="visaPayment()" class="btn mx-3 my-2"><img src="../../../assets/images/visa.png" style="width: 80px;height: 70px;" alt=""></button>
+              <button type="button" (click)="masterCardPayment()" class="btn mx-3 my-2"><img src="../../../assets/images/master-card.png" style="width: 80px;height: 70px;" alt=""></button>
+              <button type="button" (click)="payPalPayment()" class="btn mx-3 my-2"><img src="../../../assets/images/paypal.png" style="width: 80px;height: 70px;" alt=""></button>
+            </div>
+            <div class="row" *ngIf="isMobilePayment">
+              <button type="button" (click)="ecocashPayment()" class="btn mx-3 my-2">Ecocash <img src="../../../assets/images/ecocash.jpeg" style="width: 70px;height: 65px;" alt=""></button>
+              <button type="button" (click)="lumicashPayment()" class="btn mx-3 my-2">Lumicash <img src="../../../assets/images/lumicash.png" style="width: 70px;height: 65px;" alt=""></button>
+              <button type="button" (click)="smartcashPayment()" class="btn mx-3 my-2">Smartash</button>
+            </div>
+          </div>
+      </div>
+      <div class="container-fluid">
+        <app-admin-footer></app-admin-footer>
+      </div>
+</div>

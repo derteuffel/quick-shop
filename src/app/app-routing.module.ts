@@ -43,6 +43,7 @@ import { LoansInputsComponent } from './loans/loans-inputs/loans-inputs.componen
 import { InvestComponent } from './eco/invest/invest.component';
 import { SocialRedirectComponent } from './social-redirect/social-redirect.component';
 import { LoansInputsDetailsComponent } from './loans/loans-inputs-details/loans-inputs-details.component';
+import { LoansInputsViewComponent } from './loans/loans-inputs-view/loans-inputs-view.component';
 
 
 
@@ -125,7 +126,7 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.INVESTOR]}
   },
   {
-    path: 'loans/inputs/detail/:id', component: LoansInputsDetailsComponent,
+    path: 'loans/inputs/details/:id', component: LoansInputsViewComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.INVESTOR]}
   },
   {
