@@ -161,7 +161,7 @@ const routes: Routes = [
   },
   {
     path: 'admin/commandes/allsbyusers', component: CommandeEntreprenerComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.ENTERPRENER]}
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.ENTERPRENER, Role.TRAINNER]}
   },
 
   {

@@ -43,6 +43,11 @@ export class AccountService {
     return this.http.put( `${API.ACCOUNT}/update`, form,{headers: this.headers});
   }
 
+  public updateMyAccount(form): Observable<any>{
+    console.log(form);
+    return this.http.put( `${API.ACCOUNT_SIMPLE}/update`, form,{headers: this.headers});
+  }
+
   public deleteAccount(id): Observable<any> {
     return this.http.delete(`${API.ACCOUNT}/${id}`,{headers: this.headers});
   }
@@ -76,7 +81,12 @@ export class AccountService {
     return this.http.get(`${API.ACCOUNT}/activation/${id}`,{headers: this.headers})
   }
 
+  public getConnected(): Observable<any>{
+    return this.http.get(`${API.ACCOUNT_SIMPLE}/view`,{headers: this.headers})
+  }
+
   getOne(id): Observable<any>{
     return this.http.get(`${API.ACCOUNT}/view/${id}`,{headers: this.headers})
   }
+
 }

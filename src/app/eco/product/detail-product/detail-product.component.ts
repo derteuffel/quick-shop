@@ -80,9 +80,9 @@ export class DetailProductComponent implements OnInit {
       name: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
-      lieuLivraison: new FormControl(''),
-      dateLivraison: new FormControl(''),
-      heurelivraison: new FormControl(''),
+      lieuDeLivraison: new FormControl(''),
+      dateDeLivraison: new FormControl(''),
+      heureDeLivraison: new FormControl(''),
       quantity: new FormControl(''),
       paymentMode: new FormControl('')
     });
@@ -103,9 +103,9 @@ export class DetailProductComponent implements OnInit {
       clientPhone: this.orderForm.get('phone').value,
       quantity: this.orderForm.get('quantity').value,
       paymentMode: this.orderForm.get('paymentMode').value,
-      lieuLivraison: this.orderForm.get('lieuLivraison').value,
-      heureLivraison: this.orderForm.get('heureLivraison').value,
-      dateLivraison: this.orderForm.get('dateLivraison').value,
+      lieuDeLivraison: this.orderForm.get('lieuDeLivraison').value,
+      heureDeLivraison: this.orderForm.get('heureDeLivraison').value,
+      dateDeLivraison: this.orderForm.get('dateDeLivraison').value,
       isProduit: true
     }
     this.commandeService.saveCmd(formData, this.currentProduct.id).subscribe(
@@ -115,7 +115,9 @@ export class DetailProductComponent implements OnInit {
         this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
       },
       error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        console.log(error.error);
+        let excp:string = 'https://www.jhipster.tech/problem/problem-with-message There are not enougth product for this command com.derteuffel.springbootecommerce.services.CommandeService quantity greater than stock';
+        this.messageService.add({severity: 'error', summary: 'Error', detail: (error.error.message==excp)? 'Qauntité de produit insufusante':'Unknow error'});
         console.log(error);
       }
     )

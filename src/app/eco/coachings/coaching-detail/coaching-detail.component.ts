@@ -76,12 +76,12 @@ export class CoachingDetailComponent implements OnInit {
   
   onSaveSubscribe(){
     const formData =  {
-      clientName: this.orderForm.get('name').value,
-      email: this.orderForm.get('email').value,
-      clientPhone: this.orderForm.get('phone').value,
-      quantity: this.orderForm.get('quantity').value,
-      paymentMode: this.orderForm.get('paymentMode').value,
-      lieuDeLivraison: this.orderForm.get('lieuDeLivraison').value,
+      clientName: this.subscribeForm.get('name').value,
+      email: this.subscribeForm.get('email').value,
+      clientPhone: this.subscribeForm.get('phone').value,
+      //quantity: this.subscribeForm.get('quantity').value,
+      paymentMode: this.subscribeForm.get('paymentMode').value,
+      //lieuDeLivraison: this.subscribeForm.get('lieuDeLivraison').value,
       isCoaching: true
     }
     this.commandeService.saveCmd(formData, this.currentCoaching.id).subscribe(

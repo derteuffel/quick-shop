@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   provinces:any={};
   activites:any={};
   communes: any = {};
-  currentAccount:User;
+  currentAccount: User;
   accountID;
   constructor(private router: Router,
               private fb: FormBuilder,
@@ -60,6 +60,11 @@ export class ProfileComponent implements OnInit {
     if (this.authService.currentUserValue.token) {
       this.isConnected = true;
       this.user = this.authService.currentUserValue;
+      this.currentAccount = this.authService.currentUserValue;
+      console.log("### ###  ### ###");
+      console.log(this.user);
+      console.log(this.isConnected);
+      console.log("### ###  ### ###");
     }else{
       this.isConnected = false;
     }
@@ -163,15 +168,17 @@ export class ProfileComponent implements OnInit {
       email: this.updateProfileForm.get('email').value,
       username: this.updateProfileForm.get('username').value,
       phone: this.updateProfileForm.get('phone').value,
-      fullName: this.updateProfileForm.get('fullName').value,
+      fullName: this.updateProfileForm.get('full_name').value,
       secteurActivite: this.updateProfileForm.get('secteurActivite').value,
       location: this.updateProfileForm.get('province').value+', '+this.updateProfileForm.get('commune').value,
-      birthDate: this.updateProfileForm.get('birthDate').value,
-      idNumber: this.updateProfileForm.get('idNumber').value
+      province: this.updateProfileForm.get('province').value,
+      commune: this.updateProfileForm.get('commune').value,
+      birthDate: this.updateProfileForm.get('birth_date').value,
+      idNumber: this.updateProfileForm.get('id_number').value
     };
     console.log(microData);
 
-    this.accountService.updateAccount(microData).subscribe(
+    this.accountService.updateMyAccount(microData).subscribe(
       (data: any) => {
         this.messageService.add({severity:'success', summary: 'Profile a été mis à jour', detail:'profile updated'});
         this.logout();
@@ -185,18 +192,20 @@ export class ProfileComponent implements OnInit {
 
   setAccount(contentUpdate, event) {
     this.modalService.open(contentUpdate, {size: "lg"});
-    this.currentAccount = event.username;
+    //this.currentAccount = event.username;
     this.accountID = event.id
     this.updateProfileForm.patchValue({
       id: event.id,
       email: event.email,
       username: event.username,
       phone: event.phone,
-      idNumber: event.idNumber,
-      fullName: event.fullName,
+      id_number: event.id_number,
+      full_name: event.full_name,
       secteurActivite: event.secteurActivite,
       location: event.location,
-      birthDate: event.birthDate
+      province: event.province,
+      commune: event.commune,
+      birth_date: event.birth_date
     })
   }
 
@@ -207,17 +216,17 @@ export class ProfileComponent implements OnInit {
       email: new FormControl(''),
       username: new FormControl(''),
       phone: new FormControl(''),
-      fullName: new FormControl(''),
+      full_name: new FormControl(''),
       secteurActivite: new FormControl(''),
       province: new FormControl(''),
       commune: new FormControl(''),
-      birthDate: new FormControl(''),
-      idNumber: new FormControl('')
+      birth_date: new FormControl(''),
+      id_number: new FormControl('')
     })
 
   }
   getAccount(id){
-    this.accountService.getOne(id).subscribe(
+    this.accountService.getConnected().subscribe(
       data => {
         this.currentAccount = data;
         console.log(data);

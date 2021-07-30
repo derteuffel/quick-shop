@@ -33,6 +33,8 @@ export const API = {
 
   ACCOUNT: `${url}api/account/admin`,
 
+  ACCOUNT_SIMPLE: `${url}api/account`,
+
   /** Micro-finance **/
 
   MICROFINANCES: `${url}api/microfinancements`,
