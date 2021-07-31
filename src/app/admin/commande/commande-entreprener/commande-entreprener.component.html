@@ -41,11 +41,18 @@
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                 <td>{{item?.numero}}</td>
                 <td>
-                  {{item?.produit.name}}
+                  <span *ngIf="item.produit">{{item?.produit.name}}</span>
+                  <span *ngIf="item.coaching">{{item?.coaching.title}}</span>
                 </td>
-                <td>{{item?.quantity}}</td>
-                <td>{{item?.amount+' '+item.produit.devise}}</td>
-                <td>{{item?.clientName}}</td>
+                <td> <span *ngIf="item.produit">{{item?.quantity}}</span> </td>
+                <td> 
+                  <span *ngIf="item.produit" >{{item?.amount+' '+item.produit.devise}}</span> 
+                  <span *ngIf="item.coaching">{{item?.coaching.amount+' '+item.coaching.devise}}</span>
+                </td>
+                <td>
+                  <span> Name : {{item?.clientName}}</span><br>
+                  <span> Phone : {{item?.clientPhone}} </span>
+                </td>
                 <td>{{item?.orderDate}} </td>
                 <td>{{item.status}} </td>
               </tr>

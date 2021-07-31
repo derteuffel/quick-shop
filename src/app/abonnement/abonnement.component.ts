@@ -66,6 +66,7 @@ export class AbonnementComponent implements OnInit {
       duree: new FormControl(''),
       startDate: new FormControl(''),
       endDate: new FormControl(''),
+      longers: new FormControl('')
     })
 
   }
