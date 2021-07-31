@@ -53,7 +53,7 @@
                 <i class="ni location_pin mr-2"></i>{{user?.email}}
               </div>
               <div class="h5 mt-4">
-                <i class="ni business_briefcase-24 mr-2"></i>{{user?.location}}
+                <i class="ni business_briefcase-24 mr-2"></i>{{user?.province+', '+user?.commune}}
               </div>
               <div>
                 <i class="ni education_hat mr-2"></i>{{user?.secteurActivite}}
@@ -82,8 +82,12 @@
           <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.email}}</span></td>
         </tr>
         <tr>
-          <td><span style="font-size: 22px;" class=" mr-2" > Localisation :</span></td>
-          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.location}}</span></td>
+          <td><span style="font-size: 22px;" class=" mr-2" > Province :</span></td>
+          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.province}}</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size: 22px;" class=" mr-2" > Commune :</span></td>
+          <td><span style="font-size: 22px;" class="text-nowrap">{{currentAccount?.commune}}</span></td>
         </tr>
         <tr>
           <td><span style="font-size: 22px;" class=" mr-2" > Telephone :</span></td>

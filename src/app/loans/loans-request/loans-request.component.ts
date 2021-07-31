@@ -238,7 +238,7 @@ export class LoansRequestComponent implements OnInit {
         (data: any) => {
           // this.router.navigateByUrl('/admin/boutiques');
           this.loansFormGroup.reset();
-          this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
+          this.messageService.add({severity:'success', summary:'Success', detail:'Votre demande a ete pris en compte vous serrez notifier dans les jours avenir', sticky: true});
           this.loadData();
         }, error => {
           this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});

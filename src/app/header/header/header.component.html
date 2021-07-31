@@ -1,29 +1,41 @@
 <!-- Header -->
 <header class="header shop">
   <!-- Topbar -->
-  <div class="topbar" style="background:lightskyblue;">
-    <div class="container">
+  <div class="topbar" >
+    <div class="mx-3">
       <div class="row">
-        <div class="col-lg-6 col-md-12 col-12">
+        <div class="col-lg-1 col-md-12 col-12">
           <!-- Top Left -->
-          <h1><span style="font-size: 50px;">SAYE!</span><br><span style="font-size: 20px;">Education & Trading opportunities for youth</span> </h1>
+          <h1><span style="font-size: 50px;">SAYE!</span></h1>
           <!--/ End Top Left -->
         </div>
-        <div class="col-lg-6 col-md-12 col-12">
+        <div class="col-lg-11 col-md-12 col-12">
           <!-- Top Right -->
           <div class="right-content">
             <ul class="list-main">
-              <li ngbDropdown><i class="fa fa-user-plus"></i>&nbsp;<a class="header zigs" id="dropdownBasic1" ngbDropdownToggle>Inscription</a>
+              <li><a href="/" class="header text-black my-4"><i class=" fa fa-home"></i>&nbsp;Acceuil</a></li>
+              <li><a href="/ecommerce/services" class="header my-4"> <img src="../../../assets/images/vectors/Learn_2.png" style="width: 
+              25px;height: 25px;" alt="">&nbsp;&nbsp;Encadrement & Coaching</a></li>
+
+<li><a href="/ecommerce/produits" class="header my-4"> <img src="../../../assets/images/vectors/Trade_2.png" style="width: 
+  25px;height: 25;" alt="">&nbsp;&nbsp;Produits & Services</a></li>
+  <li><a href="/ecommerce/invests" class="header my-4"> <img src="../../../assets/images/invest-youth.png" style="width: 
+    25px;height: 25;" alt="">&nbsp;&nbsp;
+    Investissement</a></li>
+    <li><a href="/ecommerce/finances" class="header my-4"> <img src="../../../assets/images/vectors/Student_Loan_.png" style="width: 
+      25px;height: 25;" alt="">&nbsp;&nbsp;
+      Acces au credit</a></li>
+              <!-- <li ngbDropdown><a class="header btn btn-default text-white" id="dropdownBasic1" ngbDropdownToggle><i class="fa fa-user-plus text-white"></i>&nbsp;Inscription/Connexion</a>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                   <a ngbDropdownItem href="ecommerce/register/loans?type=etudiant" class="header zigs">Apprenant</a>
                   <a ngbDropdownItem href="ecommerce/register/entreprener" class="header zigs">Entrepreneur</a>
                   <a ngbDropdownItem href="ecommerce/register/coaching" class="header zigs">Encadrement/Coaching</a>
                   <a ngbDropdownItem href="ecommerce/register/loans?type=investisseur" class="header zigs">Investisseur</a>
-                  <!--<a ngbDropdownItem href="ecommerce/register/invester" class="header zigs">Investisseur</a>-->
+                
                 </div>
+              </li> --><li><a href="/connexion" class="header btn btn-default text-white " ><i class="fa fa-user-plus text-white"></i>&nbsp;Inscription/Connexion</a>
+                
               </li>
-
-              <li><i class="ti-power-off"></i>&nbsp;&nbsp;<a href="connexion" class="header zigs">Connexion</a></li>
             </ul>
           </div>
           <!-- End Top Right -->
@@ -31,28 +43,6 @@
       </div>
     </div>
   </div>
-  <!-- End Topbar -->
-  <div class="middle-inner" >
-    <div class="search-bar-top">
-          
-          <div class=" my-4" >
-                <a  class="my-2" (click)="getClientPage()"  >
-                  <img src="assets/images/accueil.png" class="header-item-home" alt="">
-                </a>
-                  <a class="my-2" (click)="getCoachingPage()" >
-                    <img src="assets/images/trainning.png" class="header-item-trainning" alt="">
-                  </a>
-                  <a class="my-2" (click)="getProduitPage()"  >
-                    <img src="assets/images/produits.png" class="header-item-produits" alt="">
-                  </a>
-                  <a class="my-2" (click)="getInvestPage()"   >
-                    <img src="assets/images/investir_jeunesse.png" class="header-item-loans" alt="">
-                  </a>
-                  <a class="my-2" (click)="getLoansPage()"   >
-                    <img src="assets/images/acces_finance.png" class="header-item-loans" alt="">
-                  </a>
-          </div>
-    </div>
-  </div>
+  
 </header>
 <!--/ End Header -->

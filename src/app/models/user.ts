@@ -3,7 +3,8 @@ import { Role } from "./role";
 export class User{
     id: number;
     fullName: string;
-   location: string;
+   province: string;
+   commune: string;
     username: string;
     email: string;
     phone: string;
