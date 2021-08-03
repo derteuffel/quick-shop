@@ -33,6 +33,10 @@ export class CommandeService {
   getAll(): Observable<any> {
     return this.http.get(`${API.COMMANDES}/admin`, {headers: this.headers});
   }
+  // recupere toute les commandes
+  getOne(id): Observable<any> {
+    return this.http.get(`${API.COMMANDES}/get/${id}`);
+  }
 
   // recupere toute les commandes d'un produit
   getAllByProduit(id): Observable<any> {
@@ -53,6 +57,10 @@ export class CommandeService {
 
   saveCmd(form,id): Observable<any> {
     return this.http.post(`${API.COMMANDES}/createOrder/${id}`, form);
+  }
+
+  checkout(method,id): Observable<any> {
+    return this.http.get(`${API.COMMANDES}/checkout/${method}/${id}`);
   }
 
   // recherche quantité de commande de produit et coaching par region

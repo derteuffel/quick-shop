@@ -111,8 +111,9 @@ export class DetailProductComponent implements OnInit {
     this.commandeService.saveCmd(formData, this.currentProduct.id).subscribe(
       data => {
         this.orderForm.reset();
-        this.messageService.add({severity: 'success', summary: 'Success', detail: 'commande submitted', sticky: true});
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Votre commande a ete soumise vous serez rediriger vers la page de paiement', sticky: true});
         this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
+        this.router.navigateByUrl('ecommerce/produit/checkout/'+data.id);
       },
       error => {
         console.log(error.error);

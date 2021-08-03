@@ -61,7 +61,7 @@ export class CoachingDetailComponent implements OnInit {
   }
 
   openModalFormulaire(contentAdd)  {
-   this.modalService.open(contentAdd, {size: 'lg'});
+   this.modalService.open(contentAdd, {size: 'md'});
   }
 
   initForm(){
@@ -69,7 +69,6 @@ export class CoachingDetailComponent implements OnInit {
       name: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
-      paymentMode: new FormControl('')
     });
   }
 
@@ -80,18 +79,19 @@ export class CoachingDetailComponent implements OnInit {
       email: this.subscribeForm.get('email').value,
       clientPhone: this.subscribeForm.get('phone').value,
       //quantity: this.subscribeForm.get('quantity').value,
-      paymentMode: this.subscribeForm.get('paymentMode').value,
+      //paymentMode: this.subscribeForm.get('paymentMode').value,
       //lieuDeLivraison: this.subscribeForm.get('lieuDeLivraison').value,
       isCoaching: true
     }
     this.commandeService.saveCmd(formData, this.currentCoaching.id).subscribe(
       data => {
         this.subscribeForm.reset();
-        this.messageService.add({severity: 'success', summary: 'Success', detail: 'commande submitted', sticky: true});
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Votre commande a ete soumise vous serez rediriger vers la page de paiement', sticky: true});
         this.getCoaching(this.activatedRoute.snapshot.paramMap.get('id'));
+        this.router.navigateByUrl('ecommerce/coaching/checkout/'+data.id);
       },
       error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Erreur systeme, vous ne devez avoir un compte pour participer a cette formation'});
         console.log(error);
       }
     )

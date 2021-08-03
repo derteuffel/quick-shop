@@ -4,10 +4,84 @@
 <div class="app-body card mx-5 py-5" >
   <main class="main d-flex align-items-center">
     <div class="container">
+      <div class="card-header alert alert-info py-4">
+        <div class="row mx-4 " *ngIf="isEntrepreneur">
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getEntrepreneurForm()">
+            <label >Entrepreneur&nbsp;&nbsp;</label>
+            <input type="radio" checked>
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getCoachingForm()">
+            <label >Encadreur&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getLoansForm()">
+            <label >Apprenant&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getInvestorForm()">
+            <label >Investisseur&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+        </div>
+        <div class="row mx-4 " *ngIf="isCoaching">
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getEntrepreneurForm()">
+            <label >Entrepreneur&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getCoachingForm()">
+            <label >Encadreur&nbsp;&nbsp;</label>
+            <input type="radio" checked>
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getLoansForm()">
+            <label >Apprenant&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getInvestorForm()">
+            <label >Investisseur&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+        </div>
+        <div class="row mx-4 " *ngIf="isInvestor">
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getEntrepreneurForm()">
+            <label >Entrepreneur&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getCoachingForm()">
+            <label >Encadreur&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getLoansForm()">
+            <label >Apprenant&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getInvestorForm()">
+            <label >Investisseur&nbsp;&nbsp;</label>
+            <input type="radio" checked>
+          </div>
+        </div> 
+        <div class="row mx-4 " *ngIf="isLoans">
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getEntrepreneurForm()">
+            <label >Entrepreneur &nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getCoachingForm()">
+            <label >Encadreur&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getLoansForm()">
+            <label >Apprenant&nbsp;&nbsp;</label>
+            <input type="radio" checked>
+          </div>
+          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getInvestorForm()">
+            <label >Investisseur&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div>
+        </div>  
+       </div>
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div class="card mx-4">
-            <div class="card-body p-4">
+            <div class="card-body p-4" *ngIf="isEntrepreneur">
               <form name="form" (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm" novalidate>
                 <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un entrepreneur/fournisseur</h3>
                 <div class="form-group">
@@ -62,12 +136,12 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="text-muted">Numero de telephone :</label>
+                <label class="text-muted">Numero de telephone <small>format: 0000-000-000</small> :</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                   </div>
-                  <input type="text" class="form-control" pattern="^\\(?([0-9]{3})\\)?[-,]?([0-9]{3})[-,]?([0-9]{4})$"  name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
+                  <input type="tel" class="form-control" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"  name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
                          required minlength="6" />
                   <div *ngIf="f.submitted && phone.invalid">
                     <div *ngIf="phone.errors.required">Vous devez entrer un numero de telephone</div>
@@ -140,6 +214,374 @@
               </div>
 
                 <button type="submit" class="btn btn-block btn-success" >Enregistrer</button>
+                <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                  Inscription echouer!<br/>{{errorMessage}}
+                </div>
+                <p>Deja un compte?</p>
+                <a href="connexion" class="btn btn-primary">Connectez-vous</a>
+              </form>
+            </div>
+            <div class="card-body p-4" *ngIf="isCoaching">
+              <form name="form" (ngSubmit) = "f.form.valid && onCoachingSubmit()" #f="ngForm" novalidate>
+                <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un Encadreur/ coach</h3>
+                <div class="form-group">
+                  <label class="text-muted">Nom complet :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="pi pi-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="fullName" [(ngModel)]="form.fullName" #fullName="ngModel" placeholder="Votre nom complet"  autocomplete="name" required />
+                  <div *ngIf="f.submitted && fullName.invalid">
+                    <div *ngIf="fullName.errors.required">Vous devez entrer un nom</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Addresse  Email:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" placeholder="Votre adresse email" required email />
+                  <div *ngIf="f.submitted && email.invalid">
+                    <div *ngIf="email.errors.required">Entrer une adresse email</div>
+                    <div *ngIf="email.errors.email">Entrer une addresse email valide</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Mot de passe:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" placeholder="Votre Mot de passe" required  />
+                  <div *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors.required">Entrer un mote de passe</div>
+                    <div *ngIf="password.errors.password">Entrer un mot de passe valide</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Date de naissance :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                  </div>
+                  <input type="date" class="form-control" name="birthDay" [(ngModel)]="form.birthDay" placeholder="Date de naissance" #birthDay="ngModel"
+                         required minlength="6" />
+                  <div *ngIf="f.submitted && birthDay.invalid">
+                    <div *ngIf="birthDay.errors.required">Vous devez entrer une date de naissance</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Numero de telephone <small>format: 0000-000-000</small>:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                  </div>
+                  <input type="tel" class="form-control" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"  name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
+                         required minlength="6" />
+                  <div *ngIf="f.submitted && phone.invalid">
+                    <div *ngIf="phone.errors.required">Vous devez entrer un numero de telephone</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Province :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                  </div>
+                  <select name="province"  class="form-control" [(ngModel)]="form.province" #province="ngModel" id="">
+                    <option value="" disabled>-- Choisissez une representation --</option>
+                    <option value="" disabled>-- Liste des Provinces --</option>
+                    <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
+                  </select>
+
+                  <div *ngIf="f.submitted && province.invalid">
+                    <div *ngIf="province.errors.required">Vous devez entrer une province</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">communes :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                  </div>
+                  <select name="commune" (click)="selector()"  class="form-control" [(ngModel)]="form.commune" #commune="ngModel" id="">
+                    <option value="" disabled>-- Choisissez une representation --</option>
+                    <option value="" disabled>-- Liste des Communes --</option>
+                    <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
+                  </select>
+
+                  <div *ngIf="f.submitted && commune.invalid">
+                    <div *ngIf="commune.errors.required">Vous devez entrer une commune</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Type d'activite :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-vector-square"></i></span>
+                  </div>
+                  <select name="secteurActivite" pla class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
+                    <option value="" disabled>-- Choisissez un type d'activite --</option>
+                    <option *ngFor="let item of coachingActivites" value="{{item}}">{{item}}</option>
+                  </select>
+
+                  <div *ngIf="f.submitted && secteurActivite.invalid">
+                    <div *ngIf="secteurActivite.errors.required">Vous devez entrer un secteur d'activite</div>
+                  </div>
+                </div>
+              </div>
+
+                <button type="submit" class="btn btn-block btn-success" >Enregistre</button>
+                <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                  Inscription echouer!<br/>{{errorMessage}}
+                </div>
+                <p>Deja un compte?</p>
+                <a href="connexion" class="btn btn-primary">Connectez-vous</a>
+              </form>
+            </div>
+            <div class="card-body p-4" *ngIf="isInvestor">
+              <form name="form" (ngSubmit) = "f.form.valid && onInvestorSubmit()" #f="ngForm" novalidate>
+                <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement pour un investisseur</h3>
+                <div class="form-group">
+                  <label class="text-muted">Nom complet :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="pi pi-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="fullName" [(ngModel)]="form.fullName" #fullName="ngModel" placeholder="Votre nom complet"  autocomplete="name" required />
+                  <div *ngIf="f.submitted && fullName.invalid">
+                    <div *ngIf="fullName.errors.required">Vous devez entrer un nom</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Addresse  Email:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" placeholder="Votre adresse email" required email />
+                  <div *ngIf="f.submitted && email.invalid">
+                    <div *ngIf="email.errors.required">Entrer une adresse email</div>
+                    <div *ngIf="email.errors.email">Entrer une addresse email valide</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Mot de passe:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" placeholder="Votre Mot de passe" required  />
+                  <div *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors.required">Entrer un mote de passe</div>
+                    <div *ngIf="password.errors.password">Entrer un mot de passe valide</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Date de naissance :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                  </div>
+                  <input type="date" class="form-control" name="birthDay" [(ngModel)]="form.birthDay" placeholder="Date de naissance" #birthDay="ngModel"
+                         required minlength="6" />
+                  <div *ngIf="f.submitted && birthDay.invalid">
+                    <div *ngIf="birthDay.errors.required">Vous devez entrer une date de naissance</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Numero de telephone <small>format: 0000-000-000</small>:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                  </div>
+                  <input type="tel" class="form-control" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"  name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
+                         required minlength="6" />
+                  <div *ngIf="f.submitted && phone.invalid">
+                    <div *ngIf="phone.errors.required">Vous devez entrer un numero de telephone</div>
+                    <div *ngIf="phone.errors?.pattern">phone is invalid</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Numero de la Carte Nationale d'Identite:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="idNumber" [(ngModel)]="form.idNumber" placeholder="Numero de la carte nationale d'identite" #idNumber="ngModel"
+                         required minlength="6" />
+                  <div *ngIf="f.submitted && idNumber.invalid">
+                    <div *ngIf="idNumber.errors.required">Vous devez entrer un numero de votre CNI</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Province  :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                  </div>
+                  <select name="province" class="form-control" [(ngModel)]="form.province" #province="ngModel" id="">
+                    <option value="" disabled>-- Choisissez une representation --</option>
+                    <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
+                  </select>
+
+                  <div *ngIf="f.submitted && province.invalid">
+                    <div *ngIf="province.errors.required">Vous devez entrer une province</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Commune  :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                  </div>
+                  <select name="commune" (click)="selector()" class="form-control" [(ngModel)]="form.commune" #commune="ngModel" id="">
+                    <option value="" disabled>-- Liste des Communes --</option>
+                    <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
+                  </select>
+
+                  <div *ngIf="f.submitted && commune.invalid">
+                    <div *ngIf="commune.errors.required">Vous devez entrer une commune</div>
+                  </div>
+                </div>
+              </div>
+                <button type="submit" class="btn btn-block btn-success" >Enregistre</button>
+                <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                  Inscription echouer!<br/>{{errorMessage}}
+                </div>
+                <p>Deja un compte?</p>
+                <a href="connexion" class="btn btn-primary">Connectez-vous</a>
+              </form>
+            </div>
+            <div class="card-body p-4" *ngIf="isLoans">
+              <form name="form" (ngSubmit) = "f.form.valid && onLearnerSubmit()" #f="ngForm" novalidate>
+                <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement pour un Apprenant</h3>
+                <div class="form-group">
+                  <label class="text-muted">Nom complet :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="pi pi-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="fullName" [(ngModel)]="form.fullName" #fullName="ngModel" placeholder="Votre nom complet"  autocomplete="name" required />
+                  <div *ngIf="f.submitted && fullName.invalid">
+                    <div *ngIf="fullName.errors.required">Vous devez entrer un nom</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Addresse  Email:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" placeholder="Votre adresse email" required email />
+                  <div *ngIf="f.submitted && email.invalid">
+                    <div *ngIf="email.errors.required">Entrer une adresse email</div>
+                    <div *ngIf="email.errors.email">Entrer une addresse email valide</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Mot de passe:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" placeholder="Votre Mot de passe" required  />
+                  <div *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors.required">Entrer un mote de passe</div>
+                    <div *ngIf="password.errors.password">Entrer un mot de passe valide</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Date de naissance :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                  </div>
+                  <input type="date" class="form-control" name="birthDay" [(ngModel)]="form.birthDay" placeholder="Date de naissance" #birthDay="ngModel"
+                         required minlength="6" />
+                  <div *ngIf="f.submitted && birthDay.invalid">
+                    <div *ngIf="birthDay.errors.required">Vous devez entrer une date de naissance</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Numero de telephone <small>format: 0000-000-000</small>:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                  </div>
+                  <input type="text" class="form-control" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"  name="phone" [(ngModel)]="form.phone" placeholder="Numero de telephone" #phone="ngModel"
+                         required minlength="6" />
+                  <div *ngIf="f.submitted && phone.invalid">
+                    <div *ngIf="phone.errors.required">Vous devez entrer un numero de telephone</div>
+                    <div *ngIf="phone.errors?.pattern">phone is invalid</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Numero de la Carte Nationale d'Identite:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="idNumber" [(ngModel)]="form.idNumber" placeholder="Numero de la carte nationale d'identite" #idNumber="ngModel"
+                         required minlength="6" />
+                  <div *ngIf="f.submitted && idNumber.invalid">
+                    <div *ngIf="idNumber.errors.required">Vous devez entrer un numero de votre CNI</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Province  :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                  </div>
+                  <select name="province" class="form-control" [(ngModel)]="form.province" #province="ngModel" id="">
+                    <option value="" disabled>-- Choisissez une representation --</option>
+                    <option *ngFor="let item of provinces" value="{{item}}">{{item}}</option>
+                  </select>
+
+                  <div *ngIf="f.submitted && province.invalid">
+                    <div *ngIf="province.errors.required">Vous devez entrer une province</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-muted">Commune  :</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                  </div>
+                  <select name="commune" (click)="selector()" class="form-control" [(ngModel)]="form.commune" #commune="ngModel" id="">
+                    <option value="" disabled>-- Liste des Communes --</option>
+                    <option *ngFor="let item of communes" value="{{item}}">{{item}}</option>
+                  </select>
+
+                  <div *ngIf="f.submitted && commune.invalid">
+                    <div *ngIf="commune.errors.required">Vous devez entrer une commune</div>
+                  </div>
+                </div>
+              </div>
+                <button type="submit" class="btn btn-block btn-success" >Enregistre</button>
                 <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
                   Inscription echouer!<br/>{{errorMessage}}
                 </div>

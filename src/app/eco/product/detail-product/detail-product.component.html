@@ -71,15 +71,7 @@
         <hr>
         <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentProduct)"> <i class="fa fa-shopping-cart"></i> Passer ma commande</button>
         <br>
-        <br>
-        <br>
-        <ul class="row rating">
-          <li><i class="fa fa-star"></i></li>
-          <li><i class="fa fa-star"></i></li>
-          <li><i class="fa fa-star"></i></li>
-          <li><i class="fa fa-star"></i></li>
-          <li><i class="fa fa-star"></i></li>
-        </ul>
+      
 
 
 
@@ -161,16 +153,6 @@
               <option *ngFor="let item of intervalsHours" value="{{item}}">{{item}}</option>
             </select>
           </div>
-
-        <div class="form-group">
-          <label>Mode de paiement</label>
-          <select formControlName="paymentMode" class="form-control"  id="">
-            <option value="">-- Choisir un mode paiement --</option>
-            <option value="CB">Carte bancaire</option>
-            <option value="MM">Mobile Money</option>
-            <option value="CASH">Paiement en liquidite(réservation)</option>
-          </select>
-        </div>
       <br>
       <div class="card-footer">
         <div class="row">

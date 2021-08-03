@@ -44,6 +44,8 @@ import { InvestComponent } from './eco/invest/invest.component';
 import { SocialRedirectComponent } from './social-redirect/social-redirect.component';
 import { LoansInputsDetailsComponent } from './loans/loans-inputs-details/loans-inputs-details.component';
 import { LoansInputsViewComponent } from './loans/loans-inputs-view/loans-inputs-view.component';
+import { CoachingCheckoutComponent } from './eco/coachings/coaching-checkout/coaching-checkout.component';
+import { ProductCheckoutComponent } from './eco/product/product-checkout/product-checkout.component';
 
 
 
@@ -112,6 +114,12 @@ const routes: Routes = [
   },
   {
     path: 'ecommerce/coaching/detail/:id', component: CoachingDetailComponent
+  },
+  {
+    path: 'ecommerce/coaching/checkout/:id', component: CoachingCheckoutComponent
+  },
+  {
+    path: 'ecommerce/produit/checkout/:id', component: ProductCheckoutComponent
   },
 
   {

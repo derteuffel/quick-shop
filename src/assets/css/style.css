@@ -604,7 +604,7 @@ Version:1.0
   color:#fff;
 }
 .header.shop{
-  background:#fff;
+  /*background:#fff;*/
 }
 .header.shop .nav-inner {
   margin: 0;
@@ -739,11 +739,9 @@ Version:1.0
   top: 0;
 }
 .header.shop .middle-inner {
-  padding: 20px 0;
-  background: #fff;
-  border-top: 1px solid #eee;
+  padding: 20px 0;/* /* */
 }
-.header.shop.v3 .middle-inner {
+.header.sh*/op.v3 .middle-inner {
   border:none;
 }
 .header.shop .header-inner {

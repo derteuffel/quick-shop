@@ -22,7 +22,7 @@ export class HeaderProduitComponent implements OnInit {
 
   ngOnInit(): void {
     this.types = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
-  'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges'];
+  'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges','Education'];
 
 
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
@@ -116,6 +116,10 @@ namesSelector(){
 
     case 'Achats des pieces de rechanges':{
       this.names = ['Motocyle', 'Vehicules', 'Camions'];
+      break;
+    }
+    case 'Education':{
+      this.names = ['Cours du soir'];
       break;
     }
   }

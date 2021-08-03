@@ -70,7 +70,7 @@ export class AdminRootHome implements OnInit {
   ngOnInit(): void {
     console.log(this.authService.currentUserValue.role);
   this.categories = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
-  'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges'];
+  'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges','Education'];
     this.measures = ['KG','L', 'Btl', 'Pc','Sac','Prest']
     this.loadList();
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
@@ -178,6 +178,10 @@ export class AdminRootHome implements OnInit {
 
       case 'Achats des pieces de rechanges':{
         this.names = ['Motocyle', 'Vehicules', 'Camions'];
+        break;
+      }
+      case 'Education':{
+        this.names = ['Cours du soir'];
         break;
       }
     }
