@@ -50,6 +50,7 @@ export class CoachingsComponent implements OnInit {
 }
 
   loadSearchedCoaching(form){
+    console.log(form);
     this.coachingService.getAllCoachingSearch(form).subscribe(
       data => {
         this.coachings = data;

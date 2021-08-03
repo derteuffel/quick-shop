@@ -153,6 +153,7 @@ selector(){
   }
 
   loadSearchedCoachingLike(form){
+    console.log(form);
     this.coachingService.getAllCoachingSearchLike(form).subscribe(
       data => {
         this.lists = data;
