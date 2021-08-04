@@ -25,6 +25,7 @@ export class ArticlesSearchComponent implements OnInit {
   produitForm: FormGroup;
 
   lists: any = {};
+  searchData: any = {};
 
   provinces: string[];
   communes: string[];
@@ -50,6 +51,8 @@ export class ArticlesSearchComponent implements OnInit {
 
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
+  
+    this.loadSearchedProduitByProvince(this.provinces);
 
 this.init();
   }
@@ -241,7 +244,8 @@ selector(){
       province: new FormControl(''),
       commune: new FormControl(''),
       category: new FormControl(''),
-      name: new FormControl('')
+      name: new FormControl(''),
+      quantity: new FormControl('')
     });
   }
 
@@ -258,40 +262,16 @@ onProduitSearch(){
     province: this.produitForm.get('province').value,
     commune: this.produitForm.get('commune').value,
     name: this.produitForm.get('name').value,
-    category:  this.produitForm.get('category').value
+    category:  this.produitForm.get('category').value,
+    quantity: this.produitForm.get('quantity').value
   }
   console.log(searchValue);
   this.loadSearchedProduit(searchValue);
+  this.loadSearchedProduitByProvince(this.provinces)
   this.init();
 }
 
-  /* addToCart(order: ProductOrder) {
-    this.ecommerceService.SelectedProductOrder = order;
-    this.selectedProductOrder = this.ecommerceService.SelectedProductOrder;
-    this.productSelected = true;
-    console.log(this.selectedProductOrder);
-    console.log("i selected item");
-  }
 
-  removeFromCart(productOrder: ProductOrder) {
-    let index = this.getProductIndex(productOrder.product);
-    if (index > -1) {
-      this.shoppingCartOrders.productOrders.splice(
-        this.getProductIndex(productOrder.product), 1);
-    }
-    this.ecommerceService.ProductOrders = this.shoppingCartOrders;
-    this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-    this.productSelected = false;
-  }
-
-  getProductIndex(product: Product): number {
-    return this.ecommerceService.ProductOrders.productOrders.findIndex(
-      value => value.product === product);
-  }
-
-  isProductSelected(product: Product): boolean {
-    return this.getProductIndex(product) > -1;
-  } */
 
 
 
@@ -309,6 +289,30 @@ onProduitSearch(){
   }
   loadSearchedProduitLike(form){
     this.ecommerceService.getAllProductsSearchLike(form).subscribe(
+      data => {
+        this.lists = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  loadSearchedProduitByProvince(province){
+    this.ecommerceService.getAllProductsSearchByProvince(province,this.navigationParams).subscribe(
+      data => {
+        this.searchData = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  loadSearchedProduitByLocation(province){
+    this.ecommerceService.getAllProductsSearchBylocation(province,this.navigationParams).subscribe(
       data => {
         this.lists = data;
         console.log(data);

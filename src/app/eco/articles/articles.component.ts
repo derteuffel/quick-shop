@@ -31,7 +31,7 @@ export class ArticlesComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.loadProducts();
+    
   }
 
  isEmpty(obj) {
@@ -70,22 +70,5 @@ export class ArticlesComponent implements OnInit {
     return this.getProductIndex(product) > -1;
   } */
 
-  loadProducts() {
-    this.ecommerceService.getAllProducts()
-      .subscribe(
-        data => {
-          this.products = data;
-
-          console.log(data);
-        },
-        (error) => console.log(error)
-      );
-  }
-
-
-  loadOrders() {
-    this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
-      this.shoppingCartOrders = this.ecommerceService.ProductOrders;
-    });
-  }
+  
 }

@@ -59,6 +59,19 @@ export class EcommerceService {
     console.log(form);
     return this.http.post(`${API.PRODUITS}/all/search`, form);
   }
+  getAllProductsSearchByProvince(province,form): Observable<any>  {
+    console.log(form);
+    console.log(province);
+    
+    return this.http.post(`${API.PRODUITS}/all/province/${province}`, form);
+  }
+
+  getAllProductsSearchBylocation(province,form): Observable<any>  {
+    console.log(form);
+    console.log(province);
+    
+    return this.http.post(`${API.PRODUITS}/all/search/${province}`, form);
+  }
 
   getOrderByProduct(id): Observable<any> {
     return this.http.get(`${API.COMMANDES}/admin/produits/${id}`, {headers: this.headers});

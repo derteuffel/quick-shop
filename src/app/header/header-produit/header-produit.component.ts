@@ -214,7 +214,8 @@ selector(){
       province: new FormControl(''),
       commune: new FormControl(''),
       name: new FormControl(''),
-      category: new FormControl('')
+      category: new FormControl(''),
+      quantity: new FormControl('')
     });
   }
 
@@ -223,7 +224,8 @@ selector(){
       province: new FormControl(''),
       commune: new FormControl(''),
       name: new FormControl(''),
-      category: new FormControl('')
+      category: new FormControl(''),
+      quantity: new FormControl('')
     });
   }
 
