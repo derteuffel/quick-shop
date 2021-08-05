@@ -314,7 +314,7 @@ onProduitSearch(){
   loadSearchedProduitByLocation(province){
     this.ecommerceService.getAllProductsSearchBylocation(province,this.navigationParams).subscribe(
       data => {
-        this.lists = data;
+        this.products = data;
         console.log(data);
       },
       error => {

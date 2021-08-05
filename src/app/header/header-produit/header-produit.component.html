@@ -6,36 +6,36 @@
             <form [formGroup]="produitForm" (submit)="onProduitSearch()"  >
               <div class="row">
                 <div class="form-group col-xl-2 col-md-6">
-                  <select formControlName="category" class="form-control" >
-                    <option value="" disabled>-- Choisir une categorie --</option>
+                  <select formControlName="category" class="form-control search-slt" >
+                    <option value="" disabled>-- Categorie --</option>
                     <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
                   </select>
                 </div>
                 <div class="form-group col-xl-2 col-md-6">
-                  <select formControlName="name" (click)="namesSelector()" class="form-control" >
-                    <option value="" disabled>-- Choisir un produit --</option>
+                  <select formControlName="name" (click)="namesSelector()" class="form-control search-slt" >
+                    <option value="" disabled>-- Produit --</option>
                     <option value="{{item}}" *ngFor="let item of names">{{item}}</option>
                   </select>
                 </div>
                 <div class="form-group col-xl-2 col-md-6">
-                  <input type="number" class="form-control" formControlName="quantity" placeholder="Quantite rechercher">
+                  <input type="number" class="form-control search-slt" formControlName="quantity" placeholder="Quantite">
                 </div>
                 <div class="form-group col-md-6 col-xl-2">
-                  <select formControlName="province" class="form-control" >
-                    <option value="" disabled>-- Choisir une province --</option>
+                  <select formControlName="province" class="form-control search-slt" >
+                    <option value="" disabled>-- Province --</option>
                     <option value="">-- Listes des provinces --</option>
                     <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
                   </select>
                 </div>
                 <div class="form-group col-md-6 col-xl-2">
-                  <select formControlName="commune" (click)="selector()" class="form-control" >
-                    <option value="" disabled>-- Choisir  une commune --</option>
+                  <select formControlName="commune" (click)="selector()" class="form-control search-slt" >
+                    <option value="" disabled>-- Commune --</option>
                     <option value="" disabled>-- Liste des communes --</option>
                     <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
                   </select>
                 </div>
                 <div class="top-search col-xl-2 col-md-6">
-                  <button type="submit" class="btn btn-default text-white zigs" >
+                  <button type="submit" class="btn btn-default text-white zigs wrn-btn" >
                     <i class="ti-search zigs"></i>&nbsp; Rechercher
                   </button>
                 </div>
