@@ -73,22 +73,28 @@
             <div class="tab-content" id="myTabContent">
 
               <div class="tab-pane fade show active" *ngIf="(products.length > 0)" id="man" role="tabpanel">
-                <div class="tab-single row">
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-12" *ngFor="let item of products | paginate: {itemsPerPage: 10, currentPage: p}">
+                <div class="row">
+                <div class="tab-single col-12 col-md-6 col-xl-4" style="overflow-y:scroll">
+                  <div class="card-header alert alert-info my-2">
+                    <h2>Liste des produits trouver</h2> 
+                  </div>
+                  <hr>
+                    <div class=" col-12" *ngFor="let item of products ">
+                      <!-- <div class=" col-12" *ngFor="let item of products | paginate: {itemsPerPage: 10, currentPage: p}"> -->
                       <div  class="single-product">
                         <div  class="product-img">
-                          <a href="/ecommerce/product/detail/{{item?.id}}">
+                          <a (click)="showDetails(item)">
                             <img class="default-img" [src]="item.pictureUrl" alt="#">
                             <img class="hover-img" [src]="item.pictureUrl" alt="#">
                           </a>
                           <div class="button-head">
                             <div class="product-action-2">
-                              <a   href="/ecommerce/product/detail/{{item?.id}}"></a>
+                              <a   (click)="showDetails(item)"></a>
                             </div>
                           </div>
                         </div>
                         <div class="product-content">
-                          <a href="/ecommerce/product/detail/{{item?.id}}">
+                          <a (click)="showDetails(item)">
                             <h4><p >{{item?.name}}</p></h4>
                           </a>
 
@@ -100,14 +106,77 @@
                       </div>
                     </div>
                 </div>
+                <div class=" col-12 col-md-6 col-xl-8"  style="overflow-y:scroll">
+                  <div class="card-header alert alert-info my-2">
+                    <h2>Detail d'un produit</h2> 
+                  </div>
+                  <hr>
+                  <main  *ngIf="isSelected" style="width: 100%;">
+                    <div class="row no-gutters">
+                      <div class="col-sm-5 border-right px-3">
+                        <article class="gallery-wrap">
+                          <div class="img-big-wrap">
+                            <div> <a href="currentProduct.pictureUrl" data-fancybox=""><img style="width:100%; height:200px" [src]="currentProduct.pictureUrl"></a></div>
+                          </div> <!-- slider-product.// -->
+                          
+                        </article> <!-- gallery-wrap .end// -->
+                      </div>
+                      <div class="col-sm-7 px-3">
+                        <article class="card-body text-center">
+                          <!-- short-info-wrap -->
+                          <h3 class="title mb-3">{{currentProduct.name}}</h3>
+                  
+                          <div class="mb-3">
+                            <var class="price h3 text-price">
+                              <span class="num"> {{currentProduct.price+' '+currentProduct.devise+' / '+currentProduct.measure}}</span>
+                            </var>
+                            <!--<span>/per kg</span>-->
+                          </div> <!-- price-detail-wrap .// -->
+                        </article> <!-- card-body.// -->
+                      </div> <!-- col.// -->
+                    </div>
+                    <div class=" no-gutters"> 
+                      <div class="col-sm-12">
+                        <div class="card-body">
+                          
+                          <dl>
+                            <dt>Description :</dt>
+                            <dd><p>{{currentProduct.description}} </p></dd>
+                          </dl>
+                          <dl class="row">
+                            <dt class="col-sm-3">Catégorie :</dt>
+                            <dd class="col-sm-9">{{currentProduct.category}}</dd>
+                            <dt class="col-sm-3">Province :</dt>
+                            <dd class="col-sm-9">{{currentProduct.province}}</dd>
+                  
+                            <dt class="col-sm-3">Commune :</dt>
+                            <dd class="col-sm-9">{{currentProduct.commune}}</dd>
+                  
+                            <dt class="col-sm-3">Disponibilité :</dt>
+                            <dd class="col-sm-9 text-success" *ngIf="currentProduct.status">En Stock ( {{currentProduct.quantity+' '+currentProduct.measure}})</dd>
+                            <dd class="col-sm-9 text-warning" *ngIf="!currentProduct.status">Non disponible</dd>
+                          </dl>
+                          <hr>
+                          <!-- row.// -->
+                          <p>Passez votre commande en remplissant le formulaire via le bouton ci-dessous</p>
+                          <hr>
+                          <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentProduct)"> <i class="fa fa-shopping-cart"></i> Passer ma commande</button>
+                          <br>
+                          <!-- short-info-wrap .// -->
+                        </div> <!-- card-body.// -->
+                      </div> <!-- col.// -->
+                    </div> <!-- row.// -->
+                  </main>
+                </div>
               </div>
-              <div class="card-footer py-4">
+              </div>
+              <!-- <div class="card-footer py-4">
                 <nav aria-label="...">
                   <ul class="pagination justify-content-end mb-0">
                     <pagination-controls (pageChange)="p = $event"></pagination-controls>
                   </ul>
                 </nav>
-              </div>
+              </div> -->
             </div>
             <div class="tab-single my-4">
               <div class="card-body">
@@ -130,5 +199,64 @@
           
 </section>
 <!-- End Product Area -->
+<ng-template #contentAdd let-modal>
+  <div class="modal-header" style="background-color:#4051e9;">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body px-5">
+    <form [formGroup]="orderForm" (submit)="onSaveSubscribe(currentProduct.id)">
+      <h2>Formulaire d'enregistrment d'une commande</h2>
+
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" formControlName="name" class="form-control" placeholder="Votre nom d'utilisateur">
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" formControlName="email" class="form-control" placeholder="Entrer votre adresse email" >
+          </div>
+
+          <div class="form-group">
+            <label>Numéro téléphone</label>
+            <input type="text" formControlName="phone" class="form-control" placeholder="Entrer votre numero de telephone">
+          </div>
+
+          <div class="form-group">
+            <label>Quantite</label>
+            <input type="number" formControlName="quantity" class="form-control" placeholder="Quantite demande">
+          </div>
+
+          <div class="form-group">
+            <label>Lieu de Livraison</label>
+            <input type="text" formControlName="lieuDeLivraison" class="form-control" placeholder="Lieu de livraison">
+          </div>
+          <div class="form-group">
+            <label>Date de Livraison</label>
+            <input type="date" formControlName="dateDeLivraison" class="form-control" placeholder="Date de livraison">
+          </div>
+          <div class="form-group">
+            <label>Heure de Livraison</label>
+            <select formControlName="heureDeLivraison" class="form-control"  id="">
+              <option value="">-- Choisir un interval de temps pour vous faire livree --</option>
+              <option *ngFor="let item of intervalsHours" value="{{item}}">{{item}}</option>
+            </select>
+          </div>
+      <br>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
+          </div>
+          <div class="col-md-6">
+            <button type="submit"  (click)="modal.close('Close click')" class="btn btn-success" style="width: 100%">Enregistrer <i class="fa fa-check"></i></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
 
 <app-footer></app-footer>

@@ -55,14 +55,4 @@
 }
 
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px 2em;
-}
-
-.row :first-child {
-  align-self: center;
-}
-
 

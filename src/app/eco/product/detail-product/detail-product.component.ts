@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -31,6 +31,10 @@ export class DetailProductComponent implements OnInit {
   selectedProductOrder: ProductOrder;
   private shoppingCartOrders: ProductOrders;
   orderFinished = false;
+  id:number;
+  message: string;
+  subscription: Subscription;
+  @Input() productId = any;
 
   orderForm: FormGroup;
   temoignageForm: FormGroup;
@@ -44,12 +48,18 @@ export class DetailProductComponent implements OnInit {
               private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
+    console.log(this.productId);
+    this.getProduct(this.productId);
     this.initForm();
     this.initForm2();
     this.intervalsHours = ['07:00 am - 10:00 am','10:01 am - 1:00 pm ','1:01 pm - 4:00 pm','4:01 pm - 7:00 pm']
   }
 
+  receivename($event: number) {  
+    this.id = $event;  
+    console.log(this.id);
+    this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
+    } 
 
 
 

@@ -40,7 +40,7 @@ export class AdminNavbarComponent implements OnInit {
         console.log(error);
       }
     ); */
-    this.router.navigateByUrl('connexion');
+    this.router.navigateByUrl('');
 
   }
 

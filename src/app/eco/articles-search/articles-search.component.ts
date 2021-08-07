@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProductOrder} from "../../models/product-order.model";
 import {Product} from "../../models/product.model";
 import {Subscription} from "rxjs/index";
@@ -6,20 +6,27 @@ import {ProductOrders} from "../../models/product-orders.model";
 import {EcommerceService} from "../../services/ecommerce.service";
 import {CoachingService} from "../../services/coaching.service";
 import {Coaching} from "../../models/coaching";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CommandeService } from 'src/app/services/commande.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-articles-search',
   templateUrl: './articles-search.component.html',
-  styleUrls: ['./articles-search.component.scss']
+  styleUrls: ['./articles-search.component.scss'],
+  providers: [MessageService]
 })
 export class ArticlesSearchComponent implements OnInit {
 
+//@Output() nameEmitter = new EventEmitter < number > ();
   products: Product[] = [];
   sub: Subscription;
   productSelected: boolean = false;
+  subscription: Subscription;
+  isSelected: boolean = false;
 
   navigationParams: any = {};
   produitForm: FormGroup;
@@ -32,15 +39,23 @@ export class ArticlesSearchComponent implements OnInit {
   types: any ={};
   p: number=1;
   names: string [];
+  currentProduct: any;
+  message: string;
+  orderForm: FormGroup;
+  intervalsHours: string[];
 
   constructor(
     private ecommerceService: EcommerceService,
-    private activatedRoute: ActivatedRoute, private localisation: Location) { }
+    private activatedRoute: ActivatedRoute, private modalService: NgbModal, 
+    private commandeService: CommandeService, private messageService: MessageService,
+    private router: Router) { }
 
   ngOnInit(): void {
      this.activatedRoute.queryParams.subscribe(params => {
       this.navigationParams = JSON.parse(params['values']);
-    })
+    });
+    this.subscription = this.ecommerceService.currentMessage.subscribe(message => this.message = message)
+    this.intervalsHours = ['07:00 am - 10:00 am','10:01 am - 1:00 pm ','1:01 pm - 4:00 pm','4:01 pm - 7:00 pm'];
 
     this.types = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
   'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges','Education'];
@@ -55,6 +70,13 @@ export class ArticlesSearchComponent implements OnInit {
     this.loadSearchedProduitByProvince(this.provinces);
 
 this.init();
+  }
+
+  showDetails(item){
+    console.log(item);
+    this.currentProduct = item;
+    this.isSelected = true;
+    this.initForm();
   }
 
   namesSelector(){
@@ -272,8 +294,49 @@ onProduitSearch(){
 }
 
 
+initForm(){
+  this.orderForm = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+    phone: new FormControl(''),
+    lieuDeLivraison: new FormControl(''),
+    dateDeLivraison: new FormControl(''),
+    heureDeLivraison: new FormControl(''),
+    quantity: new FormControl(''),
+    paymentMode: new FormControl('')
+  });
+}
+openModalFormulaire(contentAdd, event)  {
+  this.modalService.open(contentAdd, {size: 'lg'});
+  this.currentProduct = event;
+ }
 
+ onSaveSubscribe(id){
+   console.log('save cliqued');
+   const data = {
+     name: this.orderForm.get('name').value,
+     email: this.orderForm.get('email').value,
+     phone: this.orderForm.get('phone').value,
+     lieuDeLivraison: this.orderForm.get('lieuDeLivraison').value,
+     dateDeLivraison: this.orderForm.get('dateDeLivraison').value,
+     heureDeLivraison: this.orderForm.get('heureDeLivraison').value,
+     quantity: this.orderForm.get('quantity').value
+   };
+   console.log(data);
+   console.log(id);
+   this.commandeService.saveCmd(data,id).subscribe(
+     data => {
+      this.orderForm.reset();
+      this.messageService.add({severity: 'success', summary: 'Success', detail: 'Votre commande a ete soumise vous serez rediriger vers la page de paiement', sticky: true});
+      this.router.navigateByUrl('ecommerce/produit/checkout/'+id);
+     },
+     error => {
+       console.log(error);
+     }
+     
 
+   );
+ }
 
 
   loadSearchedProduit(form){
@@ -324,3 +387,5 @@ onProduitSearch(){
   }
 
 }
+
+

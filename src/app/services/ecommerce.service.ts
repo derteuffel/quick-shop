@@ -3,7 +3,7 @@ import {Subject} from 'rxjs/internal/Subject';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProductOrder} from '../models/product-order.model';
 import {ProductOrders} from '../models/product-orders.model';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../models/user';
 import {API} from "../../environments/environment";
 
@@ -153,6 +153,12 @@ export class EcommerceService {
 
   get Total() {
     return this.total;
+  }
+  private messageSource = new BehaviorSubject('default message');
+  currentMessage = this.messageSource.asObservable();
+
+  changeMessage(message: string) {
+    this.messageSource.next(message);
   }
 
   set Total(value: number) {
