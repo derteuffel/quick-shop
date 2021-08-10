@@ -99,9 +99,11 @@ h6 {
   }
 
   .card {
-    width: 300px;
-    height: 330px;
-    border: none
+   
+    border-width:2px;
+    border-color: lightskyblue;
+    border-style: solid;
+    cursor:pointer;
   }
 
   .card-img-top {

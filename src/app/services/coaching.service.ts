@@ -44,6 +44,20 @@ export class CoachingService {
     return this.http.post(API.COACHINGS+'/all/search/like', form);
   }
 
+  getAllCoachingSearchByProvince(province,form): Observable<any>  {
+    console.log(form);
+    console.log(province);
+    
+    return this.http.post(`${API.COACHINGS}/all/province/${province}`, form);
+  }
+
+  getAllCoachingSearchBylocation(province,form): Observable<any>  {
+    console.log(form);
+    console.log(province);
+    
+    return this.http.post(`${API.COACHINGS}/all/search/${province}`, form);
+  }
+
   getAllCoachingByUser(): Observable<any> {
     return this.http.get(API.COACHINGS+'/admin', {headers: this.headers});
   }
