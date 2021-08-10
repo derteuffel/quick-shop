@@ -289,7 +289,7 @@ onProduitSearch(){
   }
   console.log(searchValue);
   this.loadSearchedProduit(searchValue);
-  this.loadSearchedProduitByProvince(this.provinces)
+  this.loadSearchedProduitByProvince(this.provinces);
   this.init();
 }
 
@@ -328,10 +328,13 @@ openModalFormulaire(contentAdd, event)  {
      data => {
       this.orderForm.reset();
       this.messageService.add({severity: 'success', summary: 'Success', detail: 'Votre commande a ete soumise vous serez rediriger vers la page de paiement', sticky: true});
-      this.router.navigateByUrl('ecommerce/produit/checkout/'+id);
+      this.router.navigateByUrl('ecommerce/produit/checkout/'+data.id);
      },
      error => {
-       console.log(error);
+      console.log(error.error);
+      let excp:string = 'https://www.jhipster.tech/problem/problem-with-message There are not enougth product for this command com.derteuffel.springbootecommerce.services.CommandeService quantity greater than stock';
+      this.messageService.add({severity: 'error', summary: 'Error', detail: (error.error.message==excp)? 'Qauntité de produit insufusante':'Unknow error'});
+      console.log(error);
      }
      
 

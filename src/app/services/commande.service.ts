@@ -56,6 +56,7 @@ export class CommandeService {
   // enregistrer une commande
 
   saveCmd(form,id): Observable<any> {
+    console.log(form);
     return this.http.post(`${API.COMMANDES}/createOrder/${id}`, form);
   }
 

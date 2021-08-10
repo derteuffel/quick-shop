@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {CoachingService} from "../../services/coaching.service";
 import {Coaching} from "../../models/coaching";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CommandeService } from 'src/app/services/commande.service';
 
 @Component({
   selector: 'app-coachings-search',
   templateUrl: './coachings-search.component.html',
-  styleUrls: ['./coachings-search.component.scss']
+  styleUrls: ['./coachings-search.component.scss'],
+  providers: [MessageService],
 })
 export class CoachingsSearchComponent implements OnInit {
   coachings: any = {};
@@ -17,10 +21,17 @@ export class CoachingsSearchComponent implements OnInit {
   types:string[];
   lists: any = {};
   p:number = 1;
+  searchData: any = {};
+  currentCoaching: any;
+  subscribeForm: FormGroup;
+  orderForm: FormGroup;
+  isSelected: boolean = false;
 
   serviceForm: FormGroup;
 
-  constructor(private coachingService: CoachingService, private activatedRoute: ActivatedRoute) { }
+  constructor(private coachingService: CoachingService, private activatedRoute: ActivatedRoute,
+    private messageService: MessageService, private modalService: NgbModal,
+    private commandeService: CommandeService, private router: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -33,8 +44,15 @@ export class CoachingsSearchComponent implements OnInit {
       this.types = ['Appel avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];
       this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-
+      this.loadSearchedCoachingByProvince(this.provinces);
     this.init();
+  }
+
+  showDetails(item){
+    console.log(item);
+    this.currentCoaching = item;
+    this.isSelected = true;
+    this.initForm();
   }
 
 
@@ -137,7 +155,9 @@ selector(){
       name: this.serviceForm.get('name').value
     }
     this.loadSearchedCoaching(this.serviceForm.value);
+    this.loadSearchedCoachingByProvince(this.provinces);
     this.init();
+    
   }
 
   loadSearchedCoaching(form){
@@ -165,12 +185,80 @@ selector(){
     );
   }
 
+  loadSearchedCoachingByProvince(province){
+    this.coachingService.getAllCoachingSearchByProvince(province,this.navigationParams).subscribe(
+      data => {
+        this.searchData = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  loadSearchedCoachingByLocation(province){
+    this.coachingService.getAllCoachingSearchBylocation(province,this.navigationParams).subscribe(
+      data => {
+        this.coachings = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  openModalFormulaire(contentAdd)  {
+    this.modalService.open(contentAdd, {size: 'md'});
+   }
+ 
+   initForm(){
+     this.subscribeForm = new FormGroup({
+       name: new FormControl(''),
+       email: new FormControl(''),
+       phone: new FormControl(''),
+     });
+   }
+
+  onSaveSubscribe(){
+    const formData =  {
+      clientName: this.subscribeForm.get('name').value,
+      email: this.subscribeForm.get('email').value,
+      clientPhone: this.subscribeForm.get('phone').value,
+      isCoaching: true
+    }
+    this.commandeService.saveCmd(formData, this.currentCoaching.id).subscribe(
+      data => {
+        this.subscribeForm.reset();
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Votre commande a ete soumise vous serez rediriger vers la page de paiement', sticky: true});
+        this.router.navigateByUrl('ecommerce/coaching/checkout/'+data.id);
+      },
+      error => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Erreur systeme, vous ne devez avoir un compte pour participer a cette formation'});
+        console.log(error);
+      }
+    )
+  }
+
   isEmpty(obj) {
     for(var key in obj) {
         if(obj.hasOwnProperty(key))
             return false;
     }
     return true;
+}
+
+/** toast message function primeng  **/
+onConfirm() {
+  this.messageService.clear('c');
+}
+
+onReject() {
+  this.messageService.clear('c');
+}
+
+clear() {
+  this.messageService.clear();
 }
 
 }

@@ -1,5 +1,6 @@
 import { Boutique } from './boutique';
 import { Colors } from './colors';
+import { User } from './user';
 
 export class Product{
   id?: number;
@@ -16,5 +17,6 @@ export class Product{
   devise: string;
   pictures?: string[];
   boutique?: Boutique;
+  user: User
 
 }
