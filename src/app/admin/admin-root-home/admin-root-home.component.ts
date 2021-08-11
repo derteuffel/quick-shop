@@ -354,7 +354,7 @@ export class AdminRootHome implements OnInit {
     if (this.productForm?.invalid) { return; }
     const formData = new FormData();
     formData.append('file',this.productForm.get('pictureUrl').value);
-   
+
     formData.append('name', this.productForm.get('name').value);
     formData.append('price', this.productForm.get('price').value);
     formData.append('category', this.productForm.get('category').value);
@@ -364,7 +364,7 @@ export class AdminRootHome implements OnInit {
     formData.append('devise', this.productForm.get('devise').value);
     formData.append('description', this.productForm.get('description').value);
     formData.append('measure', this.productForm.get('measure').value);
-    
+
       formData.append('file', this.uploadedFile);
       this.ecommerceService.saveProduct(formData).subscribe(
         data => {
@@ -380,7 +380,7 @@ export class AdminRootHome implements OnInit {
           console.log(error);
         }
       );
-    
+
 
 
   }
@@ -401,8 +401,6 @@ export class AdminRootHome implements OnInit {
     this.modalService.open(contentUpdate, {size: 'lg'});
     this.product = event.name;
     this.productID = event.id;
-    console.log(event);
-    console.log(event.id);
     this.productForm.patchValue({
       name: event.name,
       quantity: event.quantity,
@@ -411,7 +409,6 @@ export class AdminRootHome implements OnInit {
       province: event.province,
       commune: event.commune,
       devise: event.devise,
-      //localisation: event.localisation,
       description: event.description,
       measure: event.measure,
 
@@ -426,15 +423,12 @@ export class AdminRootHome implements OnInit {
       name: this.productForm.get('name').value,
       quantity: this.productForm.get('quantity').value,
       devise: this.productForm.get('devise').value,
-      //type: this.productForm.get('type').value,
       category: this.productForm.get('category').value,
       price: this.productForm.get('price').value,
       province:  this.productForm.get('province').value,
       commune: this.productForm.get('commune').value,
       description: this.productForm.get('description').value,
       measure: this.productForm.get('measure').value,
-      //pictureUrl: this.productForm.get('pictureUrl').value,
-     // pictures: this.productForm.get('pictures').value,
     };
     this.ecommerceService.updateProduct(ProductData, this.productID).subscribe(
       (data: any) => {

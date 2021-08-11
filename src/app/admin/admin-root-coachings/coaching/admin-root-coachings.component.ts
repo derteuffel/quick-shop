@@ -27,6 +27,7 @@ export class AdminRootCoachingsComponent implements OnInit {
   abonnementId;
   message: string;
   isValid: boolean = false;
+  coachingID;
 
   lists: any = [];
   types: string[];
@@ -196,14 +197,10 @@ export class AdminRootCoachingsComponent implements OnInit {
 
 
     let startDate = this.form.get('startDate').value;
-    console.log(startDate);
     let endDate = this.form.get('dateFinFormation').value;
-    console.log(this.form.get('dateFinFormation').value);
     let endSubscribeDate = this.form.get('dateLimiteDenregistrement').value;
     this.dateRangeValidator(startDate,startDate);
     this.dateRangeValidator(endSubscribeDate,endDate);
-
-      console.log('j\'ai fait le troisieme test');
     const formData = new FormData();
     formData.append('title', this.form.get('title').value);
     formData.append('description', this.form.get('description').value);
@@ -217,9 +214,9 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('type', this.form.get('type').value);
     formData.append('dateFinFormation', endDate);
     formData.append('dateLimiteDenregistrement', endSubscribeDate);
-    
+
     formData.append('file', this.uploadedFile);
-    console.log(formData);
+
 
     this.submitted = true;
      this.coachingService.saveCoaching(formData).subscribe(
@@ -231,7 +228,7 @@ export class AdminRootCoachingsComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
-  
+
     this.submitted = false;
     }
 
@@ -270,8 +267,8 @@ export class AdminRootCoachingsComponent implements OnInit {
   setCoaching(contentUpdate, event) {
 
     this.modalService.open(contentUpdate, {size: "lg"});
-    this.currentCoaching = event;
-    console.log(this.currentCoaching)
+    this.currentCoaching = event.title;
+    this.coachingID = event.id;
     this.form.patchValue({
       id: event.id,
       title: event.title,
@@ -293,15 +290,10 @@ export class AdminRootCoachingsComponent implements OnInit {
   updateCoaching() {
 
     let startDate = this.form.get('startDate').value;
-    let endDate = this.form.get('dateFintFormation').value;
+    let endDate = this.form.get('dateFinFormation').value;
     let endSubscribeDate = this.form.get('dateLimiteDenregistrement').value;
-    if(startDate.getTime() > endDate.getTime()){
-      this.messageService.add({severity:'error', summary: 'Error', detail: 'The start date can not be greather than end date '});
-    }else if(endSubscribeDate.getTime() > startDate.getTime()){
-      this.messageService.add({severity:'error', summary: 'Error', detail: 'The end subscribe date can not be greather than start date'});
-    }else{
-    console.log('je suis la');
-    console.log(this.form.value);
+    this.dateRangeValidator(startDate,startDate);
+    this.dateRangeValidator(endSubscribeDate,endDate);
     const updateForm = {
       id: this.form.get('id').value,
       title: this.form.get('title').value,
@@ -326,7 +318,7 @@ export class AdminRootCoachingsComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
-    }
+
   }
 
 

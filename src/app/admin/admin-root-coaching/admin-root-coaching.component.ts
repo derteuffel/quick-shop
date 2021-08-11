@@ -43,9 +43,22 @@ export class AdminRootCoachingComponent implements OnInit {
               private orderService: EcommerceService) { }
 
   ngOnInit(): void {
+
+    this.getCoaching(this.activatedRoute.snapshot.paramMap.get('id'));
     this.showSessions();
-      
+
     this.initForm();
+  }
+
+  getCoaching(id){
+    this.coachingService.getCoachingById(id).subscribe(
+      data => {
+        this.currentCoaching = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   /** Lister les sessions d'un coaching **/

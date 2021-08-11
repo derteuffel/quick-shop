@@ -25,7 +25,7 @@ export class CoachingDetailComponent implements OnInit {
   temoignage: Temoignage;
   public submitted: boolean = false;
 
-  currentCoaching: any;
+  currentCoaching: any = {};
   numbers: number[];
   productOrder: ProductOrder[] = [] ;
   subscribeForm: FormGroup;
@@ -72,7 +72,7 @@ export class CoachingDetailComponent implements OnInit {
     });
   }
 
-  
+
   onSaveSubscribe(){
     const formData =  {
       clientName: this.subscribeForm.get('name').value,

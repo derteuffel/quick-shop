@@ -83,7 +83,6 @@ export class AdminRootProductComponent implements OnInit {
     this.productService.getProduct(id).subscribe(
       data => {
         this.currentProduct = data;
-        console.log(data);
       },
       error => {
         console.log(error);
@@ -115,8 +114,6 @@ export class AdminRootProductComponent implements OnInit {
       data => {
 
         this.orders = data;
-        console.log(data);
-        //console.log(this.currentProduct.id);
       },
       error1 => {
         console.log(error1);

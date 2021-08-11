@@ -48,18 +48,18 @@ export class DetailProductComponent implements OnInit {
               private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    console.log(this.productId);
+    //console.log(this.productId);
     this.getProduct(this.productId);
     this.initForm();
     this.initForm2();
     this.intervalsHours = ['07:00 am - 10:00 am','10:01 am - 1:00 pm ','1:01 pm - 4:00 pm','4:01 pm - 7:00 pm']
   }
 
-  receivename($event: number) {  
-    this.id = $event;  
+  receivename($event: number) {
+    this.id = $event;
     console.log(this.id);
     this.getProduct(this.activatedRoute.snapshot.paramMap.get('id'));
-    } 
+    }
 
 
 
@@ -76,7 +76,7 @@ export class DetailProductComponent implements OnInit {
     this.ecommerceService.getProductFree(id).subscribe(
         data => {
           this.currentProduct = data;
-          console.log(data);
+
           //this.productOrder.push(new ProductOrder(this.currentProduct,1));
         },
         error => {
