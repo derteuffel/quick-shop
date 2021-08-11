@@ -6,7 +6,7 @@ import {ProductOrders} from "../../models/product-orders.model";
 import {EcommerceService} from "../../services/ecommerce.service";
 import {CoachingService} from "../../services/coaching.service";
 import {Coaching} from "../../models/coaching";
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -62,7 +62,6 @@ export class ArticlesSearchComponent implements OnInit {
     // this.navigationParams = this.localisation.getState();
     console.log(this.navigationParams);
     this.loadSearchedProduit(this.navigationParams );
-    this.loadSearchedProduitLike(this.navigationParams);
 
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -287,9 +286,14 @@ onProduitSearch(){
     category:  this.produitForm.get('category').value,
     quantity: this.produitForm.get('quantity').value
   }
-  console.log(searchValue);
-  this.loadSearchedProduit(searchValue);
-  this.loadSearchedProduitByProvince(this.provinces);
+  const produitNavigationExtras: NavigationExtras = {
+    queryParams: {
+      'values':JSON.stringify(searchValue)
+    }
+  };
+
+
+    this.router.navigate(['/ecommerce/produits/search'], produitNavigationExtras );
   this.init();
 }
 
@@ -320,7 +324,9 @@ openModalFormulaire(contentAdd, event)  {
      lieuDeLivraison: this.orderForm.get('lieuDeLivraison').value,
      dateDeLivraison: this.orderForm.get('dateDeLivraison').value,
      heureDeLivraison: this.orderForm.get('heureDeLivraison').value,
-     quantity: this.orderForm.get('quantity').value
+     quantity: this.orderForm.get('quantity').value,
+     produit: true,
+     coaching: false
    };
    console.log(data);
    console.log(id);
@@ -353,17 +359,6 @@ openModalFormulaire(contentAdd, event)  {
       }
     );
   }
-  loadSearchedProduitLike(form){
-    this.ecommerceService.getAllProductsSearchLike(form).subscribe(
-      data => {
-        this.lists = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
 
   loadSearchedProduitByProvince(province){
     this.ecommerceService.getAllProductsSearchByProvince(province,this.navigationParams).subscribe(
@@ -382,11 +377,24 @@ openModalFormulaire(contentAdd, event)  {
       data => {
         this.products = data;
         console.log(data);
+        this.isSelected = false;
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  onConfirm() {
+    this.messageService.clear('c');
+  }
+
+  onReject() {
+    this.messageService.clear('c');
+  }
+
+  clear() {
+    this.messageService.clear();
   }
 
 }

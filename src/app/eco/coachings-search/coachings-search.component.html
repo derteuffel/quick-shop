@@ -52,15 +52,21 @@
     </div>
     <br>&nbsp;
     <div class="row">
-      <div class="col-xl-4 col-md-6 col-12" *ngFor="let coaching of coachings | paginate: {itemsPerPage: 10, currentPage: p}">
+      <div class="col-xl-4 col-md-6 col-12" style="overflow-y:scroll; height: 500px;">
+        <div class="card-header alert alert-info my-2">
+          <h2>Liste des formations retrouver</h2> 
+        </div>
+        <hr>
         <!-- Start Single Blog  -->
-        <div class="shop-single-blog">
+        <div class="shop-single-blog" *ngFor="let coaching of coachings ">
           
-          <a (click)="showDetails()" class="content">
-            <span  class="title">{{coaching?.title}}</span>
-            <span >{{coaching?.amount+' '+coaching.devise}}</span>
+          <a (click)="showDetails(coaching)" class="card text-left py-2 px-4">
+            <p  class="title">{{coaching?.type}}</p>
+            <p  class="title">{{coaching?.title}}</p>
+            <span class="currency">{{coaching?.amount+' '+coaching.devise}}</span>
             <p class="date">Debute le : {{coaching?.startDate}}</p>
           </a>
+          <hr>
         </div>
         <!-- End Single Blog  -->
       </div>
@@ -74,15 +80,16 @@
             <div class="col-sm-5 border-right px-3">
               <article class="gallery-wrap">
                 <div class="img-big-wrap">
-                  <div> <a href="currentCoaching.logo" data-fancybox=""><img style="width:100%; height:200px" [src]="currentProduct.pictureUrl"></a></div>
+                  <div> <a href="currentCoaching.logo" data-fancybox=""><img style="width:100%; height:200px" [src]="currentCoaching.logo"></a></div>
                 </div> <!-- slider-product.// -->
                 
               </article> <!-- gallery-wrap .end// -->
             </div>
             <div class="col-sm-7 px-3">
-              <article class="card-body text-center">
+              <article class="card-body text-left pl-5">
                 <!-- short-info-wrap -->
-                <h3 class="title mb-3">{{currentCoaching.title+' '+currentCoaching.type}}</h3>
+                <h3 class="title mb-3">{{currentCoaching.title}}</h3>
+                <h3 class="title mb-3">{{currentCoaching.type}}</h3>
         
                 <div class="mb-3">
                   <var class="price h3 text-price">
@@ -135,7 +142,7 @@
         </main>
       </div>
     </div>
-    
+    <hr>
     <div class="card-body my-4">
       <h2>Formations similaires</h2>
     </div>
@@ -193,4 +200,27 @@
     </form>
   </div>
 </ng-template>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+
+<!-- TOAST MESSAGE TEMPLATE -->
+<p-toast position="top-right"></p-toast>
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" >
+  <ng-template let-message pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1">
+      <div class="p-text-center">
+        <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+        <h4>{{message.summary}}</h4>
+        <p>{{message.detail}}</p>
+      </div>
+      <div class="p-grid p-fluid">
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+        </div>
+        <div class="p-col-6">
+          <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
 <app-footer></app-footer>

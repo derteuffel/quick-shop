@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CoachingService} from "../../services/coaching.service";
 import {Coaching} from "../../models/coaching";
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -40,7 +40,6 @@ export class CoachingsSearchComponent implements OnInit {
     console.log(this.navigationParams);
 
       this.loadSearchedCoaching(this.navigationParams);
-      this.loadSearchedCoachingLike(this.navigationParams);
       this.types = ['Appel avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];
       this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -149,13 +148,17 @@ selector(){
 
 
   onServiceSearch(){
-    const searchValue = {
-      province: this.serviceForm.get('province').value,
-      commune: this.serviceForm.get('commune').value,
-      name: this.serviceForm.get('name').value
-    }
+    
+    const serviceNavigationExtras: NavigationExtras = {
+      queryParams: {
+        'values':JSON.stringify(this.serviceForm.value)
+      }
+    };
+    console.log(this.serviceForm.value);
+
+
+      this.router.navigate(['/ecommerce/services/search'], serviceNavigationExtras);
     this.loadSearchedCoaching(this.serviceForm.value);
-    this.loadSearchedCoachingByProvince(this.provinces);
     this.init();
     
   }
@@ -164,19 +167,6 @@ selector(){
     this.coachingService.getAllCoachingSearch(form).subscribe(
       data => {
         this.coachings = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
-  loadSearchedCoachingLike(form){
-    console.log(form);
-    this.coachingService.getAllCoachingSearchLike(form).subscribe(
-      data => {
-        this.lists = data;
         console.log(data);
       },
       error => {
@@ -202,14 +192,16 @@ selector(){
       data => {
         this.coachings = data;
         console.log(data);
+        this.isSelected = false;
       },
       error => {
         console.log(error);
       }
     );
   }
-  openModalFormulaire(contentAdd)  {
+  openModalFormulaire(contentAdd, event)  {
     this.modalService.open(contentAdd, {size: 'md'});
+    this.currentCoaching = event;
    }
  
    initForm(){
@@ -225,7 +217,8 @@ selector(){
       clientName: this.subscribeForm.get('name').value,
       email: this.subscribeForm.get('email').value,
       clientPhone: this.subscribeForm.get('phone').value,
-      isCoaching: true
+      coaching: true,
+      produit: false
     }
     this.commandeService.saveCmd(formData, this.currentCoaching.id).subscribe(
       data => {
