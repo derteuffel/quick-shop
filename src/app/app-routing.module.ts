@@ -46,6 +46,7 @@ import { LoansInputsDetailsComponent } from './loans/loans-inputs-details/loans-
 import { LoansInputsViewComponent } from './loans/loans-inputs-view/loans-inputs-view.component';
 import { CoachingCheckoutComponent } from './eco/coachings/coaching-checkout/coaching-checkout.component';
 import { ProductCheckoutComponent } from './eco/product/product-checkout/product-checkout.component';
+import { AboutComponent } from './eco/about/about.component';
 
 
 
@@ -191,6 +192,9 @@ const routes: Routes = [
 
   {
     path: 'abonnement', component: AbonnementComponent
+  },
+  {
+    path: 'about', component: AboutComponent
   },
   {
     path: 'register', component: RegisterComponent

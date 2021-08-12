@@ -2,7 +2,7 @@
 <div class="main-content">
   <!-- Top navbar -->
   <app-admin-navbar></app-admin-navbar>
-  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="header pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
       <div class="header-body">
         <h1>Gestion de tous les produits</h1>
@@ -16,15 +16,15 @@
     <div class="row">
       <div class="col">
         <div class="card shadow">
-          <div class="card-header border-0" style="background-color:#F45B3A;">
+          <div class="card-header border-0" >
             <div class="row">
-              <div class="col-md-6 col-lg-2">
-                <button (click)="onBack()" pButton icon="fa fa-long-arrow-left" style="float:left;background-color:#F7941D;" label="Retour"></button>
+              <div class="col-md-6 col-lg-2 my-4">
+                <button (click)="onBack()" pButton icon="fa fa-long-arrow-left" style="float:left;background-color:black;" label="Retour"></button>
               </div>
-              <div *ngIf="!isClient" class="col-md-6 col-lg-4">
-                <button (click)="openModalProduct(contentAdd)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D;" label="Ajouter Produit"></button>
+              <div *ngIf="!isClient" class="col-md-6 col-lg-4 my-4">
+                <button (click)="openModalProduct(contentAdd)" pButton icon="fa fa-plus" style="float:left;background-color:black;" label="Ajouter Produit"></button>
               </div>
-              <div class="col-md-6 col-lg-6 pull-right" style="width: 40%">
+              <div class="col-md-6 col-lg-6" >
                 <label >Recherche <i class="fa fa-search"></i></label>
                 <input type="text" class="form-control" [(ngModel)]="searchItem">
               </div>
@@ -50,7 +50,7 @@
                   {{product?.category}}
                 </td>
                 <td>
-                  {{product?.price+'Fb/'+product?.measure}}
+                  {{product?.price+' '+product.devise+'/'+product?.measure}}
                 </td>
                 <td>
                   {{product?.quantity+' '+product?.measure+'(s)'}}
@@ -118,38 +118,53 @@
 <!-------------------------------------------------------ADD PRODUCT START-------------------------------------------------------------->
 
 <ng-template #contentAdd let-modal>
-  <div class="modal-header" style="background-color:#F45B3A;">
+  <div class="modal-header" >
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 
-  <div class="modal-body">
+  <div class="modal-body mx-5">
     <form [formGroup]="productForm" (submit)="onSubmitProduct()">
-      <h2>Formulaire d'ajout d'un nouveau produit</h2>
-      <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-              <label>Categorie: </label>
+      <div class="text-center m-3">
+        <h1>Nouveau produit</h1>
+      </div>
+            <div class="form-group row">
+              <div class="col-xl-4 col-md-6">
+                <label>Categorie: </label>
+              </div>
+              <div class="col-xl-8 col-md-6">
               <select  formControlName="category" required  class="form-control">
                 <option value="" disabled>-- Choisir une category de votre produit --</option>
                 <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
               </select>
+              </div>
             </div>
-            <div class="form-group">
-              <label >Nom du produit</label>
+            <div class="form-group row">
+              <div class="col-xl-4 col-md-6">
+                <label >Nom du produit</label>
+              </div>
+              <div class="col-xl-8 col-md-6">
               <select formControlName="name" (click)="namesSelector()" required class="form-control">
                 <option value="" disabled>-- Choisir votre produit--</option>
                 <option value="{{item}}" *ngFor="let item of names">{{item}}</option>
               </select>
+              </div>
             </div>
 
-              <div class="form-group  ">
+              <div class="form-group  row">
+                <div class="col-xl-4 col-md-6">
                 <label >Montant par unite</label>
+                </div>
+                <div class="col-xl-8 col-md-6">
                 <input type="number" class="form-control"  required formControlName="price"  placeholder="Montant de votre article">
+                </div>
               </div>
-              <div class="form-group ">
+              <div class="form-group row">
+                <div class="col-xl-4 col-md-6">
                 <label for="">Devise: </label>
+                </div>
+                <div class="col-xl-8 col-md-6">
                 <select formControlName="devise" class="form-control" required id="">
                   <option value="">-- Choisissez une devise --</option>
                   <option value="USD">US Dollars</option>
@@ -159,48 +174,69 @@
                   <option value="FCFA">Franc CFA</option>
                   <option value="FC">Franc Congolais</option>
                 </select>
+                </div>
               </div>
 
-            <div class="form-group">
+            <div class="form-group row">
+              <div class="col-xl-4 col-md-6">
               <label>Province</label>
+              </div>
+              <div class="col-xl-8 col-md-6">
               <select formControlName="province" class="form-control" required  >
                 <option value="">-- Choisir une province --</option>
                 <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
               </select>
+              </div>
             </div>
-            <div class="form-group">
+            <div class="form-group row">
+              <div class="col-xl-4 col-md-6">
               <label>Commune</label>
+              </div>
+              <div class="col-xl-8 col-md-6">
               <select formControlName="commune"  (click)="selector()" class="form-control" required  >
                 <option value="">-- Choisir une commune --</option>
                 <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
               </select>
+              </div>
             </div>
           
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label>Quantity disponible en stock</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La Quantite disponible de votre produit">
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label>Image</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <input type="file" class="form-control" required name="pictureUrl" (change)="onFilesSelect($event)" placeholder="Image">
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label >Unite de mesure du produit</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <select formControlName="measure"  class="form-control">
               <option value="" disabled>-- Choisir une unite pour votre produit --</option>
               <option value="{{item}}" *ngFor="let item of measures">{{item}}</option>
             </select>
+            </div>
 
           </div>
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label >Description</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <textarea name="description" class="form-control"  formControlName="description" rows="4"></textarea>
+            </div>
           </div>
-        </div>
 
-      </div>
       <br>
       <div class="card-footer">
         <div class="row">
@@ -208,8 +244,7 @@
             <button href="#" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')" ><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
           </div>
           <div class="col-md-6">
-            <button type="submit" *ngIf="!isValid" disabled class="btn btn-success" style="background-color:#F5B669 !important;width: 100%" (click)="modal.close('Close click')" >Enregistrer <i class="fa fa-check"></i></button>
-            <button type="submit" *ngIf="isValid" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%" (click)="modal.close('Close click')" >Enregistrer <i class="fa fa-check"></i></button>
+            <button type="submit"  class="btn btn-success" style="width: 100%" (click)="modal.close('Close click')" >Enregistrer <i class="fa fa-check"></i></button>
           </div>
         </div>
       </div>
@@ -227,7 +262,7 @@
 
 <!-------------------------------------------------------UPDATED PRODUCT START-------------------------------------------------------------->
 <ng-template #contentUpdate let-modal>
-  <div class="modal-header" style="background-color:#F45B3A;">
+  <div class="modal-header" >
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -235,30 +270,46 @@
 
   <div class="modal-body">
     <form [formGroup]="productForm" (submit)="updateProduct()">
-      <h5>Formulaire de mise a jour d'un Produit</h5>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
+      <div class="text-center my-3">
+        <h2>Modification du Produit</h2>
+      </div>
+       
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label>Categorie: </label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <select  formControlName="category" required  class="form-control">
               <option value="" disabled>-- Choisir une category de votre produit --</option>
               <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
             </select>
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label >Nom du produit</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <select formControlName="name" (click)="namesSelector()" required class="form-control">
-              <option value="" disabled>-- Choisir votre produit--</option>
+              <option value="" disabled>-- Choisir votre produit --</option>
               <option value="{{item}}" *ngFor="let item of names">{{item}}</option>
             </select>
+            </div>
           </div>
 
-          <div class="form-group  ">
+          <div class="form-group row ">
+            <div class="col-xl-4 col-md-6">
             <label >Montant par unite</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <input type="number" class="form-control"  required formControlName="price"  placeholder="Montant de votre article">
+            </div>
           </div>
-          <div class="form-group ">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label for="">Devise: </label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <select formControlName="devise" class="form-control" required >
               <option value="">-- Choisissez une devise --</option>
               <option value="USD">US Dollars</option>
@@ -268,47 +319,69 @@
               <option value="FCFA">Franc CFA</option>
               <option value="FC">Franc Congolais</option>
             </select>
+            </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label>Province</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <select formControlName="province" class="form-control" required  >
               <option value="">-- Choisir une province --</option>
               <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
             </select>
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label>Commune</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <select formControlName="commune"  (click)="selector()" class="form-control" required  >
               <option value="">-- Choisir une commune --</option>
               <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
             </select>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label>Quantity disponible en stock</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <input type="number" class="form-control"  required formControlName="quantity"  placeholder="La Quantite disponible de votre produit">
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label>Image</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <input type="file" class="form-control" required name="pictureUrl" (change)="onFilesSelect($event)" placeholder="Image">
+            <input type="text" style="display: none;" class="form-control" required name="pictureUrl"  placeholder="Image">
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label >Unite de mesure du produit</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <select formControlName="measure"  class="form-control">
               <option value="" disabled>-- Choisir une unite pour votre produit --</option>
               <option value="{{item}}" *ngFor="let item of measures">{{item}}</option>
             </select>
+            </div>
 
           </div>
-          <div class="form-group">
+          <div class="form-group row">
+            <div class="col-xl-4 col-md-6">
             <label >Description</label>
+            </div>
+            <div class="col-xl-8 col-md-6">
             <textarea name="description" class="form-control"  formControlName="description" rows="4"></textarea>
+            </div>
           </div>
-        </div>
 
-      </div>
       <br>
       <div class="card-footer">
         <div class="row">
@@ -316,7 +389,7 @@
             <button type="button" class="btn btn-secondary" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
           </div>
           <div class="col-md-6">
-            <button type="submit" class="btn btn-success" style="background-color:#F5B669 !important;width: 100%"(click)="modal.close('Close click')" >Enregistrer <i class="fa fa-check"></i></button>
+            <button type="submit" class="btn btn-success" style="width: 100%"(click)="modal.close('Close click')" >Enregistrer <i class="fa fa-check"></i></button>
           </div>
         </div>
       </div>
@@ -332,18 +405,20 @@
 
 <!-------------------------------------------------------DELETE PRODUCT START-------------------------------------------------------------->
 <ng-template #contentDelete let-modal>
-  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+  <div class="modal-header dark-modal" >
+    <h2 class="modal-title" >Confirmation de Suppression!</h2>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <p style="color: red;">Voulez vous vraiment supprimer ce produit??&hellip;</p>
+    <div class="alert alert-warning text-center">
+    <p style="font-size: 25px;">Voulez vous vraiment supprimer ce produit??&hellip;</p>
+    </div>
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-  <div class="modal-footer" style="background-color:#F45B3A;">
+  <div class="modal-footer" >
     <div class="row">
       <!-- <div class="col-md-4 "></div> -->
       <div class="col-md-4 ">

@@ -81,6 +81,7 @@ import { LoansInputsDetailsComponent } from './loans/loans-inputs-details/loans-
 import { LoansInputsViewComponent } from './loans/loans-inputs-view/loans-inputs-view.component';
 import { CoachingCheckoutComponent } from './eco/coachings/coaching-checkout/coaching-checkout.component';
 import { ProductCheckoutComponent } from './eco/product/product-checkout/product-checkout.component';
+import { AboutComponent } from './eco/about/about.component';
 
 
 
@@ -145,7 +146,8 @@ import { ProductCheckoutComponent } from './eco/product/product-checkout/product
     LoansInputsDetailsComponent,
     LoansInputsViewComponent,
     CoachingCheckoutComponent,
-    ProductCheckoutComponent
+    ProductCheckoutComponent,
+    AboutComponent
     ],
   imports: [
     BrowserModule,

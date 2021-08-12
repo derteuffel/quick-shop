@@ -51,6 +51,7 @@ export class AdminRootHome implements OnInit {
   isClient: boolean;
   isValid: boolean = false;
   productForm: FormGroup;
+  updateForm: FormGroup;
   public imagePath;
   imgURL: any;
   user: User;
@@ -302,6 +303,7 @@ export class AdminRootHome implements OnInit {
   deleteProduct(id) {
     this.ecommerceService.deleteProduct(id).subscribe(
       (res: any) => {
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Item deleted sucessfully', sticky: true});
         this.loadList();
       }
     );
@@ -334,11 +336,8 @@ export class AdminRootHome implements OnInit {
       const file = event.target.files[0];
       if(!this.validateFile(file.name)){
         this.message = 'File should be image, please load correct file';
-        this.isValid = false;
-
       }else{
-      this.productForm.get('pictureUrl').setValue(file);
-      this.isValid = true;
+      this.uploadedFile = file;
     }
     }
   }
@@ -353,7 +352,6 @@ export class AdminRootHome implements OnInit {
     this.submitted = true;
     if (this.productForm?.invalid) { return; }
     const formData = new FormData();
-    formData.append('file',this.productForm.get('pictureUrl').value);
 
     formData.append('name', this.productForm.get('name').value);
     formData.append('price', this.productForm.get('price').value);
@@ -366,17 +364,15 @@ export class AdminRootHome implements OnInit {
     formData.append('measure', this.productForm.get('measure').value);
 
       formData.append('file', this.uploadedFile);
+      console.log(formData);
       this.ecommerceService.saveProduct(formData).subscribe(
         data => {
           this.productForm.reset();
           this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
           this.loadList();
-          console.log(this.productForm);
-          console.log(data);
-          window.location.reload();
         },
         error => {
-          this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+          this.messageService.add({severity: 'error', summary: 'Error', detail: 'Failed to save'});
           console.log(error);
         }
       );
@@ -411,33 +407,33 @@ export class AdminRootHome implements OnInit {
       devise: event.devise,
       description: event.description,
       measure: event.measure,
-
-
+      pictureUrl: event.pictureUrl
     });
 
   }
 
   updateProduct() {
-    const ProductData = {
-      id: this.productForm.get('id').value,
-      name: this.productForm.get('name').value,
-      quantity: this.productForm.get('quantity').value,
-      devise: this.productForm.get('devise').value,
-      category: this.productForm.get('category').value,
-      price: this.productForm.get('price').value,
-      province:  this.productForm.get('province').value,
-      commune: this.productForm.get('commune').value,
-      description: this.productForm.get('description').value,
-      measure: this.productForm.get('measure').value,
-    };
-    this.ecommerceService.updateProduct(ProductData, this.productID).subscribe(
+    const formData = new FormData(); 
+    formData.append('name', this.productForm.get('name').value);
+    formData.append('price', this.productForm.get('price').value);
+    formData.append('category', this.productForm.get('category').value);
+    formData.append('province', this.productForm.get('province').value);
+    formData.append('commune', this.productForm.get('commune').value);
+    formData.append('quantity', this.productForm.get('quantity').value);
+    formData.append('devise', this.productForm.get('devise').value);
+    formData.append('description', this.productForm.get('description').value);
+    formData.append('measure', this.productForm.get('measure').value);
+
+      formData.append('file', this.uploadedFile);
+      formData.append('pictureUrl', this.productForm.get('pictureUrl').value);
+    this.ecommerceService.updateProduct(formData, this.productID).subscribe(
       (data: any) => {
         console.log(this.productID);
         this.productForm.reset();
-        this.messageService.add({severity: 'success', summary: 'Record is updated successully', detail: 'record updated'});
+        this.messageService.add({severity: 'success', summary: 'record updated', detail: 'Record is updated successully'});
         this.loadList();
       }, error => {
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Failed to update'});
       }
     );
   }

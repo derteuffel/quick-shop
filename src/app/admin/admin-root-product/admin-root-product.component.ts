@@ -134,16 +134,16 @@ export class AdminRootProductComponent implements OnInit {
   }
 
   openModalProduct(contentAdd: any) {
-    this.modalService.open(contentAdd, {size: 'lg'});
+    this.modalService.open(contentAdd, {size: 'md'});
   }
 
   onDelete(contentDelete, event) {
-    this.modalService.open(contentDelete, {size: 'lg'});
+    this.modalService.open(contentDelete, {size: 'md'});
     this.updateID = event.id;
   }
 
   getContent(contentOrder, event) {
-    this.modalService.open(contentOrder, {size: 'lg'});
+    this.modalService.open(contentOrder, {size: 'md'});
     this.order = event;
   }
 

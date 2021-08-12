@@ -168,6 +168,7 @@ export class EcommerceService {
 
 
   saveProduct(form): Observable<any>  {
+    console.log(form);
     return this.http.post(`${API.PRODUITS}/admin`, form, {headers: this.formHeaders});
   }
 
