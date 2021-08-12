@@ -183,6 +183,14 @@ export class AdminRootCoachingsComponent implements OnInit {
     }
   }
 
+  isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
   loadData() {
     this.coachingService.getAllCoachingByUser().subscribe(
       data => {
@@ -219,6 +227,9 @@ export class AdminRootCoachingsComponent implements OnInit {
 
 
     this.submitted = true;
+    if(this.isEmpty(this.uploadedFile)){
+      this.messageService.add({severity: 'error', summary: 'Error', detail: 'Empty file, you have to attach file before save'});
+    }else{
      this.coachingService.saveCoaching(formData).subscribe(
       (data: any) => {
         this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
@@ -228,6 +239,7 @@ export class AdminRootCoachingsComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
+    }
 
     this.submitted = false;
     }

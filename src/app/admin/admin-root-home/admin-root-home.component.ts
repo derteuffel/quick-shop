@@ -273,6 +273,14 @@ export class AdminRootHome implements OnInit {
     }
   }
 
+  isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
 
   /** lister les articles d'une boutique **/
   loadList(): void{
@@ -365,6 +373,9 @@ export class AdminRootHome implements OnInit {
 
       formData.append('file', this.uploadedFile);
       console.log(formData);
+      if(this.isEmpty(this.uploadedFile)){
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Empty file, you have to attach file before save'});
+      }else{
       this.ecommerceService.saveProduct(formData).subscribe(
         data => {
           this.productForm.reset();
@@ -376,6 +387,7 @@ export class AdminRootHome implements OnInit {
           console.log(error);
         }
       );
+    }
 
 
 
@@ -423,9 +435,12 @@ export class AdminRootHome implements OnInit {
     formData.append('devise', this.productForm.get('devise').value);
     formData.append('description', this.productForm.get('description').value);
     formData.append('measure', this.productForm.get('measure').value);
-
-      formData.append('file', this.uploadedFile);
+    formData.append('file', this.uploadedFile);
       formData.append('pictureUrl', this.productForm.get('pictureUrl').value);
+    if(this.isEmpty(this.uploadedFile)){
+      this.messageService.add({severity: 'error', summary: 'Error', detail: 'Empty file, you have to attach file before save'});
+    }else{
+      
     this.ecommerceService.updateProduct(formData, this.productID).subscribe(
       (data: any) => {
         console.log(this.productID);
@@ -436,6 +451,7 @@ export class AdminRootHome implements OnInit {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Failed to update'});
       }
     );
+    }
   }
 
   /** toast message function primeng  **/
