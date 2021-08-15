@@ -175,10 +175,8 @@ export class AdminRootCoachingsComponent implements OnInit {
       const file = event.target.files[0];
       if(!this.validateFile(file.name)){
         this.message = 'File should be an image, please load image';
-        this.isValid = false;
       }else{
         this.uploadedFile = file;
-        this.isValid =  true;
       }
     }
   }
@@ -202,8 +200,6 @@ export class AdminRootCoachingsComponent implements OnInit {
   }
   /** ajouter un coaching **/
   saveCoaching() {
-
-
     let startDate = this.form.get('startDate').value;
     let endDate = this.form.get('dateFinFormation').value;
     let endSubscribeDate = this.form.get('dateLimiteDenregistrement').value;
@@ -279,7 +275,7 @@ export class AdminRootCoachingsComponent implements OnInit {
   setCoaching(contentUpdate, event) {
 
     this.modalService.open(contentUpdate, {size: "lg"});
-    this.currentCoaching = event.title;
+    this.currentCoaching = event;
     this.coachingID = event.id;
     this.form.patchValue({
       id: event.id,
@@ -299,29 +295,33 @@ export class AdminRootCoachingsComponent implements OnInit {
 
   }
 
-  updateCoaching() {
+  updateCoaching(id) {
 
     let startDate = this.form.get('startDate').value;
     let endDate = this.form.get('dateFinFormation').value;
     let endSubscribeDate = this.form.get('dateLimiteDenregistrement').value;
+
     this.dateRangeValidator(startDate,startDate);
     this.dateRangeValidator(endSubscribeDate,endDate);
-    const updateForm = {
-      id: this.form.get('id').value,
-      title: this.form.get('title').value,
-      phone: this.form.get('phone').value,
-      province: this.form.get('province').value,
-      commune: this.form.get('commune').value,
-      email: this.form.get('email').value,
-      amount: this.form.get('amount').value,
-      devise: this.form.get('devise').value,
-      startDate: startDate,
-      description: this.form.get('description').value,
-      type: this.form.get('type').value,
-      dateLimiteDenregistrement: endSubscribeDate,
-      dateFinFormation: endDate
+
+    const formData = new FormData();
+    formData.append('title', this.form.get('title').value);
+    formData.append('description', this.form.get('description').value);
+    formData.append('amount', this.form.get('amount').value);
+    formData.append('phone', this.form.get('phone').value);
+    formData.append('email', this.form.get('email').value);
+    formData.append('devise', this.form.get('devise').value);
+    formData.append('province', this.form.get('province').value);
+    formData.append('commune',this.form.get('commune').value);
+    formData.append('startDate', startDate);
+    formData.append('type', this.form.get('type').value);
+    formData.append('dateFinFormation', endDate);
+    formData.append('dateLimiteDenregistrement', endSubscribeDate);
+    if(this.uploadedFile){
+      formData.append('file',this.uploadedFile);
     }
-     this.coachingService.updateCoaching(updateForm).subscribe(
+    console.log(id)
+     this.coachingService.updateCoaching(formData, id).subscribe(
       (data: any) => {
         this.messageService.add({severity:'success', summary: 'Record is updated successully', detail:'record updated'});
         this.loadData();

@@ -78,8 +78,9 @@ export class CoachingService {
     return this.http.post(`${API.COACHINGS}/admin/save`, form, {headers: this.formHeaders});
   }
 
-  updateCoaching(form): Observable<any> {
-    return this.http.put(`${API.COACHINGS}/admin/update`, form, { headers: this.headers});
+  updateCoaching(form, id): Observable<any> {
+    console.log(form);
+    return this.http.put(`${API.COACHINGS}/admin/update/${id}`, form, { headers: this.formHeaders});
   }
 
   deleteCoaching(id): Observable<any> {
