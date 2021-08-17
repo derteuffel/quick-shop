@@ -1,0 +1,111 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="main-content">
+    <app-admin-navbar></app-admin-navbar>
+    <div class="header  pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+          <div class="header-body">
+            <!-- Card stats -->
+            <h1>Detail du compte</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid mt--7">
+        <table class="table table-bordered">
+            <tr>
+              <td>Nom complet</td>
+              <td>{{user?.fullName}}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>{{user?.email}}</td>
+            </tr>
+            <tr>
+              <td>Telephone</td>
+              <td>{{user.phone}}</td>
+            </tr>
+            <tr>
+              <td>Nom d'utilisateur</td>
+              <td>{{user.username}}</td>
+            </tr>
+            <tr>
+              <td>Province</td>
+              <td>{{user?.province}}</td>
+            </tr>
+            <tr>
+              <td>Commune</td>
+              <td>{{user?.commune}}</td>
+            </tr>
+            <tr>
+              <td>Date naissance</td>
+              <td>{{user.birth_date}}</td>
+            </tr>
+            <tr>
+                <td>Numero d'identite/passeport</td>
+                <td>{{user.id_number}}</td>
+            </tr>
+            <tr>
+                <td>interest</td>
+                <td>{{user.interest}}</td>
+            </tr>
+            <tr>
+                <td>Secteur d'activite</td>
+                <td>{{user.secteurActivite}}</td>
+              </tr>
+        </table>
+        <div class="card shadow">
+            <div class="card-header border-0" >
+              <div class="row">
+                <div class="col-md-6 col-lg-2 col-12">
+                  <button  pButton  style="float:left;background-color:black;" label="Entrepreneur"><i class="fa fa-search"></i>&nbsp;</button>
+                </div>
+                <div class="col-md-6 col-lg-2 col-12">
+                  <button  pButton  style="float:left;background-color:black;" label="Apprenant"><i class="fa fa-search"></i>&nbsp;</button>
+                </div>
+                <div class="col-md-6 col-lg-2 col-12">
+                  <button  pButton  style="float:left;background-color:black;" label="Clients"><i class="fa fa-search"></i>&nbsp;</button>
+                </div>
+                <div class="col-md-6 col-lg-2  col-12">
+                  <button  pButton  style="float:left;background-color:black;" label="Encadreur"><i class="fa fa-search"></i>&nbsp;</button>
+                </div>
+                <div class="col-md-6 col-lg-2 col-12">
+                  <button  pButton  style="float:left;background-color:black;" label="Investisseur"><i class="fa fa-search"></i>&nbsp;</button>
+                </div>
+                <div class="col-md-6 col-lg-1 col-12">
+                  <button  pButton  style="float:left;background-color:black;" label="Admin"><i class="fa fa-search"></i>&nbsp;</button>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                <tr>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Téléphone</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                
+  
+                </tbody>
+              </table>
+            </div>
+            <div class="card-footer py-4">
+  
+              <nav aria-label="...">
+                <ul class="pagination justify-content-end mb-0">
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        
+      </div>
+      <div class="container-fluid">
+        <app-admin-footer></app-admin-footer>
+      </div>
+</div>

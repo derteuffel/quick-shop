@@ -2,11 +2,11 @@
 <div class="main-content">
   <!-- Top navbar -->
   <app-admin-navbar></app-admin-navbar>
-  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="header  pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
       <div class="header-body">
         <!-- Card stats -->
-        <h2>Gestion des comptes Utilisateurs</h2>
+        <h1>Gestion des comptes Utilisateurs</h1>
       </div>
     </div>
   </div>
@@ -17,19 +17,25 @@
     <div class="row">
       <div class="col">
         <div class="card shadow">
-          <div class="card-header border-0" style="background-color:#F45B3A;">
+          <div class="card-header border-0" >
             <div class="row">
-              <div class="col-md-6 col-lg-3 col-12">
-                <button (click)="searchEntrepreneur()" pButton  style="float:left;background-color:#F7941D;" label="Entrepreneures"><i class="fa fa-search"></i>&nbsp;</button>
+              <div class="col-md-6 col-lg-2 col-12">
+                <button (click)="searchEntrepreneur()" pButton  style="float:left;background-color:black;" label="Entrepreneur"><i class="fa fa-search"></i>&nbsp;</button>
               </div>
               <div class="col-md-6 col-lg-2 col-12">
-                <button (click)=" searchClient() " pButton  style="float:left;background-color:#F7941D;" label="Clients"><i class="fa fa-search"></i>&nbsp;</button>
+                <button (click)="searchEntrepreneur()" pButton  style="float:left;background-color:black;" label="Apprenant"><i class="fa fa-search"></i>&nbsp;</button>
               </div>
-              <div class="col-md-6 col-lg-3 col-12">
-                <button (click)="searchCoaching()" pButton  style="float:left;background-color:#F7941D;" label="Encadrement/Coachings"><i class="fa fa-search"></i>&nbsp;</button>
+              <div class="col-md-6 col-lg-2 col-12">
+                <button (click)=" searchClient() " pButton  style="float:left;background-color:black;" label="Clients"><i class="fa fa-search"></i>&nbsp;</button>
               </div>
-              <div class="col-md-6 col-lg-4 col-12">
-                <button (click)="searchLoans()" pButton  style="float:left;background-color:#F7941D;" label="Demandeur de Credits"><i class="fa fa-search"></i>&nbsp;</button>
+              <div class="col-md-6 col-lg-2  col-12">
+                <button (click)="searchCoaching()" pButton  style="float:left;background-color:black;" label="Encadreur"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-2 col-12">
+                <button (click)="searchLoans()" pButton  style="float:left;background-color:black;" label="Investisseur"><i class="fa fa-search"></i>&nbsp;</button>
+              </div>
+              <div class="col-md-6 col-lg-1 col-12">
+                <button (click)="searchLoans()" pButton  style="float:left;background-color:black;" label="Admin"><i class="fa fa-search"></i>&nbsp;</button>
               </div>
             </div>
           </div>
@@ -72,7 +78,7 @@
                 </td>
 
                 <td class="text-right" style="width:5em; text-align:center; font-size: 0.75rem;">
-                  <button (click)="showDetail(contentDetails, item)"  class="btn btn-success m-1" ><i class="pi pi-eye"></i></button>
+                  <a href="/admin/configurations/account/detail/{{item.id}}"  class="btn btn-success m-1" ><i class="pi pi-eye"></i></a>
                   <!--<button class="btn btn-primary m-1" (click)="  setAccount(contentUpdate, item)"><i class="pi pi-pencil"></i></button>-->
                   <button (click)="lock(contentLock, item)" *ngIf="!item.enabled"  class="btn btn-primary m-1" ><i class="pi pi-check"></i></button>
                   <button (click)="getUnlock(contentUnLock, item)" *ngIf="item.enabled"  class="btn btn-secondary m-1" ><i class="pi pi-check-square"></i></button>
@@ -99,6 +105,7 @@
     <app-admin-footer></app-admin-footer>
   </div>
 </div>
+
 
 
 

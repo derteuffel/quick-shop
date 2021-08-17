@@ -47,6 +47,7 @@ import { LoansInputsViewComponent } from './loans/loans-inputs-view/loans-inputs
 import { CoachingCheckoutComponent } from './eco/coachings/coaching-checkout/coaching-checkout.component';
 import { ProductCheckoutComponent } from './eco/product/product-checkout/product-checkout.component';
 import { AboutComponent } from './eco/about/about.component';
+import { AccountDetailComponent } from './admin/configurations/account-detail/account-detail.component';
 
 
 
@@ -149,6 +150,10 @@ const routes: Routes = [
 
   {
     path: 'admin/configurations/account', component: AdminAccountComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
+  },
+  {
+    path: 'admin/configurations/account/detail/:id', component: AccountDetailComponent,
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
 

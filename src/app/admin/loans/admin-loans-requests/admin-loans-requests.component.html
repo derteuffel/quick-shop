@@ -16,21 +16,19 @@
         <div class="card shadow">
           <div class="card-header border-0">
             <div class="row">
-                <div class="col-md-6 col-lg-3 col-12">
-                  <button (click)="showProvinceSearch(contentProvinceSearch)" pButton  style="float:left;background-color:black;" label="Province"><i class="fa fa-search"></i>&nbsp;</button>
+                <div class="col-md-6 col-lg-4 col-12">
+                  <button (click)="showProvinceSearch(contentProvinceSearch)" pButton  style="float:left;background-color:black;" label="Location"><i class="fa fa-search"></i>&nbsp;</button>
                 </div>
-                <div class="col-md-6 col-lg-3 col-12">
-                  <button (click)="showCommuneSearch(contentCommuneSearch)" pButton  style="float:left;background-color:black;" label="Commune"><i class="fa fa-search"></i>&nbsp;</button>
-                </div>
-                <div class="col-md-6 col-lg-3 col-12">
+                
+                <div class="col-md-6 col-lg-4 col-12">
                   <button (click)="showSectorSearch(contentSectorSearch)" pButton  style="float:left;background-color:black;" label="Type d'activite"><i class="fa fa-search"></i>&nbsp;</button>
                 </div>
-                <div class="col-md-6 col-lg-3 col-12">
+                <div class="col-md-6 col-lg-4 col-12">
                   <button (click)="showStatusSearch(contentStatusSearch)" pButton  style="float:left;background-color:black;" label="Status"><i class="fa fa-search"></i>&nbsp;</button>
                 </div>
             </div>
           </div>
-          <div class="table-responsive">
+          <div class="card-header border-0">
             <div class="row">
               <div class="col-md-6 text-center my-4">
                 <h2>Liste des Demandes</h2>
@@ -60,8 +58,8 @@
                   <td>{{item.user.fullName}}</td>
                   <td>{{item.user.phone}}</td>
                   <td> {{item.user.email}} </td>
-                  <td><span>{{item.object}}</span>  </td>
-                  <td> {{item.sector}} </td>
+                  <td><span>{{item.name}}</span>  </td>
+                  <td> {{item.type}} </td>
                   <td *ngIf="item.status" class="alert-succes">Accepter </td>
                   <td *ngIf="!item.status" class="alert-danger">Refuser </td>
                   <td>
@@ -165,8 +163,12 @@
               </td>
             </tr>
             <tr>
-              <td>Secteur d'activite</td>
-              <td>{{loans?.sector}}</td>
+              <td>Tyep d'activite</td>
+              <td>{{loans?.type}}</td>
+            </tr>
+            <tr>
+              <td>Nom d'activite</td>
+              <td>{{loans?.name}}</td>
             </tr>
             <tr>
               <td>Province</td>
@@ -180,14 +182,7 @@
               <td>Date de soumission</td>
               <td>{{loans?.submittedDate}}</td>
             </tr>
-            <tr>
-              <td>Document support du projet</td>
-              <td><a href="{{loans?.projectSupport}}">Voir le document &nbsp;<i class="fa fa-long-arrow-right"></i></a></td>
-            </tr>
-            <tr>
-              <td>Document de validaion du projet</td>
-              <td><a href="{{loans?.validatedSupport}}">Voir le document &nbsp;<i class="fa fa-long-arrow-right"></i></a></td>
-            </tr>
+            
           </table>
         </div>
         <div class="card-footer">
@@ -203,18 +198,18 @@
 
 <!-------------------------------------------------------DELETE COACHING START------------------------------------------------------------>
 <ng-template #contentDelete let-modal>
-  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+  <div class="modal-header dark-modal" >
+    <h4 class="modal-title" >Confirmation de Suppression!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <p style="color: red;">Voulez vous vraiment supprimer cette demande ?&hellip;</p>
+    <p style="color: red;font-size: 25px;">Voulez vous vraiment supprimer cette demande ?&hellip;</p>
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-  <div class="modal-footer" style="background-color:#F5B669;">
+  <div class="modal-footer" >
     <div class="row">
       <!-- <div class="col-md-4 "></div> -->
       <div class="col-md-4 ">
@@ -232,8 +227,8 @@
 
 <!-------------------------------------------------------ACTIVATE LOANS START------------------------------------------------------------>
 <ng-template #contentActivation let-modal>
-    <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-      <h4 class="modal-title" style="color:whitesmoke">Confirmation de changement de status!</h4>
+    <div class="modal-header dark-modal" >
+      <h4 class="modal-title" >Confirmation de changement de status!</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -243,13 +238,12 @@
     </div>
     <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-    <div class="modal-footer" style="background-color:#F5B669;">
+    <div class="modal-footer" >
       <div class="row">
-        <!-- <div class="col-md-4 "></div> -->
-        <div class="col-md-4 ">
+        <div class="col-md-6 ">
           <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
-        </div> &nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="col-md-4 ">
+        </div> 
+        <div class="col-md-6">
           <button type="button" class="btn btn-success"
                   (click)="onActivate() + modal.close('Close click')">Oui</button>
         </div>
@@ -262,32 +256,48 @@
 
   <!-------------------------------------------------------SEARCH BY PROVINCE LOANS START------------------------------------------------------------>
 <ng-template #contentProvinceSearch let-modal>
-  <form [formGroup]="provinceForm" (submit)="onProvinceSearch()" >
-  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-    <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a une province!</h4>
+  <form [formGroup]="locationForm" (submit)="onProvinceSearch()" >
+  <div class="modal-header dark-modal" >
+    <h4 class="modal-title" >Recherche par rapport a une province et une commune!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
 
-      <div class="form-group">
-        <select formControlName="location" class="form-control" >
-          <option value="">-- Choisir une province --</option>
-          <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+      <div class="form-group row">
+        <div class="col-lg-4 col-md-6">
+          <label >Province</label>
+        </div>
+        <div class="col-lg-8 col-md-6">
+          <select formControlName="province" class="form-control" >
+            <option value="">-- Choisir une province --</option>
+            <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-lg-4 col-md-6">
+          <label>Commune</label>
+        </div>
+        <div class="col-lg-8 col-md-6">
+        <select formControlName="commune" (click)="selector()" class="form-control" >
+          <option value="">-- Choisir une commune --</option>
+          <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
         </select>
+        </div>
       </div>
 
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-  <div class="modal-footer" style="background-color:#F5B669;">
+  <div class="modal-footer" >
     <div class="row">
       <!-- <div class="col-md-4 "></div> -->
-      <div class="col-md-4 ">
+      <div class="col-md-6">
         <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
-      </div> &nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="col-md-4 ">
+      </div> 
+      <div class="col-md-6 ">
         <button type="submit" class="btn btn-success"
                 (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
       </div>
@@ -297,71 +307,51 @@
 
 </ng-template>
 <!-------------------------------------------------------SEARCH BY PROVINCE LOANS END-------------------------------------------------------------->
-<!-------------------------------------------------------SEARCH BY COMMUNE LOANS START------------------------------------------------------------>
-<ng-template #contentCommuneSearch let-modal>
-  <form [formGroup]="communeForm" (submit)="onCommuneSearch()" >
-  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-    <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a une commune!</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
 
-      <div class="form-group">
-        <select formControlName="location" class="form-control" >
-          <option value="">-- Choisir une commune --</option>
-          <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
-        </select>
-      </div>
-
-  </div>
-  <!--<hr class="my-4" style="background-color: salmon;" />-->
-
-  <div class="modal-footer" style="background-color:#F5B669;">
-    <div class="row">
-      <!-- <div class="col-md-4 "></div> -->
-      <div class="col-md-4 ">
-        <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
-      </div> &nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="col-md-4 ">
-        <button type="submit" class="btn btn-success"
-                (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
-      </div>
-    </div>
-  </div>
-</form>
-
-</ng-template>
-<!-------------------------------------------------------SEARCH BY COMMUNE LOANS END-------------------------------------------------------------->
 <!-------------------------------------------------------SEARCH BY SECTOR LOANS START------------------------------------------------------------>
 <ng-template #contentSectorSearch let-modal>
   <form [formGroup]="sectorForm" (submit)="onSectorSearch()" >
-  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-    <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un type d'activite!</h4>
+  <div class="modal-header dark-modal" >
+    <h4 class="modal-title" >Recherche par rapport a un type d'activite!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
 
-      <div class="form-group">
-        <select formControlName="location" class="form-control" id="">
-          <option value="">-- Choisir un type d'activite --</option>
-          <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
-        </select>
+      <div class="form-group row">
+        <div class="col-md-6 col-lg-4">
+          <label>Type</label>
+        </div>
+        <div class="col-md-6 col-lg-8">
+          <select formControlName="type" class="form-control" id="">
+            <option value="">-- Choisir un type d'activite --</option>
+            <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6 col-lg-4">
+          <label>Nom de l'activite</label>
+        </div>
+        <div class="col-md-6 col-lg-8">
+          <select formControlName="name" (click)="namesSelector()" class="form-control" id="">
+            <option value="">-- Choisir un nom --</option>
+            <option value="{{item}}" *ngFor="let item of names">{{item}}</option>
+          </select>
+        </div>
       </div>
 
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-  <div class="modal-footer" style="background-color:#F5B669;">
+  <div class="modal-footer" >
     <div class="row">
       <!-- <div class="col-md-4 "></div> -->
-      <div class="col-md-4 ">
+      <div class="col-md-6 ">
         <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
-      </div> &nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="col-md-4 ">
+      </div> 
+      <div class="col-md-6 ">
         <button type="submit" class="btn btn-success"
                 (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
       </div>
@@ -375,33 +365,38 @@
 <!-------------------------------------------------------SEARCH BY STATUS LOANS START------------------------------------------------------------>
 <ng-template #contentStatusSearch let-modal>
   <form [formGroup]="statusForm" (submit)="onStatusSearch()" >
-  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-    <h4 class="modal-title" style="color:whitesmoke">Recherche par rapport a un etat!</h4>
+  <div class="modal-header dark-modal" >
+    <h4 class="modal-title" >Recherche par rapport a un etat!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
 
-      <div class="form-group">
+      <div class="form-group row">
+        <div class="col-md-6 col-lg-4">
+          <label> Status</label>
+        </div>
+        <div class="col-md-6 col-lg-8">
         <select formControlName="name" class="form-control" >
           <option value="">-- Choisir un Status --</option>
           <option value="1">Accepter</option>
           <option value="0">Suspendus</option>
         </select>
+      </div>
 
       </div>
 
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-  <div class="modal-footer" style="background-color:#F5B669;">
+  <div class="modal-footer" >
     <div class="row">
       <!-- <div class="col-md-4 "></div> -->
-      <div class="col-md-4 ">
+      <div class="col-md-6 ">
         <button type="button" class="btn btn-primary" (click)="modal.close('Close click')">Annuler</button>
-      </div> &nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="col-md-4 ">
+      </div> 
+      <div class="col-md-6 ">
         <button type="submit" class="btn btn-success"
                 (click)="modal.close('Close click')">Chercher <i class="fa fa-search"></i></button>
       </div>

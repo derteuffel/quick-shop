@@ -42,8 +42,8 @@ export class LoansService {
       return this.http.get(`${API.LOANS}/admin/users`, {headers: this.headers})
     }
 
-    getAllbyRegion(region): Observable<any>{
-      return this.http.get(`${API.LOANS}/admin/region/${region}`, {headers: this.headers})
+    getAllbyRegion(form): Observable<any>{
+      return this.http.post(`${API.LOANS}/admin/region`,form, {headers: this.headers})
     }
 
     getAllbyVisitor(): Observable<any>{
@@ -58,8 +58,8 @@ export class LoansService {
       return this.http.post(`${API.LOANS}/all/search`,form)
     }
 
-    getAllbySector(sector): Observable<any>{
-      return this.http.get(`${API.LOANS}/admin/sector/${sector}`, {headers: this.headers})
+    getAllbySector(form): Observable<any>{
+      return this.http.post(`${API.LOANS}/admin/sector`,form, {headers: this.headers})
     }
 
     getOne(id): Observable<any>{
@@ -71,7 +71,7 @@ export class LoansService {
     }
 
     delete(id): Observable<any>{
-      return this.http.get(`${API.LOANS}/admin/delete/${id}`, {headers: this.headers});
+      return this.http.delete(`${API.LOANS}/admin/${id}`, {headers: this.headers});
     }
 
     update(form, id): Observable<any>{

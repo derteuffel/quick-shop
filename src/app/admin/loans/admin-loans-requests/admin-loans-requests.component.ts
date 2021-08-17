@@ -29,14 +29,14 @@ export class AdminLoansRequestComponent implements OnInit {
   communes: string [];
   types: string[];
 
-  provinceForm: FormGroup;
-  communeForm: FormGroup;
+  locationForm: FormGroup;
   sectorForm: FormGroup;
   statusForm: FormGroup;
   productForm: FormGroup;
   p: number = 1;
   searchItem: string;
-  uploadedFile: File = null;
+  names:string[];
+  
 
   constructor(
                             private loansService: LoansService,
@@ -50,19 +50,114 @@ export class AdminLoansRequestComponent implements OnInit {
   ngOnInit(): void {
     this.primengConfig.ripple = true;
     this.loadData();
-    this.initForm();
-    this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
+  
+    this.types = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
+    'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges','Education'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
 
-    this.initForm1();
+
+  }
+
+  namesSelector(){
+    switch(this.sectorForm.get('type').value){
+      case 'Produit agricole':{
+        this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre'];
+        break;
+      }
+      case 'Energie':{
+        this.names = ['Installation des systemes d\'electricite','Paiement des factures d\'electricite','Conter un electricien','Acheter un generateur','Acheter du Gaz','Recharge gaz','Acheter du charbon'];
+        break;
+      }
+      case 'Secteur Agroalimentaire':{
+        this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Jus','Lait','Yaourt','Pate de tomate','Confiture','Miel','Huile de palm'];
+        break;
+      }
+
+      case 'Betails':{
+        this.names = ['Porc', 'Chevre','Lapins','Vaches','Poulets'];
+        break;
+      }
+
+      case 'Peches':{
+        this.names = ['Capitain','Tilapia','Sangala','Mukeke','Ndagala','Kuhe','Ndagala fume'];
+        break;
+      }
+      case 'Telephone portable':{
+        this.names = ['Telephone portable', 'Smart phone'];
+        break;
+      }
+
+      case 'Bags':{
+        this.names = ['Sacs de classe','Sacs a main','Valises','Sacs de sports'];
+        break;
+      }
+      case 'Services de reparation':{
+        this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Reparation Bateaux','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
+        break;
+      }
+
+      case 'Charpenterie':{
+        this.names = ['Chaise de salon','Chaise de salle a mange','Table d\'etude','Table de salon','Table salle a mange','Bureau pour Enseignant','Placard a vetement','Armoire de salon','Etagere a livres'];
+        break;
+      }
+
+      case 'Salon de beaute':{
+        this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe','Maquillage','Pedicure','Manucure'];
+        break;
+      }
+      case 'Couture':{
+        this.names = ['Tissus costume (Achat)','Kitenges (Achat)','Imvutano (Achat)','Tissus costume (Couture)','Kitenges (Couture)','Pantalon (Couture)','Jupe (Couture)','Chemise (Couture)','Culotte (Couture)'];
+        break;
+      }
+      case 'Services culturel et social' :{
+        this.names = ['Plannification d\'evenement','Decoration evenementiel','Maitre de ceremonie','Traducteur'];
+        break;
+      }
+
+      case 'Performance musicales' :{
+        this.names = ['Tambourinaire','Groupe acoustique','Groupe d\'interprete','Chorale','Deejay','Guitariste','Violon','Pianiste','Quatuor','Orchestre','Solo','Autre'];
+        break;
+      }
+
+      case 'Danse':{
+        this.names = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
+        break;
+      }
+      case 'Video production':{
+        this.names = ['Publicites','Documentaires','Evennementielle','Vlog', 'Autres'];
+        break;
+      }
+      case 'Performance theatrales':{
+        this.names = ['Pieces','Sketches','Publicites','Commedies musicales','Paroles','Narrateur et conteur', 'Autres'];
+        break;
+      }
+
+      case 'Peintures':{
+        this.names = ['Paysages','Portrait','Abstraite', 'Autres'];
+        break;
+      }
+      case 'Photographie':{
+        this.names = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
+        break;
+      }
+
+      case 'Achats des pieces de rechanges':{
+        this.names = ['Motocyle', 'Vehicules', 'Camions'];
+        break;
+      }
+      case 'Education':{
+        this.names = ['Cours du soir'];
+        break;
+      }
+    }
 
   }
 
 
   selector(){
     console.log('je suis la')
-    switch(this.form.province){
+    switch(this.locationForm.get('province').value){
         case 'Bubanza':{
             this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi'];
             break;
@@ -156,7 +251,7 @@ export class AdminLoansRequestComponent implements OnInit {
 
 
   onProvinceSearch() {
-    this.loansService.getAllbyRegion(this.provinceForm.value).subscribe(
+    this.loansService.getAllbyRegion(this.locationForm.value).subscribe(
       data => {
         this.lists = data;
         console.log(data);
@@ -166,16 +261,7 @@ export class AdminLoansRequestComponent implements OnInit {
     );
   }
 
-  onCommuneSearch() {
-    this.loansService.getAllbyRegion(this.communeForm.value).subscribe(
-      data => {
-        this.lists = data;
-        console.log(data);
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
+
 
   onSectorSearch() {
     this.loansService.getAllbySector(this.sectorForm.value).subscribe(
@@ -212,16 +298,16 @@ export class AdminLoansRequestComponent implements OnInit {
   }
 
   init(){
-    this.provinceForm = new FormGroup({
-      location: new FormControl(''),
+    this.locationForm = new FormGroup({
+      province: new FormControl(''),
+      commune: new FormControl('')
     });
 
-    this.communeForm = new FormGroup({
-      location: new FormControl(''),
-    });
+    
 
     this.sectorForm = new FormGroup({
       name: new FormControl(''),
+      type: new FormControl('')
     });
 
     this.statusForm = new FormGroup({
@@ -238,23 +324,10 @@ export class AdminLoansRequestComponent implements OnInit {
     this.init();
   }
 
-  showCommuneSearch(contentCommuneSearch){
-    this.modalService.open(contentCommuneSearch, {size: "md"});
-    this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi','Muha','Mukaza','Ntahangwa','Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
-  'Mutimbuzi','Nyabiraba','Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda','Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha',
-'Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira','Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
-'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro','Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo',
-'Bugabira','Busoni',' Bwambarangwe',' Gitobe','Kirundo','Ntega','Vumbi','Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo',
-'Bukeye','Kiganda','Mbuye',' Muramvya','Rutegama','Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro',
-'Bisoro','Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka','Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo',
-'Tangara','Bugarama','Burambi','Buyengero','Muhuta','Rumonge','Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana','Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi']
-
-this.init();
-  }
+  
 
   showSectorSearch(contentSectorSearch){
     this.modalService.open(contentSectorSearch, {size: "md"});
-    this.types = ['Travaux menagers', 'Etude et conseil( Ingenierie, Sous-traitance etc...)', 'Evenementiel', 'Mode et couture', 'Photographie et audiovisuel', 'Soutien scolaire','Agriculture','Elevage','Peche','Services techniques(Menuiserie, Plomberie, etc..)', 'Tableau, Peinture artistique','Sante', 'Offre d\'emploi','Autres'];
     this.init();
   }
 
@@ -271,60 +344,7 @@ this.init();
 
   }
 
-  initForm() {
-    this.productForm = new FormGroup({
-      id: new FormControl(''),
-      region: new FormControl(''),
-      name: new FormControl(''),
-      amount: new FormControl(''),
-      title: new FormControl(''),
-      province: new FormControl(''),
-      devise: new FormControl(''),
-      commune: new FormControl(''),
-      sector: new FormControl(''),
-      pictureUrl: new FormControl(null),
-      // pictureUrl: new FormControl(''),
-    });
-  }
-
-
-  // fonction d'ajout du loans
-
-  onSubmitLoans() {
-
-    this.submitted = true;
-    if (this.productForm?.invalid) { return; }
-    const formData = new FormData();
-    formData.append('title', this.productForm.get('title').value);
-    formData.append('region', this.productForm.get('region').value);
-    formData.append('devise', this.productForm.get('devise').value);
-    formData.append('amount', this.productForm.get('amount').value);
-    formData.append('localisation', this.productForm.get('province').value+', '+this.productForm.get('commune').value);
-
-    formData.append('sector', this.productForm.get('sector').value);
-    if(!this.validateFile(this.uploadedFile.name)){
-      this.messageService.add({severity:'error', summary:'Error', detail:'The uploaded file is not coorect please load and image', sticky: true});
-      this.onReject();
-    }else{
-      formData.append('file2', this.uploadedFile);
-      formData.append('file', this.uploadedFile);
-      this.loansService.save(formData).subscribe(
-        data => {
-          this.productForm.reset();
-          this.messageService.add({severity: 'success', summary: 'Success', detail: 'loans submitted', sticky: true});
-          this.loadData();
-          console.log(this.productForm);
-          console.log(data);
-          window.location.reload();
-        },
-        error => {
-          this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
-          console.log(error);
-        }
-      );
-    }
-
-  }
+  
 
 
   validateFile(name: String) {
@@ -347,7 +367,7 @@ this.init();
   }
 
   onDelete() {
-    this.microService.deleteFinance(this.loansRef).subscribe(
+    this.loansService.delete(this.loansRef).subscribe(
       (res : any) => {
         this.messageService.add({severity:'success', summary: 'Record is deleted successully', detail:'record delete'});
         this.loadData();
@@ -395,17 +415,6 @@ this.init();
     this.messageService.clear();
   }
 
-  initForm1(){
-
-    this.abonForm = new FormGroup({
-      id: new FormControl(''),
-      startDate: new FormControl(''),
-      endDate: new FormControl(''),
-      enabled: new FormControl(''),
-      type: new FormControl(''),
-    })
-
-  }
 
 
 
