@@ -40,6 +40,10 @@ export class MicrofinanceService {
     return this.http.get(`${API.MICROFINANCES}`,{headers: this.headers});
   }
 
+  getAllFinanceByUser(id): Observable<any> {
+    return this.http.get(`${API.MICROFINANCES}/user/${id}`,{headers: this.headers});
+  }
+
 
   //enregister une microfinances
   saveFinance(form): Observable<any> {

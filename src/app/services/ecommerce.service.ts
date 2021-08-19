@@ -96,8 +96,8 @@ export class EcommerceService {
     return this.http.get(`${API.PRODUITS}/boutique/${id}`, {headers: this.headers});
   }
 
-  getAllProductsByUser(): Observable<any> {
-    return this.http.get(`${API.PRODUITS}/admin/user`, {headers: this.headers});
+  getAllProductsByUser(id): Observable<any> {
+    return this.http.get(`${API.PRODUITS}/admin/user/${id}`, {headers: this.headers});
   }
 
   getProductGenre(genre): Observable<any> {

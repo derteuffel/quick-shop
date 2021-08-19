@@ -238,6 +238,29 @@ export class AdminAccountComponent implements OnInit {
       }
     );
   }
+  searchInvester() {
+    this.accountService.findAllAccountByRole(Role.INVESTOR).subscribe(
+      data => {
+        this.users = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  searchAdmin() {
+    this.accountService.findAllAccountByRole(Role.ADMIN).subscribe(
+      data => {
+        this.users = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 
 
 

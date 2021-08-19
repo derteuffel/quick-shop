@@ -38,8 +38,8 @@ export class LoansService {
       return this.http.get(`${API.LOANS}/admin`, {headers: this.headers})
     }
 
-    getAllbyUser(): Observable<any>{
-      return this.http.get(`${API.LOANS}/admin/users`, {headers: this.headers})
+    getAllbyUser(id): Observable<any>{
+      return this.http.get(`${API.LOANS}/admin/users/${id}`, {headers: this.headers})
     }
 
     getAllbyRegion(form): Observable<any>{
