@@ -121,7 +121,7 @@ export class AccountDetailComponent implements OnInit {
     this.isLoans = true;
     this.isCoaching = false;
 
-    this.loansService.getAllbyUser(id).subscribe(
+    this.loansService.getAllbyUserId(id).subscribe(
       data => {
         this.loanses = data;
         console.log(data);
@@ -138,9 +138,9 @@ export class AccountDetailComponent implements OnInit {
 
   }
 
-  setCoaching(contentUpdate, event) {
+  setCoaching(contentCoaching, event) {
 
-    this.modalService.open(contentUpdate, {size: "lg"});
+    this.modalService.open(contentCoaching, {size: "lg"});
     this.coaching = event;
     
 

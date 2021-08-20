@@ -38,7 +38,11 @@ export class LoansService {
       return this.http.get(`${API.LOANS}/admin`, {headers: this.headers})
     }
 
-    getAllbyUser(id): Observable<any>{
+    getAllbyUser(): Observable<any>{
+      return this.http.get(`${API.LOANS}/admin/users`, {headers: this.headers})
+    }
+
+    getAllbyUserId(id): Observable<any>{
       return this.http.get(`${API.LOANS}/admin/users/${id}`, {headers: this.headers})
     }
 

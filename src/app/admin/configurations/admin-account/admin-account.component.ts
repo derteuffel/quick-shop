@@ -21,6 +21,7 @@ export class AdminAccountComponent implements OnInit {
   currentEmail
   p = 1;
   searchItem : string;
+
   constructor(
     private route: Router,
     private authService: AuthService,
@@ -131,15 +132,16 @@ export class AdminAccountComponent implements OnInit {
 
 
   lock(contentLock, event){
-    this.modalService.open(contentLock, {size: "lg"});
+    this.modalService.open(contentLock, {size: "md"});
     this.currentEmail = event.id;
+    this.currentUser = event;
   }
 
   lockAccount(){
     this.accountService.activateAccount(this.currentEmail).subscribe(
       data => {
         console.log(this.currentEmail);
-        this.messageService.add({severity: 'success', summary: 'Account is succeffuly locked', detail: 'record delete'});
+        this.messageService.add({severity: 'success', summary: 'Account action', detail: 'Account is succeffuly locked'});
         this.loadata();
       }, error => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});
@@ -152,12 +154,13 @@ export class AdminAccountComponent implements OnInit {
 
     this.modalService.open(contentUnLock, {size: "lg"});
     this.currentEmail = event.id;
+    this.currentUser = event;
   }
 
   unlock(){
     this.accountService.deactivateAccount(this.currentEmail).subscribe(
       data => {
-        this.messageService.add({severity: 'success', summary: 'Account is succeffuly unlocked', detail: 'record delete'});
+        this.messageService.add({severity: 'success', summary: 'Account action', detail: 'Account is succeffuly unlocked'});
         this.loadata();
       }, error => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Message Content'});

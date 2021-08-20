@@ -10,7 +10,6 @@ import { FooterComponent } from './footer/footer/footer.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
-import { AdministrationComponent } from './admin/administration/administration.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
@@ -94,7 +93,6 @@ import { AccountDetailComponent } from './admin/configurations/account-detail/ac
     ProductsComponent,
     HeaderComponent,
     FooterComponent,
-    AdministrationComponent,
     AdminHeaderComponent,
     DetailProductComponent,
     CommandeComponent,
