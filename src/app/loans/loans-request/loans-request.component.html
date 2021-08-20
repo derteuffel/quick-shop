@@ -1,7 +1,7 @@
 <app-admin-sidebar></app-admin-sidebar>
 <div class="main-content">
   <app-admin-navbar></app-admin-navbar>
-  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="header  pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
       <div class="header-body">
         <h1>Gestion des demandes de financement</h1>
@@ -15,14 +15,16 @@
     <div class="row">
       <div class="col">
         <div class="card shadow">
-          <div class="card-header border-0" style="background-color:#F45B3A;">
-            <div class="col-md-6">
-              <button (click)="openModalAddCompany(contentAdd)" pButton icon="fa fa-plus" style="float:left;background-color:#F7941D !important;" label="Nouvelle demande"></button>
+          <div class="card-header border-0" >
+            <div class="row">
+            <div class="col-md-6 my-4">
+              <button (click)="openModalAddCompany(contentAdd)" pButton icon="fa fa-plus" style="float:left;background-color:black !important;" label="Nouvelle demande"></button>
             </div>
-            <div class="col-md-6 pull-right" style="width: 40%">
+            <div class="col-md-6 " >
               <label >Recherche <i class="fa fa-search"></i></label>
               <input type="text" class="form-control" [(ngModel)]="searchItem">
             </div>
+          </div>
           </div>
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
