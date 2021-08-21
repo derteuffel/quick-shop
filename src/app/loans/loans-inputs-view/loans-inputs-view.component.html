@@ -1,7 +1,7 @@
 <app-admin-sidebar></app-admin-sidebar>
 <div class="main-content">
     <app-admin-navbar></app-admin-navbar>
-    <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="header  pb-8 pt-5 pt-md-8">
         <div class="container-fluid">
           <div class="header-body">
             <h1>Detail Investissement</h1>
@@ -64,47 +64,82 @@
             </div>
             <div class="m-4">
               <div class="row" *ngIf="isBankPayment">
-                  <div class="col-xl-6 col-md-6 col-sm-12">
-                    <div class="form-group">
+                  <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="form-group" (click)="bankPayment()">
                       <label>Carte Bancaire </label>&nbsp;&nbsp;
-                      <input type="radio" checked  (click)="bankPayment()">
+                      <input type="radio" checked  >
                     </div>
                   </div>
-                  <div class="col-xl-6 col-md-6 col-sm-12">
-                    <div class="form-group">
+                  <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="form-group" (click)="mobilePayment()">
                       <label>Mobile Money </label>&nbsp;&nbsp;
-                      <input type="radio" (click)="mobilePayment()">
+                      <input type="radio" >
+                    </div>
+                  </div>
+                  <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="form-group" (click)="cashPayment()">
+                      <label>Reservation </label>&nbsp;&nbsp;
+                      <input type="radio" >
+                    </div>
+                  </div>
+
+              </div>
+              <div class="row" *ngIf="isMobilePayment">
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                  <div class="form-group" (click)="bankPayment()">
+                    <label>Carte Bancaire </label>&nbsp;&nbsp;
+                    <input type="radio"  >
+                  </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                  <div class="form-group" (click)="mobilePayment()">
+                    <label>Mobile Money </label>&nbsp;&nbsp;
+                    <input type="radio" checked >
+                  </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="form-group" (click)="cashPayment()">
+                      <label>Reservation </label>&nbsp;&nbsp;
+                      <input type="radio" >
                     </div>
                   </div>
               </div>
-              <div class="row" *ngIf="isMobilePayment">
-                <div class="col-xl-6 col-md-6 col-sm-12">
-                  <div class="form-group">
+              <div class="row" *ngIf="isCashPayment">
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                  <div class="form-group" (click)="bankPayment()">
                     <label>Carte Bancaire </label>&nbsp;&nbsp;
-                    <input type="radio"  (click)="bankPayment()">
+                    <input type="radio"  >
                   </div>
                 </div>
-                <div class="col-xl-6 col-md-6 col-sm-12">
-                  <div class="form-group">
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                  <div class="form-group" (click)="mobilePayment()">
                     <label>Mobile Money </label>&nbsp;&nbsp;
-                    <input type="radio" checked (click)="mobilePayment()">
+                    <input type="radio" >
                   </div>
                 </div>
-            </div>
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="form-group" (click)="cashPayment()">
+                      <label>Reservation </label>&nbsp;&nbsp;
+                      <input type="radio" checked>
+                    </div>
+                  </div>
+              </div>
             </div>
           </div>
           <br>
           <div class="card-body">
             <div class="row" *ngIf="isBankPayment">
-              <button type="button" (click)="visaPayment()" class="btn mx-3 my-2"><img src="../../../assets/images/visa.png" style="width: 80px;height: 70px;" alt=""></button>
-              <button type="button" (click)="masterCardPayment()" class="btn mx-3 my-2"><img src="../../../assets/images/master-card.png" style="width: 80px;height: 70px;" alt=""></button>
-              <button type="button" (click)="payPalPayment()" class="btn mx-3 my-2"><img src="../../../assets/images/paypal.png" style="width: 80px;height: 70px;" alt=""></button>
+              <button type="button" (click)="stripePayment()" class="btn  my-2"><img src="../../../assets/images/visa.png" style="width: 80px;height: 70px;" class="mx-1" alt=""><img src="../../../assets/images/master-card.png" style="width: 80px;height: 70px;" class="mx-1" alt=""><img src="../../../assets/images/paypal.png" style="width: 80px;height: 70px;" class="mx-1" alt=""></button>
             </div>
             <div class="row" *ngIf="isMobilePayment">
               <button type="button" (click)="ecocashPayment()" class="btn mx-3 my-2">Ecocash <img src="../../../assets/images/ecocash.jpeg" style="width: 70px;height: 65px;" alt=""></button>
               <button type="button" (click)="lumicashPayment()" class="btn mx-3 my-2">Lumicash <img src="../../../assets/images/lumicash.png" style="width: 70px;height: 65px;" alt=""></button>
               <button type="button" (click)="smartcashPayment()" class="btn mx-3 my-2">Smartash</button>
             </div>
+
+            <div  *ngIf="isCashPayment">
+                <button type="button" (click)="liquidPayment()" class="btn btn-primary mx-3 my-2">Reserver <i class="fa fa-long-arrow-right"></i></button>
+              </div>
           </div>
       </div>
       <div class="container-fluid">
