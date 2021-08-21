@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {CommandeService} from '../../../services/commande.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class CommandeEntreprenerComponent implements OnInit {
   p: number = 1;
   searchItem: string;
   lists: any = {};
-  constructor(private commandeService: CommandeService ) { }
+  currentCommande: any;
+  constructor(private commandeService: CommandeService, private modalService: NgbModal ) { }
 
   ngOnInit(): void {
     this.loadall();
@@ -27,6 +29,11 @@ export class CommandeEntreprenerComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  setCommande(contentDetails, event){
+    this.modalService.open(contentDetails, {size: "lg"});
+    this.currentCommande = event;
   }
 
 }

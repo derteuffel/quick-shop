@@ -2,7 +2,7 @@
 <div class="main-content">
   <!-- Top navbar -->
   <app-admin-navbar></app-admin-navbar>
-  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="header  pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
       <div class="header-body">
         <!-- Card stats -->
@@ -17,11 +17,17 @@
     <div class="row">
       <div class="col">
         <div class="card shadow">
-          <div class="card-header border-0"style="background-color:#F45B3A;">
-            <div class="col-md-6 pull-right" style="width: 40%">
-              <label >Recherche <i class="fa fa-search"></i></label>
-              <input type="text" class="form-control" [(ngModel)]="searchItem">
+          <div class="card-header border-0" >
+            <div class="row">
+              <div class="col-md-6 text-center my-4">
+                <h2>Liste des Commandes</h2>
+              </div>
+              <div class="col-md-6" >
+                <label >Recherche <i class="fa fa-search"></i></label>
+                <input type="text" class="form-control" [(ngModel)]="searchItem">
+              </div>
             </div>
+            
           </div>
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
@@ -55,6 +61,7 @@
                 </td>
                 <td>{{item?.orderDate}} </td>
                 <td>{{item.status}} </td>
+                <td><button class="btn btn-success m-1" (click)="setCommande(contentDetails, item)"><i class="pi pi-eye"></i></button></td>
               </tr>
 
               </tbody>
@@ -76,4 +83,92 @@
     <app-admin-footer></app-admin-footer>
   </div>
 </div>
+
+<!-------------------------------------------------------UPDATED PRODUCT START-------------------------------------------------------------->
+<ng-template #contentDetails let-modal>
+  <div class="modal-header" >
+    <h2>Commande detail</h2>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <table class="table table-bordered table-responsive-md">
+      <tr *ngIf="currentCommande.produit">
+        <td>Titre </td>
+        <td>{{currentCommande.produit.name}}</td>
+      </tr>
+      <tr *ngIf="currentCommande.coaching">
+        <td>Nom Client</td>
+        <td>{{currentCommande.coaching.title}}</td>
+      </tr>
+      <tr >
+        <td>Date de la commande </td>
+        <td>{{currentCommande.orderDate}}</td>
+      </tr>
+      <tr >
+        <td>Numero de la commande</td>
+        <td>{{currentCommande.numero}}</td>
+      </tr>
+      <tr >
+        <td>Telephone Client</td>
+        <td>{{currentCommande.clientPhone}}</td>
+      </tr>
+      <tr >
+        <td>Email Client </td>
+        <td>{{currentCommande.clientEmail}}</td>
+      </tr>
+      <tr >
+        <td>Quantite </td>
+        <td>{{currentCommande.quantity}}</td>
+      </tr>
+      <tr >
+        <td>Montant </td>
+        <td *ngIf="currentCommande.produit">{{currentCommande.amount+' '+currentCommande.produit.devise}}</td>
+        <td *ngIf="currentCommande.coaching">{{currentCommande.amount+' '+currentCommande.coaching.devise}}</td>
+      </tr>
+      <tr >
+        <td>Client </td>
+        <td>{{currentCommande.clientName+' - '+currentCommande.clientPhone}}</td>
+      </tr>
+      <tr *ngIf="currentCommande.produit" >
+        <td>Lieu livraison </td>
+        <td>{{currentCommande.lieuLivraison}}</td>
+      </tr>
+      <tr *ngIf="currentCommande.produit">
+        <td>Date de livraison </td>
+        <td>{{currentCommande.dateLivraison}}</td>
+      </tr>
+      <tr *ngIf="currentCommande.produit">
+        <td>Heure de livraison </td>
+        <td>{{currentCommande.heureLivraison}}</td>
+      </tr>
+      <tr *ngIf="currentCommande.coaching">
+        <td>Date de debut </td>
+        <td>{{currentCommande.coaching.startDate}}</td>
+      </tr>
+      <tr *ngIf="currentCommande.coaching">
+        <td>Date de fin </td>
+        <td>{{currentCommande.coaching.dateFinFormation}}</td>
+      </tr>
+      <tr *ngIf="currentCommande.coaching">
+        <td>Date limite des enregistrements </td>
+        <td>{{currentCommande.coaching.dateLimiteDenregistrement}}</td>
+      </tr>
+      <tr >
+        <td>Mode paiement </td>
+        <td>{{currentCommande.paymentMode}}</td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-warning" style="width: 100%" (click)="modal.close('Close click')"><i class="fa fa-long-arrow-left"></i>&nbsp;Retour</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
 
