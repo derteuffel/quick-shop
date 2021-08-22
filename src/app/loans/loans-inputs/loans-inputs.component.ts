@@ -249,6 +249,8 @@ export class LoansInputsComponent implements OnInit {
 
   }
 
+  // ajout du repository en ligne
+
  
 
 }
