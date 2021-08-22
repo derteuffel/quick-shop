@@ -59,7 +59,7 @@ export class SingupInvesterComponent implements OnInit {
       this.form.method,
       this.form.duration,
       '');
-    this.financeService.saveFinance(this.signupInfo).subscribe(
+    /*this.financeService.saveFinance(this.signupInfo, this.form.get('name').val()).subscribe(
       data => {
         console.log(data);
         this.isSignedUp = true;
@@ -78,7 +78,7 @@ export class SingupInvesterComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
         this.isSignUpFailed = true;
       }
-    );
+    );*/
   }
 
   accept(){
