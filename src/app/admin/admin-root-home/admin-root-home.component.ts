@@ -342,11 +342,9 @@ export class AdminRootHome implements OnInit {
   onFilesSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      if(!this.validateFile(file.name)){
-        this.message = 'File should be image, please load correct file';
-      }else{
+      
       this.uploadedFile = file;
-    }
+    
     }
   }
 
@@ -373,14 +371,20 @@ export class AdminRootHome implements OnInit {
 
       formData.append('file', this.uploadedFile);
       console.log(formData);
-      if(this.isEmpty(this.uploadedFile)){
+      console.log(this.isObjectCheck(this.uploadedFile));
+      if(!this.isObjectCheck(this.uploadedFile)){
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Empty file, you have to attach file before save'});
       }else{
+        if(!this.validateFile(this.uploadedFile.name)){
+          this.message = 'File should be image, please load correct file';
+          this.messageService.add({severity: 'error', summary: 'Error', detail: this.message});
+        }else{
       this.ecommerceService.saveProduct(formData).subscribe(
         data => {
           this.productForm.reset();
           this.messageService.add({severity: 'success', summary: 'Success', detail: 'article submitted', sticky: true});
           this.loadList();
+          window.location.reload();
         },
         error => {
           this.messageService.add({severity: 'error', summary: 'Error', detail: 'Failed to save'});
@@ -388,12 +392,13 @@ export class AdminRootHome implements OnInit {
         }
       );
     }
+  }
 
 
 
   }
 
-  validateFile(name: String) {
+  validateFile(name: string) {
     var ext = name.substring(name.lastIndexOf('.') + 1);
     if (ext.toLowerCase() == 'png'||ext.toLowerCase() == 'jpg'||ext.toLowerCase() == 'jpeg') {
         return true;
@@ -470,6 +475,13 @@ export class AdminRootHome implements OnInit {
 
   openModalAddAbon(contentAddAbon){
     this.modalService.open(contentAddAbon, { size: 'lg' });
+  }
+
+  isObjectCheck(obj: any): boolean {
+    for (var key in this) {
+      if (this.hasOwnProperty(key)) return false;
+    }
+    return true;
   }
 
 

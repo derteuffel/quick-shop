@@ -173,11 +173,9 @@ export class AdminRootCoachingsComponent implements OnInit {
   onFilesSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      if(!this.validateFile(file.name)){
-        this.message = 'File should be an image, please load image';
-      }else{
+      
         this.uploadedFile = file;
-      }
+      
     }
   }
 
@@ -223,18 +221,24 @@ export class AdminRootCoachingsComponent implements OnInit {
 
 
     this.submitted = true;
-    if(this.isEmpty(this.uploadedFile)){
+    if(!this.isObjectCheck(this.uploadedFile)){
       this.messageService.add({severity: 'error', summary: 'Error', detail: 'Empty file, you have to attach file before save'});
     }else{
+      if(!this.validateFile(this.uploadedFile.name)){
+        this.message = 'File should be image, please load correct file';
+        this.messageService.add({severity: 'error', summary: 'Error', detail: this.message});
+      }else{
      this.coachingService.saveCoaching(formData).subscribe(
       (data: any) => {
         this.messageService.add({severity:'success', summary:'Success', detail:'coaching submitted', sticky: true});
         this.initForm();
         this.loadData();
+        window.location.reload();
       }, error => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
       }
     );
+      }
     }
 
     this.submitted = false;
@@ -269,6 +273,13 @@ export class AdminRootCoachingsComponent implements OnInit {
 
       null;
     }
+  }
+
+  isObjectCheck(obj: any): boolean {
+    for (var key in this) {
+      if (this.hasOwnProperty(key)) return false;
+    }
+    return true;
   }
 
 
