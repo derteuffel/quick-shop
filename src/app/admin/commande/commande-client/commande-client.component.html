@@ -2,7 +2,7 @@
 <div class="main-content">
   <!-- Top navbar -->
   <app-admin-navbar></app-admin-navbar>
-  <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="header  pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
       <div class="header-body">
         <!-- Card stats -->
@@ -17,11 +17,17 @@
     <div class="row">
       <div class="col">
         <div class="card shadow">
-          <div class="card-header border-0"style="background-color:#F45B3A;">
-            <div class="col-md-6 pull-right" style="width: 40%">
-              <label >Recherche <i class="fa fa-search"></i></label>
-              <input type="text" class="form-control" [(ngModel)]="searchItem">
+          <div class="card-header border-0">
+            <div class="row">
+              <div class="col-md-6 text-center my-4">
+                    <h2>Liste de mes Commandes</h2>
+              </div>
+              <div class="col-md-6" >
+                <label >Recherche <i class="fa fa-search"></i></label>
+                <input type="text" class="form-control" [(ngModel)]="searchItem">
+              </div>
             </div>
+            
           </div>
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
@@ -34,6 +40,7 @@
                 <th scope="col">Client</th>
                 <th scope="col">Date</th>
                 <th scope="col">Status</th>
+                <th scope="col">Actions</th>
                               
               </tr>
               </thead>
@@ -41,13 +48,24 @@
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                 <td>{{item?.numero}}</td>
                 <td>
-                  {{item?.produit.name}}
+                  <span *ngIf="item.produit">{{item?.produit.name}}</span>
+                  <span *ngIf="item.coaching">{{item?.coaching.title}}</span>
                 </td>
                 <td>{{item?.quantity}}</td>
-                <td>{{item?.amount+' '+item.produit.devise}}</td>
+                <td> 
+                  <span *ngIf="item.produit" >{{item?.amount+' '+item.produit.devise}}</span> 
+                  <span *ngIf="item.coaching">{{item?.coaching.amount+' '+item.coaching.devise}}</span>
+                </td>
                 <td>{{item?.clientName}}</td>
                 <td>{{item?.orderDate}} </td>
                 <td>{{item.status}} </td>
+                <td>
+                  <a *ngIf="item.produit && item.status ==='IMPAYER'" href="admin/produit/checkout/{{item.id}}" class="btn btn-outline-success btn-block">Payer</a>
+                  <a *ngIf="item.status ==='IMPAYER'" (click)="cancelOrder(item.id)" class="btn btn-outline-warning btn-block">Annuler</a>
+                  <a *ngIf="item.produit && item.status ==='PAYER'" href="admin/produit/checkout/{{item.id}}" class="btn btn-outline-primary btn-block">Voir</a>
+                  <a *ngIf="item.coaching && item.status ==='IMPAYER'" href="admin/coaching/checkout/{{item.id}}" class="btn btn-outline-success btn-block">Payer</a>
+                  <a *ngIf="item.coaching && item.status ==='PAYER'" href="admin/coaching/checkout/{{item.id}}" class="btn btn-outline-primary btn-block">Voir</a>
+                </td>
               </tr>
 
               </tbody>

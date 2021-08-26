@@ -138,6 +138,89 @@ selector(){
   }
 }
 
+selectorOrder(){
+  console.log('je suis la')
+  switch(this.subscribeForm.get('province').value){
+      case 'Bubanza':{
+          this.communes = ['Bubanza','Gihanga','Musigati',' Mpanda','Rugazi'];
+          break;
+      }
+      case 'Bujumbura Mairie':{
+          this.communes = ['Muha','Mukaza','Ntahangwa'];
+          break;
+      }
+      case 'Bujumbura':{
+          this.communes = ['Isale','Kabezi','Kanyosha (Bujumbura rural)','Mubimbi','Mugongomanga','Mukike','Mutambu',
+                  'Mutimbuzi','Nyabiraba'];
+          break
+      }
+
+      case 'Bururi': {
+          this.communes = ['Bururi','Matana','Mugamba','Rutovu','Songa','Vyanda'];
+          break;
+      }
+      case 'Cankuzo': {
+          this.communes = ['Cankuzo','Cendajuru','Gisagara','Kigamba','Mishiha'];
+          break;
+      }
+
+      case 'Cibitoke':{
+          this.communes =['Buganda','Bukinanyana','Mabayi','Mugina','Murwi','Rugombo','Buhayira'];
+          break;
+      }
+      case 'Gitega':{
+          this.communes =['Bugendana','Bukirasazi','Buraza','Giheta','Gishubi',
+                  'Gitega','Itaba','Makebuko','Mutaho','Nyarusange','Ryansoro'];
+          break;
+      }
+      case 'Karuzi':{
+          this.communes = ['Bugenyuzi','Buhiga','Gihogazi','Gitaramuka','Mutumba','Nyabikere','Shombo'];
+          break;
+      }
+      case 'Kayanza':{
+          this.communes = ['Butaganzwa','Gahombo',' Gatara',' Kabarore','kayanza','Matongo','Muhanga','Muruta','Rango'];
+          break;
+      }
+      case 'Kirundo':{
+          this.communes = ['Bugabira','Busoni','Bwambarangwe', 'Gitobe','Kirundo', 'Ntega','Vumbi'];
+          break;
+      }
+
+      case 'Makamba':{
+          this.communes = ['Kayogoro','Kibago','Mabanda','Makamba','Nyanza-Lac','Vugizo'];
+          break;
+      }
+      case 'Muramvya':{
+          this.communes =['Bukeye','Kiganda','Mbuye','Muramvya','Rutegama'];
+          break;
+      }
+
+      case 'Muyinga':{
+          this.communes = ['Buhinyuza','Butihinda','Gashoho','Gasorwe','Giteranyi','Muyinga','Mwakiro'];
+          break;
+      }
+      case 'Mwaro':{
+          this.communes = ['Bisoro', 'Gisozi','Kayokwe','Ndava','Nyabihanga','Rusaka'];
+          break;
+      }
+      case 'Ngozi':{
+          this.communes =['Busiga','Gashikanwa','Kiremba','Marangara','Mwumba','Ngozi','Nyamurenza','Ruhororo','Tangara'];
+          break;
+      }
+      case 'Rumonge':{
+          this.communes =['Bugarama','Burambi','Buyengero','Muhuta','Rumonge'];
+          break;
+      }
+      case 'Rutana':{
+          this.communes = ['Bukemba','Giharo','Gitanga','Mpinga-Kayove','Musongati','Rutana'];
+          break;
+      }
+      case 'Ruyigi':{
+          this.communes =['Butaganzwa','Butezi','Bweru','Gisuru','Kinyinya','Nyabitsinda','Ruyigi'];
+      }
+  }
+}
+
   init(){
     this.serviceForm = new FormGroup({
       province: new FormControl(''),
@@ -209,6 +292,8 @@ selector(){
        name: new FormControl(''),
        email: new FormControl(''),
        phone: new FormControl(''),
+       province: new FormControl(''),
+       commune: new FormControl('')
      });
    }
 
@@ -217,14 +302,16 @@ selector(){
       clientName: this.subscribeForm.get('name').value,
       email: this.subscribeForm.get('email').value,
       clientPhone: this.subscribeForm.get('phone').value,
+      province: this.subscribeForm.get('province').value,
+      commune: this.subscribeForm.get('commune').value,
       coaching: true,
       produit: false
     }
     this.commandeService.saveCmd(formData, this.currentCoaching.id).subscribe(
       data => {
         this.subscribeForm.reset();
-        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Votre commande a ete soumise vous serez rediriger vers la page de paiement', sticky: true});
-        this.router.navigateByUrl('ecommerce/coaching/checkout/'+data.id);
+        this.messageService.add({severity: 'success', summary: 'Success', detail: 'Votre commande a ete soumise, un mail vous a ete envoyer contenant les information de votre compte, vous connecter pour finaliser votre paiement', sticky: true});
+        //this.router.navigateByUrl('ecommerce/coaching/checkout/'+data.id);
       },
       error => {
         this.messageService.add({severity: 'error', summary: 'Error', detail: 'Erreur systeme, vous ne devez avoir un compte pour participer a cette formation'});

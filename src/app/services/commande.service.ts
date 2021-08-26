@@ -38,6 +38,10 @@ export class CommandeService {
     return this.http.get(`${API.COMMANDES}/get/${id}`);
   }
 
+  cancel(id): Observable<any>{
+    return this.http.get(`${API.COMMANDES}/cancel/${id}`, {headers: this.headers});
+  }
+
   // recupere toute les commandes d'un produit
   getAllByProduit(id): Observable<any> {
     return this.http.get(`${API.COMMANDES}/admin/produits/${id}`, {headers: this.headers});

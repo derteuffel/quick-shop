@@ -117,10 +117,12 @@ const routes: Routes = [
     path: 'ecommerce/coaching/detail/:id', component: CoachingDetailComponent
   },
   {
-    path: 'ecommerce/coaching/checkout/:id', component: CoachingCheckoutComponent
+    path: 'admin/coaching/checkout/:id', component: CoachingCheckoutComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.CLIENT, Role.ENTERPRENER,Role.LOANS,Role.TRAINNER,Role.INVESTOR]}
   },
   {
-    path: 'ecommerce/produit/checkout/:id', component: ProductCheckoutComponent
+    path: 'admin/produit/checkout/:id', component: ProductCheckoutComponent,
+    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.CLIENT, Role.ENTERPRENER,Role.LOANS,Role.TRAINNER,Role.INVESTOR]}
   },
 
   {

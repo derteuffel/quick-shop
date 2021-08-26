@@ -23,7 +23,7 @@ export class ActivationComponent implements OnInit {
     this.authService.activate(activation).subscribe(
       data => {
           console.log(activation);
-          this.router.navigateByUrl('connexion');
+          this.router.navigateByUrl('');
       },
       error => {
         console.log(error);
