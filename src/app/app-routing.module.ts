@@ -171,12 +171,10 @@ const routes: Routes = [
     canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT]}
   },
   {
-    path: 'admin/commandes/users', component: CommandeClientComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT,Role.CLIENT]}
+    path: 'admin/commandes/users', component: CommandeClientComponent
   },
   {
-    path: 'admin/commandes/allsbyusers', component: CommandeEntreprenerComponent,
-    canActivate: [AuthGuard], data:{roles: [Role.ADMIN, Role.ROOT, Role.ENTERPRENER, Role.TRAINNER]}
+    path: 'admin/commandes/allsbyusers', component: CommandeEntreprenerComponent
   },
 
   {

@@ -168,7 +168,7 @@ export class ProfileComponent implements OnInit {
       email: this.updateProfileForm.get('email').value,
       username: this.updateProfileForm.get('username').value,
       phone: this.updateProfileForm.get('phone').value,
-      fullName: this.updateProfileForm.get('full_name').value,
+      fullName: this.updateProfileForm.get('fullName').value,
       secteurActivite: this.updateProfileForm.get('secteurActivite').value,
       location: this.updateProfileForm.get('province').value+', '+this.updateProfileForm.get('commune').value,
       province: this.updateProfileForm.get('province').value,
@@ -200,7 +200,7 @@ export class ProfileComponent implements OnInit {
       username: event.username,
       phone: event.phone,
       id_number: event.id_number,
-      full_name: event.full_name,
+      fullName: event.fullName,
       secteurActivite: event.secteurActivite,
       location: event.location,
       province: event.province,
@@ -216,7 +216,7 @@ export class ProfileComponent implements OnInit {
       email: new FormControl(''),
       username: new FormControl(''),
       phone: new FormControl(''),
-      full_name: new FormControl(''),
+      fullName: new FormControl(''),
       secteurActivite: new FormControl(''),
       province: new FormControl(''),
       commune: new FormControl(''),
@@ -257,7 +257,7 @@ export class ProfileComponent implements OnInit {
 
   logout(){
     this.authService.logOut();
-        this.router.navigateByUrl('connexion');
+        this.router.navigateByUrl('');
       
   }
 
