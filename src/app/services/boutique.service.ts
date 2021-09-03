@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { User } from '../models/user';
 import {API} from "../../environments/environment";
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -32,54 +33,92 @@ export class BoutiqueService {
   // recupère toute les boutiques
 
   getAllBoutiques(): Observable<any> {
-    return this.http.get(API.BOUTIQUES, {headers: this.headers});
+    return this.http.get(API.BOUTIQUES, {headers: this.headers})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   // recupère toute les boutiques d'un user
 
   getAllBoutiquesByUser(): Observable<any> {
-    return this.http.get(`${API.BOUTIQUES}/users`,  {headers: this.headers});
+    return this.http.get(`${API.BOUTIQUES}/users`,  {headers: this.headers})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   // enregister une boutique
   saveBoutique(form): Observable<any> {
-    return this.http.post(`${API.BOUTIQUES}`, form, {headers: this.formHeaders});
+    return this.http.post(`${API.BOUTIQUES}`, form, {headers: this.formHeaders})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   // mettre à jour une boutique
   updateBoutique(form, id): Observable<any> {
-    return this.http.put(`${API.BOUTIQUES}/${id}`, form, {headers: this.formHeaders});
+    return this.http.put(`${API.BOUTIQUES}/${id}`, form, {headers: this.formHeaders})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   // recupère une boutique par son id
 
   getBoutique(id): Observable<any> {
-    return this.http.get(`${API.BOUTIQUES}/${id}`, {headers: this.headers});
+    return this.http.get(`${API.BOUTIQUES}/${id}`, {headers: this.headers})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   // supprime une boutique
   deleteBoutique(id): Observable<any> {
-    return this.http.delete(`${API.BOUTIQUES}/${id}`,  {headers: this.headers});
+    return this.http.delete(`${API.BOUTIQUES}/${id}`,  {headers: this.headers}).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   // activation du code boutique
   activateBoutique(id, code): Observable<any> {
     console.log(code);
-    return this.http.get(`${API.BOUTIQUES}/activation/${id}/${code}`);
+    return this.http.get(`${API.BOUTIQUES}/activation/${id}/${code}`).pipe(
+      catchError(this.errorHandler)
+    );
   }
 // envoi du code
   sendCode(id): Observable<any>{
-    return this.http.get(`${API.BOUTIQUES}/send/code/${id}`,  {headers: this.headers});
+    return this.http.get(`${API.BOUTIQUES}/send/code/${id}`,  {headers: this.headers})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   // activation boutique par l'ADMIN
 
   activationAdmin(id): Observable<any> {
-    return this.http.get(`${API.BOUTIQUES}/admin/activation/${id}`,  {headers: this.headers});
+    return this.http.get(`${API.BOUTIQUES}/admin/activation/${id}`,  {headers: this.headers})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   // desactivation de la boutique
   desactivation(id): Observable<any> {
-    return this.http.get(`${API.BOUTIQUES}/desactivation/${id}`,  {headers: this.headers});
+    return this.http.get(`${API.BOUTIQUES}/desactivation/${id}`,  {headers: this.headers})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
+
+  errorHandler(error) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+ }
 }

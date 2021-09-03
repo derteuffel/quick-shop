@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { User } from '../models/user';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { BACK_BASE_URL } from '../../environments/environment';
 import {TokenDto} from "../models/token-dto";
 const httpOptions = {
@@ -48,7 +48,10 @@ export class AuthService {
   }
 
   activate(code): Observable<any> {
-    return this.http.get(this.authUrl + "/activation/"+code);
+    return this.http.get(this.authUrl + "/activation/"+code)
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   reloadPage() {
@@ -82,7 +85,10 @@ export class AuthService {
   }
 
   signUp(user): Observable<any> {
-    return this.http.post(this.authUrl + '/signup', JSON.stringify(user), {headers: {'Content-Type': 'application/json; charset= UTF-8'}});
+    return this.http.post(this.authUrl + '/signup', JSON.stringify(user), {headers: {'Content-Type': 'application/json; charset= UTF-8'}})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   getUserToken():string{
@@ -95,10 +101,27 @@ export class AuthService {
   }
 
   public google(tokenDto: TokenDto): Observable<TokenDto> {
-    return this.http.post<TokenDto>(this.authUrl + 'google', tokenDto, {headers: {'Content-Type': 'application/json; charset= UTF-8'}});
+    return this.http.post<TokenDto>(this.authUrl + 'google', tokenDto, {headers: {'Content-Type': 'application/json; charset= UTF-8'}})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   public facebook(tokenDto: TokenDto): Observable<TokenDto> {
-    return this.http.post<TokenDto>(this.authUrl+ 'facebook', tokenDto, {headers: {'Content-Type': 'application/json; charset= UTF-8'}});
+    return this.http.post<TokenDto>(this.authUrl+ 'facebook', tokenDto, {headers: {'Content-Type': 'application/json; charset= UTF-8'}})
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
+
+
+  errorHandler(error) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+ }
 }

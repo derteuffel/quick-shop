@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs/index";
+import {Observable, throwError} from "rxjs/index";
 import {User} from "../models/user";
 import {API} from "../../environments/environment";
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,32 +28,55 @@ export class SessionCoachingService {
     });
   }
 
+  errorHandler(error) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+ }
   getAllSessionCoaching(): Observable<any> {
-    return this.http.get(API.SESSIONS, {headers: this.headers});
+    return this.http.get(API.SESSIONS, {headers: this.headers}).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   getSessionCoachingById(id): Observable<any> {
-    return this.http.get(`${API.SESSIONS}/${id}`, {headers: this.headers});
+    return this.http.get(`${API.SESSIONS}/${id}`, {headers: this.headers}).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   getSessionCoaching(id): Observable<any> {
-    return this.http.get(`${API.SESSIONS}/get/coaching/${id}`);
+    return this.http.get(`${API.SESSIONS}/get/coaching/${id}`).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   actionSession(id): Observable<any>{
-    return this.http.get(`${API.SESSIONS}/admin/action/${id}`, {headers: this.headers});
+    return this.http.get(`${API.SESSIONS}/admin/action/${id}`, {headers: this.headers}).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   saveSessionCoaching(form): Observable<any> {
-    return this.http.post(`${API.SESSIONS}/admin`, form, {headers: this.headers});
+    return this.http.post(`${API.SESSIONS}/admin`, form, {headers: this.headers}).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   updateSessionCoaching(form): Observable<any> {
-    return this.http.put(`${API.SESSIONS}/admin`, form, {headers: this.headers});
+    return this.http.put(`${API.SESSIONS}/admin`, form, {headers: this.headers}).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   deleteSessionCoaching(id): Observable<any> {
-    return this.http.delete(`${API.SESSIONS}/admin/${id}`, {headers: this.headers});
+    return this.http.delete(`${API.SESSIONS}/admin/${id}`, {headers: this.headers}).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   /**
@@ -61,7 +85,9 @@ export class SessionCoachingService {
    * */
 
   createSession(form, id): Observable<any> {
-    return this.http.post(`${API.SESSIONS}/admin/${id}`, form, {headers: this.formHeaders});
+    return this.http.post(`${API.SESSIONS}/admin/${id}`, form, {headers: this.formHeaders}).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
 }

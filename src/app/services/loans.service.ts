@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { API } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 import { User } from '../models/user';
@@ -33,58 +34,93 @@ export class LoansService {
       });
     }
 
+    errorHandler(error) {
+      let errorMessage = '';
+      if(error.error instanceof ErrorEvent) {
+        errorMessage = error.error.message;
+      } else {
+        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      }
+      return throwError(errorMessage);
+   }
 
     getAllLoans(): Observable<any>{
-      return this.http.get(`${API.LOANS}/admin`, {headers: this.headers})
+      return this.http.get(`${API.LOANS}/admin`, {headers: this.headers}).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     getAllbyUser(): Observable<any>{
-      return this.http.get(`${API.LOANS}/admin/users`, {headers: this.headers})
+      return this.http.get(`${API.LOANS}/admin/users`, {headers: this.headers}).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     getAllbyUserId(id): Observable<any>{
-      return this.http.get(`${API.LOANS}/admin/users/${id}`, {headers: this.headers})
+      return this.http.get(`${API.LOANS}/admin/users/${id}`, {headers: this.headers}).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     getAllbyRegion(form): Observable<any>{
-      return this.http.post(`${API.LOANS}/admin/region`,form, {headers: this.headers})
+      return this.http.post(`${API.LOANS}/admin/region`,form, {headers: this.headers}).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     getAllbyVisitor(): Observable<any>{
-      return this.http.get(`${API.LOANS}/all`)
+      return this.http.get(`${API.LOANS}/all`).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     getAllbyStatus(value): Observable<any>{
-      return this.http.get(`${API.LOANS}/admin/status/${value}`, {headers: this.headers})
+      return this.http.get(`${API.LOANS}/admin/status/${value}`, {headers: this.headers}).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     getAllSearch(form): Observable<any>{
-      return this.http.post(`${API.LOANS}/all/search`,form)
+      return this.http.post(`${API.LOANS}/all/search`,form).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     getAllbySector(form): Observable<any>{
-      return this.http.post(`${API.LOANS}/admin/sector`,form, {headers: this.headers})
+      return this.http.post(`${API.LOANS}/admin/sector`,form, {headers: this.headers}).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     getOne(id): Observable<any>{
-      return this.http.get(`${API.LOANS}/all/${id}`);
+      return this.http.get(`${API.LOANS}/all/${id}`).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     active(id): Observable<any>{
-      return this.http.get(`${API.LOANS}/admin/active/${id}`,{headers:this.headers});
+      return this.http.get(`${API.LOANS}/admin/active/${id}`,{headers:this.headers}).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     delete(id): Observable<any>{
-      return this.http.delete(`${API.LOANS}/admin/${id}`, {headers: this.headers});
+      return this.http.delete(`${API.LOANS}/admin/${id}`, {headers: this.headers}).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     update(form, id): Observable<any>{
       console.log(form);
-      return this.http.put(`${API.LOANS}/admin/${id}`,form, {headers: this.headers});
+      return this.http.put(`${API.LOANS}/admin/${id}`,form, {headers: this.headers}).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
     save(form): Observable<any>{
-      return this.http.post(`${API.LOANS}/admin`,form, {headers: this.formHeaders});
+      return this.http.post(`${API.LOANS}/admin`,form, {headers: this.formHeaders}).pipe(
+        catchError(this.errorHandler)
+      );
     }
 
 
