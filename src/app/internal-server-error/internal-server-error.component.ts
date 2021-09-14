@@ -2,11 +2,11 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-unauthorized',
-  templateUrl: './unauthorized.component.html',
-  styleUrls: ['./unauthorized.component.css']
+  selector: 'app-internal-server-error',
+  templateUrl: './internal-server-error.component.html',
+  styleUrls: ['./internal-server-error.component.scss']
 })
-export class UnauthorizedComponent implements OnInit {
+export class InternalServerErrorComponent implements OnInit {
 
   constructor(private location: Location) { }
 

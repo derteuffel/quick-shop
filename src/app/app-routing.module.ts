@@ -47,6 +47,9 @@ import { CoachingCheckoutComponent } from './eco/coachings/coaching-checkout/coa
 import { ProductCheckoutComponent } from './eco/product/product-checkout/product-checkout.component';
 import { AboutComponent } from './eco/about/about.component';
 import { AccountDetailComponent } from './admin/configurations/account-detail/account-detail.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { InternalServerErrorComponent } from './internal-server-error/internal-server-error.component';
 
 
 
@@ -231,6 +234,15 @@ const routes: Routes = [
 
   {
     path: '', redirectTo: 'ecommerce/home', pathMatch: 'full'
+  },
+  {
+    path: '404', component: NotFoundComponent
+  },
+  {
+    path: '401', component: UnauthorizedComponent
+  },
+  {
+    path: '500', component: InternalServerErrorComponent
   }
   ];
 

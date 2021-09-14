@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -82,6 +82,8 @@ import { CoachingCheckoutComponent } from './eco/coachings/coaching-checkout/coa
 import { ProductCheckoutComponent } from './eco/product/product-checkout/product-checkout.component';
 import { AboutComponent } from './eco/about/about.component';
 import { AccountDetailComponent } from './admin/configurations/account-detail/account-detail.component';
+import { InternalServerErrorComponent } from './internal-server-error/internal-server-error.component';
+import { GlobalErrorsService } from './services/global-errors.service';
 
 
 
@@ -147,7 +149,8 @@ import { AccountDetailComponent } from './admin/configurations/account-detail/ac
     CoachingCheckoutComponent,
     ProductCheckoutComponent,
     AboutComponent,
-    AccountDetailComponent
+    AccountDetailComponent,
+    InternalServerErrorComponent
     ],
   imports: [
     BrowserModule,
@@ -180,7 +183,7 @@ import { AccountDetailComponent } from './admin/configurations/account-detail/ac
       preventDuplicates: true
     }),
   ],
-  providers: [IconSetService,ConfirmationService],
+  providers: [IconSetService,ConfirmationService, GlobalErrorsService, {provide: ErrorHandler, useClass: GlobalErrorsService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

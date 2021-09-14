@@ -44,7 +44,7 @@ export class CommandeService {
   }
 
   cancel(id): Observable<any>{
-    return this.http.get(`${API.COMMANDES}/cancel/${id}`, {headers: this.headers}).pipe(
+    return this.http.get(`${API.COMMANDES}/admin/cancel/${id}`, {headers: this.headers}).pipe(
       catchError(this.errorHandler)
     );
   }
