@@ -183,7 +183,7 @@ import { GlobalErrorsService } from './services/global-errors.service';
       preventDuplicates: true
     }),
   ],
-  providers: [IconSetService,ConfirmationService, GlobalErrorsService, {provide: ErrorHandler, useClass: GlobalErrorsService}],
+  providers: [IconSetService,ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
