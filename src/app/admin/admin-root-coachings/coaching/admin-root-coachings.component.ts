@@ -221,7 +221,7 @@ export class AdminRootCoachingsComponent implements OnInit {
 
 
     this.submitted = true;
-    if(this.uploadedFile!=null && this.uploadedFile!=undefined){
+    if(this.uploadedFile==null || this.uploadedFile==undefined){
       this.messageService.add({severity: 'error', summary: 'Error', detail: 'Empty file, you have to attach file before save'});
     }else{
       if(!this.validateFile(this.uploadedFile.name)){
