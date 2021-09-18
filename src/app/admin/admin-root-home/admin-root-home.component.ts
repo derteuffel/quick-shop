@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MessageService} from "primeng/api";
 import { Product } from 'src/app/models/product.model';
 import { EcommerceService } from 'src/app/services/ecommerce.service';
@@ -371,10 +371,9 @@ export class AdminRootHome implements OnInit {
 
       formData.append('file', this.uploadedFile);
       console.log(formData);
-      console.log(this.isObjectCheck(this.uploadedFile));
-      if(!this.isObjectCheck(this.uploadedFile)){
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Empty file, you have to attach file before save'});
-      }else{
+      //console.log(this.uploadedFile.name);
+      console.log(!this.isEmpty(this.uploadedFile));
+      if(this.isObjectCheck(this.uploadedFile)){
         if(!this.validateFile(this.uploadedFile.name)){
           this.message = 'File should be image, please load correct file';
           this.messageService.add({severity: 'error', summary: 'Error', detail: this.message});
@@ -392,6 +391,8 @@ export class AdminRootHome implements OnInit {
         }
       );
     }
+      }else{
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Empty file, you have to attach file before save'});
   }
 
 

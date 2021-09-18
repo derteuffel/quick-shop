@@ -214,6 +214,13 @@
             </div>
             <div class="col-xl-8 col-md-6">
             <input type="file" class="form-control" required name="pictureUrl" (change)="onFilesSelect($event)" placeholder="Image">
+            <label *ngIf="pictureUrl.controls[i].errors?.required" class="error">
+              Select the file.
+            </label>
+            <label *ngIf="pictureUrl.controls[i].errors?.inValidExt 
+              && !pictureUrl.controls[i].errors?.required" class="error">
+              Invalid file extension.
+            </label> 
             </div>
           </div>
           <div class="form-group row">
