@@ -344,7 +344,6 @@ export class AdminRootHome implements OnInit {
       const file = event.target.files[0];
       
       this.uploadedFile = file;
-    
     }
   }
 
@@ -354,7 +353,8 @@ export class AdminRootHome implements OnInit {
 
   // fonction d'ajout du produit
   onSubmitProduct() {
-
+    console.log("Test ici");
+    
     this.submitted = true;
     if (this.productForm?.invalid) { return; }
     const formData = new FormData();
@@ -371,9 +371,13 @@ export class AdminRootHome implements OnInit {
 
       formData.append('file', this.uploadedFile);
       console.log(formData);
-      //console.log(this.uploadedFile.name);
-      console.log(!this.isEmpty(this.uploadedFile));
-      if(this.isObjectCheck(this.uploadedFile)){
+      console.log("###################### LOG FILE ##########################");
+      console.log(this.uploadedFile);
+      console.log("###################### LOG FILE ##########################");
+      console.log(this.isObjectCheck(this.uploadedFile));
+      if(this.uploadedFile==null || this.uploadedFile == undefined){
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Empty file, you have to attach file before save'});
+      }else{
         if(!this.validateFile(this.uploadedFile.name)){
           this.message = 'File should be image, please load correct file';
           this.messageService.add({severity: 'error', summary: 'Error', detail: this.message});
@@ -390,12 +394,8 @@ export class AdminRootHome implements OnInit {
           console.log(error);
         }
       );
+   }
     }
-      }else{
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Empty file, you have to attach file before save'});
-  }
-
-
 
   }
 
