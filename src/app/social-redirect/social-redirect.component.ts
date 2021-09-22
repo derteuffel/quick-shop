@@ -79,9 +79,10 @@ export class SocialRedirectComponent implements OnInit {
     
     this.accoutService.updateRole(this.authService.currentUserValue.id, role)
     .subscribe(data =>{
-      
+
       let tmpDate:any = data;
-      tmpDate.token = JSON.parse(this.data).token;
+      if(data.token == null || data.token == undefined)
+        tmpDate.token = JSON.parse(this.data).token;
 
       localStorage.setItem("currentUser", JSON.stringify(tmpDate));
       localStorage.setItem('id', this.authService.currentUserValue.id + '');
