@@ -82,7 +82,7 @@ export class SocialRedirectComponent implements OnInit {
 
       localStorage.setItem("currentUser", JSON.stringify(data));
       localStorage.setItem('id', this.authService.currentUserValue.id + '');
-      this.authService.currentUserSubject.next(data);
+      this.authService.currentUserSubject.next(JSON.parse(JSON.stringify(data)));
       
       switch(data.role){
         case Role.CLIENT:
