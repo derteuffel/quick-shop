@@ -118,11 +118,11 @@ export class RegisterComponent implements OnInit {
       this.form.email,
       this.form.province,
       this.form.commune,
-      this.form.phone,
+      '+257'+this.form.phone,
       null,
       '',
       '',
-      this.form.password,
+      '',
       'ADMIN',
       '');
 

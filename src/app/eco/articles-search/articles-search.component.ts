@@ -407,7 +407,7 @@ openModalFormulaire(contentAdd, event)  {
    const data = {
      name: this.orderForm.get('name').value,
      email: this.orderForm.get('email').value,
-     phone: this.orderForm.get('phone').value,
+     phone: '+257'+this.orderForm.get('phone').value,
      province: this.orderForm.get('province').value,
      commune: this.orderForm.get('commune').value,
      lieuDeLivraison: this.orderForm.get('lieuDeLivraison').value,

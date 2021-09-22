@@ -37,7 +37,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                   </div>
-                  <input type="text"  pattern="^\\(?([0-9]{3})\\)?[-,]?([0-9]{3})[-,]?([0-9]{4})$" class="form-control" name="phone" [(ngModel)]="form.phone" #phone="ngModel"
+                  <input type="text"  pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" class="form-control" name="phone" [(ngModel)]="form.phone" #phone="ngModel"
                          required />
                   <div *ngIf="f.submitted && phone.invalid">
                     <div *ngIf="phone.errors.required">Vous devez entrer un numero de telephone</div>

@@ -248,11 +248,11 @@ getInvestorForm(){
       this.form.email,
       this.form.province,
       this.form.commune,
-      this.form.phone,
+      '+257'+this.form.phone,
       this.form.birthDate,
       null,
       this.form.secteur+', '+this.form.secteurActivite,
-      this.form.password,      
+      '',      
       'ENTERPRENER',
       '');
 
@@ -283,11 +283,11 @@ getInvestorForm(){
       this.form.email,
       this.form.province, 
       this.form.commune,
-      this.form.phone,
+      '+257'+this.form.phone,
       this.form.birthDate,
       '',
       this.form.secteurActivite,
-      this.form.password,
+      '',
       'TRAINNER',
       '');
 
@@ -317,11 +317,11 @@ getInvestorForm(){
       this.form.email,
       this.form.province,
       this.form.commune,
-      this.form.phone,
+      '+257'+this.form.phone,
       this.form.birthDate,
       this.form.idNumber,
       this.form.secteurActivite,
-      this.form.password,
+      '',
       'INVESTOR',
       '');
 
@@ -352,11 +352,11 @@ getInvestorForm(){
       this.form.email,
       this.form.province,
       this.form.commune,
-      this.form.phone,
+      '+257'+this.form.phone,
       this.form.birthDate,
       this.form.idNumber,
       this.form.secteurActivite,
-      this.form.password,
+      '',
       'LOANS',
       '');
 

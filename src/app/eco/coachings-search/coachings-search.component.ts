@@ -301,7 +301,7 @@ selectorOrder(){
     const formData =  {
       clientName: this.subscribeForm.get('name').value,
       email: this.subscribeForm.get('email').value,
-      clientPhone: this.subscribeForm.get('phone').value,
+      clientPhone: '+257'+this.subscribeForm.get('phone').value,
       province: this.subscribeForm.get('province').value,
       commune: this.subscribeForm.get('commune').value,
       coaching: true,
