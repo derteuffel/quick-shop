@@ -32,6 +32,8 @@ export class AdminRootCoachingsComponent implements OnInit {
   lists: any = [];
   types: string[];
   boutiqueRef;
+  code: string;
+  frequencies: string[];
   sessionRef
   p: number = 1;
   commune: string;
@@ -58,6 +60,7 @@ export class AdminRootCoachingsComponent implements OnInit {
     this.initForm();
     this.primengConfig.ripple = true;
     this.loadData();
+    this.frequencies = ['Hebdommadaire','Mensuelle','Trimestrielle','Semestrielle','Annuelle'];
     this.types = ['Appel avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
@@ -73,11 +76,13 @@ export class AdminRootCoachingsComponent implements OnInit {
       phone: new FormControl(''),
       province: new FormControl(''),
       commune: new FormControl(''),
+      builderName: new FormControl(''),
       email: new FormControl(''),
       amount: new FormControl(''),
       devise: new FormControl(''),
       startDate: new FormControl(null),
       description: new FormControl(''),
+      frequency: new FormControl(''),
       type: new FormControl(''),
       dateLimiteDenregistrement: new FormControl(null),
       dateFinFormation: new FormControl(null),
@@ -170,6 +175,54 @@ export class AdminRootCoachingsComponent implements OnInit {
   }
 }
 
+selectorCode(){
+  console.log('je suis la')
+  switch(this.form.get('type').value){
+      case 'Appel avec un coach':{
+          this.code = 'CM1'
+          break;
+      }
+      case 'Coaching en ligne':{
+          this.code = 'CM1';
+          break;
+      }
+      case 'Réunion de coaching en personne':{
+          this.code = 'CM1';
+          break
+      }
+
+      case 'Réunion de consultation en personne': {
+          this.code = 'CM2';
+          break;
+      }
+      case 'Atelier': {
+          this.code = 'CM3';
+          break;
+      }
+
+      case 'Formation':{
+          this.code = 'CM3';
+          break;
+      }
+      case 'Conférence':{
+          this.code = 'CM3';
+          break;
+      }
+      case 'Programme de bourse':{
+          this.code = 'CM4';
+          break;
+      }
+      case 'Visite d\'échange':{
+          this.code ='CM4';
+          break;
+      }
+      default :{
+        break
+      }
+      
+  }
+}
+
   onFilesSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -199,10 +252,8 @@ export class AdminRootCoachingsComponent implements OnInit {
   /** ajouter un coaching **/
   saveCoaching() {
     let startDate = this.form.get('startDate').value;
-    let endDate = this.form.get('dateFinFormation').value;
     let endSubscribeDate = this.form.get('dateLimiteDenregistrement').value;
-    this.dateRangeValidator(startDate,startDate);
-    this.dateRangeValidator(endSubscribeDate,endDate);
+    this.selectorCode();
     const formData = new FormData();
     formData.append('title', this.form.get('title').value);
     formData.append('description', this.form.get('description').value);
@@ -212,10 +263,13 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('devise', this.form.get('devise').value);
     formData.append('province', this.form.get('province').value);
     formData.append('commune',this.form.get('commune').value);
+    formData.append('builderName', this.form.get('builderName').value);
     formData.append('startDate', startDate);
     formData.append('type', this.form.get('type').value);
-    formData.append('dateFinFormation', endDate);
+    formData.append('dateFinFormation', this.form.get('dateFinFormation').value);
     formData.append('dateLimiteDenregistrement', endSubscribeDate);
+    formData.append('code', this.code);
+    formData.append('frequency', this.form.get('frequency').value);
 
     formData.append('file', this.uploadedFile);
 
@@ -297,8 +351,10 @@ export class AdminRootCoachingsComponent implements OnInit {
       email: event.email,
       amount: event.amount,
       devise: event.devise,
+      builderName: event.builderName,
       startDate: event.startDate,
       type: event.type,
+      frequency: event.frequency,
       description: event.description,
       dateFinFormation: event.dateFinFormation,
       dateLimiteDenregistrement: event.dateLimiteDenregistrement
@@ -307,14 +363,10 @@ export class AdminRootCoachingsComponent implements OnInit {
   }
 
   updateCoaching(id) {
-
     let startDate = this.form.get('startDate').value;
     let endDate = this.form.get('dateFinFormation').value;
     let endSubscribeDate = this.form.get('dateLimiteDenregistrement').value;
-
-    this.dateRangeValidator(startDate,startDate);
-    this.dateRangeValidator(endSubscribeDate,endDate);
-
+    this.selectorCode();
     const formData = new FormData();
     formData.append('title', this.form.get('title').value);
     formData.append('description', this.form.get('description').value);
@@ -327,6 +379,9 @@ export class AdminRootCoachingsComponent implements OnInit {
     formData.append('startDate', startDate);
     formData.append('type', this.form.get('type').value);
     formData.append('dateFinFormation', endDate);
+    formData.append('builderName', this.form.get('builderName').value);
+    formData.append('code', this.code);
+    formData.append('frequency', this.form.get('frequency').value);
     formData.append('dateLimiteDenregistrement', endSubscribeDate);
     if(this.uploadedFile){
       formData.append('file',this.uploadedFile);

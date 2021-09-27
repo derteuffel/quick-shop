@@ -17,6 +17,9 @@ export class Coaching {
   startDate: Date;
   user: User;
   type: string;
+  builderName: string;
+  frequency: string;
+  code: string;
   dateFinFormation: Date;
   dateLimiteDenregistrement: Date;
   sesions: SessionCoaching[];

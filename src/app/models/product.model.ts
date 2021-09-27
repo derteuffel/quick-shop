@@ -15,6 +15,8 @@ export class Product{
   province: string;
   commune: string;
   devise: string;
+  code: string;
+  sector: string;
   pictures?: string[];
   boutique?: Boutique;
   user: User

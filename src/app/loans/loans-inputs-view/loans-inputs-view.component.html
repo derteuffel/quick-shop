@@ -11,7 +11,7 @@
       <div class="container-fluid mt--7">
           <div class="card-body m-5">
               <div class="my-5">
-                <h5 class="card-title text-uppercase text-muted mb-0"> <span class="h2 font-weight-bold mb-0">Objet :   Entrer de fonds (Investissement)</span></h5>
+                <h5 class="card-title text-uppercase text-muted mb-0"> <span class="h2 font-weight-bold mb-0">Secteur : {{currentLoans?.name+' '+currentLoans?.sector}}   </span></h5>
                 <hr>
                 <p class="mt-3 mb-0 text-muted text-xl" >
                     <span class="text-black mr-2" ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;Nom du Depositaire :</span>
@@ -29,6 +29,16 @@
                 </p>
                 <hr>
                 <p class="mt-3 mb-0 text-muted text-xl" >
+                    <span class="text-black mr-2" ><i class="fa fa-envelop"></i>&nbsp;&nbsp;&nbsp;&nbsp;Pays(Location) :</span>
+                    <span class="text-nowrap" >{{currentLoans?.country}}</span>
+                </p>
+                <hr>
+                <p class="mt-3 mb-0 text-muted text-xl" >
+                  <span class="text-black mr-2" ><i class="fa fa-envelop"></i>&nbsp;&nbsp;&nbsp;&nbsp;Code :</span>
+                  <span class="text-nowrap" >{{currentLoans?.code}}</span>
+              </p>
+              <hr>
+                <p class="mt-3 mb-0 text-muted text-xl" >
                     <span class="text-black mr-2" ><i class="fa fa-passport"></i>&nbsp;&nbsp;&nbsp;&nbsp;Numero d'identite ou passeport du Depositaire :</span>
                     <span class="text-nowrap" >{{currentLoans?.idNumber}}</span>
                 </p>
@@ -42,6 +52,11 @@
                 <p class="mt-3 mb-0 text-muted text-xl"  >
                     <span class="mr-2"><i class="fa fa-file-invoice"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mode de paiement  :</span>
                     <span class="text-nowrap" >{{currentLoans?.paymentMode}}</span>
+                </p>
+                <hr>
+                <p class="mt-3 mb-0 text-muted text-xl"  >
+                    <span class="mr-2"><i class="fa fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;Frequence de rappelle  :</span>
+                    <span class="text-nowrap" >{{'Rappel '+currentLoans?.frequency}}</span>
                 </p>
                 <hr>
                 <p class="mt-3 mb-0 text-muted text-xl"  >

@@ -25,6 +25,10 @@
                           <td>{{currentCoaching?.type}}</td>
                         </tr>
                         <tr>
+                          <td>Code </td>
+                          <td>{{currentCoaching?.code}}</td>
+                        </tr>
+                        <tr>
                           <td>Montant Formation</td>
                           <td>{{currentCoaching?.amount+' '+currentCoaching?.devise}}</td>
                         </tr>
@@ -40,7 +44,10 @@
                           <td>Date limite enregistrement</td>
                           <td>{{currentCoaching?.dateLimiteDenregistrement}}</td>
                         </tr>
-                        
+                        <tr>
+                          <td>Frequence de deroulement</td>
+                          <td>{{currentCoaching?.frequency}}</td>
+                        </tr>
                         <tr>
                           <td>Province</td>
                           <td>{{currentCoaching?.province}}</td>
@@ -48,6 +55,10 @@
                         <tr>
                           <td>Commune</td>
                           <td>{{currentCoaching?.commune}}</td>
+                        </tr>
+                        <tr>
+                          <td>Nom du formateur ou de l'institution</td>
+                          <td>{{currentCoaching?.builderName}}</td>
                         </tr>
                         <tr>
                           <td>Email de contact</td>
@@ -161,7 +172,7 @@
                     <div *ngIf="isOrder" class="table-responsive">
                       <div class="row">
                         <div class="col-md-6 col-lg-6 my-4 text-center">
-                          <h1>Commandes </h1>
+                          <h1>Reservations </h1>
                         </div>
                         <div class="col-md-6 col-lg-6 " >
                           <label >Recherche <i class="fa fa-search"></i></label>
@@ -334,7 +345,7 @@
 <!-------------------------------------------------------DELETE SESSION START-------------------------------------------------------------->
 <ng-template #contentDelete let-modal>
   <div class="modal-header dark-modal" >
-    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+    <h4 class="modal-title" >Confirmation de Suppression!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -363,7 +374,7 @@
 <!-------------------------------------------------------ACTION SESSION START-------------------------------------------------------------->
 <ng-template #contentAction let-modal>
   <div class="modal-header dark-modal" >
-    <h4 class="modal-title" style="color:whitesmoke">Confirmation de mener une action!</h4>
+    <h4 class="modal-title" >Confirmation de mener une action!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>

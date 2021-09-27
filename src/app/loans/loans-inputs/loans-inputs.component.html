@@ -126,6 +126,14 @@
                   <option value="{{item}}" *ngFor="let item of names">{{item}}</option>
                 </select>
               </div>
+              <div class="form-group ">
+                
+                  <label>Frequence de rappelle aux entrepreneur ou etudiant pris en charge</label>
+                  <select formControlName="frequency" class="form-control" required  >
+                    <option value="">-- Choisir une frequence de rappelle --</option>
+                    <option value="{{item}}" *ngFor="let item of frequencies">{{item}}</option>
+                  </select>
+              </div>
               
               <div class="form-group">
                 <label>Devise</label>
@@ -138,6 +146,14 @@
                   <option value="FC">Francs congolais</option>
                   <option value="FCFA">Francs CFA</option>
                 </select>
+              </div>
+              <div class="form-group">
+                <label>Pays</label>
+                <input type="text" class="form-control" required formControlName="country" placeholder="Votre pays">
+              </div>
+              <div class="form-group">
+                <label>Telephone(+code 00000000000)</label>
+                <input type="text" class="form-control" required formControlName="phone" placeholder="Votre telephone (+237 694126158)">
               </div>
               <div class="form-group">
                 <label>Duree de l'investissement</label>

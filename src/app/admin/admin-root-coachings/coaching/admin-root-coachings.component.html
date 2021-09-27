@@ -152,6 +152,42 @@
                   <input type="date" class="form-control"required formControlName="dateLimiteDenregistrement">
                 </div>
               </div>
+              <div class="form-group row">
+                <div class="col-md-6 col-xl-4">
+                  <label>Frequence de deroulement</label>
+                </div>
+                <div class="col-md-6 col-xl-8">
+                  <select formControlName="frequency" class="form-control" required  >
+                    <option value="">-- Choisir une frequence de deroulement --</option>
+                    <option value="{{item}}" *ngFor="let item of frequencies">{{item}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-6 col-xl-4">
+                  <label>Nom du formateur ou de l'institution</label>
+                </div>
+                <div class="col-md-6 col-xl-8">
+                  <input type="text" class="form-control"  required formControlName="builderName" placeholder="Nom du formateur ou de l'institution" >
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-6 col-xl-4">
+                  <label>Email contact</label>
+                </div>
+                <div class="col-md-6 col-xl-8">
+                  <input type="email" class="form-control"  required formControlName="email" placeholder="Entrer l'adresse email contact" >
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-6 col-xl-4">
+                  <label>Numéro téléphone</label>
+                </div>
+                <div class="col-md-6 col-xl-8">
+                  <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
+                </div>
+              </div>
 
               <div class="form-group row">
                 <div class="col-md-6 col-xl-4">
@@ -176,23 +212,7 @@
                 </div>
               </div>
 
-              <div class="form-group row">
-                <div class="col-md-6 col-xl-4">
-                  <label>Email contact</label>
-                </div>
-                <div class="col-md-6 col-xl-8">
-                  <input type="email" class="form-control"  required formControlName="email" placeholder="Entrer l'adresse email contact" >
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-md-6 col-xl-4">
-                  <label>Numéro téléphone</label>
-                </div>
-                <div class="col-md-6 col-xl-8">
-                  <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
-                </div>
-              </div>
+              
               <div class="form-group row">
                 <div class="col-md-6 col-xl-4">
                   <label>Montant du service</label>
@@ -255,7 +275,7 @@
 
 <!-- Modal FORM FOR ADD COACHING SESSION -->
 <ng-template #addSession let-modal>
-  <div class="modal-header" style="background-color:#F45B3A !important;">
+  <div class="modal-header" >
     Ajouter une session
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -339,6 +359,42 @@
                     <input type="date" class="form-control"required formControlName="dateLimiteDenregistrement">
                   </div>
                 </div>
+                <div class="form-group row">
+                  <div class="col-md-6 col-xl-4">
+                    <label>Frequence de deroulement</label>
+                  </div>
+                  <div class="col-md-6 col-xl-8">
+                    <select formControlName="frequency" class="form-control" required  >
+                      <option value="">-- Choisir une frequence de deroulement --</option>
+                      <option value="{{item}}" *ngFor="let item of frequencies">{{item}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-6 col-xl-4">
+                    <label>Nom du formateur ou de l'institution</label>
+                  </div>
+                  <div class="col-md-6 col-xl-8">
+                    <input type="text" class="form-control"  required formControlName="builderName" placeholder="Nom du formateur ou de l'institution" >
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-6 col-xl-4">
+                    <label>Email contact</label>
+                  </div>
+                  <div class="col-md-6 col-xl-8">
+                    <input type="email" class="form-control"  required formControlName="email" placeholder="Entrer l'adresse email contact" >
+                  </div>
+                </div>
+  
+                <div class="form-group row">
+                  <div class="col-md-6 col-xl-4">
+                    <label>Numéro téléphone</label>
+                  </div>
+                  <div class="col-md-6 col-xl-8">
+                    <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
+                  </div>
+                </div>
   
                 <div class="form-group row">
                   <div class="col-md-6 col-xl-4">
@@ -361,25 +417,7 @@
                       <option value="{{item}}" *ngFor="let item of communes">{{item}}</option>
                     </select>
                   </div>
-                </div>
-  
-                <div class="form-group row">
-                  <div class="col-md-6 col-xl-4">
-                    <label>Email contact</label>
-                  </div>
-                  <div class="col-md-6 col-xl-8">
-                    <input type="email" class="form-control"  required formControlName="email" placeholder="Entrer l'adresse email contact" >
-                  </div>
-                </div>
-  
-                <div class="form-group row">
-                  <div class="col-md-6 col-xl-4">
-                    <label>Numéro téléphone</label>
-                  </div>
-                  <div class="col-md-6 col-xl-8">
-                    <input type="text" class="form-control"required formControlName="phone" placeholder="numéro de téléphone" >
-                  </div>
-                </div>
+                </div>             
                 <div class="form-group row">
                   <div class="col-md-6 col-xl-4">
                     <label>Montant du service</label>
@@ -443,8 +481,8 @@
 
 <!-------------------------------------------------------DELETE COACHING START------------------------------------------------------------>
 <ng-template #contentDelete let-modal>
-  <div class="modal-header dark-modal" style="background-color:#F45B3A !important;">
-    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+  <div class="modal-header dark-modal" >
+    <h4 class="modal-title" >Confirmation de Suppression!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -454,7 +492,7 @@
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-  <div class="modal-footer" style="background-color:#F45B3A !important;">
+  <div class="modal-footer" >
     <div class="row">
       <!-- <div class="col-md-4 "></div> -->
       <div class="col-md-4 ">

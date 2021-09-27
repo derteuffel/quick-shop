@@ -47,6 +47,7 @@ export class AdminRootHome implements OnInit {
   public details: boolean = false;
   provinces: string[];
   communes: string[];
+  code: string;
 
   isClient: boolean;
   isValid: boolean = false;
@@ -72,6 +73,7 @@ export class AdminRootHome implements OnInit {
     console.log(this.authService.currentUserValue.role);
   this.categories = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
   'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges','Education'];
+  
     this.measures = ['KG','L', 'Btl', 'Pc','Sac','Prest']
     this.loadList();
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
@@ -98,91 +100,111 @@ export class AdminRootHome implements OnInit {
     switch(this.productForm.get('category').value){
       case 'Produit agricole':{
         this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre'];
+        this.code = 'BM1';
         break;
       }
       case 'Energie':{
         this.names = ['Installation des systemes d\'electricite','Paiement des factures d\'electricite','Conter un electricien','Acheter un generateur','Acheter du Gaz','Recharge gaz','Acheter du charbon'];
+        this.code = 'BM2';
         break;
       }
       case 'Secteur Agroalimentaire':{
         this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Jus','Lait','Yaourt','Pate de tomate','Confiture','Miel','Huile de palm'];
+        this.code = 'BM3';
         break;
       }
 
       case 'Betails':{
         this.names = ['Porc', 'Chevre','Lapins','Vaches','Poulets'];
+        this.code = 'BM4';
         break;
       }
 
       case 'Peches':{
         this.names = ['Capitain','Tilapia','Sangala','Mukeke','Ndagala','Kuhe','Ndagala fume'];
+        this.code = 'BM5';
         break;
       }
       case 'Telephone portable':{
         this.names = ['Telephone portable', 'Smart phone'];
+        this.code = 'BM6';
         break;
       }
 
       case 'Bags':{
         this.names = ['Sacs de classe','Sacs a main','Valises','Sacs de sports'];
+        this.code = 'BM7';
         break;
       }
       case 'Services de reparation':{
         this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Reparation Bateaux','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
+        this.code = 'BM8';
         break;
       }
 
       case 'Charpenterie':{
         this.names = ['Chaise de salon','Chaise de salle a mange','Table d\'etude','Table de salon','Table salle a mange','Bureau pour Enseignant','Placard a vetement','Armoire de salon','Etagere a livres'];
+        this.code = 'BM9';
         break;
       }
 
       case 'Salon de beaute':{
         this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe','Maquillage','Pedicure','Manucure'];
+        this.code = 'BM10';
         break;
       }
       case 'Couture':{
         this.names = ['Tissus costume (Achat)','Kitenges (Achat)','Imvutano (Achat)','Tissus costume (Couture)','Kitenges (Couture)','Pantalon (Couture)','Jupe (Couture)','Chemise (Couture)','Culotte (Couture)'];
+        this.code = 'BM11';
         break;
       }
       case 'Services culturel et social' :{
         this.names = ['Plannification d\'evenement','Decoration evenementiel','Maitre de ceremonie','Traducteur'];
+        this.code = 'BM12';
         break;
       }
 
       case 'Performance musicales' :{
         this.names = ['Tambourinaire','Groupe acoustique','Groupe d\'interprete','Chorale','Deejay','Guitariste','Violon','Pianiste','Quatuor','Orchestre','Solo','Autre'];
+        this.code = 'BM13';
         break;
       }
 
       case 'Danse':{
         this.names = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
+        this.code = 'BM14';
         break;
       }
       case 'Video production':{
         this.names = ['Publicites','Documentaires','Evennementielle','Vlog', 'Autres'];
+        this.code = 'BM15';
         break;
       }
       case 'Performance theatrales':{
         this.names = ['Pieces','Sketches','Publicites','Commedies musicales','Paroles','Narrateur et conteur', 'Autres'];
+        this.code = 'BM16';
         break;
       }
 
       case 'Peintures':{
         this.names = ['Paysages','Portrait','Abstraite', 'Autres'];
+        this.code = 'BM17';
         break;
       }
       case 'Photographie':{
         this.names = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
+        this.code = 'BM18';
         break;
       }
 
       case 'Achats des pieces de rechanges':{
         this.names = ['Motocyle', 'Vehicules', 'Camions'];
+        this.code = 'BM19';
         break;
       }
       case 'Education':{
         this.names = ['Cours du soir'];
+        this.code = 'BM20';
         break;
       }
     }
@@ -328,6 +350,7 @@ export class AdminRootHome implements OnInit {
       devise: new FormControl(''),
       commune: new FormControl(''),
       measure: new FormControl(''),
+      sector: new FormControl(''),
       category: new FormControl(''),
       description: new FormControl(''),
       pictureUrl: new FormControl(null),
@@ -368,6 +391,8 @@ export class AdminRootHome implements OnInit {
     formData.append('devise', this.productForm.get('devise').value);
     formData.append('description', this.productForm.get('description').value);
     formData.append('measure', this.productForm.get('measure').value);
+    formData.append('code',this.code);
+    formData.append('sector', this.productForm.get('sector').value);
 
       formData.append('file', this.uploadedFile);
       console.log(formData);
@@ -423,6 +448,7 @@ export class AdminRootHome implements OnInit {
       province: event.province,
       commune: event.commune,
       devise: event.devise,
+      sector: event.sector,
       description: event.description,
       measure: event.measure,
       pictureUrl: event.pictureUrl
@@ -441,6 +467,8 @@ export class AdminRootHome implements OnInit {
     formData.append('devise', this.productForm.get('devise').value);
     formData.append('description', this.productForm.get('description').value);
     formData.append('measure', this.productForm.get('measure').value);
+    formData.append('sector', this.productForm.get('sector').value);
+    formData.append('code', this.code);
     formData.append('file', this.uploadedFile);
       formData.append('pictureUrl', this.productForm.get('pictureUrl').value);
     if(this.isEmpty(this.uploadedFile)){

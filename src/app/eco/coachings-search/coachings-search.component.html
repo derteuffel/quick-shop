@@ -109,19 +109,23 @@
                   <dd><p>{{currentCoaching.description}} </p></dd>
                 </dl>
                 <dl class="row">
+                  <dt class="col-sm-4">Code :</dt>
+                  <dd class="col-sm-8">{{currentCoaching?.code}}</dd>
                   <dt class="col-sm-4">Date debut :</dt>
                   <dd class="col-sm-8">{{currentCoaching.startDate}}</dd>
                   <dt class="col-sm-4">Date fin :</dt>
                   <dd class="col-sm-8">{{currentCoaching.dateFinFormation}}</dd>
                   <dt class="col-sm-4">Date limite d'enregistrement :</dt>
                   <dd class="col-sm-8">{{currentCoaching.dateLimiteDenregistrement}}</dd>
+                  <dt class="col-sm-4">Frequence de deroulement :</dt>
+                  <dd class="col-sm-8">{{currentCoaching.frequency}}</dd>
                   <dt class="col-sm-4">Province :</dt>
                   <dd class="col-sm-8">{{currentCoaching.province}}</dd>
         
                   <dt class="col-sm-4">Commune :</dt>
                   <dd class="col-sm-8">{{currentCoaching.commune}}</dd>
-                  <dt class="col-sm-4">Encadreur/coach :</dt>
-                  <dd class="col-sm-8">{{currentCoaching.user.username}}</dd>
+                  <dt class="col-sm-4">Encadreur/Coach/Institution :</dt>
+                  <dd class="col-sm-8">{{currentCoaching.builderName}}</dd>
                   <dt class="col-sm-4">Telephone :</dt>
                   <dd class="col-sm-8">{{currentCoaching.user.phone}}</dd>
         

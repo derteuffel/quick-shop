@@ -25,6 +25,8 @@ export class LoansInputsComponent implements OnInit {
   searchItem: string;
   categories: string[];
   names: string[];
+  frequencies: string[];
+  countries: string[];
   public submitted: boolean = false;
   public sessionSubmitted: boolean = false;
   public currentLoans;
@@ -41,22 +43,23 @@ export class LoansInputsComponent implements OnInit {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+    this.frequencies = ['Hebdommadaire','Mensuelle','Trimestrielle','Semestrielle','Annuelle'];
     this.categories = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
-    'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges','Education'];
+    'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges','Education'];   
     this.loadData();
     this.initForm();
   }
 
+
   initForm() {
     this.form = new FormGroup({
-      id: new FormControl(''),
-      province: new FormControl(''),
-      commune: new FormControl(''),
+      
       amount:  new FormControl(''),
+      country: new FormControl(''),
       fullName:  new FormControl(''),
       email:  new FormControl(''),
       phone: new FormControl(''),
-      idNumber: new FormControl(''),
+      frequency: new FormControl(''),
       paymentMethod: new FormControl(''),
       duration: new FormControl(''),
       sector: new FormControl(''),
@@ -202,20 +205,19 @@ export class LoansInputsComponent implements OnInit {
   }
 
   onSubmit(){
-    this.signupInfo = new CustomerInfo(
-      '',
-      '',
-      '',
-      '',
-      '',
-      this.form.get('devise').value,
-      '',
-      this.form.get('amount').value+'',
-      '',
-      this.form.get('duration').value,
-      this.form.get('sector').value);
-      
-    this.microfinancementService.saveFinance(this.signupInfo,this.form.get('name').value).subscribe(
+
+    const data = {
+      devise: this.form.get('devise').value,
+      amount: this.form.get('amount').value,
+      duration: this.form.get('duration').value,
+      sector: this.form.get('sector').value,
+      frequency: this.form.get('frequency').value,
+      country: this.form.get('country').value,
+      phone: this.form.get('phone').value,
+      name: this.form.get('name').value
+    }
+          
+    this.microfinancementService.saveFinance(data,this.form.get('name').value).subscribe(
       data => {
         console.log(data);
         this.messageService.add({severity:'success', summary:'Success', detail:'votre demande a été  soumisse, veillez verifier votre boite email', sticky: true});
