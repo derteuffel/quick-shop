@@ -34,7 +34,7 @@ this.init();
 namesSelector(){
   switch(this.produitForm.get('category').value){
     case 'Produit agricole':{
-      this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre'];
+      this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre','Tomates','Piments','Boite de the','Boite de the au lemon','Boite de the a la fraise'];
       break;
     }
     case 'Energie':{
