@@ -332,7 +332,7 @@ selectorOrder(){
    onBuy(id){
      const data = {
   
-      clientPhone: '+2439'+this.buyForm.get('phone').value,
+      clientPhone: '+257'+this.buyForm.get('phone').value,
       produit: false,
       coaching: true
      };
