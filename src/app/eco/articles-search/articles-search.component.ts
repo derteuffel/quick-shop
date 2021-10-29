@@ -12,6 +12,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommandeService } from 'src/app/services/commande.service';
 import { MessageService } from 'primeng/api';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-articles-search',
@@ -40,20 +41,29 @@ export class ArticlesSearchComponent implements OnInit {
   p: number=1;
   names: string [];
   currentProduct: any;
+  token: boolean;
   message: string;
   orderForm: FormGroup;
+  buyForm: FormGroup;
   intervalsHours: string[];
 
   constructor(
     private ecommerceService: EcommerceService,
     private activatedRoute: ActivatedRoute, private modalService: NgbModal, 
     private commandeService: CommandeService, private messageService: MessageService,
-    private router: Router) { }
+    private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
      this.activatedRoute.queryParams.subscribe(params => {
       this.navigationParams = JSON.parse(params['values']);
     });
+    if(this.authService.currentUserValue.token != null){
+      this.token = true;
+    }else{
+      this.token = false;
+    }
+    console.log(this.token);
+    console.log(this.authService.currentUserValue.token);
     this.subscription = this.ecommerceService.currentMessage.subscribe(message => this.message = message)
     this.intervalsHours = ['07:00 am - 10:00 am','10:01 am - 1:00 pm ','1:01 pm - 4:00 pm','4:01 pm - 7:00 pm'];
 
@@ -396,18 +406,64 @@ initForm(){
     quantity: new FormControl(''),
     paymentMode: new FormControl('')
   });
+
+  this.buyForm = new FormGroup(
+
+    {
+      name: new FormControl(''),
+      email: new FormControl(''),
+      province: new FormControl(''),
+      commune: new FormControl(''),
+      phone: new FormControl(''),
+      quantity: new FormControl(''),
+      lieuDeLivraison: new FormControl(''),
+      dateDeLivraison: new FormControl(''),
+      heureDeLivraison: new FormControl(''),
+      paymentMode: new FormControl('')
+    }
+  );
 }
 openModalFormulaire(contentAdd, event)  {
   this.modalService.open(contentAdd, {size: 'lg'});
   this.currentProduct = event;
  }
 
+ openModalBuy(contentBuy, event)  {
+  this.modalService.open(contentBuy, {size: 'lg'});
+  this.currentProduct = event;
+ }
+
+ onBuy(id){
+   const data = {
+
+    clientPhone: '+257'+this.buyForm.get('phone').value,
+    quantity: this.buyForm.get('quantity').value,
+    lieuDeLivraison: this.buyForm.get('lieuDeLivraison').value,
+    dateDeLivraison: this.buyForm.get('dateDeLivraison').value,
+    heureDeLivraison: this.buyForm.get('heureDeLivraison').value,
+    produit: true,
+    coaching: false
+   };
+   this.commandeService.buyCmd(data,id).subscribe(
+     data => {
+       this.buyForm.reset();
+       this.messageService.add({severity: 'success', summary: 'Success', detail: 'Votre commande a ete soumise, un mail vous a ete envoyer contenant les information de votre compte, vous serrez redirige vers la page de paiement pour finaliser votre paiement', sticky: true});
+       this.router.navigateByUrl('admin/produit/checkout/'+data.id);
+     },
+     error => {
+      let excp:string = 'https://www.jhipster.tech/problem/problem-with-message There are not enougth product for this command or you are not connected with an account com.derteuffel.springbootecommerce.services.CommandeService quantity greater than stock';
+      this.messageService.add({severity: 'error', summary: 'Error', detail: (error.error.message==excp)? 'Qauntité de produit insufusante':'Unknow error'});
+      console.log(error);
+     }
+   );
+ }
+
  onSaveSubscribe(id){
    console.log('save cliqued');
    const data = {
-     name: this.orderForm.get('name').value,
-     email: this.orderForm.get('email').value,
-     phone: '+257'+this.orderForm.get('phone').value,
+     clientName: this.orderForm.get('name').value,
+     clientEmail: this.orderForm.get('email').value,
+     clientPhone: '+257'+this.orderForm.get('phone').value,
      province: this.orderForm.get('province').value,
      commune: this.orderForm.get('commune').value,
      lieuDeLivraison: this.orderForm.get('lieuDeLivraison').value,
