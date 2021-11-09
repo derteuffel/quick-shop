@@ -137,7 +137,10 @@
                 <!-- row.// -->
                 <p>Reserver votre participation en remplissant le formulaire via le bouton ci-dessous</p>
                 <hr>
-                <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentCoaching)"> <i class="fa fa-shopping-cart"></i> Reserver</button>
+                <div class="row">
+                  <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentCoaching)"> <i class="fa fa-shopping-cart"></i> Reserver</button>
+                  <button *ngIf="token" class="btn  btn-success"  (click)="openModalBuy(contentBuy,currentCoaching)"> <i class="fa fa-cart-arrow-down fa-2x"></i>&nbsp;&nbsp; Payer directement</button>
+                </div>
                 <br>
                 <!-- short-info-wrap .// -->
               </div> <!-- card-body.// -->

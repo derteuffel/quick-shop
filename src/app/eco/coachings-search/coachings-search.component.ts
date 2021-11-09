@@ -6,6 +6,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommandeService } from 'src/app/services/commande.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-coachings-search',
@@ -26,17 +27,24 @@ export class CoachingsSearchComponent implements OnInit {
   subscribeForm: FormGroup;
   orderForm: FormGroup;
   isSelected: boolean = false;
-
+  buyForm: FormGroup;
+  token: boolean;
   serviceForm: FormGroup;
 
   constructor(private coachingService: CoachingService, private activatedRoute: ActivatedRoute,
     private messageService: MessageService, private modalService: NgbModal,
-    private commandeService: CommandeService, private router: Router) { }
+    private commandeService: CommandeService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.navigationParams = JSON.parse(params['values']);
     })
+
+    if(this.authService.currentUserValue.token != null){
+      this.token = true;
+    }else{
+      this.token = false;
+    }
     console.log(this.navigationParams);
 
       this.loadSearchedCoaching(this.navigationParams);
@@ -227,6 +235,22 @@ selectorOrder(){
       commune: new FormControl(''),
       name: new FormControl('')
     });
+
+    this.buyForm = new FormGroup(
+
+      {
+        name: new FormControl(''),
+        email: new FormControl(''),
+        province: new FormControl(''),
+        commune: new FormControl(''),
+        phone: new FormControl(''),
+        quantity: new FormControl(''),
+        lieuDeLivraison: new FormControl(''),
+        dateDeLivraison: new FormControl(''),
+        heureDeLivraison: new FormControl(''),
+        paymentMode: new FormControl('')
+      }
+    );
   }
 
 
@@ -295,6 +319,31 @@ selectorOrder(){
        province: new FormControl(''),
        commune: new FormControl('')
      });
+   }
+   openModalBuy(contentBuy, event)  {
+    this.modalService.open(contentBuy, {size: 'lg'});
+    this.currentCoaching = event;
+   }
+
+   onBuy(id){
+     const data = {
+
+      clientPhone: this.buyForm.get('phone').value,
+      produit: false,
+      coaching: true
+     };
+     this.commandeService.buyCmd(data,id).subscribe(
+       data => {
+         this.buyForm.reset();
+         this.messageService.add({severity: 'success', summary: 'Success', detail: 'Votre commande a ete soumise, un mail vous a ete envoyer contenant les information de votre compte, vous serrez redirige vers la page de paiement pour finaliser votre paiement', sticky: true});
+         this.router.navigateByUrl('admin/coaching/checkout/'+data.id);
+       },
+       error => {
+        let excp:string = 'https://www.jhipster.tech/problem/problem-with-message There are not enougth product for this command or you are not connected with an account com.derteuffel.springbootecommerce.services.CommandeService quantity greater than stock';
+        this.messageService.add({severity: 'error', summary: 'Error', detail: (error.error.message==excp)? 'Qauntité de produit insufusante':'Unknow error'});
+        console.log(error);
+       }
+     );
    }
 
   onSaveSubscribe(){

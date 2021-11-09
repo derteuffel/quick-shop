@@ -154,7 +154,10 @@
                           <!-- row.// -->
                           <p>Passez votre commande en remplissant le formulaire via le bouton ci-dessous</p>
                           <hr>
-                          <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentProduct)"> <i class="fa fa-shopping-cart"></i> Passer ma commande</button>
+                          <div class="row">
+                            <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentProduct)"> <i class="fa fa-shopping-cart"></i> Passer ma commande</button>
+                            <button *ngIf="token" class="btn  btn-success"  (click)="openModalBuy(contentBuy,currentProduct)"> <i class="fa fa-cart-arrow-down fa-2x"></i>&nbsp;&nbsp; Acheter directement</button>
+                          </div>
                           <br>
                           <!-- short-info-wrap .// -->
                         </div> <!-- card-body.// -->

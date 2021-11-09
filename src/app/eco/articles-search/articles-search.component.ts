@@ -12,6 +12,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommandeService } from 'src/app/services/commande.service';
 import { MessageService } from 'primeng/api';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-articles-search',
@@ -43,13 +44,14 @@ export class ArticlesSearchComponent implements OnInit {
   message: string;
   orderForm: FormGroup;
   buyForm: FormGroup;
+  token: boolean;
   intervalsHours: string[];
 
   constructor(
     private ecommerceService: EcommerceService,
     private activatedRoute: ActivatedRoute, private modalService: NgbModal, 
     private commandeService: CommandeService, private messageService: MessageService,
-    private router: Router) { }
+    private router: Router,private authService: AuthService) { }
 
   ngOnInit(): void {
      this.activatedRoute.queryParams.subscribe(params => {
@@ -58,6 +60,11 @@ export class ArticlesSearchComponent implements OnInit {
     this.subscription = this.ecommerceService.currentMessage.subscribe(message => this.message = message)
     this.intervalsHours = ['07:00 am - 10:00 am','10:01 am - 1:00 pm ','1:01 pm - 4:00 pm','4:01 pm - 7:00 pm'];
 
+    if(this.authService.currentUserValue.token != null){
+      this.token = true;
+    }else{
+      this.token = false;
+    }
     this.types = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
   'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges','Education'];
     // this.navigationParams = this.localisation.getState();
