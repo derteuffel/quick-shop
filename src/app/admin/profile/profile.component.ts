@@ -167,7 +167,7 @@ export class ProfileComponent implements OnInit {
       //id: this.updateProfileForm.get('id').value,
       email: this.updateProfileForm.get('email').value,
       username: this.updateProfileForm.get('username').value,
-      phone: '+257'+this.updateProfileForm.get('phone').value,
+      phone: this.updateProfileForm.get('phone').value,
       fullName: this.updateProfileForm.get('fullName').value,
       secteurActivite: this.updateProfileForm.get('secteurActivite').value,
       location: this.updateProfileForm.get('province').value+', '+this.updateProfileForm.get('commune').value,

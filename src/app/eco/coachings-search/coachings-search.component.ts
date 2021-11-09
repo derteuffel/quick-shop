@@ -332,7 +332,7 @@ selectorOrder(){
    onBuy(id){
      const data = {
   
-      clientPhone: '+257'+this.buyForm.get('phone').value,
+      clientPhone: this.buyForm.get('phone').value,
       produit: false,
       coaching: true
      };
@@ -354,7 +354,7 @@ selectorOrder(){
     const formData =  {
       clientName: this.subscribeForm.get('name').value,
       email: this.subscribeForm.get('email').value,
-      clientPhone: '+257'+this.subscribeForm.get('phone').value,
+      clientPhone: this.subscribeForm.get('phone').value,
       province: this.subscribeForm.get('province').value,
       commune: this.subscribeForm.get('commune').value,
       coaching: true,

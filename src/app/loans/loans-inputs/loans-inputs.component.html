@@ -40,8 +40,8 @@
               <tbody>
               <tr *ngFor="let item of lists | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: p}">
                 
-                <td>{{item.fullName}}</td>
-                <td>{{item.phone}}</td>
+                <td>{{item.user.fullName}}</td>
+                <td>{{item.user.phone}}</td>
                 <td> {{item.amount+' '+item.devise}} </td>
                 <td> {{item.paymentMode}} </td>
                 <td *ngIf="item.status" class="alert-succes">Paiement effectuer  </td>
@@ -152,7 +152,7 @@
                 <input type="text" class="form-control" required formControlName="country" placeholder="Votre pays">
               </div>
               <div class="form-group">
-                <label>Telephone(+code 00000000000)</label>
+                <label>Telephone (Entrer votre telephone avec le code du pays +243 97XXXXXXX)</label>
                 <input type="text" class="form-control" required formControlName="phone" placeholder="Votre telephone (+237 694126158)">
               </div>
               <div class="form-group">
@@ -191,8 +191,8 @@
 
 <!-------------------------------------------------------DELETE COACHING START------------------------------------------------------------>
 <ng-template #contentDelete let-modal>
-  <div class="modal-header dark-modal" style="background-color:#F45B3A;">
-    <h4 class="modal-title" style="color:whitesmoke">Confirmation de Suppression!</h4>
+  <div class="modal-header dark-modal" >
+    <h4 class="modal-title" >Confirmation de Suppression!</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -202,7 +202,7 @@
   </div>
   <!--<hr class="my-4" style="background-color: salmon;" />-->
 
-  <div class="modal-footer" style="background-color:#F5B669;">
+  <div class="modal-footer" >
     <div class="row">
       <!-- <div class="col-md-4 "></div> -->
       <div class="col-md-4 ">

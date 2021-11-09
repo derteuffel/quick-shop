@@ -4,14 +4,12 @@ import {Role} from "./models/role";
 import {AuthGuard} from "./auth/auth.guard";
 import {EcommerceComponent} from "./eco/ecommerce/ecommerce.component";
 import {DetailProductComponent} from "./eco/product/detail-product/detail-product.component";
-
 import {CommandeComponent} from "./admin/commande/commande/commande.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./auth/register/register.component";
 import {SingupComponent} from "./auth/singup/singup.component";
 import {ArticlesComponent} from "./eco/articles/articles.component";
 import {CoachingsComponent} from "./eco/coachings/coachings.component";
-import {CoachingDetailComponent} from "./eco/coachings/coaching-detail/coaching-detail.component";
 import {MicrofinanceComponent} from "./eco/microfinance/microfinance.component";
 import {MicrofinanceDetailComponent} from "./eco/microfinance/microfinance-detail/microfinance-detail.component";
 import { ArticlesSearchComponent } from './eco/articles-search/articles-search.component';
@@ -115,9 +113,6 @@ const routes: Routes = [
   },
   {
     path: 'ecommerce/product/detail/:id', component: DetailProductComponent
-  },
-  {
-    path: 'ecommerce/coaching/detail/:id', component: CoachingDetailComponent
   },
   {
     path: 'admin/coaching/checkout/:id', component: CoachingCheckoutComponent,

@@ -436,7 +436,7 @@ openModalFormulaire(contentAdd, event)  {
  onBuy(id){
    const data = {
 
-    clientPhone: '+257'+this.buyForm.get('phone').value,
+    clientPhone: this.buyForm.get('phone').value,
     quantity: this.buyForm.get('quantity').value,
     lieuDeLivraison: this.buyForm.get('lieuDeLivraison').value,
     dateDeLivraison: this.buyForm.get('dateDeLivraison').value,
@@ -463,7 +463,7 @@ openModalFormulaire(contentAdd, event)  {
    const data = {
      clientName: this.orderForm.get('name').value,
      clientEmail: this.orderForm.get('email').value,
-     clientPhone: '+257'+this.orderForm.get('phone').value,
+     clientPhone: this.orderForm.get('phone').value,
      province: this.orderForm.get('province').value,
      commune: this.orderForm.get('commune').value,
      lieuDeLivraison: this.orderForm.get('lieuDeLivraison').value,

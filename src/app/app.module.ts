@@ -43,7 +43,6 @@ import {AdminFooterComponent} from "./admin/admin-footer/admin-footer.component"
 import {AdminSidebarComponent} from "./admin/admin-sidebar/admin-sidebar.component";
 import { ArticlesComponent } from './eco/articles/articles.component';
 import { CoachingsComponent } from './eco/coachings/coachings.component';
-import { CoachingDetailComponent } from './eco/coachings/coaching-detail/coaching-detail.component';
 import { LoansRequestComponent } from './loans/loans-request/loans-request.component';
 import { MicrofinanceDetailComponent } from './eco/microfinance/microfinance-detail/microfinance-detail.component';
 import { MicrofinanceComponent } from './eco/microfinance/microfinance.component';
@@ -117,7 +116,6 @@ import { GlobalErrorsService } from './services/global-errors.service';
     ArticlesComponent,
     CoachingsComponent,
     CoachingsSearchComponent,
-    CoachingDetailComponent,
     LoansRequestComponent,
     MicrofinanceDetailComponent,
     MicrofinanceComponent,

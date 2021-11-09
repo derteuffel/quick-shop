@@ -156,7 +156,7 @@
                           <hr>
                           <div class="row">
                             <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentProduct)"> <i class="fa fa-shopping-cart"></i> Passer ma commande</button>
-                            <button *ngIf="token" class="btn  btn-success"  (click)="openModalBuy(contentBuy,currentProduct)"> <i class="fa fa-cart-arrow-down fa-2x"></i>&nbsp;&nbsp; Acheter directement</button>
+                            <!-- <button *ngIf="token" class="btn  btn-success"  (click)="openModalBuy(contentBuy,currentProduct)"> <i class="fa fa-cart-arrow-down fa-2x"></i>&nbsp;&nbsp; Acheter directement</button> -->
                           </div>
                           <br>
                           <!-- short-info-wrap .// -->
@@ -233,8 +233,8 @@
           </div>
 
           <div class="form-group">
-            <label>Numéro téléphone (8-Digits  00000000)</label>
-            <input type="text" formControlName="phone" pattern="[0-9]{8}" class="form-control" placeholder="Entrer votre numero de telephone">
+            <label>Numéro téléphone (Entrer votre telephone avec le code du pays +243 97XXXXXXX)</label>
+            <input type="text" formControlName="phone"  class="form-control" placeholder="Entrer votre numero de telephone">
           </div>
 
           <div class="form-group">
@@ -282,8 +282,8 @@
     <form [formGroup]="buyForm" (submit)="onBuy(currentProduct.id)">
       <h2>Payez directement votre produit</h2>
           <div class="form-group">
-            <label>Numéro téléphone (8-Digits 00000000)</label>
-            <input type="text" formControlName="phone" pattern="[0-9]{8}" class="form-control" placeholder="Entrer votre numero de telephone">
+            <label>Numéro téléphone (Entrer votre telephone avec le code du pays +243 97XXXXXXX)</label>
+            <input type="text" formControlName="phone" class="form-control" placeholder="Entrer votre numero de telephone">
           </div>
 
           <div class="form-group">
