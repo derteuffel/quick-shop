@@ -332,11 +332,7 @@ selectorOrder(){
    onBuy(id){
      const data = {
   
-<<<<<<< HEAD
-      clientPhone: this.buyForm.get('phone').value,
-=======
       clientPhone: '+2439'+this.buyForm.get('phone').value,
->>>>>>> parent of e3217f7 (change value)
       produit: false,
       coaching: true
      };
