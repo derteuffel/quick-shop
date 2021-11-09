@@ -137,11 +137,7 @@
                 <!-- row.// -->
                 <p>Reserver votre participation en remplissant le formulaire via le bouton ci-dessous</p>
                 <hr>
-                <div class="row">
-                  <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentCoaching)"> <i class="fa fa-shopping-cart"></i> Reserver</button>
-                  <button *ngIf="token" class="btn  btn-success"  (click)="openModalBuy(contentBuy,currentCoaching)"> <i class="fa fa-cart-arrow-down fa-2x"></i>&nbsp;&nbsp; Payer directement</button>
-                </div>
-                
+                <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentCoaching)"> <i class="fa fa-shopping-cart"></i> Reserver</button>
                 <br>
                 <!-- short-info-wrap .// -->
               </div> <!-- card-body.// -->
@@ -191,8 +187,8 @@
       </div>
 
       <div class="form-group">
-        <label>Numéro téléphone (Entrer votre telephone avec le code du pays +243 97XXXXXXX)</label>
-        <input type="text" formControlName="phone"  class="form-control" placeholder="Entrer votre numero de telephone">
+        <label>Numéro téléphone</label>
+        <input type="text" formControlName="phone" pattern="[0-9]{8}" class="form-control" placeholder="Entrer votre numero de telephone">
       </div>
       <div class="form-group col-md-6 col-xl-3">
         <select formControlName="province" class="form-control" >

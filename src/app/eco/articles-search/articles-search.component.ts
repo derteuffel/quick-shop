@@ -12,7 +12,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommandeService } from 'src/app/services/commande.service';
 import { MessageService } from 'primeng/api';
-import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-articles-search',
@@ -41,7 +40,6 @@ export class ArticlesSearchComponent implements OnInit {
   p: number=1;
   names: string [];
   currentProduct: any;
-  token: boolean;
   message: string;
   orderForm: FormGroup;
   buyForm: FormGroup;
@@ -51,19 +49,12 @@ export class ArticlesSearchComponent implements OnInit {
     private ecommerceService: EcommerceService,
     private activatedRoute: ActivatedRoute, private modalService: NgbModal, 
     private commandeService: CommandeService, private messageService: MessageService,
-    private router: Router, private authService: AuthService) { }
+    private router: Router) { }
 
   ngOnInit(): void {
      this.activatedRoute.queryParams.subscribe(params => {
       this.navigationParams = JSON.parse(params['values']);
     });
-    if(this.authService.currentUserValue.token != null){
-      this.token = true;
-    }else{
-      this.token = false;
-    }
-    console.log(this.token);
-    console.log(this.authService.currentUserValue.token);
     this.subscription = this.ecommerceService.currentMessage.subscribe(message => this.message = message)
     this.intervalsHours = ['07:00 am - 10:00 am','10:01 am - 1:00 pm ','1:01 pm - 4:00 pm','4:01 pm - 7:00 pm'];
 
@@ -363,6 +354,14 @@ selectorOrder(){
       name: new FormControl(''),
       quantity: new FormControl('')
     });
+
+    this.buyForm = new FormGroup({
+      phone: new FormControl(''),
+      quantity: new FormControl(''),
+      dateDeLivraison: new FormControl(''),
+      lieuDeLivraison: new FormControl(''),
+      heureDeLivraison: new FormControl(''),
+    });
   }
 
  isEmpty(obj) {
@@ -406,22 +405,6 @@ initForm(){
     quantity: new FormControl(''),
     paymentMode: new FormControl('')
   });
-
-  this.buyForm = new FormGroup(
-
-    {
-      name: new FormControl(''),
-      email: new FormControl(''),
-      province: new FormControl(''),
-      commune: new FormControl(''),
-      phone: new FormControl(''),
-      quantity: new FormControl(''),
-      lieuDeLivraison: new FormControl(''),
-      dateDeLivraison: new FormControl(''),
-      heureDeLivraison: new FormControl(''),
-      paymentMode: new FormControl('')
-    }
-  );
 }
 openModalFormulaire(contentAdd, event)  {
   this.modalService.open(contentAdd, {size: 'lg'});

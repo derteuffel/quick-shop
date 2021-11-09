@@ -79,23 +79,8 @@ export class CommandeService {
     );
   }
 
-  // Payer directement une commande
-
-  buyCmd(form,id): Observable<any> {
-    console.log(form);
-    return this.http.post(`${API.COMMANDES}/admin/createOrderAndBuy/${id}`, form,{headers: this.headers}).pipe(
-      catchError(this.errorHandler)
-    );
-  }
-
   checkout(method,id): Observable<any> {
     return this.http.get(`${API.COMMANDES}/checkout/${method}/${id}`).pipe(
-      catchError(this.errorHandler)
-    );
-  }
-
-  checkoutByReserve(id): Observable<any>{
-    return this.http.get(`${API.COMMANDES}/admin/checkoutReserve/${id}`,{headers: this.headers}).pipe(
       catchError(this.errorHandler)
     );
   }
