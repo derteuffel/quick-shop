@@ -19,7 +19,7 @@
                 </select>
               </div>
               <div class="form-group col-xl-2 col-md-6">
-                <input type="number" formControlName="quantity" class="form-control" placeholder="Quantite rechercher">
+                <input type="number" (click)="setValue()" formControlName="quantity" class="form-control" placeholder="Quantite rechercher">
                 <p class="text-black">{{measure}}</p>
               </div>
               <div class="form-group col-md-6 col-xl-2">
@@ -182,6 +182,11 @@
                   </main>
                 </div>
               </div>
+              </div>
+              <div class="card p-3" *ngIf="(products.length < 1)">
+                <div class="alert alert-warning text-center">
+                  <h4>{{message}}</h4>
+                </div>
               </div>
               <!-- <div class="card-footer py-4">
                 <nav aria-label="...">

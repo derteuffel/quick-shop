@@ -31,6 +31,7 @@ export class CoachingsSearchComponent implements OnInit {
   buyForm: FormGroup;
   token: boolean;
   serviceForm: FormGroup;
+  message: string;
 
   constructor(private coachingService: CoachingService, private activatedRoute: ActivatedRoute,
     private messageService: MessageService, private modalService: NgbModal,
@@ -259,7 +260,7 @@ selectorOrder(){
     console.log('je suis la')
     switch(this.serviceForm.get('name').value){
         case 'Soutien à l\'éducation formelle':{
-          this.names = ['Tutorat à l\'école primaire','Tutorat lycée','Formation agricole moderne','Formation d\'élevage moderne','Formation EFTP','Formation en agro-alimentaire'];
+          this.names = ['Tutorat à l\'école primaire','Tutorat lycée','Formation agricole moderne','Formation d\'élevage moderne','Formation TVET','Formation en agro-alimentaire'];
             break;
         }
         case 'Opportunités de Formation individuel':{
@@ -293,6 +294,9 @@ selectorOrder(){
     this.coachingService.getAllCoachingSearch(form).subscribe(
       data => {
         this.coachings = data;
+        if(this.coachings.length<1){
+          this.message = 'There are currently no available '+form.name+' suppliers in the indicated region'
+      }
         console.log(data);
       },
       error => {
@@ -317,6 +321,9 @@ selectorOrder(){
     this.coachingService.getAllCoachingSearchBylocation(province,this.navigationParams).subscribe(
       data => {
         this.coachings = data;
+        if(this.coachings.length<1){
+          this.message = 'There are currently no available '+this.navigationParams.name+' suppliers in the indicated region'
+      }
         console.log(data);
         this.isSelected = false;
       },

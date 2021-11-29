@@ -43,27 +43,23 @@ namesSelector(){
   switch(this.produitForm.get('category').value){
     case 'Produit agricole':{
       this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Pommes de terre','Mangues'];
-      this.measure = 'Kg/Banana trunk/Bag/Watermelon/Pineaple/Mango/Bag';
       break;
     }
     case 'Charbon':{
       this.names = ['Charbon'];
-      this.measure = 'Bag';
       break;
     }
     case 'Récolte transformée':{
       this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Lait','Yaourt','Pate de tomate'];
-      this.measure = 'Kg/Liter/Cans';
       break;
     }
 
     case 'Bétail, poisson et autres produits':{
-      this.names = ['Poisson Mukeke','Poisson sangala','Poisson Kuhe','Poisson capitain','Ndagala','Ndagala fume', 'Viande de chevre','Viande de','Viande de Vaches','Poulets'];
-      this.measure = 'Kg'
+      this.names = ['Poisson Mukeke','Poisson sangala','Poisson Kuhe','Poisson capitain','Ndagala','Ndagala fume', 'Viande de chevre','Viande de Porcs','Viande de Vaches','Poulets'];
       break;
     }
 default:
-  break
+  break;
 
   }
   
@@ -71,33 +67,139 @@ default:
 }
 
 setValue(){
-  console.log(this.produitForm.get('name').value);
-  if(this.cans.includes(this.produitForm.get('name').value)){
-    this.measure = 'Cans';
-  }
-  if(this.kgs.includes(this.produitForm.get('name').value)){
-    this.measure = 'Kg';
-  }
+  
+  switch(this.produitForm.get('name').value){
+    case 'Ble':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Riz':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Haricots':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Manioc':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Mais':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Bananes':{ 
+      this.measure = 'Banana trunk';
+      break;
+    }
+    case 'Pasteques':{ 
+      this.measure = 'Pasteque';
+      break;
+    }
+    case 'Ananas':{ 
+      this.measure = 'Ananas';
+      break;
+    }
+    case 'Mangues':{ 
+      this.measure = 'Mangue';
+      break;
+    }
+    case 'Chou':{ 
+      this.measure = 'Sac';
+      break;
+    }
+    case 'Charbon':{
+      this.measure = 'Sac';
+      break;
+    }
+    case 'Farine de manioc':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Farine de ble':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Farine de mais':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Huile Vegetale (Palm)':{ 
+      this.measure = 'Litre';
+      break;
+    }
+    case 'huile Vegetale (Cacahouetes)':{ 
+      this.measure = 'Litre';
+      break;
+    }
+    case 'Huile Vegetale (Coton)':{ 
+      this.measure = 'Litre';
+      break;
+    }
+    case 'Huile Vegetale (Avocat)':{ 
+      this.measure = 'Litre';
+      break;
+    }
+    case 'Lait':{ 
+      this.measure = 'Litre';
+      break;
+    }
+    case 'Yaourt':{ 
+      this.measure = 'Litre';
+      break;
+    }
+    case 'Pate de tomate':{ 
+      this.measure = 'Cans';
+      break;
+    }
+    case 'Poisson Mukeke':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Poisson sangala':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Poisson Kuhe':{ 
+      this.measure = 'Kg';
+      break;
+    }
 
-  if(this.liters.includes(this.produitForm.get('name').value)){
-    this.measure = 'Liters';
-  }
-  if(this.pineaples.includes(this.produitForm.get('name').value)){
-    this.measure = 'Pineaple';
-  }
-  if(this.watermelons.includes(this.produitForm.get('name').value)){
-    this.measure = 'Watermelon';
-  }
+    case 'Poisson capitain':{ 
+      this.measure = 'Kg';
+      break;
+    }
 
-  if(this.bags.includes(this.produitForm.get('name').value)){
-    this.measure = 'Bags';
-  }
+    case 'Ndagala':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Ndagala fume':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Viande de chevre':{ 
+      this.measure = 'Kg';
+      break;
+    }
 
-  if(this.mangos.includes(this.produitForm.get('name').value)){
-    this.measure = 'Mangos';
-  }
-  if(this.bananasTrunk.includes(this.produitForm.get('name').value)){
-    this.measure = 'Bananas trunk';
+    case 'Viande de Porcs':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Viande de vaches':{ 
+      this.measure = 'Kg';
+      break;
+    }
+    case 'Poulets':{ 
+      this.measure = 'Kg';
+      break;
+    }
+
+   
+default:
+  break
   }
 }
 

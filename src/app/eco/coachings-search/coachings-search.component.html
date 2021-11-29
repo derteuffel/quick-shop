@@ -57,7 +57,7 @@
       </div>
     </div>
     <br>&nbsp;
-    <div class="row">
+    <div class="row" *ngIf="(coachings.length)>0">
       <div class="col-xl-4 col-md-6 col-12" style="overflow-y:scroll; height: 500px;">
         <div class="card-header alert alert-info my-2">
           <h2>Liste des formations retrouver</h2> 
@@ -200,6 +200,11 @@
             </div> <!-- col.// -->
           </div> <!-- row.// -->
         </main>
+      </div>
+    </div>
+    <div class="card p-3" *ngIf="(coachings.length < 1)">
+      <div class="alert alert-warning text-center">
+        <h4>{{message}}</h4>
       </div>
     </div>
     <hr>

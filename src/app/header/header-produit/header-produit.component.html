@@ -1,5 +1,5 @@
 <!-- Header -->
-<header class="header shop">
+<header class="header shop mb-5">
     <div class="middle-inner">
       <div class="container">
           <div class="search-bar-top">
@@ -18,7 +18,7 @@
                   </select>
                 </div>
                 <div class="form-group col-xl-2 col-md-6 col-12" style="display: inline-block;">
-                  <input type="number"  class="form-control search-slt" formControlName="quantity" placeholder="Quantite">
+                  <input type="number" (click)="setValue()"  class="form-control search-slt" formControlName="quantity" placeholder="Quantite">
                   <p class="text-black">{{measure}}</p>
                 </div>
                 <div class="form-group col-md-6 col-xl-2 col-12">

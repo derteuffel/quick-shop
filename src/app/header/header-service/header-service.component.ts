@@ -113,7 +113,7 @@ this.init();
     console.log('je suis la')
     switch(this.serviceForm.get('name').value){
         case 'Soutien à l\'éducation formelle':{
-          this.names = ['Tutorat à l\'école primaire','Tutorat lycée','Formation agricole moderne','Formation d\'élevage moderne','Formation EFTP','Formation en agro-alimentaire'];
+          this.names = ['Tutorat à l\'école primaire','Tutorat lycée','Formation agricole moderne','Formation d\'élevage moderne','Formation TVET','Formation en agro-alimentaire'];
             break;
         }
         case 'Opportunités de Formation individuel':{
