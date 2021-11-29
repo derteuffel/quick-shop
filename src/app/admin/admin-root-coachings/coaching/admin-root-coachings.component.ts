@@ -34,6 +34,7 @@ export class AdminRootCoachingsComponent implements OnInit {
   boutiqueRef;
   code: string;
   frequencies: string[];
+  names:string[];
   sessionRef
   p: number = 1;
   commune: string;
@@ -61,7 +62,7 @@ export class AdminRootCoachingsComponent implements OnInit {
     this.primengConfig.ripple = true;
     this.loadData();
     this.frequencies = ['Hebdommadaire','Mensuelle','Trimestrielle','Semestrielle','Annuelle'];
-    this.types = ['Appel avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];
+    this.types = ['Soutien à l\'éducation formelle', 'Opportunités de Formation individuel', 'Opportunités de Formation de groupe'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
   }
@@ -77,6 +78,7 @@ export class AdminRootCoachingsComponent implements OnInit {
       province: new FormControl(''),
       commune: new FormControl(''),
       builderName: new FormControl(''),
+      category: new FormControl(''),
       email: new FormControl(''),
       amount: new FormControl(''),
       devise: new FormControl(''),
@@ -178,44 +180,22 @@ export class AdminRootCoachingsComponent implements OnInit {
 selectorCode(){
   console.log('je suis la')
   switch(this.form.get('type').value){
-      case 'Appel avec un coach':{
+      case 'Soutien à l\'éducation formelle':{
+        this.names = ['Tutorat à l\'école primaire','Tutorat lycée','Formation agricole moderne','Formation d\'élevage moderne','Formation EFTP','Formation en agro-alimentaire'];
           this.code = 'CM1'
           break;
       }
-      case 'Coaching en ligne':{
-          this.code = 'CM1';
-          break;
-      }
-      case 'Réunion de coaching en personne':{
-          this.code = 'CM1';
-          break
-      }
-
-      case 'Réunion de consultation en personne': {
+      case 'Opportunités de Formation individuel':{
+        this.names =['Réunion de consultation/coaching en personne','Formation en ligne'];
           this.code = 'CM2';
           break;
       }
-      case 'Atelier': {
+      case 'Opportunités de Formation de groupe':{
+        this.names = ['Visite d\'échange','Atelier/Formation/Programme de bourses','Conference'];
           this.code = 'CM3';
-          break;
+          break
       }
 
-      case 'Formation':{
-          this.code = 'CM3';
-          break;
-      }
-      case 'Conférence':{
-          this.code = 'CM3';
-          break;
-      }
-      case 'Programme de bourse':{
-          this.code = 'CM4';
-          break;
-      }
-      case 'Visite d\'échange':{
-          this.code ='CM4';
-          break;
-      }
       default :{
         break
       }
@@ -265,7 +245,7 @@ selectorCode(){
     formData.append('commune',this.form.get('commune').value);
     formData.append('builderName', this.form.get('builderName').value);
     formData.append('startDate', startDate);
-    formData.append('type', this.form.get('type').value);
+    formData.append('type', this.form.get('type').value+' : '+this.form.get('category').value);
     formData.append('dateFinFormation', this.form.get('dateFinFormation').value);
     formData.append('dateLimiteDenregistrement', endSubscribeDate);
     formData.append('code', this.code);
@@ -377,7 +357,7 @@ selectorCode(){
     formData.append('province', this.form.get('province').value);
     formData.append('commune',this.form.get('commune').value);
     formData.append('startDate', startDate);
-    formData.append('type', this.form.get('type').value);
+    formData.append('type', this.form.get('type').value+' : '+ this.form.get('category').value);
     formData.append('dateFinFormation', endDate);
     formData.append('builderName', this.form.get('builderName').value);
     formData.append('code', this.code);

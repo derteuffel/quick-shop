@@ -7,7 +7,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" routerLinkActive="active"  href="/admin/home">
-      <img src="./assets/images/items/cmobile.png" class="navbar-brand-img"  alt="...">
+      <span>Yesb <br>Inspire</span>  
     </a>
     <!-- Collapse -->
     <div class="collapse navbar-collapse"  [ngbCollapse]="isCollapsed" id="sidenav-collapse-main">
@@ -26,7 +26,7 @@
             <i class="ni ni-books"></i> Coachings et Encadrements
           </a>
         </li>
-        <li *ngIf="isAdmin" class="nav-item">
+        <!-- <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link" href="/admin/loans/inputs">
             <i class="ni ni-money-coins"></i> Investissements
           </a>
@@ -45,7 +45,7 @@
           <a class="nav-link" href="/loans/requests">
             <i class="fa fa-bars"></i> Mes demandes de financements
           </a>
-        </li>
+        </li> -->
 
         <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link"  href="/admin/configurations/account">

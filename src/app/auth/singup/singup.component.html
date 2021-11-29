@@ -6,60 +6,60 @@
     <div class="container">
       <div class="card-header alert alert-info py-4">
         <div class="row mx-4 " *ngIf="isEntrepreneur">
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getEntrepreneurForm()">
+          <div class="form-group col-12 col-md-6 col-xl-4" (click)="getEntrepreneurForm()">
             <label style="font-size: 20px;">Entrepreneur&nbsp;&nbsp;</label>
             <input type="radio" checked>
           </div>
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getCoachingForm()">
-            <label style="font-size: 20px;">Encadreur&nbsp;&nbsp;</label>
+          <div class="form-group col-12 col-md-6 col-xl-4" (click)="getCoachingForm()">
+            <label style="font-size: 20px;">Encadrement&nbsp;&nbsp;</label>
             <input type="radio" >
           </div>
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getLoansForm()">
-            <label style="font-size: 20px;">Apprenant&nbsp;&nbsp;</label>
+          <div class="form-group col-12 col-md-6 col-xl-4" (click)="getLoansForm()">
+            <label style="font-size: 20px;">Demandeur&nbsp;&nbsp;</label>
             <input type="radio" >
           </div>
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getInvestorForm()">
+          <!-- <div class="form-group col-12 col-md-6 col-xl-3" (click)="getInvestorForm()">
             <label style="font-size: 20px;">Investisseur&nbsp;&nbsp;</label>
             <input type="radio" >
-          </div>
+          </div> -->
         </div>
         <div class="row mx-4 " *ngIf="isCoaching">
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getEntrepreneurForm()">
+          <div class="form-group col-12 col-md-6 col-xl-4" (click)="getEntrepreneurForm()">
             <label style="font-size: 20px;">Entrepreneur&nbsp;&nbsp;</label>
             <input type="radio" >
           </div>
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getCoachingForm()">
-            <label style="font-size: 20px;">Encadreur&nbsp;&nbsp;</label>
+          <div class="form-group col-12 col-md-6 col-xl-4" (click)="getCoachingForm()">
+            <label style="font-size: 20px;">Encadrement&nbsp;&nbsp;</label>
             <input type="radio" checked>
           </div>
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getLoansForm()">
-            <label style="font-size: 20px;">Apprenant&nbsp;&nbsp;</label>
+          <div class="form-group col-12 col-md-6 col-xl-4" (click)="getLoansForm()">
+            <label style="font-size: 20px;">Demandeur&nbsp;&nbsp;</label>
             <input type="radio" >
           </div>
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getInvestorForm()">
+          <!-- <div class="form-group col-12 col-md-6 col-xl-3" (click)="getInvestorForm()">
             <label style="font-size: 20px;">Investisseur&nbsp;&nbsp;</label>
             <input type="radio" >
-          </div>
+          </div> -->
         </div>
-        <div class="row mx-4 " *ngIf="isInvestor">
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getEntrepreneurForm()">
+        <div class="row mx-4 " *ngIf="isLoans">
+          <div class="form-group col-12 col-md-6 col-xl-4" (click)="getEntrepreneurForm()">
             <label style="font-size: 20px;">Entrepreneur&nbsp;&nbsp;</label>
             <input type="radio" >
           </div>
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getCoachingForm()">
-            <label style="font-size: 20px;">Encadreur&nbsp;&nbsp;</label>
+          <div class="form-group col-12 col-md-6 col-xl-4" (click)="getCoachingForm()">
+            <label style="font-size: 20px;">Encadrement&nbsp;&nbsp;</label>
             <input type="radio" >
           </div>
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getLoansForm()">
-            <label style="font-size: 20px;">Apprenant&nbsp;&nbsp;</label>
-            <input type="radio" >
-          </div>
-          <div class="form-group col-12 col-md-6 col-xl-3" (click)="getInvestorForm()">
-            <label style="font-size: 20px;">Investisseur&nbsp;&nbsp;</label>
+          <div class="form-group col-12 col-md-6 col-xl-4" (click)="getLoansForm()">
+            <label style="font-size: 20px;">Demandeur&nbsp;&nbsp;</label>
             <input type="radio" checked>
           </div>
+          <!-- <div class="form-group col-12 col-md-6 col-xl-3" (click)="getInvestorForm()">
+            <label style="font-size: 20px;">Investisseur&nbsp;&nbsp;</label>
+            <input type="radio" >
+          </div> -->
         </div> 
-        <div class="row mx-4 " *ngIf="isLoans">
+        <!-- <div class="row mx-4 " *ngIf="isLoans">
           <div class="form-group col-12 col-md-6 col-xl-3" (click)="getEntrepreneurForm()">
             <label style="font-size: 20px;">Entrepreneur &nbsp;&nbsp;</label>
             <input type="radio" >
@@ -76,14 +76,14 @@
             <label style="font-size: 20px;">Investisseur&nbsp;&nbsp;</label>
             <input type="radio" >
           </div>
-        </div>  
+        </div>  --> 
        </div>
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div class="card mx-4">
             <div class="card-body p-4" *ngIf="isEntrepreneur">
               <form name="form" (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un entrepreneur/fournisseur</h3>
+                <h3 class="text-center" style="font-size: 32px;font-family: 'Century Gothic', 'Arial Narrow', Arial, serif;">Page d'enregistrement d'un entrepreneur/fournisseur</h3>
                 <div class="form-group">
                   <label class="text-muted">Nom complet :</label>
                 <div class="input-group mb-3">
@@ -211,7 +211,7 @@
             </div>
             <div class="card-body p-4" *ngIf="isCoaching">
               <form name="form" (ngSubmit) = "f.form.valid && onCoachingSubmit()" #f="ngForm" novalidate>
-                <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement d'un Encadreur/ coach</h3>
+                <h3 class="text-center" style="font-size: 32px;font-family: 'Century Gothic', 'Arial Narrow', Arial, serif;">Page d'enregistrement d'un Encadreur/ Institution</h3>
                 <div class="form-group">
                   <label class="text-muted">Nom complet :</label>
                 <div class="input-group mb-3">
@@ -299,12 +299,12 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="text-muted">Type d'activite :</label>
+                <label class="text-muted">Categorie :</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-vector-square"></i></span>
                   </div>
-                  <select name="secteurActivite" pla class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
+                  <select name="secteurActivite"  class="form-control" [(ngModel)]="form.secteurActivite" #secteurActivite="ngModel" id="">
                     <option value="" disabled>-- Choisissez un type d'activite --</option>
                     <option *ngFor="let item of coachingActivites" value="{{item}}">{{item}}</option>
                   </select>
@@ -323,7 +323,7 @@
                 <a href="/" class="btn btn-primary">Connectez-vous</a>
               </form>
             </div>
-            <div class="card-body p-4" *ngIf="isInvestor">
+            <!-- <div class="card-body p-4" *ngIf="isInvestor">
               <form name="form" (ngSubmit) = "f.form.valid && onInvestorSubmit()" #f="ngForm" novalidate>
                 <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement pour un investisseur</h3>
                 <div class="form-group">
@@ -431,10 +431,10 @@
                 <p>Deja un compte?</p>
                 <a href="/" class="btn btn-primary">Connectez-vous</a>
               </form>
-            </div>
+            </div> -->
             <div class="card-body p-4" *ngIf="isLoans">
               <form name="form" (ngSubmit) = "f.form.valid && onLearnerSubmit()" #f="ngForm" novalidate>
-                <h3 class="text-center" style="font-size: 32px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Page d'enregistrement pour un Apprenant</h3>
+                <h3 class="text-center" style="font-size: 32px;font-family: 'Century Gothic', 'Arial Narrow', Arial, serif;">Page d'enregistrement pour un Demandeur</h3>
                 <div class="form-group">
                   <label class="text-muted">Nom complet :</label>
                 <div class="input-group mb-3">

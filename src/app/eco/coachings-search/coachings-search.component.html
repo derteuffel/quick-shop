@@ -4,7 +4,7 @@
     <div class="middle-inner">
       <div class="container">
           <div class="search-bar-top">
-            <form [formGroup]="serviceForm" (submit)="onServiceSearch()" >
+            <form [formGroup]="serviceForm" (submit)="onServiceSearch()" >                
               <div class="row">
                 <div class="form-group col-xl-3 col-md-6">
                   <select formControlName="name" class="form-control" >
@@ -12,6 +12,12 @@
                       <option value="{{item}}" *ngFor="let item of types">{{item}}</option>
                     </select>
               </div>
+                <div class="form-group col-xl-3 col-md-6">
+                  <select formControlName="category" (click)="nameSelector()" class="form-control search-slt" >
+                      <option value="" disabled>-- Categorie --</option>
+                      <option value="{{item}}" *ngFor="let item of names">{{item}}</option>
+                    </select>
+                </div>
                 <div class="form-group col-md-6 col-xl-3">
                   <select formControlName="province" class="form-control" >
                     <option value="" disabled>-- Choisir une province --</option>
@@ -19,13 +25,13 @@
                     <option value="{{item}}" *ngFor="let item of provinces">{{item}}</option>
                   </select>
                 </div>
-                <div class="form-group col-md-6 col-xl-3">
+                <!-- <div class="form-group col-md-6 col-xl-3">
                   <select formControlName="commune" (click)="selector()" class="form-control" >
                     <option value="" disabled>-- Choisir une commune --</option>
                     <option value="" disabled>-- Liste des communes --</option>
                     <option value="{{item1}}" *ngFor="let item1 of communes">{{item1}}</option>
                   </select>
-                </div>
+                </div> -->
                 
                 <div class="top-search col-xl-3 col-md-6"><button type="submit" class="btn btn-default" ><i class="ti-search text-white"></i>&nbsp; Rechercher </button></div>
               </div>
@@ -103,8 +109,56 @@
           <div class=" no-gutters"> 
             <div class="col-sm-12">
               <div class="card-body">
+
+                <table class="table table-bordered table-responsive-md table-responsive-lg">
+                  <tr>
+                    <td>Description</td>
+                    <td>{{currentCoaching.description}}</td>
+                  </tr>
+                  <tr>
+                    <td>Code</td>
+                    <td>{{currentCoaching?.code}}</td>
+                  </tr>
+                  <tr>
+                    <td>Date de debut</td>
+                    <td>{{currentCoaching.startDate}}</td>
+                  </tr>
+                  <tr>
+                    <td>Date de fin</td>
+                    <td>{{currentCoaching.dateFinFormation}}</td>
+                  </tr>
+                  <tr>
+                    <td>Date limite d'enregistrement</td>
+                    <td>{{currentCoaching.dateLimiteDenregistrement}}</td>
+                  </tr>
+                  <tr>
+                    <td>Frequence de deroulement</td>
+                    <td>{{currentCoaching.frequency}}</td>
+                  </tr>
+                  <tr>
+                    <td>Province</td>
+                    <td>{{currentCoaching.province}}</td>
+                  </tr>
+                  <tr>
+                    <td>Commune</td>
+                    <td>{{currentCoaching.commune}}</td>
+                  </tr>
+                  <tr>
+                    <td>Encadreur/Caoch/Institution</td>
+                    <td>{{currentCoaching.builderName}}</td>
+                  </tr>
+                  <tr>
+                    <td>Contact</td>
+                    <td>Tel: {{currentCoaching.user.phone}} | Email: {{currentCoaching?.user.email}}</td>
+                  </tr>
+                  <tr>
+                    <td>Status</td>
+                    <td *ngIf="currentCoaching.status" class="badge badge-success">Disponible</td>
+                    <td *ngIf="!currentCoaching.status" class="badge badge-warning">Fermer</td>
+                  </tr>
+                </table>
                 
-                <dl>
+                <!-- <dl>
                   <dt>Description :</dt>
                   <dd><p>{{currentCoaching.description}} </p></dd>
                 </dl>
@@ -132,16 +186,15 @@
                   <dt class="col-sm-4">Status :</dt>
                   <dd class="col-sm-8 text-success" *ngIf="currentCoaching.status">Disponible</dd>
                   <dd class="col-sm-8 text-warning" *ngIf="!currentCoaching.status">Cloturer</dd>
-                </dl>
+                </dl> -->
                 <hr>
                 <!-- row.// -->
-                <p>Reserver votre participation en remplissant le formulaire via le bouton ci-dessous</p>
+                <!-- <p>Reserver votre participation en remplissant le formulaire via le bouton ci-dessous</p>
                 <hr>
                 <div class="row">
                   <button  class="btn  btn-primary"  (click)="openModalFormulaire(contentAdd,currentCoaching)"> <i class="fa fa-shopping-cart"></i> Reserver</button>
                   <button *ngIf="token" class="btn  btn-success"  (click)="openModalBuy(contentBuy,currentCoaching)"> <i class="fa fa-cart-arrow-down fa-2x"></i>&nbsp;&nbsp; Payer directement</button>
-                </div>
-                <br>
+                </div> -->
                 <!-- short-info-wrap .// -->
               </div> <!-- card-body.// -->
             </div> <!-- col.// -->
@@ -150,18 +203,20 @@
       </div>
     </div>
     <hr>
-    <div class="card-body my-4">
+    <div class="card-body my-2">
       <h2>Formations similaires</h2>
     </div>
     <div class="row">
         <!-- Start Single Blog  -->
         <div class="col-xl-3 col-md-6 col-12" *ngFor="let item of searchData">
           <div  class="single-product">
+            <div class="card text-center p-3">
             <div  class="product-img">
               <a (click)="loadSearchedCoachingByLocation(item.province)">
                 <span>{{item.province+' ('+item.count+')'}}</span>
               </a>
             </div>
+          </div>
           </div>
         </div>
         <!-- End Single Blog  -->

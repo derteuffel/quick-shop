@@ -23,107 +23,32 @@ export class SingupComponent implements OnInit {
   provinces: string[];
   communes: string[];
   activites: string[];
+  categories: string[];
   coachingActivites: string[];
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.secteurs = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
-    'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges'];
+    this.secteurs = ['Fermier','Commercant/Commercante','Secteur Agroalimentaire'];
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
-  this.coachingActivites = ['Appel avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];
+  this.coachingActivites = ['Tuteur/Tutrice d\'école primaire', 'Tuteur/Tutrice de Lycee', 'Encadreur agricole moderne','Encadreur d\'élevage moderne','Encadreur EFTP','Coach agroalimentaire','Coach ou renforcement des capacités dans d\'autres domaines'];
     this.getEntrepreneurForm();
   }
 
   secteursSelector(){
     switch(this.form.secteur){
-      case 'Produit agricole':{
-        this.activites = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre'];
+      case 'Fermier':{
+        this.activites = ['Riziculteur','Agriculteur de palmiers','Agriculteur de manioc','Producteur de maïs','Fermier de blé','Fermier de haricots','Producteur de pommes de terre','Producteur de bananes','Producteur de choux','Producteur de pastèques','Producteur d\'ananas','Producteur de mangue'];
         break;
       }
-      case 'Energie':{
-        this.activites = ['Installation des systemes d\'electricite','Paiement des factures d\'electricite','Conter un electricien','Acheter un generateur','Acheter du Gaz','Recharge gaz','Acheter du charbon'];
+      case 'Commercant/Commercante':{
+        this.activites = ['Marchand de charbon','Marchant de farine de manioc','Marchant de farine de mais','Marchant de farine de ble','Marchant de riz','Marchant de haricots','Marchant de chou','Marchant de banane','Marchant d\'ananas','Marchant de pasteque','Marchant de mangue','Vendeur de lait','Marchand huile de table','Marchant de vache','Marchant de chevre','Marchant de cochon','Marchant de poulet'];
         break;
       }
       case 'Secteur Agroalimentaire':{
-        this.activites =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Jus','Lait','Yaourt','Pate de tomate','Confiture','Miel','Huile de palm'];
+        this.activites =['Unité de production de farine','Unité de transformation du riz','Unité de production de pâte de tomate','Unité de production de yaourts','Unité de production d\'huile de cuisson','Producteur de confiture'];
         break;
       }
-  
-      case 'Betails':{
-        this.activites = ['Porc', 'Chevre','Lapins','Vaches','Poulets'];
-        break;
-      }
-  
-      case 'Peches':{
-        this.activites = ['Capitain','Tilapia','Sangala','Mukeke','Ndagala','Kuhe','Ndagala fume'];
-        break;
-      }
-      case 'Telephone portable':{
-        this.activites = ['Telephone portable', 'Smart phone'];
-        break;
-      }
-      
-      case 'Bags':{
-        this.activites = ['Sacs de classe','Sacs a main','Valises','Sacs de sports'];
-        break;
-      }
-      case 'Services de reparation':{
-        this.activites = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Reparation Bateaux','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
-        break;
-      }
-  
-      case 'Charpenterie':{
-        this.activites = ['Chaise de salon','Chaise de salle a mange','Table d\'etude','Table de salon','Table salle a mange','Bureau pour Enseignant','Placard a vetement','Armoire de salon','Etagere a livres'];
-        break;
-      }
-  
-      case 'Salon de beaute':{
-        this.activites = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe','Maquillage','Pedicure','Manucure'];
-        break;
-      }
-      case 'Couture':{
-        this.activites = ['Tissus costume (Achat)','Kitenges (Achat)','Imvutano (Achat)','Tissus costume (Couture)','Kitenges (Couture)','Pantalon (Couture)','Jupe (Couture)','Chemise (Couture)','Culotte (Couture)'];
-        break;
-      }
-      case 'Services culturel et social' :{
-        this.activites = ['Plannification d\'evenement','Decoration evenementiel','Maitre de ceremonie','Traducteur'];
-        break;
-      }
-  
-      case 'Performance musicales' :{
-        this.activites = ['Tambourinaire','Groupe acoustique','Groupe d\'interprete','Chorale','Deejay','Guitariste','Violon','Pianiste','Quatuor','Orchestre','Solo','Autre'];
-        break;
-      }
-  
-      case 'Danse':{
-        this.activites = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
-        break;
-      }
-      case 'Video production':{
-        this.activites = ['Publicites','Documentaires','Evennementielle','Vlog', 'Autres'];
-        break;
-      }
-      case 'Performance theatrales':{
-        this.activites = ['Pieces','Sketches','Publicites','Commedies musicales','Paroles','Narrateur et conteur', 'Autres'];
-        break;
-      }
-  
-      case 'Peintures':{
-        this.activites = ['Paysages','Portrait','Abstraite', 'Autres'];
-        break;
-      }
-      case 'Photographie':{
-        this.activites = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
-        break;
-      }
-  
-      case 'Achats des pieces de rechanges':{
-        this.activites = ['Motocyle', 'Vehicules', 'Camions'];
-        break;
-      }
-
-
     }
 
   }
@@ -308,7 +233,7 @@ getInvestorForm(){
     );
   }
 
-  onInvestorSubmit() {
+  /* onInvestorSubmit() {
     console.log(this.form);
 
     this.signupInfo = new SignUpInfo(
@@ -341,7 +266,7 @@ getInvestorForm(){
         this.isSignUpFailed = true;
       }
     );
-  }
+  } */
 
   onLearnerSubmit() {
     console.log(this.form);

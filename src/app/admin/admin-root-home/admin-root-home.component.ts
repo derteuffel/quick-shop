@@ -42,7 +42,15 @@ export class AdminRootHome implements OnInit {
   productID;
   currentProduct: Product;
   product: Product;
-  measures: string[];
+  measure: string;
+  kgs:string[];
+  bananasTrunk: string[];
+  bags: string[];
+  watermelons: string[];
+  pineaples: string[];
+  mangos: string[];
+  liters: string[];
+  cans:string[];
   //details
   public details: boolean = false;
   provinces: string[];
@@ -71,16 +79,21 @@ export class AdminRootHome implements OnInit {
 
   ngOnInit(): void {
     console.log(this.authService.currentUserValue.role);
-  this.categories = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
-  'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges','Education'];
-  
-    this.measures = ['KG','L', 'Btl', 'Pc','Sac','Prest']
+  this.categories = ['Produit agricole','Charbon','Récolte transformée','Bétail, poisson et autres produits'];
     this.loadList();
     this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
   'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
 
     this.initForm();
-
+    this.kgs = ['Ble','Riz','Haricots','Manioc','Mais','Farine de manioc','Farine de mais','Farine de ble','Poisson Mukeke',
+    'Poisson sangala','Poisson Kuhe','Poisson capitain','Ndagala','Ndagala fume', 'Viande de chevre','Viande de','Viande de Vaches','Poulets'];
+    this.bananasTrunk = ['Bananes'];
+    this.pineaples = ['Ananas'];
+    this.watermelons = ['Pasteque'];
+    this.mangos = ['Mangues'];
+    this.bags =['Charbon','Chou'];
+    this.liters = ['Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Lait','Yaourt'];
+    this.cans = ['Pate de tomate'];
     if (this.authService.currentUserValue.token) {
       this.user = this.authService.currentUserValue;
       switch(this.user.role){
@@ -99,28 +112,28 @@ export class AdminRootHome implements OnInit {
   namesSelector(){
     switch(this.productForm.get('category').value){
       case 'Produit agricole':{
-        this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre','Tomates','Piments','Boite de the','Boite de the au lemon','Boite de the a la fraise'];
+        this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Pommes de terre','Mangues'];
         this.code = 'BM1';
         break;
       }
-      case 'Energie':{
-        this.names = ['Installation des systemes d\'electricite','Paiement des factures d\'electricite','Conter un electricien','Acheter un generateur','Acheter du Gaz','Recharge gaz','Acheter du charbon'];
+      case 'Charbon':{
+        this.names = ['Charbon'];
         this.code = 'BM2';
         break;
       }
-      case 'Secteur Agroalimentaire':{
-        this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Jus','Lait','Yaourt','Pate de tomate','Confiture','Miel','Huile de palm'];
+      case 'Récolte transformée':{
+        this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Lait','Yaourt','Pate de tomate'];
         this.code = 'BM3';
         break;
       }
 
-      case 'Betails':{
-        this.names = ['Porc', 'Chevre','Lapins','Vaches','Poulets'];
+      case 'Bétail, poisson et autres produits':{
+        this.names = ['Poisson Mukeke','Poisson sangala','Poisson Kuhe','Poisson capitain','Ndagala','Ndagala fume', 'Viande de chevre','Viande de','Viande de Vaches','Poulets'];
         this.code = 'BM4';
         break;
       }
 
-      case 'Peches':{
+      /* case 'Peches':{
         this.names = ['Capitain','Tilapia','Sangala','Mukeke','Ndagala','Kuhe','Ndagala fume'];
         this.code = 'BM5';
         break;
@@ -206,8 +219,9 @@ export class AdminRootHome implements OnInit {
         this.names = ['Cours du soir'];
         this.code = 'BM20';
         break;
-      }
+      } */
     }
+  
 
   }
 
@@ -377,7 +391,35 @@ export class AdminRootHome implements OnInit {
   // fonction d'ajout du produit
   onSubmitProduct() {
     console.log("Test ici");
-    
+    if(this.cans.includes(this.productForm.get('name').value)){
+      this.measure = 'Cans';
+    }
+    if(this.kgs.includes(this.productForm.get('name').value)){
+      this.measure = 'Kg';
+    }
+
+    if(this.liters.includes(this.productForm.get('name').value)){
+      this.measure = 'Liters';
+    }
+    if(this.pineaples.includes(this.productForm.get('name').value)){
+      this.measure = 'Pineaple';
+    }
+    if(this.watermelons.includes(this.productForm.get('name').value)){
+      this.measure = 'Watermelon';
+    }
+
+    if(this.bags.includes(this.productForm.get('name').value)){
+      this.measure = 'Bags';
+    }
+
+    if(this.mangos.includes(this.productForm.get('name').value)){
+      this.measure = 'Mangos';
+    }
+    if(this.bananasTrunk.includes(this.productForm.get('name').value)){
+      this.measure = 'Bananas trunk';
+    }
+
+    console.log(this.measure);
     this.submitted = true;
     if (this.productForm?.invalid) { return; }
     const formData = new FormData();
@@ -390,7 +432,7 @@ export class AdminRootHome implements OnInit {
     formData.append('quantity', this.productForm.get('quantity').value);
     formData.append('devise', this.productForm.get('devise').value);
     formData.append('description', this.productForm.get('description').value);
-    formData.append('measure', this.productForm.get('measure').value);
+    formData.append('measure', this.measure);
     formData.append('code',this.code);
     formData.append('sector', this.productForm.get('sector').value);
 
@@ -457,6 +499,35 @@ export class AdminRootHome implements OnInit {
   }
 
   updateProduct() {
+    if(this.cans.includes(this.productForm.get('name').value)){
+      this.measure = 'Cans';
+    }
+    if(this.kgs.includes(this.productForm.get('name').value)){
+      this.measure = 'Kg';
+    }
+
+    if(this.liters.includes(this.productForm.get('name').value)){
+      this.measure = 'Liters';
+    }
+    if(this.pineaples.includes(this.productForm.get('name').value)){
+      this.measure = 'Pineaple';
+    }
+    if(this.watermelons.includes(this.productForm.get('name').value)){
+      this.measure = 'Watermelon';
+    }
+
+    if(this.bags.includes(this.productForm.get('name').value)){
+      this.measure = 'Bags';
+    }
+
+    if(this.mangos.includes(this.productForm.get('name').value)){
+      this.measure = 'Mangos';
+    }
+    if(this.bananasTrunk.includes(this.productForm.get('name').value)){
+      this.measure = 'Bananas trunk';
+    }
+
+    console.log(this.measure);
     const formData = new FormData(); 
     formData.append('name', this.productForm.get('name').value);
     formData.append('price', this.productForm.get('price').value);
@@ -466,7 +537,7 @@ export class AdminRootHome implements OnInit {
     formData.append('quantity', this.productForm.get('quantity').value);
     formData.append('devise', this.productForm.get('devise').value);
     formData.append('description', this.productForm.get('description').value);
-    formData.append('measure', this.productForm.get('measure').value);
+    formData.append('measure', this.measure);
     formData.append('sector', this.productForm.get('sector').value);
     formData.append('code', this.code);
     formData.append('file', this.uploadedFile);

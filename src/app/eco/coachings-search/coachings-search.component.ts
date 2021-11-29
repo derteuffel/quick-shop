@@ -22,6 +22,7 @@ export class CoachingsSearchComponent implements OnInit {
   types:string[];
   lists: any = {};
   p:number = 1;
+  names: string[];
   searchData: any = {};
   currentCoaching: any;
   subscribeForm: FormGroup;
@@ -48,7 +49,7 @@ export class CoachingsSearchComponent implements OnInit {
     console.log(this.navigationParams);
 
       this.loadSearchedCoaching(this.navigationParams);
-      this.types = ['Appel avec un coach', 'Coaching en ligne', 'Réunion de consultation en personne', 'Réunion de coaching en personne', 'Atelier', 'Formation','Conférence','Programme de bourse','Visite d\'échange'];
+      this.types=['Soutien à l\'éducation formelle', 'Opportunités de Formation individuel', 'Opportunités de Formation de groupe']; 
       this.provinces = ['Bubanza', 'Bujumbura Mairie', 'Bujumbura', 'Bururi', 'Cankuzo', 'Cibitoke', 'Gitega', 'Karuzi',
       'Kayanza', 'Kirundo', 'Makamba', 'Muramvya', 'Muyinga', 'Mwaro', 'Ngozi','Rumonge','Rutana','Ruyigi'];
       this.loadSearchedCoachingByProvince(this.provinces);
@@ -233,7 +234,8 @@ selectorOrder(){
     this.serviceForm = new FormGroup({
       province: new FormControl(''),
       commune: new FormControl(''),
-      name: new FormControl('')
+      name: new FormControl(''),
+      category: new FormControl('')
     });
 
     this.buyForm = new FormGroup(
@@ -253,6 +255,23 @@ selectorOrder(){
     );
   }
 
+  nameSelector(){
+    console.log('je suis la')
+    switch(this.serviceForm.get('name').value){
+        case 'Soutien à l\'éducation formelle':{
+          this.names = ['Tutorat à l\'école primaire','Tutorat lycée','Formation agricole moderne','Formation d\'élevage moderne','Formation EFTP','Formation en agro-alimentaire'];
+            break;
+        }
+        case 'Opportunités de Formation individuel':{
+          this.names =['Réunion de consultation/coaching en personne','Formation en ligne'];
+            break;
+        }
+        case 'Opportunités de Formation de groupe':{
+          this.names = ['Visite d\'échange','Atelier/Formation/Programme de bourses','Conference']
+            break
+        }
+    }
+  }
 
   onServiceSearch(){
     

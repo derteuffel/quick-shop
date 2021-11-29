@@ -40,6 +40,7 @@ export class ArticlesSearchComponent implements OnInit {
   types: any ={};
   p: number=1;
   names: string [];
+  measure: string;
   currentProduct: any;
   message: string;
   orderForm: FormGroup;
@@ -65,8 +66,7 @@ export class ArticlesSearchComponent implements OnInit {
     }else{
       this.token = false;
     }
-    this.types = ['Produit agricole','Energie','Secteur Agroalimentaire','Betails','Peches','Telephone portable','Bags','Services de reparation','Charpenterie',
-  'Salon de beaute','Couture','Services culturel et social','Performance musicales', 'Danse','Video production','Performance theatrales', 'Peintures','Photographie','Achats des pieces de rechanges','Education'];
+    this.types = ['Produit agricole','Charbon','Récolte transformée','Bétail, poisson et autres produits'];
     // this.navigationParams = this.localisation.getState();
     console.log(this.navigationParams);
     this.loadSearchedProduit(this.navigationParams );
@@ -89,95 +89,31 @@ this.init();
   namesSelector(){
     switch(this.produitForm.get('category').value){
       case 'Produit agricole':{
-        this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Oignons','Pommes de terre','Tomates','Piments','Boite de the','Boite de the au lemon','Boite de the a la fraise'];
+        this.names = ['Ble','Riz','Haricots','Bananes','Chou','Manioc','Mais','Ananas','Pasteque','Pommes de terre','Mangues'];
+        this.measure = 'Kg/Banana trunk/Bag/Watermelon/Pineaple/Mango/Bag';
         break;
       }
-      case 'Energie':{
-        this.names = ['Installation des systemes d\'electricite','Paiement des factures d\'electricite','Conter un electricien','Acheter un generateur','Acheter du Gaz','Recharge gaz','Acheter du charbon'];
+      case 'Charbon':{
+        this.names = ['Charbon'];
+        this.measure = 'Bag';
         break;
       }
-      case 'Secteur Agroalimentaire':{
-        this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Jus','Lait','Yaourt','Pate de tomate','Confiture','Miel','Huile de palm'];
-        break;
-      }
-  
-      case 'Betails':{
-        this.names = ['Porc', 'Chevre','Lapins','Vaches','Poulets'];
-        break;
-      }
-  
-      case 'Peches':{
-        this.names = ['Capitain','Tilapia','Sangala','Mukeke','Ndagala','Kuhe','Ndagala fume'];
-        break;
-      }
-      case 'Telephone portable':{
-        this.names = ['Telephone portable', 'Smart phone'];
-        break;
-      }
-      
-      case 'Bags':{
-        this.names = ['Sacs de classe','Sacs a main','Valises','Sacs de sports'];
-        break;
-      }
-      case 'Services de reparation':{
-        this.names = ['Reparation telephone','Reparation bicyclette','Reparation Motocyclette','Reparation Bateaux','Auto ecole Camion','Auto ecole Voiture','Auto ecole Motocyclette',];
+      case 'Récolte transformée':{
+        this.names =['Farine de manioc','Farine de mais','Farine de ble','Huile Vegetale (Palm)','Huile Vegetale (Cacahuetes)','Huile Vegetale (Coton)','Huile Vegetale (Avocat)','Lait','Yaourt','Pate de tomate'];
+        this.measure = 'Kg/Liter/Cans';
         break;
       }
   
-      case 'Charpenterie':{
-        this.names = ['Chaise de salon','Chaise de salle a mange','Table d\'etude','Table de salon','Table salle a mange','Bureau pour Enseignant','Placard a vetement','Armoire de salon','Etagere a livres'];
+      case 'Bétail, poisson et autres produits':{
+        this.names = ['Poisson Mukeke','Poisson sangala','Poisson Kuhe','Poisson capitain','Ndagala','Ndagala fume', 'Viande de chevre','Viande de','Viande de Vaches','Poulets'];
+        this.measure = 'Kg'
         break;
       }
+  default:
+    break
   
-      case 'Salon de beaute':{
-        this.names = ['Lavage Cheuveux','Tresses','Raser les Cheuveux','Raser barbe','Maquillage','Pedicure','Manucure'];
-        break;
-      }
-      case 'Couture':{
-        this.names = ['Tissus costume (Achat)','Kitenges (Achat)','Imvutano (Achat)','Tissus costume (Couture)','Kitenges (Couture)','Pantalon (Couture)','Jupe (Couture)','Chemise (Couture)','Culotte (Couture)'];
-        break;
-      }
-      case 'Services culturel et social' :{
-        this.names = ['Plannification d\'evenement','Decoration evenementiel','Maitre de ceremonie','Traducteur'];
-        break;
-      }
-  
-      case 'Performance musicales' :{
-        this.names = ['Tambourinaire','Groupe acoustique','Groupe d\'interprete','Chorale','Deejay','Guitariste','Violon','Pianiste','Quatuor','Orchestre','Solo','Autre'];
-        break;
-      }
-  
-      case 'Danse':{
-        this.names = ['Groupe de danse traditionnel','Groupe de danse moderne', 'Autres'];
-        break;
-      }
-      case 'Video production':{
-        this.names = ['Publicites','Documentaires','Evennementielle','Vlog', 'Autres'];
-        break;
-      }
-      case 'Performance theatrales':{
-        this.names = ['Pieces','Sketches','Publicites','Commedies musicales','Paroles','Narrateur et conteur', 'Autres'];
-        break;
-      }
-  
-      case 'Peintures':{
-        this.names = ['Paysages','Portrait','Abstraite', 'Autres'];
-        break;
-      }
-      case 'Photographie':{
-        this.names = ['Photodocumentaire','Phototheque','Couverture evenementielle','Portrait','Photo passeport', 'Autres'];
-        break;
-      }
-  
-      case 'Achats des pieces de rechanges':{
-        this.names = ['Motocyle', 'Vehicules', 'Camions'];
-        break;
-      }
-      case 'Education':{
-        this.names = ['Cours du soir'];
-        break;
-      }
     }
+    
   
   }
 

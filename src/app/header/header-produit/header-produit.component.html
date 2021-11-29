@@ -17,8 +17,9 @@
                     <option value="{{item}}" *ngFor="let item of names">{{item}}</option>
                   </select>
                 </div>
-                <div class="form-group col-xl-2 col-md-6 col-12">
-                  <input type="number" class="form-control search-slt" formControlName="quantity" placeholder="Quantite">
+                <div class="form-group col-xl-2 col-md-6 col-12" style="display: inline-block;">
+                  <input type="number"  class="form-control search-slt" formControlName="quantity" placeholder="Quantite">
+                  <p class="text-black">{{measure}}</p>
                 </div>
                 <div class="form-group col-md-6 col-xl-2 col-12">
                   <select formControlName="province" class="form-control search-slt" >
